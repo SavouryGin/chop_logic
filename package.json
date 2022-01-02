@@ -4,7 +4,8 @@
   "description": "Pet project for developing a React interface, which will allow to construct logical proofs and calculate other logical stuff.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/SavouryGin/chop_logic#readme",
   "devDependencies": {
     "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2"
   }
 }
