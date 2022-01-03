@@ -1,4 +1,6 @@
-# chop_logic
+# Chop Logic
+
+Pet project for developing a React interface, which will allow to construct logical proofs and calculate other logical stuff. 
 
 ### Name templates
 
