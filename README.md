@@ -4,17 +4,17 @@
 
 1. *Branch name* 
 
-    > ts-15_header-component
+    > ts-15_header-component<br>
     > bug-21_incorrect-filename
 
 2. *Commit message*
 
-    > ts-15: add styles for the header
+    > ts-15: add styles for the header<br>
     > bug-21: fix the file extension
 
 3. *PR title*
 
-    > Ts-15: Header component
+    > Ts-15: Header component<br>
     > Bug-21: Incorrect filename
 
 
