@@ -1,24 +1,23 @@
 # Chop Logic
 
-Pet project for developing a React interface, which will allow to construct logical proofs and calculate other logical stuff. 
+Pet project for developing a React interface, which will allow to construct logical proofs and calculate other logical stuff.
 
 ### Name templates
 
-1. *Branch name* 
+1. _Branch name_
 
-    > ts-15_header-component<br>
-    > bug-21_incorrect-filename
+   > ts-15_header-component<br>
+   > bug-21_incorrect-filename
 
-2. *Commit message*
+2. _Commit message_
 
-    > ts-15: add styles for the header<br>
-    > bug-21: fix the file extension
+   > ts-15: add styles for the header<br>
+   > bug-21: fix the file extension
 
-3. *PR title*
+3. _PR title_
 
-    > Ts-15: Header component<br>
-    > Bug-21: Incorrect filename
-
+   > Ts-15: Header component<br>
+   > Bug-21: Incorrect filename
 
 ### Scripts
 
@@ -34,3 +33,6 @@ This command will build your code and generate a single bundle file and insert i
 
 This command will run the serve package which will use the dist folder to create a static page.
 
+#### `npm run lint`
+
+This command will run ESLint through all the .js, .ts, and .tsx (used with React) files. Any ESLint errors that can be automatically fixed will be fixed with this command, but any other errors will be printed out in the command line.
