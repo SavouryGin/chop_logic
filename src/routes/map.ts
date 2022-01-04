@@ -6,13 +6,13 @@ import Syllogisms from 'basic-pages/syllogisms';
 import { Pages } from 'constants/pages/ids';
 import { paths } from 'constants/pages/paths';
 
-export interface IRouteMap {
+type RoutesMapItem = {
   id: Pages;
   route: string;
   page: React.FC;
-}
+};
 
-export const pagesRouteMap: IRouteMap[] = [
+const routesMap: RoutesMapItem[] = [
   {
     id: Pages.Home,
     route: paths[Pages.Home],
@@ -39,3 +39,5 @@ export const pagesRouteMap: IRouteMap[] = [
     page: Syllogisms,
   },
 ];
+
+export default routesMap;
