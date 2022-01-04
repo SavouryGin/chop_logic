@@ -3,5 +3,5 @@ export enum Pages {
   Propositions,
   Predicates,
   TruthTables,
-  Syllogisms
+  Syllogisms,
 }

@@ -31,11 +31,11 @@ export const pagesRouteMap: IRouteMap[] = [
   {
     id: Pages.TruthTables,
     route: paths[Pages.TruthTables],
-    page: TruthTables
+    page: TruthTables,
   },
   {
     id: Pages.Syllogisms,
     route: paths[Pages.Syllogisms],
-    page: Syllogisms
-  }
+    page: Syllogisms,
+  },
 ];
