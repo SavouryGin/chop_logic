@@ -8,35 +8,35 @@ import { paths } from 'constants/pages/paths';
 
 type RoutesMapItem = {
   id: Pages;
-  route: string;
-  page: React.FC;
+  path: string;
+  element: React.FC;
 };
 
 const routesMap: RoutesMapItem[] = [
   {
     id: Pages.Home,
-    route: paths[Pages.Home],
-    page: Home,
+    path: paths[Pages.Home],
+    element: Home,
   },
   {
     id: Pages.Propositions,
-    route: paths[Pages.Propositions],
-    page: Propositions,
+    path: paths[Pages.Propositions],
+    element: Propositions,
   },
   {
     id: Pages.Predicates,
-    route: paths[Pages.Predicates],
-    page: Predicates,
+    path: paths[Pages.Predicates],
+    element: Predicates,
   },
   {
     id: Pages.TruthTables,
-    route: paths[Pages.TruthTables],
-    page: TruthTables,
+    path: paths[Pages.TruthTables],
+    element: TruthTables,
   },
   {
     id: Pages.Syllogisms,
-    route: paths[Pages.Syllogisms],
-    page: Syllogisms,
+    path: paths[Pages.Syllogisms],
+    element: Syllogisms,
   },
 ];
 
