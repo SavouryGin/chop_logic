@@ -1,9 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-function App(): React.ReactElement {
-  return <div>Hi</div>;
-}
+import App from 'components/app';
 
 render(
   <React.StrictMode>

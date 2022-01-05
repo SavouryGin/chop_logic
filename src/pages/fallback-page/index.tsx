@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FallbackPage() {
+function FallbackPage(): React.ReactElement {
   return <div className='fallback-page'>Loading...</div>;
 }
 

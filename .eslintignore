@@ -4,3 +4,4 @@
 **/*.scss
 **/*.css
 **/*.html
+**/webpack.config.js

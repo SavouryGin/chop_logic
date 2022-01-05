@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NotFoundPage() {
+function NotFoundPage(): React.ReactElement {
   return <div className='not-found-page'>404 Page not found</div>;
 }
 
