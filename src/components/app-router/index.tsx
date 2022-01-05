@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from 'components/main-layout';
-import NotFoundPage from 'basic-pages/not-found-page';
+import NotFoundPage from 'pages/not-found-page';
 import routesMap from './map';
 
-function AppRouter() {
+function AppRouter(): React.ReactElement {
   const appPages = routesMap.map((item) => {
     const page = <MainLayout component={item.element} />;
     return <Route key={`page-${item.id}`} path={item.path} element={page} />;

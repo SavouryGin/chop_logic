@@ -1,8 +1,4 @@
-import Home from 'basic-pages/home';
-import Predicates from 'basic-pages/predicates';
-import Propositions from 'basic-pages/propositions';
-import TruthTables from 'basic-pages/truth-tables';
-import Syllogisms from 'basic-pages/syllogisms';
+import React from 'react';
 import { Pages } from 'constants/pages/ids';
 import { paths } from 'constants/pages/paths';
 
@@ -11,6 +7,12 @@ type RoutesMapItem = {
   path: string;
   element: React.FC;
 };
+
+const Home = React.lazy(() => import('pages/home'));
+const Predicates = React.lazy(() => import('pages/predicates'));
+const TruthTables = React.lazy(() => import('pages/truth-tables'));
+const Propositions = React.lazy(() => import('pages/propositions'));
+const Syllogisms = React.lazy(() => import('pages/syllogisms'));
 
 const routesMap: RoutesMapItem[] = [
   {

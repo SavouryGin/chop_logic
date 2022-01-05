@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TruthTables() {
+function TruthTables(): React.ReactElement {
   return <div className='truth-tables'>Truth tables</div>;
 }
 

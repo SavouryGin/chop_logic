@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Predicates() {
+function Predicates(): React.ReactElement {
   return <div className='predicates'>Predicates</div>;
 }
 

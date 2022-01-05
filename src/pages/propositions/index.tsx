@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Propositions() {
+function Propositions(): React.ReactElement {
   return <div className='propositions'>Propositions</div>;
 }
 
