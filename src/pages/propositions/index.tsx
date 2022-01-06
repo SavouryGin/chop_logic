@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Propositions(): React.ReactElement {
-  return <div className='propositions'>Propositions</div>;
+  return <main className='propositions'>Propositions</main>;
 }
 
 export default Propositions;

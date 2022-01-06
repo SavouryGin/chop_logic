@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Syllogisms(): React.ReactElement {
-  return <div className='syllogisms'>Syllogisms</div>;
+  return <main className='syllogisms'>Syllogisms</main>;
 }
 
 export default Syllogisms;
