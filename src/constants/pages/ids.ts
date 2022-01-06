@@ -1,6 +1,5 @@
 export enum Pages {
-  Home,
-  Propositions,
+  Propositions = 1,
   Predicates,
   TruthTables,
   Syllogisms,
