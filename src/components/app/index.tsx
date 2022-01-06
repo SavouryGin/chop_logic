@@ -1,13 +1,9 @@
-import React, { Suspense } from 'react';
-import FallbackPage from 'pages/fallback-page';
+import React from 'react';
+
 import AppRouter from 'components/app-router';
 
 function App(): React.ReactElement {
-  return (
-    // <Suspense fallback={<FallbackPage />}>
-    <AppRouter />
-    // </Suspense>
-  );
+  return <AppRouter />;
 }
 
 export default App;
