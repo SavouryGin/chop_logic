@@ -5,6 +5,8 @@ type PathDictionary = {
 };
 
 export const paths: PathDictionary = {
+  [Pages.Home]: '/',
+  [Pages.NotFound]: '*',
   [Pages.Propositions]: 'propositions',
   [Pages.Predicates]: 'predicates',
   [Pages.TruthTables]: 'truth-tables',
