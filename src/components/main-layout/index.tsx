@@ -1,16 +1,19 @@
 import React from 'react';
 import Header from 'components/header';
 import Footer from 'components/footer';
+import { Outlet, Link } from 'react-router-dom';
 
-type MainLayoutProps = {
-  component: React.ReactNode;
-};
+// type MainLayoutProps = {
+//   component: React.FC;
+//   children?: React.ReactNode;
+// };
 
-function MainLayout({ component }: MainLayoutProps): React.ReactElement {
+function MainLayout(): React.ReactElement {
   return (
     <div className='layout'>
       <Header />
-      <main>{component}</main>
+      <Link to='/propositions'>Propositions</Link>
+      <Outlet />
       <Footer />
     </div>
   );
