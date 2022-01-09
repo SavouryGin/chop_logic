@@ -1,8 +1,24 @@
+$Regular: 'Steppe', sans-serif;
+$Monospace: 'Monospaceland', monospace;
+
 /* Webfont: Steppe-Regular */
 @font-face {
   font-family: 'Steppe';
-  src: url('/assets/fonts/Steppe.woff2') format('woff2'), /* Modern Browsers */ url('/assets/fonts/Steppe.otf') format('opentype'); /* Safari, Android, iOS */
+  src: url('/src/assets/fonts/steppe/Steppe.woff2') format('woff2'), // Modern browsers
+    url('/src/assets/fonts/steppe/Steppe.otf') format('opentype');   // Safari
   font-style: normal;
   font-weight: normal;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Monospaceland-ExtraLight */
+@font-face {
+  font-family: 'Monospaceland';
+  src: url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.woff2') format('woff2'), // Modern browsers
+    url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.otf') format('opentype');   // Safari
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
   text-rendering: optimizeLegibility;
 }
