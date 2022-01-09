@@ -4,8 +4,7 @@ $Monospace: 'Monospaceland', monospace;
 /* Webfont: Steppe-Regular */
 @font-face {
   font-family: 'Steppe';
-  src: url('/src/assets/fonts/steppe/Steppe.woff2') format('woff2'), // Modern browsers
-    url('/src/assets/fonts/steppe/Steppe.otf') format('opentype');   // Safari
+  src: url('/src/assets/fonts/steppe/Steppe.woff2') format('woff2'), url('/src/assets/fonts/steppe/Steppe.otf') format('opentype');
   font-style: normal;
   font-weight: normal;
   font-display: swap;
@@ -15,8 +14,8 @@ $Monospace: 'Monospaceland', monospace;
 /* Webfont: Monospaceland-ExtraLight */
 @font-face {
   font-family: 'Monospaceland';
-  src: url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.woff2') format('woff2'), // Modern browsers
-    url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.otf') format('opentype');   // Safari
+  src: url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.woff2') format('woff2'),
+    url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
