@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -52,6 +53,10 @@ const config = {
       template: './src/index.html',
       filename: 'index.html',
       inject: 'body',
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [{ from: path.resolve(__dirname, './src/assets/icons/favicon.ico') }],
     }),
   ],
 };
