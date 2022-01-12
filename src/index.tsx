@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import App from 'components/app';
 
 // Custom styles
+import 'styles/reset.scss';
 import 'styles/icons.scss';
 
 render(
