@@ -29,3 +29,5 @@ export const settingsSlice = createSlice({
     },
   },
 });
+
+export const settingsActions = { ...settingsSlice.actions };
