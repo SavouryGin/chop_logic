@@ -1,18 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type language = 'ru' | 'en';
+export type language = 'ru' | 'en';
 
-interface SettingsInitialState {
+export interface SettingsInitialState {
   isMenuOpen: boolean;
   language: language;
 }
 
-const initialState: SettingsInitialState = {
+export const initialState: SettingsInitialState = {
   isMenuOpen: false,
   language: 'en',
 };
 
-export const counterSlice = createSlice({
+export const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
