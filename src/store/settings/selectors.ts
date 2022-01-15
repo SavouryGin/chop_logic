@@ -1,3 +1,3 @@
 import { RootState } from 'store';
 
-export const getIsMenuOpenStatus = (state: RootState): boolean => state.settings.isMenuOpen;
+export const getIsNavigationOpen = (state: RootState): boolean => state.settings.isNavigationOpen;

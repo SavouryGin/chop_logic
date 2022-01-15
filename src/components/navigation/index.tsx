@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { routesMap } from 'constants/pages';
 
-function Menu(): React.ReactElement {
+function Navigation(): React.ReactElement {
   const links = routesMap.map((item) => {
     return (
       <li key={item.key}>
@@ -12,10 +12,11 @@ function Menu(): React.ReactElement {
   });
 
   return (
-    <nav className='menu'>
+    <nav className='navigation'>
+      <h2>Navigation</h2>
       <ul>{links}</ul>
     </nav>
   );
 }
 
-export default Menu;
+export default Navigation;
