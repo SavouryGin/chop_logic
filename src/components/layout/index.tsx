@@ -12,10 +12,12 @@ function Layout(): React.ReactElement {
   const isNavigationOpen = useAppSelector(getIsNavigationOpen);
   return (
     <div className='layout'>
-      <Header />
       {isNavigationOpen && <Navigation />}
-      <Outlet />
-      <Footer />
+      <Header className='layout__header' />
+      <main className='layout__main'>
+        <Outlet />
+      </main>
+      <Footer className='layout__footer' />
     </div>
   );
 }

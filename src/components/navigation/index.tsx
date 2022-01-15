@@ -13,8 +13,8 @@ function Navigation(): React.ReactElement {
 
   return (
     <nav className='navigation'>
-      <h2>Navigation</h2>
-      <ul>{links}</ul>
+      <h2 className='navigation__header'>Navigation</h2>
+      <ul className='navigation__list'>{links}</ul>
     </nav>
   );
 }
