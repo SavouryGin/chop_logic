@@ -5,7 +5,7 @@ import { settingsActions } from 'store/settings/slice';
 function Header(): React.ReactElement {
   const dispatch = useAppDispatch();
   const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleMenu());
+    dispatch(settingsActions.toggleNavigation());
   };
 
   return (

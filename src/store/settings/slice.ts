@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export type language = 'ru' | 'en';
 
 export interface SettingsInitialState {
-  isMenuOpen: boolean;
+  isNavigationOpen: boolean;
   language: language;
 }
 
 export const initialState: SettingsInitialState = {
-  isMenuOpen: false,
+  isNavigationOpen: false,
   language: 'en',
 };
 
@@ -20,8 +20,8 @@ export const settingsSlice = createSlice({
       return initialState;
     },
 
-    toggleMenu: (state) => {
-      state.isMenuOpen = !state.isMenuOpen;
+    toggleNavigation: (state) => {
+      state.isNavigationOpen = !state.isNavigationOpen;
     },
 
     setLanguage: (state, action: PayloadAction<language>) => {
