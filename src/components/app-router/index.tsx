@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from 'components/layout';
-import RouterElement from 'components/route-element';
 import NotFoundPage from 'pages/not-found-page';
 import Home from 'pages/home';
 import { Pages, paths, routesMap } from 'constants/pages';
+import RouterElement from './route-element';
 
 function AppRouter(): React.ReactElement {
   const pages = routesMap.map((item) => {

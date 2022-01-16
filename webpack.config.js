@@ -20,6 +20,7 @@ const config = {
       styles: path.resolve(__dirname, './src/styles'),
       assets: path.resolve(__dirname, './src/assets'),
       store: path.resolve(__dirname, './src/store'),
+      helpers: path.resolve(__dirname, './src/helpers'),
     },
   },
   module: {

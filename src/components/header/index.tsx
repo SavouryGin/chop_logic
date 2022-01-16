@@ -1,19 +1,26 @@
 import React from 'react';
 import { useAppDispatch } from 'store/hooks';
 import { settingsActions } from 'store/settings/slice';
+import formatClassName from 'helpers/formatters/format-class-name';
 
-function Header(): React.ReactElement {
+import './styles.scss';
+
+export type HeaderProps = {
+  className?: string;
+};
+
+function Header(props: HeaderProps): React.ReactElement {
   const dispatch = useAppDispatch();
   const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleMenu());
+    dispatch(settingsActions.toggleNavigation());
   };
 
   return (
-    <header className='header'>
-      Header{' '}
+    <header className={formatClassName(['header', props.className])}>
       <button type='button' onClick={onClickMenuButton}>
         Menu
       </button>
+      <span>Header</span>
     </header>
   );
 }
