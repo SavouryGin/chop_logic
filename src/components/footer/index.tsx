@@ -1,6 +1,8 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 
+import './styles.scss';
+
 export type FooterProps = {
   className?: string;
 };
