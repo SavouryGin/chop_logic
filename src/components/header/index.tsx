@@ -17,10 +17,10 @@ function Header(props: HeaderProps): React.ReactElement {
 
   return (
     <header className={formatClassName(['header', props.className])}>
-      <span>Header</span>
       <button type='button' onClick={onClickMenuButton}>
         Menu
       </button>
+      <span>Header</span>
     </header>
   );
 }
