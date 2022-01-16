@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { routesMap } from 'constants/pages';
+import formatClassName from 'helpers/formatters/format-class-name';
 
-function Navigation(): React.ReactElement {
+export type NavigationProps = {
+  className?: string;
+};
+
+function Navigation(props: NavigationProps): React.ReactElement {
   const links = routesMap.map((item) => {
     return (
       <li key={item.key}>
@@ -12,7 +17,7 @@ function Navigation(): React.ReactElement {
   });
 
   return (
-    <nav className='navigation'>
+    <nav className={formatClassName(['navigation', props.className])}>
       <h2 className='navigation__header'>Navigation</h2>
       <ul className='navigation__list'>{links}</ul>
     </nav>
