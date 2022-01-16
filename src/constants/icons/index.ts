@@ -1,7 +1,7 @@
 /* Add class name from src/styles/icons.scss */
 
 export enum Icon {
-  Default = 'chop-icon_cross',
-  Home = 'chop-icon_home',
-  Menu = 'chop-icon_menu',
+  Default = 'chop-icon__cross',
+  Home = 'chop-icon__home',
+  Menu = 'chop-icon__menu',
 }

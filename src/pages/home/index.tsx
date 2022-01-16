@@ -1,7 +1,9 @@
 import React from 'react';
 
+import './styles.scss';
+
 function Home(): React.ReactElement {
-  return <main className='home'>Home</main>;
+  return <div className='home'>Home page</div>;
 }
 
 export default Home;

@@ -2,4 +2,36 @@
 
 .layout {
   font-family: $Regular;
+
+  // Grid template
+  display: grid;
+  grid-gap: 0;
+  height: 100%;
+  grid-template-columns: 2fr 10fr 2fr;
+  grid-template-rows: 4rem auto 3rem;
+  grid-template-areas:
+    'page-header  page-header  page-header'
+    'page-navigation page-content page-sidebar'
+    'page-footer  page-footer  page-footer';
+
+  // Grid areas
+  &__header {
+    grid-area: page-header;
+  }
+
+  &__footer {
+    grid-area: page-footer;
+  }
+
+  &__main {
+    grid-area: page-content;
+  }
+
+  &__navigation {
+    grid-area: page-navigation;
+  }
+
+  &__sidebar {
+    grid-area: page-sidebar;
+  }
 }

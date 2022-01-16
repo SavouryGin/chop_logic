@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Predicates(): React.ReactElement {
-  return <main className='predicates'>Predicates</main>;
+  return <div className='predicates'>Predicates</div>;
 }
 
 export default Predicates;
