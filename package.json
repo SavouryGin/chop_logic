@@ -4,11 +4,11 @@
   "description": "Pet project for developing a React interface, which will allow to construct logical proofs and calculate other logical stuff.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "serve dist",
-    "lint": "eslint src/* --quiet --fix"
+    "lint": "eslint src/* --quiet --fix",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,10 @@
     "@babel/preset-env": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
     "babel-loader": "^8.2.3",
@@ -43,6 +47,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.7",
     "prettier": "^2.5.1",
     "sass": "^1.46.0",
     "sass-loader": "^12.4.0",
@@ -56,10 +61,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.0",
     "@types/node": "^17.0.6",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
