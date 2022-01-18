@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { routesMap } from 'constants/pages';
 import formatClassName from 'helpers/formatters/format-class-name';
+import { routesMap } from 'components/app-router/map';
 
 export type NavigationProps = {
   className?: string;
