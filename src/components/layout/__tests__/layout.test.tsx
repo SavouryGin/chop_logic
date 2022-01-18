@@ -1,13 +1,37 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { combineReducers } from '@reduxjs/toolkit';
+import { settingsSlice, initialState } from 'store/settings/slice';
 import Layout from '../index';
+
+const mockedReducer = combineReducers({
+  settings: settingsSlice.reducer,
+});
+
+const mockedState = {
+  settings: initialState,
+};
 
 describe('Layout component:', () => {
   beforeEach(() => {
-    render(<Layout />);
+    renderWithRedux(<Layout />, mockedReducer, mockedState);
   });
 
-  it('renders correctly', () => {
-    screen.debug();
+  it('renders the header component', () => {
+    const header = screen.getByRole('banner');
+    expect(header).toBeInTheDocument();
+    expect(header).toHaveClass('layout__header');
+  });
+
+  it('the nav panel is hidden by default', () => {
+    expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
+  });
+
+  it('the nav panel appears if user clicks the menu button', () => {
+    const menuBtn = screen.getByText(/menu/i);
+    userEvent.click(menuBtn);
+    expect(screen.queryByRole('navigation')).toBeInTheDocument();
   });
 });
