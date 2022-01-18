@@ -1,11 +1,5 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-
 module.exports = {
   testEnvironment: 'jsdom',
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^components(.*)$': '<rootDir>/src/components$1',
@@ -17,4 +11,5 @@ module.exports = {
     '^enums(.*)$': '<rootDir>/src/enums$1',
     '\\.(css|scss)$': '<rootDir>/src/__mocks__/styleMock.js',
   },
+  setupFilesAfterEnv: ['<rootDir>/src/helpers/test-utils/setup-tests.ts'],
 };
