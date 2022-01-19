@@ -1,4 +1,4 @@
-import { Pages } from 'constants/pages/ids';
+import { Pages } from 'enums';
 
 type PathDictionary = {
   [key in Pages]: string;

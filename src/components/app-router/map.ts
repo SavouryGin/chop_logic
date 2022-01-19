@@ -1,6 +1,6 @@
 import React from 'react';
-import { Pages } from 'constants/pages/ids';
-import { paths } from 'constants/pages/paths';
+import { Pages } from 'enums';
+import { paths } from './paths';
 
 type RoutesMapItem = {
   id: Pages;
