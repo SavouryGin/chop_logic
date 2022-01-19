@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from 'components/layout';
 import NotFoundPage from 'pages/not-found-page';
 import Home from 'pages/home';
-import { Pages, paths, routesMap } from 'constants/pages';
+import { Pages } from 'enums';
 import RouterElement from './route-element';
+import { routesMap } from './map';
+import { paths } from './paths';
 
 function AppRouter(): React.ReactElement {
   const pages = routesMap.map((item) => {

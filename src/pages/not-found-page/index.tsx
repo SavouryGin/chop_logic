@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pages, paths } from 'constants/pages';
+import { paths } from 'components/app-router/paths';
+import { Pages } from 'enums';
 import { Link } from 'react-router-dom';
 
 function NotFoundPage(): React.ReactElement {
