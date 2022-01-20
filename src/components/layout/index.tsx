@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from 'components/header';
 import Footer from 'components/footer';
 import Navigation from 'components/navigation';
+import Sidebar from 'components/sidebar';
 import { getIsNavigationOpen } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 
@@ -17,7 +18,7 @@ function Layout(): React.ReactElement {
       <main className='layout__main'>
         <Outlet />
       </main>
-      <aside className='layout__sidebar'>Aside</aside>
+      <Sidebar className='layout__sidebar' />
       <Footer className='layout__footer' />
     </div>
   );

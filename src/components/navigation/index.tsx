@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { routesMap } from 'components/app-router/map';
 
+import './styles.scss';
+
 export type NavigationProps = {
   className?: string;
 };

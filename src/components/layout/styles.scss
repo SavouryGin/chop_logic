@@ -1,11 +1,14 @@
 @import 'styles/fonts.scss';
+@import 'styles/colors.scss';
 
 .layout {
   font-family: $Regular;
+  color: $light-font-color;
+  background-color: $light-background-color;
 
   // Grid template
   display: grid;
-  grid-gap: 0;
+  grid-gap: 0.4rem;
   height: 100%;
   grid-template-columns: 2fr 10fr 2fr;
   grid-template-rows: 4rem auto 3rem;

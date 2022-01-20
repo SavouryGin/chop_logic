@@ -1,2 +1,6 @@
+@import 'styles/colors.scss';
+
 .home {
+  height: 100%;
+  border: 1px solid $light-weak-accent-color;
 }
