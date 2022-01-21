@@ -1,5 +1,5 @@
-@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
 
 .footer {
-  background-color: $light-shadow-color;
+  font-size: $footer-font-size;
 }
