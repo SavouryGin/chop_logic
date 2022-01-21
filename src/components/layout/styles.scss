@@ -1,5 +1,6 @@
 @import 'styles/fonts.scss';
 @import 'styles/colors.scss';
+@import 'styles/sizes.scss';
 
 .layout {
   font-family: $Regular;
@@ -8,10 +9,10 @@
 
   // Grid template
   display: grid;
-  grid-gap: 0.4rem;
+  grid-gap: $block-gap;
   height: 100%;
   grid-template-columns: 2fr 10fr 2fr;
-  grid-template-rows: 4rem auto 3rem;
+  grid-template-rows: $header-height auto $footer-height;
   grid-template-areas:
     'page-header  page-header  page-header'
     'page-navigation page-content page-sidebar'
@@ -20,6 +21,7 @@
   // Grid areas
   &__header {
     grid-area: page-header;
+    box-shadow: $light-box-shadow;
   }
 
   &__footer {
@@ -28,13 +30,20 @@
 
   &__main {
     grid-area: page-content;
+    box-shadow: $light-box-shadow;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
   }
 
   &__navigation {
     grid-area: page-navigation;
+    box-shadow: $light-box-shadow;
+    border-bottom-right-radius: $border-radius;
   }
 
   &__sidebar {
     grid-area: page-sidebar;
+    box-shadow: $light-box-shadow;
+    border-bottom-left-radius: $border-radius;
   }
 }
