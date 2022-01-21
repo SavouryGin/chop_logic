@@ -3,7 +3,9 @@
 @import 'styles/sizes.scss';
 
 .layout {
+  // Common styles
   font-family: $Regular;
+  font-size: $base-font-size;
   color: $light-font-color;
   background-color: $light-background-color;
 
