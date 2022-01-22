@@ -1,8 +1,10 @@
 import React from 'react';
+import Button from 'components/button';
 import { useAppDispatch } from 'store/hooks';
 import { settingsActions } from 'store/settings/slice';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ClassNameProp } from 'types';
+import { Icon } from 'enums';
 
 import './styles.scss';
 
@@ -18,10 +20,8 @@ function Header(props: HeaderProps): React.ReactElement {
 
   return (
     <header className={formatClassName(['header', props.className])}>
-      <button type='button' onClick={onClickMenuButton}>
-        Menu
-      </button>
-      <span>Header</span>
+      <Button onClick={onClickMenuButton} icon={Icon.Menu} text='Menu' className='header__menu' />
+      <h1 className='header__text'>Chop Logic</h1>
     </header>
   );
 }
