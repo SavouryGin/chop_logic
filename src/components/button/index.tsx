@@ -3,6 +3,8 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { ClassNameProp } from 'types';
 import { Icon } from 'enums';
 
+import './styles.scss';
+
 export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   text?: string;

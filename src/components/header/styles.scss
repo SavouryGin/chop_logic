@@ -1,5 +1,17 @@
 @import 'styles/colors.scss';
+@import 'styles/sizes.scss';
 
 .header {
   display: grid;
+  grid-gap: $block-gap;
+  grid-template-columns: 2fr 10fr 2fr;
+  grid-template-areas: 'menu-btn  test  .';
+
+  &__menu {
+    grid-area: menu-btn;
+  }
+
+  &__text {
+    grid-area: test;
+  }
 }
