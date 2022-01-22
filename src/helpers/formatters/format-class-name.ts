@@ -1,8 +1,6 @@
-export type ClassNameProp = {
-  [key in string]: boolean;
-};
+import { ClassNames } from 'types';
 
-function formatClassName(input: Array<string | ClassNameProp | undefined | null>): string {
+function formatClassName(input: Array<string | ClassNames | undefined | null>): string {
   const names = input
     .map((item) => {
       if (typeof item === 'string') return item.trim();

@@ -21,6 +21,7 @@ const config = {
       assets: path.resolve(__dirname, './src/assets'),
       store: path.resolve(__dirname, './src/store'),
       helpers: path.resolve(__dirname, './src/helpers'),
+      types: path.resolve(__dirname, './src/types'),
     },
   },
   module: {
