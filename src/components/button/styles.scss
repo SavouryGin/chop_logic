@@ -1,0 +1,17 @@
+@import 'styles/sizes.scss';
+@import 'styles/colors.scss';
+
+.button {
+  background-color: $light-background-color;
+  border: none;
+  border-radius: $border-radius;
+  padding: 4px;
+  margin: 4px;
+  min-width: 1rem;
+  min-height: 1rem;
+  box-shadow: $light-button-shadow;
+
+  &:hover {
+    background-color: $light-foreground-color;
+  }
+}
