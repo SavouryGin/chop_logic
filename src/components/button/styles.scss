@@ -2,16 +2,87 @@
 @import 'styles/colors.scss';
 
 .button {
-  background-color: $light-background-color;
+  position: relative;
   border: none;
-  border-radius: $border-radius;
-  padding: 4px;
-  margin: 4px;
-  min-width: 1rem;
-  min-height: 1rem;
-  box-shadow: $light-button-shadow;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  width: fit-content;
+  height: fit-content;
+
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+    filter: blur(2px);
+  }
+
+  &__edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    background: linear-gradient(
+      to left,
+      hsl(340deg 100% 16%) 0%,
+      hsl(340deg 100% 32%) 8%,
+      hsl(340deg 100% 32%) 92%,
+      hsl(340deg 100% 16%) 100%
+    );
+  }
+
+  &__front {
+    display: block;
+    position: relative;
+    padding: 0.6rem 0.6rem 0.4rem 0.6rem;
+    border-radius: 0.4rem;
+    color: $light-background-color;
+    background: $light-strong-accent-color;
+    will-change: transform;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+
+    &::before {
+      margin: 0 4px;
+    }
+  }
 
   &:hover {
-    background-color: $light-foreground-color;
+    filter: brightness(110%);
+  }
+
+  &:hover &__front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+
+  &:active &__front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+
+  &:hover &__shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+
+  &:active &__shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 }

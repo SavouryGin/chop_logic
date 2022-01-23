@@ -20,7 +20,7 @@ function Header(props: HeaderProps): React.ReactElement {
 
   return (
     <header className={formatClassName(['header', props.className])}>
-      <Button onClick={onClickMenuButton} className='header__menu' />
+      <Button onClick={onClickMenuButton} icon={Icon.Menu} text='Menu' />
       <h1 className='header__text'>Chop Logic</h1>
     </header>
   );
