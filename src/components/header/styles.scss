@@ -6,6 +6,8 @@
   grid-gap: $block-gap;
   grid-template-columns: 2fr 10fr 2fr;
   grid-template-areas: 'menu-btn  test  .';
+  align-items: center;
+  justify-items: center;
 
   &__menu {
     grid-area: menu-btn;

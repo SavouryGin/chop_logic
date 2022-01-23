@@ -6,18 +6,20 @@ import { Icon } from 'enums';
 import './styles.scss';
 
 export type ButtonProps = {
+  text: string;
+  icon: Icon;
   type?: 'button' | 'submit' | 'reset';
-  text?: string;
   className?: ClassNameProp;
   onClick?: () => void;
-  icon?: Icon;
 };
 
 function Button(props: ButtonProps): React.ReactElement {
   const { type, text, className, onClick, icon } = props;
   return (
-    <button type={type || 'button'} className={formatClassName(['button', icon, className])} onClick={onClick}>
-      {text}
+    <button type={type || 'button'} className={formatClassName(['button', className])} onClick={onClick}>
+      <span className='button__shadow'></span>
+      <span className='button__edge'></span>
+      <span className={formatClassName(['button__front', icon])}>{text}</span>
     </button>
   );
 }
