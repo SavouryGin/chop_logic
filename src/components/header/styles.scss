@@ -1,5 +1,10 @@
 @import 'styles/colors.scss';
+@import 'styles/sizes.scss';
 
 .header {
-  // box-shadow: $light-box-shadow;
+  display: grid;
+  grid-gap: $block-gap;
+  grid-template-columns: 2fr 10fr 2fr;
+  align-items: center;
+  justify-items: center;
 }

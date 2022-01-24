@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { routesMap } from 'components/app-router/map';
+import { ClassNameProp } from 'types';
 
 import './styles.scss';
 
 export type NavigationProps = {
-  className?: string;
+  className?: ClassNameProp;
 };
 
 function Navigation(props: NavigationProps): React.ReactElement {
