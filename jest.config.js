@@ -9,6 +9,7 @@ module.exports = {
     '^styles(.*)$': '<rootDir>/src/styles$1',
     '^assets(.*)$': '<rootDir>/src/assets$1',
     '^enums(.*)$': '<rootDir>/src/enums$1',
+    '^types(.*)$': '<rootDir>/src/types$1',
     '\\.(css|scss)$': '<rootDir>/src/__mocks__/styleMock.js',
   },
   setupFilesAfterEnv: ['<rootDir>/src/helpers/test-utils/setup-tests.ts'],
