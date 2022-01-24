@@ -6,8 +6,8 @@ import { Icon } from 'enums';
 import './styles.scss';
 
 export type ButtonProps = {
-  text: string;
   icon: Icon;
+  text?: string;
   type?: 'button' | 'submit' | 'reset';
   className?: ClassNameProp;
   onClick?: () => void;
