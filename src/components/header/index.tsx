@@ -29,7 +29,8 @@ function Header(props: HeaderProps): React.ReactElement {
       <h1 className='header__heading'>Chop Logic</h1>
       <div className='header__right-panel'>
         <Button icon={Icon.Enlarge} />
-        <Button icon={Icon.Test} />
+        <Button icon={Icon.Sound} />
+        <Button icon={Icon.LightMode} />
       </div>
     </header>
   );
