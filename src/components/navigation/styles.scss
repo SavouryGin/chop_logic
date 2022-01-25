@@ -1,10 +1,14 @@
 @import 'styles/colors.scss';
 
-// .navigation {
-//   &__header {
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
 
-//   }
-//   &__list {
-
-//   }
-// }
+.navigation {
+  animation: slide-in 1000ms;
+}

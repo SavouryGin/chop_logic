@@ -5,6 +5,22 @@
   display: grid;
   grid-gap: $block-gap;
   grid-template-columns: 2fr 10fr 2fr;
+  grid-template-areas: 'header-left header-center header-right';
   align-items: center;
   justify-items: center;
+
+  &__left-panel {
+    grid-area: header-left;
+  }
+
+  &__heading {
+    grid-area: header-center;
+  }
+
+  &__right-panel {
+    grid-area: header-right;
+    .button {
+      margin: 0 0.4rem;
+    }
+  }
 }
