@@ -1,6 +1,7 @@
 @import 'styles/fonts.scss';
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
 
 .layout {
   // Common styles
@@ -8,6 +9,7 @@
   font-size: $base-font-size;
   color: $light-font-color;
   background-color: $light-background-color;
+  z-index: $base-z-index;
 
   // Grid template
   display: grid;
@@ -24,6 +26,7 @@
   &__header {
     grid-area: page-header;
     box-shadow: $light-box-shadow;
+    z-index: $header-z-index;
   }
 
   &__footer {

@@ -1,4 +1,14 @@
 @import 'styles/colors.scss';
 
-// .sidebar {
-// }
+@keyframes slide-in-sidebar {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.sidebar {
+  animation: slide-in-sidebar 1000ms;
+}

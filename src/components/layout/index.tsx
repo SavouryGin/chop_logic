@@ -5,12 +5,15 @@ import Footer from 'components/footer';
 import Navigation from 'components/navigation';
 import Sidebar from 'components/sidebar';
 import { getIsNavigationOpen } from 'store/settings/selectors';
+import { getIsSidebarOpen } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 
 import './styles.scss';
 
 function Layout(): React.ReactElement {
   const isNavigationOpen = useAppSelector(getIsNavigationOpen);
+  const isSidebarOpen = useAppSelector(getIsSidebarOpen);
+
   return (
     <div className='layout'>
       <Header className='layout__header' />
@@ -18,7 +21,7 @@ function Layout(): React.ReactElement {
       <main className='layout__main'>
         <Outlet />
       </main>
-      <Sidebar className='layout__sidebar' />
+      {isSidebarOpen && <Sidebar className='layout__sidebar' />}
       <Footer className='layout__footer' />
     </div>
   );

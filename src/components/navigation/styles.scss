@@ -1,14 +1,15 @@
 @import 'styles/colors.scss';
+@import 'styles/z-indexes.scss';
 
-@keyframes slide-in {
+@keyframes slide-in-navigation {
   from {
-    transform: translateX(-100%);
+    transform: translateY(-100%);
   }
   to {
-    transform: translateX(0%);
+    transform: translateY(0%);
   }
 }
 
 .navigation {
-  animation: slide-in 1000ms;
+  animation: slide-in-navigation 1000ms;
 }
