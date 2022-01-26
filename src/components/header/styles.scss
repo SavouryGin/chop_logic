@@ -11,6 +11,9 @@
 
   &__left-panel {
     grid-area: header-left;
+    .button {
+      margin: 0 0.4rem;
+    }
   }
 
   &__heading {
