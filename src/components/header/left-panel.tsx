@@ -1,8 +1,7 @@
 import React from 'react';
 import Button from 'components/button';
 import { Icon } from 'enums';
-import { useAppSelector } from 'store/hooks';
-import { useAppDispatch } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { settingsActions } from 'store/settings/slice';
 import { getIsNavigationOpen } from 'store/settings/selectors';
 
@@ -14,7 +13,7 @@ function LeftHeaderPanel() {
   };
   return (
     <>
-      <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Left : Icon.Right} />
+      <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Up : Icon.Down} />
       <Button icon={Icon.LightMode} />
       <Button icon={Icon.Sound} />
     </>

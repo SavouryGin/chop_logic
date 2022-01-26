@@ -4,11 +4,13 @@ export type language = 'ru' | 'en';
 
 export interface SettingsInitialState {
   isNavigationOpen: boolean;
+  isSidebarOpen: boolean;
   language: language;
 }
 
 export const initialState: SettingsInitialState = {
   isNavigationOpen: false,
+  isSidebarOpen: false,
   language: 'en',
 };
 
@@ -22,6 +24,10 @@ export const settingsSlice = createSlice({
 
     toggleNavigation: (state) => {
       state.isNavigationOpen = !state.isNavigationOpen;
+    },
+
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
     },
 
     setLanguage: (state, action: PayloadAction<language>) => {

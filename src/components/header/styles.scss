@@ -12,7 +12,7 @@
   &__left-panel {
     grid-area: header-left;
     .button {
-      margin: 0 0.4rem;
+      margin: 0 $default-margin;
     }
   }
 
@@ -23,7 +23,7 @@
   &__right-panel {
     grid-area: header-right;
     .button {
-      margin: 0 0.4rem;
+      margin: 0 $default-margin;
     }
   }
 }
