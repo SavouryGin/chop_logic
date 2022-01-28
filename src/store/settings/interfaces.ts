@@ -8,7 +8,7 @@ export interface SettingsFlags {
   isSidebarOpen: boolean;
   isDarkMode: boolean;
   isFullScreen: boolean;
-  isSettingPopupOpen: boolean;
+  isSettingOpen: boolean;
   isSoundsEnabled: boolean;
 }
 
