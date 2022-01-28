@@ -9,7 +9,7 @@ function LeftHeaderPanel() {
   const dispatch = useAppDispatch();
   const isNavigationOpen = useAppSelector(getIsNavigationOpen);
   const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleNavigation());
+    dispatch(settingsActions.toggleFlag('isNavigationOpen'));
   };
   return (
     <>
