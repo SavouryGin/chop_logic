@@ -9,7 +9,7 @@ function RightHeaderPanel() {
   const dispatch = useAppDispatch();
   const isSidebarOpen = useAppSelector(getIsSidebarOpen);
   const onClickSidebarButton = () => {
-    dispatch(settingsActions.toggleSidebar());
+    dispatch(settingsActions.toggleFlag('isSidebarOpen'));
   };
   return (
     <>
