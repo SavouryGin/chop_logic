@@ -1,6 +1,7 @@
 @import 'styles/fonts.scss';
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
 
 .layout {
   // Common styles
@@ -8,6 +9,7 @@
   font-size: $base-font-size;
   color: $light-font-color;
   background-color: $light-background-color;
+  overflow-x: hidden; // to prevent scroll during the animation
 
   // Grid template
   display: grid;

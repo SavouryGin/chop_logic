@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from 'components/button';
-import { useAppDispatch } from 'store/hooks';
-import { settingsActions } from 'store/settings/slice';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ClassNameProp } from 'types';
-import { Icon } from 'enums';
+import RightHeaderPanel from './right-panel';
+import LeftHeaderPanel from './left-panel';
 
 import './styles.scss';
 
@@ -13,15 +11,15 @@ export type HeaderProps = {
 };
 
 function Header(props: HeaderProps): React.ReactElement {
-  const dispatch = useAppDispatch();
-  const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleNavigation());
-  };
-
   return (
     <header className={formatClassName(['header', props.className])}>
-      <Button onClick={onClickMenuButton} icon={Icon.Menu} text='Menu' />
-      <h1 className='header__text'>Chop Logic</h1>
+      <div className='header__left-panel'>
+        <LeftHeaderPanel />
+      </div>
+      <h1 className='header__heading'>Chop Logic</h1>
+      <div className='header__right-panel'>
+        <RightHeaderPanel />
+      </div>
     </header>
   );
 }

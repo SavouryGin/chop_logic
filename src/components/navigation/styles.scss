@@ -1,10 +1,15 @@
 @import 'styles/colors.scss';
+@import 'styles/z-indexes.scss';
 
-// .navigation {
-//   &__header {
+@keyframes slide-in-navigation {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
 
-//   }
-//   &__list {
-
-//   }
-// }
+.navigation {
+  animation: slide-in-navigation 1000ms;
+}
