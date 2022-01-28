@@ -9,7 +9,7 @@
   font-size: $base-font-size;
   color: $light-font-color;
   background-color: $light-background-color;
-  z-index: $base-z-index;
+  overflow-x: hidden; // to prevent scroll during the animation
 
   // Grid template
   display: grid;
@@ -26,7 +26,6 @@
   &__header {
     grid-area: page-header;
     box-shadow: $light-box-shadow;
-    z-index: $header-z-index;
   }
 
   &__footer {

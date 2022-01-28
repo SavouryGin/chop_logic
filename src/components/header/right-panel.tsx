@@ -15,7 +15,7 @@ function RightHeaderPanel() {
     <>
       <Button icon={Icon.Settings} />
       <Button icon={Icon.Enlarge} />
-      <Button onClick={onClickSidebarButton} icon={isSidebarOpen ? Icon.Up : Icon.Down} />
+      <Button onClick={onClickSidebarButton} icon={isSidebarOpen ? Icon.Right : Icon.Left} />
     </>
   );
 }

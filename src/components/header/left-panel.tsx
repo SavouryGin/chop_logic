@@ -13,7 +13,7 @@ function LeftHeaderPanel() {
   };
   return (
     <>
-      <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Up : Icon.Down} />
+      <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Left : Icon.Right} />
       <Button icon={Icon.LightMode} />
       <Button icon={Icon.Sound} />
     </>
