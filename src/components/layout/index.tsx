@@ -4,15 +4,14 @@ import Header from 'components/header';
 import Footer from 'components/footer';
 import Navigation from 'components/navigation';
 import Sidebar from 'components/sidebar';
-import { getIsNavigationOpen } from 'store/settings/selectors';
-import { getIsSidebarOpen } from 'store/settings/selectors';
+import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 
 import './styles.scss';
 
 function Layout(): React.ReactElement {
-  const isNavigationOpen = useAppSelector(getIsNavigationOpen);
-  const isSidebarOpen = useAppSelector(getIsSidebarOpen);
+  const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
+  const isSidebarOpen = useAppSelector(settingsSelectors.getIsSidebarOpened);
 
   return (
     <div className='layout'>
