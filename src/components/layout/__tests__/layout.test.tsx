@@ -25,13 +25,29 @@ describe('Layout component:', () => {
     expect(header).toHaveClass('layout__header');
   });
 
+  it('renders the footer component', () => {
+    const footer = screen.getByTestId('footer');
+    expect(footer).toBeInTheDocument();
+    expect(footer).toHaveClass('layout__footer');
+  });
+
   it('the nav panel is hidden by default', () => {
     expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
   });
 
-  it('the nav panel appears if user clicks the menu button', () => {
+  it('the sidebar is hidden by default', () => {
+    expect(screen.queryByRole('complementary')).not.toBeInTheDocument();
+  });
+
+  it('the nav panel appears if user clicks the Navigation button', () => {
     const menuBtn = screen.getByTitle(/navigation/i);
     userEvent.click(menuBtn);
     expect(screen.queryByRole('navigation')).toBeInTheDocument();
+  });
+
+  it('the sidebar appears if user clicks the Sidebar button', () => {
+    const sidebarBtn = screen.getByTitle(/sidebar/i);
+    userEvent.click(sidebarBtn);
+    expect(screen.queryByRole('complementary')).toBeInTheDocument();
   });
 });
