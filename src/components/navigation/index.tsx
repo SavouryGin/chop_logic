@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { routesMap } from 'components/app-router/map';
 import { ClassNameProp } from 'types';
@@ -14,7 +14,7 @@ function Navigation(props: NavigationProps): React.ReactElement {
   const links = routesMap.map((item) => {
     return (
       <li key={item.key}>
-        <Link to={item.url}>{item.title}</Link>
+        <NavLink to={item.url}>{item.title}</NavLink>
       </li>
     );
   });
