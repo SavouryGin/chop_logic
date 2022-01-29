@@ -15,12 +15,12 @@ function Layout(): React.ReactElement {
 
   return (
     <div className='layout'>
-      <Header className='layout__header' />
       {isNavigationOpen && <Navigation className='layout__navigation' />}
+      {isSidebarOpen && <Sidebar className='layout__sidebar' />}
+      <Header className='layout__header' />
       <main className='layout__main'>
         <Outlet />
       </main>
-      {isSidebarOpen && <Sidebar className='layout__sidebar' />}
       <Footer className='layout__footer' />
     </div>
   );
