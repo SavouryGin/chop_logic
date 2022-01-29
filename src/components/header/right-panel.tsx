@@ -24,9 +24,9 @@ function RightHeaderPanel() {
 
   return (
     <>
-      <Button onClick={onClickSettingButton} icon={Icon.Settings} />
-      <Button onClick={onClickFullScreenButton} icon={isFullScreen ? Icon.Shrink : Icon.Enlarge} />
-      <Button onClick={onClickSidebarButton} icon={isSidebarOpened ? Icon.Right : Icon.Left} />
+      <Button onClick={onClickSettingButton} icon={Icon.Settings} title='Settings' />
+      <Button onClick={onClickFullScreenButton} icon={isFullScreen ? Icon.Shrink : Icon.Enlarge} title='Full screen' />
+      <Button onClick={onClickSidebarButton} icon={isSidebarOpened ? Icon.Right : Icon.Left} title='Sidebar' />
     </>
   );
 }
