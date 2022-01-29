@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { settingsSlice, initialState } from 'store/settings/slice';
+import { settingsSlice, settingsInitialState } from 'store/settings/slice';
 import Layout from '../index';
 
 const mockedReducer = combineReducers({
@@ -11,7 +11,7 @@ const mockedReducer = combineReducers({
 });
 
 const mockedState = {
-  settings: initialState,
+  settings: settingsInitialState,
 };
 
 describe('Layout component:', () => {
@@ -30,7 +30,7 @@ describe('Layout component:', () => {
   });
 
   it('the nav panel appears if user clicks the menu button', () => {
-    const menuBtn = screen.getByText(/menu/i);
+    const menuBtn = screen.getByTitle(/navigation/i);
     userEvent.click(menuBtn);
     expect(screen.queryByRole('navigation')).toBeInTheDocument();
   });
