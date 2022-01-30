@@ -9,7 +9,11 @@ export type FooterProps = {
 };
 
 function Footer(props: FooterProps): React.ReactElement {
-  return <footer className={formatClassName(['footer', props.className])}>Footer</footer>;
+  return (
+    <footer className={formatClassName(['footer', props.className])} data-testid='footer'>
+      Footer
+    </footer>
+  );
 }
 
 export default Footer;
