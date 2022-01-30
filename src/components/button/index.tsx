@@ -7,6 +7,7 @@ import './styles.scss';
 
 export type ButtonProps = {
   icon: Icon;
+  title: string;
   text?: string;
   type?: 'button' | 'submit' | 'reset';
   className?: ClassNameProp;
@@ -14,9 +15,9 @@ export type ButtonProps = {
 };
 
 function Button(props: ButtonProps): React.ReactElement {
-  const { type, text, className, onClick, icon } = props;
+  const { type, text, className, onClick, icon, title } = props;
   return (
-    <button type={type || 'button'} className={formatClassName(['button', className])} onClick={onClick}>
+    <button type={type || 'button'} title={title} className={formatClassName(['button', className])} onClick={onClick}>
       <span className='button__shadow'></span>
       <span className='button__edge'></span>
       <span className={formatClassName(['button__front', icon])}>{text}</span>
