@@ -9,6 +9,7 @@ function RightHeaderPanel() {
   const dispatch = useAppDispatch();
   const isSidebarOpened = useAppSelector(settingsSelectors.getIsSidebarOpened);
   const isFullScreen = useAppSelector(settingsSelectors.getIsFullScreen);
+  const isSettingOpened = useAppSelector(settingsSelectors.getIsSettingOpened);
 
   const onClickSidebarButton = () => {
     dispatch(settingsActions.toggleFlag('isSidebarOpen'));
@@ -24,7 +25,7 @@ function RightHeaderPanel() {
 
   return (
     <>
-      <Button onClick={onClickSettingButton} icon={Icon.Settings} title='Settings' />
+      <Button onClick={onClickSettingButton} icon={isSettingOpened ? Icon.Cancel : Icon.Settings} title='Settings' />
       <Button onClick={onClickFullScreenButton} icon={isFullScreen ? Icon.Shrink : Icon.Enlarge} title='Full screen' />
       <Button onClick={onClickSidebarButton} icon={isSidebarOpened ? Icon.Right : Icon.Left} title='Sidebar' />
     </>
