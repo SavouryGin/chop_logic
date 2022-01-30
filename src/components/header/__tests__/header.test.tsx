@@ -1,12 +1,9 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
 import Header from '../index';
-import { paths } from 'components/app-router/paths';
-import { Pages } from 'enums';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,

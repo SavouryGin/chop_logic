@@ -26,7 +26,7 @@ function LeftHeaderPanel() {
   return (
     <>
       <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Left : Icon.Right} title='Navigation' />
-      <Button onClick={onClickModeButton} icon={isDarkMode ? Icon.DarkMode : Icon.LightMode} title='Color theme' />
+      <Button onClick={onClickModeButton} icon={isDarkMode ? Icon.LightMode : Icon.DarkMode} title='Color theme' />
       <Button onClick={onClickSoundsButton} icon={isSoundsEnabled ? Icon.Sound : Icon.NoSound} title='Sounds' />
     </>
   );
