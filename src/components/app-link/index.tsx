@@ -3,6 +3,8 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { Link, NavLink } from 'react-router-dom';
 import { ClassNameProp } from 'types';
 
+import './styles.scss';
+
 export type AppLinkProps = {
   path: string;
   text?: string;

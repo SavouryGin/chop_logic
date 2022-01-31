@@ -18,10 +18,6 @@
 
   &__heading {
     grid-area: header-center;
-    a {
-      text-decoration: none;
-      color: $light-font-color;
-    }
   }
 
   &__right-panel {
