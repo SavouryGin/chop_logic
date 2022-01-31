@@ -1,6 +1,6 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { NavLink } from 'react-router-dom';
+import AppLink from 'components/app-link';
 import { ClassNameProp } from 'types';
 import { paths } from 'components/app-router/paths';
 import { Page } from 'enums';
@@ -20,7 +20,7 @@ function Header(props: HeaderProps): React.ReactElement {
         <LeftHeaderPanel />
       </div>
       <h1 className='header__heading'>
-        <NavLink to={paths[Page.Home]}>Chop Logic</NavLink>
+        <AppLink path={paths[Page.Home]} text='Chop Logic' isNavigation />
       </h1>
       <div className='header__right-panel'>
         <RightHeaderPanel />
