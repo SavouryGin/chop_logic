@@ -1,0 +1,16 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+
+.app-link {
+  &:hover {
+    text-shadow: $light-text-shadow;
+  }
+
+  a {
+    text-decoration: none;
+    color: $light-font-color;
+    &:focus-visible {
+      outline: $light-outline;
+    }
+  }
+}
