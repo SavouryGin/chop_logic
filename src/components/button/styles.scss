@@ -4,7 +4,6 @@
 .button {
   position: relative;
   border: none;
-  outline: none;
   background: transparent;
   padding: 0;
   cursor: pointer;
@@ -82,5 +81,9 @@
   &:active &__shadow {
     transform: translateY(0.06rem);
     transition: transform 34ms;
+  }
+
+  &:focus-visible {
+    outline: $light-outline;
   }
 }
