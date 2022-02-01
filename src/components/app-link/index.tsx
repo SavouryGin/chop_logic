@@ -19,10 +19,11 @@ function AppLink(props: AppLinkProps): React.ReactElement {
 
   const navLink = <NavLink to={path}>{text}</NavLink>;
   const link = <Link to={path}>{text}</Link>;
-  return isNavigation ? (
-    <span className={formatClassName(['app-link', icon, className])}>{navLink}</span>
-  ) : (
-    <span className={formatClassName(['app-link', icon, className])}>{link}</span>
+
+  return (
+    <span data-testid='app-link' className={formatClassName(['app-link', icon, className])}>
+      {isNavigation ? navLink : link}
+    </span>
   );
 }
 
