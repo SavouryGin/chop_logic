@@ -16,4 +16,7 @@ export enum Icon {
   DarkMode = 'chop-icon__contrast',
   Cancel = 'chop-icon__cross',
   Sidebar = 'chop-icon__columns',
+  Telegram = 'chop-icon__telegram',
+  Github = 'chop-icon__github',
+  Mail = 'chop-icon__earth',
 }
