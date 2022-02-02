@@ -18,5 +18,5 @@ export enum Icon {
   Sidebar = 'chop-icon__columns',
   Telegram = 'chop-icon__telegram',
   Github = 'chop-icon__github',
-  Mail = 'chop-icon__earth',
+  Mail = 'chop-icon__mail4',
 }
