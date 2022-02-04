@@ -1,5 +1,26 @@
 @import 'styles/sizes.scss';
+@import 'styles/mixins.scss';
 
 .footer {
   font-size: $small-font-size;
+  display: grid;
+  align-items: center;
+  grid-template-areas: '. footer-copyright footer-links .';
+  grid-template-columns: 2fr 5fr 5fr 2fr;
+
+  &__copyright {
+    grid-area: footer-copyright;
+    padding-left: $block-gap;
+  }
+
+  &__links {
+    grid-area: footer-links;
+    justify-self: right;
+    padding-right: $block-gap;
+    @include link-styles(light);
+
+    a {
+      margin-left: $big-margin;
+    }
+  }
 }
