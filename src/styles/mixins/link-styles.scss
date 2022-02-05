@@ -1,5 +1,5 @@
-@import './colors.scss';
-@import './sizes.scss';
+@import '../colors.scss';
+@import '../sizes.scss';
 
 @mixin link-styles($mode) {
   a {
