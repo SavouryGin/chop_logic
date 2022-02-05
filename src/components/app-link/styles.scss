@@ -2,4 +2,8 @@
 
 .app-link {
   @include link-styles(light);
+
+  &_dark {
+    @include link-styles(dark);
+  }
 }

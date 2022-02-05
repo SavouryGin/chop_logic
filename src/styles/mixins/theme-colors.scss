@@ -1,11 +1,6 @@
 @import '../colors.scss';
 
-@mixin light-base-colors() {
-  color: $light-font-color;
-  background-color: $light-background-color;
-}
-
-@mixin dark-base-colors() {
-  color: $dark-font-color;
-  background-color: $dark-background-color;
+@mixin theme-colors($mode) {
+  color: if($mode == dark, $dark-font-color, $light-font-color);
+  background-color: if($mode == dark, $dark-background-color, $light-background-color);
 }
