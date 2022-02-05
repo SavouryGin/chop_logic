@@ -1,0 +1,11 @@
+@import '../colors.scss';
+
+@mixin light-base-colors() {
+  color: $light-font-color;
+  background-color: $light-background-color;
+}
+
+@mixin dark-base-colors() {
+  color: $dark-font-color;
+  background-color: $dark-background-color;
+}
