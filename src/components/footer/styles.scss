@@ -19,6 +19,10 @@
     padding-right: $block-gap;
     @include link-styles(light);
 
+    &_dark {
+      @include link-styles(dark);
+    }
+
     a {
       margin-left: $big-margin;
     }
