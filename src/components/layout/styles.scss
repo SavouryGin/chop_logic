@@ -46,7 +46,7 @@
   }
 
   // Defaults colors
-  @include theme-colors(light);
+  @include layout-colors(light);
   &__header,
   &__main,
   &__navigation,
@@ -56,7 +56,7 @@
 
   // Dark mode colors
   &_dark {
-    @include theme-colors(dark);
+    @include layout-colors(dark);
   }
   &__header_dark,
   &__main_dark,
