@@ -1,14 +1,12 @@
 @import 'styles/fonts.scss';
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
-@import 'styles/z-indexes.scss';
+@import 'styles/mixins/theme-colors.scss';
 
 .layout {
   // Common styles
   font-family: $Regular;
   font-size: $base-font-size;
-  color: $light-font-color;
-  background-color: $light-background-color;
   overflow-x: hidden; // to prevent scroll during the animation
 
   // Grid template
@@ -25,7 +23,6 @@
   // Grid areas
   &__header {
     grid-area: page-header;
-    box-shadow: $light-box-shadow;
   }
 
   &__footer {
@@ -34,20 +31,37 @@
 
   &__main {
     grid-area: page-content;
-    box-shadow: $light-box-shadow;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   }
 
   &__navigation {
     grid-area: page-navigation;
-    box-shadow: $light-box-shadow;
     border-bottom-right-radius: $border-radius;
   }
 
   &__sidebar {
     grid-area: page-sidebar;
-    box-shadow: $light-box-shadow;
     border-bottom-left-radius: $border-radius;
+  }
+
+  // Defaults colors
+  @include layout-colors(light);
+  &__header,
+  &__main,
+  &__navigation,
+  &__sidebar {
+    box-shadow: $light-box-shadow;
+  }
+
+  // Dark mode colors
+  &_dark {
+    @include layout-colors(dark);
+  }
+  &__header_dark,
+  &__main_dark,
+  &__navigation_dark,
+  &__sidebar_dark {
+    box-shadow: $dark-box-shadow;
   }
 }
