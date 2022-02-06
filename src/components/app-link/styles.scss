@@ -1,5 +1,9 @@
-@import 'styles/mixins.scss';
+@import 'styles/mixins/link-styles.scss';
 
 .app-link {
   @include link-styles(light);
+
+  &_dark {
+    @include link-styles(dark);
+  }
 }

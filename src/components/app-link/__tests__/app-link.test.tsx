@@ -1,8 +1,11 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { screen, render } from '@testing-library/react';
-import AppLink from '../index';
+import { screen } from '@testing-library/react';
 import { Icon } from 'enums';
+import { combineReducers } from '@reduxjs/toolkit';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import renderWithRedux from 'helpers/test-utils/render-with-redux';
+
+import AppLink from '../index';
 
 const testProps = {
   path: '/test',
@@ -12,13 +15,17 @@ const testProps = {
   className: 'test-class-name',
 };
 
+const mockedReducer = combineReducers({
+  settings: settingsSlice.reducer,
+});
+
+const mockedState = {
+  settings: settingsInitialState,
+};
+
 describe('AppLink component:', () => {
   beforeEach(() => {
-    render(
-      <BrowserRouter>
-        <AppLink {...testProps} />
-      </BrowserRouter>,
-    );
+    renderWithRedux(<AppLink {...testProps} />, mockedReducer, mockedState);
   });
 
   it('renders a link element', () => {
