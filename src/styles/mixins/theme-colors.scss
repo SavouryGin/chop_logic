@@ -1,6 +1,23 @@
 @import '../colors.scss';
 
-@mixin theme-colors($mode) {
+@mixin layout-colors($mode) {
   color: if($mode == dark, $dark-font-color, $light-font-color);
   background-color: if($mode == dark, $dark-background-color, $light-background-color);
+}
+
+@mixin button-colors($mode) {
+  color: if($mode == dark, $dark-background-color, $light-background-color);
+  background: if($mode == dark, $dark-strong-accent-color, $light-strong-accent-color);
+}
+
+@mixin button-gradient($mode) {
+  background: if(
+    $mode == dark,
+    linear-gradient(to left, hsl(140, 100%, 16%) 0%, hsl(140, 100%, 32%) 8%, hsl(140deg 100% 32%) 92%, hsl(140deg 100% 16%) 100%),
+    linear-gradient(to left, hsl(340deg 100% 16%) 0%, hsl(340deg 100% 32%) 8%, hsl(340deg 100% 32%) 92%, hsl(340deg 100% 16%) 100%)
+  );
+}
+
+@mixin button-shadow($mode) {
+  background: if($mode == dark, hsla(0, 0%, 97%, 0.75), hsl(0deg 0% 0% / 0.25));
 }
