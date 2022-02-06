@@ -4,11 +4,11 @@ import Header from 'components/header';
 import Footer from 'components/footer';
 import Navigation from 'components/navigation';
 import Sidebar from 'components/sidebar';
+import formatClassName from 'helpers/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 
 import './styles.scss';
-import formatClassName from 'helpers/formatters/format-class-name';
 
 function Layout(): React.ReactElement {
   const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
