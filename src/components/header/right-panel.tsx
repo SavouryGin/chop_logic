@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Button from 'components/button';
 import { Icon } from 'enums';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
@@ -23,14 +23,14 @@ function RightHeaderPanel(): React.ReactElement {
   const onClickFullScreenButton = () => {
     const isWindowInFullscreen = !!document.fullscreenElement;
 
-    if (!isWindowInFullscreen) {
-      const element = document.body;
-      const requestMethod = element?.requestFullscreen;
-      if (requestMethod) requestMethod.call(element);
-      dispatch(settingsActions.setFullScreenFlag(true));
-    } else {
+    if (isWindowInFullscreen) {
       if (document.fullscreenElement) document.exitFullscreen();
       dispatch(settingsActions.setFullScreenFlag(false));
+    } else {
+      const body = document.body;
+      const requestMethod = body?.requestFullscreen;
+      if (requestMethod) requestMethod.call(body);
+      dispatch(settingsActions.setFullScreenFlag(true));
     }
   };
 
@@ -42,7 +42,6 @@ function RightHeaderPanel(): React.ReactElement {
   // Effects
   useEffect(() => {
     document.addEventListener('fullscreenchange', escapeHandler, false);
-
     return () => {
       document.removeEventListener('fullscreenchange', escapeHandler, false);
     };
