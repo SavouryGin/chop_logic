@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 
-function LeftHeaderPanel() {
+function LeftHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
   const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
