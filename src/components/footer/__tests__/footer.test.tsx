@@ -1,23 +1,17 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import { Icon } from 'enums';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import Footer from '../index';
 
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
+const testProps = {
+  className: 'test-classname',
+  isDarkMode: false,
 };
 
 describe('Footer component:', () => {
   beforeEach(() => {
-    renderWithRedux(<Footer />, mockedReducer, mockedState);
+    render(<Footer {...testProps} />);
   });
 
   it('renders the footer container', () => {
