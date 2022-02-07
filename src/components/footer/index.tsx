@@ -2,18 +2,17 @@ import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ClassNameProp } from 'types';
 import { Icon } from 'enums';
-import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'store/hooks';
 
 import './styles.scss';
 
 export type FooterProps = {
   className?: ClassNameProp;
+  isDarkMode: boolean;
 };
 
 function Footer(props: FooterProps): React.ReactElement {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const footerClassNames = formatClassName(['footer', props.className]);
+  const { className, isDarkMode } = props;
+  const footerClassNames = formatClassName(['footer', className]);
   const linkClassNames = formatClassName(['footer__links', { footer__links_dark: isDarkMode }]);
 
   return (
