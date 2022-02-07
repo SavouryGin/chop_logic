@@ -29,6 +29,10 @@ export const settingsSlice = createSlice({
     setLanguage: (state, action: PayloadAction<Language>) => {
       state.language = action.payload;
     },
+
+    setFullScreenFlag: (state, action: PayloadAction<boolean>) => {
+      state.flags.isFullScreen = action.payload;
+    },
   },
 });
 
