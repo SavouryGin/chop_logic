@@ -30,7 +30,7 @@ function Layout(): React.ReactElement {
       <main className={mainClassNames}>
         <Outlet />
       </main>
-      <Footer className={footerClassNames} />
+      <Footer className={footerClassNames} isDarkMode={isDarkMode} />
     </div>
   );
 }
