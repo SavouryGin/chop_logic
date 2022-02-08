@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page } from 'enums';
+import { Icon, Page } from 'enums';
 import { paths } from './paths';
 
 type RoutesMapItem = {
@@ -8,6 +8,7 @@ type RoutesMapItem = {
   element: React.FC;
   title: string;
   key: string;
+  icon?: Icon;
 };
 
 const Predicates = React.lazy(() => import('pages/predicates'));
@@ -22,6 +23,7 @@ export const routesMap: RoutesMapItem[] = [
     url: paths[Page.Propositions],
     element: Propositions,
     title: 'Propositions',
+    icon: Icon.Propositions,
   },
   {
     id: Page.Predicates,
@@ -29,6 +31,7 @@ export const routesMap: RoutesMapItem[] = [
     url: paths[Page.Predicates],
     element: Predicates,
     title: 'Predicates',
+    icon: Icon.Predicates,
   },
   {
     id: Page.TruthTables,
@@ -36,6 +39,7 @@ export const routesMap: RoutesMapItem[] = [
     url: paths[Page.TruthTables],
     element: TruthTables,
     title: 'Truth Tables',
+    icon: Icon.TruthTables,
   },
   {
     id: Page.Syllogisms,
@@ -43,5 +47,6 @@ export const routesMap: RoutesMapItem[] = [
     url: paths[Page.Syllogisms],
     element: Syllogisms,
     title: 'Syllogisms',
+    icon: Icon.Syllogisms,
   },
 ];

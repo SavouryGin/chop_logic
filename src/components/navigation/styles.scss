@@ -1,5 +1,7 @@
 @import 'styles/colors.scss';
 @import 'styles/z-indexes.scss';
+@import 'styles/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
 
 @keyframes slide-in-navigation {
   from {
@@ -12,4 +14,18 @@
 
 .navigation {
   animation: slide-in-navigation 1000ms;
+
+  &__header {
+    @include header-styles();
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0 $default-padding;
+    text-align: center;
+
+    li {
+      padding: $default-padding 0;
+    }
+  }
 }
