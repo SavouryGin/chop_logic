@@ -14,7 +14,7 @@ function Navigation(props: NavigationProps): React.ReactElement {
   const links = routesMap.map((item) => {
     return (
       <li key={item.key}>
-        <AppLink path={item.url} text={item.title} isNavigation />
+        <AppLink path={item.url} text={item.title} isNavigation icon={item.icon} />
       </li>
     );
   });
