@@ -1,0 +1,8 @@
+@import 'styles/sizes.scss';
+
+@mixin header-styles() {
+  text-align: center;
+  font-size: $base-font-size;
+  font-weight: bold;
+  padding: $default-padding 0;
+}

@@ -19,4 +19,8 @@ export enum Icon {
   Telegram = 'chop-icon__telegram',
   Github = 'chop-icon__github',
   Mail = 'chop-icon__mail4',
+  Propositions = 'chop-icon__cube',
+  Predicates = 'chop-icon__cubes',
+  TruthTables = 'chop-icon__delicious',
+  Syllogisms = 'chop-icon__dice',
 }

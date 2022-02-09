@@ -20,9 +20,19 @@ function AppLink(props: AppLinkProps): React.ReactElement {
   const { path, text, isNavigation, className, icon } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
 
-  const navLink = <NavLink to={path}>{text}</NavLink>;
-  const link = <Link to={path}>{text}</Link>;
-  const classNames = formatClassName(['app-link', icon, className, { 'app-link_dark': isDarkMode }]);
+  const navLink = (
+    <NavLink className={icon} to={path}>
+      {text}
+    </NavLink>
+  );
+
+  const link = (
+    <Link className={icon} to={path}>
+      {text}
+    </Link>
+  );
+
+  const classNames = formatClassName(['app-link', className, { 'app-link_dark': isDarkMode }]);
 
   return (
     <span data-testid='app-link' className={classNames}>
