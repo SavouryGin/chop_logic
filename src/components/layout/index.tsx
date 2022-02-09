@@ -23,7 +23,7 @@ function Layout(): React.ReactElement {
   const footerClassNames = 'layout__footer';
 
   return (
-    <div className={layoutClassNames}>
+    <div className={layoutClassNames} data-testid='layout'>
       {isNavigationOpen && <Navigation className={navigationClassNames} />}
       {isSidebarOpen && <Sidebar className={sidebarClassNames} />}
       <Header className={headerClassNames} />
