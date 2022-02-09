@@ -37,11 +37,15 @@ describe('AppLink component:', () => {
     expect(screen.getByRole('link')).toHaveProperty('href', href);
   });
 
+  it('the link has the passed icon class name', () => {
+    expect(screen.getByRole('link')).toHaveClass(testProps.icon);
+  });
+
   it('the link contains the passed text', () => {
     expect(screen.getByRole('link')).toHaveTextContent(testProps.text);
   });
 
   it('contains all necessary class names', () => {
-    expect(screen.getByTestId('app-link')).toHaveClass('app-link', testProps.className, testProps.icon);
+    expect(screen.getByTestId('app-link')).toHaveClass('app-link', testProps.className);
   });
 });
