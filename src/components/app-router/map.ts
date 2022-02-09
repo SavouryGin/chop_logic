@@ -8,7 +8,7 @@ type RoutesMapItem = {
   element: React.FC;
   title: string;
   key: string;
-  icon?: Icon;
+  icon: Icon;
 };
 
 const Predicates = React.lazy(() => import('pages/predicates'));
