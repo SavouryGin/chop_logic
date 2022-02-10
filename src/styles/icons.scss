@@ -1,3 +1,6 @@
+@import './fonts.scss';
+@import './sizes.scss';
+
 @font-face {
   font-family: 'chop-icons';
   src: url('/src/assets/icons/chop-icons.eot?426rr9');
@@ -585,4 +588,14 @@
 }
 .chop-icon__codepen:before {
   content: '\eae8';
+}
+.chop-icon__english-lang:before {
+  content: 'Ru';
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: $tiny-font-size !important;
+}
+.chop-icon__russian-lang:before {
+  content: 'En';
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: $tiny-font-size !important;
 }
