@@ -591,11 +591,9 @@
 }
 .chop-icon__english-lang:before {
   content: 'Ru';
-  font-family: 'Courier New', Courier, monospace !important;
-  font-size: $tiny-font-size !important;
+  font-family: $Monospace-bold !important;
 }
 .chop-icon__russian-lang:before {
   content: 'En';
-  font-family: 'Courier New', Courier, monospace !important;
-  font-size: $tiny-font-size !important;
+  font-family: $Monospace-bold !important;
 }
