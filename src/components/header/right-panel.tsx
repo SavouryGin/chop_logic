@@ -49,7 +49,7 @@ function RightHeaderPanel(): React.ReactElement {
 
   return (
     <>
-      <Button onClick={onClickSettingButton} icon={isSettingOpened ? Icon.Cancel : Icon.Settings} title='Settings' />
+      <Button onClick={onClickSettingButton} icon={isSettingOpened ? Icon.Russian : Icon.English} title='Settings' />
       <Button onClick={onClickFullScreenButton} icon={isFullScreen ? Icon.Shrink : Icon.Enlarge} title='Full screen' />
       <Button onClick={onClickSidebarButton} icon={isSidebarOpened ? Icon.Right : Icon.Sidebar} title='Sidebar' />
     </>

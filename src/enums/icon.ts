@@ -23,4 +23,6 @@ export enum Icon {
   Predicates = 'chop-icon__cubes',
   TruthTables = 'chop-icon__delicious',
   Syllogisms = 'chop-icon__dice',
+  English = 'chop-icon__english-lang',
+  Russian = 'chop-icon__russian-lang',
 }
