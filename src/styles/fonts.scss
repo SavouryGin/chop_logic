@@ -1,5 +1,6 @@
 $Regular: 'Steppe', sans-serif;
-$Monospace: 'Monospaceland', monospace;
+$Monospace: 'DitaRegular', monospace;
+$Monospace-bold: 'DitaBold', monospace;
 
 /* Webfont: Steppe-Regular */
 @font-face {
@@ -11,11 +12,22 @@ $Monospace: 'Monospaceland', monospace;
   text-rendering: optimizeLegibility;
 }
 
-/* Webfont: Monospaceland-ExtraLight */
+/* Webfont: DitaGroteskMonoDEMO-Regular */
 @font-face {
-  font-family: 'Monospaceland';
-  src: url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.woff2') format('woff2'),
-    url('/src/assets/fonts/monospaceland/Monospaceland-ExtraLight.otf') format('opentype');
+  font-family: 'DitaRegular';
+  src: url('/src/assets/fonts/dita/AF-DitaGroteskMonoDEMO-Regular.woff') format('woff'),
+    url('/src/assets/fonts/dita/AF-DitaGroteskMonoDEMO-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: DitaGroteskMonoDEMO-Bold */
+@font-face {
+  font-family: 'DitaBold';
+  src: url('/src/assets/fonts/dita/AF-DitaGroteskMonoDEMO-Bold.woff') format('woff'),
+    url('/src/assets/fonts/dita/AF-DitaGroteskMonoDEMO-Bold.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
