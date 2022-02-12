@@ -1,0 +1,9 @@
+@import 'styles/z-indexes.scss';
+
+.modal-window {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  background-color: red;
+  z-index: inherit;
+}
