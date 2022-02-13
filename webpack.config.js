@@ -22,6 +22,7 @@ const config = {
       store: path.resolve(__dirname, './src/store'),
       helpers: path.resolve(__dirname, './src/helpers'),
       types: path.resolve(__dirname, './src/types'),
+      __mocks__: path.resolve(__dirname, './src/__mocks__'),
     },
   },
   module: {

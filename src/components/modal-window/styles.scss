@@ -1,6 +1,7 @@
 @import 'styles/z-indexes.scss';
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
 
 @keyframes slide-in-modal {
   from {
@@ -27,9 +28,41 @@
     animation: slide-in-modal 1000ms;
     width: fit-content;
     height: fit-content;
+    max-width: 80%;
+    max-height: 80%;
+    min-width: 20%;
+    min-height: 20%;
     padding: $big-padding;
     background-color: $light-background-color;
     border-radius: $border-radius;
     box-shadow: $light-box-shadow;
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr auto 1fr;
+    grid-gap: $block-gap;
+    grid-template-areas:
+      'modal-header'
+      'modal-content'
+      'modal-footer';
+
+    &__header {
+      grid-area: modal-header;
+      @include header-styles();
+    }
+
+    &__content {
+      grid-area: modal-content;
+      @include base-text-styles();
+      overflow: auto;
+    }
+
+    &__footer {
+      grid-area: modal-footer;
+      justify-self: end;
+      .button {
+        margin-left: $big-margin;
+      }
+    }
   }
 }
