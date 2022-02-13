@@ -1,8 +1,16 @@
 @import 'styles/sizes.scss';
+@import 'styles/fonts.scss';
 
 @mixin header-styles() {
   text-align: center;
   font-size: $base-font-size;
+  font-family: $Regular;
   font-weight: bold;
   padding: 0 0 $default-padding 0;
+}
+
+@mixin base-text-styles() {
+  text-align: left;
+  font-size: $base-font-size;
+  font-family: $Regular;
 }

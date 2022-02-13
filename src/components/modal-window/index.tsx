@@ -10,13 +10,14 @@ import './styles.scss';
 export type ModalWindowProps = {
   isOpened: boolean;
   onClose: () => void;
+  onConfirm?: () => void;
   title: string;
   className?: ClassNameProp;
   content?: React.ReactElement;
 };
 
 function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
-  const { className, isOpened, onClose, content, title } = props;
+  const { className, isOpened, onClose, content, title, onConfirm } = props;
   const targetNode = document.getElementById('modal');
   const isPortalVisible = isOpened && targetNode;
   const classNames = formatClassName(['modal-window', className]);
@@ -28,6 +29,7 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
         <section className='modal-window__content'>{content}</section>
         <footer className='modal-window__footer'>
           <Button onClick={onClose} icon={Icon.Cancel} title='Close' />
+          {onConfirm && <Button onClick={onConfirm} icon={Icon.Default} title='Ok' />}
         </footer>
       </div>
     </div>
