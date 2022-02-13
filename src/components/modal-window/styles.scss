@@ -6,10 +6,12 @@
 
 @keyframes slide-in-modal {
   from {
-    transform: translateY(-100%);
+    opacity: 0;
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
   }
   to {
-    transform: translateY(0%);
+    opacity: 1;
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
   }
 }
 
@@ -72,6 +74,7 @@
     @include layout-colors(light);
     box-shadow: $light-box-shadow;
 
+    // Dark colors
     &_dark {
       @include layout-colors(dark);
       box-shadow: $dark-box-shadow;

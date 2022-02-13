@@ -28,7 +28,7 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
 
   const portal = (
     <div className={backgroundClassNames}>
-      <div className={windowClassNames} role='dialog'>
+      <div className={windowClassNames} role='dialog' aria-modal='true'>
         <header className='modal-window__header'>{title}</header>
         <section className='modal-window__content'>{content}</section>
         <footer className='modal-window__footer'>
