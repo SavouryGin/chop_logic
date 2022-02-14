@@ -16,7 +16,7 @@ function Footer(props: FooterProps): React.ReactElement {
   const linkClassNames = formatClassName(['footer__links', { footer__links_dark: isDarkMode }]);
 
   return (
-    <footer className={footerClassNames} data-testid='footer'>
+    <footer className={footerClassNames}>
       <span className='footer__copyright'>© Dmitrii Suroviagin, 2022</span>
       <span className={linkClassNames}>
         <a href='mailto:savourygin@gmail.com' target='_blank' rel='noreferrer' className={Icon.Mail}>

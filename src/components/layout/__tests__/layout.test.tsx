@@ -26,7 +26,7 @@ describe('Layout component:', () => {
   });
 
   it('renders the footer component', () => {
-    const footer = screen.getByTestId('footer');
+    const footer = screen.getByRole('contentinfo');
     expect(footer).toBeInTheDocument();
     expect(footer).toHaveClass('layout__footer');
   });

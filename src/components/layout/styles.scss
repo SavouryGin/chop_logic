@@ -33,16 +33,22 @@
     grid-area: page-content;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
+    overflow: auto;
+    padding: $big-padding;
   }
 
   &__navigation {
     grid-area: page-navigation;
     border-bottom-right-radius: $border-radius;
+    overflow: auto;
+    padding: $big-padding;
   }
 
   &__sidebar {
     grid-area: page-sidebar;
     border-bottom-left-radius: $border-radius;
+    overflow: auto;
+    padding: $big-padding;
   }
 
   // Defaults colors

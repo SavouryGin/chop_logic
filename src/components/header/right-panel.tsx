@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 import Button from 'components/button';
+import ModalWindow from 'components/modal-window';
 import { Icon } from 'enums';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
+import { testText } from '__mocks__/test-text';
 
 function RightHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -49,9 +51,16 @@ function RightHeaderPanel(): React.ReactElement {
 
   return (
     <>
-      <Button onClick={onClickSettingButton} icon={isSettingOpened ? Icon.Cancel : Icon.Settings} title='Settings' />
+      <Button onClick={onClickSettingButton} icon={Icon.Settings} title='Settings' />
       <Button onClick={onClickFullScreenButton} icon={isFullScreen ? Icon.Shrink : Icon.Enlarge} title='Full screen' />
       <Button onClick={onClickSidebarButton} icon={isSidebarOpened ? Icon.Right : Icon.Sidebar} title='Sidebar' />
+      <ModalWindow
+        isOpened={isSettingOpened}
+        onClose={onClickSettingButton}
+        onConfirm={onClickSettingButton}
+        title={'Settings'}
+        content={<>{testText}</>}
+      />
     </>
   );
 }
