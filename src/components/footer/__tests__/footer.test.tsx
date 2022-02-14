@@ -15,7 +15,7 @@ describe('Footer component:', () => {
   });
 
   it('renders the footer container', () => {
-    const footer = screen.getByTestId('footer');
+    const footer = screen.getByRole('contentinfo');
     expect(footer).toBeInTheDocument();
     expect(footer).toHaveClass('footer');
   });
