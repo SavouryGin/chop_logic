@@ -14,7 +14,7 @@ export enum Icon {
   NoSound = 'chop-icon__volume-mute2',
   LightMode = 'chop-icon__sun',
   DarkMode = 'chop-icon__contrast',
-  Cancel = 'chop-icon__cross',
+  Cancel = 'chop-icon__close',
   Sidebar = 'chop-icon__magic-wand',
   Telegram = 'chop-icon__telegram',
   Github = 'chop-icon__github',

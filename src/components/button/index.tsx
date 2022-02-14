@@ -14,6 +14,7 @@ export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   className?: ClassNameProp;
   onClick?: () => void;
+  id?: string;
 };
 
 function Button(props: ButtonProps): React.ReactElement {
@@ -25,7 +26,7 @@ function Button(props: ButtonProps): React.ReactElement {
   const frontClassNames = formatClassName(['button__front', icon, { button__front_dark: isDarkMode }]);
 
   return (
-    <button type={type || 'button'} title={title} className={buttonClassNames} onClick={onClick}>
+    <button type={type || 'button'} title={title} className={buttonClassNames} onClick={onClick} id={props.id}>
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>
       <span className={frontClassNames}>{text}</span>

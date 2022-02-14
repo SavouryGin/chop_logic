@@ -1,6 +1,7 @@
 // Light theme colors
 $light-font-color: hsl(0, 0%, 0%);
 $light-background-color: hsl(60, 100%, 99%);
+$light-modal-background-color: hsla(44, 16%, 69%, 0.38);
 $light-foreground-color: hsl(44, 17%, 69%);
 $light-weak-accent-color: hsl(28, 100%, 53%);
 $light-strong-accent-color: hsl(360, 100%, 55%);
@@ -12,6 +13,7 @@ $light-outline: hsl(28, 100%, 53%) dashed 0.125rem;
 // Dark theme colors
 $dark-font-color: hsl(77, 100%, 89%);
 $dark-background-color: hsl(41, 100%, 3%);
+$dark-modal-background-color: hsla(45, 30%, 18%, 0.2);
 $dark-foreground-color: hsl(45, 31%, 18%);
 $dark-weak-accent-color: hsl(88, 60%, 50%);
 $dark-strong-accent-color: hsl(140, 100%, 57%);
