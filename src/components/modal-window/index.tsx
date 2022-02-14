@@ -29,9 +29,13 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
   const portal = (
     <div className={backgroundClassNames}>
       <div className={windowClassNames} role='dialog' aria-modal='true'>
-        <header className='modal-window__header'>{title}</header>
-        <section className='modal-window__content'>{content}</section>
-        <footer className='modal-window__footer'>
+        <header className='modal-window__header' id='modal-window-heading'>
+          {title}
+        </header>
+        <div className='modal-window__content' role='region' aria-labelledby='modal-window-heading'>
+          {content}
+        </div>
+        <footer className='modal-window__footer' data-testid='modal-footer'>
           <Button onClick={onClose} icon={Icon.Cancel} title='Close' />
           {onConfirm && <Button onClick={onConfirm} icon={Icon.Default} title='Ok' />}
         </footer>
