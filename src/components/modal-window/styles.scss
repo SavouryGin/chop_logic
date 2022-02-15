@@ -3,6 +3,7 @@
 @import 'styles/sizes.scss';
 @import 'styles/mixins/text-styles.scss';
 @import 'styles/mixins/theme-colors.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
 
 @keyframes slide-in-modal {
   from {
@@ -73,11 +74,18 @@
     // Defaults colors
     @include layout-colors(light);
     box-shadow: $light-box-shadow;
+    &__content {
+      @include scrollbar-styles(light);
+    }
 
     // Dark colors
     &_dark {
       @include layout-colors(dark);
       box-shadow: $dark-box-shadow;
+    }
+
+    &__content_dark {
+      @include scrollbar-styles(dark);
     }
   }
 }
