@@ -1,4 +1,4 @@
-// Gaps & radiuses
+// Paddings, margins, gaps & radiuses
 $block-gap: 1rem;
 $border-radius: 0.4rem;
 $default-padding: 0.6rem;
@@ -7,9 +7,10 @@ $default-margin: 0.4rem;
 $small-margin: 0.2rem;
 $big-margin: 1rem;
 
-// Heights
+// Element heights & widths
 $header-height: 5rem;
 $footer-height: 2rem;
+$scrollbar-width: 0.6rem;
 
 // Fonts
 $base-font-size: 1.2rem;
