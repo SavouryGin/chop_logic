@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'components/button';
 import formatClassName from 'helpers/formatters/format-class-name';
