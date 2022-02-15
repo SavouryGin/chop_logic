@@ -11,7 +11,7 @@
     border-radius: $border-radius;
     background-color: if($mode == dark, $dark-foreground-color, $light-foreground-color);
     &:hover {
-      box-shadow: if($mode == dark, inset $dark-box-shadow, inset $light-box-shadow);
+      box-shadow: if($mode == dark, inset $dark-text-shadow, inset $light-box-shadow);
     }
   }
 
