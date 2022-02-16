@@ -1,0 +1,21 @@
+@import '../colors.scss';
+@import '../sizes.scss';
+
+@mixin scrollbar-styles($mode) {
+  // Chrome, Safari
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $border-radius;
+    background-color: if($mode == dark, $dark-foreground-color, $light-foreground-color);
+    &:hover {
+      box-shadow: if($mode == dark, inset $dark-text-shadow, inset $light-box-shadow);
+    }
+  }
+
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: if($mode == dark, $dark-foreground-color $dark-background-color, $light-foreground-color $light-background-color);
+}

@@ -2,6 +2,7 @@
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
 @import 'styles/mixins/theme-colors.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
 
 .layout {
   // Common styles
@@ -58,6 +59,7 @@
   &__navigation,
   &__sidebar {
     box-shadow: $light-box-shadow;
+    @include scrollbar-styles(light);
   }
 
   // Dark mode colors
@@ -69,5 +71,6 @@
   &__navigation_dark,
   &__sidebar_dark {
     box-shadow: $dark-box-shadow;
+    @include scrollbar-styles(dark);
   }
 }

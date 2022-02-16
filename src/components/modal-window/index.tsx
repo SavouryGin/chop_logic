@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'components/button';
 import formatClassName from 'helpers/formatters/format-class-name';
@@ -25,6 +25,7 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const windowClassNames = formatClassName(['modal-window', className, { 'modal-window_dark': isDarkMode }]);
   const backgroundClassNames = formatClassName(['modal-background', { 'modal-background_dark': isDarkMode }]);
+  const contentClassNames = formatClassName(['modal-window__content', { 'modal-window__content_dark': isDarkMode }]);
 
   const portal = (
     <div className={backgroundClassNames}>
@@ -32,7 +33,7 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
         <header className='modal-window__header' id='modal-window-heading'>
           {title}
         </header>
-        <div className='modal-window__content' role='region' aria-labelledby='modal-window-heading'>
+        <div className={contentClassNames} role='region' aria-labelledby='modal-window-heading'>
           {content}
         </div>
         <footer className='modal-window__footer'>
