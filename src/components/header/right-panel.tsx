@@ -59,7 +59,7 @@ function RightHeaderPanel(): React.ReactElement {
         onClose={onClickSettingButton}
         onConfirm={onClickSettingButton}
         title={'Settings'}
-        content={<>{testText}</>}
+        content={<>{testText.repeat(100)}</>}
       />
     </>
   );
