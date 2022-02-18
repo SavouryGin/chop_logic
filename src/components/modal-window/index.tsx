@@ -32,19 +32,30 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
     formatClassName(['modal-window', className, { 'modal-window_dark': isDarkMode }]),
   );
 
-  const onClickClose = () => {
+  const handleClosingClassNames = () => {
     const windowToClose = `${windowClassNames} modal-window_closing`;
     const backgroundToFadeOut = `${backgroundClassNames} modal-background_closing`;
     setWindowClassNames(windowToClose);
     setBackgroundClassNames(backgroundToFadeOut);
+  };
+
+  const onClickClose = () => {
+    handleClosingClassNames();
     // wait for closing CSS animation
     setTimeout(() => onClose(), 900);
+  };
+
+  const onClickConfirm = () => {
+    const handler = onConfirm || onClose;
+    handleClosingClassNames();
+    // wait for closing CSS animation
+    setTimeout(() => handler(), 900);
   };
 
   const buttons = (
     <>
       <Button onClick={onClickClose} icon={Icon.Cancel} title='Close' id='close-modal-window' />
-      {onConfirm && <Button onClick={onConfirm} icon={Icon.Default} title='Ok' />}
+      {onConfirm && <Button onClick={onClickConfirm} icon={Icon.Default} title='Ok' />}
     </>
   );
 
