@@ -1,0 +1,32 @@
+@mixin slide-out-modal {
+  animation: slide-out-modal ease 1000ms forwards;
+  -webkit-animation: slide-out-modal ease 1000ms forwards;
+  -moz-animation: slide-out-modal ease 1000ms forwards;
+}
+
+@keyframes slide-out-modal {
+  from {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  }
+  to {
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  }
+}
+
+@-moz-keyframes slide-out-modal {
+  from {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  }
+  to {
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  }
+}
+
+@-webkit-keyframes slide-out-modal {
+  from {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  }
+  to {
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  }
+}

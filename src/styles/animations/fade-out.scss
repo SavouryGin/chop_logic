@@ -1,0 +1,32 @@
+@mixin fade-out() {
+  animation: fadeOut ease 1000ms;
+  -webkit-animation: fadeOut ease 1000ms;
+  -moz-animation: fadeOut ease 1000ms;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
