@@ -4,28 +4,10 @@
 @import 'styles/mixins/text-styles.scss';
 @import 'styles/mixins/theme-colors.scss';
 @import 'styles/mixins/scrollbar-styles.scss';
-
-@keyframes slide-in-modal {
-  from {
-    opacity: 0;
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
-  }
-}
-
-@keyframes slide-out-modal {
-  from {
-    opacity: 1;
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
-  }
-  to {
-    opacity: 0;
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
-  }
-}
+@import 'styles/animations/fade-in.scss';
+@import 'styles/animations/fade-out.scss';
+@import 'styles/animations/slide-in-modal.scss';
+@import 'styles/animations/slide-out-modal.scss';
 
 .modal-background {
   position: fixed;
@@ -40,6 +22,11 @@
   background-color: $light-modal-background-color;
   &_dark {
     background-color: $dark-modal-background-color;
+  }
+
+  @include fade-in();
+  &_closing {
+    @include fade-out();
   }
 
   .modal-window {
@@ -64,9 +51,9 @@
       'modal-footer';
 
     // Animations
-    animation: slide-in-modal 1000ms;
+    @include slide-in-modal();
     &_closing {
-      animation: slide-out-modal 1000ms forwards;
+      @include slide-out-modal();
     }
 
     // Grid areas
