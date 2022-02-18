@@ -16,6 +16,17 @@
   }
 }
 
+@keyframes slide-out-modal {
+  from {
+    opacity: 1;
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  }
+}
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -27,13 +38,12 @@
   justify-content: center;
   align-items: center;
   background-color: $light-modal-background-color;
-
   &_dark {
     background-color: $dark-modal-background-color;
   }
 
   .modal-window {
-    animation: slide-in-modal 1000ms;
+    // Basic styles
     width: fit-content;
     height: fit-content;
     max-width: 80%;
@@ -43,6 +53,7 @@
     padding: $big-padding;
     border-radius: $border-radius;
 
+    // Grid template
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 1fr auto 1fr;
@@ -52,6 +63,13 @@
       'modal-content'
       'modal-footer';
 
+    // Animations
+    animation: slide-in-modal 1000ms;
+    &_closing {
+      animation: slide-out-modal 1000ms forwards;
+    }
+
+    // Grid areas
     &__header {
       grid-area: modal-header;
       @include header-styles();
