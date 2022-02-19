@@ -1,0 +1,32 @@
+@mixin slide-in-right {
+  animation: slide-in-right ease 1000ms;
+  -webkit-animation: slide-in-right ease 1000ms;
+  -moz-animation: slide-in-right ease 1000ms;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@-moz-keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}

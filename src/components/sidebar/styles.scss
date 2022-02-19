@@ -1,14 +1,11 @@
 @import 'styles/colors.scss';
-
-@keyframes slide-in-sidebar {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
+@import 'styles/animations/slide-in-right.scss';
+@import 'styles/animations/slide-out-right.scss';
 
 .sidebar {
-  animation: slide-in-sidebar 1000ms;
+  @include slide-in-right();
+
+  &_closing {
+    @include slide-out-right();
+  }
 }
