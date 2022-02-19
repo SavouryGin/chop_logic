@@ -6,8 +6,8 @@
 @import 'styles/mixins/scrollbar-styles.scss';
 @import 'styles/animations/fade-in.scss';
 @import 'styles/animations/fade-out.scss';
-@import 'styles/animations/slide-in-modal.scss';
-@import 'styles/animations/slide-out-modal.scss';
+@import 'styles/animations/pop-in-modal.scss';
+@import 'styles/animations/pop-out-modal.scss';
 
 .modal-background {
   position: fixed;
@@ -51,9 +51,9 @@
       'modal-footer';
 
     // Animations
-    @include slide-in-modal();
+    @include pop-in-modal();
     &_closing {
-      @include slide-out-modal();
+      @include pop-out-modal();
     }
 
     // Grid areas

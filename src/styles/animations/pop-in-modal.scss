@@ -1,10 +1,10 @@
-@mixin slide-in-modal {
-  animation: slide-in-modal ease 1000ms;
-  -webkit-animation: slide-in-modal ease 1000ms;
-  -moz-animation: slide-in-modal ease 1000ms;
+@mixin pop-in-modal {
+  animation: pop-in-modal ease 1000ms;
+  -webkit-animation: pop-in-modal ease 1000ms;
+  -moz-animation: pop-in-modal ease 1000ms;
 }
 
-@keyframes slide-in-modal {
+@keyframes pop-in-modal {
   from {
     transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
   }
@@ -13,7 +13,7 @@
   }
 }
 
-@-moz-keyframes slide-in-modal {
+@-moz-keyframes pop-in-modal {
   from {
     transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
   }
@@ -22,7 +22,7 @@
   }
 }
 
-@-webkit-keyframes slide-in-modal {
+@-webkit-keyframes pop-in-modal {
   from {
     transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
   }

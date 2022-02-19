@@ -1,0 +1,32 @@
+@mixin slide-out-right {
+  animation: slide-out-right ease 1000ms;
+  -webkit-animation: slide-out-right ease 1000ms;
+  -moz-animation: slide-out-right ease 1000ms;
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@-moz-keyframes slide-out-right {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes slide-out-right {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
