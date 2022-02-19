@@ -13,7 +13,7 @@ export type NavigationProps = {
 };
 
 function Navigation(props: NavigationProps): React.ReactElement {
-  const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsAnimationActive);
+  const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);
   const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
 
   const links = routesMap.map((item) => {

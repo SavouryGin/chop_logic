@@ -10,7 +10,8 @@ export interface SettingsFlags {
   isFullScreen: boolean;
   isSettingOpen: boolean;
   isSoundsEnabled: boolean;
-  isAnimationActive: boolean;
+  isMenuAnimationActive: boolean;
+  isSidebarAnimationActive: boolean;
 }
 
 export type Language = 'ru' | 'en';
