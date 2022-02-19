@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
@@ -58,16 +58,16 @@ describe('ModalWindow component:', () => {
     expect(screen.getAllByRole('button')).toHaveLength(2);
   });
 
-  it('the Close buttons reacts on click', () => {
+  it('the Close buttons reacts on click', async () => {
     const closeBtn = screen.getByTitle(/Close/i);
     userEvent.click(closeBtn);
-    expect(mockClose).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(mockClose).toHaveBeenCalledTimes(1));
   });
 
-  it('the Confirm button react on click', () => {
+  it('the Confirm button react on click', async () => {
     const confirmBtn = screen.getByTitle(/Ok/i);
     userEvent.click(confirmBtn);
-    expect(mockConfirm).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(mockConfirm).toHaveBeenCalledTimes(1));
   });
 
   it('renders the content section', () => {
