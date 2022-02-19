@@ -13,11 +13,11 @@ function LeftHeaderPanel(): React.ReactElement {
 
   const onClickMenuButton = () => {
     if (isNavigationOpen) {
-      dispatch(settingsActions.setAnimationFlag(true));
+      dispatch(settingsActions.toggleFlag('isMenuAnimationActive'));
       // wait for closing animation
       setTimeout(() => {
         dispatch(settingsActions.toggleFlag('isNavigationOpen'));
-        dispatch(settingsActions.setAnimationFlag(false));
+        dispatch(settingsActions.toggleFlag('isMenuAnimationActive'));
       }, 900);
     } else {
       dispatch(settingsActions.toggleFlag('isNavigationOpen'));
