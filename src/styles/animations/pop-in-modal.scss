@@ -1,0 +1,32 @@
+@mixin pop-in-modal {
+  animation: pop-in-modal ease 1000ms;
+  -webkit-animation: pop-in-modal ease 1000ms;
+  -moz-animation: pop-in-modal ease 1000ms;
+}
+
+@keyframes pop-in-modal {
+  from {
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  }
+  to {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  }
+}
+
+@-moz-keyframes pop-in-modal {
+  from {
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  }
+  to {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  }
+}
+
+@-webkit-keyframes pop-in-modal {
+  from {
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  }
+  to {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  }
+}

@@ -15,7 +15,16 @@ function RightHeaderPanel(): React.ReactElement {
 
   // Handlers
   const onClickSidebarButton = () => {
-    dispatch(settingsActions.toggleFlag('isSidebarOpen'));
+    if (isSidebarOpened) {
+      dispatch(settingsActions.toggleFlag('isSidebarAnimationActive'));
+      // wait for closing animation
+      setTimeout(() => {
+        dispatch(settingsActions.toggleFlag('isSidebarOpen'));
+        dispatch(settingsActions.toggleFlag('isSidebarAnimationActive'));
+      }, 900);
+    } else {
+      dispatch(settingsActions.toggleFlag('isSidebarOpen'));
+    }
   };
 
   const onClickSettingButton = () => {
