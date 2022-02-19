@@ -2,18 +2,14 @@
 @import 'styles/z-indexes.scss';
 @import 'styles/sizes.scss';
 @import 'styles/mixins/text-styles.scss';
-
-@keyframes slide-in-navigation {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
+@import 'styles/animations/slide-in-left.scss';
+@import 'styles/animations/slide-out-left.scss';
 
 .navigation {
-  animation: slide-in-navigation 1000ms;
+  @include slide-in-left();
+  &_closing {
+    @include slide-out-left();
+  }
 
   &__header {
     @include header-styles();
