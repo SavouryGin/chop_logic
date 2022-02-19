@@ -10,6 +10,7 @@ export const settingsInitialState: SettingsInitialState = {
     isFullScreen: false,
     isSettingOpen: false,
     isSoundsEnabled: true,
+    isAnimationActive: false,
   },
 };
 
@@ -32,6 +33,10 @@ export const settingsSlice = createSlice({
 
     setFullScreenFlag: (state, action: PayloadAction<boolean>) => {
       state.flags.isFullScreen = action.payload;
+    },
+
+    setAnimationFlag: (state, action: PayloadAction<boolean>) => {
+      state.flags.isAnimationActive = action.payload;
     },
   },
 });

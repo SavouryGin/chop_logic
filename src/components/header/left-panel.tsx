@@ -12,7 +12,16 @@ function LeftHeaderPanel(): React.ReactElement {
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
 
   const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleFlag('isNavigationOpen'));
+    if (isNavigationOpen) {
+      dispatch(settingsActions.setAnimationFlag(true));
+      // wait for closing animation
+      setTimeout(() => {
+        dispatch(settingsActions.toggleFlag('isNavigationOpen'));
+        dispatch(settingsActions.setAnimationFlag(false));
+      }, 900);
+    } else {
+      dispatch(settingsActions.toggleFlag('isNavigationOpen'));
+    }
   };
 
   const onClickModeButton = () => {

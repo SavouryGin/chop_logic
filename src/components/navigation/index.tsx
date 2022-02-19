@@ -3,6 +3,8 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import AppLink from 'components/app-link';
 import { routesMap } from 'components/app-router/map';
 import { ClassNameProp } from 'types';
+import { useAppSelector } from 'store/hooks';
+import { settingsSelectors } from 'store/settings/selectors';
 
 import './styles.scss';
 
@@ -11,6 +13,9 @@ export type NavigationProps = {
 };
 
 function Navigation(props: NavigationProps): React.ReactElement {
+  const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsAnimationActive);
+  const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
+
   const links = routesMap.map((item) => {
     return (
       <li key={item.key}>
@@ -20,7 +25,7 @@ function Navigation(props: NavigationProps): React.ReactElement {
   });
 
   return (
-    <nav className={formatClassName(['navigation', props.className])}>
+    <nav className={navigationClassNames}>
       <h2 className='navigation__header'>Navigation</h2>
       <ul className='navigation__list'>{links}</ul>
     </nav>
