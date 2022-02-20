@@ -2,20 +2,18 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'components/button';
 import formatClassName from 'helpers/formatters/format-class-name';
-
-import { ClassNameProp } from 'types';
+import { ComponentProps } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 
 import './styles.scss';
 
-export type ModalWindowProps = {
+export type ModalWindowProps = ComponentProps & {
   isOpened: boolean;
   onClose: () => void;
   title: string;
   onConfirm?: () => void;
-  className?: ClassNameProp;
   content?: React.ReactElement;
 };
 
@@ -60,7 +58,7 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
   );
 
   const window = (
-    <div className={windowClassNames} role='dialog' aria-modal='true'>
+    <div className={windowClassNames} role='dialog' aria-modal='true' id={props.id}>
       <header className='modal-window__header' id='modal-window-heading'>
         {title}
       </header>

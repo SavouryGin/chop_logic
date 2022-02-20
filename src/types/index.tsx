@@ -3,3 +3,8 @@ export type ClassNames = {
 };
 
 export type ClassNameProp = string | ClassNames;
+
+export type ComponentProps = {
+  className?: ClassNameProp;
+  id?: string;
+};

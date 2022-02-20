@@ -1,20 +1,18 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ClassNameProp } from 'types';
+import { ComponentProps } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 
 import './styles.scss';
 
-export type ButtonProps = {
+export type ButtonProps = ComponentProps & {
   title: string;
   icon?: Icon;
   text?: string;
   type?: 'button' | 'submit' | 'reset';
-  className?: ClassNameProp;
   onClick?: () => void;
-  id?: string;
 };
 
 function Button(props: ButtonProps): React.ReactElement {
