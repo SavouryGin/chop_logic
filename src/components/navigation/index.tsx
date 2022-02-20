@@ -2,15 +2,13 @@ import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import AppLink from 'components/app-link';
 import { routesMap } from 'components/app-router/map';
-import { ClassNameProp } from 'types';
+import { ComponentProps } from 'types';
 import { useAppSelector } from 'store/hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 
 import './styles.scss';
 
-export type NavigationProps = {
-  className?: ClassNameProp;
-};
+export type NavigationProps = ComponentProps;
 
 function Navigation(props: NavigationProps): React.ReactElement {
   const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);

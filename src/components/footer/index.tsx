@@ -1,12 +1,11 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ClassNameProp } from 'types';
+import { ComponentProps } from 'types';
 import { Icon } from 'enums';
 
 import './styles.scss';
 
-export type FooterProps = {
-  className?: ClassNameProp;
+export type FooterProps = ComponentProps & {
   isDarkMode: boolean;
 };
 

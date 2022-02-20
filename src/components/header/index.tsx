@@ -3,15 +3,13 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import AppLink from 'components/app-link';
 import RightHeaderPanel from 'components/header/right-panel';
 import LeftHeaderPanel from 'components/header/left-panel';
-import { ClassNameProp } from 'types';
+import { ComponentProps } from 'types';
 import { paths } from 'components/app-router/paths';
 import { Page } from 'enums';
 
 import './styles.scss';
 
-export type HeaderProps = {
-  className?: ClassNameProp;
-};
+export type HeaderProps = ComponentProps;
 
 function Header(props: HeaderProps): React.ReactElement {
   return (
