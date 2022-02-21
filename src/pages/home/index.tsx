@@ -8,7 +8,7 @@ function Home(): React.ReactElement {
     <div className='home'>
       Home page
       <div>
-        <TextInput name='test-input' label='Type here:' isRequired />
+        <TextInput name='test-input' label='Type here:' isRequired defaultValue='hello' isReadOnly />
       </div>
     </div>
   );
