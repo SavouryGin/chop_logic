@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Guid } from 'guid-typescript';
 import { ComponentProps } from 'types';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'store/hooks';
+import Label from '../label';
 
 import './styles.scss';
 
@@ -22,15 +25,10 @@ export type TextInputProps = ComponentProps & {
 
 function TextInput(props: TextInputProps): React.ReactElement {
   const { name, id, label, defaultValue, onChange, onBlur } = props;
+  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const [inputValue, setInputValue] = useState(defaultValue || '');
-  const inputClassNames = formatClassName(['text-input', props.className]);
+  const inputClassNames = formatClassName(['text-input', props.className, { 'text-input_dark': isDarkMode }]);
   const inputId = id || Guid.create().toString();
-  const labelContent = (
-    <>
-      {label}
-      {props.isRequired && <abbr title='required'>*</abbr>}
-    </>
-  );
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || '';
@@ -40,7 +38,7 @@ function TextInput(props: TextInputProps): React.ReactElement {
 
   return (
     <div className={inputClassNames}>
-      <label htmlFor={inputId}>{labelContent}</label>
+      <Label text={label} inputId={inputId} isRequired={props.isRequired} />
       <input
         type='text'
         name={name}
