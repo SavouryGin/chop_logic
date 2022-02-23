@@ -39,7 +39,7 @@ function TextInput(props: TextInputProps): React.ReactElement {
 
   return (
     <div className={inputClassNames}>
-      <Label text={label} inputId={inputId} isRequired={props.isRequired} />
+      <Label text={label} inputId={inputId} isRequired={props.isRequired} isDarkMode={isDarkMode} />
       <input
         type='text'
         name={name}
