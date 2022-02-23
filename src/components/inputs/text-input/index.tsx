@@ -28,6 +28,7 @@ function TextInput(props: TextInputProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const [inputValue, setInputValue] = useState(defaultValue || '');
   const inputClassNames = formatClassName(['text-input', props.className, { 'text-input_dark': isDarkMode }]);
+  const fieldClassNames = formatClassName(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
   const inputId = id || Guid.create().toString();
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +52,7 @@ function TextInput(props: TextInputProps): React.ReactElement {
         onChange={onInputChange}
         onBlur={onBlur}
         placeholder={props.placeholder || 'Please type...'}
+        className={fieldClassNames}
       />
     </div>
   );

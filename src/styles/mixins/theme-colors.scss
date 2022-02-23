@@ -21,3 +21,8 @@
 @mixin button-shadow($mode) {
   background: if($mode == dark, hsla(0, 0%, 97%, 0.75), hsl(0deg 0% 0% / 0.25));
 }
+
+@mixin input-colors($mode) {
+  color: if($mode == dark, $dark-font-color, $light-font-color);
+  background-color: transparent;
+}
