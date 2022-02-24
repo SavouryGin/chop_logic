@@ -1,0 +1,52 @@
+@import 'styles/mixins/text-styles.scss';
+@import 'styles/mixins/input-styles.scss';
+@import 'styles/colors.scss';
+
+.text-input {
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius;
+
+  // Default colors
+  box-shadow: $light-button-shadow;
+  &:hover,
+  &:focus-within {
+    background-color: $light-foreground-color;
+  }
+
+  &__field {
+    @include input-text-styles();
+    @include input-colors(light);
+
+    &_dark {
+      @include input-colors(dark);
+    }
+
+    &_invalid {
+      color: $light-strong-accent-color;
+    }
+  }
+
+  // Dark colors
+  &_dark {
+    box-shadow: $dark-button-shadow;
+    &:hover,
+    &:focus-within {
+      background-color: $dark-foreground-color;
+    }
+  }
+
+  // Invalid styles
+  &_invalid {
+    @include input-invalid-colors(light);
+
+    &_dark {
+      @include input-invalid-colors(dark);
+    }
+  }
+
+  // Disabled styles
+  &_disabled {
+    @include input-disabled-styles();
+  }
+}

@@ -1,0 +1,17 @@
+@import 'styles/sizes.scss';
+@import 'styles/colors.scss';
+
+.label {
+  padding: $small-padding;
+  font-size: $tiny-font-size;
+
+  &__asterisk {
+    color: $light-weak-accent-color;
+    margin-left: $default-margin;
+    text-decoration: none;
+
+    &_dark {
+      color: $dark-weak-accent-color;
+    }
+  }
+}

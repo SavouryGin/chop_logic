@@ -25,4 +25,5 @@ export enum Icon {
   Syllogisms = 'chop-icon__dice',
   English = 'chop-icon__english-lang',
   Russian = 'chop-icon__russian-lang',
+  Required = 'chop-icon__fire',
 }
