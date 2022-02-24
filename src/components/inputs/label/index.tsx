@@ -1,9 +1,9 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
+import { Icon } from 'enums';
 
 import './styles.scss';
-import { Icon } from 'enums';
 
 export type LabelProps = ComponentProps & {
   text: string;
