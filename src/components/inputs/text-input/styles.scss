@@ -1,5 +1,5 @@
 @import 'styles/mixins/text-styles.scss';
-@import 'styles/mixins/theme-colors.scss';
+@import 'styles/mixins/input-styles.scss';
 @import 'styles/colors.scss';
 
 .text-input {
@@ -8,7 +8,7 @@
   border-radius: $border-radius;
 
   // Default colors
-  border: $light-border;
+  box-shadow: $light-button-shadow;
   &:hover,
   &:focus-within {
     background-color: $light-foreground-color;
@@ -21,14 +21,32 @@
     &_dark {
       @include input-colors(dark);
     }
+
+    &_invalid {
+      color: $light-strong-accent-color;
+    }
   }
 
   // Dark colors
   &_dark {
-    border: $dark-border;
+    box-shadow: $dark-button-shadow;
     &:hover,
     &:focus-within {
       background-color: $dark-foreground-color;
     }
+  }
+
+  // Invalid styles
+  &_invalid {
+    @include input-invalid-colors(light);
+
+    &_dark {
+      @include input-invalid-colors(dark);
+    }
+  }
+
+  // Disabled styles
+  &_disabled {
+    @include input-disabled-styles();
   }
 }

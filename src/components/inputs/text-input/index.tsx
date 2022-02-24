@@ -16,6 +16,7 @@ export type TextInputProps = ComponentProps & {
   isDisabled?: boolean;
   isRequired?: boolean;
   isReadOnly?: boolean;
+  isInvalid?: boolean;
   maxLength?: number;
   minLength?: number;
   value?: string;
@@ -27,7 +28,16 @@ function TextInput(props: TextInputProps): React.ReactElement {
   const { name, id, label, defaultValue, onChange, onBlur } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const [inputValue, setInputValue] = useState(defaultValue || '');
-  const inputClassNames = formatClassName(['text-input', props.className, { 'text-input_dark': isDarkMode }]);
+  const inputClassNames = formatClassName([
+    props.className,
+    'text-input',
+    {
+      'text-input_dark': isDarkMode,
+      'text-input_invalid': !!props.isInvalid,
+      'text-input_invalid_dark': !!props.isInvalid && isDarkMode,
+      'text-input_disabled': !!props.isDisabled,
+    },
+  ]);
   const fieldClassNames = formatClassName(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
   const inputId = id || Guid.create().toString();
 
