@@ -18,7 +18,7 @@ function Label(props: LabelProps): React.ReactElement {
   const requiredClassNames = formatClassName(['label__asterisk', Icon.Required, { label__asterisk_dark: !!isDarkMode }]);
 
   return (
-    <label htmlFor={inputId} className={labelClassNames}>
+    <label htmlFor={inputId} className={labelClassNames} data-testid='label-test-id'>
       <span className='label__text'>{text}</span>
       {isRequired && <abbr className={requiredClassNames} title='required'></abbr>}
     </label>
