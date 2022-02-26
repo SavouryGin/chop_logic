@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from 'components/layout';
 import NotFoundPage from 'pages/not-found-page';
 import Home from 'pages/home';
-import { Pages, paths, routesMap } from 'constants/pages';
+import { Page } from 'enums';
 import RouterElement from './route-element';
+import { routesMap } from './map';
+import { paths } from './paths';
 
 function AppRouter(): React.ReactElement {
   const pages = routesMap.map((item) => {
@@ -14,10 +16,10 @@ function AppRouter(): React.ReactElement {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={paths[Pages.Home]} element={<Layout />}>
+        <Route path={paths[Page.Home]} element={<Layout />}>
           <Route index element={<Home />} />
           {pages}
-          <Route path={paths[Pages.NotFound]} element={<NotFoundPage />} />
+          <Route path={paths[Page.NotFound]} element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

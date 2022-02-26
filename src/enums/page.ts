@@ -1,4 +1,4 @@
-export enum Pages {
+export enum Page {
   Home,
   NotFound,
   Propositions,

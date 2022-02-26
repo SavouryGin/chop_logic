@@ -1,0 +1,27 @@
+@import 'styles/colors.scss';
+@import 'styles/z-indexes.scss';
+@import 'styles/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
+@import 'styles/animations/slide-in-left.scss';
+@import 'styles/animations/slide-out-left.scss';
+
+.navigation {
+  @include slide-in-left();
+  &_closing {
+    @include slide-out-left();
+  }
+
+  &__header {
+    @include header-styles();
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+
+    li {
+      padding: $default-padding 0;
+    }
+  }
+}

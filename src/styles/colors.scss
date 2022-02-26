@@ -1,0 +1,25 @@
+// Light theme colors
+$light-font-color: hsl(0, 0%, 0%);
+$light-background-color: hsl(60, 100%, 99%);
+$light-modal-background-color: hsla(44, 16%, 69%, 0.38);
+$light-foreground-color: hsla(44, 16%, 69%, 0.3);
+$light-weak-accent-color: hsl(28, 100%, 53%);
+$light-strong-accent-color: hsl(360, 100%, 55%);
+$light-box-shadow: 0.25rem 0.5rem 0.5rem hsl(0deg 0% 0% / 0.38);
+$light-button-shadow: 0.125rem 0.25rem 0.25rem hsl(0deg 0% 0% / 0.38);
+$light-text-shadow: 0.125rem 0.25rem 0.25rem hsl(28, 100%, 53%);
+$light-outline: hsl(28, 100%, 53%) dashed 0.125rem;
+$light-border: hsl(28, 100%, 53%) solid 0.01rem;
+
+// Dark theme colors
+$dark-font-color: hsl(77, 100%, 89%);
+$dark-background-color: hsl(41, 100%, 3%);
+$dark-modal-background-color: hsla(45, 30%, 18%, 0.2);
+$dark-foreground-color: hsl(45, 31%, 18%);
+$dark-weak-accent-color: hsl(88, 60%, 50%);
+$dark-strong-accent-color: hsl(140, 100%, 57%);
+$dark-box-shadow: 0.25rem 0.5rem 0.5rem hsl(167, 27%, 72%);
+$dark-button-shadow: 0.125rem 0.25rem 0.25rem hsl(167, 27%, 72%);
+$dark-text-shadow: 0.125rem 0.25rem 0.25rem hsl(194, 73%, 65%);
+$dark-outline: hsl(88, 60%, 50%) dashed 0.125rem;
+$dark-border: hsl(88, 60%, 50%) solid 0.01rem;

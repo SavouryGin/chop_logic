@@ -36,3 +36,7 @@ This command will run the serve package which will use the dist folder to create
 #### `npm run lint`
 
 This command will run ESLint through all the .js, .ts, and .tsx (used with React) files. Any ESLint errors that can be automatically fixed will be fixed with this command, but any other errors will be printed out in the command line.
+
+#### `npm run test`
+
+This command will run all test suites using the Jest framework.

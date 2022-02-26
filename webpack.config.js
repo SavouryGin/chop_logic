@@ -15,12 +15,14 @@ const config = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       components: path.resolve(__dirname, './src/components'),
-      constants: path.resolve(__dirname, './src/constants'),
+      enums: path.resolve(__dirname, './src/enums'),
       pages: path.resolve(__dirname, './src/pages'),
       styles: path.resolve(__dirname, './src/styles'),
       assets: path.resolve(__dirname, './src/assets'),
       store: path.resolve(__dirname, './src/store'),
       helpers: path.resolve(__dirname, './src/helpers'),
+      types: path.resolve(__dirname, './src/types'),
+      __mocks__: path.resolve(__dirname, './src/__mocks__'),
     },
   },
   module: {

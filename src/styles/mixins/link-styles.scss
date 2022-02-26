@@ -1,0 +1,21 @@
+@import '../colors.scss';
+@import '../sizes.scss';
+
+@mixin link-styles($mode) {
+  a {
+    text-decoration: none;
+    color: if($mode == dark, $dark-font-color, $light-font-color);
+
+    &:hover {
+      text-shadow: if($mode == dark, $dark-text-shadow, $light-text-shadow);
+    }
+
+    &:focus-visible {
+      outline: if($mode == dark, $dark-outline, $light-outline);
+    }
+
+    &::before {
+      margin-right: $small-margin;
+    }
+  }
+}

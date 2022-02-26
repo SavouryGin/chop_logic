@@ -1,26 +1,28 @@
 import React from 'react';
-import { useAppDispatch } from 'store/hooks';
-import { settingsActions } from 'store/settings/slice';
 import formatClassName from 'helpers/formatters/format-class-name';
+import AppLink from 'components/app-link';
+import RightHeaderPanel from 'components/header/right-panel';
+import LeftHeaderPanel from 'components/header/left-panel';
+import { ComponentProps } from 'types';
+import { paths } from 'components/app-router/paths';
+import { Page } from 'enums';
 
 import './styles.scss';
 
-export type HeaderProps = {
-  className?: string;
-};
+export type HeaderProps = ComponentProps;
 
 function Header(props: HeaderProps): React.ReactElement {
-  const dispatch = useAppDispatch();
-  const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleNavigation());
-  };
-
   return (
     <header className={formatClassName(['header', props.className])}>
-      <button type='button' onClick={onClickMenuButton}>
-        Menu
-      </button>
-      <span>Header</span>
+      <div className='header__left-panel'>
+        <LeftHeaderPanel />
+      </div>
+      <h1 className='header__heading'>
+        <AppLink path={paths[Page.Home]} text='Chop Logic' isNavigation />
+      </h1>
+      <div className='header__right-panel'>
+        <RightHeaderPanel />
+      </div>
     </header>
   );
 }

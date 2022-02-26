@@ -1,3 +1,29 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+
 .header {
-  background-color: pink;
+  display: grid;
+  grid-gap: $block-gap;
+  grid-template-columns: 2fr 10fr 2fr;
+  grid-template-areas: 'header-left header-center header-right';
+  align-items: center;
+  justify-items: center;
+
+  &__left-panel {
+    grid-area: header-left;
+    .button {
+      margin: 0 $default-margin;
+    }
+  }
+
+  &__heading {
+    grid-area: header-center;
+  }
+
+  &__right-panel {
+    grid-area: header-right;
+    .button {
+      margin: 0 $default-margin;
+    }
+  }
 }

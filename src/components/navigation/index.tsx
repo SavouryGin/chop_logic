@@ -1,23 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { routesMap } from 'constants/pages';
 import formatClassName from 'helpers/formatters/format-class-name';
+import AppLink from 'components/app-link';
+import { routesMap } from 'components/app-router/map';
+import { ComponentProps } from 'types';
+import { useAppSelector } from 'store/hooks';
+import { settingsSelectors } from 'store/settings/selectors';
 
-export type NavigationProps = {
-  className?: string;
-};
+import './styles.scss';
+
+export type NavigationProps = ComponentProps;
 
 function Navigation(props: NavigationProps): React.ReactElement {
+  const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);
+  const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
+
   const links = routesMap.map((item) => {
     return (
       <li key={item.key}>
-        <Link to={item.url}>{item.title}</Link>
+        <AppLink path={item.url} text={item.title} isNavigation icon={item.icon} />
       </li>
     );
   });
 
   return (
-    <nav className={formatClassName(['navigation', props.className])}>
+    <nav className={navigationClassNames}>
       <h2 className='navigation__header'>Navigation</h2>
       <ul className='navigation__list'>{links}</ul>
     </nav>

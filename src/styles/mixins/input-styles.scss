@@ -1,0 +1,19 @@
+@import '../colors.scss';
+
+@mixin input-colors($mode) {
+  color: if($mode == dark, $dark-font-color, $light-font-color);
+  background-color: transparent;
+}
+
+@mixin input-invalid-colors($mode) {
+  color: if($mode == dark, $dark-weak-accent-color, $light-weak-accent-color);
+  input {
+    color: if($mode == dark, $dark-weak-accent-color, $light-weak-accent-color);
+  }
+  border: if($mode == dark, $dark-border, $light-border);
+}
+
+@mixin input-disabled-styles() {
+  opacity: 0.6;
+  pointer-events: none;
+}

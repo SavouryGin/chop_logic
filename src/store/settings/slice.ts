@@ -1,31 +1,39 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Language, SettingsFlag, SettingsInitialState } from './interfaces';
 
-export type language = 'ru' | 'en';
-
-export interface SettingsInitialState {
-  isNavigationOpen: boolean;
-  language: language;
-}
-
-export const initialState: SettingsInitialState = {
-  isNavigationOpen: false,
+export const settingsInitialState: SettingsInitialState = {
   language: 'en',
+  flags: {
+    isNavigationOpen: false,
+    isSidebarOpen: false,
+    isDarkMode: false,
+    isFullScreen: false,
+    isSettingOpen: false,
+    isSoundsEnabled: true,
+    isMenuAnimationActive: false,
+    isSidebarAnimationActive: false,
+  },
 };
 
 export const settingsSlice = createSlice({
   name: 'settings',
-  initialState,
+  initialState: settingsInitialState,
   reducers: {
     resetSettings: () => {
-      return initialState;
+      return settingsInitialState;
     },
 
-    toggleNavigation: (state) => {
-      state.isNavigationOpen = !state.isNavigationOpen;
+    toggleFlag: (state, action: PayloadAction<SettingsFlag>) => {
+      const currentFlagValue = state.flags[action.payload];
+      state.flags[action.payload] = !currentFlagValue;
     },
 
-    setLanguage: (state, action: PayloadAction<language>) => {
+    setLanguage: (state, action: PayloadAction<Language>) => {
       state.language = action.payload;
+    },
+
+    setFullScreenFlag: (state, action: PayloadAction<boolean>) => {
+      state.flags.isFullScreen = action.payload;
     },
   },
 });

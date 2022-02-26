@@ -1,13 +1,14 @@
 import React from 'react';
-import { Pages } from 'constants/pages/ids';
-import { paths } from 'constants/pages/paths';
+import { Icon, Page } from 'enums';
+import { paths } from './paths';
 
 type RoutesMapItem = {
-  id: Pages;
+  id: Page;
   url: string;
   element: React.FC;
   title: string;
   key: string;
+  icon: Icon;
 };
 
 const Predicates = React.lazy(() => import('pages/predicates'));
@@ -17,31 +18,35 @@ const Syllogisms = React.lazy(() => import('pages/syllogisms'));
 
 export const routesMap: RoutesMapItem[] = [
   {
-    id: Pages.Propositions,
-    key: `page-${Pages.Propositions}`,
-    url: paths[Pages.Propositions],
+    id: Page.Propositions,
+    key: `page-${Page.Propositions}`,
+    url: paths[Page.Propositions],
     element: Propositions,
     title: 'Propositions',
+    icon: Icon.Propositions,
   },
   {
-    id: Pages.Predicates,
-    key: `page-${Pages.Predicates}`,
-    url: paths[Pages.Predicates],
+    id: Page.Predicates,
+    key: `page-${Page.Predicates}`,
+    url: paths[Page.Predicates],
     element: Predicates,
     title: 'Predicates',
+    icon: Icon.Predicates,
   },
   {
-    id: Pages.TruthTables,
-    key: `page-${Pages.TruthTables}`,
-    url: paths[Pages.TruthTables],
+    id: Page.TruthTables,
+    key: `page-${Page.TruthTables}`,
+    url: paths[Page.TruthTables],
     element: TruthTables,
     title: 'Truth Tables',
+    icon: Icon.TruthTables,
   },
   {
-    id: Pages.Syllogisms,
-    key: `page-${Pages.Syllogisms}`,
-    url: paths[Pages.Syllogisms],
+    id: Page.Syllogisms,
+    key: `page-${Page.Syllogisms}`,
+    url: paths[Page.Syllogisms],
     element: Syllogisms,
     title: 'Syllogisms',
+    icon: Icon.Syllogisms,
   },
 ];
