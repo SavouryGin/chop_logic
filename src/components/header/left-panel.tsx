@@ -4,6 +4,7 @@ import { Icon } from 'enums';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
+import { soundPlayer } from 'helpers/sounds';
 
 function LeftHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -26,6 +27,8 @@ function LeftHeaderPanel(): React.ReactElement {
 
   const onClickModeButton = () => {
     dispatch(settingsActions.toggleFlag('isDarkMode'));
+    console.log(soundPlayer.collect);
+    soundPlayer.collect.play();
   };
 
   const onClickSoundsButton = () => {
