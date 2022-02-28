@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { testText } from '__mocks__/test-text';
+import { soundPlayer } from 'helpers/sounds';
 
 function RightHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -60,9 +61,19 @@ function RightHeaderPanel(): React.ReactElement {
 
   return (
     <>
-      <Button onClick={onClickSettingButton} icon={Icon.Settings} title='Settings' />
-      <Button onClick={onClickFullScreenButton} icon={isFullScreen ? Icon.Shrink : Icon.Enlarge} title='Full screen' />
-      <Button onClick={onClickSidebarButton} icon={isSidebarOpened ? Icon.Right : Icon.Sidebar} title='Sidebar' />
+      <Button onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} title='Settings' />
+      <Button
+        onClick={onClickFullScreenButton}
+        icon={isFullScreen ? Icon.Shrink : Icon.Enlarge}
+        sound={soundPlayer.keyboard}
+        title='Full screen'
+      />
+      <Button
+        onClick={onClickSidebarButton}
+        icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
+        sound={soundPlayer.keyboard}
+        title='Sidebar'
+      />
       <ModalWindow
         isOpened={isSettingOpened}
         onClose={onClickSettingButton}
