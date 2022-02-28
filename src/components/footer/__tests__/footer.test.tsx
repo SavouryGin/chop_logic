@@ -1,6 +1,9 @@
 import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { Icon } from 'enums';
+import { combineReducers } from '@reduxjs/toolkit';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import Footer from '../index';
 
@@ -9,9 +12,17 @@ const testProps = {
   isDarkMode: false,
 };
 
+const mockedReducer = combineReducers({
+  settings: settingsSlice.reducer,
+});
+
+const mockedState = {
+  settings: settingsInitialState,
+};
+
 describe('Footer component:', () => {
   beforeEach(() => {
-    render(<Footer {...testProps} />);
+    renderWithRedux(<Footer {...testProps} />, mockedReducer, mockedState);
   });
 
   it('renders the footer container', () => {

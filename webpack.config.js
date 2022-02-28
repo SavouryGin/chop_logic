@@ -55,6 +55,10 @@ const config = {
         enforce: 'pre',
         use: ['source-map-loader'],
       },
+      {
+        test: /\.(wav|mp3)$/,
+        use: ['url-loader'],
+      },
     ],
   },
   plugins: [
@@ -65,7 +69,14 @@ const config = {
     }),
 
     new CopyWebpackPlugin({
-      patterns: [{ from: path.resolve(__dirname, './src/assets/icons/favicon.ico') }],
+      patterns: [
+        { from: path.resolve(__dirname, './src/assets/icons/favicon.ico') },
+        {
+          from: path.resolve(__dirname, './src/assets/sounds'),
+          to: path.resolve(__dirname, './dist/assets/sounds'),
+          toType: 'dir',
+        },
+      ],
     }),
   ],
 };
