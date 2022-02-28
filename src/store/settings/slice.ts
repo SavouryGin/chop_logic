@@ -9,7 +9,7 @@ export const settingsInitialState: SettingsInitialState = {
     isDarkMode: false,
     isFullScreen: false,
     isSettingOpen: false,
-    isSoundsEnabled: true,
+    isSoundsEnabled: false,
     isMenuAnimationActive: false,
     isSidebarAnimationActive: false,
   },

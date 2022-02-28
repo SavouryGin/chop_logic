@@ -2,29 +2,35 @@ import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
 import { Icon } from 'enums';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'store/hooks';
+import { soundPlayer } from 'helpers/sounds';
 
 import './styles.scss';
 
-export type FooterProps = ComponentProps & {
-  isDarkMode: boolean;
-};
+export type FooterProps = ComponentProps;
 
 function Footer(props: FooterProps): React.ReactElement {
-  const { className, isDarkMode } = props;
+  const { className } = props;
+  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const footerClassNames = formatClassName(['footer', className]);
   const linkClassNames = formatClassName(['footer__links', { footer__links_dark: isDarkMode }]);
+  const onLinkHover = () => {
+    isSoundsEnabled && soundPlayer.snap.play();
+  };
 
   return (
     <footer className={footerClassNames}>
       <span className='footer__copyright'>© Dmitrii Suroviagin, 2022</span>
       <span className={linkClassNames}>
-        <a href='mailto:savourygin@gmail.com' target='_blank' rel='noreferrer' className={Icon.Mail}>
+        <a href='mailto:savourygin@gmail.com' target='_blank' rel='noreferrer' className={Icon.Mail} onMouseOver={onLinkHover}>
           Mail
         </a>
-        <a href='https://telegram.me/savoury_gin' target='_blank' rel='noreferrer' className={Icon.Telegram}>
+        <a href='https://telegram.me/savoury_gin' target='_blank' rel='noreferrer' className={Icon.Telegram} onMouseOver={onLinkHover}>
           Telegram
         </a>
-        <a href='https://github.com/SavouryGin' target='_blank' rel='noreferrer' className={Icon.Github}>
+        <a href='https://github.com/SavouryGin' target='_blank' rel='noreferrer' className={Icon.Github} onMouseOver={onLinkHover}>
           GitHub
         </a>
       </span>
