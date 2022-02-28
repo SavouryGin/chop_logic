@@ -5,6 +5,7 @@ import { ClassNameProp } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
+import { soundPlayer } from 'helpers/sounds';
 
 import './styles.scss';
 
@@ -19,6 +20,11 @@ export type AppLinkProps = {
 function AppLink(props: AppLinkProps): React.ReactElement {
   const { path, text, isNavigation, className, icon } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
+  const classNames = formatClassName(['app-link', className, { 'app-link_dark': isDarkMode }]);
+  const onLinkHover = () => {
+    isSoundsEnabled && soundPlayer.snap.play();
+  };
 
   const navLink = (
     <NavLink className={icon} to={path}>
@@ -32,10 +38,8 @@ function AppLink(props: AppLinkProps): React.ReactElement {
     </Link>
   );
 
-  const classNames = formatClassName(['app-link', className, { 'app-link_dark': isDarkMode }]);
-
   return (
-    <span data-testid='app-link' className={classNames}>
+    <span data-testid='app-link' className={classNames} onMouseOver={onLinkHover}>
       {isNavigation ? navLink : link}
     </span>
   );

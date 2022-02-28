@@ -4,6 +4,7 @@ import { Icon } from 'enums';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
+import { soundPlayer } from 'helpers/sounds';
 
 function LeftHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -34,9 +35,19 @@ function LeftHeaderPanel(): React.ReactElement {
 
   return (
     <>
-      <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Left : Icon.Menu} title='Navigation' />
-      <Button onClick={onClickModeButton} icon={isDarkMode ? Icon.LightMode : Icon.DarkMode} title='Color theme' />
-      <Button onClick={onClickSoundsButton} icon={isSoundsEnabled ? Icon.Sound : Icon.NoSound} title='Sounds' />
+      <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Left : Icon.Menu} sound={soundPlayer.keyboard} title='Navigation' />
+      <Button
+        onClick={onClickModeButton}
+        icon={isDarkMode ? Icon.LightMode : Icon.DarkMode}
+        sound={soundPlayer.keyboard}
+        title='Color theme'
+      />
+      <Button
+        onClick={onClickSoundsButton}
+        icon={isSoundsEnabled ? Icon.Sound : Icon.NoSound}
+        sound={soundPlayer.keyboard}
+        title='Sounds'
+      />
     </>
   );
 }

@@ -6,6 +6,7 @@ import { ComponentProps } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
+import { soundPlayer } from 'helpers/sounds';
 
 import './styles.scss';
 
@@ -52,8 +53,8 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
 
   const buttons = (
     <>
-      <Button onClick={onClickClose} icon={Icon.Cancel} title='Close' id='close-modal-window' />
-      {onConfirm && <Button onClick={onClickConfirm} icon={Icon.Default} title='Ok' />}
+      <Button onClick={onClickClose} icon={Icon.Cancel} title='Close' id='close-modal-window' sound={soundPlayer.slideClick} />
+      {onConfirm && <Button onClick={onClickConfirm} icon={Icon.Default} sound={soundPlayer.slideClick} title='Ok' />}
     </>
   );
 

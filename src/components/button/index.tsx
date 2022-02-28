@@ -4,7 +4,6 @@ import { ComponentProps } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
-import { soundPlayer } from 'helpers/sounds';
 
 import './styles.scss';
 
@@ -14,10 +13,11 @@ export type ButtonProps = ComponentProps & {
   text?: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
+  sound?: HTMLAudioElement;
 };
 
 function Button(props: ButtonProps): React.ReactElement {
-  const { type, text, className, onClick, icon, title } = props;
+  const { type, text, className, onClick, icon, title, sound } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const buttonClassNames = formatClassName(['button', className, { button_dark: isDarkMode }]);
@@ -26,8 +26,10 @@ function Button(props: ButtonProps): React.ReactElement {
   const frontClassNames = formatClassName(['button__front', icon, { button__front_dark: isDarkMode }]);
 
   const onButtonClick = () => {
-    isSoundEnabled && soundPlayer.seatbelt.play();
-    onClick && onClick();
+    if (sound && isSoundEnabled) {
+      sound.play();
+    }
+    if (onClick) onClick();
   };
 
   return (
