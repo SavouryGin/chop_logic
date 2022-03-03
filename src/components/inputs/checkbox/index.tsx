@@ -38,17 +38,18 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
 
   return (
     <div className={checkboxClassNames}>
-      <Label text={label} inputId={inputId} isRequired={props.isRequired} isDarkMode={isDarkMode} />
       <input
         type='checkbox'
         id={inputId}
         name={name}
+        className={'checkbox-input__custom'}
         disabled={props.isDisabled}
         readOnly={props.isReadOnly}
         onChange={onCheckboxChange}
         onBlur={onBlur}
         checked={checkboxValue}
       ></input>
+      <Label text={label} inputId={inputId} isRequired={props.isRequired} isDarkMode={isDarkMode} />
     </div>
   );
 }

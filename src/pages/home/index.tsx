@@ -1,4 +1,5 @@
 import Checkbox from 'components/inputs/checkbox';
+import TextInput from 'components/inputs/text-input';
 import React from 'react';
 
 import './styles.scss';
@@ -18,6 +19,12 @@ function Home(): React.ReactElement {
       </div>
       <div>
         <Checkbox id='test-id' name='test-name' label='Test checkbox isReadOnly' isReadOnly defaultValue={true} />
+      </div>
+      <div>
+        <Checkbox id='test-id' name='test-name' label='Test checkbox isDisabled Default' isDisabled defaultValue={true} />
+      </div>
+      <div>
+        <TextInput name='text' label='Text Label' />
       </div>
     </div>
   );
