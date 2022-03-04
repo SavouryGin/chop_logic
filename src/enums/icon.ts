@@ -26,4 +26,6 @@ export enum Icon {
   English = 'chop-icon__english-lang',
   Russian = 'chop-icon__russian-lang',
   Required = 'chop-icon__fire',
+  Check = 'chop-icon__checkbox-checked',
+  Uncheck = 'chop-icon__checkbox-unchecked',
 }
