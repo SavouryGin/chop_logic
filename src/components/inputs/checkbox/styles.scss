@@ -4,12 +4,24 @@
 .checkbox-input {
   padding: $default-padding 0;
 
-  // Hide the default checkbox
   &__default {
-    display: none;
+    // Hide the default checkbox
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    // Styles for the focused checkbox
+    &:focus-visible + label::before {
+      outline: $light-outline;
+    }
+
+    &_dark {
+      &:focus-visible + label::before {
+        outline: $dark-outline;
+      }
+    }
   }
 
-  // Add custom styles for the checkbox label
   &__label {
     font-size: $base-font-size;
     display: flex;

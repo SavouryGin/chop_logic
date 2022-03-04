@@ -33,6 +33,7 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
     'checkbox-input__label',
     { [Icon.Check]: isChecked, [Icon.Uncheck]: !isChecked, 'checkbox-input__label_dark': isDarkMode },
   ]);
+  const inputClassNames = formatClassName(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
@@ -46,7 +47,7 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
         type='checkbox'
         id={inputId}
         name={name}
-        className='checkbox-input__default'
+        className={inputClassNames}
         disabled={props.isDisabled}
         onChange={onCheckboxChange}
         onBlur={onBlur}
