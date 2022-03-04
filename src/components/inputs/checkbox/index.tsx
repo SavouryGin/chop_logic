@@ -7,6 +7,7 @@ import { useAppSelector } from 'store/hooks';
 import Label from '../label';
 
 import './styles.scss';
+import { Icon } from 'enums';
 
 export type CheckboxProps = ComponentProps & {
   name: string;
@@ -14,7 +15,6 @@ export type CheckboxProps = ComponentProps & {
   defaultValue?: boolean;
   isDisabled?: boolean;
   isRequired?: boolean;
-  isReadOnly?: boolean;
   onChange?: () => void;
   onBlur?: () => void;
 };
@@ -22,17 +22,21 @@ export type CheckboxProps = ComponentProps & {
 function Checkbox(props: CheckboxProps): React.ReactElement {
   const { name, id, label, onChange, onBlur } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const [checkboxValue, setCheckboxValue] = useState(!!props.defaultValue || false);
+  const [isChecked, setIsChecked] = useState(!!props.defaultValue || false);
   const inputId = id || Guid.create().toString();
   const checkboxClassNames = formatClassName([
     'checkbox-input',
     props.className,
     { 'checkbox-input_dark': isDarkMode, 'checkbox-input_disabled': !!props.isDisabled },
   ]);
+  const labelClassNames = formatClassName([
+    'checkbox-input__label',
+    { [Icon.Check]: isChecked, [Icon.Uncheck]: !isChecked, 'checkbox-input__label_dark': isDarkMode },
+  ]);
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
-    setCheckboxValue(value);
+    setIsChecked(value);
     if (onChange) onChange();
   };
 
@@ -42,14 +46,13 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
         type='checkbox'
         id={inputId}
         name={name}
-        className={'checkbox-input__custom'}
+        className='checkbox-input__default'
         disabled={props.isDisabled}
-        readOnly={props.isReadOnly}
         onChange={onCheckboxChange}
         onBlur={onBlur}
-        checked={checkboxValue}
+        checked={isChecked}
       ></input>
-      <Label text={label} inputId={inputId} isRequired={props.isRequired} isDarkMode={isDarkMode} />
+      <Label text={label} inputId={inputId} isRequired={props.isRequired} isDarkMode={isDarkMode} className={labelClassNames} />
     </div>
   );
 }
