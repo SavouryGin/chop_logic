@@ -1,5 +1,6 @@
 @import 'styles/sizes.scss';
 @import 'styles/colors.scss';
+@import 'styles/mixins/input-styles.scss';
 
 .checkbox-input {
   padding: $default-padding 0;
@@ -47,5 +48,9 @@
         text-shadow: $dark-text-shadow;
       }
     }
+  }
+
+  &_disabled {
+    @include input-disabled-styles();
   }
 }
