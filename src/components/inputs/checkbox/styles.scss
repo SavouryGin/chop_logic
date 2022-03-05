@@ -1,2 +1,56 @@
+@import 'styles/sizes.scss';
+@import 'styles/colors.scss';
+@import 'styles/mixins/input-styles.scss';
+
 .checkbox-input {
+  padding: $default-padding 0;
+
+  &__default {
+    // Hide the default checkbox
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    // Styles for the focused checkbox
+    &:focus-visible + label::before {
+      outline: $light-outline;
+    }
+
+    &_dark {
+      &:focus-visible + label::before {
+        outline: $dark-outline;
+      }
+    }
+  }
+
+  &__label {
+    font-size: $base-font-size;
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+    &:hover {
+      text-shadow: $light-text-shadow;
+    }
+
+    &::before {
+      margin-right: $default-margin;
+      padding-bottom: 0.125rem;
+      color: $light-strong-accent-color;
+    }
+
+    &_dark {
+      &::before {
+        color: $dark-strong-accent-color;
+      }
+
+      &:hover {
+        text-shadow: $dark-text-shadow;
+      }
+    }
+  }
+
+  &_disabled {
+    @include input-disabled-styles();
+  }
 }
