@@ -4,10 +4,11 @@ import { ComponentProps } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
+import { Icon } from 'enums';
+import { soundPlayer } from 'helpers/sounds';
 import Label from '../label';
 
 import './styles.scss';
-import { Icon } from 'enums';
 
 export type CheckboxProps = ComponentProps & {
   name: string;
@@ -22,13 +23,10 @@ export type CheckboxProps = ComponentProps & {
 function Checkbox(props: CheckboxProps): React.ReactElement {
   const { name, id, label, onChange, onBlur } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const [isChecked, setIsChecked] = useState(!!props.defaultValue || false);
   const inputId = id || Guid.create().toString();
-  const checkboxClassNames = formatClassName([
-    'checkbox-input',
-    props.className,
-    { 'checkbox-input_dark': isDarkMode, 'checkbox-input_disabled': !!props.isDisabled },
-  ]);
+  const checkboxClassNames = formatClassName(['checkbox-input', props.className, { 'checkbox-input_disabled': !!props.isDisabled }]);
   const labelClassNames = formatClassName([
     'checkbox-input__label',
     { [Icon.Check]: isChecked, [Icon.Uncheck]: !isChecked, 'checkbox-input__label_dark': isDarkMode },
@@ -38,6 +36,7 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
     setIsChecked(value);
+    if (isSoundEnabled) soundPlayer.seatbelt.play();
     if (onChange) onChange();
   };
 
