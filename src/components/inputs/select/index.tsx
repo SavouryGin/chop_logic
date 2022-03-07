@@ -4,6 +4,7 @@ import { ComponentProps } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
+import Label from '../label';
 
 import './styles.scss';
 
@@ -19,10 +20,10 @@ export type SelectProps = ComponentProps & {
 };
 
 function Select(props: SelectProps): React.ReactElement {
-  const { options, isRequired, className, id, name } = props;
+  const { options, className, id, name, label } = props;
   const inputId = id || Guid.create().toString();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const wrapperClassNames = formatClassName(['select', className, { select_required: !!isRequired, select_dark: isDarkMode }]);
+  const wrapperClassNames = formatClassName(['select', className, { select_required: !!props.isRequired, select_dark: isDarkMode }]);
   const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
 
   const optionList = options.map((item) => {
@@ -44,6 +45,7 @@ function Select(props: SelectProps): React.ReactElement {
 
   return (
     <div className={wrapperClassNames}>
+      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} />
       <select
         name={name}
         id={inputId}
