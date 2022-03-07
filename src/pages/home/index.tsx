@@ -1,4 +1,5 @@
 import Checkbox from 'components/inputs/checkbox';
+import Select from 'components/inputs/select';
 import TextInput from 'components/inputs/text-input';
 import React from 'react';
 
@@ -12,19 +13,46 @@ function Home(): React.ReactElement {
         <Checkbox id='test-id-1' name='test-name' label='Test checkbox' />
       </div>
       <div>
-        <Checkbox id='test-id-2' name='test-name' label='Test checkbox isRequired' isRequired />
-      </div>
-      <div>
-        <Checkbox id='test-id-3' name='test-name' label='Test checkbox isDisabled' isDisabled />
-      </div>
-      <div>
-        <Checkbox id='test-id-4' name='test-name' label='Test checkbox defaultValue' defaultValue={true} />
-      </div>
-      <div>
-        <Checkbox id='test-id-4' name='test-name' label='Test checkbox isDisabled Default' isDisabled defaultValue={true} />
-      </div>
-      <div>
         <TextInput name='text' label='Text Label' />
+      </div>
+      <br />
+      <div>
+        <Select name='select1' label='Label1' options={['one', 'two', 'three']} />
+      </div>
+      <br />
+      <div>
+        <Select
+          name='select1'
+          label='Label1'
+          options={[
+            { option: 'one', value: 1 },
+            { option: 'two', value: 2 },
+            { option: 'three', value: 3 },
+          ]}
+        />
+      </div>
+      <br />
+      <div>
+        <Select
+          name='select1'
+          label='Label1'
+          options={[
+            { option: 'one', value: 1 },
+            { option: 'two', value: 2 },
+            { option: 'three', value: 3 },
+            { option: 'four', value: 4 },
+            { option: 'five', value: 5 },
+          ]}
+          size={3}
+        />
+      </div>
+      <br />
+      <div>
+        <Select name='select1' label='Label1' options={['one', 'two', 'three']} isRequired />
+      </div>
+      <br />
+      <div>
+        <Select name='select1' label='Label1' options={['one', 'two', 'three']} isDisabled />
       </div>
     </div>
   );
