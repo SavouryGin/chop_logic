@@ -8,3 +8,8 @@ export type ComponentProps = {
   className?: ClassNameProp;
   id?: string;
 };
+
+export type SelectEntity = {
+  option: string;
+  value: string | number;
+};
