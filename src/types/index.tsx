@@ -12,4 +12,5 @@ export type ComponentProps = {
 export type SelectEntity = {
   option: string;
   value: string | number;
+  [key: string]: string | number | object;
 };
