@@ -16,9 +16,6 @@ function Home(): React.ReactElement {
         <TextInput name='text' label='Text Label' />
       </div>
       <br />
-      <div>
-        <Select name='select1' label='Label1' options={['one', 'two', 'three']} />
-      </div>
       <br />
       <div>
         <Select
@@ -29,13 +26,14 @@ function Home(): React.ReactElement {
             { option: 'two', value: 2 },
             { option: 'three', value: 3 },
           ]}
+          defaultOption={{ option: 'three', value: 3 }}
         />
       </div>
       <br />
       <div>
         <Select
           name='select1'
-          label='Label1'
+          label='Label Size 3'
           options={[
             { option: 'one', value: 1 },
             { option: 'two', value: 2 },
@@ -48,11 +46,29 @@ function Home(): React.ReactElement {
       </div>
       <br />
       <div>
-        <Select name='select1' label='Label1' options={['one', 'two', 'three']} isRequired />
+        <Select
+          name='select1'
+          label='Label1'
+          options={[
+            { option: 'one', value: 1 },
+            { option: 'two', value: 2 },
+            { option: 'three', value: 3 },
+          ]}
+          isRequired
+        />
       </div>
       <br />
       <div>
-        <Select name='select1' label='Label1' options={['one', 'two', 'three']} isDisabled />
+        <Select
+          name='select1'
+          label='Label1'
+          options={[
+            { option: 'one', value: 1 },
+            { option: 'two', value: 2 },
+            { option: 'three', value: 3 },
+          ]}
+          isDisabled
+        />
       </div>
     </div>
   );
