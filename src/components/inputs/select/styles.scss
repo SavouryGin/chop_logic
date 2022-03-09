@@ -1,0 +1,23 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
+@import 'styles/mixins/input-styles.scss';
+
+.select {
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius;
+
+  box-shadow: $light-button-shadow;
+  &:hover,
+  &:focus-within {
+    background-color: $light-foreground-color;
+  }
+
+  &__field {
+    outline: none;
+    border-radius: $border-radius;
+    background-color: transparent;
+    @include input-text-styles();
+  }
+}
