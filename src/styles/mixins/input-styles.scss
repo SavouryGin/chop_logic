@@ -17,3 +17,11 @@
   opacity: 0.6;
   pointer-events: none;
 }
+
+@mixin input-hover-styles($mode) {
+  box-shadow: if($mode == dark, $dark-button-shadow, $light-button-shadow);
+  &:hover,
+  &:focus-within {
+    background-color: if($mode == dark, $dark-foreground-color, $light-foreground-color);
+  }
+}

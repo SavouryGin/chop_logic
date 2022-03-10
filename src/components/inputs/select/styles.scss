@@ -8,16 +8,65 @@
   flex-direction: column;
   border-radius: $border-radius;
 
-  box-shadow: $light-button-shadow;
-  &:hover,
-  &:focus-within {
-    background-color: $light-foreground-color;
+  // box-shadow: $light-button-shadow;
+  // &:hover,
+  // &:focus-within {
+  //   background-color: $light-foreground-color;
+  // }
+  @include input-hover-styles(light);
+
+  select {
+    // A reset of styles, including removing the default dropdown arrow
+    appearance: none;
+    border: none;
+    // background-color: transparent;
+    // border: none;
+    // padding: 0 1em 0 0;
+    // margin: 0;
+    // width: 100%;
+    // font-family: inherit;
+    // font-size: inherit;
+    // cursor: inherit;
+    // line-height: inherit;
+
+    // Stack above custom arrow
+    // z-index: 1;
+
+    // Remove dropdown arrow in IE10 & IE11
+    // @link https://www.filamentgroup.com/lab/select-css.html
+    &::-ms-expand {
+      display: none;
+    }
   }
 
   &__field {
     outline: none;
     border-radius: $border-radius;
-    background-color: transparent;
-    @include input-text-styles();
+    font-family: $Monospace;
+    font-size: $small-font-size;
+    padding: $small-padding;
+
+    // @include input-hover-styles(light);
+    // @include input-text-styles();
+    // @include input-colors(light);
+
+    // &_dark {
+    //   @include input-colors(dark);
+    // }
+
+    /* Remove default arrow */
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    // appearance: none;
+    //  background-image: url(...);   /* Add custom arrow */
+  }
+
+  // Dark colors
+  &_dark {
+    box-shadow: $dark-button-shadow;
+    &:hover,
+    &:focus-within {
+      background-color: $dark-foreground-color;
+    }
   }
 }
