@@ -28,4 +28,6 @@ export enum Icon {
   Required = 'chop-icon__fire',
   Check = 'chop-icon__checkbox-checked',
   Uncheck = 'chop-icon__checkbox-unchecked',
+  SelectUp = 'chop-icon__caret-up',
+  SelectDown = 'chop-icon__caret-down',
 }
