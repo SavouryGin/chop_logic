@@ -39,7 +39,6 @@ function Home(): React.ReactElement {
             { option: 'four', value: 4 },
             { option: 'five', value: 5 },
           ]}
-          size={3}
         />
       </div>
       <br />
