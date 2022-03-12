@@ -8,9 +8,9 @@ import './styles.scss';
 
 function Home(): React.ReactElement {
   const selectOptions: SelectEntity[] = [
-    { option: 'one', value: 1, add: 123 },
-    { option: 'two', value: 2, asdf: 'asdf' },
-    { option: 'three', value: 3, asdf: {} },
+    { option: 'One', value: 1, add: 123 },
+    { option: 'Two', value: 2, asdf: 'asdf' },
+    { option: 'Three', value: 3, asdf: {} },
   ];
 
   return (
