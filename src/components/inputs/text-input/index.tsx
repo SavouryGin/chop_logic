@@ -17,6 +17,7 @@ export type TextInputProps = ComponentProps & {
   isRequired?: boolean;
   isReadOnly?: boolean;
   isInvalid?: boolean;
+  isAutocomplete?: boolean;
   maxLength?: number;
   minLength?: number;
   value?: string;
@@ -63,6 +64,7 @@ function TextInput(props: TextInputProps): React.ReactElement {
         onBlur={onBlur}
         placeholder={props.placeholder || 'Please type...'}
         className={fieldClassNames}
+        autoComplete={props.isAutocomplete ? 'on' : 'off'}
       />
     </div>
   );

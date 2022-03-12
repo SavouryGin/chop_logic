@@ -15,7 +15,6 @@ export type SelectProps = ComponentProps & {
   defaultOption?: SelectEntity;
   isRequired?: boolean;
   isDisabled?: boolean;
-  size?: number;
   formId?: string;
 };
 
@@ -23,7 +22,7 @@ function Select(props: SelectProps): React.ReactElement {
   const { options, className, id, name, label, defaultOption } = props;
   const inputId = id || Guid.create().toString();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const wrapperClassNames = formatClassName(['select', className, { select_required: !!props.isRequired, select_dark: isDarkMode }]);
+  const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!props.isDisabled, select_dark: isDarkMode }]);
   const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
   const [selectedValue, setSelectedValue] = useState(defaultOption);
 
@@ -44,12 +43,10 @@ function Select(props: SelectProps): React.ReactElement {
 
   return (
     <div className={wrapperClassNames}>
-      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} />
       <select
         name={name}
         id={inputId}
         value={selectedValue?.value}
-        size={props.size || 0}
         form={props.formId}
         disabled={props.isDisabled}
         required={props.isRequired}
@@ -58,6 +55,7 @@ function Select(props: SelectProps): React.ReactElement {
       >
         {optionList}
       </select>
+      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} className={'select__label'} />
     </div>
   );
 }
