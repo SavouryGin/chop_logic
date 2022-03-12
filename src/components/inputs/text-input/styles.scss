@@ -26,6 +26,15 @@
     &_invalid {
       color: $light-strong-accent-color;
     }
+
+    // Autofill styles
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
   }
 
   // Dark colors

@@ -2,6 +2,7 @@
 @import 'styles/sizes.scss';
 @import 'styles/mixins/text-styles.scss';
 @import 'styles/mixins/input-styles.scss';
+@import 'styles/mixins/theme-colors.scss';
 
 .select {
   display: flex;
@@ -24,11 +25,8 @@
     cursor: pointer;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
-    font-family: $Monospace;
-    font-size: $small-font-size;
-    padding: $small-padding;
-    background-color: $light-background-color;
-    color: $light-font-color;
+    @include input-text-styles();
+    @include layout-colors(light);
 
     &:focus-visible {
       background-color: $light-foreground-color;
@@ -38,8 +36,7 @@
     }
 
     &_dark {
-      color: $dark-font-color;
-      background-color: $dark-background-color;
+      @include layout-colors(dark);
       &:focus-visible {
         background-color: $dark-foreground-color;
         & ~ .select__label {
