@@ -7,7 +7,6 @@ import { useAppSelector } from 'store/hooks';
 import Label from '../label';
 
 import './styles.scss';
-import { Icon } from 'enums';
 
 export type SelectProps = ComponentProps & {
   name: string;
@@ -16,7 +15,6 @@ export type SelectProps = ComponentProps & {
   defaultOption?: SelectEntity;
   isRequired?: boolean;
   isDisabled?: boolean;
-  size?: number;
   formId?: string;
 };
 
@@ -26,7 +24,6 @@ function Select(props: SelectProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const wrapperClassNames = formatClassName(['select', className, { select_required: !!props.isRequired, select_dark: isDarkMode }]);
   const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
-  const labelClassNames = formatClassName(['select__label']);
   const [selectedValue, setSelectedValue] = useState(defaultOption);
 
   const optionList = options.map((item) => {
@@ -46,28 +43,19 @@ function Select(props: SelectProps): React.ReactElement {
 
   return (
     <div className={wrapperClassNames}>
-      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} className={labelClassNames} />
+      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} className={'select__label'} />
       <select
         name={name}
         id={inputId}
         value={selectedValue?.value}
-        size={props.size || 0}
         form={props.formId}
         disabled={props.isDisabled}
         required={props.isRequired}
         className={selectClassNames}
         onChange={onSelectChange}
-        onSelect={(e) => console.log(e)}
       >
         {optionList}
       </select>
-      {/* <span
-        className={Icon.SelectDown}
-        // onClick={() => {
-        //   const select = document.getElementById(inputId) as HTMLSelectElement;
-        //   select.size = 5;
-        // }}
-      ></span> */}
     </div>
   );
 }

@@ -7,82 +7,27 @@
   display: flex;
   flex-direction: column;
   border-radius: $border-radius;
+  box-shadow: $light-button-shadow;
 
-  @include input-hover-styles(light);
-  // box-shadow: $light-button-shadow;
-  // &:hover,
-  // &:focus-within {
-  //   background-color: $light-foreground-color;
-  // }
-  &__label {
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
-  }
-
-  select {
-    // A reset of styles, including removing the default dropdown arrow
-    // appearance: none;
-    border: none;
-    // &::-ms-expand {
-    //   display: none;
-    // }
-    // background-color: transparent;
-    // border: none;
-    // padding: 0 1em 0 0;
-    // margin: 0;
-    // width: 100%;
-    // font-family: inherit;
-    // font-size: inherit;
-    // cursor: inherit;
-    // line-height: inherit;
-
-    // Stack above custom arrow
-    // z-index: 1;
-
-    // Remove dropdown arrow in IE10 & IE11
-    // @link https://www.filamentgroup.com/lab/select-css.html
-    &::-ms-expand {
-      background-color: green;
-    }
+  // Dark colors
+  &_dark {
+    box-shadow: $dark-button-shadow;
   }
 
   &__field {
     outline: none;
+    border: none;
     border-radius: $border-radius;
     font-family: $Monospace;
     font-size: $small-font-size;
     padding: $small-padding;
     cursor: pointer;
-    background-color: transparent;
+    background-color: $light-background-color;
+    color: $light-font-color;
 
-    // @include input-text-styles();
-    // @include input-colors(light);
-
-    // &_dark {
-    //   @include input-colors(dark);
-    // }
-
-    /* Remove default arrow */
-    // -webkit-appearance: none;
-    // -moz-appearance: none;
-    // appearance: none;
-    //  background-image: url(...);   /* Add custom arrow */
-
-    &::after {
-      content: '';
-      width: 0.8em;
-      height: 0.5em;
-      background-color: $light-strong-accent-color;
-      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-    }
-  }
-
-  // Dark colors
-  &_dark {
-    box-shadow: $dark-button-shadow;
-    &:hover,
-    &:focus-within {
-      background-color: $dark-foreground-color;
+    &_dark {
+      color: $dark-font-color;
+      background-color: $dark-background-color;
     }
   }
 }
