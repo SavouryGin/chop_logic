@@ -32,7 +32,6 @@
 
     &:focus-visible {
       background-color: $light-foreground-color;
-
       & ~ .select__label {
         background-color: $light-foreground-color;
       }
@@ -43,11 +42,14 @@
       background-color: $dark-background-color;
       &:focus-visible {
         background-color: $dark-foreground-color;
-
         & ~ .select__label {
           background-color: $dark-foreground-color;
         }
       }
     }
+  }
+
+  &_disabled {
+    @include input-disabled-styles();
   }
 }

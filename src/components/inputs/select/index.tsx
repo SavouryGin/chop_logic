@@ -22,7 +22,7 @@ function Select(props: SelectProps): React.ReactElement {
   const { options, className, id, name, label, defaultOption } = props;
   const inputId = id || Guid.create().toString();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const wrapperClassNames = formatClassName(['select', className, { select_required: !!props.isRequired, select_dark: isDarkMode }]);
+  const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!props.isDisabled, select_dark: isDarkMode }]);
   const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
   const [selectedValue, setSelectedValue] = useState(defaultOption);
 
