@@ -5,29 +5,49 @@
 
 .select {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   border-radius: $border-radius;
   box-shadow: $light-button-shadow;
 
-  // Dark colors
   &_dark {
     box-shadow: $dark-button-shadow;
+  }
+
+  &__label {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
   }
 
   &__field {
     outline: none;
     border: none;
-    border-radius: $border-radius;
+    cursor: pointer;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
     font-family: $Monospace;
     font-size: $small-font-size;
     padding: $small-padding;
-    cursor: pointer;
     background-color: $light-background-color;
     color: $light-font-color;
+
+    &:focus-visible {
+      background-color: $light-foreground-color;
+
+      & ~ .select__label {
+        background-color: $light-foreground-color;
+      }
+    }
 
     &_dark {
       color: $dark-font-color;
       background-color: $dark-background-color;
+      &:focus-visible {
+        background-color: $dark-foreground-color;
+
+        & ~ .select__label {
+          background-color: $dark-foreground-color;
+        }
+      }
     }
   }
 }

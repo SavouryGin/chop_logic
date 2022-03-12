@@ -43,7 +43,6 @@ function Select(props: SelectProps): React.ReactElement {
 
   return (
     <div className={wrapperClassNames}>
-      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} className={'select__label'} />
       <select
         name={name}
         id={inputId}
@@ -56,6 +55,7 @@ function Select(props: SelectProps): React.ReactElement {
       >
         {optionList}
       </select>
+      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} className={'select__label'} />
     </div>
   );
 }
