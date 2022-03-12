@@ -1,0 +1,52 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
+@import 'styles/mixins/input-styles.scss';
+@import 'styles/mixins/theme-colors.scss';
+
+.select {
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: $border-radius;
+  box-shadow: $light-button-shadow;
+
+  &_dark {
+    box-shadow: $dark-button-shadow;
+  }
+
+  &__label {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+
+  &__field {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    @include input-text-styles();
+    @include layout-colors(light);
+
+    &:focus-visible {
+      background-color: $light-foreground-color;
+      & ~ .select__label {
+        background-color: $light-foreground-color;
+      }
+    }
+
+    &_dark {
+      @include layout-colors(dark);
+      &:focus-visible {
+        background-color: $dark-foreground-color;
+        & ~ .select__label {
+          background-color: $dark-foreground-color;
+        }
+      }
+    }
+  }
+
+  &_disabled {
+    @include input-disabled-styles();
+  }
+}

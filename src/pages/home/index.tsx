@@ -8,9 +8,9 @@ import './styles.scss';
 
 function Home(): React.ReactElement {
   const selectOptions: SelectEntity[] = [
-    { option: 'one', value: 1, add: 123 },
-    { option: 'two', value: 2, asdf: 'asdf' },
-    { option: 'three', value: 3, asdf: {} },
+    { option: 'One', value: 1, add: 123 },
+    { option: 'Two', value: 2, asdf: 'asdf' },
+    { option: 'Three', value: 3, asdf: {} },
   ];
 
   return (
@@ -20,53 +20,12 @@ function Home(): React.ReactElement {
         <Checkbox id='test-id-1' name='test-name' label='Test checkbox' />
       </div>
       <div>
-        <TextInput name='text' label='Text Label' />
+        <TextInput name='text' label='Text Label' id='test-input' />
       </div>
       <br />
       <br />
       <div>
-        <Select name='select1' label='Label1' options={selectOptions} defaultOption={selectOptions[2]} />
-      </div>
-      <br />
-      <div>
-        <Select
-          name='select1'
-          label='Label Size 3'
-          options={[
-            { option: 'one', value: 1 },
-            { option: 'two', value: 2 },
-            { option: 'three', value: 3 },
-            { option: 'four', value: 4 },
-            { option: 'five', value: 5 },
-          ]}
-          size={3}
-        />
-      </div>
-      <br />
-      <div>
-        <Select
-          name='select1'
-          label='Label1'
-          options={[
-            { option: 'one', value: 1 },
-            { option: 'two', value: 2 },
-            { option: 'three', value: 3 },
-          ]}
-          isRequired
-        />
-      </div>
-      <br />
-      <div>
-        <Select
-          name='select1'
-          label='Label1'
-          options={[
-            { option: 'one', value: 1 },
-            { option: 'two', value: 2 },
-            { option: 'three', value: 3 },
-          ]}
-          isDisabled
-        />
+        <Select name='select1' label='Label1' options={selectOptions} defaultOption={selectOptions[2]} isRequired id='test-select' />
       </div>
     </div>
   );
