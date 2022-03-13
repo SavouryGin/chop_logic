@@ -4,6 +4,7 @@ import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
+import { soundPlayer } from 'helpers/sounds';
 import Label from '../label';
 
 import './styles.scss';
@@ -23,6 +24,7 @@ function Select(props: SelectProps): React.ReactElement {
   const { options, className, id, name, label, defaultOption, onChange } = props;
   const inputId = id || Guid.create().toString();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!props.isDisabled, select_dark: isDarkMode }]);
   const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
   const [selectedValue, setSelectedValue] = useState(defaultOption);
@@ -40,6 +42,7 @@ function Select(props: SelectProps): React.ReactElement {
     const selectedOption = e.target.value;
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
+    if (isSoundEnabled) soundPlayer.switch.play();
     if (onChange) onChange();
   };
 
