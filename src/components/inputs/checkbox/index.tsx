@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
+import { ComponentProps, InputHandlersProps } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
@@ -10,18 +10,17 @@ import Label from '../label';
 
 import './styles.scss';
 
-export type CheckboxProps = ComponentProps & {
-  name: string;
-  label: string;
-  defaultValue?: boolean;
-  isDisabled?: boolean;
-  isRequired?: boolean;
-  onChange?: () => void;
-  onBlur?: () => void;
-};
+export type CheckboxProps = ComponentProps &
+  InputHandlersProps & {
+    name: string;
+    label: string;
+    defaultValue?: boolean;
+    isDisabled?: boolean;
+    isRequired?: boolean;
+  };
 
 function Checkbox(props: CheckboxProps): React.ReactElement {
-  const { name, id, label, onChange, onBlur } = props;
+  const { name, id, label, onChange } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const [isChecked, setIsChecked] = useState(!!props.defaultValue || false);
@@ -49,7 +48,8 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
         className={inputClassNames}
         disabled={props.isDisabled}
         onChange={onCheckboxChange}
-        onBlur={onBlur}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
         checked={isChecked}
       ></input>
       <Label text={label} inputId={inputId} isRequired={props.isRequired} isDarkMode={isDarkMode} className={labelClassNames} />
