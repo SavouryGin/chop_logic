@@ -16,10 +16,12 @@ export type SelectProps = ComponentProps & {
   isRequired?: boolean;
   isDisabled?: boolean;
   formId?: string;
+  onChange?: () => void;
+  onBlur?: () => void;
 };
 
 function Select(props: SelectProps): React.ReactElement {
-  const { options, className, id, name, label, defaultOption } = props;
+  const { options, className, id, name, label, defaultOption, onChange, onBlur } = props;
   const inputId = id || Guid.create().toString();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!props.isDisabled, select_dark: isDarkMode }]);
@@ -39,6 +41,7 @@ function Select(props: SelectProps): React.ReactElement {
     const selectedOption = e.target.value;
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
+    if (onChange) onChange();
   };
 
   return (
@@ -52,6 +55,7 @@ function Select(props: SelectProps): React.ReactElement {
         required={props.isRequired}
         className={selectClassNames}
         onChange={onSelectChange}
+        onBlur={onBlur}
       >
         {optionList}
       </select>
