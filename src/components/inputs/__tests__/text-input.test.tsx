@@ -80,11 +80,18 @@ describe('Text input component:', () => {
     expect(input).toHaveFocus();
   });
 
-  it('fires onFocus and onBlur handlers', () => {
+  it('fires the onBlur handler', () => {
     const mockBlur = jest.fn();
     renderWithRedux(<TextInput {...testProps} onBlur={mockBlur} />, mockedReducer, mockedState);
     userEvent.tab();
     userEvent.tab();
     expect(mockBlur).toHaveBeenCalledTimes(1);
+  });
+
+  it('fires the onFocus handler', () => {
+    const mockFocus = jest.fn();
+    renderWithRedux(<TextInput {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
+    userEvent.tab();
+    expect(mockFocus).toHaveBeenCalledTimes(1);
   });
 });
