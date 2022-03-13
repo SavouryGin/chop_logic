@@ -69,11 +69,18 @@ describe('Checkbox component:', () => {
     expect(input).toHaveFocus();
   });
 
-  it('fires onFocus and onBlur handlers', () => {
+  it('fires the onBlur handler', () => {
     const mockBlur = jest.fn();
     renderWithRedux(<Checkbox {...testProps} onBlur={mockBlur} />, mockedReducer, mockedState);
     userEvent.tab();
     userEvent.tab();
     expect(mockBlur).toHaveBeenCalledTimes(1);
+  });
+
+  it('fires the onFocus handler', () => {
+    const mockFocus = jest.fn();
+    renderWithRedux(<Checkbox {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
+    userEvent.tab();
+    expect(mockFocus).toHaveBeenCalledTimes(1);
   });
 });

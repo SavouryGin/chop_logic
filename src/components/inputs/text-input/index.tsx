@@ -1,32 +1,31 @@
 import React, { useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Guid } from 'guid-typescript';
-import { ComponentProps } from 'types';
+import { ComponentProps, InputHandlersProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 import Label from '../label';
 
 import './styles.scss';
 
-export type TextInputProps = ComponentProps & {
-  name: string;
-  label: string;
-  defaultValue?: string;
-  placeholder?: string;
-  isDisabled?: boolean;
-  isRequired?: boolean;
-  isReadOnly?: boolean;
-  isInvalid?: boolean;
-  isAutocomplete?: boolean;
-  maxLength?: number;
-  minLength?: number;
-  value?: string;
-  onChange?: () => void;
-  onBlur?: () => void;
-};
+export type TextInputProps = ComponentProps &
+  InputHandlersProps & {
+    name: string;
+    label: string;
+    defaultValue?: string;
+    placeholder?: string;
+    isDisabled?: boolean;
+    isRequired?: boolean;
+    isReadOnly?: boolean;
+    isInvalid?: boolean;
+    isAutocomplete?: boolean;
+    maxLength?: number;
+    minLength?: number;
+    value?: string;
+  };
 
 function TextInput(props: TextInputProps): React.ReactElement {
-  const { name, id, label, defaultValue, onChange, onBlur } = props;
+  const { name, id, label, defaultValue, onChange } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const [inputValue, setInputValue] = useState(defaultValue || '');
   const inputClassNames = formatClassName([
@@ -61,7 +60,8 @@ function TextInput(props: TextInputProps): React.ReactElement {
         minLength={props.minLength}
         value={inputValue}
         onChange={onInputChange}
-        onBlur={onBlur}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
         placeholder={props.placeholder || 'Please type...'}
         className={fieldClassNames}
         autoComplete={props.isAutocomplete ? 'on' : 'off'}

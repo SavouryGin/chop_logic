@@ -32,7 +32,6 @@ const mockedState = {
 describe('Select component:', () => {
   it('renders the select element with default props', () => {
     renderWithRedux(<Select {...testProps} />, mockedReducer, mockedState);
-    screen.debug();
     const input = screen.getByRole('combobox');
     expect(input).toBeInTheDocument();
     expect(input).toHaveClass('select__field');
@@ -93,5 +92,12 @@ describe('Select component:', () => {
     userEvent.tab();
     userEvent.tab();
     expect(mockBlur).toHaveBeenCalledTimes(1);
+  });
+
+  it('fires the onFocus handler', () => {
+    const mockFocus = jest.fn();
+    renderWithRedux(<Select {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
+    userEvent.tab();
+    expect(mockFocus).toHaveBeenCalledTimes(1);
   });
 });

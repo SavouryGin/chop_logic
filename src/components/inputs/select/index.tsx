@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps, SelectEntity } from 'types';
+import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
@@ -8,20 +8,19 @@ import Label from '../label';
 
 import './styles.scss';
 
-export type SelectProps = ComponentProps & {
-  name: string;
-  label: string;
-  options: SelectEntity[];
-  defaultOption?: SelectEntity;
-  isRequired?: boolean;
-  isDisabled?: boolean;
-  formId?: string;
-  onChange?: () => void;
-  onBlur?: () => void;
-};
+export type SelectProps = ComponentProps &
+  InputHandlersProps & {
+    name: string;
+    label: string;
+    options: SelectEntity[];
+    defaultOption?: SelectEntity;
+    isRequired?: boolean;
+    isDisabled?: boolean;
+    formId?: string;
+  };
 
 function Select(props: SelectProps): React.ReactElement {
-  const { options, className, id, name, label, defaultOption, onChange, onBlur } = props;
+  const { options, className, id, name, label, defaultOption, onChange } = props;
   const inputId = id || Guid.create().toString();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!props.isDisabled, select_dark: isDarkMode }]);
@@ -55,7 +54,8 @@ function Select(props: SelectProps): React.ReactElement {
         required={props.isRequired}
         className={selectClassNames}
         onChange={onSelectChange}
-        onBlur={onBlur}
+        onBlur={props.onBlur}
+        onFocus={props.onFocus}
       >
         {optionList}
       </select>
