@@ -9,6 +9,12 @@ export type ComponentProps = {
   id?: string;
 };
 
+export type InputHandlersProps = {
+  onChange?: () => void;
+  onBlur?: () => void;
+  onFocus?: () => void;
+};
+
 export type SelectEntity = {
   option: string;
   value: string | number;
