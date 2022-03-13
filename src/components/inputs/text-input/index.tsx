@@ -4,6 +4,7 @@ import { Guid } from 'guid-typescript';
 import { ComponentProps, InputHandlersProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
+import { soundPlayer } from 'helpers/sounds';
 import Label from '../label';
 
 import './styles.scss';
@@ -27,6 +28,7 @@ export type TextInputProps = ComponentProps &
 function TextInput(props: TextInputProps): React.ReactElement {
   const { name, id, label, defaultValue, onChange } = props;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const [inputValue, setInputValue] = useState(defaultValue || '');
   const inputClassNames = formatClassName([
     props.className,
@@ -44,6 +46,7 @@ function TextInput(props: TextInputProps): React.ReactElement {
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || '';
     setInputValue(value);
+    if (isSoundEnabled) soundPlayer.snap.play();
     if (onChange) onChange();
   };
 
