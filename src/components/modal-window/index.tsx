@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import Button from 'components/button';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
-import { Icon } from 'enums';
+import { Icon, Browser } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 import { soundPlayer } from 'helpers/sounds';
+import { detectBrowser } from 'helpers/checkers/detect-browser';
 
 import './styles.scss';
 
@@ -23,7 +24,11 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
   const targetElement = document.getElementById('modal');
   if (!isOpened || !targetElement) return null;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const contentClassNames = formatClassName(['modal-window__content', { 'modal-window__content_dark': isDarkMode }]);
+  const browser = detectBrowser();
+  const contentClassNames = formatClassName([
+    'modal-window__content',
+    { 'modal-window__content_dark': isDarkMode, 'modal-window__content_for-firefox': browser === Browser.Firefox },
+  ]);
   const [backgroundClassNames, setBackgroundClassNames] = useState(
     formatClassName(['modal-background', { 'modal-background_dark': isDarkMode }]),
   );
