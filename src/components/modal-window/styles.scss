@@ -66,6 +66,9 @@
       grid-area: modal-content;
       @include base-text-styles();
       overflow: auto;
+      &_for-firefox {
+        max-height: 38.75rem;
+      }
     }
 
     &__footer {
