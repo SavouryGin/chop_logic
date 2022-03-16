@@ -1,12 +1,13 @@
 import React from 'react';
 import { paths } from 'components/app-router/paths';
-import { Page } from 'enums';
-import { Link } from 'react-router-dom';
+import AppLink from 'components/app-link';
+import { Icon, Page } from 'enums';
 
 function NotFoundPage(): React.ReactElement {
   return (
     <div className='not-found-page'>
-      404 Page not found <Link to={paths[Page.Home]}>Go Home</Link>
+      404 Page not found <br></br>
+      <AppLink path={paths[Page.Home]} text={'Go Home'} isNavigation icon={Icon.Home} />
     </div>
   );
 }
