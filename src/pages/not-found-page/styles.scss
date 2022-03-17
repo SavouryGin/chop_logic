@@ -1,0 +1,12 @@
+@import 'styles/sizes.scss';
+
+.not-found-page {
+  display: grid;
+  justify-items: center;
+  height: 100%;
+  align-content: center;
+
+  &__header {
+    margin-bottom: $big-margin;
+  }
+}
