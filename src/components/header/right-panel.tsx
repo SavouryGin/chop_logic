@@ -7,6 +7,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { testText } from '__mocks__/test-text';
 import { soundPlayer } from 'helpers/sounds';
+import AppSettings from 'components/app-settings';
 
 function RightHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -79,7 +80,7 @@ function RightHeaderPanel(): React.ReactElement {
         onClose={onClickSettingButton}
         onConfirm={onClickSettingButton}
         title={'Settings'}
-        content={<>{testText.repeat(100)}</>}
+        content={<AppSettings />}
       />
     </>
   );
