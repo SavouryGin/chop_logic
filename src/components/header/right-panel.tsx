@@ -5,7 +5,6 @@ import { Icon } from 'enums';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
-import { testText } from '__mocks__/test-text';
 import { soundPlayer } from 'helpers/sounds';
 import AppSettings from 'components/app-settings';
 
@@ -78,7 +77,7 @@ function RightHeaderPanel(): React.ReactElement {
       <ModalWindow
         isOpened={isSettingOpened}
         onClose={onClickSettingButton}
-        onConfirm={onClickSettingButton}
+        // onConfirm={onClickSettingButton}
         title={'Settings'}
         content={<AppSettings />}
       />

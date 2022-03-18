@@ -5,6 +5,7 @@ import { ClassNameProp } from 'types';
 export type FormProps = {
   onSubmit: () => void;
   content: React.ReactElement;
+  formRef?: React.MutableRefObject<HTMLFormElement | undefined>;
   action?: string;
   className?: ClassNameProp;
 };
@@ -13,17 +14,15 @@ export type FormProps = {
 function Form(props: FormProps): React.ReactElement {
   const { action, className, onSubmit, content } = props;
   const formClassNames = formatClassName(['form', className]);
-  const formRef = useRef(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(e);
-    console.log(formRef);
     onSubmit();
   };
 
   return (
-    <form className={formClassNames} action={action || '/'} onSubmit={handleSubmit} ref={formRef}>
+    <form className={formClassNames} action={action || '/'} onSubmit={handleSubmit}>
       {content}
     </form>
   );
