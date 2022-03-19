@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Guid } from 'guid-typescript';
 import { ComponentProps, InputHandlersProps } from 'types';
@@ -8,6 +8,7 @@ import { soundPlayer } from 'helpers/sounds';
 import Label from '../label';
 
 import './styles.scss';
+import { FormContext } from 'components/form';
 
 export type TextInputProps = ComponentProps &
   InputHandlersProps & {
@@ -42,12 +43,15 @@ function TextInput(props: TextInputProps): React.ReactElement {
   ]);
   const fieldClassNames = formatClassName(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
   const inputId = id || Guid.create().toString();
+  const formContext = useContext(FormContext);
+  const { form, handleFormChange } = formContext;
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || '';
     setInputValue(value);
     if (isSoundEnabled) soundPlayer.snap.play();
-    if (onChange) onChange();
+    if (onChange) onChange(e);
+    handleFormChange(e);
   };
 
   return (

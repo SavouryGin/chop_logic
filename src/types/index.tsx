@@ -10,7 +10,7 @@ export type ComponentProps = {
 };
 
 export type InputHandlersProps = {
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onBlur?: () => void;
   onFocus?: () => void;
 };
