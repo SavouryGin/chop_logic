@@ -43,7 +43,7 @@ function Select(props: SelectProps): React.ReactElement {
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
     if (isSoundEnabled) soundPlayer.switch.play();
-    if (onChange) onChange();
+    if (onChange) onChange(e);
   };
 
   return (

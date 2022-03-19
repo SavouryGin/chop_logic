@@ -36,7 +36,7 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
     const value = e.target.checked;
     setIsChecked(value);
     if (isSoundEnabled) soundPlayer.seatbelt.play();
-    if (onChange) onChange();
+    if (onChange) onChange(e);
   };
 
   return (
