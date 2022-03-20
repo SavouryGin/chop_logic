@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 import { soundPlayer } from 'helpers/sounds';
+import { FormContext } from 'components/form';
 import Label from '../label';
 
 import './styles.scss';
@@ -28,6 +29,8 @@ function Select(props: SelectProps): React.ReactElement {
   const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!props.isDisabled, select_dark: isDarkMode }]);
   const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
   const [selectedValue, setSelectedValue] = useState(defaultOption);
+  const formContext = useContext(FormContext);
+  const { onChangeInput } = formContext;
 
   const optionList = options.map((item) => {
     const key = Guid.create().toString();
@@ -39,6 +42,7 @@ function Select(props: SelectProps): React.ReactElement {
   });
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onChangeInput(e);
     const selectedOption = e.target.value;
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
