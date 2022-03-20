@@ -10,7 +10,7 @@ export type ComponentProps = {
 };
 
 export type InputHandlersProps = {
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onChange?: (e: React.ChangeEvent<FormInput>) => void;
   onBlur?: () => void;
   onFocus?: () => void;
 };
@@ -18,7 +18,7 @@ export type InputHandlersProps = {
 export type SelectEntity = {
   option: string;
   value: string | number;
-  [key: string]: string | number | object;
+  [key: string]: unknown;
 };
 
 export type FormValues = { [key: string]: unknown };
