@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, InputHandlersProps } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'store/hooks';
 import { Icon } from 'enums';
+import { FormContext } from 'components/form';
 import { soundPlayer } from 'helpers/sounds';
 import Label from '../label';
 
@@ -25,6 +26,8 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const [isChecked, setIsChecked] = useState(!!props.defaultValue || false);
   const inputId = id || Guid.create().toString();
+  const formContext = useContext(FormContext);
+  const { onChangeInput } = formContext;
   const checkboxClassNames = formatClassName(['checkbox-input', props.className, { 'checkbox-input_disabled': !!props.isDisabled }]);
   const labelClassNames = formatClassName([
     'checkbox-input__label',
@@ -33,10 +36,11 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
   const inputClassNames = formatClassName(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeInput(e);
     const value = e.target.checked;
     setIsChecked(value);
     if (isSoundEnabled) soundPlayer.seatbelt.play();
-    if (onChange) onChange();
+    if (onChange) onChange(e);
   };
 
   return (
