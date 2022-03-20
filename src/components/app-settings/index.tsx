@@ -20,14 +20,15 @@ function AppSettings(props: AppSettingsProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   // const formClassNames = formatClassName(['settings', className, { settings_dark: isDarkMode }]);
   // const formRef = useRef<HTMLFormElement>(null);
-  // const selectOptions: SelectEntity[] = [
-  //   { option: 'One', value: 1, add: 123 },
-  //   { option: 'Two', value: 2, asdf: 'asdf' },
-  //   { option: 'Three', value: 3, asdf: {} },
-  // ];
+  const selectOptions: SelectEntity[] = [
+    { option: 'One', value: 1, add: 123 },
+    { option: 'Two', value: 2, asdf: 'asdf' },
+    { option: 'Three', value: 3, asdf: {} },
+  ];
   const initialValues = {
     formCheckbox: false,
     formInput: '',
+    formSelect: selectOptions[0].value,
   };
   // const [formData, updateFormData] = React.useState(initialValues);
 
@@ -61,14 +62,16 @@ function AppSettings(props: AppSettingsProps): React.ReactElement {
     //   <Button type='submit' icon={Icon.Default} sound={soundPlayer.slideClick} title='Ok' />
     // </form>
     <Form
-      onSubmit={(e: any) => {
+      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         console.log('Submit', e);
       }}
       initialValues={initialValues}
-      content={
+      inputs={
         <>
           <Checkbox id='formCheckbox' name='formCheckbox' label='Test checkbox' />
           <TextInput name='formInput' label='Text Label' id='formInput' />
+          <Select name='formSelect' label='Label1' options={selectOptions} defaultOption={selectOptions[2]} isRequired id='formSelect' />
         </>
       }
       // render={() => (
