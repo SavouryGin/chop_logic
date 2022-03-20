@@ -21,7 +21,11 @@ export type SelectEntity = {
   [key: string]: string | number | object;
 };
 
-export type IFormContextProps = {
-  form: { [key: string]: unknown };
-  onChangeInput: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+export type FormValues = { [key: string]: unknown };
+
+export type FormInput = HTMLInputElement | HTMLSelectElement;
+
+export type FormContextProps = {
+  form: FormValues;
+  onChangeInput: (e: React.ChangeEvent<FormInput>) => void;
 };
