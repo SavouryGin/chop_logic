@@ -96,4 +96,18 @@
   &_dark:focus-visible {
     outline: $dark-outline;
   }
+
+  // Style for the small version
+  &_small {
+    // make the button round
+    .button__front,
+    .button__edge,
+    .button__shadow {
+      border-radius: 50%;
+    }
+    // decrease the button size
+    .button__front {
+      padding: 0.4rem 0.4rem 0.2rem 0.4rem;
+    }
+  }
 }
