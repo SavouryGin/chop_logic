@@ -97,7 +97,7 @@
     outline: $dark-outline;
   }
 
-  // Style for the small version
+  // Styles for the small version
   &_small {
     // make the button round
     .button__front,
@@ -109,5 +109,10 @@
     .button__front {
       padding: 0.4rem 0.4rem 0.2rem 0.4rem;
     }
+  }
+
+  // Styles for the large version
+  &_large {
+    width: 100%;
   }
 }
