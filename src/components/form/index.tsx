@@ -45,7 +45,7 @@ function Form(props: FormProps): React.ReactElement {
       >
         {inputs}
       </FormContext.Provider>
-      <Button type='submit' icon={Icon.Default} sound={soundPlayer.slideClick} title='Ok' />
+      <Button type='submit' icon={Icon.Default} sound={soundPlayer.slideClick} title='Ok' size='large' />
     </form>
   );
 }

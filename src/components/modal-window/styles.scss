@@ -73,14 +73,6 @@
       }
     }
 
-    &__footer {
-      grid-area: modal-footer;
-      justify-self: end;
-      .button {
-        margin-left: $big-margin;
-      }
-    }
-
     // Defaults colors
     @include layout-colors(light);
     box-shadow: $light-box-shadow;
