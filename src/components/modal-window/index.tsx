@@ -15,12 +15,11 @@ export type ModalWindowProps = ComponentProps & {
   isOpened: boolean;
   onClose: () => void;
   title: string;
-  onConfirm?: () => void;
   content?: React.ReactElement;
 };
 
 function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
-  const { className, isOpened, onClose, content, title, onConfirm } = props;
+  const { className, isOpened, onClose, content, title } = props;
   const targetElement = document.getElementById('modal');
   if (!isOpened || !targetElement) return null;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -49,29 +48,22 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
     setTimeout(() => onClose(), 900);
   };
 
-  const onClickConfirm = () => {
-    const handler = onConfirm || onClose;
-    handleClosingClassNames();
-    // wait for closing CSS animation
-    setTimeout(() => handler(), 900);
-  };
-
-  const buttons = (
-    <>
-      <Button onClick={onClickClose} icon={Icon.Cancel} title='Close' id='close-modal-window' sound={soundPlayer.slideClick} />
-      {onConfirm && <Button onClick={onClickConfirm} icon={Icon.Default} sound={soundPlayer.slideClick} title='Ok' />}
-    </>
-  );
-
   const window = (
     <div className={windowClassNames} role='dialog' aria-modal='true' id={props.id}>
       <header className='modal-window__header' id='modal-window-heading'>
         {title}
+        <Button
+          onClick={onClickClose}
+          icon={Icon.Cancel}
+          title='Close'
+          id='close-modal-window'
+          sound={soundPlayer.slideClick}
+          size={'small'}
+        />
       </header>
       <div className={contentClassNames} role='region' aria-labelledby='modal-window-heading'>
         {content}
       </div>
-      <footer className='modal-window__footer'>{buttons}</footer>
     </div>
   );
 
