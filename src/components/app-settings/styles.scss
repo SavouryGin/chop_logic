@@ -2,4 +2,12 @@
 
 .settings {
   padding: $big-padding;
+
+  .select {
+    margin-bottom: $big-margin;
+  }
+
+  .button {
+    margin-top: $big-margin;
+  }
 }
