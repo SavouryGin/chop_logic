@@ -1,8 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'store';
-import { SettingsFlags } from './interfaces';
+import { Language, SettingsFlags } from './interfaces';
 
 const getSettingsFlags = (state: RootState): SettingsFlags => state.settings.flags;
+const getLanguage = (state: RootState): Language => state.settings.language;
 
 const getIsNavigationOpened = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isNavigationOpen);
 const getIsSidebarOpened = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isSidebarOpen);
@@ -15,6 +16,7 @@ const getIsSidebarAnimationActive = createSelector(getSettingsFlags, (data: Sett
 
 export const settingsSelectors = {
   getSettingsFlags,
+  getLanguage,
   getIsNavigationOpened,
   getIsSidebarOpened,
   getIsDarkMode,
