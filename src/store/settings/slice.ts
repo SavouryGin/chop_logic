@@ -35,6 +35,11 @@ export const settingsSlice = createSlice({
     setFullScreenFlag: (state, action: PayloadAction<boolean>) => {
       state.flags.isFullScreen = action.payload;
     },
+
+    setUpFlag: (state, action: PayloadAction<{ flag: SettingsFlag; value: boolean }>) => {
+      const { flag, value } = action.payload;
+      state.flags[flag] = value;
+    },
   },
 });
 
