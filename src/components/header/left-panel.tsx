@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'components/button';
 import { Icon } from 'enums';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';

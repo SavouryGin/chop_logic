@@ -6,11 +6,13 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, FormValues, SelectEntity } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import './styles.scss';
 
-export type AppSettingsProps = ComponentProps;
+export type AppSettingsProps = ComponentProps & {
+  onClosePopup: () => void;
+};
 
 function AppSettings(props: AppSettingsProps): React.ReactElement {
   const { className } = props;
@@ -29,14 +31,14 @@ function AppSettings(props: AppSettingsProps): React.ReactElement {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('form', formValues);
 
     dispatch(settingsActions.setUpFlag({ flag: 'isDarkMode', value: formValues.isDarkMode }));
     dispatch(settingsActions.setUpFlag({ flag: 'isSoundsEnabled', value: formValues.isSoundsEnabled }));
     dispatch(settingsActions.setLanguage(formValues.language));
 
     // Close the settings popup
-    dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false }));
+    // setTimeout(() => dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false })), 900);
+    props.onClosePopup();
   };
 
   const takeValues = (values: FormValues) => setFormValues(values as typeof settingsInitialValues);

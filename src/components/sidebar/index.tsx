@@ -1,7 +1,7 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 
 import './styles.scss';

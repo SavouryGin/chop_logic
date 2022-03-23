@@ -3,7 +3,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import AppLink from 'components/app-link';
 import { routesMap } from 'components/app-router/map';
 import { ComponentProps } from 'types';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 
 import './styles.scss';

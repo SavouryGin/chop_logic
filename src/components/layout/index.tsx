@@ -6,7 +6,7 @@ import Sidebar from 'components/sidebar';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Outlet } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 

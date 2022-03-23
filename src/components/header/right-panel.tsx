@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import Button from 'components/button';
 import ModalWindow from 'components/modal-window';
 import { Icon } from 'enums';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { soundPlayer } from 'helpers/sounds';
@@ -77,9 +77,8 @@ function RightHeaderPanel(): React.ReactElement {
       <ModalWindow
         isOpened={isSettingOpened}
         onClose={onClickSettingButton}
-        // onConfirm={onClickSettingButton}
-        title={'Settings'}
-        content={<AppSettings />}
+        title='Settings'
+        content={<AppSettings onClosePopup={onClickSettingButton} />}
       />
     </>
   );
