@@ -10,9 +10,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 import './styles.scss';
 
-export type AppSettingsProps = ComponentProps & {
-  onClosePopup: () => void;
-};
+export type AppSettingsProps = ComponentProps;
 
 export const languageOptions: SelectEntity[] = [
   { option: 'English', value: 'en' },
@@ -30,16 +28,23 @@ function AppSettings(props: AppSettingsProps): React.ReactElement {
   const [formValues, setFormValues] = useState(settingsInitialValues);
   const defaultLanguage = languageOptions.find((item) => item.value === settingsInitialValues.language);
 
+  const closePopup = () => {
+    // Close the settings popup
+    dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
+    // wait for closing CSS animation
+    setTimeout(() => {
+      dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false }));
+      dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
+    }, 900);
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     dispatch(settingsActions.setUpFlag({ flag: 'isDarkMode', value: formValues.isDarkMode }));
     dispatch(settingsActions.setUpFlag({ flag: 'isSoundsEnabled', value: formValues.isSoundsEnabled }));
     dispatch(settingsActions.setLanguage(formValues.language));
-
-    // Close the settings popup
-    // setTimeout(() => dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false })), 900);
-    props.onClosePopup();
+    closePopup();
   };
 
   const takeValues = (values: FormValues) => setFormValues(values as typeof settingsInitialValues);
