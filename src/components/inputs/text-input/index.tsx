@@ -47,10 +47,10 @@ function TextInput(props: TextInputProps): React.ReactElement {
   const { onChangeInput } = formContext;
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeInput(e);
     const value = e.target.value || '';
     setInputValue(value);
     if (isSoundEnabled) soundPlayer.snap.play();
+    if (onChangeInput) onChangeInput(e);
     if (onChange) onChange(e);
   };
 

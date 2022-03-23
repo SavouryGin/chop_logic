@@ -42,11 +42,11 @@ function Select(props: SelectProps): React.ReactElement {
   });
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChangeInput(e);
     const selectedOption = e.target.value;
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
     if (isSoundEnabled) soundPlayer.switch.play();
+    if (onChangeInput) onChangeInput(e);
     if (onChange) onChange(e);
   };
 

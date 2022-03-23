@@ -36,10 +36,10 @@ function Checkbox(props: CheckboxProps): React.ReactElement {
   const inputClassNames = formatClassName(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeInput(e);
     const value = e.target.checked;
     setIsChecked(value);
     if (isSoundEnabled) soundPlayer.seatbelt.play();
+    if (onChangeInput) onChangeInput(e);
     if (onChange) onChange(e);
   };
 
