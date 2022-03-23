@@ -3,7 +3,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { Guid } from 'guid-typescript';
 import { ComponentProps, InputHandlersProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { FormContext } from 'components/form';
 import Label from '../label';

@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { ClassNameProp } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 
 import './styles.scss';

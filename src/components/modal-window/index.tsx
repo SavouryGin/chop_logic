@@ -5,7 +5,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
 import { Icon, Browser } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { detectBrowser } from 'helpers/checkers/detect-browser';
 
