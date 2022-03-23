@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'components/button';
 import formatClassName from 'helpers/formatters/format-class-name';
@@ -8,9 +8,9 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { detectBrowser } from 'helpers/checkers/detect-browser';
+import { settingsActions } from 'store/settings/slice';
 
 import './styles.scss';
-import { settingsActions } from 'store/settings/slice';
 
 export type ModalWindowProps = ComponentProps & {
   isOpened: boolean;
@@ -42,17 +42,9 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
     { 'modal-window_dark': isDarkMode, 'modal-window_closing': isAnimationActive },
   ]);
 
-  // const handleClosingClassNames = () => {
-  //   const windowToClose = `${windowClassNames} modal-window_closing`;
-  //   const backgroundToFadeOut = `${backgroundClassNames} modal-background_closing`;
-  //   setWindowClassNames(windowToClose);
-  //   setBackgroundClassNames(backgroundToFadeOut);
-  // };
-
   const onClickClose = () => {
-    // handleClosingClassNames();
-    // wait for closing CSS animation
     dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
+    // wait for closing CSS animation
     setTimeout(() => {
       onClose();
       dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));

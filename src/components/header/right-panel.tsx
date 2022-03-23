@@ -73,12 +73,7 @@ function RightHeaderPanel(): React.ReactElement {
         sound={soundPlayer.keyboard}
         title='Sidebar'
       />
-      <ModalWindow
-        isOpened={isSettingOpened}
-        onClose={onClickSettingButton}
-        title='Settings'
-        content={<AppSettings onClosePopup={onClickSettingButton} />}
-      />
+      <ModalWindow isOpened={isSettingOpened} onClose={onClickSettingButton} title='Settings' content={<AppSettings />} />
     </>
   );
 }
