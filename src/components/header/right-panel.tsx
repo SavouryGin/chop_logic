@@ -51,7 +51,6 @@ function RightHeaderPanel(): React.ReactElement {
     dispatch(settingsActions.setFullScreenFlag(isWindowInFullscreen));
   }, []);
 
-  // Effects
   useEffect(() => {
     document.addEventListener('fullscreenchange', escapeHandler, false);
     return () => {

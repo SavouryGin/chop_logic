@@ -5,11 +5,12 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
 import { Icon, Browser } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { detectBrowser } from 'helpers/checkers/detect-browser';
 
 import './styles.scss';
+import { settingsActions } from 'store/settings/slice';
 
 export type ModalWindowProps = ComponentProps & {
   isOpened: boolean;
@@ -22,30 +23,40 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
   const { className, isOpened, onClose, content, title } = props;
   const targetElement = document.getElementById('modal');
   if (!isOpened || !targetElement) return null;
+  const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isAnimationActive = useAppSelector(settingsSelectors.getIsModalWindowClosingAnimationActive);
   const browser = detectBrowser();
   const contentClassNames = formatClassName([
     'modal-window__content',
     { 'modal-window__content_dark': isDarkMode, 'modal-window__content_for-firefox': browser === Browser.Firefox },
   ]);
-  const [backgroundClassNames, setBackgroundClassNames] = useState(
-    formatClassName(['modal-background', { 'modal-background_dark': isDarkMode }]),
-  );
-  const [windowClassNames, setWindowClassNames] = useState(
-    formatClassName(['modal-window', className, { 'modal-window_dark': isDarkMode }]),
-  );
+  const backgroundClassNames = formatClassName([
+    'modal-background',
+    { 'modal-background_dark': isDarkMode, 'modal-background_closing': isAnimationActive },
+  ]);
 
-  const handleClosingClassNames = () => {
-    const windowToClose = `${windowClassNames} modal-window_closing`;
-    const backgroundToFadeOut = `${backgroundClassNames} modal-background_closing`;
-    setWindowClassNames(windowToClose);
-    setBackgroundClassNames(backgroundToFadeOut);
-  };
+  const windowClassNames = formatClassName([
+    'modal-window',
+    className,
+    { 'modal-window_dark': isDarkMode, 'modal-window_closing': isAnimationActive },
+  ]);
+
+  // const handleClosingClassNames = () => {
+  //   const windowToClose = `${windowClassNames} modal-window_closing`;
+  //   const backgroundToFadeOut = `${backgroundClassNames} modal-background_closing`;
+  //   setWindowClassNames(windowToClose);
+  //   setBackgroundClassNames(backgroundToFadeOut);
+  // };
 
   const onClickClose = () => {
-    handleClosingClassNames();
+    // handleClosingClassNames();
     // wait for closing CSS animation
-    setTimeout(() => onClose(), 900);
+    dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
+    setTimeout(() => {
+      onClose();
+      dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
+    }, 900);
   };
 
   const window = (

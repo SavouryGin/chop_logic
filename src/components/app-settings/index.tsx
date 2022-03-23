@@ -14,6 +14,11 @@ export type AppSettingsProps = ComponentProps & {
   onClosePopup: () => void;
 };
 
+export const languageOptions: SelectEntity[] = [
+  { option: 'English', value: 'en' },
+  { option: 'Russian', value: 'ru' },
+];
+
 function AppSettings(props: AppSettingsProps): React.ReactElement {
   const { className } = props;
   const settingsClassNames = formatClassName(['settings', className]);
@@ -23,10 +28,6 @@ function AppSettings(props: AppSettingsProps): React.ReactElement {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const settingsInitialValues = { isDarkMode, isSoundsEnabled, language };
   const [formValues, setFormValues] = useState(settingsInitialValues);
-  const languageOptions: SelectEntity[] = [
-    { option: 'English', value: 'en' },
-    { option: 'Russian', value: 'ru' },
-  ];
   const defaultLanguage = languageOptions.find((item) => item.value === settingsInitialValues.language);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
