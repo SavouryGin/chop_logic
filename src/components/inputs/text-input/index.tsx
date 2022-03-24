@@ -3,7 +3,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { Guid } from 'guid-typescript';
 import { ComponentProps, InputHandlersProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { FormContext } from 'components/form';
 import Label from '../label';
@@ -47,10 +47,10 @@ function TextInput(props: TextInputProps): React.ReactElement {
   const { onChangeInput } = formContext;
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeInput(e);
     const value = e.target.value || '';
     setInputValue(value);
     if (isSoundEnabled) soundPlayer.snap.play();
+    if (onChangeInput) onChangeInput(e);
     if (onChange) onChange(e);
   };
 

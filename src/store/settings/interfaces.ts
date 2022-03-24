@@ -12,6 +12,7 @@ export interface SettingsFlags {
   isSoundsEnabled: boolean;
   isMenuAnimationActive: boolean;
   isSidebarAnimationActive: boolean;
+  isModalWindowClosingAnimationActive: boolean;
 }
 
 export type Language = 'ru' | 'en';

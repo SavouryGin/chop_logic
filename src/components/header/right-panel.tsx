@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import Button from 'components/button';
 import ModalWindow from 'components/modal-window';
 import { Icon } from 'enums';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { soundPlayer } from 'helpers/sounds';
@@ -51,7 +51,6 @@ function RightHeaderPanel(): React.ReactElement {
     dispatch(settingsActions.setFullScreenFlag(isWindowInFullscreen));
   }, []);
 
-  // Effects
   useEffect(() => {
     document.addEventListener('fullscreenchange', escapeHandler, false);
     return () => {
@@ -74,13 +73,7 @@ function RightHeaderPanel(): React.ReactElement {
         sound={soundPlayer.keyboard}
         title='Sidebar'
       />
-      <ModalWindow
-        isOpened={isSettingOpened}
-        onClose={onClickSettingButton}
-        // onConfirm={onClickSettingButton}
-        title={'Settings'}
-        content={<AppSettings />}
-      />
+      <ModalWindow isOpened={isSettingOpened} onClose={onClickSettingButton} title='Settings' content={<AppSettings />} />
     </>
   );
 }
