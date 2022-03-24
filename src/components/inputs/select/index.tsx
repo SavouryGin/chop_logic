@@ -3,7 +3,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
 import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { FormContext } from 'components/form';
 import Label from '../label';
@@ -42,11 +42,11 @@ function Select(props: SelectProps): React.ReactElement {
   });
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChangeInput(e);
     const selectedOption = e.target.value;
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
     if (isSoundEnabled) soundPlayer.switch.play();
+    if (onChangeInput) onChangeInput(e);
     if (onChange) onChange(e);
   };
 
