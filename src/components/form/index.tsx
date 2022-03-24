@@ -11,41 +11,47 @@ export type FormProps = ComponentProps & {
   initialValues: FormValues;
   action?: string;
   getValues?: (values: FormValues) => void;
+  submitButtonText?: string;
 };
 
 export const FormContext = React.createContext({} as FormContextProps);
 
-function Form(props: FormProps): React.ReactElement {
-  const { action, className, onSubmit, inputs, initialValues, getValues } = props;
+function Form({ className, onSubmit, inputs, initialValues, getValues, ...rest }: FormProps): React.ReactElement {
   const formClassNames = formatClassName(['form', className]);
-  const [form, setForm] = useState(initialValues);
+  const [formValues, setFormValues] = useState(initialValues);
 
   const onChangeInput = (e: React.ChangeEvent<FormInput>) => {
     const isCheckbox = e.target instanceof HTMLInputElement && e.target.type == 'checkbox';
     const name = e.target.name;
     const value = isCheckbox ? (e.target as HTMLInputElement).checked : e.target.value;
-
-    setForm({
-      ...form,
+    setFormValues({
+      ...formValues,
       [name]: value,
     });
   };
 
   useEffect(() => {
-    if (getValues) getValues(form);
-  }, [form]);
+    if (getValues) getValues(formValues);
+  }, [formValues]);
 
   return (
-    <form className={formClassNames} action={action || '/'} onSubmit={onSubmit}>
+    <form className={formClassNames} action={rest.action || '/'} onSubmit={onSubmit}>
       <FormContext.Provider
         value={{
-          form,
+          formValues,
           onChangeInput,
         }}
       >
         {inputs}
       </FormContext.Provider>
-      <Button type='submit' icon={Icon.Default} sound={soundPlayer.slideClick} title='Ok' size='large' />
+      <Button
+        type='submit'
+        icon={Icon.Default}
+        sound={soundPlayer.slideClick}
+        title='Ok'
+        size='large'
+        text={rest.submitButtonText || 'Submit'}
+      />
     </form>
   );
 }
