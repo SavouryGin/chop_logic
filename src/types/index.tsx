@@ -26,6 +26,6 @@ export type FormValues = { [key: string]: unknown };
 export type FormInput = HTMLInputElement | HTMLSelectElement;
 
 export type FormContextProps = {
-  form: FormValues;
+  formValues: FormValues;
   onChangeInput: (e: React.ChangeEvent<FormInput>) => void;
 };
