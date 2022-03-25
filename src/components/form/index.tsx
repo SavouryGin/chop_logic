@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, FormContextProps, FormInput, FormValues } from 'types';
 import Button from 'components/button';
-import { Icon } from 'enums';
+import { ButtonID, Icon } from 'enums';
 import { soundPlayer } from 'helpers/sounds';
 
 export type FormProps = ComponentProps & {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   inputs: React.ReactElement;
   initialValues: FormValues;
+  submitButtonId: ButtonID;
   action?: string;
   getValues?: (values: FormValues) => void;
-  submitButtonText?: string;
 };
 
 export const FormContext = React.createContext({} as FormContextProps);
 
-function Form({ className, onSubmit, inputs, initialValues, getValues, ...rest }: FormProps): React.ReactElement {
+function Form({ className, onSubmit, inputs, initialValues, getValues, submitButtonId, ...rest }: FormProps): React.ReactElement {
   const formClassNames = formatClassName(['form', className]);
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -44,14 +44,7 @@ function Form({ className, onSubmit, inputs, initialValues, getValues, ...rest }
       >
         {inputs}
       </FormContext.Provider>
-      <Button
-        type='submit'
-        icon={Icon.Default}
-        sound={soundPlayer.slideClick}
-        title='Ok'
-        size='large'
-        text={rest.submitButtonText || 'Submit'}
-      />
+      <Button buttonId={submitButtonId} type='submit' icon={Icon.Default} sound={soundPlayer.slideClick} size='large' />
     </form>
   );
 }

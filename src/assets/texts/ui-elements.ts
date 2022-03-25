@@ -3,7 +3,7 @@ import { ButtonText, LocalText } from 'types';
 
 export const navHeaderText: LocalText = { en: 'Navigation', ru: 'Навигация' };
 
-export const buttonText: ButtonText = {
+export const buttonTexts: ButtonText = {
   [ButtonID.Cancel]: {
     title: { en: 'Cancel', ru: 'Отмена' },
   },
