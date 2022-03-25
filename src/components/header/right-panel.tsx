@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import Button from 'components/button';
 import ModalWindow from 'components/modal-window';
-import { Icon } from 'enums';
+import { ButtonID, Icon } from 'enums';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
@@ -60,18 +60,18 @@ function RightHeaderPanel(): React.ReactElement {
 
   return (
     <>
-      <Button onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} title='Settings' />
+      <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} />
       <Button
+        buttonId={ButtonID.FullScreen}
         onClick={onClickFullScreenButton}
         icon={isFullScreen ? Icon.Shrink : Icon.Enlarge}
         sound={soundPlayer.keyboard}
-        title='Full screen'
       />
       <Button
+        buttonId={ButtonID.Tools}
         onClick={onClickSidebarButton}
         icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
         sound={soundPlayer.keyboard}
-        title='Sidebar'
       />
       <ModalWindow isOpened={isSettingOpened} onClose={onClickSettingButton} title='Settings' content={<AppSettings />} />
     </>

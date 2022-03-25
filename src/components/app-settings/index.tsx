@@ -4,6 +4,7 @@ import Select from 'components/inputs/select';
 import Form from 'components/form';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, FormValues } from 'types';
+import { ButtonID } from 'enums';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -55,7 +56,13 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
 
   return (
     <div className={settingsClassNames}>
-      <Form onSubmit={onSubmit} initialValues={settingsInitialValues} inputs={formInputs} getValues={takeValues} submitButtonText='Apply' />
+      <Form
+        onSubmit={onSubmit}
+        initialValues={settingsInitialValues}
+        inputs={formInputs}
+        getValues={takeValues}
+        submitButtonId={ButtonID.ApplySettings}
+      />
     </div>
   );
 }

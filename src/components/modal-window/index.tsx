@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Button from 'components/button';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
-import { Icon, Browser } from 'enums';
+import { Icon, Browser, ButtonID } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
@@ -55,14 +55,7 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
     <div className={windowClassNames} role='dialog' aria-modal='true' id={props.id}>
       <header className='modal-window__header' id='modal-window-heading'>
         {title}
-        <Button
-          onClick={onClickClose}
-          icon={Icon.Cancel}
-          title='Close'
-          id='close-modal-window'
-          sound={soundPlayer.slideClick}
-          size={'small'}
-        />
+        <Button buttonId={ButtonID.Cancel} onClick={onClickClose} icon={Icon.Cancel} sound={soundPlayer.slideClick} size='small' />
       </header>
       <div className={contentClassNames} role='region' aria-labelledby='modal-window-heading'>
         {content}
