@@ -2,9 +2,10 @@ import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import AppLink from 'components/app-link';
 import { routesMap } from 'components/app-router/map';
-import { ComponentProps, LocalText } from 'types';
+import { ComponentProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
+import { navHeaderText } from 'assets/texts/ui-elements';
 
 import './styles.scss';
 
@@ -13,7 +14,6 @@ export type NavigationProps = ComponentProps;
 function Navigation(props: NavigationProps): React.ReactElement {
   const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const headerText: LocalText = { en: 'Navigation', ru: 'Навигация' };
   const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
 
   const links = routesMap.map((item) => {
@@ -26,7 +26,7 @@ function Navigation(props: NavigationProps): React.ReactElement {
 
   return (
     <nav className={navigationClassNames}>
-      <h2 className='navigation__header'>{headerText[language]}</h2>
+      <h2 className='navigation__header'>{navHeaderText[language]}</h2>
       <ul className='navigation__list'>{links}</ul>
     </nav>
   );
