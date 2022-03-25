@@ -1,6 +1,15 @@
+import { ButtonID } from 'enums';
+
 export type Language = 'ru' | 'en';
 
 export type LocalText = { [key in Language]: string };
+
+export type ButtonText = {
+  [key in ButtonID]: {
+    title: LocalText;
+    innerText?: LocalText;
+  };
+};
 
 export type ClassNames = {
   [key in string]: boolean;
