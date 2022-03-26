@@ -1,5 +1,5 @@
-import { ButtonID } from 'enums';
-import { ButtonText, LocalText } from 'types';
+import { ButtonID, InputID } from 'enums';
+import { ButtonText, InputText, LocalText } from 'types';
 
 export const navHeaderText: LocalText = { en: 'Navigation', ru: 'Навигация' };
 
@@ -30,5 +30,17 @@ export const buttonTexts: ButtonText = {
   [ButtonID.ApplySettings]: {
     title: { en: 'Apply Settings', ru: 'Применить настройки' },
     innerText: { en: 'Apply', ru: 'Применить' },
+  },
+};
+
+export const inputTexts: InputText = {
+  [InputID.LanguageSelect]: {
+    label: { en: 'Language', ru: 'Язык' },
+  },
+  [InputID.isDarkModeCheckbox]: {
+    label: { en: 'Dark Mode', ru: 'Темная тема' },
+  },
+  [InputID.isSoundsCheckbox]: {
+    label: { en: 'Sounds', ru: 'Звуки' },
   },
 };
