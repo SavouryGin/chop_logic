@@ -4,7 +4,7 @@ import Select from 'components/inputs/select';
 import Form from 'components/form';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, FormValues } from 'types';
-import { ButtonID } from 'enums';
+import { ButtonID, InputID } from 'enums';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -49,8 +49,13 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
   const formInputs = (
     <>
       <Select name='language' id='language' label='Language' options={languageOptions} defaultOption={defaultLanguage} />
-      <Checkbox name='isDarkMode' id='isDarkMode' label='Dark Mode' defaultValue={settingsInitialValues.isDarkMode} />
-      <Checkbox name='isSoundsEnabled' id='isSoundsEnabled' label='Sounds' defaultValue={settingsInitialValues.isSoundsEnabled} />
+      <Checkbox inputId={InputID.isDarkModeCheckbox} name='isDarkMode' id='isDarkMode' defaultValue={settingsInitialValues.isDarkMode} />
+      <Checkbox
+        inputId={InputID.isSoundsCheckbox}
+        name='isSoundsEnabled'
+        id='isSoundsEnabled'
+        defaultValue={settingsInitialValues.isSoundsEnabled}
+      />
     </>
   );
 

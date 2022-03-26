@@ -5,6 +5,8 @@ export const navHeaderText: LocalText = { en: 'Navigation', ru: 'Навигац�
 
 export const footerText: LocalText = { en: 'Dmitrii Suroviagin', ru: 'Дмитрий Суровягин' };
 
+export const settingsText: LocalText = { en: 'Settings', ru: 'Настройки' };
+
 export const buttonTexts: ButtonText = {
   [ButtonID.Cancel]: {
     title: { en: 'Cancel', ru: 'Отмена' },
