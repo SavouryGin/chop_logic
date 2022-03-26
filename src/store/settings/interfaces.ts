@@ -1,3 +1,5 @@
+import { Language } from 'types';
+
 export interface SettingsInitialState {
   language: Language;
   flags: SettingsFlags;
@@ -14,7 +16,5 @@ export interface SettingsFlags {
   isSidebarAnimationActive: boolean;
   isModalWindowClosingAnimationActive: boolean;
 }
-
-export type Language = 'ru' | 'en';
 
 export type SettingsFlag = keyof SettingsFlags;

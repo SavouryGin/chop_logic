@@ -1,12 +1,13 @@
 import React from 'react';
 import { Icon, Page } from 'enums';
+import { LocalText } from 'types';
 import { paths } from './paths';
 
 type RoutesMapItem = {
   id: Page;
   url: string;
   element: React.FC;
-  title: string;
+  title: LocalText;
   key: string;
   icon: Icon;
 };
@@ -22,7 +23,7 @@ export const routesMap: RoutesMapItem[] = [
     key: `page-${Page.Propositions}`,
     url: paths[Page.Propositions],
     element: Propositions,
-    title: 'Propositions',
+    title: { en: 'Propositions', ru: 'Высказывания' },
     icon: Icon.Propositions,
   },
   {
@@ -30,7 +31,7 @@ export const routesMap: RoutesMapItem[] = [
     key: `page-${Page.Predicates}`,
     url: paths[Page.Predicates],
     element: Predicates,
-    title: 'Predicates',
+    title: { en: 'Predicates', ru: 'Предикаты' },
     icon: Icon.Predicates,
   },
   {
@@ -38,7 +39,7 @@ export const routesMap: RoutesMapItem[] = [
     key: `page-${Page.TruthTables}`,
     url: paths[Page.TruthTables],
     element: TruthTables,
-    title: 'Truth Tables',
+    title: { en: 'Truth Tables', ru: 'Таблицы' },
     icon: Icon.TruthTables,
   },
   {
@@ -46,7 +47,7 @@ export const routesMap: RoutesMapItem[] = [
     key: `page-${Page.Syllogisms}`,
     url: paths[Page.Syllogisms],
     element: Syllogisms,
-    title: 'Syllogisms',
+    title: { en: 'Syllogisms', ru: 'Силлогизмы' },
     icon: Icon.Syllogisms,
   },
 ];

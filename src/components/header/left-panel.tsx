@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'components/button';
-import { Icon } from 'enums';
+import { ButtonID, Icon } from 'enums';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -35,18 +35,23 @@ function LeftHeaderPanel(): React.ReactElement {
 
   return (
     <>
-      <Button onClick={onClickMenuButton} icon={isNavigationOpen ? Icon.Left : Icon.Menu} sound={soundPlayer.keyboard} title='Navigation' />
       <Button
+        buttonId={ButtonID.Navigation}
+        onClick={onClickMenuButton}
+        icon={isNavigationOpen ? Icon.Left : Icon.Menu}
+        sound={soundPlayer.keyboard}
+      />
+      <Button
+        buttonId={ButtonID.ColorTheme}
         onClick={onClickModeButton}
         icon={isDarkMode ? Icon.LightMode : Icon.DarkMode}
         sound={soundPlayer.keyboard}
-        title='Color theme'
       />
       <Button
+        buttonId={ButtonID.Sounds}
         onClick={onClickSoundsButton}
         icon={isSoundsEnabled ? Icon.Sound : Icon.NoSound}
         sound={soundPlayer.keyboard}
-        title='Sounds'
       />
     </>
   );

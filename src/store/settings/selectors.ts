@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'store';
-import { Language, SettingsFlags } from './interfaces';
+import { Language } from 'types';
+import { SettingsFlags } from './interfaces';
 
 const getSettingsFlags = (state: RootState): SettingsFlags => state.settings.flags;
 const getLanguage = (state: RootState): Language => state.settings.language;
