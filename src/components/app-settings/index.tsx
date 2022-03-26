@@ -48,7 +48,7 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
 
   const formInputs = (
     <>
-      <Select name='language' id='language' label='Language' options={languageOptions} defaultOption={defaultLanguage} />
+      <Select inputId={InputID.LanguageSelect} name='language' id='language' options={languageOptions} defaultOption={defaultLanguage} />
       <Checkbox inputId={InputID.isDarkModeCheckbox} name='isDarkMode' id='isDarkMode' defaultValue={settingsInitialValues.isDarkMode} />
       <Checkbox
         inputId={InputID.isSoundsCheckbox}

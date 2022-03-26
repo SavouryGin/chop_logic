@@ -1,6 +1,6 @@
 import { SelectEntity } from 'types';
 
 export const languageOptions: SelectEntity[] = [
-  { option: 'English', value: 'en' },
-  { option: 'Russian', value: 'ru' },
+  { option: { en: 'English', ru: 'Английский' }, value: 'en' },
+  { option: { en: 'Russian', ru: 'Русский' }, value: 'ru' },
 ];
