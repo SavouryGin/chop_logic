@@ -1,4 +1,4 @@
-import { ButtonID } from 'enums';
+import { ButtonID, InputID } from 'enums';
 
 export type Language = 'ru' | 'en';
 
@@ -8,6 +8,14 @@ export type ButtonText = {
   [key in ButtonID]: {
     title: LocalText;
     innerText?: LocalText;
+  };
+};
+
+export type InputText = {
+  [key in InputID]: {
+    label: LocalText;
+    defaultTextValue?: LocalText;
+    placeholder?: LocalText;
   };
 };
 
