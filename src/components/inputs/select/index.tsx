@@ -2,7 +2,9 @@ import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
 import { Guid } from 'guid-typescript';
+import { InputID } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
+import { inputTexts } from 'assets/texts/ui-elements';
 import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { FormContext } from 'components/form';
@@ -13,30 +15,32 @@ import './styles.scss';
 export type SelectProps = ComponentProps &
   InputHandlersProps & {
     name: string;
-    label: string;
     options: SelectEntity[];
+    inputId: InputID;
+    label?: string;
     defaultOption?: SelectEntity;
     isRequired?: boolean;
     isDisabled?: boolean;
     formId?: string;
   };
 
-function Select(props: SelectProps): React.ReactElement {
-  const { options, className, id, name, label, defaultOption, onChange } = props;
-  const inputId = id || Guid.create().toString();
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!props.isDisabled, select_dark: isDarkMode }]);
-  const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
-  const [selectedValue, setSelectedValue] = useState(defaultOption);
+function Select({ options, className, inputId, name, defaultOption, onChange, ...rest }: SelectProps): React.ReactElement {
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
+  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.getLanguage);
+  const id = rest.id || `select_id_${inputId}`;
+  const labelText = rest.label || inputTexts[inputId].label[language];
+  const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!rest.isDisabled, select_dark: isDarkMode }]);
+  const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
+  const [selectedValue, setSelectedValue] = useState(defaultOption);
 
   const optionList = options.map((item) => {
     const key = Guid.create().toString();
     return (
       <option value={item.value} key={key}>
-        {item.option}
+        {item.option[language]}
       </option>
     );
   });
@@ -54,19 +58,19 @@ function Select(props: SelectProps): React.ReactElement {
     <div className={wrapperClassNames}>
       <select
         name={name}
-        id={inputId}
+        id={id}
         value={selectedValue?.value}
-        form={props.formId}
-        disabled={props.isDisabled}
-        required={props.isRequired}
+        form={rest.formId}
+        disabled={rest.isDisabled}
+        required={rest.isRequired}
         className={selectClassNames}
         onChange={onSelectChange}
-        onBlur={props.onBlur}
-        onFocus={props.onFocus}
+        onBlur={rest.onBlur}
+        onFocus={rest.onFocus}
       >
         {optionList}
       </select>
-      <Label inputId={inputId} text={label} isRequired={props.isRequired} isDarkMode={isDarkMode} className={'select__label'} />
+      <Label id={id} text={labelText} isRequired={rest.isRequired} isDarkMode={isDarkMode} className={'select__label'} />
     </div>
   );
 }

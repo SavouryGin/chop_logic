@@ -37,7 +37,7 @@ export type InputHandlersProps = {
 };
 
 export type SelectEntity = {
-  option: string;
+  option: LocalText;
   value: string | number;
   [key: string]: unknown;
 };

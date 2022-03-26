@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, InputHandlersProps } from 'types';
-import { Guid } from 'guid-typescript';
 import { settingsSelectors } from 'store/settings/selectors';
 import { inputTexts } from 'assets/texts/ui-elements';
 import { useAppSelector } from 'hooks';
@@ -54,10 +53,10 @@ function Checkbox({ name, onChange, inputId, ...rest }: CheckboxProps): React.Re
         name={name}
         className={inputClassNames}
         disabled={rest.isDisabled}
+        checked={isChecked}
         onChange={onCheckboxChange}
         onBlur={rest.onBlur}
         onFocus={rest.onFocus}
-        checked={isChecked}
       ></input>
       <Label text={labelText} id={id} isRequired={rest.isRequired} isDarkMode={isDarkMode} className={labelClassNames} />
     </div>
