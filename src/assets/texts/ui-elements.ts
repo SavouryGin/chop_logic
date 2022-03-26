@@ -3,6 +3,8 @@ import { ButtonText, LocalText } from 'types';
 
 export const navHeaderText: LocalText = { en: 'Navigation', ru: 'Навигация' };
 
+export const footerText: LocalText = { en: 'Dmitrii Suroviagin', ru: 'Дмитрий Суровягин' };
+
 export const buttonTexts: ButtonText = {
   [ButtonID.Cancel]: {
     title: { en: 'Cancel', ru: 'Отмена' },
