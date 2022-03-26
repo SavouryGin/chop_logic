@@ -5,6 +5,7 @@ import { routesMap } from 'components/app-router/map';
 import { ComponentProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
+import { navHeaderText } from 'assets/texts/ui-elements';
 
 import './styles.scss';
 
@@ -12,19 +13,20 @@ export type NavigationProps = ComponentProps;
 
 function Navigation(props: NavigationProps): React.ReactElement {
   const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);
+  const language = useAppSelector(settingsSelectors.getLanguage);
   const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
 
   const links = routesMap.map((item) => {
     return (
       <li key={item.key}>
-        <AppLink path={item.url} text={item.title} isNavigation icon={item.icon} />
+        <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
       </li>
     );
   });
 
   return (
     <nav className={navigationClassNames}>
-      <h2 className='navigation__header'>Navigation</h2>
+      <h2 className='navigation__header'>{navHeaderText[language]}</h2>
       <ul className='navigation__list'>{links}</ul>
     </nav>
   );

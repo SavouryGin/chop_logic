@@ -1,14 +1,16 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
-import { Icon } from 'enums';
+import { ButtonID, Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
 import './styles.scss';
+import { buttonTexts } from 'assets/texts/ui-elements';
 
 export type ButtonProps = ComponentProps & {
-  title: string;
+  buttonId: ButtonID;
+  title?: string;
   icon?: Icon;
   text?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -17,9 +19,12 @@ export type ButtonProps = ComponentProps & {
   sound?: HTMLAudioElement;
 };
 
-function Button({ text, className, onClick, icon, title, sound, size = 'normal', ...rest }: ButtonProps): React.ReactElement {
+function Button({ className, onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.getLanguage);
+  const buttonTitle = rest.text || buttonTexts[buttonId].title[language];
+  const buttonText = rest.title || buttonTexts[buttonId].innerText?.[language];
   const buttonClassNames = formatClassName([
     'button',
     className,
@@ -37,10 +42,16 @@ function Button({ text, className, onClick, icon, title, sound, size = 'normal',
   };
 
   return (
-    <button type={rest.type || 'button'} title={title} className={buttonClassNames} onClick={onButtonClick} id={rest.id}>
+    <button
+      type={rest.type || 'button'}
+      title={buttonTitle}
+      className={buttonClassNames}
+      onClick={onButtonClick}
+      id={`button_id_${buttonId}`}
+    >
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>
-      <span className={frontClassNames}>{text}</span>
+      <span className={frontClassNames}>{buttonText}</span>
     </button>
   );
 }
