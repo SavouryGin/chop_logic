@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { InputID } from 'enums';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import TextInput from '../text-input';
@@ -10,6 +11,7 @@ import TextInput from '../text-input';
 const testProps = {
   name: 'test input',
   label: 'test label',
+  inputId: InputID.DefaultInput,
 };
 
 const mockedReducer = combineReducers({

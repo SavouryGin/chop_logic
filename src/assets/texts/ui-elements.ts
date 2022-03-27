@@ -36,6 +36,9 @@ export const buttonTexts: ButtonText = {
 };
 
 export const inputTexts: InputText = {
+  [InputID.DefaultInput]: {
+    label: { en: 'Input', ru: 'Ввод' },
+  },
   [InputID.LanguageSelect]: {
     label: { en: 'Language', ru: 'Язык' },
   },

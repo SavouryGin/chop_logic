@@ -4,12 +4,14 @@ import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { InputID } from 'enums';
 
 import Checkbox from '../checkbox';
 
 const testProps = {
   name: 'test checkbox',
   label: 'test label',
+  inputId: InputID.isDarkModeCheckbox,
 };
 
 const mockedReducer = combineReducers({

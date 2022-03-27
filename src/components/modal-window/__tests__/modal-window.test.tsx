@@ -5,6 +5,8 @@ import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
 import { testText } from '__mocks__/test-text';
+import { ButtonID } from 'enums';
+import { buttonTexts } from 'assets/texts/ui-elements';
 import ModalWindow from '../index';
 
 const mockedReducer = combineReducers({
@@ -17,14 +19,12 @@ const mockedState = {
 
 describe('ModalWindow component:', () => {
   const mockClose = jest.fn();
-  const mockConfirm = jest.fn();
   const modalContainer = document.createElement('div');
   modalContainer.setAttribute('id', 'modal');
 
   const testProps = {
     isOpened: true,
     onClose: mockClose,
-    onConfirm: mockConfirm,
     title: 'Test modal',
     className: 'test-classname',
     content: <>{testText}</>,
@@ -48,26 +48,14 @@ describe('ModalWindow component:', () => {
     expect(header).toHaveClass('modal-window__header');
   });
 
-  it('renders the footer component', () => {
-    const footer = screen.getByRole('contentinfo');
-    expect(footer).toBeInTheDocument();
-    expect(footer).toHaveClass('modal-window__footer');
-  });
-
   it('contains two buttons by default', () => {
-    expect(screen.getAllByRole('button')).toHaveLength(2);
+    expect(screen.getAllByRole('button')).toHaveLength(1);
   });
 
   it('the Close buttons reacts on click', async () => {
-    const closeBtn = screen.getByTitle(/Close/i);
+    const closeBtn = screen.getByTitle(buttonTexts[ButtonID.Cancel].title.en);
     userEvent.click(closeBtn);
     await waitFor(() => expect(mockClose).toHaveBeenCalledTimes(1));
-  });
-
-  it('the Confirm button react on click', async () => {
-    const confirmBtn = screen.getByTitle(/Ok/i);
-    userEvent.click(confirmBtn);
-    await waitFor(() => expect(mockConfirm).toHaveBeenCalledTimes(1));
   });
 
   it('renders the content section', () => {
