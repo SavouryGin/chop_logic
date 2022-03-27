@@ -23,8 +23,8 @@ function Button({ className, onClick, icon, sound, size = 'normal', buttonId, ..
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const buttonTitle = rest.text || buttonTexts[buttonId].title[language];
-  const buttonText = rest.title || buttonTexts[buttonId].innerText?.[language];
+  const buttonTitle = rest.title || buttonTexts[buttonId].title[language];
+  const buttonText = rest.text || buttonTexts[buttonId].innerText?.[language];
   const buttonClassNames = formatClassName([
     'button',
     className,
