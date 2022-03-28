@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { soundPlayer } from 'helpers/sounds';
-import { settingsText } from 'assets/texts/ui-elements';
+import { settingsText } from 'components/app-settings/constants';
 
 function RightHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();

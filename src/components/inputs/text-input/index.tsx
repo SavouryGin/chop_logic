@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { InputID } from 'enums';
 import { ComponentProps, InputHandlersProps } from 'types';
-import { inputTexts } from 'assets/texts/ui-elements';
+import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, InputHandlersProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
-import { inputTexts } from 'assets/texts/ui-elements';
+import { inputTexts } from 'assets/texts';
 import { useAppSelector } from 'hooks';
 import { Icon, InputID } from 'enums';
 import { FormContext } from 'components/form';
