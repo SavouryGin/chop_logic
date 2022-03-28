@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { soundPlayer } from 'helpers/sounds';
-import { settingsText } from 'components/app-settings/constants';
+import { uiElementTexts } from 'assets/texts';
 
 function RightHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -75,7 +75,12 @@ function RightHeaderPanel(): React.ReactElement {
         icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
         sound={soundPlayer.keyboard}
       />
-      <ModalWindow isOpened={isSettingOpened} onClose={onClickSettingButton} title={settingsText[language]} content={<AppSettings />} />
+      <ModalWindow
+        isOpened={isSettingOpened}
+        onClose={onClickSettingButton}
+        title={uiElementTexts.settings[language]}
+        content={<AppSettings />}
+      />
     </>
   );
 }

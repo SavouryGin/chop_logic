@@ -60,7 +60,7 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
   );
 
   return (
-    <div className={settingsClassNames}>
+    <div className={settingsClassNames} data-testid='settings'>
       <Form
         onSubmit={onSubmit}
         initialValues={settingsInitialValues}
