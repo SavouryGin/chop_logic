@@ -4,9 +4,9 @@ import userEvent from '@testing-library/user-event';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
-import { buttonTexts } from 'assets/texts/ui-elements';
-import Layout from '../index';
+import { buttonTexts } from 'assets/texts';
 import { ButtonID } from 'enums';
+import Layout from '../index';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,

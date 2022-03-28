@@ -3,7 +3,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
-import { footerText } from 'assets/texts/ui-elements';
+import { uiElementTexts } from 'assets/texts';
 import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 
@@ -25,7 +25,7 @@ function Footer(props: FooterProps): React.ReactElement {
 
   return (
     <footer className={footerClassNames}>
-      <span className='footer__copyright'>{`© ${footerText[language]}, 2022`}</span>
+      <span className='footer__copyright'>{`© ${uiElementTexts.footer[language]}, 2022`}</span>
       <span className={linkClassNames}>
         <a href='mailto:savourygin@gmail.com' target='_blank' rel='noreferrer' className={Icon.Mail} onMouseOver={onLinkHover}>
           Mail

@@ -4,9 +4,9 @@ import { ComponentProps } from 'types';
 import { ButtonID, Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
+import { buttonTexts } from 'assets/texts';
 
 import './styles.scss';
-import { buttonTexts } from 'assets/texts/ui-elements';
 
 export type ButtonProps = ComponentProps & {
   buttonId: ButtonID;

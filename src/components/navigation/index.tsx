@@ -5,9 +5,9 @@ import { routesMap } from 'components/app-router/map';
 import { ComponentProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
-import { navHeaderText } from 'assets/texts/ui-elements';
 
 import './styles.scss';
+import { uiElementTexts } from 'assets/texts';
 
 export type NavigationProps = ComponentProps;
 
@@ -26,7 +26,7 @@ function Navigation(props: NavigationProps): React.ReactElement {
 
   return (
     <nav className={navigationClassNames}>
-      <h2 className='navigation__header'>{navHeaderText[language]}</h2>
+      <h2 className='navigation__header'>{uiElementTexts.navHeader[language]}</h2>
       <ul className='navigation__list'>{links}</ul>
     </nav>
   );
