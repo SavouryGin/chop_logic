@@ -1,5 +1,12 @@
 import { ButtonID } from 'enums';
-import { ButtonText } from 'types';
+import { LocalText } from 'types';
+
+type ButtonText = {
+  [key in ButtonID]: {
+    title: LocalText;
+    innerText?: LocalText;
+  };
+};
 
 export const buttonTexts: ButtonText = {
   [ButtonID.Cancel]: {
