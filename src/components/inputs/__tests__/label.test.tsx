@@ -6,7 +6,7 @@ import Label from 'components/inputs/label';
 
 const testProps = {
   text: 'test-label',
-  inputId: 'test-id',
+  id: 'test-id',
 };
 
 describe('Label component:', () => {

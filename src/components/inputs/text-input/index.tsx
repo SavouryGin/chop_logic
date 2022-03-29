@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { InputID } from 'enums';
 import { ComponentProps, InputHandlersProps } from 'types';
-import { inputTexts } from 'assets/texts/ui-elements';
+import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
@@ -47,8 +47,8 @@ function TextInput({ name, inputId, onChange, ...rest }: TextInputProps): React.
   const fieldClassNames = formatClassName(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
   const id = rest.id || `text_input_id_${inputId}`;
   const labelText = rest.label || inputTexts[inputId].label[language];
-  const placeholderText = rest.placeholder || inputTexts[inputId].placeholder?.[language];
-  const defaultValue = rest.defaultValue || inputTexts[inputId].defaultTextValue?.[language];
+  const placeholderText = rest.placeholder || inputTexts[inputId]?.placeholder?.[language];
+  const defaultValue = rest.defaultValue || inputTexts[inputId]?.defaultTextValue?.[language];
   const [inputValue, setInputValue] = useState(defaultValue || '');
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

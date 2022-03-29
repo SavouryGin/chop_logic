@@ -51,7 +51,7 @@ describe('Navigation component:', () => {
   it('each list item displays the page title', () => {
     const listItems = screen.getAllByRole('listitem');
     for (let i = 0; i < listItems.length; i++) {
-      expect(listItems[i]).toHaveTextContent(routesMap[i].title);
+      expect(listItems[i]).toHaveTextContent(routesMap[i].title.en);
     }
   });
 

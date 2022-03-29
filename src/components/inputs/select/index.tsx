@@ -4,10 +4,10 @@ import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
 import { Guid } from 'guid-typescript';
 import { InputID } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
-import { inputTexts } from 'assets/texts/ui-elements';
 import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
 import { FormContext } from 'components/form';
+import { inputTexts } from 'assets/texts';
 import Label from '../label';
 
 import './styles.scss';

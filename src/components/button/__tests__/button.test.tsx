@@ -1,16 +1,17 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Icon } from 'enums';
+import { ButtonID, Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { buttonTexts } from 'assets/texts';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import Button from '../index';
 
 const testProps = {
   icon: Icon.Default,
-  title: 'Test title',
+  buttonId: ButtonID.Cancel,
 };
 
 const mockedReducer = combineReducers({
@@ -59,7 +60,8 @@ describe('Button component:', () => {
 
   it('has the title attribute', () => {
     renderWithRedux(<Button {...testProps} />, mockedReducer, mockedState);
-    expect(screen.getByRole('button')).toHaveProperty('title', testProps.title);
+    const title = buttonTexts[testProps.buttonId].title.en;
+    expect(screen.getByRole('button')).toHaveProperty('title', title);
   });
 
   it('the text container has the icon class name', () => {

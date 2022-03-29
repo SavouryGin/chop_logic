@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
+
 import Header from '../index';
 
 const mockedReducer = combineReducers({
