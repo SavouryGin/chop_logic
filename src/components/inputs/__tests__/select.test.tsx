@@ -4,20 +4,21 @@ import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { SelectEntity } from 'types';
+import { InputID } from 'enums';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
-import Select from '../select';
+import Select from 'components/inputs/select';
 
 const testSelectOptions: SelectEntity[] = [
-  { option: 'One', value: 1, add: 123 },
-  { option: 'Two', value: 2, asdf: 'asdf' },
-  { option: 'Three', value: 3, asdf: {} },
+  { option: { en: 'One', ru: 'Один' }, value: 1, add: 123 },
+  { option: { en: 'Two', ru: 'Два' }, value: 2, asdf: 'asdf' },
+  { option: { en: 'Three', ru: 'Три' }, value: 3, asdf: {} },
 ];
 
 const testProps = {
   name: 'test input',
   label: 'test label',
-  id: 'test-id',
+  inputId: InputID.LanguageSelect,
   options: testSelectOptions,
 };
 
@@ -49,7 +50,7 @@ describe('Select component:', () => {
     const options = screen.queryAllByRole('option');
     expect(options).toHaveLength(testSelectOptions.length);
     for (let i = 0; i < testSelectOptions.length; i++) {
-      expect(options[i]).toHaveTextContent(testSelectOptions[i].option);
+      expect(options[i]).toHaveTextContent(testSelectOptions[i].option.en);
     }
   });
 
@@ -66,7 +67,7 @@ describe('Select component:', () => {
   it('allows the user to select an option', () => {
     renderWithRedux(<Select {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('combobox');
-    userEvent.selectOptions(input, testSelectOptions[1].option);
+    userEvent.selectOptions(input, testSelectOptions[1].option.en);
     expect(input).toHaveValue(testSelectOptions[1].value.toString());
   });
 
@@ -74,7 +75,7 @@ describe('Select component:', () => {
     const mockChange = jest.fn();
     renderWithRedux(<Select {...testProps} onChange={mockChange} />, mockedReducer, mockedState);
     const input = screen.getByRole('combobox');
-    userEvent.selectOptions(input, testSelectOptions[1].option);
+    userEvent.selectOptions(input, testSelectOptions[1].option.en);
     expect(mockChange).toHaveBeenCalledTimes(1);
   });
 

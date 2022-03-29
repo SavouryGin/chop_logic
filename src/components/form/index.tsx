@@ -35,7 +35,7 @@ function Form({ className, onSubmit, inputs, initialValues, getValues, submitBut
   }, [formValues]);
 
   return (
-    <form className={formClassNames} action={rest.action || '/'} onSubmit={onSubmit}>
+    <form className={formClassNames} aria-label='form' action={rest.action || '/'} onSubmit={onSubmit}>
       <FormContext.Provider
         value={{
           formValues,
