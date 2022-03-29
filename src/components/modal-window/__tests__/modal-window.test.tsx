@@ -7,6 +7,7 @@ import { settingsSlice, settingsInitialState } from 'store/settings/slice';
 import { testText } from '__mocks__/test-text';
 import { ButtonID } from 'enums';
 import { buttonTexts } from 'assets/texts';
+
 import ModalWindow from '../index';
 
 const mockedReducer = combineReducers({

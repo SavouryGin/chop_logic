@@ -6,7 +6,7 @@ import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { InputID } from 'enums';
 
-import Checkbox from '../checkbox';
+import Checkbox from 'components/inputs/checkbox';
 
 const testProps = {
   name: 'test checkbox',

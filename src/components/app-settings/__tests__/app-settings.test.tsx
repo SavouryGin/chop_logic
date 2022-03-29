@@ -7,6 +7,7 @@ import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { buttonTexts, inputTexts } from 'assets/texts';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { languageOptions } from '../constants';
+
 import AppSettings from '../index';
 
 const mockedReducer = combineReducers({

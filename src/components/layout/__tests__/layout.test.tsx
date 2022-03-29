@@ -6,6 +6,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
 import { buttonTexts } from 'assets/texts';
 import { ButtonID } from 'enums';
+
 import Layout from '../index';
 
 const mockedReducer = combineReducers({

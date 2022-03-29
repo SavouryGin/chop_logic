@@ -12,8 +12,7 @@ export type LabelProps = ComponentProps & {
   isDarkMode?: boolean;
 };
 
-function Label(props: LabelProps): React.ReactElement {
-  const { text, isRequired, isDarkMode, className, id } = props;
+function Label({ text, isRequired, isDarkMode, className, id }: LabelProps): React.ReactElement {
   const labelClassNames = formatClassName(['label', className, { label_required: !!isRequired, label_dark: !!isDarkMode }]);
   const requiredClassNames = formatClassName(['label__asterisk', Icon.Required, { label__asterisk_dark: !!isDarkMode }]);
 
