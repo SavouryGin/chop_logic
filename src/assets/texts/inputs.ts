@@ -1,5 +1,13 @@
 import { InputID } from 'enums';
-import { InputText } from 'types';
+import { LocalText } from 'types';
+
+type InputText = {
+  [key in InputID]: {
+    label: LocalText;
+    defaultTextValue?: LocalText;
+    placeholder?: LocalText;
+  };
+};
 
 export const inputTexts: InputText = {
   [InputID.DefaultInput]: {
