@@ -6,7 +6,7 @@ import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { InputID } from 'enums';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
-import TextInput from '../text-input';
+import TextInput from 'components/inputs/text-input';
 
 const testProps = {
   name: 'test input',

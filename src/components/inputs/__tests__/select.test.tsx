@@ -7,7 +7,7 @@ import { SelectEntity } from 'types';
 import { InputID } from 'enums';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
-import Select from '../select';
+import Select from 'components/inputs/select';
 
 const testSelectOptions: SelectEntity[] = [
   { option: { en: 'One', ru: 'Один' }, value: 1, add: 123 },
