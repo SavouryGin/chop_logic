@@ -73,4 +73,28 @@
     box-shadow: $dark-box-shadow;
     @include scrollbar-styles(dark);
   }
+
+  // Small screen styles
+  @media (max-width: $max-small-screen-width) {
+    grid-template-columns: 1fr 10fr 1fr;
+
+    &__navigation,
+    &__sidebar {
+      position: absolute;
+      top: $header-height + $block-gap;
+      z-index: 3;
+      background-color: $light-background-color;
+      &_dark {
+        background-color: $dark-background-color;
+      }
+    }
+
+    &__navigation {
+      left: 0;
+    }
+
+    &__sidebar {
+      right: 0;
+    }
+  }
 }

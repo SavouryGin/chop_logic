@@ -27,4 +27,9 @@
       margin-left: $big-margin;
     }
   }
+
+  // Small screen styles
+  @media (max-width: $max-small-screen-width) {
+    grid-template-columns: 1fr 5fr 5fr 1fr;
+  }
 }
