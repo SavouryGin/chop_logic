@@ -31,4 +31,27 @@
   @media (max-width: $max-small-screen-width) {
     grid-template-columns: 3fr 6fr 3fr;
   }
+
+  // Tablet screen styles
+  @media (max-width: $max-table-width) {
+    grid-template-columns: 1fr 8fr 3fr;
+    grid-template-areas: 'header-left header-center header-right';
+
+    &__left-panel {
+      #button_id_2,
+      #button_id_3 {
+        display: none;
+      }
+    }
+
+    &__heading {
+      justify-self: start;
+    }
+
+    &__right-panel {
+      #button_id_5 {
+        display: none;
+      }
+    }
+  }
 }
