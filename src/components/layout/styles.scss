@@ -1,6 +1,7 @@
 @import 'styles/fonts.scss';
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
 @import 'styles/mixins/theme-colors.scss';
 @import 'styles/mixins/scrollbar-styles.scss';
 
@@ -17,9 +18,9 @@
   grid-template-columns: 2fr 10fr 2fr;
   grid-template-rows: $header-height auto $footer-height;
   grid-template-areas:
-    'page-header  page-header  page-header'
+    'page-header page-header page-header'
     'page-navigation page-content page-sidebar'
-    'page-footer  page-footer  page-footer';
+    'page-footer page-footer page-footer';
 
   // Grid areas
   &__header {
@@ -82,7 +83,7 @@
     &__sidebar {
       position: absolute;
       top: $header-height + $block-gap;
-      z-index: 3;
+      z-index: $panel-z-index;
       background-color: $light-background-color;
       &_dark {
         background-color: $dark-background-color;
