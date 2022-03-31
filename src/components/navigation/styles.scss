@@ -25,4 +25,11 @@
       font-size: $small-font-size;
     }
   }
+
+  // Small screen styles
+  @media (max-width: $max-small-screen-width) {
+    li {
+      font-size: $base-font-size;
+    }
+  }
 }

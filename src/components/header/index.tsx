@@ -11,9 +11,9 @@ import './styles.scss';
 
 export type HeaderProps = ComponentProps;
 
-function Header(props: HeaderProps): React.ReactElement {
+function Header({ className }: HeaderProps): React.ReactElement {
   return (
-    <header className={formatClassName(['header', props.className])}>
+    <header className={formatClassName(['header', className])}>
       <div className='header__left-panel'>
         <LeftHeaderPanel />
       </div>

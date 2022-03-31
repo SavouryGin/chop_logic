@@ -17,11 +17,12 @@ export type AppLinkProps = {
   className?: ClassNameProp;
 };
 
-function AppLink(props: AppLinkProps): React.ReactElement {
-  const { path, text, isNavigation, className, icon } = props;
+function AppLink({ path, text, isNavigation, icon, ...rest }: AppLinkProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const classNames = formatClassName(['app-link', className, { 'app-link_dark': isDarkMode }]);
+
+  const classNames = formatClassName(['app-link', rest.className, { 'app-link_dark': isDarkMode }]);
+
   const onLinkHover = () => {
     isSoundsEnabled && soundPlayer.snap.play();
   };
