@@ -11,11 +11,11 @@ import './styles.scss';
 
 export type FooterProps = ComponentProps;
 
-function Footer(props: FooterProps): React.ReactElement {
-  const { className } = props;
+function Footer({ className }: FooterProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
+
   const footerClassNames = formatClassName(['footer', className]);
   const linkClassNames = formatClassName(['footer__links', { footer__links_dark: isDarkMode }]);
 

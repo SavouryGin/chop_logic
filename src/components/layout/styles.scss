@@ -1,6 +1,7 @@
 @import 'styles/fonts.scss';
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
 @import 'styles/mixins/theme-colors.scss';
 @import 'styles/mixins/scrollbar-styles.scss';
 
@@ -17,9 +18,9 @@
   grid-template-columns: 2fr 10fr 2fr;
   grid-template-rows: $header-height auto $footer-height;
   grid-template-areas:
-    'page-header  page-header  page-header'
+    'page-header page-header page-header'
     'page-navigation page-content page-sidebar'
-    'page-footer  page-footer  page-footer';
+    'page-footer page-footer page-footer';
 
   // Grid areas
   &__header {
@@ -72,5 +73,39 @@
   &__sidebar_dark {
     box-shadow: $dark-box-shadow;
     @include scrollbar-styles(dark);
+  }
+
+  // Small screen styles
+  @media (max-width: $max-small-screen-width) {
+    grid-template-columns: 0.5fr 11fr 0.5fr;
+
+    &__navigation,
+    &__sidebar {
+      position: absolute;
+      top: $header-height + $block-gap;
+      z-index: $panel-z-index;
+      background-color: $light-background-color;
+      &_dark {
+        background-color: $dark-background-color;
+      }
+    }
+
+    &__navigation {
+      left: 0;
+    }
+
+    &__sidebar {
+      right: 0;
+    }
+  }
+
+  // Tablet screen styles
+  @media (max-width: $max-table-width) {
+    grid-template-columns: 0.2fr 11.6fr 0.2fr;
+  }
+
+  // Mobile screen styles
+  @media (max-width: $max-mobile-width) {
+    grid-template-columns: 0.1fr 11.8fr 0.1fr;
   }
 }
