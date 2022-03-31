@@ -49,9 +49,20 @@
     }
 
     &__right-panel {
+      justify-self: end;
       #button_id_5 {
         display: none;
       }
+    }
+  }
+
+  // Mobile screen styles
+  @media (max-width: $max-mobile-width) {
+    grid-gap: $default-margin;
+    grid-template-columns: 1fr 5fr 6fr;
+
+    &__heading {
+      font-size: $base-font-size;
     }
   }
 }
