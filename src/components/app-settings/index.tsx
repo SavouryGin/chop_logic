@@ -16,7 +16,6 @@ export type AppSettingsProps = ComponentProps;
 
 function AppSettings({ className }: AppSettingsProps): React.ReactElement {
   const dispatch = useAppDispatch();
-  const settingsClassNames = formatClassName(['settings', className]);
   const settingsInitialValues = {
     isDarkMode: useAppSelector(selectors.getIsDarkMode),
     isSoundsEnabled: useAppSelector(selectors.getIsSoundsEnabled),
@@ -24,6 +23,7 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
   };
   const [formValues, setFormValues] = useState(settingsInitialValues);
   const defaultLanguage = languageOptions.find((item) => item.value === settingsInitialValues.language);
+  const settingsClassNames = formatClassName(['settings', className]);
 
   const closePopup = () => {
     dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
@@ -48,14 +48,9 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
 
   const formInputs = (
     <>
-      <Select inputId={InputID.LanguageSelect} name='language' id='language' options={languageOptions} defaultOption={defaultLanguage} />
-      <Checkbox inputId={InputID.isDarkModeCheckbox} name='isDarkMode' id='isDarkMode' defaultValue={settingsInitialValues.isDarkMode} />
-      <Checkbox
-        inputId={InputID.isSoundsCheckbox}
-        name='isSoundsEnabled'
-        id='isSoundsEnabled'
-        defaultValue={settingsInitialValues.isSoundsEnabled}
-      />
+      <Select inputId={InputID.LanguageSelect} name='language' options={languageOptions} defaultOption={defaultLanguage} />
+      <Checkbox inputId={InputID.isDarkModeCheckbox} name='isDarkMode' defaultValue={settingsInitialValues.isDarkMode} />
+      <Checkbox inputId={InputID.isSoundsCheckbox} name='isSoundsEnabled' defaultValue={settingsInitialValues.isSoundsEnabled} />
     </>
   );
 

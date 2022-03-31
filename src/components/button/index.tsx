@@ -19,25 +19,24 @@ export type ButtonProps = ComponentProps & {
   sound?: HTMLAudioElement;
 };
 
-function Button({ className, onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps): React.ReactElement {
+function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
   const buttonTitle = rest.title || buttonTexts[buttonId].title[language];
   const buttonText = rest.text || buttonTexts[buttonId].innerText?.[language];
-  const buttonClassNames = formatClassName([
-    'button',
-    className,
-    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large' },
-  ]);
+
   const shadowClassNames = formatClassName(['button__shadow', { button__shadow_dark: isDarkMode }]);
   const edgeClassNames = formatClassName(['button__edge', { button__edge_dark: isDarkMode }]);
   const frontClassNames = formatClassName(['button__front', icon, { button__front_dark: isDarkMode }]);
+  const buttonClassNames = formatClassName([
+    'button',
+    rest.className,
+    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large' },
+  ]);
 
   const onButtonClick = () => {
-    if (sound && isSoundEnabled) {
-      sound.play();
-    }
+    if (sound && isSoundEnabled) sound.play();
     if (onClick) onClick();
   };
 
