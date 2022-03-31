@@ -19,14 +19,15 @@ export type ModalWindowProps = ComponentProps & {
   content?: React.ReactElement;
 };
 
-function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
-  const { className, isOpened, onClose, content, title } = props;
+function ModalWindow({ isOpened, onClose, content, title, ...rest }: ModalWindowProps): React.ReactElement | null {
   const targetElement = document.getElementById('modal');
   if (!isOpened || !targetElement) return null;
+
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isAnimationActive = useAppSelector(settingsSelectors.getIsModalWindowClosingAnimationActive);
   const browser = detectBrowser();
+
   const contentClassNames = formatClassName([
     'modal-window__content',
     { 'modal-window__content_dark': isDarkMode, 'modal-window__content_for-firefox': browser === Browser.Firefox },
@@ -35,10 +36,9 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
     'modal-background',
     { 'modal-background_dark': isDarkMode, 'modal-background_closing': isAnimationActive },
   ]);
-
   const windowClassNames = formatClassName([
     'modal-window',
-    className,
+    rest.className,
     { 'modal-window_dark': isDarkMode, 'modal-window_closing': isAnimationActive },
   ]);
 
@@ -52,7 +52,7 @@ function ModalWindow(props: ModalWindowProps): React.ReactElement | null {
   };
 
   const window = (
-    <div className={windowClassNames} role='dialog' aria-modal='true' id={props.id}>
+    <div className={windowClassNames} role='dialog' aria-modal='true' id={rest.id}>
       <header className='modal-window__header' id='modal-window-heading'>
         {title}
         <Button buttonId={ButtonID.Cancel} onClick={onClickClose} icon={Icon.Cancel} sound={soundPlayer.slideClick} size='small' />
