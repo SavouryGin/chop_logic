@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
+import { Guid } from 'guid-typescript';
 import { ComponentProps, InputHandlersProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { inputTexts } from 'assets/texts';
@@ -14,7 +15,7 @@ import './styles.scss';
 export type CheckboxProps = ComponentProps &
   InputHandlersProps & {
     name: string;
-    inputId: InputID;
+    inputId?: InputID;
     label?: string;
     defaultValue?: boolean;
     isDisabled?: boolean;
@@ -28,8 +29,8 @@ function Checkbox({ name, onChange, inputId, ...rest }: CheckboxProps): React.Re
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
   const [isChecked, setIsChecked] = useState(!!rest.defaultValue || false);
-  const id = rest.id || `checkbox_id_${inputId}`;
-  const labelText = rest.label || inputTexts[inputId].label[language];
+  const id = inputId ? `checkbox_id_${inputId}` : rest.id || Guid.create().toString();
+  const labelText = inputId ? inputTexts[inputId].label[language] : rest.label;
   const checkboxClassNames = formatClassName(['checkbox-input', rest.className, { 'checkbox-input_disabled': !!rest.isDisabled }]);
   const labelClassNames = formatClassName([
     'checkbox-input__label',
