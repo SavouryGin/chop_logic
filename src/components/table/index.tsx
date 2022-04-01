@@ -6,46 +6,60 @@ import { settingsSelectors } from 'store/settings/selectors';
 
 import './styles.scss';
 
-export type TableProps = ComponentProps;
+export type TableDataItem = {
+  id: string;
+  [key: string]: unknown;
+};
 
-function Table(props: TableProps): React.ReactElement {
+export type TableProps = ComponentProps & {
+  columns: TableColumnProps[];
+  data: TableDataItem[];
+};
+
+export type TableColumnProps = {
+  // The field to which the column is bound
+  field?: string;
+  // The title of the column
+  title?: string;
+  // The width of the column (in pixels)
+  width?: string | number;
+  //The format that is applied to the value before it is displayed
+  format?: string;
+};
+
+function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const tableClassNames = formatClassName(['table', props.className, { table_dark: isDarkMode }]);
+  const tableClassNames = formatClassName(['table', rest.className, { table_dark: isDarkMode }]);
+
+  const headerCells = columns.map((column, index) => {
+    return <th key={index}>{column.title || ''}</th>;
+  });
+
+  const rows = data.map((item) => {
+    const values = [];
+    for (const column of columns) {
+      if (!column.field) continue;
+      const value = item[column.field];
+      values.push(value);
+    }
+
+    const dataCells = values.map((value, index) => {
+      return <td key={`${item.id}_${index}`}>{value as string}</td>;
+    });
+
+    return (
+      <tr key={item.id} id={item.id}>
+        {dataCells}
+      </tr>
+    );
+  });
 
   return (
     <table className={tableClassNames}>
       <thead>
-        <th>asd</th>
-        <th>Knocky</th>
-        <th>Flor</th>
-        <th>Ella</th>
-        <th>Juan</th>
+        <tr>{headerCells}</tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>asdf</td>
-          <td>Knocky</td>
-          <td>Flor</td>
-          <td>Ella</td>
-          <td>Juan</td>
-        </tr>
-        <tr>
-          <td>asdf</td>
-          <td>Knocky</td>
-          <td>Flor</td>
-          <td>Ella</td>
-          <td>Juan</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>asd</td>
-          <td>Knocky</td>
-          <td>Flor</td>
-          <td>Ella</td>
-          <td>Juan</td>
-        </tr>
-      </tfoot>
+      <tbody>{rows}</tbody>
     </table>
   );
 }
