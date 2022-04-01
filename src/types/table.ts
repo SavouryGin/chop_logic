@@ -3,6 +3,7 @@ import { ComponentProps } from './general';
 export type TableProps = ComponentProps & {
   columns: TableColumnProps[];
   data: TableDataItem[];
+  hasCheckboxColumn?: boolean;
 };
 
 export type TableColumnProps = {
