@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Guid } from 'guid-typescript';
 import { ComponentProps, InputHandlersProps } from 'types';
@@ -20,24 +20,28 @@ export type CheckboxProps = ComponentProps &
     defaultValue?: boolean;
     isDisabled?: boolean;
     isRequired?: boolean;
-    onChangeCheckboxValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    getCheckboxEvent?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setCheckboxValue?: boolean;
   };
 
-function Checkbox({ name, onChange, onChangeCheckboxValue, inputId, ...rest }: CheckboxProps): React.ReactElement {
+function Checkbox({ name, onChange, getCheckboxEvent, setCheckboxValue, inputId, ...rest }: CheckboxProps): React.ReactElement {
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
+  // Flags
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
+  // Values
   const [isChecked, setIsChecked] = useState(!!rest.defaultValue || false);
   const id = inputId ? `checkbox_id_${inputId}` : rest.id || Guid.create().toString();
   const labelText = inputId ? inputTexts[inputId].label[language] : rest.label;
+  // Class names
   const checkboxClassNames = formatClassName(['checkbox-input', rest.className, { 'checkbox-input_disabled': !!rest.isDisabled }]);
+  const inputClassNames = formatClassName(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
   const labelClassNames = formatClassName([
     'checkbox-input__label',
     { [Icon.Check]: isChecked, [Icon.Uncheck]: !isChecked, 'checkbox-input__label_dark': isDarkMode },
   ]);
-  const inputClassNames = formatClassName(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
@@ -45,8 +49,14 @@ function Checkbox({ name, onChange, onChangeCheckboxValue, inputId, ...rest }: C
     if (isSoundEnabled) soundPlayer.seatbelt.play();
     if (onChangeInput) onChangeInput(e);
     if (onChange) onChange();
-    if (onChangeCheckboxValue) onChangeCheckboxValue(e);
+    if (getCheckboxEvent) getCheckboxEvent(e);
   };
+
+  useEffect(() => {
+    if (typeof setCheckboxValue === 'boolean') {
+      setIsChecked(setCheckboxValue);
+    }
+  }, [setCheckboxValue]);
 
   return (
     <div className={checkboxClassNames}>
