@@ -56,7 +56,7 @@ function TextInput({ name, inputId, onChange, ...rest }: TextInputProps): React.
     setInputValue(value);
     if (isSoundEnabled) soundPlayer.snap.play();
     if (onChangeInput) onChangeInput(e);
-    if (onChange) onChange(e);
+    if (onChange) onChange();
   };
 
   return (
