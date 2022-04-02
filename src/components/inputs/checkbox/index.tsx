@@ -20,9 +20,10 @@ export type CheckboxProps = ComponentProps &
     defaultValue?: boolean;
     isDisabled?: boolean;
     isRequired?: boolean;
+    onChangeCheckboxValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-function Checkbox({ name, onChange, inputId, ...rest }: CheckboxProps): React.ReactElement {
+function Checkbox({ name, onChange, onChangeCheckboxValue, inputId, ...rest }: CheckboxProps): React.ReactElement {
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -43,7 +44,8 @@ function Checkbox({ name, onChange, inputId, ...rest }: CheckboxProps): React.Re
     setIsChecked(value);
     if (isSoundEnabled) soundPlayer.seatbelt.play();
     if (onChangeInput) onChangeInput(e);
-    if (onChange) onChange(e);
+    if (onChange) onChange();
+    if (onChangeCheckboxValue) onChangeCheckboxValue(e);
   };
 
   return (

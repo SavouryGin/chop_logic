@@ -51,7 +51,7 @@ function Select({ options, className, inputId, name, defaultOption, onChange, ..
     setSelectedValue(selected[0] || undefined);
     if (isSoundEnabled) soundPlayer.switch.play();
     if (onChangeInput) onChangeInput(e);
-    if (onChange) onChange(e);
+    if (onChange) onChange();
   };
 
   return (

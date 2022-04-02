@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Checkbox from 'components/inputs/checkbox';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { TableProps } from 'types/table';
+import { Guid } from 'guid-typescript';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { getDataCellsValues } from './helpers';
 
 import './styles.scss';
-import Checkbox from 'components/inputs/checkbox';
-import { Guid } from 'guid-typescript';
 
 function Table({ columns, data, hasCheckboxColumn, ...rest }: TableProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const tableClassNames = formatClassName(['table', rest.className, { table_dark: isDarkMode }]);
   const tableId = rest.id || Guid.create().toString();
   const selectAllCheckboxId = `select_all_in_${tableId}`;
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+  const onChangeRowCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { checked, id } = e.target;
+    if (checked) {
+      setSelectedIds([...selectedIds, id]);
+    } else {
+      setSelectedIds(selectedIds.filter((item) => item !== id));
+    }
+  };
+
+  useEffect(() => {
+    console.log('selectedIds', selectedIds);
+  }, [selectedIds]);
 
   const headerCheckbox = hasCheckboxColumn ? (
     <th>
@@ -34,12 +48,12 @@ function Table({ columns, data, hasCheckboxColumn, ...rest }: TableProps): React
 
     const cellCheckbox = hasCheckboxColumn ? (
       <td>
-        <Checkbox name={`select_${item.id}`} id={`select_${item.id}`} />
+        <Checkbox name={item.id} id={item.id} onChangeCheckboxValue={onChangeRowCheckbox} />
       </td>
     ) : null;
 
     return (
-      <tr key={item.id} id={item.id}>
+      <tr key={item.id}>
         {cellCheckbox}
         {dataCells}
       </tr>
