@@ -1,14 +1,13 @@
 import React from 'react';
 import Checkbox from 'components/inputs/checkbox';
 import { Guid } from 'guid-typescript';
+import { TableIdsProps } from 'types/table';
 
 import './styles.scss';
 
 type SelectAllCheckboxProps = {
-  selectedIds: string[];
-  setSelectedIds: (value: React.SetStateAction<string[]>) => void;
   allRowIds: string[];
-};
+} & TableIdsProps;
 
 function SelectAllCheckbox({ selectedIds, setSelectedIds, allRowIds }: SelectAllCheckboxProps): React.ReactElement {
   const tableId = Guid.create().toString();

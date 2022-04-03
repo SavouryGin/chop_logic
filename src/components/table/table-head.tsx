@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableColumnProps } from 'types/table';
+import { TableColumnProps, TableIdsProps } from 'types/table';
 import SelectAllCheckbox from './select-all-checkbox';
 
 import './styles.scss';
@@ -7,10 +7,8 @@ import './styles.scss';
 type TableHeadProps = {
   columns: TableColumnProps[];
   hasCheckboxColumn: boolean;
-  selectedIds: string[];
-  setSelectedIds: (value: React.SetStateAction<string[]>) => void;
   allRowIds: string[];
-};
+} & TableIdsProps;
 
 function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, allRowIds }: TableHeadProps): React.ReactElement {
   const headerCells = columns.map((column, index) => {

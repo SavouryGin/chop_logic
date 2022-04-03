@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableColumnProps, TableDataItem } from 'types/table';
+import { TableColumnProps, TableDataItem, TableIdsProps } from 'types/table';
 import SelectRowCheckbox from './select-row-checkbox';
 import { getDataCellsValues } from './helpers';
 
@@ -9,9 +9,7 @@ export type TableBodyProps = {
   data: TableDataItem[];
   columns: TableColumnProps[];
   hasCheckboxColumn: boolean;
-  selectedIds: string[];
-  setSelectedIds: (value: React.SetStateAction<string[]>) => void;
-};
+} & TableIdsProps;
 
 function TableBody({ data, columns, hasCheckboxColumn, selectedIds, setSelectedIds }: TableBodyProps): React.ReactElement {
   const rows = data.map((item) => {
