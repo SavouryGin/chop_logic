@@ -3,8 +3,8 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { TableProps } from 'types/table';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
-import TableHead from './table-head';
-import TableBody from './table-body';
+import TableHead from './components/table-head';
+import TableBody from './components/table-body';
 
 import './styles.scss';
 

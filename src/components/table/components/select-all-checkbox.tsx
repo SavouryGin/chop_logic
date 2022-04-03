@@ -3,8 +3,6 @@ import Checkbox from 'components/inputs/checkbox';
 import { Guid } from 'guid-typescript';
 import { TableIdsProps } from 'types/table';
 
-import './styles.scss';
-
 type SelectAllCheckboxProps = {
   allRowIds: string[];
 } & TableIdsProps;
