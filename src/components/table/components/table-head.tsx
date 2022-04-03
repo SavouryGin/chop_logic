@@ -2,8 +2,6 @@ import React from 'react';
 import { TableColumnProps, TableIdsProps } from 'types/table';
 import SelectAllCheckbox from './select-all-checkbox';
 
-import './styles.scss';
-
 type TableHeadProps = {
   columns: TableColumnProps[];
   hasCheckboxColumn: boolean;

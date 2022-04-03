@@ -1,9 +1,7 @@
 import React from 'react';
 import { TableColumnProps, TableDataItem, TableIdsProps } from 'types/table';
 import SelectRowCheckbox from './select-row-checkbox';
-import { getDataCellsValues } from './helpers';
-
-import './styles.scss';
+import { getDataCellsValues } from '../helpers';
 
 export type TableBodyProps = {
   data: TableDataItem[];
