@@ -1,13 +1,12 @@
 import React from 'react';
 import Checkbox from 'components/inputs/checkbox';
+import { TableIdsProps } from 'types/table';
 
 import './styles.scss';
 
 export type SelectRowCheckboxProps = {
   rowId: string;
-  selectedIds: string[];
-  setSelectedIds: (value: React.SetStateAction<string[]>) => void;
-};
+} & TableIdsProps;
 
 function SelectRowCheckbox({ rowId, selectedIds, setSelectedIds }: SelectRowCheckboxProps): React.ReactElement {
   const onChangeRowCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {

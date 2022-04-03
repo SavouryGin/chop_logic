@@ -19,3 +19,8 @@ export type TableDataItem = {
   id: string;
   [key: string]: unknown;
 };
+
+export type TableIdsProps = {
+  selectedIds: string[];
+  setSelectedIds: (value: React.SetStateAction<string[]>) => void;
+};
