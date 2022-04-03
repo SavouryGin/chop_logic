@@ -1,7 +1,7 @@
 import { LocalText } from './general';
 
 export type InputHandlersProps = {
-  onChange?: (e: React.ChangeEvent<FormInput>) => void;
+  onChange?: () => void;
   onBlur?: () => void;
   onFocus?: () => void;
 };
