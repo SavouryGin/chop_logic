@@ -6,8 +6,8 @@ import { Icon } from 'enums';
 import './styles.scss';
 
 export type LabelProps = ComponentProps & {
-  text: string;
   id: string;
+  text?: string;
   isRequired?: boolean;
   isDarkMode?: boolean;
 };
@@ -18,7 +18,7 @@ function Label({ text, isRequired, isDarkMode, className, id }: LabelProps): Rea
 
   return (
     <label htmlFor={id} className={labelClassNames} data-testid='label-test-id'>
-      <span className='label__text'>{text}</span>
+      <span className='label__text'>{text || ''}</span>
       {isRequired && <abbr className={requiredClassNames} title='required'></abbr>}
     </label>
   );
