@@ -4,8 +4,8 @@ import { TableProps } from 'types/table';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { getDataCellsValues } from './helpers';
-import SelectAllCheckbox from './select-all-checkbox';
 import SelectRowCheckbox from './select-row-checkbox';
+import TableHead from './table-head';
 
 import './styles.scss';
 
@@ -19,14 +19,6 @@ function Table({ columns, data, hasCheckboxColumn, ...rest }: TableProps): React
     console.log('selectedIds', selectedIds);
   }, [selectedIds]);
 
-  const headerCheckbox = hasCheckboxColumn ? (
-    <SelectAllCheckbox selectedIds={selectedIds} allRowIds={allRowIds} setSelectedIds={setSelectedIds} />
-  ) : null;
-
-  const headerCells = columns.map((column, index) => {
-    return <th key={index}>{column.title || ''}</th>;
-  });
-
   const rows = data.map((item) => {
     const values = getDataCellsValues(item, columns);
 
@@ -34,13 +26,9 @@ function Table({ columns, data, hasCheckboxColumn, ...rest }: TableProps): React
       return <td key={`${item.id}_${index}`}>{value}</td>;
     });
 
-    const cellCheckbox = hasCheckboxColumn ? (
-      <SelectRowCheckbox selectedIds={selectedIds} rowId={item.id} setSelectedIds={setSelectedIds} />
-    ) : null;
-
     return (
       <tr key={item.id}>
-        {cellCheckbox}
+        {hasCheckboxColumn && <SelectRowCheckbox selectedIds={selectedIds} rowId={item.id} setSelectedIds={setSelectedIds} />}
         {dataCells}
       </tr>
     );
@@ -48,12 +36,7 @@ function Table({ columns, data, hasCheckboxColumn, ...rest }: TableProps): React
 
   return (
     <table className={tableClassNames}>
-      <thead>
-        <tr>
-          {headerCheckbox}
-          {headerCells}
-        </tr>
-      </thead>
+      <TableHead columns={columns} selectedIds={selectedIds} setSelectedIds={setSelectedIds} allRowIds={allRowIds} hasCheckboxColumn />
       <tbody>{rows}</tbody>
     </table>
   );
