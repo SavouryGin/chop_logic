@@ -6,15 +6,16 @@ type TableHeadProps = {
   columns: TableColumnProps[];
   hasCheckboxColumn: boolean;
   allRowIds: string[];
+  className?: string;
 } & TableIdsProps;
 
-function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, allRowIds }: TableHeadProps): React.ReactElement {
+function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, allRowIds, ...rest }: TableHeadProps): React.ReactElement {
   const headerCells = columns.map((column, index) => {
     return <th key={index}>{column.title || ''}</th>;
   });
 
   return (
-    <thead>
+    <thead className={rest.className}>
       <tr>
         {hasCheckboxColumn && <SelectAllCheckbox selectedIds={selectedIds} allRowIds={allRowIds} setSelectedIds={setSelectedIds} />}
         {headerCells}

@@ -7,9 +7,10 @@ export type TableBodyProps = {
   data: TableDataItem[];
   columns: TableColumnProps[];
   hasCheckboxColumn: boolean;
+  className?: string;
 } & TableIdsProps;
 
-function TableBody({ data, columns, hasCheckboxColumn, selectedIds, setSelectedIds }: TableBodyProps): React.ReactElement {
+function TableBody({ data, columns, hasCheckboxColumn, selectedIds, setSelectedIds, ...rest }: TableBodyProps): React.ReactElement {
   const rows = data.map((item) => {
     const values = getDataCellsValues(item, columns);
 
@@ -25,7 +26,7 @@ function TableBody({ data, columns, hasCheckboxColumn, selectedIds, setSelectedI
     );
   });
 
-  return <tbody>{rows}</tbody>;
+  return <tbody className={rest.className}>{rows}</tbody>;
 }
 
 export default TableBody;
