@@ -17,7 +17,7 @@ function SelectRowCheckbox({ rowId, selectedIds, setSelectedIds }: SelectRowChec
   };
 
   return (
-    <td>
+    <td className='table__cell'>
       <Checkbox
         name={rowId}
         id={rowId}

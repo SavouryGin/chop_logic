@@ -1,26 +1,27 @@
 @import 'styles/sizes.scss';
 @import 'styles/colors.scss';
+@import 'styles/fonts.scss';
 
 .table {
   border-collapse: collapse;
 
-  th,
-  td {
+  &__cell {
     text-align: center;
+    padding: $default-padding;
+    border: $light-border;
   }
 
-  &__head {
-    th {
-      padding: $default-padding;
-      border: $light-border;
-      text-align: center;
-    }
+  // Remove side borders
+  & &__row &__cell:first-child {
+    border-left: none;
+  }
+  & &__row &__cell:last-child {
+    border-right: none;
   }
 
-  &__body {
-    td {
-      padding: $default-padding;
-      text-align: center;
+  &__row {
+    &_selected {
+      background-color: $light-foreground-color;
     }
   }
 

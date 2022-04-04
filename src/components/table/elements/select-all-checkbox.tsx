@@ -19,7 +19,7 @@ function SelectAllCheckbox({ selectedIds, setSelectedIds, allRowIds }: SelectAll
   };
 
   return (
-    <th>
+    <th className='table__cell'>
       <Checkbox
         name={`select_all_in_${tableId}`}
         id={`select_all_in_${tableId}`}
