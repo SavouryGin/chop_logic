@@ -25,6 +25,7 @@ function SelectAllCheckbox({ selectedIds, setSelectedIds, allRowIds }: SelectAll
         id={`select_all_in_${tableId}`}
         getCheckboxEvent={onChangeSelectAllCheckbox}
         setCheckboxValue={selectedIds.length === allRowIds.length}
+        className={'table__checkbox'}
       />
     </th>
   );
