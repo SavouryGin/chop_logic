@@ -3,17 +3,22 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { TableProps } from 'types/table';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
-import TableHead from './components/table-head';
-import TableBody from './components/table-body';
+import TableHead from './elements/table-head';
+import TableBody from './elements/table-body';
 
 import './styles.scss';
 
 function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
+  // Selectors
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  // Class names
   const tableClassNames = formatClassName(['table', rest.className, { table_dark: isDarkMode }]);
+  const headClassNames = formatClassName(['table__head', { table__head_dark: isDarkMode }]);
+  const bodyClassNames = formatClassName(['table__body', { table__body_dark: isDarkMode }]);
+  // State
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const allRowIds = data.map((item) => item.id);
-
+  // Effects
   useEffect(() => {
     console.log('selectedIds', selectedIds);
   }, [selectedIds]);
@@ -26,6 +31,7 @@ function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
         setSelectedIds={setSelectedIds}
         allRowIds={allRowIds}
         hasCheckboxColumn={!!rest.hasCheckboxColumn}
+        className={headClassNames}
       />
       <TableBody
         columns={columns}
@@ -33,6 +39,7 @@ function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
         setSelectedIds={setSelectedIds}
         hasCheckboxColumn={!!rest.hasCheckboxColumn}
         data={data}
+        className={bodyClassNames}
       />
     </table>
   );
