@@ -11,12 +11,16 @@ type TableHeadProps = {
 
 function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, allRowIds, ...rest }: TableHeadProps): React.ReactElement {
   const headerCells = columns.map((column, index) => {
-    return <th key={index}>{column.title || ''}</th>;
+    return (
+      <th key={index} className='table__cell'>
+        {column.title || ''}
+      </th>
+    );
   });
 
   return (
     <thead className={rest.className}>
-      <tr>
+      <tr className={'table__row'}>
         {hasCheckboxColumn && <SelectAllCheckbox selectedIds={selectedIds} allRowIds={allRowIds} setSelectedIds={setSelectedIds} />}
         {headerCells}
       </tr>
