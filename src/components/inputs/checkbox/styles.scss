@@ -4,12 +4,15 @@
 
 .checkbox-input {
   padding: $default-padding 0;
+  position: relative;
 
   &__default {
     // Hide the default checkbox
     position: absolute;
     z-index: -1;
     opacity: 0;
+    top: $big-padding;
+    left: 0;
 
     // Styles for the focused checkbox
     &:focus-visible + label::before {
@@ -29,13 +32,16 @@
     align-items: center;
     padding: 0;
 
+    .label__text {
+      margin-left: $default-margin;
+      padding-top: $small-padding;
+    }
+
     &:hover {
       text-shadow: $light-text-shadow;
     }
 
     &::before {
-      margin-right: $default-margin;
-      padding-bottom: 0.125rem;
       color: $light-strong-accent-color;
     }
 
