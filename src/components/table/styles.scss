@@ -1,0 +1,61 @@
+@import 'styles/sizes.scss';
+@import 'styles/colors.scss';
+@import 'styles/fonts.scss';
+
+.table {
+  border-collapse: collapse;
+
+  &__cell {
+    text-align: center;
+    padding: $default-padding;
+    border: $light-border;
+  }
+
+  &__cell_heading {
+    text-shadow: $light-text-shadow;
+  }
+
+  // Remove side borders
+  & &__row &__cell:first-child {
+    border-left: none;
+  }
+
+  & &__row &__cell:last-child {
+    border-right: none;
+  }
+
+  // Highlight the selected row
+  &__row {
+    &_selected {
+      background-color: $light-foreground-color;
+    }
+  }
+
+  // Remove the default checkbox input styles
+  &__checkbox {
+    padding: 0;
+    .checkbox-input__default {
+      top: 0;
+      left: 0;
+    }
+    .label__text {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  // Dark theme colors
+  &_dark {
+    .table__cell {
+      border: $dark-border;
+    }
+    .table__row {
+      &_selected {
+        background-color: $dark-foreground-color;
+      }
+    }
+    .table__cell_heading {
+      text-shadow: $dark-text-shadow;
+    }
+  }
+}
