@@ -11,12 +11,12 @@ export type FormProps = ComponentProps & {
   initialValues: FormValues;
   submitButtonId: ButtonID;
   action?: string;
-  getValues?: (values: FormValues) => void;
+  passValues?: (values: FormValues) => void;
 };
 
 export const FormContext = React.createContext({} as FormContextProps);
 
-function Form({ className, onSubmit, inputs, initialValues, getValues, submitButtonId, ...rest }: FormProps): React.ReactElement {
+function Form({ className, onSubmit, inputs, initialValues, passValues, submitButtonId, ...rest }: FormProps): React.ReactElement {
   const formClassNames = formatClassName(['form', className]);
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -31,7 +31,7 @@ function Form({ className, onSubmit, inputs, initialValues, getValues, submitBut
   };
 
   useEffect(() => {
-    if (getValues) getValues(formValues);
+    if (passValues) passValues(formValues);
   }, [formValues]);
 
   return (

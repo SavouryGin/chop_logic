@@ -18,11 +18,13 @@ const testData: TableDataItem[] = [
 ];
 
 function Home(): React.ReactElement {
+  const takeSelectedIds = (ids: string[]) => console.log(ids);
+
   return (
     <div className='home'>
       Home page
       <br></br>
-      <Table columns={testColumns} data={testData} hasCheckboxColumn />
+      <Table columns={testColumns} data={testData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
     </div>
   );
 }

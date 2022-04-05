@@ -17,8 +17,14 @@ function SelectRowCheckbox({ rowId, selectedIds, setSelectedIds }: SelectRowChec
   };
 
   return (
-    <td>
-      <Checkbox name={rowId} id={rowId} getCheckboxEvent={onChangeRowCheckbox} setCheckboxValue={selectedIds.includes(rowId)} />
+    <td className='table__cell'>
+      <Checkbox
+        name={rowId}
+        id={rowId}
+        getCheckboxEvent={onChangeRowCheckbox}
+        setCheckboxValue={selectedIds.includes(rowId)}
+        className={'table__checkbox'}
+      />
     </td>
   );
 }
