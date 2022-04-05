@@ -60,7 +60,7 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
         onSubmit={onSubmit}
         initialValues={settingsInitialValues}
         inputs={formInputs}
-        getValues={takeValues}
+        passValues={takeValues}
         submitButtonId={ButtonID.ApplySettings}
       />
     </div>
