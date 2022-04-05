@@ -20,7 +20,7 @@ function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
   const allRowIds = data.map((item) => item.id);
   // Effects
   useEffect(() => {
-    console.log('selectedIds', selectedIds);
+    if (rest.passSelectedIds) rest.passSelectedIds(selectedIds);
   }, [selectedIds]);
 
   return (

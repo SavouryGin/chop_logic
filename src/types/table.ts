@@ -4,6 +4,7 @@ export type TableProps = ComponentProps & {
   columns: TableColumnProps[];
   data: TableDataItem[];
   hasCheckboxColumn?: boolean;
+  passSelectedIds?: (ids: string[]) => void;
 };
 
 export type TableColumnProps = {
