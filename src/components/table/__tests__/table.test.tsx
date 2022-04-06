@@ -22,8 +22,26 @@ const mockedState = {
 };
 
 describe('Table component:', () => {
-  it('', () => {
+  it('renders the table element', () => {
     renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
     screen.debug();
+    expect(screen.getByRole('table')).toBeInTheDocument();
+  });
+
+  it('renders the correct amount of header cells', () => {
+    renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
+    expect(screen.getAllByRole('columnheader')).toHaveLength(testTableColumns.length);
+  });
+
+  it('renders the correct amount of table cells', () => {
+    renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
+    const cellsCount = testTableColumns.length * testTableData.length;
+    expect(screen.getAllByRole('cell')).toHaveLength(cellsCount);
+  });
+
+  it('renders the correct amount of rows', () => {
+    renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
+    const rowsCount = testTableData.length + 1;
+    expect(screen.getAllByRole('row')).toHaveLength(rowsCount);
   });
 });
