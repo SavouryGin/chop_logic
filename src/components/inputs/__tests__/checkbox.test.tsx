@@ -4,13 +4,13 @@ import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { inputTexts } from 'assets/texts';
 import { InputID } from 'enums';
 
 import Checkbox from 'components/inputs/checkbox';
 
 const testProps = {
   name: 'test checkbox',
-  label: 'test label',
   inputId: InputID.isDarkModeCheckbox,
 };
 
@@ -34,7 +34,8 @@ describe('Checkbox component:', () => {
 
   it('the checkbox has a label', () => {
     renderWithRedux(<Checkbox {...testProps} />, mockedReducer, mockedState);
-    expect(screen.getByLabelText(testProps.label)).toBeInTheDocument();
+    const label = inputTexts[testProps.inputId].label.en;
+    expect(screen.getByLabelText(label)).toBeInTheDocument();
   });
 
   it('receives the passed default value', () => {
