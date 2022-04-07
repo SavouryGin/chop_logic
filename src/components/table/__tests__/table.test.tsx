@@ -69,6 +69,7 @@ describe('Table component:', () => {
     const checkboxes = screen.getAllByRole('checkbox');
     for (const checkbox of checkboxes) {
       expect(checkbox).not.toBeChecked();
+      expect(checkbox).toHaveClass('checkbox-input__default');
     }
   });
 

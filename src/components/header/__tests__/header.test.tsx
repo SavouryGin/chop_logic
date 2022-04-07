@@ -1,5 +1,7 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
+import { ButtonID, Icon } from 'enums';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
@@ -37,5 +39,34 @@ describe('Header component:', () => {
   it('contains the link with the heading text', () => {
     const link = screen.getByRole('link');
     expect(link).toHaveTextContent('Chop Logic');
+  });
+
+  it('all the buttons have the correct default icons', () => {
+    expect(screen.getByTestId(`button_id_${ButtonID.Navigation}`)).toHaveClass(Icon.Menu);
+    expect(screen.getByTestId(`button_id_${ButtonID.ColorTheme}`)).toHaveClass(Icon.DarkMode);
+    expect(screen.getByTestId(`button_id_${ButtonID.Sounds}`)).toHaveClass(Icon.NoSound);
+    expect(screen.getByTestId(`button_id_${ButtonID.Settings}`)).toHaveClass(Icon.Settings);
+    expect(screen.getByTestId(`button_id_${ButtonID.FullScreen}`)).toHaveClass(Icon.Enlarge);
+    expect(screen.getByTestId(`button_id_${ButtonID.Tools}`)).toHaveClass(Icon.Sidebar);
+  });
+
+  it('all the buttons are clickable and change icons', () => {
+    const navBtn = screen.getByTestId(`button_id_${ButtonID.Navigation}`);
+    const colorBtn = screen.getByTestId(`button_id_${ButtonID.ColorTheme}`);
+    const settingsBtn = screen.getByTestId(`button_id_${ButtonID.Settings}`);
+    const fullScreenBtn = screen.getByTestId(`button_id_${ButtonID.FullScreen}`);
+    const toolsBtn = screen.getByTestId(`button_id_${ButtonID.Tools}`);
+
+    userEvent.click(navBtn);
+    userEvent.click(colorBtn);
+    userEvent.click(settingsBtn);
+    userEvent.click(fullScreenBtn);
+    userEvent.click(toolsBtn);
+
+    expect(navBtn).toHaveClass(Icon.Left);
+    expect(colorBtn).toHaveClass(Icon.LightMode);
+    expect(settingsBtn).toHaveClass(Icon.Settings);
+    expect(fullScreenBtn).toHaveClass(Icon.Shrink);
+    expect(toolsBtn).toHaveClass(Icon.Right);
   });
 });
