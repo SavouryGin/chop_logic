@@ -50,7 +50,9 @@ function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
     >
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>
-      <span className={frontClassNames}>{buttonText}</span>
+      <span className={frontClassNames} data-testid={`button_id_${buttonId}`}>
+        {buttonText}
+      </span>
     </button>
   );
 }
