@@ -24,7 +24,6 @@ const mockedState = {
 describe('Table component:', () => {
   it('renders the table element', () => {
     renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
-    screen.debug();
     expect(screen.getByRole('table')).toBeInTheDocument();
   });
 
@@ -43,5 +42,50 @@ describe('Table component:', () => {
     renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
     const rowsCount = testTableData.length + 1;
     expect(screen.getAllByRole('row')).toHaveLength(rowsCount);
+  });
+
+  it('displays the data in cells', () => {
+    renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
+    for (const row of testTableData) {
+      expect(screen.getByText(row.field1 as string)).toBeInTheDocument();
+      expect(screen.getByText(row.field2 as string)).toBeInTheDocument();
+      expect(screen.getByText(row.field3 as string)).toBeInTheDocument();
+      expect(screen.getByText(row.field4 as string)).toBeInTheDocument();
+    }
+  });
+
+  it('does not render the checkbox column by default', () => {
+    renderWithRedux(<Table {...testProps} />, mockedReducer, mockedState);
+    expect(screen.queryAllByRole('checkbox')).toHaveLength(0);
+  });
+
+  it('renders the checkbox column if the prop is passed', () => {
+    renderWithRedux(<Table {...testProps} hasCheckboxColumn />, mockedReducer, mockedState);
+    expect(screen.getAllByRole('checkbox')).toHaveLength(testTableData.length + 1);
+  });
+
+  it('all the checkboxes are unchecked by default', () => {
+    renderWithRedux(<Table {...testProps} hasCheckboxColumn />, mockedReducer, mockedState);
+    const checkboxes = screen.getAllByRole('checkbox');
+    for (const checkbox of checkboxes) {
+      expect(checkbox).not.toBeChecked();
+    }
+  });
+
+  it('user can check a checkbox', () => {
+    renderWithRedux(<Table {...testProps} hasCheckboxColumn />, mockedReducer, mockedState);
+    const checkboxes = screen.getAllByRole('checkbox');
+    userEvent.click(checkboxes[checkboxes.length - 1]);
+    expect(checkboxes[checkboxes.length - 1]).toBeChecked();
+    expect(checkboxes[0]).not.toBeChecked();
+  });
+
+  it('user can check the select all checkbox', () => {
+    renderWithRedux(<Table {...testProps} hasCheckboxColumn />, mockedReducer, mockedState);
+    const checkboxes = screen.getAllByRole('checkbox');
+    userEvent.click(checkboxes[0]);
+    for (const checkbox of checkboxes) {
+      expect(checkbox).toBeChecked();
+    }
   });
 });
