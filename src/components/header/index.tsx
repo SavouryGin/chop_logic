@@ -1,11 +1,11 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import AppLink from 'components/app-link';
-import RightHeaderPanel from 'components/header/right-panel';
-import LeftHeaderPanel from 'components/header/left-panel';
 import { ComponentProps } from 'types';
 import { paths } from 'components/app-router/paths';
 import { Page } from 'enums';
+import RightHeaderPanel from './elements/right-header-panel';
+import LeftHeaderPanel from './elements/left-header-panel';
 
 import './styles.scss';
 

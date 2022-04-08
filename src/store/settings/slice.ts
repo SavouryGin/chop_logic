@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Language, SettingsFlag, SettingsInitialState } from './interfaces';
+import { Language } from 'types';
+import { SettingsFlag, SettingsInitialState } from './interfaces';
 
 export const settingsInitialState: SettingsInitialState = {
   language: 'en',
