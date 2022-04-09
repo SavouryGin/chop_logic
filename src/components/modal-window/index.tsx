@@ -21,8 +21,6 @@ export type ModalWindowProps = ComponentProps & {
 
 function ModalWindow({ isOpened, onClose, content, title, ...rest }: ModalWindowProps): React.ReactElement | null {
   const targetElement = document.getElementById('modal');
-  if (!isOpened || !targetElement) return null;
-
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isAnimationActive = useAppSelector(settingsSelectors.getIsModalWindowClosingAnimationActive);
@@ -65,7 +63,7 @@ function ModalWindow({ isOpened, onClose, content, title, ...rest }: ModalWindow
 
   const portal = <div className={backgroundClassNames}>{window}</div>;
 
-  return ReactDOM.createPortal(portal, targetElement);
+  return !isOpened || !targetElement ? null : ReactDOM.createPortal(portal, targetElement);
 }
 
 export default ModalWindow;
