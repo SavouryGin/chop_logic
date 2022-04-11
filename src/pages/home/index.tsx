@@ -1,5 +1,5 @@
 import Table from 'components/table';
-import TabList from 'components/tabs';
+import TabList from 'components/tab-list';
 import React from 'react';
 import { TabItem, TableColumnProps, TableDataItem } from 'types';
 
@@ -17,14 +17,14 @@ const testData: TableDataItem[] = [
   { id: 'row3', field1: 1, field2: 2, field3: 3, field4: 4 },
   { id: 'row4', field1: 1, field2: 2, field3: 3, field4: 4 },
 ];
+const testTabs: TabItem[] = [
+  { tabContent: <>Tab content 1</>, tabTitle: 'Title 1' },
+  { tabContent: <>Tab content 2</>, tabId: 'tab-2', tabTitle: 'Title 2' },
+  { tabContent: <>Tab content 3</>, tabId: 'tab-3', tabTitle: 'Title 3' },
+];
 
 function Home(): React.ReactElement {
   const takeSelectedIds = (ids: string[]) => console.log(ids);
-  const testTabs: TabItem[] = [
-    { tabContent: <>Tab 1</>, tabKey: 1 },
-    { tabContent: <>Tab 2</>, tabKey: 2 },
-    { tabContent: <>Tab 3</>, tabKey: 3 },
-  ];
 
   return (
     <div className='home'>
