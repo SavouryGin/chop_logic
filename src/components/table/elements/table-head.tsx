@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableColumnProps, TableIdsProps } from 'types/table';
+import { TableColumnProps, TableIdsProps } from 'types';
 import SelectAllCheckbox from './select-all-checkbox';
 
 type TableHeadProps = {

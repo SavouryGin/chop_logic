@@ -1,21 +1,25 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
+import { TabListProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
+import Tab from './elements/tab';
 
 import './styles.scss';
-import { ITab } from './elements/tab';
 
-export type TabsProps = ComponentProps & {
-  tabs: ITab[];
-};
-
-function Tabs({ tabs, ...rest }: TabsProps): React.ReactElement {
+function TabList({ tabs, ...rest }: TabListProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const tabsClassNames = formatClassName(['tabs', rest.className, { tabs_dark: isDarkMode }]);
 
-  return <div className={tabsClassNames}>{tabs.map((item) => item.content)}</div>;
+  return (
+    <div className={tabsClassNames}>
+      <ol>
+        {tabs.map((item) => (
+          <Tab key={item.tabKey} content={item.tabContent} />
+        ))}
+      </ol>
+    </div>
+  );
 }
 
-export default Tabs;
+export default TabList;
