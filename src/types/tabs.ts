@@ -1,8 +1,9 @@
 import { ComponentProps } from './general';
 
 export type TabItem = {
-  tabKey: number;
   tabContent: React.ReactElement;
+  tabTitle: string;
+  tabId?: string;
   defaultTab?: number;
 };
 
@@ -11,8 +12,7 @@ export type TabListProps = ComponentProps & {
 };
 
 export type TabProps = {
-  label?: string;
+  title: string;
   content: React.ReactElement;
-  isDisabled?: boolean;
-  key: number;
+  tabId: string;
 };
