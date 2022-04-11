@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from 'components/inputs/checkbox';
 import { Guid } from 'guid-typescript';
-import { TableIdsProps } from 'types/table';
+import { TableIdsProps } from 'types';
 
 type SelectAllCheckboxProps = {
   allRowIds: string[];

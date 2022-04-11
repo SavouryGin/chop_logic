@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from 'components/inputs/checkbox';
-import { TableIdsProps } from 'types/table';
+import { TableIdsProps } from 'types';
 
 export type SelectRowCheckboxProps = {
   rowId: string;

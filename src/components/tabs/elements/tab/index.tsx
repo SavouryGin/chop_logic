@@ -1,15 +1,8 @@
 import React from 'react';
+import { TabProps } from 'types';
 
-import './styles.scss';
-
-export type ITab = {
-  label: string;
-  content: React.ReactElement;
-  isDisabled?: boolean;
-};
-
-function Tab({ content }: ITab): React.ReactElement {
-  return <li>{content}</li>;
+function Tab({ content, ...rest }: TabProps): React.ReactElement {
+  return <li key={rest.key}>{content}</li>;
 }
 
 export default Tab;

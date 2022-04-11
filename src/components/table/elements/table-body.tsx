@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableColumnProps, TableDataItem, TableIdsProps } from 'types/table';
+import { TableColumnProps, TableDataItem, TableIdsProps } from 'types';
 import SelectRowCheckbox from './select-row-checkbox';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { getDataCellsValues } from '../helpers';

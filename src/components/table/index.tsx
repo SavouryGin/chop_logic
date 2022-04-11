@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { TableProps } from 'types/table';
+import { TableProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import TableHead from './elements/table-head';
