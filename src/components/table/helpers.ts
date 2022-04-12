@@ -1,4 +1,4 @@
-import { TableColumnProps, TableDataItem } from 'types/table';
+import { TableColumnProps, TableDataItem } from 'types';
 
 export function getDataCellsValues(tableRow: TableDataItem, columns: TableColumnProps[]): string[] {
   const values = [];
