@@ -9,7 +9,12 @@ import './styles.scss';
 
 function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const tabsClassNames = formatClassName(['tab-list', rest.className, { tabs_dark: isDarkMode }]);
+  const mode = rest.mode || 'horizontal';
+  const tabsClassNames = formatClassName([
+    'tab-list',
+    rest.className,
+    { 'tab-list_dark': isDarkMode, 'tab-list_vertical': mode === 'vertical' },
+  ]);
   const tabIds = tabs.map((item) => item.tabId);
   const defaultId = defaultTabId && tabIds.includes(defaultTabId) ? defaultTabId : tabIds[0];
   const [activeTab, setActiveTab] = useState(defaultId);
