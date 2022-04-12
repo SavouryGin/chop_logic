@@ -18,7 +18,7 @@ const testData: TableDataItem[] = [
   { id: 'row4', field1: 1, field2: 2, field3: 3, field4: 4 },
 ];
 const testTabs: TabItem[] = [
-  { tabContent: <>Tab content 1</>, tabTitle: 'Title 1' },
+  { tabContent: <>Tab content 1</>, tabId: 'tab-1', tabTitle: 'Title 1' },
   { tabContent: <>Tab content 2</>, tabId: 'tab-2', tabTitle: 'Title 2' },
   { tabContent: <>Tab content 3</>, tabId: 'tab-3', tabTitle: 'Title 3' },
 ];
