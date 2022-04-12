@@ -32,7 +32,7 @@ function Home(): React.ReactElement {
       <br></br>
       <Table columns={testColumns} data={testData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
       <br></br>
-      <TabList tabs={testTabs} />
+      <TabList tabs={testTabs} defaultTabId='tab-3' />
     </div>
   );
 }

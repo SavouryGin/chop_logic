@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { Guid } from 'guid-typescript';
 import { TabListProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -8,10 +7,12 @@ import Tab from './elements/tab';
 
 import './styles.scss';
 
-function TabList({ tabs, ...rest }: TabListProps): React.ReactElement {
+function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const tabsClassNames = formatClassName(['tabs', rest.className, { tabs_dark: isDarkMode }]);
-  const [activeTab, setActiveTab] = useState(rest.defaultTabId || tabs[0].tabId);
+  const tabsClassNames = formatClassName(['tab-list', rest.className, { tabs_dark: isDarkMode }]);
+  const tabIds = tabs.map((item) => item.tabId);
+  const defaultId = defaultTabId && tabIds.includes(defaultTabId) ? defaultTabId : tabIds[0];
+  const [activeTab, setActiveTab] = useState(defaultId);
 
   const tabItems = tabs.map((item) => {
     const { tabId, tabContent, tabTitle } = item;
