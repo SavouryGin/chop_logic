@@ -27,6 +27,6 @@ export type TabTitleProps = {
 };
 
 export type TabContentProps = {
-  content: React.ReactElement;
+  content: React.ReactElement | undefined;
   tabId: string;
 };

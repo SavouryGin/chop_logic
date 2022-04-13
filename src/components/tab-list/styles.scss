@@ -1,5 +1,22 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+
 .tab-list {
+  &__tabs {
+    display: flex;
+  }
+
   &__tab {
     cursor: pointer;
+    height: $tab-height;
+    padding: $small-padding $default-padding;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    border: $light-border;
+  }
+
+  &__content {
+    padding: $default-padding 0;
+    border-bottom: $light-border;
   }
 }
