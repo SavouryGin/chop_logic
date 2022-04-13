@@ -12,11 +12,27 @@
     padding: $small-padding $default-padding;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
-    border: $light-border;
+    margin-right: $small-margin;
+
+    border-top: $light-border;
+    border-right: $light-border;
+    border-left: $light-border;
+    background-color: $light-foreground-color;
+
+    &:hover {
+      text-shadow: $light-text-shadow;
+    }
+
+    &_active {
+      background-color: $light-background-color;
+      position: relative;
+      top: 1px;
+    }
   }
 
   &__content {
-    padding: $default-padding 0;
+    padding: $big-padding 0 $default-padding 0;
     border-bottom: $light-border;
+    border-top: $light-border;
   }
 }

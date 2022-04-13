@@ -4,10 +4,9 @@ import { TabListProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import Tab from './elements/tab';
+import TabContent from './elements/tab-content';
 
 import './styles.scss';
-import TabTitle from './elements/tab-title';
-import TabContent from './elements/tab-content';
 
 function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -23,7 +22,7 @@ function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElem
 
   const titles = tabs.map((item) => {
     const { tabId, tabTitle } = item;
-    return <TabTitle key={tabId} title={tabTitle} onSelect={setActiveTab} tabId={tabId} />;
+    return <Tab key={tabId} title={tabTitle} onSelect={setActiveTab} tabId={tabId} isActive={tabId === activeTab} />;
   });
 
   const tabContent = tabs.find((item) => item.tabId === activeTab)?.tabContent;
