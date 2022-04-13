@@ -6,6 +6,8 @@ import { settingsSelectors } from 'store/settings/selectors';
 import Tab from './elements/tab';
 
 import './styles.scss';
+import TabTitle from './elements/tab-title';
+import TabContent from './elements/tab-content';
 
 function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -19,23 +21,19 @@ function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElem
   const defaultId = defaultTabId && tabIds.includes(defaultTabId) ? defaultTabId : tabIds[0];
   const [activeTab, setActiveTab] = useState(defaultId);
 
-  const tabItems = tabs.map((item) => {
-    const { tabId, tabContent, tabTitle } = item;
-    return (
-      <Tab
-        key={tabId}
-        tabId={tabId}
-        content={tabContent}
-        title={tabTitle}
-        isActive={activeTab === tabId}
-        onSelect={() => setActiveTab(tabId)}
-      />
-    );
+  const titles = tabs.map((item) => {
+    const { tabId, tabTitle } = item;
+    return <TabTitle key={tabId} title={tabTitle} onSelect={setActiveTab} tabId={tabId} />;
   });
 
+  const tabContent = tabs.find((item) => item.tabId === activeTab)?.tabContent;
+
   return (
-    <div className={tabsClassNames} role='tablist'>
-      {tabItems}
+    <div className={tabsClassNames}>
+      <div className='tab-list__tabs' role='tablist'>
+        {titles}
+      </div>
+      {<TabContent content={tabContent} tabId={activeTab} />}
     </div>
   );
 }

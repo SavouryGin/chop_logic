@@ -17,6 +17,7 @@ function Home(): React.ReactElement {
       Home page
       <br></br>
       <TabList tabs={testTabs} defaultTabId='tab-3' />
+      <div>Test div</div>
     </div>
   );
 }
