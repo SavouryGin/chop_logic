@@ -14,15 +14,8 @@ export type TabItem = {
 
 export type TabProps = {
   title: string;
-  content: React.ReactElement;
   tabId: string;
   isActive: boolean;
-  onSelect: (value: React.SetStateAction<string>) => void;
-};
-
-export type TabTitleProps = {
-  title: string;
-  tabId: string;
   onSelect: (value: React.SetStateAction<string>) => void;
 };
 

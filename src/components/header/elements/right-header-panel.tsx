@@ -61,7 +61,7 @@ function RightHeaderPanel(): React.ReactElement {
   }, []);
 
   return (
-    <div className='header__left-panel'>
+    <div className='header__right-panel'>
       <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} />
       <Button
         buttonId={ButtonID.FullScreen}

@@ -34,7 +34,7 @@ function LeftHeaderPanel(): React.ReactElement {
   };
 
   return (
-    <div className='header__right-panel'>
+    <div className='header__left-panel'>
       <Button
         buttonId={ButtonID.Navigation}
         onClick={onClickMenuButton}
