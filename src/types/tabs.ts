@@ -1,4 +1,4 @@
-import { ComponentProps } from './general';
+import { ComponentProps, LocalText } from './general';
 
 export type TabListProps = ComponentProps & {
   tabs: TabItem[];
@@ -8,12 +8,12 @@ export type TabListProps = ComponentProps & {
 
 export type TabItem = {
   tabContent: React.ReactElement;
-  tabTitle: string;
+  tabTitle: LocalText;
   tabId: string;
 };
 
 export type TabProps = {
-  title: string;
+  title: LocalText;
   tabId: string;
   isActive: boolean;
   onSelect: (value: React.SetStateAction<string>) => void;

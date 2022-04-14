@@ -1,9 +1,11 @@
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
 
 .tab-list {
   &__tabs {
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__tab {
@@ -13,6 +15,7 @@
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     margin-right: $small-margin;
+    z-index: $panel-z-index;
 
     border-top: $light-border;
     border-right: $light-border;
@@ -27,6 +30,7 @@
       background-color: $light-background-color;
       position: relative;
       top: 1px;
+      z-index: $base-z-index;
     }
   }
 
