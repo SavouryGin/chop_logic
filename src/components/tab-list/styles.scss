@@ -35,4 +35,27 @@
     border-bottom: $light-border;
     border-top: $light-border;
   }
+
+  // Dark styles
+  &_dark {
+    .tab-list__tab {
+      border-top: $dark-border;
+      border-right: $dark-border;
+      border-left: $dark-border;
+      background-color: $dark-foreground-color;
+
+      &:hover {
+        text-shadow: $dark-text-shadow;
+      }
+
+      &_active {
+        background-color: $dark-background-color;
+      }
+    }
+
+    .tab-list__content {
+      border-bottom: $dark-border;
+      border-top: $dark-border;
+    }
+  }
 }
