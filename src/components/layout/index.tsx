@@ -11,10 +11,11 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 function Layout(): React.ReactElement {
+  // Store flags
   const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
   const isSidebarOpen = useAppSelector(settingsSelectors.getIsSidebarOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-
+  // Class names
   const layoutClassNames = formatClassName(['layout', { layout_dark: isDarkMode }]);
   const navigationClassNames = formatClassName(['layout__navigation', { layout__navigation_dark: isDarkMode }]);
   const sidebarClassNames = formatClassName(['layout__sidebar', { layout__sidebar_dark: isDarkMode }]);
