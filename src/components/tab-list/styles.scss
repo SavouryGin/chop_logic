@@ -1,5 +1,111 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
+
 .tab-list {
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__tab {
     cursor: pointer;
+    height: $tab-height;
+    padding: $small-padding $default-padding;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    margin-right: $small-margin;
+    z-index: $panel-z-index;
+
+    border-top: $light-border;
+    border-right: $light-border;
+    border-left: $light-border;
+    background-color: $light-foreground-color;
+
+    &:hover {
+      text-shadow: $light-text-shadow;
+    }
+
+    &_active {
+      background-color: $light-background-color;
+      position: relative;
+      top: 1px;
+      z-index: $base-z-index;
+    }
+  }
+
+  &__content {
+    padding: $big-padding 0 $default-padding 0;
+    border-bottom: $light-border;
+    border-top: $light-border;
+  }
+
+  // Dark styles
+  &_dark {
+    .tab-list__tab {
+      border-top: $dark-border;
+      border-right: $dark-border;
+      border-left: $dark-border;
+      background-color: $dark-foreground-color;
+
+      &:hover {
+        text-shadow: $dark-text-shadow;
+      }
+
+      &_active {
+        background-color: $dark-background-color;
+      }
+    }
+
+    .tab-list__content {
+      border-bottom: $dark-border;
+      border-top: $dark-border;
+    }
+  }
+
+  // Vertical tabs
+  &_vertical {
+    display: flex;
+
+    .tab-list__tabs {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .tab-list__tab {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      margin-right: 0;
+      margin-bottom: $small-margin;
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      padding: $default-padding $small-padding;
+
+      border-right: none;
+      border-bottom: $light-border;
+
+      &_active {
+        left: 1px;
+        z-index: $base-z-index;
+      }
+    }
+
+    .tab-list__content {
+      width: 100%;
+      border-left: $light-border;
+      padding: $default-padding $default-padding $default-padding $big-padding;
+    }
+  }
+
+  &_vertical.tab-list_dark {
+    .tab-list__tab {
+      border-bottom: $dark-border;
+    }
+
+    .tab-list__content {
+      border-left: $dark-border;
+    }
   }
 }
