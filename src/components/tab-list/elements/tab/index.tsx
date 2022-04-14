@@ -8,6 +8,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 function Tab({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement {
   const classNames = formatClassName(['tab-list__tab', { 'tab-list__tab_active': isActive }]);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.getLanguage);
 
   const onClickTab = (e: React.MouseEvent<HTMLHeadingElement>) => {
     e.stopPropagation();
@@ -17,7 +18,7 @@ function Tab({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement
 
   return (
     <h3 role='tab' id={tabId} onClick={onClickTab} className={classNames}>
-      {title}
+      {title[language]}
     </h3>
   );
 }
