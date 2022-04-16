@@ -1,4 +1,4 @@
-import { testTableColumns, testTableData } from '__mocks__/test-table-data';
+import { testTableColumns, testTableData } from '__mocks__/test-data/table';
 import { getDataCellsValues } from '../helpers';
 
 describe('getDataCellsValues() tests:', () => {
