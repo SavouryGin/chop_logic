@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
-import { testText } from '__mocks__/test-text';
+import { testText } from '__mocks__/test-data/texts';
 import { ButtonID } from 'enums';
 import { buttonTexts } from 'assets/texts';
 
