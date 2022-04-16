@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { testTableColumns, testTableData } from '__mocks__/test-table-data';
+import { testTableColumns, testTableData } from '__mocks__/test-data/table';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import Table from 'components/table';

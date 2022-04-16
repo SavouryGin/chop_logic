@@ -6,36 +6,33 @@
   &__tabs {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: $big-margin;
   }
 
   &__tab {
     cursor: pointer;
+    position: relative;
     height: $tab-height;
     padding: $small-padding $default-padding;
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
-    margin-right: $small-margin;
-    z-index: $panel-z-index;
-
-    border-top: $light-border;
-    border-right: $light-border;
-    border-left: $light-border;
-    background-color: $light-foreground-color;
+    border-radius: $border-radius;
+    margin-right: $default-margin;
+    box-shadow: $light-button-shadow;
+    z-index: $base-z-index;
 
     &:hover {
-      text-shadow: $light-text-shadow;
+      top: 0.2rem;
     }
 
     &_active {
-      background-color: $light-background-color;
-      position: relative;
-      top: 1px;
-      z-index: $base-z-index;
+      background-color: $light-foreground-color;
+      height: $tab-height;
+      top: 0.2rem;
+      z-index: $panel-z-index;
     }
   }
 
   &__content {
-    padding: $big-padding 0 $default-padding 0;
+    padding: $default-padding 0;
     border-bottom: $light-border;
     border-top: $light-border;
   }
@@ -43,17 +40,10 @@
   // Dark styles
   &_dark {
     .tab-list__tab {
-      border-top: $dark-border;
-      border-right: $dark-border;
-      border-left: $dark-border;
-      background-color: $dark-foreground-color;
-
-      &:hover {
-        text-shadow: $dark-text-shadow;
-      }
+      box-shadow: $dark-button-shadow;
 
       &_active {
-        background-color: $dark-background-color;
+        background-color: $dark-foreground-color;
       }
     }
 
@@ -70,6 +60,8 @@
     .tab-list__tabs {
       flex-direction: column;
       align-items: flex-end;
+      margin-bottom: $small-margin;
+      margin-top: $small-margin;
     }
 
     .tab-list__tab {
@@ -77,35 +69,25 @@
       align-items: center;
       width: max-content;
       margin-right: 0;
-      margin-bottom: $small-margin;
-      border-bottom-left-radius: $border-radius;
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
+      margin-bottom: $big-margin;
+      border-radius: $border-radius;
       padding: $default-padding $small-padding;
 
-      border-right: none;
-      border-bottom: $light-border;
+      &:hover {
+        top: 0;
+        left: 0.2rem;
+      }
 
       &_active {
-        left: 1px;
-        z-index: $base-z-index;
+        top: 0;
+        left: 0.2rem;
+        z-index: $panel-z-index;
       }
     }
 
     .tab-list__content {
       width: 100%;
-      border-left: $light-border;
       padding: $default-padding $default-padding $default-padding $big-padding;
-    }
-  }
-
-  &_vertical.tab-list_dark {
-    .tab-list__tab {
-      border-bottom: $dark-border;
-    }
-
-    .tab-list__content {
-      border-left: $dark-border;
     }
   }
 }
