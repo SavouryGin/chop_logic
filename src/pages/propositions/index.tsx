@@ -1,8 +1,9 @@
 import React from 'react';
-import { testText } from '__mocks__/test-data/texts';
+
+import './styles.scss';
 
 function Propositions(): React.ReactElement {
-  return <div className='propositions'>{testText.repeat(100)}</div>;
+  return <div className='propositions'></div>;
 }
 
 export default Propositions;
