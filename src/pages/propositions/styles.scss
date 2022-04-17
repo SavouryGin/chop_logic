@@ -1,0 +1,11 @@
+@import 'styles/sizes.scss';
+
+.propositions {
+  .tab-list__tab {
+    font-size: $small-font-size;
+  }
+
+  .tab-list__content {
+    border-bottom: none;
+  }
+}
