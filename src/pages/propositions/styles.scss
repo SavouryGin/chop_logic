@@ -1,6 +1,22 @@
 @import 'styles/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
 
 .propositions {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 20px auto;
+
+  &__title {
+    font-size: $tiny-font-size;
+    padding: 0;
+    margin-bottom: $small-margin;
+    text-align: right;
+
+    &::before {
+      margin-right: $default-margin;
+    }
+  }
+
   .tab-list__tab {
     font-size: $small-font-size;
   }
