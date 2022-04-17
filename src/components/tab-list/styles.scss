@@ -13,6 +13,8 @@
   &__tab {
     cursor: pointer;
     position: relative;
+    display: inline-flex;
+    align-items: center;
     height: $tab-height;
     padding: $small-padding $default-padding;
     border-radius: $border-radius;
@@ -63,8 +65,6 @@
     }
 
     .tab-list__tab {
-      display: inline-flex;
-      align-items: center;
       width: max-content;
       margin-right: 0;
       margin-bottom: $big-margin;
