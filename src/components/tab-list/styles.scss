@@ -7,15 +7,17 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: $big-margin;
+    gap: $default-margin;
   }
 
   &__tab {
     cursor: pointer;
     position: relative;
+    display: inline-flex;
+    align-items: center;
     height: $tab-height;
     padding: $small-padding $default-padding;
     border-radius: $border-radius;
-    margin-right: $default-margin;
     box-shadow: $light-button-shadow;
     z-index: $base-z-index;
 
@@ -60,13 +62,9 @@
     .tab-list__tabs {
       flex-direction: column;
       align-items: flex-end;
-      margin-bottom: $small-margin;
-      margin-top: $small-margin;
     }
 
     .tab-list__tab {
-      display: inline-flex;
-      align-items: center;
       width: max-content;
       margin-right: 0;
       margin-bottom: $big-margin;
