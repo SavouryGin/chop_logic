@@ -3,8 +3,8 @@ import TabList from 'components/tab-list';
 import formatClassName from 'helpers/formatters/format-class-name';
 import DirectProofsEditor from './elements/direct-proofs-editor';
 import NaturalProofsEditor from './elements/natural-proofs-editor';
-import DefinitionsOfPropositionalLogic from './elements/definitions-of-propositional-logic';
-import HeuristicsOfPropositionalLogic from './elements/heuristics-of-propositional-logic';
+import DefinitionsOfPropositions from './elements/definitions-of-propositions';
+import HeuristicsOfPropositions from './elements/heuristics-of-propositions';
 import RulesOfInference from './elements/rules-of-inference';
 import { TabItem } from 'types';
 import { Icon } from 'enums';
@@ -29,14 +29,14 @@ function Propositions(): React.ReactElement {
       tabId: 'natural-proofs-editor',
     },
     {
-      tabContent: <DefinitionsOfPropositionalLogic />,
+      tabContent: <DefinitionsOfPropositions />,
       tabTitle: tabTitles.definitions,
-      tabId: 'definitions-of-propositional-logic',
+      tabId: 'definitions-of-propositions',
     },
     {
-      tabContent: <HeuristicsOfPropositionalLogic />,
+      tabContent: <HeuristicsOfPropositions />,
       tabTitle: tabTitles.heuristics,
-      tabId: 'heuristics-of-propositional-logic',
+      tabId: 'heuristics-of-propositions',
     },
     {
       tabContent: <RulesOfInference />,
