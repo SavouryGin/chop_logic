@@ -17,7 +17,7 @@ function Tab({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement
   };
 
   return (
-    <h3 role='tab' id={tabId} onClick={onClickTab} className={classNames} aria-selected={isActive}>
+    <h3 role='tab' id={tabId} onClick={onClickTab} className={classNames} aria-selected={isActive} data-testid={tabId}>
       {title[language]}
     </h3>
   );
