@@ -17,11 +17,17 @@
     }
   }
 
-  .tab-list__tab {
-    font-size: $small-font-size;
-  }
+  &__tabs {
+    .tab-list__tabs {
+      margin-bottom: 0.5rem;
+    }
 
-  .tab-list__content {
-    border-bottom: none;
+    .tab-list__tab {
+      font-size: $small-font-size;
+    }
+
+    .tab-list__content {
+      border-bottom: none;
+    }
   }
 }

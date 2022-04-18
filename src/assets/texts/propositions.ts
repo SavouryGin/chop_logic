@@ -6,4 +6,4 @@ export const tabTitles = {
   rules: { en: 'Rules', ru: 'Правила' },
 };
 
-export const pageTitle = { en: 'Propositional Logic', ru: 'Логика высказываний' };
+export const pageTitle = { en: 'Propositions', ru: 'Высказывания' };
