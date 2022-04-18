@@ -14,41 +14,40 @@ import { settingsSelectors } from 'store/settings/selectors';
 
 import './styles.scss';
 
+export const propositionsTabs: TabItem[] = [
+  {
+    tabContent: <DirectProofsEditor />,
+    tabTitle: tabTitles.direct,
+    tabId: 'direct-proofs-editor',
+  },
+  {
+    tabContent: <NaturalProofsEditor />,
+    tabTitle: tabTitles.natural,
+    tabId: 'natural-proofs-editor',
+  },
+  {
+    tabContent: <DefinitionsOfPropositions />,
+    tabTitle: tabTitles.definitions,
+    tabId: 'definitions-of-propositions',
+  },
+  {
+    tabContent: <HeuristicsOfPropositions />,
+    tabTitle: tabTitles.heuristics,
+    tabId: 'heuristics-of-propositions',
+  },
+  {
+    tabContent: <RulesOfInference />,
+    tabTitle: tabTitles.rules,
+    tabId: 'rules-of-inference',
+  },
+];
+
 function Propositions(): React.ReactElement {
   const language = useAppSelector(settingsSelectors.getLanguage);
-
-  const tabs: TabItem[] = [
-    {
-      tabContent: <DirectProofsEditor />,
-      tabTitle: tabTitles.direct,
-      tabId: 'direct-proofs-editor',
-    },
-    {
-      tabContent: <NaturalProofsEditor />,
-      tabTitle: tabTitles.natural,
-      tabId: 'natural-proofs-editor',
-    },
-    {
-      tabContent: <DefinitionsOfPropositions />,
-      tabTitle: tabTitles.definitions,
-      tabId: 'definitions-of-propositions',
-    },
-    {
-      tabContent: <HeuristicsOfPropositions />,
-      tabTitle: tabTitles.heuristics,
-      tabId: 'heuristics-of-propositions',
-    },
-    {
-      tabContent: <RulesOfInference />,
-      tabTitle: tabTitles.rules,
-      tabId: 'rules-of-inference',
-    },
-  ];
-
   return (
     <article className='propositions'>
       <h2 className={formatClassName(['propositions__title', Icon.Propositions])}>{pageTitle[language]}</h2>
-      <TabList tabs={tabs} className='propositions__tabs' />
+      <TabList tabs={propositionsTabs} className='propositions__tabs' />
     </article>
   );
 }
