@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { pageTitle } from 'assets/texts/propositions';
 
 import Propositions, { propositionsTabs } from 'pages/propositions';
 
@@ -20,9 +21,13 @@ describe('Propositions page:', () => {
   });
 
   it('renders the article element', () => {
-    screen.debug();
     expect(screen.getByRole('article')).toBeInTheDocument();
     expect(screen.getByRole('article')).toHaveClass('propositions');
+  });
+
+  it('displays the heading', () => {
+    expect(screen.getByRole('heading')).toBeInTheDocument();
+    expect(screen.getByRole('heading')).toHaveTextContent(pageTitle.en);
   });
 
   it('renders the correct number of tabs', () => {
