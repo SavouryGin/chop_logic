@@ -1,0 +1,13 @@
+@import 'styles/sizes.scss';
+
+.direct-proofs-editor {
+  &__toolbar {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: $default-margin;
+    row-gap: $big-margin;
+    align-items: center;
+    justify-items: center;
+  }
+}
