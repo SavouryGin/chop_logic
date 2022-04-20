@@ -17,10 +17,25 @@ const directProofsEditorTableColumns: TableColumnProps[] = [
   },
 ];
 
+const data = [
+  {
+    id: '1',
+    step: '1',
+    formula: 'asdfddddddddAAAAAAAsssss',
+    comment: 'A1',
+  },
+  {
+    id: '2',
+    step: '32',
+    formula: 'fghdf',
+    comment: 'A2',
+  },
+];
+
 function DirectProofsEditorTable(): React.ReactElement {
   return (
     <div className='direct-proofs-editor__table'>
-      <Table columns={directProofsEditorTableColumns} data={[]} hasCheckboxColumn />
+      <Table columns={directProofsEditorTableColumns} data={data} hasCheckboxColumn />
     </div>
   );
 }
