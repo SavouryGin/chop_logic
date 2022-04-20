@@ -12,8 +12,6 @@ export type TableColumnProps = {
   field?: string;
   // The title of the column
   title?: LocalText;
-  // The width of the column (in pixels)
-  width?: number;
 };
 
 export type TableDataItem = {
