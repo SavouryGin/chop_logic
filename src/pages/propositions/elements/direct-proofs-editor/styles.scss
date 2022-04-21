@@ -1,0 +1,25 @@
+@import 'styles/sizes.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
+
+.direct-proofs-editor {
+  &__table {
+    margin-bottom: $big-margin;
+
+    & > table > tbody > tr > td:nth-child(3n) {
+      text-align: left;
+      max-width: 51vw;
+      overflow-x: auto;
+      @include scrollbar-styles(light);
+    }
+  }
+
+  &__toolbar {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: $default-margin;
+    row-gap: $big-margin;
+    align-items: center;
+    justify-items: center;
+  }
+}

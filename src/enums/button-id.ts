@@ -7,4 +7,12 @@ export enum ButtonID {
   FullScreen,
   Tools,
   ApplySettings,
+  Premise,
+  Reiteration,
+  Replace,
+  Delete,
+  ImplicationCreation,
+  ImplicationDistribution,
+  ImplicationReversal,
+  ImplicationElimination,
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import { TableColumnProps, TableIdsProps } from 'types';
+import { useAppSelector } from 'hooks';
+import { settingsSelectors } from 'store/settings/selectors';
 import SelectAllCheckbox from './select-all-checkbox';
 
 type TableHeadProps = {
@@ -10,10 +12,13 @@ type TableHeadProps = {
 } & TableIdsProps;
 
 function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, allRowIds, ...rest }: TableHeadProps): React.ReactElement {
+  const language = useAppSelector(settingsSelectors.getLanguage);
+
   const headerCells = columns.map((column, index) => {
+    const title = column.title ? column.title[language] : '';
     return (
       <th key={index} className='table__cell table__cell_heading'>
-        {column.title || ''}
+        {title}
       </th>
     );
   });
