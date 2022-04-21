@@ -1,4 +1,4 @@
-import { ComponentProps } from './general';
+import { ComponentProps, LocalText } from './general';
 
 export type TableProps = ComponentProps & {
   columns: TableColumnProps[];
@@ -11,9 +11,7 @@ export type TableColumnProps = {
   // The field to which the column is bound
   field?: string;
   // The title of the column
-  title?: string;
-  // The width of the column (in pixels)
-  width?: number;
+  title?: LocalText;
 };
 
 export type TableDataItem = {
