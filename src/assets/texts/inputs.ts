@@ -22,4 +22,7 @@ export const inputTexts: InputText = {
   [InputID.isSoundsCheckbox]: {
     label: { en: 'Sounds', ru: 'Звуки' },
   },
+  [InputID.Premise]: {
+    label: { en: 'Enter a formula:', ru: 'Введите формулу:' },
+  },
 };
