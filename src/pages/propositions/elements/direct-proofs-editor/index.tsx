@@ -24,7 +24,13 @@ function DirectProofsEditor(): React.ReactElement {
     <div className='direct-proofs-editor'>
       <DirectProofsEditorTable />
       <DirectProofsEditorToolbar />
-      <ModalWindow isOpened={isPremiseOpened} onClose={closePremise} title={uiElementTexts.premise[language]} content={<PremiseForm />} />
+      <ModalWindow
+        className='direct-proofs-editor__premise'
+        isOpened={isPremiseOpened}
+        onClose={closePremise}
+        title={uiElementTexts.premise[language]}
+        content={<PremiseForm />}
+      />
     </div>
   );
 }
