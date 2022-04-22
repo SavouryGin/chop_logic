@@ -1,5 +1,8 @@
+import { LocalText } from 'types';
+
 export interface PropositionsInitialState {
   flags: PropositionsFlags;
+  directProofsTableData: DirectProofsTableItem[];
 }
 
 export interface PropositionsFlags {
@@ -7,3 +10,10 @@ export interface PropositionsFlags {
 }
 
 export type PropositionsFlag = keyof PropositionsFlags;
+
+export type DirectProofsTableItem = {
+  id: string;
+  step: number;
+  formula: string;
+  comment: LocalText;
+};

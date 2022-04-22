@@ -25,6 +25,7 @@ function PremiseForm(): React.ReactElement {
     e.preventDefault();
     // Dispatch the premise to the store
     console.log(formValue);
+    dispatch(propositionsActions.addPromise(formValue.premise));
     // Close the modal window
     closePopup();
   };
