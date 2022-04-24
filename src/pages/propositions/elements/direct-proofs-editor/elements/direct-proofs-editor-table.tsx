@@ -1,6 +1,8 @@
 import React from 'react';
 import Table from 'components/table';
 import { TableColumnProps } from 'types';
+import { useAppSelector } from 'hooks';
+import { propositionsSelectors } from 'store/propositions/selectors';
 
 const directProofsEditorTableColumns: TableColumnProps[] = [
   {
@@ -18,9 +20,11 @@ const directProofsEditorTableColumns: TableColumnProps[] = [
 ];
 
 function DirectProofsEditorTable(): React.ReactElement {
+  const tableData = useAppSelector(propositionsSelectors.getDirectProofsTableData);
+
   return (
     <div className='direct-proofs-editor__table'>
-      <Table columns={directProofsEditorTableColumns} data={[]} hasCheckboxColumn />
+      <Table columns={directProofsEditorTableColumns} data={tableData} hasCheckboxColumn />
     </div>
   );
 }

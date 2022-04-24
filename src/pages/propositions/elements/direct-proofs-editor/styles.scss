@@ -22,4 +22,14 @@
     align-items: center;
     justify-items: center;
   }
+
+  &__premise {
+    .form {
+      padding: $default-padding;
+    }
+
+    .text-input {
+      margin-bottom: $big-margin;
+    }
+  }
 }
