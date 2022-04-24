@@ -15,5 +15,5 @@ export type DirectProofsTableItem = {
   id: string;
   step: number;
   formula: string;
-  comment: LocalText;
+  comment: LocalText | string;
 };
