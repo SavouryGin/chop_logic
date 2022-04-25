@@ -25,7 +25,7 @@ export const propositionsSlice = createSlice({
         id,
         step,
         formula,
-        comment: 'Premise',
+        comment: { en: 'Premise', ru: 'Посылка' },
       };
       state.directProofsTableData = [...state.directProofsTableData, newItem];
     },

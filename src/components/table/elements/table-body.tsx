@@ -1,7 +1,9 @@
 import React from 'react';
 import { TableColumnProps, TableDataItem, TableIdsProps } from 'types';
-import SelectRowCheckbox from './select-row-checkbox';
 import formatClassName from 'helpers/formatters/format-class-name';
+import SelectRowCheckbox from './select-row-checkbox';
+import { useAppSelector } from 'hooks';
+import { settingsSelectors } from 'store/settings/selectors';
 import { getDataCellsValues } from '../helpers';
 
 export type TableBodyProps = {
@@ -12,8 +14,10 @@ export type TableBodyProps = {
 } & TableIdsProps;
 
 function TableBody({ data, columns, hasCheckboxColumn, selectedIds, setSelectedIds, ...rest }: TableBodyProps): React.ReactElement {
+  const language = useAppSelector(settingsSelectors.getLanguage);
+
   const rows = data.map((item) => {
-    const values = getDataCellsValues(item, columns);
+    const values = getDataCellsValues(item, columns, language);
     const rowClassName = formatClassName(['table__row', { table__row_selected: selectedIds.includes(item.id) }]);
 
     const dataCells = values.map((value, index) => {
