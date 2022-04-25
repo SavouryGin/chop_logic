@@ -7,3 +7,8 @@ export const tabTitles = {
 };
 
 export const pageTitle = { en: 'Propositions', ru: 'Высказывания' };
+
+export const fillerText = {
+  en: 'Enter a premise or axiom to start the proof',
+  ru: 'Введите посылку или аксиому, чтобы начать доказательство',
+};

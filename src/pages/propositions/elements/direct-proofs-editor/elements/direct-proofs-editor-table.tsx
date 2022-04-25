@@ -3,6 +3,8 @@ import Table from 'components/table';
 import { TableColumnProps } from 'types';
 import { useAppSelector } from 'hooks';
 import { propositionsSelectors } from 'store/propositions/selectors';
+import { settingsSelectors } from 'store/settings/selectors';
+import { fillerText } from 'assets/texts/propositions';
 
 const directProofsEditorTableColumns: TableColumnProps[] = [
   {
@@ -21,10 +23,14 @@ const directProofsEditorTableColumns: TableColumnProps[] = [
 
 function DirectProofsEditorTable(): React.ReactElement {
   const tableData = useAppSelector(propositionsSelectors.getDirectProofsTableData);
+  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isFillerShown = tableData.length === 0;
+  const noStepsFiller = <div className='direct-proofs-editor__filler'>{fillerText[language]}</div>;
 
   return (
     <div className='direct-proofs-editor__table'>
       <Table columns={directProofsEditorTableColumns} data={tableData} hasCheckboxColumn />
+      {isFillerShown && noStepsFiller}
     </div>
   );
 }
