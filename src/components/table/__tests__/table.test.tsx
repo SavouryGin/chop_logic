@@ -1,6 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { LocalText } from 'types';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { testTableColumns, testTableData } from '__mocks__/test-data/table';
@@ -50,7 +51,7 @@ describe('Table component:', () => {
       expect(screen.getByText(row.field1 as string)).toBeInTheDocument();
       expect(screen.getByText(row.field2 as string)).toBeInTheDocument();
       expect(screen.getByText(row.field3 as string)).toBeInTheDocument();
-      expect(screen.getByText(row.field4 as string)).toBeInTheDocument();
+      expect(screen.getByText((row.field4 as LocalText).en)).toBeInTheDocument();
     }
   });
 
