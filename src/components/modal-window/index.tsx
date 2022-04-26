@@ -24,7 +24,7 @@ function ModalWindow({ isOpened, onClose, content, title, ...rest }: ModalWindow
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isAnimationActive = useAppSelector(settingsSelectors.getIsModalWindowClosingAnimationActive);
-  const browser = detectBrowser();
+  const browser = detectBrowser(navigator.userAgent);
 
   const contentClassNames = formatClassName([
     'modal-window__content',
