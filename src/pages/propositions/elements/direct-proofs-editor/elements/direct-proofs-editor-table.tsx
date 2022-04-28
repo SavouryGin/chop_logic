@@ -26,13 +26,12 @@ function DirectProofsEditorTable(): React.ReactElement {
   const dispatch = useAppDispatch();
   const tableData = useAppSelector(propositionsSelectors.getDirectProofsTableData);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const [selectedIds, setSelectedIds] = useState<Array<string>>([]);
+  const [selectedIds, setSelectedIds] = useState<Array<string>>(useAppSelector(propositionsSelectors.getSelectedIds));
   const takeSelectedIds = (ids: string[]) => setSelectedIds(ids);
   const isFillerShown = tableData.length === 0;
   const noStepsFiller = <div className='direct-proofs-editor__filler'>{fillerText[language]}</div>;
 
   useEffect(() => {
-    console.log('selectedIds', selectedIds);
     dispatch(actions.setSelectedIds(selectedIds));
   }, [selectedIds]);
 

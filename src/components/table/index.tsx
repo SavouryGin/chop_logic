@@ -17,11 +17,14 @@ function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
   const bodyClassNames = formatClassName(['table__body', { table__body_dark: isDarkMode }]);
   // State
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  const allRowIds = data.map((item) => item.id);
   // Effects
   useEffect(() => {
     if (rest.passSelectedIds) rest.passSelectedIds(selectedIds);
   }, [selectedIds]);
+
+  useEffect(() => {
+    setSelectedIds([]);
+  }, [data]);
 
   return (
     <table className={tableClassNames}>
@@ -29,7 +32,7 @@ function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
         columns={columns}
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
-        allRowIds={allRowIds}
+        data={data}
         hasCheckboxColumn={!!rest.hasCheckboxColumn}
         className={headClassNames}
       />

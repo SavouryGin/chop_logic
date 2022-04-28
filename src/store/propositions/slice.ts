@@ -34,6 +34,21 @@ export const propositionsSlice = createSlice({
       };
       state.directProofsTableData = [...state.directProofsTableData, newItem];
     },
+
+    deleteSteps: (state) => {
+      const newSteps = state.directProofsTableData
+        .filter((item) => !state.selectedIds.includes(item.id))
+        .map((item, index) => {
+          return {
+            ...item,
+            step: index + 1,
+            id: `proof-step-${index + 1}`,
+          };
+        });
+
+      state.selectedIds = [];
+      state.directProofsTableData = newSteps;
+    },
   },
 });
 
