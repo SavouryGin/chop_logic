@@ -26,6 +26,7 @@ function SelectAllCheckbox({ selectedIds, setSelectedIds, allRowIds }: SelectAll
         getCheckboxEvent={onChangeSelectAllCheckbox}
         setCheckboxValue={selectedIds.length === allRowIds.length && selectedIds.length > 1}
         className={'table__checkbox'}
+        isDisabled={allRowIds.length < 1}
       />
     </th>
   );

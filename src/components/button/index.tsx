@@ -17,6 +17,7 @@ export type ButtonProps = ComponentProps & {
   size?: 'small' | 'normal' | 'large';
   onClick?: () => void;
   sound?: HTMLAudioElement;
+  isDisabled?: boolean;
 };
 
 function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps): React.ReactElement {
@@ -32,7 +33,7 @@ function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
   const buttonClassNames = formatClassName([
     'button',
     rest.className,
-    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large' },
+    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large', button_disabled: !!rest.isDisabled },
   ]);
 
   const onButtonClick = () => {
@@ -47,6 +48,7 @@ function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
       className={buttonClassNames}
       onClick={onButtonClick}
       id={`button_id_${buttonId}`}
+      disabled={rest.isDisabled}
     >
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>
