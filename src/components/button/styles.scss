@@ -1,6 +1,7 @@
 @import 'styles/sizes.scss';
 @import 'styles/colors.scss';
 @import 'styles/mixins/theme-colors.scss';
+@import 'styles/mixins/input-styles.scss';
 
 .button {
   position: relative;
@@ -114,5 +115,10 @@
   // Styles for the large version
   &_large {
     width: 100%;
+  }
+
+  // Disabled styles
+  &_disabled {
+    @include input-disabled-styles();
   }
 }

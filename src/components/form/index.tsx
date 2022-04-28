@@ -11,6 +11,7 @@ export type FormProps = ComponentProps & {
   initialValues: FormValues;
   submitButtonId: ButtonID;
   action?: string;
+  isSubmitDisabled?: boolean;
   passValues?: (values: FormValues) => void;
 };
 
@@ -44,7 +45,14 @@ function Form({ className, onSubmit, inputs, initialValues, passValues, submitBu
       >
         {inputs}
       </FormContext.Provider>
-      <Button buttonId={submitButtonId} type='submit' icon={Icon.Default} sound={soundPlayer.slideClick} size='large' />
+      <Button
+        buttonId={submitButtonId}
+        type='submit'
+        icon={Icon.Default}
+        sound={soundPlayer.slideClick}
+        size='large'
+        isDisabled={rest.isSubmitDisabled}
+      />
     </form>
   );
 }

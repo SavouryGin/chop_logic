@@ -6,6 +6,7 @@ export const propositionsInitialState: PropositionsInitialState = {
     isPremiseOpened: false,
   },
   directProofsTableData: [],
+  selectedIds: [],
 };
 
 export const propositionsSlice = createSlice({
@@ -15,6 +16,10 @@ export const propositionsSlice = createSlice({
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsFlag; value: boolean }>) => {
       const { flag, value } = action.payload;
       state.flags[flag] = value;
+    },
+
+    setSelectedIds: (state, action: PayloadAction<string[]>) => {
+      state.selectedIds = action.payload;
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
@@ -28,6 +33,21 @@ export const propositionsSlice = createSlice({
         comment: { en: 'Premise', ru: 'Посылка' },
       };
       state.directProofsTableData = [...state.directProofsTableData, newItem];
+    },
+
+    deleteSteps: (state) => {
+      const newSteps = state.directProofsTableData
+        .filter((item) => !state.selectedIds.includes(item.id))
+        .map((item, index) => {
+          return {
+            ...item,
+            step: index + 1,
+            id: `proof-step-${index + 1}`,
+          };
+        });
+
+      state.selectedIds = [];
+      state.directProofsTableData = newSteps;
     },
   },
 });
