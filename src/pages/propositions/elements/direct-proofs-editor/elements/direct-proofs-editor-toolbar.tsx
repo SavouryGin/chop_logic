@@ -14,12 +14,22 @@ function DirectProofsEditorToolbar(): React.ReactElement {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));
   };
 
+  const deleteSteps = () => {
+    dispatch(actions.deleteSteps());
+  };
+
   return (
     <div className='direct-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} />
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' isDisabled={selectedIds.length === 0} />
+      <Button
+        buttonId={ButtonID.Delete}
+        sound={soundPlayer.keyboard}
+        size='large'
+        isDisabled={selectedIds.length === 0}
+        onClick={deleteSteps}
+      />
       <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} size='large' />
       <Button buttonId={ButtonID.ImplicationDistribution} sound={soundPlayer.slideClick} size='large' />
       <Button buttonId={ButtonID.ImplicationReversal} sound={soundPlayer.slideClick} size='large' />
