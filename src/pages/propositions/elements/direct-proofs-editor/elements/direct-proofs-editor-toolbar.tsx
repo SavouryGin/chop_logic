@@ -10,6 +10,7 @@ function DirectProofsEditorToolbar(): React.ReactElement {
   const dispatch = useAppDispatch();
   const selectedIds = useAppSelector(propositionsSelectors.getSelectedIds);
 
+  // Handlers
   const openPremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));
   };
@@ -21,7 +22,7 @@ function DirectProofsEditorToolbar(): React.ReactElement {
   return (
     <div className='direct-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} />
-      <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' />
+      <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={selectedIds.length === 0} />
       <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' />
       <Button
         buttonId={ButtonID.Delete}
