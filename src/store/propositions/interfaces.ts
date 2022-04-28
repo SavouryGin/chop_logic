@@ -3,6 +3,7 @@ import { LocalText } from 'types';
 export interface PropositionsInitialState {
   flags: PropositionsFlags;
   directProofsTableData: DirectProofsTableItem[];
+  selectedIds: string[];
 }
 
 export interface PropositionsFlags {

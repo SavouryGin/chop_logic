@@ -6,6 +6,7 @@ export const propositionsInitialState: PropositionsInitialState = {
     isPremiseOpened: false,
   },
   directProofsTableData: [],
+  selectedIds: [],
 };
 
 export const propositionsSlice = createSlice({
@@ -15,6 +16,10 @@ export const propositionsSlice = createSlice({
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsFlag; value: boolean }>) => {
       const { flag, value } = action.payload;
       state.flags[flag] = value;
+    },
+
+    setSelectedIds: (state, action: PayloadAction<string[]>) => {
+      state.selectedIds = action.payload;
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
