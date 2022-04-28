@@ -39,6 +39,7 @@ function PremiseForm(): React.ReactElement {
         inputs={<TextInput name='premise' inputId={InputID.Premise} />}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
+        isSubmitDisabled={formValue.premise.length === 0}
       />
     </>
   );
