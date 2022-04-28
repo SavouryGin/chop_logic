@@ -28,17 +28,17 @@ function DirectProofsEditorTable(): React.ReactElement {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const [selectedIds, setSelectedIds] = useState<Array<string>>(useAppSelector(propositionsSelectors.getSelectedIds));
   const takeSelectedIds = (ids: string[]) => setSelectedIds(ids);
-  const isFillerShown = tableData.length === 0;
-  const noStepsFiller = <div className='direct-proofs-editor__filler'>{fillerText[language]}</div>;
 
   useEffect(() => {
     dispatch(actions.setSelectedIds(selectedIds));
   }, [selectedIds]);
 
+  const noStepsFiller = <div className='direct-proofs-editor__filler'>{fillerText[language]}</div>;
+
   return (
     <div className='direct-proofs-editor__table'>
       <Table columns={directProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
-      {isFillerShown && noStepsFiller}
+      {tableData.length === 0 && noStepsFiller}
     </div>
   );
 }
