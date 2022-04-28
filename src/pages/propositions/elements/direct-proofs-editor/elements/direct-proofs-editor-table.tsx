@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
 import { TableColumnProps } from 'types';
 import { useAppSelector } from 'hooks';
@@ -24,12 +24,18 @@ const directProofsEditorTableColumns: TableColumnProps[] = [
 function DirectProofsEditorTable(): React.ReactElement {
   const tableData = useAppSelector(propositionsSelectors.getDirectProofsTableData);
   const language = useAppSelector(settingsSelectors.getLanguage);
+  const [selectedIds, setSelectedIds] = useState<Array<string>>([]);
+  const takeSelectedIds = (ids: string[]) => setSelectedIds(ids);
   const isFillerShown = tableData.length === 0;
   const noStepsFiller = <div className='direct-proofs-editor__filler'>{fillerText[language]}</div>;
 
+  useEffect(() => {
+    console.log('selectedIds', selectedIds);
+  }, [selectedIds]);
+
   return (
     <div className='direct-proofs-editor__table'>
-      <Table columns={directProofsEditorTableColumns} data={tableData} hasCheckboxColumn />
+      <Table columns={directProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
       {isFillerShown && noStepsFiller}
     </div>
   );
