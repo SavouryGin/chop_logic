@@ -49,6 +49,21 @@ export const propositionsSlice = createSlice({
       state.selectedIds = [];
       state.directProofsTableData = newSteps;
     },
+
+    reiterateStep: (state) => {
+      const selectedStep = state.directProofsTableData.find((item) => item.id === state.selectedIds[0]);
+      if (!selectedStep) return state;
+      const index = state.directProofsTableData.length + 1;
+      const newStep = {
+        ...selectedStep,
+        id: `proof-step-${index}`,
+        step: index,
+        comment: { en: `Reiter. ${selectedStep.step}`, ru: `Повтор ${selectedStep.step}` },
+      };
+
+      state.selectedIds = [];
+      state.directProofsTableData = [...state.directProofsTableData, newStep];
+    },
   },
 });
 
