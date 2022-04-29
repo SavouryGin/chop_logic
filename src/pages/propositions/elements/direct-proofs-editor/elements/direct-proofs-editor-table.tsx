@@ -18,7 +18,7 @@ const directProofsEditorTableColumns: TableColumnProps[] = [
   },
   {
     field: 'comment',
-    title: { en: 'Comment', ru: 'Комментарий' },
+    title: { en: 'Comment', ru: 'Коммент.' },
   },
 ];
 
