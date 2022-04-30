@@ -4,6 +4,7 @@ import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } fro
 export const propositionsInitialState: PropositionsInitialState = {
   flags: {
     isPremiseOpened: false,
+    isImplicationCreationOpened: false,
   },
   directProofsTableData: [],
   selectedIds: [],
