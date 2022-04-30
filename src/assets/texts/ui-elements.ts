@@ -5,4 +5,5 @@ export const uiElementTexts: { [key in string]: LocalText } = {
   footer: { en: 'Dmitrii Suroviagin', ru: 'Дмитрий Суровягин' },
   settings: { en: 'Settings', ru: 'Настройки' },
   premise: { en: 'Premise', ru: 'Посылка' },
+  implicationCreation: { en: 'Implication Introduction', ru: 'Введение импликации' },
 };

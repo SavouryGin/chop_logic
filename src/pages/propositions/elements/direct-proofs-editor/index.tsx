@@ -3,6 +3,7 @@ import ModalWindow from 'components/modal-window';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import DirectProofsEditorTable from './elements/direct-proofs-editor-table';
 import DirectProofsEditorToolbar from './elements/direct-proofs-editor-toolbar';
+import ImplicationCreationForm from './elements/implication-creation-form';
 import PremiseForm from './elements/premise-form';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'assets/texts/ui-elements';
@@ -14,10 +15,15 @@ import './styles.scss';
 function DirectProofsEditor(): React.ReactElement {
   const dispatch = useAppDispatch();
   const isPremiseOpened = useAppSelector(propositionsSelectors.getIsPremiseOpened);
+  const isImplicationCreationOpened = useAppSelector(propositionsSelectors.getIsImplicationCreationOpened);
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   const closePremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
+  };
+
+  const closeImplicationCreation = () => {
+    dispatch(actions.setUpFlag({ flag: 'isImplicationCreationOpened', value: false }));
   };
 
   return (
@@ -30,6 +36,13 @@ function DirectProofsEditor(): React.ReactElement {
         onClose={closePremise}
         title={uiElementTexts.premise[language]}
         content={<PremiseForm />}
+      />
+      <ModalWindow
+        className='direct-proofs-editor__implication-creation'
+        isOpened={isImplicationCreationOpened}
+        onClose={closeImplicationCreation}
+        title={uiElementTexts.implicationCreation[language]}
+        content={<ImplicationCreationForm />}
       />
     </div>
   );
