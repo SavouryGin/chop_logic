@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'components/form';
 import { FormValues } from 'types';
-import { ButtonID, InputID } from 'enums';
+import { ButtonID, GreekSymbol, InputID, LogicalSymbol } from 'enums';
 import { propositionsActions } from 'store/propositions/slice';
 import { formsTexts } from 'assets/texts/propositions';
 import { settingsActions } from 'store/settings/slice';
@@ -44,7 +44,8 @@ function ImplicationCreationForm(): React.ReactElement {
 
   return (
     <div className='implication-creation-form'>
-      <span>{formsTexts.implicationCreation[language]}</span>
+      <p>{formsTexts.implicationCreation[language]}</p>
+      <p>{`${GreekSymbol.Phi} ${LogicalSymbol.Implication} (${GreekSymbol.Psi} ${LogicalSymbol.Implication} ${GreekSymbol.Phi})`}</p>
       <Form
         onSubmit={onSubmit}
         initialValues={implicationCreationInitialValues}
