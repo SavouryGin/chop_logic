@@ -36,4 +36,18 @@
   &__filler {
     margin-top: $big-margin;
   }
+
+  &__implication-creation {
+    .modal-window__content {
+      padding: $default-padding;
+    }
+
+    .text-input {
+      margin: $big-padding 0;
+    }
+
+    p:nth-child(2) {
+      text-align: center;
+    }
+  }
 }

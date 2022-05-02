@@ -26,9 +26,9 @@ export const inputTexts: InputText = {
     label: { en: 'Enter a formula:', ru: 'Введите формулу:' },
   },
   [InputID.FirstMetaVariable]: {
-    label: { en: GreekSymbol.Phi, ru: GreekSymbol.Phi },
+    label: { en: `${GreekSymbol.Phi} :`, ru: `${GreekSymbol.Phi} :` },
   },
   [InputID.SecondMetaVariable]: {
-    label: { en: GreekSymbol.Psi, ru: GreekSymbol.Psi },
+    label: { en: `${GreekSymbol.Psi} :`, ru: `${GreekSymbol.Psi} :` },
   },
 };
