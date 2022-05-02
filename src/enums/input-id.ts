@@ -4,4 +4,6 @@ export enum InputID {
   isDarkModeCheckbox,
   isSoundsCheckbox,
   Premise,
+  FirstMetaVariable,
+  SecondMetaVariable,
 }

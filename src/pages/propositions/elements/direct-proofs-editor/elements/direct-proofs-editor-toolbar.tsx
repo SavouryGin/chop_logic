@@ -25,6 +25,10 @@ function DirectProofsEditorToolbar(): React.ReactElement {
     dispatch(actions.reiterateStep());
   };
 
+  const createImplication = () => {
+    dispatch(actions.setUpFlag({ flag: 'isImplicationCreationOpened', value: true }));
+  };
+
   return (
     <div className='direct-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={createPremise} />
@@ -37,7 +41,7 @@ function DirectProofsEditorToolbar(): React.ReactElement {
       />
       <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' isDisabled={isDeleteDisabled} onClick={deleteSteps} />
-      <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} size='large' />
+      <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} size='large' onClick={createImplication} />
       <Button buttonId={ButtonID.ImplicationDistribution} sound={soundPlayer.slideClick} size='large' />
       <Button buttonId={ButtonID.ImplicationReversal} sound={soundPlayer.slideClick} size='large' />
       <Button buttonId={ButtonID.ImplicationElimination} sound={soundPlayer.slideClick} size='large' />
