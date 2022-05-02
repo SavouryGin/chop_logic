@@ -8,6 +8,7 @@ export interface PropositionsInitialState {
 
 export interface PropositionsFlags {
   isPremiseOpened: boolean;
+  isImplicationCreationOpened: boolean;
 }
 
 export type PropositionsFlag = keyof PropositionsFlags;

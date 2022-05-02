@@ -1,4 +1,4 @@
-import { InputID } from 'enums';
+import { GreekSymbol, InputID } from 'enums';
 import { LocalText } from 'types';
 
 type InputText = {
@@ -24,5 +24,11 @@ export const inputTexts: InputText = {
   },
   [InputID.Premise]: {
     label: { en: 'Enter a formula:', ru: 'Введите формулу:' },
+  },
+  [InputID.FirstMetaVariable]: {
+    label: { en: `${GreekSymbol.Phi} :`, ru: `${GreekSymbol.Phi} :` },
+  },
+  [InputID.SecondMetaVariable]: {
+    label: { en: `${GreekSymbol.Psi} :`, ru: `${GreekSymbol.Psi} :` },
   },
 };
