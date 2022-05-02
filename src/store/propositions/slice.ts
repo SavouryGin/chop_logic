@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LogicalSymbol } from 'enums';
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 
 export const propositionsInitialState: PropositionsInitialState = {
@@ -62,6 +63,21 @@ export const propositionsSlice = createSlice({
         comment: { en: `Reiter. ${selectedStep.step}`, ru: `Повтор ${selectedStep.step}` },
       };
 
+      state.selectedIds = [];
+      state.directProofsTableData = [...state.directProofsTableData, newStep];
+    },
+
+    createImplication: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
+      const { firstVariable, secondVariable } = action.payload;
+      const formula = `${firstVariable} ${LogicalSymbol.Implication} ( ${secondVariable} ${LogicalSymbol.Implication} ${firstVariable} )`;
+      const step = state.directProofsTableData.length + 1;
+      const id = `proof-step-${step}`;
+      const newStep = {
+        step,
+        id,
+        formula,
+        comment: { en: 'IC', ru: 'ВИ' },
+      };
       state.selectedIds = [];
       state.directProofsTableData = [...state.directProofsTableData, newStep];
     },
