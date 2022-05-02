@@ -43,9 +43,9 @@ function ImplicationCreationForm(): React.ReactElement {
   );
 
   return (
-    <div className='implication-creation-form'>
+    <>
       <p>{formsTexts.implicationCreation[language]}</p>
-      <p>{`${GreekSymbol.Phi} ${LogicalSymbol.Implication} (${GreekSymbol.Psi} ${LogicalSymbol.Implication} ${GreekSymbol.Phi})`}</p>
+      <p>{`${GreekSymbol.Phi} ${LogicalSymbol.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbol.Implication} ${GreekSymbol.Phi} )`}</p>
       <Form
         onSubmit={onSubmit}
         initialValues={implicationCreationInitialValues}
@@ -54,7 +54,7 @@ function ImplicationCreationForm(): React.ReactElement {
         passValues={takeValues}
         isSubmitDisabled={isDisabled}
       />
-    </div>
+    </>
   );
 }
 
