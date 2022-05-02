@@ -27,8 +27,8 @@ function ImplicationCreationForm(): React.ReactElement {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Dispatch the premise to the store
-    //
+    // Dispatch the formula to the store
+    dispatch(propositionsActions.createImplication({ ...formValue }));
     // Close the modal window
     closePopup();
   };
