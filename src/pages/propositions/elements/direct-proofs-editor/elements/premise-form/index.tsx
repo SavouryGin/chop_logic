@@ -5,7 +5,7 @@ import { ButtonID, InputID } from 'enums';
 import { propositionsActions } from 'store/propositions/slice';
 import { useAppDispatch } from 'hooks';
 import TextInput from 'components/inputs/text-input';
-import { closePropositionsPopup } from '../helpers/close-propostitions-popup';
+import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 
 function PremiseForm(): React.ReactElement {
   const dispatch = useAppDispatch();
