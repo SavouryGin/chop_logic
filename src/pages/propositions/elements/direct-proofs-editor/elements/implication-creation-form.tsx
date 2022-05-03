@@ -4,10 +4,10 @@ import { FormValues } from 'types';
 import { ButtonID, GreekSymbol, InputID, LogicalSymbol } from 'enums';
 import { propositionsActions } from 'store/propositions/slice';
 import { formsTexts } from 'assets/texts/propositions';
-import { settingsActions } from 'store/settings/slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import TextInput from 'components/inputs/text-input';
 import { settingsSelectors } from 'store/settings/selectors';
+import { closePropositionsPopup } from '../helpers/close-propostitions-popup';
 
 function ImplicationCreationForm(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -16,21 +16,12 @@ function ImplicationCreationForm(): React.ReactElement {
   const isDisabled = formValue.firstVariable.length === 0 || formValue.secondVariable.length === 0;
   const language = useAppSelector(settingsSelectors.getLanguage);
 
-  const closePopup = () => {
-    dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
-    // wait for closing CSS animation
-    setTimeout(() => {
-      dispatch(propositionsActions.setUpFlag({ flag: 'isImplicationCreationOpened', value: false }));
-      dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
-    }, 900);
-  };
-
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Dispatch the formula to the store
     dispatch(propositionsActions.createImplication({ ...formValue }));
     // Close the modal window
-    closePopup();
+    closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
   };
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof implicationCreationInitialValues);
