@@ -7,7 +7,7 @@ import { formsTexts } from 'assets/texts/propositions';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import TextInput from 'components/inputs/text-input';
 import { settingsSelectors } from 'store/settings/selectors';
-import { closePropositionsPopup } from '../helpers/close-propostitions-popup';
+import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 
 function ImplicationCreationForm(): React.ReactElement {
   const dispatch = useAppDispatch();
