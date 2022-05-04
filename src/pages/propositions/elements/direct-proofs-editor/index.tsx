@@ -28,14 +28,12 @@ function DirectProofsEditor(): React.ReactElement {
       <DirectProofsEditorTable />
       <DirectProofsEditorToolbar />
       <ModalWindow
-        className='direct-proofs-editor__premise'
         isOpened={isPremiseOpened}
         onClose={() => closePopupByFlag('isPremiseOpened')}
         title={uiElementTexts.premise[language]}
         content={<PremiseForm />}
       />
       <ModalWindow
-        className='direct-proofs-editor__implication-creation'
         isOpened={isImplicationCreationOpened}
         onClose={() => closePopupByFlag('isImplicationCreationOpened')}
         title={uiElementTexts.implicationCreation[language]}

@@ -7,6 +7,8 @@ import { useAppDispatch } from 'hooks';
 import TextInput from 'components/inputs/text-input';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 
+import './styles.scss';
+
 function PremiseForm(): React.ReactElement {
   const dispatch = useAppDispatch();
   const premiseInitialValue = { premise: '' };
@@ -23,16 +25,16 @@ function PremiseForm(): React.ReactElement {
   const takeValues = (values: FormValues) => setFormValue(values as typeof premiseInitialValue);
 
   return (
-    <>
+    <div className='premise-form'>
       <Form
         onSubmit={onSubmit}
         initialValues={premiseInitialValue}
-        inputs={<TextInput name='premise' inputId={InputID.Premise} />}
+        inputs={<TextInput name='premise' inputId={InputID.Premise} className='premise-form__input' />}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
         isSubmitDisabled={formValue.premise.length === 0}
       />
-    </>
+    </div>
   );
 }
 
