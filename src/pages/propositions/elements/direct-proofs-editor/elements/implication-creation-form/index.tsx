@@ -9,6 +9,8 @@ import TextInput from 'components/inputs/text-input';
 import { settingsSelectors } from 'store/settings/selectors';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 
+import './styles.scss';
+
 function ImplicationCreationForm(): React.ReactElement {
   const dispatch = useAppDispatch();
   const implicationCreationInitialValues = { firstVariable: '', secondVariable: '' };
@@ -28,15 +30,15 @@ function ImplicationCreationForm(): React.ReactElement {
 
   const inputs = (
     <>
-      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} />
-      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} />
+      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
+      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
     </>
   );
 
   return (
-    <>
+    <div className='implication-creation-form'>
       <p>{formsTexts.implicationCreation[language]}</p>
-      <p>{`${GreekSymbol.Phi} ${LogicalSymbol.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbol.Implication} ${GreekSymbol.Phi} )`}</p>
+      <p className='implication-creation-form__formula'>{`${GreekSymbol.Phi} ${LogicalSymbol.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbol.Implication} ${GreekSymbol.Phi} )`}</p>
       <Form
         onSubmit={onSubmit}
         initialValues={implicationCreationInitialValues}
@@ -45,7 +47,7 @@ function ImplicationCreationForm(): React.ReactElement {
         passValues={takeValues}
         isSubmitDisabled={isDisabled}
       />
-    </>
+    </div>
   );
 }
 
