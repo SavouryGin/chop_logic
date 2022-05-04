@@ -1,0 +1,13 @@
+@import 'styles/sizes.scss';
+
+.implication-creation-form {
+  padding: $default-padding;
+
+  &__input {
+    margin: $big-padding 0;
+  }
+
+  &__formula {
+    text-align: center;
+  }
+}

@@ -9,6 +9,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'assets/texts/ui-elements';
 import { propositionsSelectors } from 'store/propositions/selectors';
 import { propositionsActions as actions } from 'store/propositions/slice';
+import { PropositionsFlag } from 'store/propositions/interfaces';
 
 import './styles.scss';
 
@@ -18,12 +19,8 @@ function DirectProofsEditor(): React.ReactElement {
   const isImplicationCreationOpened = useAppSelector(propositionsSelectors.getIsImplicationCreationOpened);
   const language = useAppSelector(settingsSelectors.getLanguage);
 
-  const closePremise = () => {
-    dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
-  };
-
-  const closeImplicationCreation = () => {
-    dispatch(actions.setUpFlag({ flag: 'isImplicationCreationOpened', value: false }));
+  const closePopupByFlag = (flag: PropositionsFlag) => {
+    dispatch(actions.setUpFlag({ flag, value: false }));
   };
 
   return (
@@ -31,16 +28,14 @@ function DirectProofsEditor(): React.ReactElement {
       <DirectProofsEditorTable />
       <DirectProofsEditorToolbar />
       <ModalWindow
-        className='direct-proofs-editor__premise'
         isOpened={isPremiseOpened}
-        onClose={closePremise}
+        onClose={() => closePopupByFlag('isPremiseOpened')}
         title={uiElementTexts.premise[language]}
         content={<PremiseForm />}
       />
       <ModalWindow
-        className='direct-proofs-editor__implication-creation'
         isOpened={isImplicationCreationOpened}
-        onClose={closeImplicationCreation}
+        onClose={() => closePopupByFlag('isImplicationCreationOpened')}
         title={uiElementTexts.implicationCreation[language]}
         content={<ImplicationCreationForm />}
       />

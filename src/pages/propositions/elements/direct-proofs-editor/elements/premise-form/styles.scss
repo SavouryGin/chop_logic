@@ -1,0 +1,9 @@
+@import 'styles/sizes.scss';
+
+.premise-form {
+  padding: $default-padding;
+
+  &__input {
+    margin-bottom: $big-margin;
+  }
+}
