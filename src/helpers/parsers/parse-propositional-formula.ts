@@ -1,33 +1,30 @@
+import { LogicalSymbol } from 'enums';
 import { PropositionalSymbol } from 'types/formulas';
 
 const logicalOperators = ['=>', '&', '|', '~', '<=>'];
 const parentheses = ['(', ')'];
 
 export function parsePropositionalFormula(input: string): PropositionalSymbol[] {
-  console.log('input', input);
   const output: PropositionalSymbol[] = [];
-
   const charsArray = joinMultiCharsOperators(convertStringToCharsArray(input));
-  console.log('charsArray', charsArray);
-
   let acc = '';
 
   for (const char of charsArray) {
-    if (logicalOperators.includes(char) || parentheses.includes(char)) {
+    if (isNotPropositionalVariable(char)) {
+      // Save the previous symbols as a variable
       if (acc.length) {
         output.push(convertToPropositionalSymbol(acc));
         acc = '';
       }
-
+      // Push a non-variable symbol to the output array
       output.push(convertToPropositionalSymbol(char));
     } else {
       acc += char;
     }
   }
-
+  // Push remaining characters as a variable
   if (acc.length) output.push(convertToPropositionalSymbol(acc));
 
-  console.log('output', output);
   return output;
 }
 
@@ -36,6 +33,10 @@ function convertStringToCharsArray(input: string): string[] {
     .split('')
     .filter((char) => char !== '')
     .map((char) => char.trim());
+}
+
+function isNotPropositionalVariable(char: string): boolean {
+  return logicalOperators.includes(char) || parentheses.includes(char);
 }
 
 function joinMultiCharsOperators(input: string[]): string[] {
@@ -60,7 +61,7 @@ function convertToPropositionalSymbol(char: string): PropositionalSymbol {
   if (logicalOperators.includes(char)) {
     return {
       input: char,
-      representation: '*',
+      representation: getLogicalSymbolRepresentation(char),
       type: 'operator',
     };
   } else if (parentheses.includes(char)) {
@@ -75,5 +76,28 @@ function convertToPropositionalSymbol(char: string): PropositionalSymbol {
       representation: char.toLocaleUpperCase(),
       type: 'variable',
     };
+  }
+}
+
+function getLogicalSymbolRepresentation(char: string): LogicalSymbol | undefined {
+  switch (char) {
+    case '=>': {
+      return LogicalSymbol.Implication;
+    }
+    case '&': {
+      return LogicalSymbol.Conjunction;
+    }
+    case '|': {
+      return LogicalSymbol.Disjunction;
+    }
+    case '~': {
+      return LogicalSymbol.Negation;
+    }
+    case '<=>': {
+      return LogicalSymbol.Equivalence;
+    }
+    default: {
+      return undefined;
+    }
   }
 }
