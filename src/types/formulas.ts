@@ -1,5 +1,5 @@
 export type PropositionalSymbol = {
-  representation: string;
+  representation?: string;
   input: string;
   type: 'variable' | 'operator' | 'parentheses';
 };
