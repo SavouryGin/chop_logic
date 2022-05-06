@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { formatPropositionalFormula } from 'helpers/formatters/format-propositional-formula';
-import { parsePropositionalFormula } from 'helpers/parsers/parse-propositional-formula';
+import PropositionsParser from 'helpers/parsers/propositions-parser';
+
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 
 export const propositionsInitialState: PropositionsInitialState = {
@@ -26,7 +27,7 @@ export const propositionsSlice = createSlice({
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
-      const formula = parsePropositionalFormula(action.payload);
+      const formula = PropositionsParser.parsePropositionalFormula(action.payload);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
@@ -72,7 +73,7 @@ export const propositionsSlice = createSlice({
     createImplication: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
       const { firstVariable, secondVariable } = action.payload;
       const input = `${firstVariable} => (${secondVariable} => ${firstVariable})`;
-      const formula = parsePropositionalFormula(input);
+      const formula = PropositionsParser.parsePropositionalFormula(input);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {

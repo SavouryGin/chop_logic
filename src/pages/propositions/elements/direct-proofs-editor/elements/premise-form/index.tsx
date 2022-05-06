@@ -8,7 +8,6 @@ import TextInput from 'components/inputs/text-input';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 
 import './styles.scss';
-import { parsePropositionalFormula } from 'helpers/parsers/parse-propositional-formula';
 
 function PremiseForm(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -19,7 +18,6 @@ function PremiseForm(): React.ReactElement {
     e.preventDefault();
     // Dispatch the premise to the store
     dispatch(propositionsActions.addPromise(formValue.premise));
-    parsePropositionalFormula(formValue.premise);
     // Close the modal window
     closePropositionsPopup(dispatch, 'isPremiseOpened');
   };
