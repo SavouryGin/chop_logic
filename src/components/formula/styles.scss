@@ -1,19 +1,25 @@
 @import 'styles/fonts.scss';
-@import 'styles/sizes.scss';
+@import 'styles/colors.scss';
 
 .formula {
   font-family: $Monospace;
 
   &__operator {
-    color: red;
+    color: $light-operator-color;
     font-weight: bold;
   }
 
   &__parentheses {
-    color: violet;
+    color: $light-parentheses-color;
   }
 
-  // &__variable {
-  //   color: blue;
-  // }
+  &_dark {
+    .formula__operator {
+      color: $dark-operator-color;
+    }
+
+    .formula__parentheses {
+      color: $dark-parentheses-color;
+    }
+  }
 }

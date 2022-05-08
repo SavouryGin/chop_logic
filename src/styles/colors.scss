@@ -23,3 +23,10 @@ $dark-button-shadow: 0.125rem 0.25rem 0.25rem hsl(167, 27%, 72%);
 $dark-text-shadow: 0.125rem 0.25rem 0.25rem hsl(194, 73%, 65%);
 $dark-outline: hsl(88, 60%, 50%) dashed 0.125rem;
 $dark-border: hsl(88, 60%, 50%) solid 0.01rem;
+
+// Syntax highlighting colors
+$light-operator-color: hsl(360, 100%, 55%);
+$light-parentheses-color: hsl(40, 5%, 50%);
+
+$dark-operator-color: hsl(140, 60%, 60%);
+$dark-parentheses-color: hsl(194, 73%, 65%);
