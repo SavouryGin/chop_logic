@@ -13,7 +13,7 @@ const directProofsEditorTableColumns: TableColumnProps[] = [
     title: { en: 'Step', ru: 'Шаг' },
   },
   {
-    field: 'formattedFormula',
+    field: 'formula',
     title: { en: 'Formula', ru: 'Формула' },
   },
   {
