@@ -1,9 +1,14 @@
 @import 'styles/sizes.scss';
 @import 'styles/mixins/scrollbar-styles.scss';
+@import 'styles/fonts.scss';
 
 .direct-proofs-editor {
   &__table {
     margin-bottom: $big-margin;
+
+    td.table__cell {
+      font-family: $Monospace;
+    }
 
     & > table > tbody > tr > td:nth-child(3n) {
       text-align: left;
