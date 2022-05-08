@@ -1,0 +1,19 @@
+@import 'styles/fonts.scss';
+@import 'styles/sizes.scss';
+
+.formula {
+  font-family: $Monospace;
+
+  &__operator {
+    color: red;
+    font-weight: bold;
+  }
+
+  &__parentheses {
+    color: violet;
+  }
+
+  // &__variable {
+  //   color: blue;
+  // }
+}
