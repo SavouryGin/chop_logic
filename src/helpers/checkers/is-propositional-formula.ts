@@ -1,5 +1,6 @@
 import { PropositionalSymbol } from 'types';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isPropositionalFormula(array: any): array is PropositionalSymbol[] {
   if (!array || !Array.isArray(array)) return false;
 
