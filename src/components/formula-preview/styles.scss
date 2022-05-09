@@ -8,6 +8,10 @@
   height: $formula-preview-height;
   margin-bottom: $big-margin;
 
+  &__formula {
+    padding: 0 $small-padding;
+  }
+
   // Default colors
   border: $light-weak-border;
 

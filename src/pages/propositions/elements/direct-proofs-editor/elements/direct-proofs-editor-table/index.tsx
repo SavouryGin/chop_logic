@@ -10,7 +10,7 @@ import { propositionsActions as actions } from 'store/propositions/slice';
 const directProofsEditorTableColumns: TableColumnProps[] = [
   {
     field: 'step',
-    title: { en: 'Step', ru: 'Шаг' },
+    title: { en: '#', ru: '№' },
   },
   {
     field: 'formula',
