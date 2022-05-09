@@ -1,12 +1,15 @@
 import React from 'react';
+import Formula from 'components/formula';
+import Label from 'components/inputs/label';
+import PropositionsParser from 'helpers/parsers/propositions-parser';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
+import { ComponentProps } from 'types';
+import { inputTexts } from 'assets/texts';
+import { InputID } from 'enums';
 
 import './styles.scss';
-import PropositionsParser from 'helpers/parsers/propositions-parser';
-import Formula from 'components/formula';
 
 export type FormulaPreviewProps = ComponentProps & {
   text: string;
@@ -14,14 +17,17 @@ export type FormulaPreviewProps = ComponentProps & {
 
 function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const sidebarClassNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
+  const language = useAppSelector(settingsSelectors.getLanguage);
+  const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
+  const labelText = inputTexts[InputID.Preview].label[language];
 
   const parsedText = PropositionsParser.parsePropositionalFormula(text);
 
   return (
-    <p className={sidebarClassNames}>
+    <div className={classNames}>
+      <Label text={labelText} id={'formula-preview'} isDarkMode={isDarkMode} />
       <Formula content={parsedText} />
-    </p>
+    </div>
   );
 }
 

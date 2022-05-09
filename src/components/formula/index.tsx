@@ -13,7 +13,7 @@ export type FormulaProps = ComponentProps & {
 
 function Formula({ content, className }: FormulaProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const sidebarClassNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
+  const classNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
 
   const formula = content.map((item, index) => {
     const symbol = item.type === 'operator' ? ` ${item.representation} ` : item.representation;
@@ -24,7 +24,7 @@ function Formula({ content, className }: FormulaProps): React.ReactElement {
     );
   });
 
-  return <p className={sidebarClassNames}>{formula}</p>;
+  return <p className={classNames}>{formula}</p>;
 }
 
 export default Formula;

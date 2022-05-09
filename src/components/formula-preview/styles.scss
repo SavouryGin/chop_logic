@@ -1,0 +1,17 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+
+.formula-preview {
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius;
+  height: $formula-preview-height;
+  margin-bottom: $big-margin;
+
+  // Default colors
+  border: $light-weak-border;
+
+  &_dark {
+    border: $dark-weak-border;
+  }
+}
