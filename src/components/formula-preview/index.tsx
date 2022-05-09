@@ -26,7 +26,7 @@ function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactEl
   return (
     <div className={classNames}>
       <Label text={labelText} id={'formula-preview'} isDarkMode={isDarkMode} />
-      <Formula content={parsedText} />
+      <Formula id={'formula-preview'} content={parsedText} className='formula-preview__formula' />
     </div>
   );
 }
