@@ -31,9 +31,9 @@ export type TextInputProps = ComponentProps &
 function TextInput({ name, inputId, onChange, ...rest }: TextInputProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.getLanguage);
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
-  const language = useAppSelector(settingsSelectors.getLanguage);
   const inputClassNames = formatClassName([
     rest.className,
     'text-input',
