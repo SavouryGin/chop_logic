@@ -22,15 +22,13 @@ function ImplicationCreationForm(): React.ReactElement {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Dispatch the formula to the store
     dispatch(propositionsActions.createImplication({ ...formValue }));
-    // Close the modal window
     closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
   };
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof implicationCreationInitialValues);
 
-  const inputs = (
+  const content = (
     <>
       <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
       <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
@@ -45,7 +43,7 @@ function ImplicationCreationForm(): React.ReactElement {
       <Form
         onSubmit={onSubmit}
         initialValues={implicationCreationInitialValues}
-        inputs={inputs}
+        inputs={content}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
         isSubmitDisabled={isDisabled}
