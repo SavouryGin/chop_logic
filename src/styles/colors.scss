@@ -10,6 +10,7 @@ $light-button-shadow: 0.125rem 0.25rem 0.25rem hsl(0deg 0% 0% / 0.38);
 $light-text-shadow: 0.125rem 0.25rem 0.25rem hsl(28, 100%, 53%);
 $light-outline: hsl(28, 100%, 53%) dashed 0.125rem;
 $light-border: hsl(28, 100%, 53%) solid 0.01rem;
+$light-weak-border: hsla(44, 16%, 69%) solid 0.01rem;
 
 // Dark theme colors
 $dark-font-color: hsl(77, 100%, 89%);
@@ -23,6 +24,7 @@ $dark-button-shadow: 0.125rem 0.25rem 0.25rem hsl(167, 27%, 72%);
 $dark-text-shadow: 0.125rem 0.25rem 0.25rem hsl(194, 73%, 65%);
 $dark-outline: hsl(88, 60%, 50%) dashed 0.125rem;
 $dark-border: hsl(88, 60%, 50%) solid 0.01rem;
+$dark-weak-border: hsl(45, 31%, 18%) solid 0.01rem;
 
 // Syntax highlighting colors
 $light-operator-color: hsl(360, 100%, 55%);
