@@ -5,14 +5,15 @@ import PropositionsParser from 'helpers/parsers/propositions-parser';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-import { ComponentProps } from 'types';
+import { ComponentProps, PropositionalSymbol } from 'types';
 import { inputTexts } from 'assets/texts';
 import { InputID } from 'enums';
+import { isPropositionalFormula } from 'helpers/checkers/is-propositional-formula';
 
 import './styles.scss';
 
 export type FormulaPreviewProps = ComponentProps & {
-  text: string;
+  text: string | PropositionalSymbol[];
 };
 
 function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactElement {
@@ -21,7 +22,7 @@ function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactEl
   const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
 
-  const parsedText = PropositionsParser.parsePropositionalFormula(text);
+  const parsedText = isPropositionalFormula(text) ? text : PropositionsParser.parsePropositionalFormula(text);
 
   return (
     <div className={classNames}>
