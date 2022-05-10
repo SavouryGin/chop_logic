@@ -17,15 +17,13 @@ function PremiseForm(): React.ReactElement {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Dispatch the premise to the store
     dispatch(propositionsActions.addPromise(formValue.premise));
-    // Close the modal window
     closePropositionsPopup(dispatch, 'isPremiseOpened');
   };
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof premiseInitialValue);
 
-  const inputs = (
+  const content = (
     <>
       <TextInput name='premise' inputId={InputID.Premise} className='premise-form__input' isRequired />
       <FormulaPreview text={formValue.premise} />
@@ -37,7 +35,7 @@ function PremiseForm(): React.ReactElement {
       <Form
         onSubmit={onSubmit}
         initialValues={premiseInitialValue}
-        inputs={inputs}
+        inputs={content}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
         isSubmitDisabled={formValue.premise.length === 0}

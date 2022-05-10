@@ -4,9 +4,10 @@ import { PropositionalSymbol } from 'types';
 export function getPreformattedSymbol(symbol: PropositionalSymbol, key: number): JSX.Element {
   switch (symbol.type) {
     case 'operator': {
+      const text = symbol.input === '~' ? symbol.representation : ` ${symbol.representation} `;
       return (
         <span key={`symbol-${key}`} className={'formula__operator'}>
-          {` ${symbol.representation} `}
+          {text}
         </span>
       );
     }
