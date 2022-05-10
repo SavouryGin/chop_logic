@@ -6,4 +6,5 @@ export enum InputID {
   Premise,
   FirstMetaVariable,
   SecondMetaVariable,
+  Preview,
 }

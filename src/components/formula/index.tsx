@@ -1,7 +1,7 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, PropositionalSymbol } from 'types';
-import { getPropositionalSymbolClassName } from './helpers';
+import { getPreformattedSymbol } from './helpers';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
@@ -13,18 +13,11 @@ export type FormulaProps = ComponentProps & {
 
 function Formula({ content, className }: FormulaProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const sidebarClassNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
+  const classNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
 
-  const formula = content.map((item, index) => {
-    const symbol = item.type === 'operator' ? ` ${item.representation} ` : item.representation;
-    return (
-      <span key={`symbol-${index}`} className={getPropositionalSymbolClassName(item)}>
-        {symbol}
-      </span>
-    );
-  });
+  const formula = content.map((item, index) => getPreformattedSymbol(item, index));
 
-  return <p className={sidebarClassNames}>{formula}</p>;
+  return <pre className={classNames}>{formula}</pre>;
 }
 
 export default Formula;

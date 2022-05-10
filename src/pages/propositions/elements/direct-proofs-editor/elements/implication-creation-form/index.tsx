@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import Form from 'components/form';
+import TextInput from 'components/inputs/text-input';
+import FormulaPreview from 'components/formula-preview';
 import { FormValues } from 'types';
 import { ButtonID, GreekSymbol, InputID, LogicalSymbol } from 'enums';
 import { propositionsActions } from 'store/propositions/slice';
 import { formsTexts } from 'assets/texts/propositions';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import TextInput from 'components/inputs/text-input';
 import { settingsSelectors } from 'store/settings/selectors';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
+import { getImplicationCreationFormula } from 'helpers/getters/get-implication-creation-formula';
 
 import './styles.scss';
 
@@ -20,18 +22,17 @@ function ImplicationCreationForm(): React.ReactElement {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Dispatch the formula to the store
     dispatch(propositionsActions.createImplication({ ...formValue }));
-    // Close the modal window
     closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
   };
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof implicationCreationInitialValues);
 
-  const inputs = (
+  const content = (
     <>
       <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
       <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
+      <FormulaPreview text={getImplicationCreationFormula(formValue.firstVariable, formValue.secondVariable)} />
     </>
   );
 
@@ -42,7 +43,7 @@ function ImplicationCreationForm(): React.ReactElement {
       <Form
         onSubmit={onSubmit}
         initialValues={implicationCreationInitialValues}
-        inputs={inputs}
+        inputs={content}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
         isSubmitDisabled={isDisabled}
