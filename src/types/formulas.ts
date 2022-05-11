@@ -1,3 +1,5 @@
+import { PropositionalOperator } from 'enums';
+
 export type PropositionalSymbol = {
   representation?: string;
   input: string;
@@ -5,3 +7,9 @@ export type PropositionalSymbol = {
 };
 
 export type PropositionalExpression = PropositionalSymbol[];
+
+// NB: Recursive Type
+export type PropositionalFormula = {
+  operator: PropositionalOperator;
+  values: PropositionalFormula[] | string;
+};
