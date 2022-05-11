@@ -9,7 +9,7 @@ import { formsTexts } from 'assets/texts/propositions';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
-import { getImplicationCreationFormula } from 'helpers/getters/get-implication-creation-formula';
+import { getImplicationCreationExpression } from 'helpers/getters/get-implication-creation-expression';
 
 import './styles.scss';
 
@@ -32,7 +32,7 @@ function ImplicationCreationForm(): React.ReactElement {
     <>
       <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
       <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
-      <FormulaPreview text={getImplicationCreationFormula(formValue.firstVariable, formValue.secondVariable)} />
+      <FormulaPreview text={getImplicationCreationExpression(formValue.firstVariable, formValue.secondVariable)} />
     </>
   );
 

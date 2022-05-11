@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { formatPropositionalFormula } from 'helpers/formatters/format-propositional-formula';
-import { getImplicationCreationFormula } from 'helpers/getters/get-implication-creation-formula';
+import { getImplicationCreationExpression } from 'helpers/getters/get-implication-creation-expression';
 import PropositionsParser from 'helpers/parsers/propositions-parser';
 
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
@@ -28,14 +27,13 @@ export const propositionsSlice = createSlice({
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
-      const formula = PropositionsParser.parsePropositionalFormula(action.payload);
+      const expression = PropositionsParser.parsePropositionalExpression(action.payload);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         id,
         step,
-        formula,
-        formattedFormula: formatPropositionalFormula(formula),
+        expression,
         comment: { en: 'Premise', ru: 'Посылка' },
       };
       state.directProofsTableData = [...state.directProofsTableData, newItem];
@@ -73,14 +71,13 @@ export const propositionsSlice = createSlice({
 
     createImplication: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
       const { firstVariable, secondVariable } = action.payload;
-      const formula = getImplicationCreationFormula(firstVariable, secondVariable);
+      const expression = getImplicationCreationExpression(firstVariable, secondVariable);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         step,
         id,
-        formula,
-        formattedFormula: formatPropositionalFormula(formula),
+        expression,
         comment: { en: 'IC', ru: 'ВИ' },
       };
       state.selectedIds = [];
