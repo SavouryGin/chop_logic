@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import PropositionsConverter from 'helpers/converters/propositions-converter';
 import { getImplicationCreationExpression } from 'helpers/getters/get-implication-creation-expression';
 import PropositionsParser from 'helpers/parsers/propositions-parser';
 
@@ -35,6 +36,7 @@ export const propositionsSlice = createSlice({
         step,
         expression,
         comment: { en: 'Premise', ru: 'Посылка' },
+        formula: PropositionsConverter.convertExpressionToFormula(expression),
       };
       state.directProofsTableData = [...state.directProofsTableData, newItem];
     },

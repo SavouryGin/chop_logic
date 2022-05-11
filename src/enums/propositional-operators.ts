@@ -3,6 +3,6 @@ export enum PropositionalOperator {
   Not,
   Or,
   And,
-  IfElse,
-  Equal,
+  Implies,
+  Equiv,
 }
