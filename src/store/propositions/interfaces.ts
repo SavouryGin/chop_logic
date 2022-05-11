@@ -1,5 +1,5 @@
 import { LocalText } from 'types';
-import { PropositionalSymbol } from 'types/formulas';
+import { PropositionalExpression } from 'types/formulas';
 
 export interface PropositionsInitialState {
   flags: PropositionsFlags;
@@ -17,7 +17,6 @@ export type PropositionsFlag = keyof PropositionsFlags;
 export type DirectProofsTableItem = {
   id: string;
   step: number;
-  formula: PropositionalSymbol[];
-  formattedFormula: string;
+  expression: PropositionalExpression;
   comment: LocalText | string;
 };

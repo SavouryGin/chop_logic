@@ -1,7 +1,7 @@
-import { PropositionalSymbol } from 'types';
+import { PropositionalExpression } from 'types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isPropositionalFormula(array: any): array is PropositionalSymbol[] {
+export function isPropositionalExpression(array: any): array is PropositionalExpression {
   if (!array || !Array.isArray(array)) return false;
 
   for (const item of array) {

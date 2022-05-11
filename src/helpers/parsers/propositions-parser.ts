@@ -1,11 +1,11 @@
 import { LogicalSymbol } from 'enums';
-import { PropositionalSymbol } from 'types/formulas';
+import { PropositionalExpression, PropositionalSymbol } from 'types/formulas';
 
 abstract class PropositionsParser {
   public static logicalOperators = ['=>', '&', '|', '~', '<=>'];
   public static parentheses = ['(', ')'];
 
-  public static parsePropositionalFormula(input: string): PropositionalSymbol[] {
+  public static parsePropositionalExpression(input: string): PropositionalExpression {
     const output: PropositionalSymbol[] = [];
     const charsArray = PropositionsParser.joinMultiCharsOperators(PropositionsParser.convertStringToCharsArray(input));
     let acc = '';
