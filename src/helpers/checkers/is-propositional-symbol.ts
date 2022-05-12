@@ -1,4 +1,4 @@
-import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { PropositionalSymbol } from 'types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isPropositionalSymbol(item: any): item is PropositionalSymbol {

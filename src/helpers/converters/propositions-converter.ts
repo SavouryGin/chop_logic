@@ -1,9 +1,11 @@
 import { PropositionalOperator } from 'enums';
+import { IncorrectPropositionalFormula } from 'errors/incorrect-propositional-formula';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(input: PropositionalExpression): PropositionalFormula {
     console.log(PropositionsConverter.addPropositionalAtomsToExpression(input));
+    if (input[0].input !== '(') throw IncorrectPropositionalFormula;
 
     return {
       operator: PropositionalOperator.Var,
