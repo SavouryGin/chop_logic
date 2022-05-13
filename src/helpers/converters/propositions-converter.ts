@@ -5,9 +5,6 @@ import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } fr
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(input: PropositionalExpression): PropositionalFormula {
-    console.log(PropositionsConverter.addPropositionalAtomsToExpression(input));
-    // if (input[0].input !== '(') throw IncorrectPropositionalFormula;
-
     PropositionsConverter.extractSubExpressions(input);
 
     return {
@@ -16,18 +13,24 @@ abstract class PropositionsConverter {
     };
   }
 
-  public static extractSubExpressions(expression: PropositionalExpression): any {
-    const result: any[] = [];
-    const openParenthesisIndexes = PropositionsConverter.getAllIndexesOfSymbol(expression, '(');
-    const closeParenthesisIndexes = PropositionsConverter.getAllIndexesOfSymbol(expression, ')');
+  public static extractSubExpressions(expression: PropositionalExpression): PropositionalExpression[] {
+    const result = [];
+    console.log('expression', expression);
+    const openParenthesisIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, '(');
+    const closeParenthesisIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, ')');
 
-    console.log('openParenthesisIndexes', openParenthesisIndexes);
-    console.log('openParenthesisIndexes', closeParenthesisIndexes);
+    for (let i = 0; i < openParenthesisIndexes.length; i++) {
+      const openIndex = openParenthesisIndexes[i];
+      const closeIndex = closeParenthesisIndexes[closeParenthesisIndexes.length - i];
+      const subExpression = expression.slice(openIndex, closeIndex);
+      result.push(subExpression);
+    }
 
-    return result;
+    console.log('result', result);
+    return result.reverse();
   }
 
-  public static getAllIndexesOfSymbol(array: PropositionalExpression, symbol: string) {
+  public static getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string) {
     const indexes = [];
     for (let i = 0; i < array.length; i++) {
       if (array[i].input === symbol) indexes.push(i);
