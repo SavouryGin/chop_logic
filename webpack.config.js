@@ -23,6 +23,7 @@ const config = {
       helpers: path.resolve(__dirname, './src/helpers'),
       types: path.resolve(__dirname, './src/types'),
       hooks: path.resolve(__dirname, './src/hooks'),
+      errors: path.resolve(__dirname, './src/errors'),
       __mocks__: path.resolve(__dirname, './src/__mocks__'),
     },
   },
