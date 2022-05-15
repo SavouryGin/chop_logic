@@ -5,8 +5,7 @@ import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } fr
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(input: PropositionalExpression): PropositionalFormula {
-    const subExpressions = PropositionsConverter.extractSubExpressions(input);
-    console.log(subExpressions);
+    this.findTheMainOperator(input);
 
     return {
       operator: PropositionalOperator.Var,
@@ -21,12 +20,23 @@ abstract class PropositionsConverter {
 
     for (const openIndex of openIndexes) {
       const closeIndex = PropositionsConverter.findClosestParenthesis(openIndex, closeIndexes);
-      const subExpression = expression.slice(openIndex + 1, closeIndex);
+      const subExpression = expression.slice(openIndex, closeIndex + 1);
       result.push(subExpression);
       closeIndexes = closeIndexes.filter((item) => item !== closeIndex);
     }
 
     return result;
+  }
+
+  public static findTheMainOperator(expression: PropositionalExpression): PropositionalOperator {
+    const subExpressions = PropositionsConverter.extractSubExpressions(expression);
+    console.log('subExpressions', subExpressions);
+    let filtered = expression.map((item) => item.input).join('');
+    for (let i = 0; i < subExpressions.length - 1; i++) {
+      filtered = filtered.replace(subExpressions[i].map((item) => item.input).join(''), '');
+    }
+    console.log('filtered', filtered);
+    return PropositionalOperator.Var;
   }
 
   public static findClosestParenthesis(openIndex: number, array: number[]) {
