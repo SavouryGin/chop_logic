@@ -5,7 +5,8 @@ import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } fr
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(input: PropositionalExpression): PropositionalFormula {
-    PropositionsConverter.extractSubExpressions(input);
+    const subExpressions = PropositionsConverter.extractSubExpressions(input);
+    console.log(subExpressions);
 
     return {
       operator: PropositionalOperator.Var,
@@ -14,20 +15,22 @@ abstract class PropositionsConverter {
   }
 
   public static extractSubExpressions(expression: PropositionalExpression): PropositionalExpression[] {
-    const result = [];
-    console.log('expression', expression);
-    const openParenthesisIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, '(');
-    const closeParenthesisIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, ')');
+    const result: PropositionalExpression[] = [];
+    const openIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, '(').reverse();
+    let closeIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, ')');
 
-    for (let i = 0; i < openParenthesisIndexes.length; i++) {
-      const openIndex = openParenthesisIndexes[i];
-      const closeIndex = closeParenthesisIndexes[closeParenthesisIndexes.length - i];
-      const subExpression = expression.slice(openIndex, closeIndex);
+    for (const openIndex of openIndexes) {
+      const closeIndex = PropositionsConverter.findClosestParenthesis(openIndex, closeIndexes);
+      const subExpression = expression.slice(openIndex + 1, closeIndex);
       result.push(subExpression);
+      closeIndexes = closeIndexes.filter((item) => item !== closeIndex);
     }
 
-    console.log('result', result);
-    return result.reverse();
+    return result;
+  }
+
+  public static findClosestParenthesis(openIndex: number, array: number[]) {
+    return Math.min(...array.filter((item) => item > openIndex));
   }
 
   public static getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string) {
