@@ -1,5 +1,4 @@
 import { PropositionalOperator } from 'enums';
-import { IncorrectPropositionalFormula } from 'errors/incorrect-propositional-formula';
 import PropositionsParser from 'helpers/parsers/propositions-parser';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
@@ -33,7 +32,7 @@ abstract class PropositionsConverter {
     console.log('subExpressions', subExpressions);
     let filtered = expression.map((item) => item.input).join('');
     for (let i = 0; i < subExpressions.length - 1; i++) {
-      filtered = filtered.replace(subExpressions[i].map((item) => item.input).join(''), '');
+      filtered = filtered.replace(subExpressions[i].map((item) => item.input).join(''), '*'.repeat(subExpressions[i].length));
     }
     console.log('filtered', filtered);
     return PropositionalOperator.Var;
