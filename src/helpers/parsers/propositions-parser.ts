@@ -26,7 +26,9 @@ abstract class PropositionsParser {
     // Push remaining characters as a variable
     if (acc.length) output.push(PropositionsParser.convertToPropositionalSymbol(acc));
 
-    return output;
+    return output.map((item, index) => {
+      return { ...item, index };
+    });
   }
 
   public static convertStringToCharsArray(input: string): string[] {
