@@ -4,8 +4,16 @@ import PropositionsParser from 'helpers/parsers/propositions-parser';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
 abstract class PropositionsConverter {
-  public static convertExpressionToFormula(input: PropositionalExpression): PropositionalFormula {
-    this.findTheMainOperatorOf(input);
+  public static convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
+    const mainOperator = this.findTheMainOperatorOf(expression);
+    if (!mainOperator.index) throw IncorrectPropositionalFormula;
+
+    if (mainOperator.type === 'variable') {
+      return this.createPropositionalAtomFrom(mainOperator);
+    } else {
+      const split = this.splitExpressionByIndex(mainOperator.index, expression);
+      console.log('split', split);
+    }
 
     return {
       operator: PropositionalOperator.Var,
@@ -13,10 +21,24 @@ abstract class PropositionsConverter {
     };
   }
 
+  public static splitExpressionByIndex(
+    index: number,
+    expression: PropositionalExpression,
+  ): { firstArgument: PropositionalExpression; secondArgument: PropositionalExpression } {
+    const innerExpression = expression.slice(1, expression.length - 1);
+    const firstArgument = innerExpression.slice(0, index - 1);
+    const secondArgument = innerExpression.slice(index, expression.length - 1);
+    return { firstArgument, secondArgument };
+  }
+
   public static extractSubExpressionsFrom(expression: PropositionalExpression): PropositionalExpression[] {
     const result: PropositionalExpression[] = [];
     const openIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, '(').reverse();
     let closeIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, ')');
+
+    if (openIndexes.length !== closeIndexes.length) {
+      throw IncorrectPropositionalFormula;
+    }
 
     for (const openIndex of openIndexes) {
       const closeIndex = PropositionsConverter.findClosestParenthesis(openIndex, closeIndexes);
@@ -31,9 +53,9 @@ abstract class PropositionsConverter {
   public static findTheMainOperatorOf(expression: PropositionalExpression): PropositionalSymbol {
     const subExpressions = PropositionsConverter.extractSubExpressionsFrom(expression);
     const subIndexes = subExpressions.map((subExpression) => subExpression.map((symbol) => symbol.index));
-    let mainIndexes = expression.map((symbol) => symbol.index).splice(1, expression.length - 2);
+    let mainIndexes = expression.map((symbol) => symbol.index).slice(1, expression.length - 2);
 
-    for (const item of subIndexes.splice(0, subIndexes.length - 1)) {
+    for (const item of subIndexes.slice(0, subIndexes.length - 1)) {
       mainIndexes = mainIndexes.filter((index) => !item.includes(index));
     }
 
@@ -63,7 +85,7 @@ abstract class PropositionsConverter {
     return indexes;
   }
 
-  public static addPropositionalAtomsToExpression(input: PropositionalExpression): Array<PropositionalSymbol | PropositionalFormula> {
+  public static addPropositionalAtomsTo(input: PropositionalExpression): Array<PropositionalSymbol | PropositionalFormula> {
     return input.map((item) => (item.type === 'variable' ? PropositionsConverter.createPropositionalAtomFrom(item) : item));
   }
 
