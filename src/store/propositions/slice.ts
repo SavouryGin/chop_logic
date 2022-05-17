@@ -28,7 +28,9 @@ export const propositionsSlice = createSlice({
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
+      console.log('slice', action.payload);
       const expression = PropositionsParser.parsePropositionalExpression(action.payload);
+      console.log('slice', expression);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
