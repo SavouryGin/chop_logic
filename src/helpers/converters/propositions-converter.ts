@@ -1,10 +1,11 @@
 import { PropositionalOperator } from 'enums';
+import { IncorrectPropositionalFormula } from 'errors/incorrect-propositional-formula';
 import PropositionsParser from 'helpers/parsers/propositions-parser';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(input: PropositionalExpression): PropositionalFormula {
-    this.findTheMainOperator(input);
+    this.findTheMainOperatorOf(input);
 
     return {
       operator: PropositionalOperator.Var,
@@ -12,7 +13,7 @@ abstract class PropositionsConverter {
     };
   }
 
-  public static extractSubExpressions(expression: PropositionalExpression): PropositionalExpression[] {
+  public static extractSubExpressionsFrom(expression: PropositionalExpression): PropositionalExpression[] {
     const result: PropositionalExpression[] = [];
     const openIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, '(').reverse();
     let closeIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, ')');
@@ -23,19 +24,31 @@ abstract class PropositionsConverter {
       result.push(subExpression);
       closeIndexes = closeIndexes.filter((item) => item !== closeIndex);
     }
-
+    console.log('subExpressions', result);
     return result;
   }
 
-  public static findTheMainOperator(expression: PropositionalExpression): PropositionalOperator {
-    const subExpressions = PropositionsConverter.extractSubExpressions(expression);
-    console.log('subExpressions', subExpressions);
-    let filtered = expression.map((item) => item.input).join('');
-    for (let i = 0; i < subExpressions.length - 1; i++) {
-      filtered = filtered.replace(subExpressions[i].map((item) => item.input).join(''), '*'.repeat(subExpressions[i].length));
+  public static findTheMainOperatorOf(expression: PropositionalExpression): PropositionalSymbol {
+    const subExpressions = PropositionsConverter.extractSubExpressionsFrom(expression);
+    const subIndexes = subExpressions.map((subExpression) => subExpression.map((symbol) => symbol.index));
+    let mainIndexes = expression.map((symbol) => symbol.index).splice(1, expression.length - 2);
+
+    for (const item of subIndexes.splice(0, subIndexes.length - 1)) {
+      mainIndexes = mainIndexes.filter((index) => !item.includes(index));
     }
-    console.log('filtered', filtered);
-    return PropositionalOperator.Var;
+
+    if (mainIndexes.length !== 1 || typeof mainIndexes[0] !== 'number') {
+      throw IncorrectPropositionalFormula;
+    }
+
+    const mainOperator = expression.find((item) => item.index === mainIndexes[0]);
+
+    if (!mainOperator) {
+      throw IncorrectPropositionalFormula;
+    }
+
+    console.log('mainOperator', mainOperator);
+    return mainOperator;
   }
 
   public static findClosestParenthesis(openIndex: number, array: number[]) {
