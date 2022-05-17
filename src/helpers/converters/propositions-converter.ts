@@ -5,20 +5,64 @@ import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } fr
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
+    console.log('EXP INPUT', expression);
     const mainOperator = this.findTheMainOperatorOf(expression);
-    if (!mainOperator.index) throw IncorrectPropositionalFormula;
+    if (!mainOperator.index || mainOperator.type === 'parentheses') throw IncorrectPropositionalFormula;
 
     if (mainOperator.type === 'variable') {
       return this.createPropositionalAtomFrom(mainOperator);
-    } else {
-      const split = this.splitExpressionByIndex(mainOperator.index, expression);
-      console.log('split', split);
     }
 
-    return {
-      operator: PropositionalOperator.Var,
-      values: 'P',
-    };
+    const operator = this.getOperatorType(mainOperator);
+
+    switch (operator) {
+      case PropositionalOperator.Implies: {
+        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
+        return this.createImplication(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+      }
+      case PropositionalOperator.And: {
+        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
+        return this.createConjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+      }
+      case PropositionalOperator.Or: {
+        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
+        return this.createDisjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+      }
+      case PropositionalOperator.Equiv: {
+        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
+        return this.createEquivalence(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+      }
+      case PropositionalOperator.Not: {
+        const argument = expression.slice(2, expression.length - 1);
+        return this.createNegation(this.convertExpressionToFormula(argument));
+      }
+      default: {
+        throw IncorrectPropositionalFormula;
+      }
+    }
+  }
+
+  public static getOperatorType(symbol: PropositionalSymbol): PropositionalOperator {
+    switch (symbol.input) {
+      case '~': {
+        return PropositionalOperator.Not;
+      }
+      case '&': {
+        return PropositionalOperator.And;
+      }
+      case '|': {
+        return PropositionalOperator.Or;
+      }
+      case '=>': {
+        return PropositionalOperator.Implies;
+      }
+      case '<=>': {
+        return PropositionalOperator.Equiv;
+      }
+      default: {
+        return PropositionalOperator.Var;
+      }
+    }
   }
 
   public static splitExpressionByIndex(
@@ -46,12 +90,15 @@ abstract class PropositionsConverter {
       result.push(subExpression);
       closeIndexes = closeIndexes.filter((item) => item !== closeIndex);
     }
-    console.log('subExpressions', result);
+
     return result;
   }
 
   public static findTheMainOperatorOf(expression: PropositionalExpression): PropositionalSymbol {
     const subExpressions = PropositionsConverter.extractSubExpressionsFrom(expression);
+    if (subExpressions.length === 1) {
+      return subExpressions[0][1];
+    }
     const subIndexes = subExpressions.map((subExpression) => subExpression.map((symbol) => symbol.index));
     let mainIndexes = expression.map((symbol) => symbol.index).slice(1, expression.length - 2);
 
@@ -69,7 +116,6 @@ abstract class PropositionsConverter {
       throw IncorrectPropositionalFormula;
     }
 
-    console.log('mainOperator', mainOperator);
     return mainOperator;
   }
 
