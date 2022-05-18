@@ -1,9 +1,10 @@
 import { PropositionalOperator } from 'enums';
 
 export type PropositionalSymbol = {
-  representation?: string;
   input: string;
   type: 'variable' | 'operator' | 'parentheses';
+  index?: number;
+  representation?: string;
 };
 
 export type PropositionalExpression = PropositionalSymbol[];
