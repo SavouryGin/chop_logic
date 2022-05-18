@@ -1,13 +1,12 @@
 import { PropositionalOperator } from 'enums';
-import { IncorrectPropositionalFormula } from 'errors/incorrect-propositional-formula';
+import { PropositionalError } from 'errors/incorrect-propositional-formula';
 import PropositionsParser from 'helpers/parsers/propositions-parser';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
-    console.log('EXP INPUT', expression);
     const mainOperator = this.findTheMainOperatorOf(expression);
-    if (!mainOperator.index || mainOperator.type === 'parentheses') throw IncorrectPropositionalFormula;
+    if (!mainOperator.index || mainOperator.type === 'parentheses') throw new PropositionalError('cannot find the main operator');
 
     if (mainOperator.type === 'variable') {
       return this.createPropositionalAtomFrom(mainOperator);
@@ -37,7 +36,7 @@ abstract class PropositionsConverter {
         return this.createNegation(this.convertExpressionToFormula(argument));
       }
       default: {
-        throw IncorrectPropositionalFormula;
+        throw new PropositionalError('cannot parse the sub expression of the formula');
       }
     }
   }
@@ -70,8 +69,11 @@ abstract class PropositionsConverter {
     expression: PropositionalExpression,
   ): { firstArgument: PropositionalExpression; secondArgument: PropositionalExpression } {
     const innerExpression = expression.slice(1, expression.length - 1);
-    const firstArgument = innerExpression.slice(0, index - 1);
-    const secondArgument = innerExpression.slice(index, expression.length - 1);
+    const delimiterItem = innerExpression.find((item) => item.index === index);
+    if (!delimiterItem) throw new PropositionalError('cannot split sub expression into two arguments');
+    const splitIndex = innerExpression.indexOf(delimiterItem);
+    const firstArgument = innerExpression.slice(0, splitIndex);
+    const secondArgument = innerExpression.slice(splitIndex + 1, expression.length - 1);
     return { firstArgument, secondArgument };
   }
 
@@ -81,7 +83,7 @@ abstract class PropositionsConverter {
     let closeIndexes = PropositionsConverter.getAllIndexesOfTheSymbol(expression, ')');
 
     if (openIndexes.length !== closeIndexes.length) {
-      throw IncorrectPropositionalFormula;
+      throw new PropositionalError('the number of open parenthesis does not match with the number of close parenthesis');
     }
 
     for (const openIndex of openIndexes) {
@@ -106,14 +108,14 @@ abstract class PropositionsConverter {
       mainIndexes = mainIndexes.filter((index) => !item.includes(index));
     }
 
-    if (mainIndexes.length !== 1 || typeof mainIndexes[0] !== 'number') {
-      throw IncorrectPropositionalFormula;
-    }
+    // if (mainIndexes.length !== 1 || typeof mainIndexes[0] !== 'number') {
+    //   throw new PropositionalError('incorrect index of the main operator in the sub expression');
+    // }
 
     const mainOperator = expression.find((item) => item.index === mainIndexes[0]);
 
     if (!mainOperator) {
-      throw IncorrectPropositionalFormula;
+      throw new PropositionalError('cannot find the main operator of the sub expression');
     }
 
     return mainOperator;
