@@ -1,7 +1,7 @@
 import React from 'react';
 import Formula from 'components/formula';
 import Label from 'components/inputs/label';
-import PropositionsParser from 'logic/propositions/propositions-parser';
+import parser from 'logic/propositions/parser';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
@@ -22,7 +22,7 @@ function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactEl
   const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
 
-  const parsedText = isPropositionalExpression(text) ? text : PropositionsParser.parsePropositionalExpression(text);
+  const parsedText = isPropositionalExpression(text) ? text : parser.parsePropositionalExpression(text);
 
   return (
     <div className={classNames}>

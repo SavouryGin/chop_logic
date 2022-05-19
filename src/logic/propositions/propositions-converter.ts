@@ -1,7 +1,7 @@
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
-import { PropositionalError } from 'errors/incorrect-propositional-formula';
-import PropositionsParser from 'logic/propositions/propositions-parser';
+import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
+import factory from './factory';
 
 abstract class PropositionsConverter {
   public static convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
@@ -9,7 +9,7 @@ abstract class PropositionsConverter {
     if (!mainOperator.index || mainOperator.type === 'parentheses') throw new PropositionalError('cannot find the main operator');
 
     if (mainOperator.type === 'variable') {
-      return this.createPropositionalAtomFrom(mainOperator);
+      return factory.createAtom(mainOperator);
     }
 
     const operator = this.getPropositionalOperatorType(mainOperator);
@@ -17,23 +17,23 @@ abstract class PropositionsConverter {
     switch (operator) {
       case PropositionalOperator.Implies: {
         const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return this.createImplication(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+        return factory.createImplication(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.And: {
         const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return this.createConjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+        return factory.createConjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.Or: {
         const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return this.createDisjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+        return factory.createDisjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.Equiv: {
         const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return this.createEquivalence(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
+        return factory.createEquivalence(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.Not: {
         const argument = expression.slice(2, expression.length - 1);
-        return this.createNegation(this.convertExpressionToFormula(argument));
+        return factory.createNegation(this.convertExpressionToFormula(argument));
       }
       default: {
         throw new PropositionalError('cannot parse the sub expression of the formula');
@@ -134,60 +134,7 @@ abstract class PropositionsConverter {
   }
 
   public static addPropositionalAtomsTo(input: PropositionalExpression): Array<PropositionalSymbol | PropositionalFormula> {
-    return input.map((item) => (item.type === 'variable' ? PropositionsConverter.createPropositionalAtomFrom(item) : item));
-  }
-
-  public static createPropositionalAtomFrom(symbol: PropositionalSymbol): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.Var,
-      values: symbol.representation || symbol.input.toLocaleUpperCase(),
-    };
-  }
-
-  public static createImplication(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.Implies,
-      values: [firstArgument, secondArgument],
-    };
-  }
-
-  public static createConjunction(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.And,
-      values: [firstArgument, secondArgument],
-    };
-  }
-
-  public static createDisjunction(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.Or,
-      values: [firstArgument, secondArgument],
-    };
-  }
-
-  public static createEquivalence(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.Equiv,
-      values: [firstArgument, secondArgument],
-    };
-  }
-
-  public static createNegation(argument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.Not,
-      values: [argument],
-    };
-  }
-
-  public static isAtomicExpression(expression: PropositionalExpression) {
-    for (const symbol of expression) {
-      if (PropositionsParser.logicalOperators.includes(symbol.input)) return false;
-    }
-    return true;
-  }
-
-  public static isPropositionalAtom(input: PropositionalFormula): boolean {
-    return input.operator === PropositionalOperator.Var && typeof input.values === 'string';
+    return input.map((item) => (item.type === 'variable' ? factory.createAtom(item) : item));
   }
 }
 

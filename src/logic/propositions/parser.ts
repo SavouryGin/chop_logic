@@ -1,51 +1,57 @@
 import { LogicalSymbol, LogicalSymbolRawInput } from 'enums';
-import { PropositionalExpression, PropositionalSymbol } from 'types/formulas';
+import { PropositionalExpression, PropositionalSymbol } from 'types';
 
-abstract class PropositionsParser {
-  public static logicalOperators = ['=>', '&', '|', '~', '<=>'];
-  public static parentheses = ['(', ')'];
+const parser = {
+  logicalOperators: [
+    LogicalSymbolRawInput.Implication,
+    LogicalSymbolRawInput.Conjunction,
+    LogicalSymbolRawInput.Disjunction,
+    LogicalSymbolRawInput.Negation,
+    LogicalSymbolRawInput.Equivalence,
+  ],
+  parentheses: ['(', ')'],
 
-  public static parsePropositionalExpression(input: string): PropositionalExpression {
+  parsePropositionalExpression(input: string): PropositionalExpression {
     const output: PropositionalSymbol[] = [];
-    const charsArray = PropositionsParser.joinMultiCharsOperators(PropositionsParser.convertStringToCharsArray(input));
+    const charsArray = this.joinMultiCharsOperators(this.convertStringToCharsArray(input));
     let acc = '';
 
     for (const char of charsArray) {
-      if (PropositionsParser.isNotPropositionalVariable(char)) {
+      if (this.isNotPropositionalVariable(char)) {
         // Save the previous symbols as a variable
         if (acc.length) {
-          output.push(PropositionsParser.convertToPropositionalSymbol(acc));
+          output.push(this.convertToPropositionalSymbol(acc));
           acc = '';
         }
         // Push a non-variable symbol to the output array
-        output.push(PropositionsParser.convertToPropositionalSymbol(char));
+        output.push(this.convertToPropositionalSymbol(char));
       } else {
         acc += char;
       }
     }
     // Push remaining characters as a variable
-    if (acc.length) output.push(PropositionsParser.convertToPropositionalSymbol(acc));
+    if (acc.length) output.push(this.convertToPropositionalSymbol(acc));
 
     return output.map((item, index) => {
       return { ...item, index };
     });
-  }
+  },
 
-  public static convertStringToCharsArray(input: string): string[] {
+  convertStringToCharsArray(input: string): string[] {
     return input
       .split('')
       .filter((char) => char !== '')
       .map((char) => char.trim());
-  }
+  },
 
-  public static joinMultiCharsOperators(input: string[]): string[] {
+  joinMultiCharsOperators(input: string[]): string[] {
     let acc = '';
     const output: string[] = [];
 
     for (const char of input) {
       if (['<', '=', '>'].includes(char)) {
         acc += char;
-        if (acc === '=>' || acc === '<=>') {
+        if (acc === LogicalSymbolRawInput.Implication || acc === LogicalSymbolRawInput.Equivalence) {
           output.push(acc);
           acc = '';
         }
@@ -54,16 +60,16 @@ abstract class PropositionsParser {
       }
     }
     return output;
-  }
+  },
 
-  public static convertToPropositionalSymbol(char: string): PropositionalSymbol {
-    if (PropositionsParser.logicalOperators.includes(char)) {
+  convertToPropositionalSymbol(char: string): PropositionalSymbol {
+    if (this.logicalOperators.includes(char as LogicalSymbolRawInput)) {
       return {
         input: char,
-        representation: PropositionsParser.getLogicalSymbolRepresentation(char),
+        representation: this.getLogicalSymbolRepresentation(char),
         type: 'operator',
       };
-    } else if (PropositionsParser.parentheses.includes(char)) {
+    } else if (this.parentheses.includes(char)) {
       return {
         input: char,
         representation: char,
@@ -76,13 +82,13 @@ abstract class PropositionsParser {
         type: 'variable',
       };
     }
-  }
+  },
 
-  public static isNotPropositionalVariable(char: string): boolean {
-    return PropositionsParser.logicalOperators.includes(char) || PropositionsParser.parentheses.includes(char);
-  }
+  isNotPropositionalVariable(char: string): boolean {
+    return this.logicalOperators.includes(char as LogicalSymbolRawInput) || this.parentheses.includes(char);
+  },
 
-  public static getLogicalSymbolRepresentation(char: string): LogicalSymbol | undefined {
+  getLogicalSymbolRepresentation(char: string): LogicalSymbol | undefined {
     switch (char) {
       case LogicalSymbolRawInput.Implication: {
         return LogicalSymbol.Implication;
@@ -103,7 +109,7 @@ abstract class PropositionsParser {
         return undefined;
       }
     }
-  }
-}
+  },
+};
 
-export default PropositionsParser;
+export default Object.freeze(parser);
