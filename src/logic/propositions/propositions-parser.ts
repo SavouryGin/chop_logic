@@ -1,4 +1,4 @@
-import { LogicalSymbol } from 'enums';
+import { LogicalSymbol, LogicalSymbolRawInput } from 'enums';
 import { PropositionalExpression, PropositionalSymbol } from 'types/formulas';
 
 abstract class PropositionsParser {
@@ -84,19 +84,19 @@ abstract class PropositionsParser {
 
   public static getLogicalSymbolRepresentation(char: string): LogicalSymbol | undefined {
     switch (char) {
-      case '=>': {
+      case LogicalSymbolRawInput.Implication: {
         return LogicalSymbol.Implication;
       }
-      case '&': {
+      case LogicalSymbolRawInput.Conjunction: {
         return LogicalSymbol.Conjunction;
       }
-      case '|': {
+      case LogicalSymbolRawInput.Disjunction: {
         return LogicalSymbol.Disjunction;
       }
-      case '~': {
+      case LogicalSymbolRawInput.Negation: {
         return LogicalSymbol.Negation;
       }
-      case '<=>': {
+      case LogicalSymbolRawInput.Equivalence: {
         return LogicalSymbol.Equivalence;
       }
       default: {

@@ -1,6 +1,6 @@
-import { PropositionalOperator } from 'enums';
+import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/incorrect-propositional-formula';
-import PropositionsParser from 'helpers/parsers/propositions-parser';
+import PropositionsParser from 'logic/propositions/propositions-parser';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
 abstract class PropositionsConverter {
@@ -12,7 +12,7 @@ abstract class PropositionsConverter {
       return this.createPropositionalAtomFrom(mainOperator);
     }
 
-    const operator = this.getOperatorType(mainOperator);
+    const operator = this.getPropositionalOperatorType(mainOperator);
 
     switch (operator) {
       case PropositionalOperator.Implies: {
@@ -41,21 +41,21 @@ abstract class PropositionsConverter {
     }
   }
 
-  public static getOperatorType(symbol: PropositionalSymbol): PropositionalOperator {
+  public static getPropositionalOperatorType(symbol: PropositionalSymbol): PropositionalOperator {
     switch (symbol.input) {
-      case '~': {
+      case LogicalSymbolRawInput.Negation: {
         return PropositionalOperator.Not;
       }
-      case '&': {
+      case LogicalSymbolRawInput.Conjunction: {
         return PropositionalOperator.And;
       }
-      case '|': {
+      case LogicalSymbolRawInput.Disjunction: {
         return PropositionalOperator.Or;
       }
-      case '=>': {
+      case LogicalSymbolRawInput.Implication: {
         return PropositionalOperator.Implies;
       }
-      case '<=>': {
+      case LogicalSymbolRawInput.Equivalence: {
         return PropositionalOperator.Equiv;
       }
       default: {
