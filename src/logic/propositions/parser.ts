@@ -1,88 +1,18 @@
-import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
+import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
+import { PropositionalExpression, PropositionalSymbol } from 'types';
 import constants from './constants';
 import factory from './factory';
-import validator from './validator';
 
 const parser = {
-  convertInputToExpression(input: string): PropositionalExpression {
-    const output: PropositionalSymbol[] = [];
-    const charsArray = this.joinMultiCharsOperators(this.convertStringToCharsArray(input));
-    let acc = '';
-
-    for (const char of charsArray) {
-      if (validator.isNotPropositionalVariable(char)) {
-        // Save the previous symbols as a variable
-        if (acc.length) {
-          output.push(this.convertInputToSymbol(acc));
-          acc = '';
-        }
-        // Push a non-variable symbol to the output array
-        output.push(this.convertInputToSymbol(char));
-      } else {
-        acc += char;
-      }
-    }
-    // Push remaining characters as a variable
-    if (acc.length) output.push(this.convertInputToSymbol(acc));
-
-    return output.map((item, index) => {
-      return { ...item, index };
-    });
-  },
-
-  convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
-    const mainOperator = this.findTheMainOperatorOf(expression);
-    if (!mainOperator.index || mainOperator.type === 'parentheses') throw new PropositionalError('cannot find the main operator');
-
-    if (mainOperator.type === 'variable') {
-      return factory.createAtom(mainOperator);
-    }
-
-    const operator = factory.createOperatorFromSymbol(mainOperator);
-
-    switch (operator) {
-      case PropositionalOperator.Implies: {
-        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return factory.createImplication(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      case PropositionalOperator.And: {
-        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return factory.createConjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      case PropositionalOperator.Or: {
-        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return factory.createDisjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      case PropositionalOperator.Equiv: {
-        const { firstArgument, secondArgument } = this.splitExpressionByIndex(mainOperator.index, expression);
-        return factory.createEquivalence(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      case PropositionalOperator.Not: {
-        const argument = expression.slice(2, expression.length - 1);
-        return factory.createNegation(this.convertExpressionToFormula(argument));
-      }
-      default: {
-        throw new PropositionalError('cannot parse the sub expression of the formula');
-      }
-    }
-  },
-
-  createICExpression(firstVariable: string, secondVariable: string): PropositionalExpression {
-    if (!firstVariable.length || !secondVariable.length) return [];
-    const input = `${firstVariable} => (${secondVariable} => ${firstVariable})`;
-    return this.convertInputToExpression(input);
-  },
-
-  convertStringToCharsArray(input: string): string[] {
+  getCharsArrayFrom(input: string): string[] {
     return input
       .split('')
       .filter((char) => char !== '')
       .map((char) => char.trim());
   },
 
-  convertInputToSymbol(char: string): PropositionalSymbol {
+  getSymbolFrom(char: string): PropositionalSymbol {
     if (constants.logicalOperators.includes(char as LogicalSymbolRawInput)) {
       return {
         input: char,
@@ -104,7 +34,7 @@ const parser = {
     }
   },
 
-  joinMultiCharsOperators(input: string[]): string[] {
+  joinLogicalSymbolsIn(input: string[]): string[] {
     let acc = '';
     const output: string[] = [];
 
