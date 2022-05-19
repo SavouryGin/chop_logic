@@ -9,7 +9,7 @@ import { formsTexts } from 'assets/texts/propositions';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
-import { getImplicationCreationExpression } from 'helpers/getters/get-implication-creation-expression';
+import { getImplicationCreationExpression } from 'logic/propositions/get-implication-creation-expression';
 
 import './styles.scss';
 

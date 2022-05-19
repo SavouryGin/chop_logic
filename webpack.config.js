@@ -24,6 +24,7 @@ const config = {
       types: path.resolve(__dirname, './src/types'),
       hooks: path.resolve(__dirname, './src/hooks'),
       errors: path.resolve(__dirname, './src/errors'),
+      logic: path.resolve(__dirname, './src/logic'),
       __mocks__: path.resolve(__dirname, './src/__mocks__'),
     },
   },

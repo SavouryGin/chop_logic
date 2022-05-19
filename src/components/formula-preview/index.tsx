@@ -1,7 +1,7 @@
 import React from 'react';
 import Formula from 'components/formula';
 import Label from 'components/inputs/label';
-import PropositionsParser from 'helpers/parsers/propositions-parser';
+import PropositionsParser from 'logic/propositions/propositions-parser';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';

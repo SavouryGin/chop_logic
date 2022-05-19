@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import PropositionsConverter from 'helpers/converters/propositions-converter';
-import { getImplicationCreationExpression } from 'helpers/getters/get-implication-creation-expression';
-import PropositionsParser from 'helpers/parsers/propositions-parser';
+import PropositionsConverter from 'logic/propositions/propositions-converter';
+import { getImplicationCreationExpression } from 'logic/propositions/get-implication-creation-expression';
+import PropositionsParser from 'logic/propositions/propositions-parser';
 
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 
