@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'components/form';
 import TextInput from 'components/inputs/text-input';
 import FormulaPreview from 'components/formula-preview';
-import factory from 'logic/propositions/factory';
+import parser from 'logic/propositions/parser';
 import { FormValues } from 'types';
 import { ButtonID, GreekSymbol, InputID, LogicalSymbol } from 'enums';
 import { propositionsActions } from 'store/propositions/slice';
@@ -31,7 +31,7 @@ function ImplicationCreationForm(): React.ReactElement {
     <>
       <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
       <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
-      <FormulaPreview text={factory.createICExpression(formValue.firstVariable, formValue.secondVariable)} />
+      <FormulaPreview text={parser.createICExpression(formValue.firstVariable, formValue.secondVariable)} />
     </>
   );
 
