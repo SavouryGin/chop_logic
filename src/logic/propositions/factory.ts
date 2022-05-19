@@ -1,8 +1,54 @@
-import { PropositionalOperator } from 'enums';
+import { LogicalSymbol, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import parser from './parser';
 
 const factory = {
+  createOperatorFromSymbol(symbol: PropositionalSymbol): PropositionalOperator {
+    switch (symbol.input) {
+      case LogicalSymbolRawInput.Negation: {
+        return PropositionalOperator.Not;
+      }
+      case LogicalSymbolRawInput.Conjunction: {
+        return PropositionalOperator.And;
+      }
+      case LogicalSymbolRawInput.Disjunction: {
+        return PropositionalOperator.Or;
+      }
+      case LogicalSymbolRawInput.Implication: {
+        return PropositionalOperator.Implies;
+      }
+      case LogicalSymbolRawInput.Equivalence: {
+        return PropositionalOperator.Equiv;
+      }
+      default: {
+        return PropositionalOperator.Var;
+      }
+    }
+  },
+
+  createSymbolFromRawInput(char: string): LogicalSymbol | undefined {
+    switch (char) {
+      case LogicalSymbolRawInput.Implication: {
+        return LogicalSymbol.Implication;
+      }
+      case LogicalSymbolRawInput.Conjunction: {
+        return LogicalSymbol.Conjunction;
+      }
+      case LogicalSymbolRawInput.Disjunction: {
+        return LogicalSymbol.Disjunction;
+      }
+      case LogicalSymbolRawInput.Negation: {
+        return LogicalSymbol.Negation;
+      }
+      case LogicalSymbolRawInput.Equivalence: {
+        return LogicalSymbol.Equivalence;
+      }
+      default: {
+        return undefined;
+      }
+    }
+  },
+
   createAtom(symbol: PropositionalSymbol): PropositionalFormula {
     return {
       operator: PropositionalOperator.Var,
@@ -43,12 +89,6 @@ const factory = {
       operator: PropositionalOperator.Not,
       values: [argument],
     };
-  },
-
-  createICExpression(firstVariable: string, secondVariable: string): PropositionalExpression {
-    if (!firstVariable.length || !secondVariable.length) return [];
-    const input = `${firstVariable} => (${secondVariable} => ${firstVariable})`;
-    return parser.parsePropositionalExpression(input);
   },
 };
 
