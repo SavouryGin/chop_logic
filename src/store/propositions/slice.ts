@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import PropositionsConverter from 'logic/propositions/propositions-converter';
-import { getImplicationCreationExpression } from 'logic/propositions/get-implication-creation-expression';
-import PropositionsParser from 'logic/propositions/propositions-parser';
-
+import factory from 'logic/propositions/factory';
+import parser from 'logic/propositions/parser';
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 
 export const propositionsInitialState: PropositionsInitialState = {
@@ -28,7 +27,7 @@ export const propositionsSlice = createSlice({
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
-      const expression = PropositionsParser.parsePropositionalExpression(action.payload);
+      const expression = parser.parsePropositionalExpression(action.payload);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
@@ -73,7 +72,7 @@ export const propositionsSlice = createSlice({
 
     createImplication: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
       const { firstVariable, secondVariable } = action.payload;
-      const expression = getImplicationCreationExpression(firstVariable, secondVariable);
+      const expression = factory.createICExpression(firstVariable, secondVariable);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {

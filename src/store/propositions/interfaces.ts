@@ -1,5 +1,5 @@
 import { LocalText } from 'types';
-import { PropositionalExpression, PropositionalFormula } from 'types/formulas';
+import { PropositionalExpression, PropositionalFormula } from 'types/propositions';
 
 export interface PropositionsInitialState {
   flags: PropositionsFlags;
