@@ -12,24 +12,27 @@ const parser = {
       .map((char) => char.trim());
   },
 
-  getSymbolFrom(char: string): PropositionalSymbol {
+  getSymbolFrom(char: string, position: number): PropositionalSymbol {
     if (constants.logicalOperators.includes(char as LogicalSymbolRawInput)) {
       return {
         input: char,
         representation: factory.createSymbolFromRawInput(char),
         type: 'operator',
+        position,
       };
     } else if (constants.parentheses.includes(char)) {
       return {
         input: char,
         representation: char,
         type: 'parentheses',
+        position,
       };
     } else {
       return {
         input: char,
         representation: char.toLocaleUpperCase(),
         type: 'variable',
+        position,
       };
     }
   },
@@ -57,7 +60,7 @@ const parser = {
     expression: PropositionalExpression,
   ): { firstArgument: PropositionalExpression; secondArgument: PropositionalExpression } {
     const innerExpression = expression.slice(1, expression.length - 1);
-    const delimiterItem = innerExpression.find((item) => item.index === index);
+    const delimiterItem = innerExpression.find((item) => item.position === index);
     if (!delimiterItem) throw new PropositionalError('cannot split sub expression into two arguments');
     const splitIndex = innerExpression.indexOf(delimiterItem);
     const firstArgument = innerExpression.slice(0, splitIndex);
@@ -89,8 +92,8 @@ const parser = {
     if (subExpressions.length === 1) {
       return subExpressions[0][1];
     }
-    const subIndexes = subExpressions.map((subExpression) => subExpression.map((symbol) => symbol.index));
-    let mainIndexes = expression.map((symbol) => symbol.index).slice(1, expression.length - 2);
+    const subIndexes = subExpressions.map((subExpression) => subExpression.map((symbol) => symbol.position));
+    let mainIndexes = expression.map((symbol) => symbol.position).slice(1, expression.length - 2);
 
     for (const item of subIndexes.slice(0, subIndexes.length - 1)) {
       mainIndexes = mainIndexes.filter((index) => !item.includes(index));
@@ -100,7 +103,7 @@ const parser = {
     //   throw new PropositionalError('incorrect index of the main operator in the sub expression');
     // }
 
-    const mainOperator = expression.find((item) => item.index === mainIndexes[0]);
+    const mainOperator = expression.find((item) => item.position === mainIndexes[0]);
 
     if (!mainOperator) {
       throw new PropositionalError('cannot find the main operator of the sub expression');
