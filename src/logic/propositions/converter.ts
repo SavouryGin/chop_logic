@@ -3,60 +3,36 @@ import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import factory from './factory';
 import parser from './parser';
-import validator from './validator';
 
 const converter = {
   convertInputToExpression(input: string): PropositionalExpression {
-    const output: PropositionalExpression = [];
-    const charsArray = parser.joinLogicalSymbolsIn(parser.getCharsArrayFrom(input));
-    let acc = '';
-
-    for (const char of charsArray) {
-      if (validator.isNotPropositionalVariable(char)) {
-        // Save the previous symbols as a variable
-        if (acc.length) {
-          output.push(parser.getSymbolFrom(acc));
-          acc = '';
-        }
-        // Push a non-variable symbol to the output array
-        output.push(parser.getSymbolFrom(char));
-      } else {
-        acc += char;
-      }
-    }
-    // Push remaining characters as a variable
-    if (acc.length) output.push(parser.getSymbolFrom(acc));
-
-    return output.map((item, index) => {
-      return { ...item, index };
-    });
+    const charsArray = parser.getCharsArrayFrom(input);
+    const output = parser.joinLogicalSymbolsIn(charsArray);
+    return output.map((char, index) => parser.getSymbolFrom(char, index));
   },
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
-    const mainOperator = parser.findTheMainOperatorOf(expression);
-    if (!mainOperator.index || mainOperator.type === 'parentheses') throw new PropositionalError('cannot find the main operator');
-
-    if (mainOperator.type === 'variable') {
-      return factory.createAtom(mainOperator);
-    }
-
-    const operator = factory.createOperatorFromSymbol(mainOperator);
+    const mainSymbol = parser.findTheMainOperatorOf(expression);
+    const operator = factory.createOperatorFromSymbol(mainSymbol);
 
     switch (operator) {
+      case PropositionalOperator.Var: {
+        return factory.createAtom(mainSymbol);
+      }
       case PropositionalOperator.Implies: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainOperator.index, expression);
+        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
         return factory.createImplication(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.And: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainOperator.index, expression);
+        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
         return factory.createConjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.Or: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainOperator.index, expression);
+        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
         return factory.createDisjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.Equiv: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainOperator.index, expression);
+        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
         return factory.createEquivalence(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
       case PropositionalOperator.Not: {
@@ -64,7 +40,7 @@ const converter = {
         return factory.createNegation(this.convertExpressionToFormula(argument));
       }
       default: {
-        throw new PropositionalError('cannot parse the sub expression of the formula');
+        throw new PropositionalError(`Cannot convert sub-expression to formula.\nThe given sub-expression: ${expression}`);
       }
     }
   },
