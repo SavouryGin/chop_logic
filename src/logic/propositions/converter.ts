@@ -71,7 +71,7 @@ const converter = {
 
   convertInputsToICExpression(firstVariable: string, secondVariable: string): PropositionalExpression {
     if (!firstVariable.length || !secondVariable.length) return [];
-    const input = `${firstVariable} => (${secondVariable} => ${firstVariable})`;
+    const input = `(${firstVariable} => (${secondVariable} => ${firstVariable}))`;
     return this.convertInputToExpression(input);
   },
 };

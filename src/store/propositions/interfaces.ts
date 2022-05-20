@@ -19,5 +19,5 @@ export type DirectProofsTableItem = {
   step: number;
   expression: PropositionalExpression;
   comment: LocalText | string;
-  formula?: PropositionalFormula;
+  formula: PropositionalFormula;
 };
