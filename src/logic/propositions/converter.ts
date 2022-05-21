@@ -3,6 +3,7 @@ import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import factory from './factory';
 import parser from './parser';
+import validator from './validator';
 
 const converter = {
   convertInputToExpression(input: string): PropositionalExpression {
@@ -13,7 +14,10 @@ const converter = {
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
     const mainSymbol = parser.findTheMainOperatorOf(expression);
-    const operator = factory.createOperatorFromSymbol(mainSymbol);
+    if (validator.isIncorrectMainSymbol(mainSymbol)) {
+      throw new PropositionalError(`Cannot convert expression to formula.\nThe main symbol is incorrect: ${mainSymbol}`);
+    }
+    const operator = factory.createOperator(mainSymbol);
 
     switch (operator) {
       case PropositionalOperator.Var: {
@@ -40,7 +44,7 @@ const converter = {
         return factory.createNegation(this.convertExpressionToFormula(argument));
       }
       default: {
-        throw new PropositionalError(`Cannot convert sub-expression to formula.\nThe given sub-expression: ${expression}`);
+        throw new PropositionalError(`Cannot convert expression to formula.\nThe given expression: ${expression}`);
       }
     }
   },

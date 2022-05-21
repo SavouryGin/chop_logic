@@ -2,7 +2,7 @@ import { LogicalSymbol, LogicalSymbolRawInput, PropositionalOperator } from 'enu
 import { PropositionalFormula, PropositionalSymbol } from 'types';
 
 const factory = {
-  createOperatorFromSymbol(symbol: PropositionalSymbol): PropositionalOperator {
+  createOperator(symbol: PropositionalSymbol): PropositionalOperator {
     switch (symbol.input) {
       case LogicalSymbolRawInput.Negation: {
         return PropositionalOperator.Not;
@@ -25,7 +25,7 @@ const factory = {
     }
   },
 
-  createSymbolFromRawInput(char: string): LogicalSymbol | undefined {
+  createSymbol(char: string): LogicalSymbol | undefined {
     switch (char) {
       case LogicalSymbolRawInput.Implication: {
         return LogicalSymbol.Implication;
