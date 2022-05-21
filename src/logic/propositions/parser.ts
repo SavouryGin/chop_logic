@@ -16,7 +16,7 @@ const parser = {
     if (constants.logicalOperators.includes(char as LogicalSymbolRawInput)) {
       return {
         input: char,
-        representation: factory.createSymbolFromRawInput(char),
+        representation: factory.createSymbol(char),
         type: 'operator',
         position,
       };
