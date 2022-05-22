@@ -81,17 +81,6 @@ const factory = {
     };
   },
 
-  createBinary(
-    operator: PropositionalOperator,
-    firstArgument: PropositionalFormula,
-    secondArgument: PropositionalFormula,
-  ): PropositionalFormula {
-    return {
-      operator,
-      values: [firstArgument, secondArgument],
-    };
-  },
-
   createImplication(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
     return {
       operator: PropositionalOperator.Implies,

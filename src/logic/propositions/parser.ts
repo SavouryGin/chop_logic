@@ -72,10 +72,6 @@ const parser = {
       mainIndexes = mainIndexes.filter((index) => !item.includes(index));
     }
 
-    // if (mainIndexes.length !== 1 || typeof mainIndexes[0] !== 'number') {
-    //   throw new PropositionalError('incorrect index of the main operator in the sub expression');
-    // }
-
     const mainOperator = expression.find((item) => item.position === mainIndexes[0]);
 
     if (!mainOperator) {
