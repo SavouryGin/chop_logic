@@ -1,8 +1,6 @@
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
-import constants from './constants';
-import factory from './factory';
 
 const parser = {
   getCharsArrayFrom(input: string): string[] {
@@ -10,31 +8,6 @@ const parser = {
       .split('')
       .filter((char) => char !== '')
       .map((char) => char.trim());
-  },
-
-  getSymbolFrom(char: string, position: number): PropositionalSymbol {
-    if (constants.logicalOperators.includes(char as LogicalSymbolRawInput)) {
-      return {
-        input: char,
-        representation: factory.createSymbol(char),
-        type: 'operator',
-        position,
-      };
-    } else if (constants.parentheses.includes(char)) {
-      return {
-        input: char,
-        representation: char,
-        type: 'parentheses',
-        position,
-      };
-    } else {
-      return {
-        input: char,
-        representation: char.toLocaleUpperCase(),
-        type: 'variable',
-        position,
-      };
-    }
   },
 
   joinLogicalSymbolsIn(input: string[]): string[] {

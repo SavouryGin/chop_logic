@@ -6,10 +6,10 @@ import parser from './parser';
 import validator from './validator';
 
 const converter = {
-  convertInputToExpression(input: string): PropositionalExpression {
+  convertStringToExpression(input: string): PropositionalExpression {
     const charsArray = parser.getCharsArrayFrom(input);
     const output = parser.joinLogicalSymbolsIn(charsArray);
-    return output.map((char, index) => parser.getSymbolFrom(char, index));
+    return output.map((char, index) => factory.createPropositionalSymbol(char, index));
   },
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
@@ -22,6 +22,10 @@ const converter = {
     switch (operator) {
       case PropositionalOperator.Var: {
         return factory.createAtom(mainSymbol);
+      }
+      case PropositionalOperator.Not: {
+        const argument = expression.slice(2, expression.length - 1);
+        return factory.createNegation(this.convertExpressionToFormula(argument));
       }
       case PropositionalOperator.Implies: {
         const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
@@ -39,10 +43,6 @@ const converter = {
         const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
         return factory.createEquivalence(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
       }
-      case PropositionalOperator.Not: {
-        const argument = expression.slice(2, expression.length - 1);
-        return factory.createNegation(this.convertExpressionToFormula(argument));
-      }
       default: {
         throw new PropositionalError(`Cannot convert expression to formula.\nThe given expression: ${expression}`);
       }
@@ -52,7 +52,7 @@ const converter = {
   convertInputsToICExpression(firstVariable: string, secondVariable: string): PropositionalExpression {
     if (!firstVariable.length || !secondVariable.length) return [];
     const input = `(${firstVariable} => (${secondVariable} => ${firstVariable}))`;
-    return this.convertInputToExpression(input);
+    return this.convertStringToExpression(input);
   },
 };
 
