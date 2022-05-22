@@ -25,7 +25,7 @@ export const propositionsSlice = createSlice({
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
-      const expression = converter.convertInputToExpression(action.payload);
+      const expression = converter.convertStringToExpression(action.payload);
       const formula = converter.convertExpressionToFormula(expression);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;

@@ -22,7 +22,7 @@ function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactEl
   const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
 
-  const parsedText = isPropositionalExpression(text) ? text : converter.convertInputToExpression(text);
+  const parsedText = isPropositionalExpression(text) ? text : converter.convertStringToExpression(text);
 
   return (
     <div className={classNames}>
