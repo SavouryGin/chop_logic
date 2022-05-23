@@ -71,7 +71,7 @@ export const propositionsSlice = createSlice({
 
     createImplication: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
       const { firstVariable, secondVariable } = action.payload;
-      const expression = converter.convertInputsToICExpression(firstVariable, secondVariable);
+      const expression = converter.convertToICExpression(firstVariable, secondVariable);
       const formula = converter.convertExpressionToFormula(expression);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;

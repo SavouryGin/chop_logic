@@ -81,30 +81,13 @@ const factory = {
     };
   },
 
-  createImplication(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
+  createBinary(
+    operator: PropositionalOperator,
+    firstArgument: PropositionalFormula,
+    secondArgument: PropositionalFormula,
+  ): PropositionalFormula {
     return {
-      operator: PropositionalOperator.Implies,
-      values: [firstArgument, secondArgument],
-    };
-  },
-
-  createConjunction(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.And,
-      values: [firstArgument, secondArgument],
-    };
-  },
-
-  createDisjunction(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.Or,
-      values: [firstArgument, secondArgument],
-    };
-  },
-
-  createEquivalence(firstArgument: PropositionalFormula, secondArgument: PropositionalFormula): PropositionalFormula {
-    return {
-      operator: PropositionalOperator.Equiv,
+      operator,
       values: [firstArgument, secondArgument],
     };
   },

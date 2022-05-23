@@ -31,7 +31,7 @@ function ImplicationCreationForm(): React.ReactElement {
     <>
       <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
       <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
-      <FormulaPreview text={converter.convertInputsToICExpression(formValue.firstVariable, formValue.secondVariable)} />
+      <FormulaPreview text={converter.convertToICExpression(formValue.firstVariable, formValue.secondVariable)} />
     </>
   );
 

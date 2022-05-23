@@ -1,4 +1,4 @@
-import { LogicalSymbolRawInput } from 'enums';
+import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalSymbol } from 'types';
 import constants from './constants';
 
@@ -9,6 +9,13 @@ const validator = {
 
   isIncorrectMainSymbol(symbol: PropositionalSymbol): boolean {
     if (symbol.type === 'variable' || symbol.type === 'operator') {
+      return false;
+    }
+    return true;
+  },
+
+  isBinaryOperator(operator: PropositionalOperator): boolean {
+    if (operator === PropositionalOperator.Var || operator === PropositionalOperator.Not) {
       return false;
     }
     return true;
