@@ -3,14 +3,14 @@ import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const parser = {
-  getCharsArrayFrom(input: string): string[] {
+  getCharsArray(input: string): string[] {
     return input
       .split('')
-      .filter((char) => char !== '')
-      .map((char) => char.trim());
+      .map((char) => char.trim())
+      .filter((char) => char !== '');
   },
 
-  joinLogicalSymbolsIn(input: string[]): string[] {
+  joinLogicalSymbols(input: string[]): string[] {
     let acc = '';
     const output: string[] = [];
 
