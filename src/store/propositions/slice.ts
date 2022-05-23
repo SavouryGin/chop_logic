@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import PropositionsConverter from 'helpers/converters/propositions-converter';
-import { getImplicationCreationExpression } from 'helpers/getters/get-implication-creation-expression';
-import PropositionsParser from 'helpers/parsers/propositions-parser';
-
+import converter from 'logic/propositions/converter';
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 
 export const propositionsInitialState: PropositionsInitialState = {
@@ -28,15 +25,16 @@ export const propositionsSlice = createSlice({
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
-      const expression = PropositionsParser.parsePropositionalExpression(action.payload);
+      const expression = converter.convertStringToExpression(action.payload);
+      const formula = converter.convertExpressionToFormula(expression);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         id,
         step,
         expression,
+        formula,
         comment: { en: 'Premise', ru: 'Посылка' },
-        formula: PropositionsConverter.convertExpressionToFormula(expression),
       };
       state.directProofsTableData = [...state.directProofsTableData, newItem];
     },
@@ -73,13 +71,15 @@ export const propositionsSlice = createSlice({
 
     createImplication: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
       const { firstVariable, secondVariable } = action.payload;
-      const expression = getImplicationCreationExpression(firstVariable, secondVariable);
+      const expression = converter.convertToICExpression(firstVariable, secondVariable);
+      const formula = converter.convertExpressionToFormula(expression);
       const step = state.directProofsTableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         step,
         id,
         expression,
+        formula,
         comment: { en: 'IC', ru: 'ВИ' },
       };
       state.selectedIds = [];

@@ -3,7 +3,7 @@ import { PropositionalOperator } from 'enums';
 export type PropositionalSymbol = {
   input: string;
   type: 'variable' | 'operator' | 'parentheses';
-  index?: number;
+  position: number;
   representation?: string;
 };
 

@@ -43,6 +43,7 @@
 
     &::before {
       color: $light-strong-accent-color;
+      cursor: pointer;
     }
 
     &_dark {
