@@ -19,37 +19,22 @@ const converter = {
     }
     const operator = factory.createOperator(mainSymbol);
 
-    switch (operator) {
-      case PropositionalOperator.Var: {
-        return factory.createAtom(mainSymbol);
-      }
-      case PropositionalOperator.Not: {
-        const argument = expression.slice(2, expression.length - 1);
-        return factory.createNegation(this.convertExpressionToFormula(argument));
-      }
-      case PropositionalOperator.Implies: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
-        return factory.createImplication(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      case PropositionalOperator.And: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
-        return factory.createConjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      case PropositionalOperator.Or: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
-        return factory.createDisjunction(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      case PropositionalOperator.Equiv: {
-        const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
-        return factory.createEquivalence(this.convertExpressionToFormula(firstArgument), this.convertExpressionToFormula(secondArgument));
-      }
-      default: {
-        throw new PropositionalError(`Cannot convert expression to formula.\nThe given expression: ${expression}`);
-      }
+    if (validator.isBinaryOperator(operator)) {
+      const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
+      return factory.createBinary(
+        operator,
+        this.convertExpressionToFormula(firstArgument),
+        this.convertExpressionToFormula(secondArgument),
+      );
+    } else if (operator === PropositionalOperator.Not) {
+      const argument = expression.slice(2, expression.length - 1);
+      return factory.createNegation(this.convertExpressionToFormula(argument));
+    } else {
+      return factory.createAtom(mainSymbol);
     }
   },
 
-  convertInputsToICExpression(firstVariable: string, secondVariable: string): PropositionalExpression {
+  convertToICExpression(firstVariable: string, secondVariable: string): PropositionalExpression {
     if (!firstVariable.length || !secondVariable.length) return [];
     const input = `(${firstVariable} => (${secondVariable} => ${firstVariable}))`;
     return this.convertStringToExpression(input);
