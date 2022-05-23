@@ -5,3 +5,11 @@ export enum LogicalSymbol {
   Negation = '\xAC',
   Equivalence = '\u21D4',
 }
+
+export enum LogicalSymbolRawInput {
+  Implication = '=>',
+  Conjunction = '&',
+  Disjunction = '|',
+  Negation = '~',
+  Equivalence = '<=>',
+}
