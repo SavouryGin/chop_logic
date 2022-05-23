@@ -7,8 +7,8 @@ import validator from './validator';
 
 const converter = {
   convertStringToExpression(input: string): PropositionalExpression {
-    const charsArray = parser.getCharsArrayFrom(input);
-    const output = parser.joinLogicalSymbolsIn(charsArray);
+    const charsArray = parser.getCharsArray(input);
+    const output = parser.joinLogicalSymbols(charsArray);
     return output.map((char, index) => factory.createPropositionalSymbol(char, index));
   },
 
