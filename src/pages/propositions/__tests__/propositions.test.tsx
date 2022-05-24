@@ -4,7 +4,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { propositionsInitialState, propositionsSlice } from 'store/propositions/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
-import { pageTitle } from 'assets/texts/propositions';
+import { titles } from 'assets/texts/propositions';
 
 import Propositions, { propositionsTabs } from 'pages/propositions';
 
@@ -30,7 +30,7 @@ describe('Propositions page:', () => {
 
   it('displays the heading', () => {
     expect(screen.getByRole('heading')).toBeInTheDocument();
-    expect(screen.getByRole('heading')).toHaveTextContent(pageTitle.en);
+    expect(screen.getByRole('heading')).toHaveTextContent(titles.page.en);
   });
 
   it('renders the correct number of tabs', () => {

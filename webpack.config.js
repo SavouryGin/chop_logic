@@ -31,27 +31,18 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
+        test: /\.js$/,
+        exclude: ['/node_modules/'],
+        use: ['babel-loader'],
       },
       {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        test: /\.ts(x?)$/,
+        exclude: ['/node_modules/'],
+        use: ['babel-loader', 'ts-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.js$/,
@@ -70,7 +61,6 @@ const config = {
       filename: 'index.html',
       inject: 'body',
     }),
-
     new CopyWebpackPlugin({
       patterns: [
         { from: path.resolve(__dirname, './src/assets/icons/favicon.ico') },
