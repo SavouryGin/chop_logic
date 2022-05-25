@@ -1,26 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
-import { TableColumnProps } from 'types';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { fillerText } from 'assets/texts/propositions';
 import { propositionsActions as actions } from 'store/propositions/slice';
-
-const directProofsEditorTableColumns: TableColumnProps[] = [
-  {
-    field: 'step',
-    title: { en: '#', ru: '№' },
-  },
-  {
-    field: 'expression',
-    title: { en: 'Formula', ru: 'Формула' },
-  },
-  {
-    field: 'comment',
-    title: { en: 'Comment', ru: 'Коммент.' },
-  },
-];
+import constants from 'constants/propositions';
 
 function DirectProofsEditorTable(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -37,7 +22,7 @@ function DirectProofsEditorTable(): React.ReactElement {
 
   return (
     <div className='direct-proofs-editor__table'>
-      <Table columns={directProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
+      <Table columns={constants.directProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
       {tableData.length === 0 && noStepsFiller}
     </div>
   );
