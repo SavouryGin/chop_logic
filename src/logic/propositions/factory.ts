@@ -1,6 +1,6 @@
 import { LogicalSymbol, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalFormula, PropositionalSymbol } from 'types';
-import constants from 'constants/propositions';
+import constants from 'assets/const/propositions';
 
 const factory = {
   createOperator(symbol: PropositionalSymbol): PropositionalOperator {
