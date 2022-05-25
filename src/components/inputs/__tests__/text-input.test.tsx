@@ -59,41 +59,41 @@ describe('Text input component:', () => {
     expect(screen.getByPlaceholderText('test placeholder')).toBeInTheDocument();
   });
 
-  it('allows the user to type some text', () => {
+  it('allows the user to type some text', async () => {
     renderWithRedux(<TextInput {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('textbox');
-    userEvent.type(input, 'test text');
+    await userEvent.type(input, 'test text');
     expect(input).toHaveValue('test text');
   });
 
-  it('fires the passed onChange handler', () => {
+  it('fires the passed onChange handler', async () => {
     const mockChange = jest.fn();
     renderWithRedux(<TextInput {...testProps} onChange={mockChange} />, mockedReducer, mockedState);
     const input = screen.getByRole('textbox');
-    userEvent.type(input, '123');
+    await userEvent.type(input, '123');
     expect(mockChange).toHaveBeenCalledTimes(3);
   });
 
-  it('gets focus on tab press', () => {
+  it('gets focus on tab press', async () => {
     renderWithRedux(<TextInput {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('textbox');
     expect(input).not.toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(input).toHaveFocus();
   });
 
-  it('fires the onBlur handler', () => {
+  it('fires the onBlur handler', async () => {
     const mockBlur = jest.fn();
     renderWithRedux(<TextInput {...testProps} onBlur={mockBlur} />, mockedReducer, mockedState);
-    userEvent.tab();
-    userEvent.tab();
+    await userEvent.tab();
+    await userEvent.tab();
     expect(mockBlur).toHaveBeenCalledTimes(1);
   });
 
-  it('fires the onFocus handler', () => {
+  it('fires the onFocus handler', async () => {
     const mockFocus = jest.fn();
     renderWithRedux(<TextInput {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
-    userEvent.tab();
+    await userEvent.tab();
     expect(mockFocus).toHaveBeenCalledTimes(1);
   });
 });

@@ -7,7 +7,6 @@ import { settingsSlice, settingsInitialState } from 'store/settings/slice';
 import { testText } from '__mocks__/test-data/texts';
 import { ButtonID } from 'enums';
 import { buttonTexts } from 'assets/texts';
-
 import ModalWindow from '../index';
 
 const mockedReducer = combineReducers({
@@ -27,7 +26,7 @@ describe('ModalWindow component:', () => {
     isOpened: true,
     onClose: mockClose,
     title: 'Test modal',
-    className: 'test-classname',
+    className: 'test-class-name',
     content: <>{testText}</>,
   };
 
@@ -55,7 +54,7 @@ describe('ModalWindow component:', () => {
 
   it('the Close buttons reacts on click', async () => {
     const closeBtn = screen.getByTitle(buttonTexts[ButtonID.Cancel].title.en);
-    userEvent.click(closeBtn);
+    await userEvent.click(closeBtn);
     await waitFor(() => expect(mockClose).toHaveBeenCalledTimes(1));
   });
 
