@@ -5,7 +5,7 @@ import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { fillerText } from 'assets/texts/propositions';
 import { propositionsActions as actions } from 'store/propositions/slice';
-import constants from 'constants/propositions';
+import constants from 'assets/const/propositions';
 
 function DirectProofsEditorTable(): React.ReactElement {
   const dispatch = useAppDispatch();
