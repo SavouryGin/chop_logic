@@ -1,6 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { screen, fireEvent } from '@testing-library/react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsSlice, settingsInitialState } from 'store/settings/slice';
@@ -44,25 +43,25 @@ describe('Layout component:', () => {
 
   it('the nav panel appears if user clicks the Navigation button', () => {
     const menuBtn = screen.getByTitle(buttonTexts[ButtonID.Navigation].title.en);
-    userEvent.click(menuBtn);
+    fireEvent.click(menuBtn);
     expect(screen.queryByRole('navigation')).toBeInTheDocument();
   });
 
   it('the sidebar appears if user clicks the Sidebar button', () => {
     const sidebarBtn = screen.getByTitle(buttonTexts[ButtonID.Tools].title.en);
-    userEvent.click(sidebarBtn);
+    fireEvent.click(sidebarBtn);
     expect(screen.queryByRole('complementary')).toBeInTheDocument();
   });
 
   it('the layout elements become dark if user clicks the Dark mode button', () => {
-    userEvent.click(screen.getByTitle(buttonTexts[ButtonID.Navigation].title.en));
-    userEvent.click(screen.getByTitle(buttonTexts[ButtonID.Tools].title.en));
+    fireEvent.click(screen.getByTitle(buttonTexts[ButtonID.Navigation].title.en));
+    fireEvent.click(screen.getByTitle(buttonTexts[ButtonID.Tools].title.en));
     expect(screen.getByTestId('layout')).not.toHaveClass('layout_dark');
     expect(screen.getByRole('banner')).not.toHaveClass('layout__header_dark');
     expect(screen.queryByRole('navigation')).not.toHaveClass('layout__navigation_dark');
     expect(screen.queryByRole('complementary')).not.toHaveClass('layout__sidebar_dark');
 
-    userEvent.click(screen.getByTitle(buttonTexts[ButtonID.ColorTheme].title.en));
+    fireEvent.click(screen.getByTitle(buttonTexts[ButtonID.ColorTheme].title.en));
     expect(screen.getByTestId('layout')).toHaveClass('layout_dark');
     expect(screen.getByRole('banner')).toHaveClass('layout__header_dark');
     expect(screen.queryByRole('navigation')).toHaveClass('layout__navigation_dark');

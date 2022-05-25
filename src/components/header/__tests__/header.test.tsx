@@ -1,6 +1,5 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { ButtonID, Icon } from 'enums';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
@@ -57,11 +56,11 @@ describe('Header component:', () => {
     const fullScreenBtn = screen.getByTestId(`button_id_${ButtonID.FullScreen}`);
     const toolsBtn = screen.getByTestId(`button_id_${ButtonID.Tools}`);
 
-    userEvent.click(navBtn);
-    userEvent.click(colorBtn);
-    userEvent.click(settingsBtn);
-    userEvent.click(fullScreenBtn);
-    userEvent.click(toolsBtn);
+    fireEvent.click(navBtn);
+    fireEvent.click(colorBtn);
+    fireEvent.click(settingsBtn);
+    fireEvent.click(fullScreenBtn);
+    fireEvent.click(toolsBtn);
 
     expect(navBtn).toHaveClass(Icon.Left);
     expect(colorBtn).toHaveClass(Icon.LightMode);

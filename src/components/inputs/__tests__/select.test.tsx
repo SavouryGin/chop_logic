@@ -64,41 +64,41 @@ describe('Select component:', () => {
     expect(screen.getByRole('combobox')).toHaveValue(testSelectOptions[2].value.toString());
   });
 
-  it('allows the user to select an option', () => {
+  it('allows the user to select an option', async () => {
     renderWithRedux(<Select {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('combobox');
-    userEvent.selectOptions(input, testSelectOptions[1].option.en);
+    await userEvent.selectOptions(input, testSelectOptions[1].option.en);
     expect(input).toHaveValue(testSelectOptions[1].value.toString());
   });
 
-  it('fires the passed onChange handler', () => {
+  it('fires the passed onChange handler', async () => {
     const mockChange = jest.fn();
     renderWithRedux(<Select {...testProps} onChange={mockChange} />, mockedReducer, mockedState);
     const input = screen.getByRole('combobox');
-    userEvent.selectOptions(input, testSelectOptions[1].option.en);
+    await userEvent.selectOptions(input, testSelectOptions[1].option.en);
     expect(mockChange).toHaveBeenCalledTimes(1);
   });
 
-  it('gets focus on tab press', () => {
+  it('gets focus on tab press', async () => {
     renderWithRedux(<Select {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('combobox');
     expect(input).not.toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(input).toHaveFocus();
   });
 
-  it('fires the onBlur handler', () => {
+  it('fires the onBlur handler', async () => {
     const mockBlur = jest.fn();
     renderWithRedux(<Select {...testProps} onBlur={mockBlur} />, mockedReducer, mockedState);
-    userEvent.tab();
-    userEvent.tab();
+    await userEvent.tab();
+    await userEvent.tab();
     expect(mockBlur).toHaveBeenCalledTimes(1);
   });
 
-  it('fires the onFocus handler', () => {
+  it('fires the onFocus handler', async () => {
     const mockFocus = jest.fn();
     renderWithRedux(<Select {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
-    userEvent.tab();
+    await userEvent.tab();
     expect(mockFocus).toHaveBeenCalledTimes(1);
   });
 });
