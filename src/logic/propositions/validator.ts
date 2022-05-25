@@ -1,6 +1,6 @@
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalSymbol } from 'types';
-import constants from './constants';
+import constants from 'constants/propositions';
 
 const validator = {
   isNotVariable(char: string): boolean {
