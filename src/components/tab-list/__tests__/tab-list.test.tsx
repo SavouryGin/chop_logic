@@ -1,6 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, screen } from '@testing-library/react';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { testTabs } from '__mocks__/test-data/tablist';
@@ -71,9 +70,9 @@ describe('Tablist component:', () => {
     renderWithRedux(<TabList {...testProps} />, mockedReducer, mockedState);
     expect(screen.getByRole('tab', { selected: true })).toHaveAttribute('id', testTabs[0].tabId);
     const tabs = screen.getAllByRole('tab');
-    userEvent.click(tabs[1]);
+    fireEvent.click(tabs[1]);
     expect(screen.getByRole('tab', { selected: true })).toHaveAttribute('id', testTabs[1].tabId);
-    userEvent.click(tabs[3]);
+    fireEvent.click(tabs[3]);
     expect(screen.getByRole('tab', { selected: true })).toHaveAttribute('id', testTabs[3].tabId);
   });
 
@@ -81,9 +80,9 @@ describe('Tablist component:', () => {
     renderWithRedux(<TabList {...testProps} />, mockedReducer, mockedState);
     expect(screen.getByRole('tabpanel')).toHaveTextContent('Tab content 1');
     const tabs = screen.getAllByRole('tab');
-    userEvent.click(tabs[1]);
+    fireEvent.click(tabs[1]);
     expect(screen.getByRole('tabpanel')).toHaveTextContent('Tab content 2');
-    userEvent.click(tabs[3]);
+    fireEvent.click(tabs[3]);
     expect(screen.getByRole('tabpanel')).toHaveTextContent('Tab content 4');
   });
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, screen } from '@testing-library/react';
 import { ButtonID, InputID } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
@@ -45,7 +44,7 @@ describe('AppSettings tests:', () => {
     const checkbox = screen.getByLabelText(inputTexts[InputID.isDarkModeCheckbox].label.en);
     expect(checkbox).toBeInTheDocument();
     expect(checkbox).not.toBeChecked();
-    userEvent.click(checkbox);
+    fireEvent.click(checkbox);
     expect(checkbox).toBeChecked();
   });
 
@@ -53,7 +52,7 @@ describe('AppSettings tests:', () => {
     const checkbox = screen.getByLabelText(inputTexts[InputID.isSoundsCheckbox].label.en);
     expect(checkbox).toBeInTheDocument();
     expect(checkbox).not.toBeChecked();
-    userEvent.click(checkbox);
+    fireEvent.click(checkbox);
     expect(checkbox).toBeChecked();
   });
 
