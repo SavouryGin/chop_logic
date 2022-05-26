@@ -1,6 +1,7 @@
 import { LogicalSymbol, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalFormula, PropositionalSymbol } from 'types';
 import constants from 'assets/const/propositions';
+import { PropositionalError } from 'errors/propositional-error';
 
 const factory = {
   createOperator(symbol: PropositionalSymbol): PropositionalOperator {
@@ -21,7 +22,11 @@ const factory = {
         return PropositionalOperator.Equiv;
       }
       default: {
-        return PropositionalOperator.Var;
+        if (symbol.type === 'variable') {
+          return PropositionalOperator.Var;
+        } else {
+          throw new PropositionalError(`Cannot create a correct operator from input "${symbol.input}"`);
+        }
       }
     }
   },
