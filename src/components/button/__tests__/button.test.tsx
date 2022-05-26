@@ -1,12 +1,11 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/react';
 import { ButtonID, Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { buttonTexts } from 'assets/texts';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
-
 import Button from '../index';
 
 const testProps = {
@@ -48,13 +47,13 @@ describe('Button component:', () => {
     expect(screen.getByText('test-text')).toBeInTheDocument();
   });
 
-  it('fires the onClick handler', () => {
+  it('fires the onClick handler', async () => {
     const onClick = jest.fn();
     renderWithRedux(<Button {...testProps} onClick={onClick} />, mockedReducer, mockedState);
     const btn = screen.getByRole('button');
-    userEvent.click(btn);
+    await userEvent.click(btn);
     expect(onClick).toHaveBeenCalledTimes(1);
-    userEvent.dblClick(btn);
+    await userEvent.dblClick(btn);
     expect(onClick).toHaveBeenCalledTimes(3);
   });
 

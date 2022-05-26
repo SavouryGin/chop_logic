@@ -48,42 +48,42 @@ describe('Checkbox component:', () => {
     expect(screen.getByRole('checkbox')).toBeDisabled();
   });
 
-  it('allows the user to check the checkbox', () => {
+  it('allows the user to check the checkbox', async () => {
     renderWithRedux(<Checkbox {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('checkbox');
     expect(input).not.toBeChecked();
-    userEvent.click(input);
+    await userEvent.click(input);
     expect(input).toBeChecked();
   });
 
-  it('fires the passed onChange handler', () => {
+  it('fires the passed onChange handler', async () => {
     const mockChange = jest.fn();
     renderWithRedux(<Checkbox {...testProps} onChange={mockChange} />, mockedReducer, mockedState);
     const input = screen.getByRole('checkbox');
-    userEvent.click(input);
+    await userEvent.click(input);
     expect(mockChange).toHaveBeenCalledTimes(1);
   });
 
-  it('gets focus on tab press', () => {
+  it('gets focus on tab press', async () => {
     renderWithRedux(<Checkbox {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('checkbox');
     expect(input).not.toHaveFocus();
-    userEvent.tab();
+    await userEvent.tab();
     expect(input).toHaveFocus();
   });
 
-  it('fires the onBlur handler', () => {
+  it('fires the onBlur handler', async () => {
     const mockBlur = jest.fn();
     renderWithRedux(<Checkbox {...testProps} onBlur={mockBlur} />, mockedReducer, mockedState);
-    userEvent.tab();
-    userEvent.tab();
+    await userEvent.tab();
+    await userEvent.tab();
     expect(mockBlur).toHaveBeenCalledTimes(1);
   });
 
-  it('fires the onFocus handler', () => {
+  it('fires the onFocus handler', async () => {
     const mockFocus = jest.fn();
     renderWithRedux(<Checkbox {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
-    userEvent.tab();
+    await userEvent.tab();
     expect(mockFocus).toHaveBeenCalledTimes(1);
   });
 });

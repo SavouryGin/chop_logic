@@ -1,6 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, screen } from '@testing-library/react';
 import { LocalText } from 'types';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
@@ -77,7 +76,7 @@ describe('Table component:', () => {
   it('user can check a checkbox', () => {
     renderWithRedux(<Table {...testProps} hasCheckboxColumn />, mockedReducer, mockedState);
     const checkboxes = screen.getAllByRole('checkbox');
-    userEvent.click(checkboxes[checkboxes.length - 1]);
+    fireEvent.click(checkboxes[checkboxes.length - 1]);
     expect(checkboxes[checkboxes.length - 1]).toBeChecked();
     expect(checkboxes[0]).not.toBeChecked();
   });
@@ -85,7 +84,7 @@ describe('Table component:', () => {
   it('user can check the select all checkbox', () => {
     renderWithRedux(<Table {...testProps} hasCheckboxColumn />, mockedReducer, mockedState);
     const checkboxes = screen.getAllByRole('checkbox');
-    userEvent.click(checkboxes[0]);
+    fireEvent.click(checkboxes[0]);
     for (const checkbox of checkboxes) {
       expect(checkbox).toBeChecked();
     }
