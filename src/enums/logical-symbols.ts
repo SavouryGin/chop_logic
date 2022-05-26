@@ -1,4 +1,4 @@
-export enum LogicalSymbol {
+export enum LogicalSymbolHexCode {
   Implication = '\u21D2',
   Conjunction = '\u2227',
   Disjunction = '\u2228',
