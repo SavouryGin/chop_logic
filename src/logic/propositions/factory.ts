@@ -31,7 +31,7 @@ const factory = {
     }
   },
 
-  getSymbolRepresentation(char: string): LogicalSymbol | undefined {
+  getSymbolRepresentation(char: string): LogicalSymbol {
     switch (char) {
       case LogicalSymbolRawInput.Implication: {
         return LogicalSymbol.Implication;
@@ -49,7 +49,7 @@ const factory = {
         return LogicalSymbol.Equivalence;
       }
       default: {
-        return undefined;
+        throw new PropositionalError(`Cannot get a correct logical representation from the input "${char}"`);
       }
     }
   },
