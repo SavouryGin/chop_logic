@@ -4,7 +4,7 @@ import TextInput from 'components/inputs/text-input';
 import FormulaPreview from 'components/formula-preview';
 import converter from 'logic/propositions/converter';
 import { FormValues } from 'types';
-import { ButtonID, GreekSymbol, InputID, LogicalSymbol } from 'enums';
+import { ButtonID, GreekSymbol, InputID, LogicalSymbolHexCode } from 'enums';
 import { propositionsActions } from 'store/propositions/slice';
 import { formsTexts } from 'assets/texts/propositions';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -38,7 +38,7 @@ function ImplicationCreationForm(): React.ReactElement {
   return (
     <div className='implication-creation-form'>
       <p>{formsTexts.implicationCreation[language]}</p>
-      <p className='implication-creation-form__formula'>{`${GreekSymbol.Phi} ${LogicalSymbol.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbol.Implication} ${GreekSymbol.Phi} )`}</p>
+      <p className='implication-creation-form__formula'>{`${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Phi} )`}</p>
       <Form
         onSubmit={onSubmit}
         initialValues={implicationCreationInitialValues}
