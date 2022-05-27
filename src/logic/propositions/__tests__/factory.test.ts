@@ -1,6 +1,6 @@
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
-import { testPropositionalSymbols } from '__mocks__/test-data/propositions';
+import { testPropositionalAtom, testPropositionalSymbols } from '__mocks__/test-data/propositions';
 import factory from '../factory';
 
 describe('Propositions factory tests', () => {
@@ -109,6 +109,40 @@ describe('Propositions factory tests', () => {
       type: 'variable',
       position: 2,
       representation: 'ABC',
+    });
+  });
+
+  it('createAtom() method returns a correct propositional formula', () => {
+    expect(factory.createAtom(testPropositionalSymbols[5])).toEqual(testPropositionalAtom);
+
+    expect(
+      factory.createAtom({
+        input: 'a',
+        type: 'variable',
+        position: 5,
+      }),
+    ).toEqual({
+      operator: PropositionalOperator.Var,
+      values: 'A',
+    });
+  });
+
+  it('createBinary() method returns a correct propositional formula', () => {
+    expect(factory.createBinary(PropositionalOperator.And, testPropositionalAtom, testPropositionalAtom)).toEqual({
+      operator: PropositionalOperator.And,
+      values: [testPropositionalAtom, testPropositionalAtom],
+    });
+
+    expect(factory.createBinary(PropositionalOperator.Or, testPropositionalAtom, testPropositionalAtom)).toEqual({
+      operator: PropositionalOperator.Or,
+      values: [testPropositionalAtom, testPropositionalAtom],
+    });
+  });
+
+  it('createNegation() method returns a correct propositional formula', () => {
+    expect(factory.createNegation(testPropositionalAtom)).toEqual({
+      operator: PropositionalOperator.Not,
+      values: [testPropositionalAtom],
     });
   });
 });

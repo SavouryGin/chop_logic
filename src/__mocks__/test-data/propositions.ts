@@ -1,5 +1,5 @@
-import { LogicalSymbolHexCode } from 'enums';
-import { PropositionalSymbol } from 'types';
+import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
+import { PropositionalFormula, PropositionalSymbol } from 'types';
 
 export const testPropositionalSymbols: PropositionalSymbol[] = [
   {
@@ -45,3 +45,8 @@ export const testPropositionalSymbols: PropositionalSymbol[] = [
     representation: ')',
   },
 ];
+
+export const testPropositionalAtom: PropositionalFormula = {
+  operator: PropositionalOperator.Var,
+  values: 'P',
+};
