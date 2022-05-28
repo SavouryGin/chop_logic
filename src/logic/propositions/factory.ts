@@ -1,6 +1,8 @@
-import { LogicalSymbol, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
+import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalFormula, PropositionalSymbol } from 'types';
+import { PropositionalError } from 'errors/propositional-error';
 import constants from 'assets/const/propositions';
+import regularExpressions from 'helpers/regular-expressions';
 
 const factory = {
   createOperator(symbol: PropositionalSymbol): PropositionalOperator {
@@ -21,30 +23,34 @@ const factory = {
         return PropositionalOperator.Equiv;
       }
       default: {
-        return PropositionalOperator.Var;
+        if (symbol.type === 'variable') {
+          return PropositionalOperator.Var;
+        } else {
+          throw new PropositionalError(`Cannot create a correct operator from input "${symbol.input}"`);
+        }
       }
     }
   },
 
-  getSymbolRepresentation(char: string): LogicalSymbol | undefined {
+  getSymbolRepresentation(char: string): LogicalSymbolHexCode {
     switch (char) {
       case LogicalSymbolRawInput.Implication: {
-        return LogicalSymbol.Implication;
+        return LogicalSymbolHexCode.Implication;
       }
       case LogicalSymbolRawInput.Conjunction: {
-        return LogicalSymbol.Conjunction;
+        return LogicalSymbolHexCode.Conjunction;
       }
       case LogicalSymbolRawInput.Disjunction: {
-        return LogicalSymbol.Disjunction;
+        return LogicalSymbolHexCode.Disjunction;
       }
       case LogicalSymbolRawInput.Negation: {
-        return LogicalSymbol.Negation;
+        return LogicalSymbolHexCode.Negation;
       }
       case LogicalSymbolRawInput.Equivalence: {
-        return LogicalSymbol.Equivalence;
+        return LogicalSymbolHexCode.Equivalence;
       }
       default: {
-        return undefined;
+        throw new PropositionalError(`Cannot get a correct logical representation from the input "${char}"`);
       }
     }
   },
@@ -64,13 +70,15 @@ const factory = {
         type: 'parentheses',
         position,
       };
-    } else {
+    } else if (regularExpressions.onlyLatinLetters.test(char)) {
       return {
         input: char,
         representation: char.toLocaleUpperCase(),
         type: 'variable',
         position,
       };
+    } else {
+      throw new PropositionalError(`Cannot create a propositional symbol from the input "${char}" at position ${position}`);
     }
   },
 
