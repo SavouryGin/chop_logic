@@ -28,17 +28,21 @@ const parser = {
     return output;
   },
 
-  splitExpressionByIndex(
-    index: number,
+  splitExpressionByPosition(
+    position: number,
     expression: PropositionalExpression,
   ): { firstArgument: PropositionalExpression; secondArgument: PropositionalExpression } {
-    const innerExpression = expression.slice(1, expression.length - 1);
-    const delimiterItem = innerExpression.find((item) => item.position === index);
-    if (!delimiterItem) throw new PropositionalError('cannot split sub expression into two arguments');
+    const innerExpression = this.removeSurroundingParenthesis(expression);
+    const delimiterItem = innerExpression.find((item) => item.position === position);
+    if (!delimiterItem) throw new PropositionalError(`Cannot split the given expression into two arguments by position "${position}"`);
     const splitIndex = innerExpression.indexOf(delimiterItem);
     const firstArgument = innerExpression.slice(0, splitIndex);
     const secondArgument = innerExpression.slice(splitIndex + 1, expression.length - 1);
     return { firstArgument, secondArgument };
+  },
+
+  removeSurroundingParenthesis(expression: PropositionalExpression): PropositionalExpression {
+    return expression.slice(1, expression.length - 1);
   },
 
   extractSubExpressionsFrom(expression: PropositionalExpression): PropositionalExpression[] {
