@@ -461,3 +461,94 @@ export const testFourthSubExpression: PropositionalExpression = [
     position: 24,
   },
 ];
+
+export const testFirstVariable: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 3,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 4,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 5,
+  },
+];
+
+export const testSecondVariable: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 10,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 11,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 12,
+  },
+];
+
+export const testThirdVariable: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 14,
+  },
+  {
+    input: 'q',
+    representation: 'Q',
+    type: 'variable',
+    position: 15,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 16,
+  },
+];
+
+export const testFourthVariable: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 21,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 22,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 23,
+  },
+];
+
+export const testParenthesis: PropositionalSymbol = {
+  input: ')',
+  representation: ')',
+  type: 'parentheses',
+  position: 0,
+};
