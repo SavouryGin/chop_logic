@@ -20,7 +20,7 @@ const converter = {
     const operator = factory.createOperator(mainSymbol);
 
     if (validator.isBinaryOperator(operator)) {
-      const { firstArgument, secondArgument } = parser.splitExpressionByIndex(mainSymbol.position, expression);
+      const { firstArgument, secondArgument } = parser.splitExpressionByPosition(mainSymbol.position, expression);
       return factory.createBinary(
         operator,
         this.convertExpressionToFormula(firstArgument),
