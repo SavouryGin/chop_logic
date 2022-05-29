@@ -45,7 +45,7 @@ const parser = {
     return expression.slice(1, expression.length - 1);
   },
 
-  extractSubExpressionsFrom(expression: PropositionalExpression): PropositionalExpression[] {
+  extractAllSubExpressions(expression: PropositionalExpression): PropositionalExpression[] {
     const result: PropositionalExpression[] = [];
     const openIndexes = this.getAllIndexesOfTheSymbol(expression, '(').reverse();
     let closeIndexes = this.getAllIndexesOfTheSymbol(expression, ')');
@@ -65,7 +65,7 @@ const parser = {
   },
 
   findTheMainOperatorOf(expression: PropositionalExpression): PropositionalSymbol {
-    const subExpressions = this.extractSubExpressionsFrom(expression);
+    const subExpressions = this.extractAllSubExpressions(expression);
     if (subExpressions.length === 1) {
       return subExpressions[0][1];
     }
