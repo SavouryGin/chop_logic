@@ -87,7 +87,12 @@ const parser = {
   },
 
   findClosestParenthesis(openIndex: number, array: number[]) {
-    return Math.min(...array.filter((item) => item > openIndex));
+    const closestIndex = Math.min(...array.filter((item) => item > openIndex));
+    if (Number.isFinite(closestIndex) && Number.isSafeInteger(closestIndex) && closestIndex >= 0) {
+      return closestIndex;
+    } else {
+      throw new PropositionalError(`Cannot find the closest parenthesis index to the index "${openIndex}".`);
+    }
   },
 
   getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string) {
