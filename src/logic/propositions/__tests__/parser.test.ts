@@ -73,6 +73,7 @@ describe('Propositions parser tests', () => {
   });
 
   it('extractAllSubExpressions() method returns an array of correct propositional expressions', () => {
+    expect(parser.extractAllSubExpressions([])).toEqual([]);
     expect(parser.extractAllSubExpressions(testPropositionalExpression)).toEqual([
       testFourthVariable,
       testFourthSubExpression,
@@ -98,5 +99,14 @@ describe('Propositions parser tests', () => {
       testThirdSubExpression,
     ]);
     expect(parser.extractAllSubExpressions(testFourthSubExpression)).toEqual([testFourthVariable, testFourthSubExpression]);
+  });
+
+  it('extractAllSubExpressions() method throws an error if the input expression is incorrect', () => {
+    expect(() => {
+      parser.extractAllSubExpressions([testParenthesis]);
+    }).toThrow(PropositionalError);
+    expect(() => {
+      parser.extractAllSubExpressions([testParenthesis, ...testFourthSubExpression]);
+    }).toThrow(PropositionalError);
   });
 });

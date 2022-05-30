@@ -1,6 +1,7 @@
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalSymbol } from 'types';
 import constants from 'assets/const/propositions';
+import { PropositionalError } from 'errors/propositional-error';
 
 const validator = {
   isNotVariable(char: string): boolean {
@@ -19,6 +20,14 @@ const validator = {
       return false;
     }
     return true;
+  },
+
+  checkNumberOfParenthesis(openIndexes: number[], closeIndexes: number[]): void {
+    if (openIndexes.length !== closeIndexes.length) {
+      throw new PropositionalError(
+        'Cannot extract sub expressions: the number of open parenthesis does not match with the number of close parenthesis.',
+      );
+    }
   },
 };
 

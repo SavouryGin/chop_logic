@@ -1,6 +1,7 @@
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
+import validator from './validator';
 
 const parser = {
   getCharsArray(input: string): string[] {
@@ -34,7 +35,10 @@ const parser = {
   ): { firstArgument: PropositionalExpression; secondArgument: PropositionalExpression } {
     const innerExpression = this.removeSurroundingParenthesis(expression);
     const delimiterItem = innerExpression.find((item) => item.position === position);
-    if (!delimiterItem) throw new PropositionalError(`Cannot split the given expression into two arguments by position "${position}"`);
+    if (!delimiterItem) {
+      throw new PropositionalError(`Cannot split the given expression into two arguments by position "${position}"`);
+    }
+
     const splitIndex = innerExpression.indexOf(delimiterItem);
     const firstArgument = innerExpression.slice(0, splitIndex);
     const secondArgument = innerExpression.slice(splitIndex + 1, expression.length - 1);
@@ -49,10 +53,7 @@ const parser = {
     const result: PropositionalExpression[] = [];
     const openIndexes = this.getAllIndexesOfTheSymbol(expression, '(').reverse();
     let closeIndexes = this.getAllIndexesOfTheSymbol(expression, ')');
-
-    if (openIndexes.length !== closeIndexes.length) {
-      throw new PropositionalError('the number of open parenthesis does not match with the number of close parenthesis');
-    }
+    validator.checkNumberOfParenthesis(openIndexes, closeIndexes);
 
     for (const openIndex of openIndexes) {
       const closeIndex = this.findClosestParenthesis(openIndex, closeIndexes);
@@ -64,7 +65,7 @@ const parser = {
     return result;
   },
 
-  findTheMainOperatorOf(expression: PropositionalExpression): PropositionalSymbol {
+  findMainOperator(expression: PropositionalExpression): PropositionalSymbol {
     const subExpressions = this.extractAllSubExpressions(expression);
     if (subExpressions.length === 1) {
       return subExpressions[0][1];
