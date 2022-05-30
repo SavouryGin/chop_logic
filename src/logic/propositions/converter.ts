@@ -13,7 +13,7 @@ const converter = {
   },
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
-    const mainSymbol = parser.findTheMainOperatorOf(expression);
+    const mainSymbol = parser.findMainOperator(expression);
     if (validator.isIncorrectMainSymbol(mainSymbol)) {
       throw new PropositionalError(`Cannot convert expression to formula.\nThe main symbol is incorrect: ${mainSymbol}`);
     }
