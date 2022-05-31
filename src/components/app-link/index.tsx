@@ -1,6 +1,6 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { AppLinkProps } from 'types/routing';
+import { AppLinkProps } from 'types';
 import { Link, NavLink } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';

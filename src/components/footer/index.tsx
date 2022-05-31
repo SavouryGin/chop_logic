@@ -2,14 +2,14 @@ import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
 import { Icon } from 'enums';
+import { externalLinks } from 'assets/const/settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'assets/texts';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-export type FooterProps = ComponentProps;
+type FooterProps = ComponentProps;
 
 function Footer({ className }: FooterProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -27,13 +27,13 @@ function Footer({ className }: FooterProps): React.ReactElement {
     <footer className={footerClassNames}>
       <span className='footer__copyright'>{`© ${uiElementTexts.footer[language]}, 2022`}</span>
       <span className={linkClassNames}>
-        <a href='mailto:savourygin@gmail.com' target='_blank' rel='noreferrer' className={Icon.Mail} onMouseOver={onLinkHover}>
+        <a href={externalLinks.mail} target='_blank' rel='noreferrer' className={Icon.Mail} onMouseOver={onLinkHover}>
           Mail
         </a>
-        <a href='https://telegram.me/savoury_gin' target='_blank' rel='noreferrer' className={Icon.Telegram} onMouseOver={onLinkHover}>
+        <a href={externalLinks.telegram} target='_blank' rel='noreferrer' className={Icon.Telegram} onMouseOver={onLinkHover}>
           Telegram
         </a>
-        <a href='https://github.com/SavouryGin' target='_blank' rel='noreferrer' className={Icon.Github} onMouseOver={onLinkHover}>
+        <a href={externalLinks.gitHub} target='_blank' rel='noreferrer' className={Icon.Github} onMouseOver={onLinkHover}>
           GitHub
         </a>
       </span>

@@ -1,5 +1,5 @@
 import { Page } from 'enums';
-import { PathDictionary } from 'types/routing';
+import { PathDictionary } from 'types';
 
 export const paths: PathDictionary = {
   [Page.Home]: '/',
