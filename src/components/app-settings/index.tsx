@@ -5,7 +5,7 @@ import Select from 'components/inputs/select';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ButtonID, InputID } from 'enums';
 import { ComponentProps, FormValues } from 'types';
-import { languageOptions } from './constants';
+import { languageOptions } from 'assets/const/settings';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
