@@ -9,7 +9,7 @@ import Footer from '../index';
 import { externalLinks } from 'assets/const/settings';
 
 const testProps = {
-  className: 'test-classname',
+  className: 'test-class',
   isDarkMode: false,
 };
 

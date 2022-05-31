@@ -127,4 +127,14 @@ describe('Propositions parser tests', () => {
       parser.findClosestParenthesis(Infinity, [NaN, NaN, NaN]);
     }).toThrow(PropositionalError);
   });
+
+  it('getAllIndexesOfTheSymbol() return an array of indexes', () => {
+    expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, 'p')).toEqual([4, 11, 22]);
+    expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, 'q')).toEqual([15]);
+    expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, '=>')).toEqual([7, 18]);
+    expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, '~')).toEqual([1]);
+    expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, ')')).toEqual([4, 5]);
+    expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, 's')).toEqual([]);
+    expect(parser.getAllIndexesOfTheSymbol([], ')')).toEqual([]);
+  });
 });
