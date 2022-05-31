@@ -1,10 +1,10 @@
 import React from 'react';
-import { TableColumnProps, TableDataItem, TableIdsProps } from 'types';
-import formatClassName from 'helpers/formatters/format-class-name';
 import SelectRowCheckbox from './select-row-checkbox';
-import { useAppSelector } from 'hooks';
-import { settingsSelectors } from 'store/settings/selectors';
+import formatClassName from 'helpers/formatters/format-class-name';
+import { TableColumnProps, TableDataItem, TableIdsProps } from 'types';
 import { getDataCellsValues } from '../helpers';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks';
 
 export type TableBodyProps = {
   data: TableDataItem[];

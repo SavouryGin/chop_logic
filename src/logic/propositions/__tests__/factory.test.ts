@@ -1,7 +1,7 @@
+import factory from '../factory';
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { testPropositionalAtom, testPropositionalSymbols } from '__mocks__/test-data/propositions';
-import factory from '../factory';
 
 describe('Propositions factory tests', () => {
   it('createOperator() method returns a propositional operator correctly', () => {

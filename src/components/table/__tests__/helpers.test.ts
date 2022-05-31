@@ -1,5 +1,5 @@
-import { testTableColumns, testTableData } from '__mocks__/test-data/table';
 import { getDataCellsValues } from '../helpers';
+import { testTableColumns, testTableData } from '__mocks__/test-data/table';
 
 describe('getDataCellsValues() tests:', () => {
   it('returns a string array from the first row', () => {

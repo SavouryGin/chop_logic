@@ -1,11 +1,11 @@
 import React from 'react';
-import { fireEvent, screen } from '@testing-library/react';
-import { ButtonID, InputID } from 'enums';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { buttonTexts, inputTexts } from 'assets/texts';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { ButtonID, InputID } from 'enums';
+import { buttonTexts, inputTexts } from 'assets/texts';
+import { combineReducers } from '@reduxjs/toolkit';
+import { fireEvent, screen } from '@testing-library/react';
 import { languageOptions } from '../constants';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 import AppSettings from '../index';
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import { fireEvent, screen } from '@testing-library/react';
+import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { LocalText } from 'types';
 import { combineReducers } from '@reduxjs/toolkit';
+import { fireEvent, screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { testTableColumns, testTableData } from '__mocks__/test-data/table';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import Table from 'components/table';
 

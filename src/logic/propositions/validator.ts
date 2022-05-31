@@ -1,7 +1,7 @@
-import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
-import { PropositionalSymbol } from 'types';
 import constants from 'assets/const/propositions';
+import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalSymbol } from 'types';
 
 const validator = {
   isNotVariable(char: string): boolean {
@@ -12,6 +12,7 @@ const validator = {
     if (symbol.type === 'variable' || symbol.type === 'operator') {
       return false;
     }
+
     return true;
   },
 
@@ -19,6 +20,7 @@ const validator = {
     if (operator === PropositionalOperator.Var || operator === PropositionalOperator.Not) {
       return false;
     }
+
     return true;
   },
 

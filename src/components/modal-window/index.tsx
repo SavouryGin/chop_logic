@@ -1,14 +1,14 @@
+import Button from 'components/button';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from 'components/button';
 import formatClassName from 'helpers/formatters/format-class-name';
+import { Browser, ButtonID, Icon } from 'enums';
 import { ComponentProps } from 'types';
-import { Icon, Browser, ButtonID } from 'enums';
-import { settingsSelectors } from 'store/settings/selectors';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { soundPlayer } from 'helpers/sounds';
 import { detectBrowser } from 'helpers/checkers/detect-browser';
 import { settingsActions } from 'store/settings/slice';
+import { settingsSelectors } from 'store/settings/selectors';
+import { soundPlayer } from 'helpers/sounds';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import './styles.scss';
 

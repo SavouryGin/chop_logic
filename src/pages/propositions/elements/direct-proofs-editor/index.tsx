@@ -1,15 +1,15 @@
-import React from 'react';
-import ModalWindow from 'components/modal-window';
 import DirectProofsEditorTable from 'components/propositions/direct-proofs-editor-table';
 import DirectProofsEditorToolbar from 'components/propositions/direct-proofs-editor-toolbar';
 import ImplicationCreationForm from 'components/propositions/implication-creation-form';
+import ModalWindow from 'components/modal-window';
 import PremiseForm from 'components/propositions/premise-form';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import React from 'react';
+import { PropositionsFlag } from 'store/propositions/interfaces';
+import { propositionsActions as actions } from 'store/propositions/slice';
+import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'assets/texts/ui-elements';
-import { propositionsSelectors } from 'store/propositions/selectors';
-import { propositionsActions as actions } from 'store/propositions/slice';
-import { PropositionsFlag } from 'store/propositions/interfaces';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 import './styles.scss';
 

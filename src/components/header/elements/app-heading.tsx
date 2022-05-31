@@ -1,7 +1,7 @@
-import React from 'react';
 import AppLink from 'components/app-link';
-import { paths } from 'components/app-router/paths';
+import React from 'react';
 import { Page } from 'enums';
+import { paths } from 'components/app-router/paths';
 
 function AppHeading(): React.ReactElement {
   return (

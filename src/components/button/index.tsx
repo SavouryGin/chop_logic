@@ -1,10 +1,10 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
 import { ButtonID, Icon } from 'enums';
+import { ComponentProps } from 'types';
+import { buttonTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-import { buttonTexts } from 'assets/texts';
 
 import './styles.scss';
 
@@ -37,8 +37,12 @@ function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
   ]);
 
   const onButtonClick = () => {
-    if (sound && isSoundEnabled) sound.play();
-    if (onClick) onClick();
+    if (sound && isSoundEnabled) {
+      sound.play();
+    }
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (

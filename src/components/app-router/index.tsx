@@ -1,12 +1,12 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from 'pages/home';
 import Layout from 'components/layout';
 import NotFoundPage from 'pages/not-found-page';
-import Home from 'pages/home';
-import { Page } from 'enums';
+import React from 'react';
 import RouterElement from './route-element';
-import { routesMap } from './map';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Page } from 'enums';
 import { paths } from './paths';
+import { routesMap } from './map';
 
 function AppRouter(): React.ReactElement {
   const pages = routesMap.map((item) => {

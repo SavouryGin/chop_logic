@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect } from 'react';
+import AppSettings from 'components/app-settings';
 import Button from 'components/button';
 import ModalWindow from 'components/modal-window';
-import AppSettings from 'components/app-settings';
+import React, { useCallback, useEffect } from 'react';
 import { ButtonID, Icon } from 'enums';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { settingsSelectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
+import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'assets/texts';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 function RightHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();
@@ -38,12 +38,16 @@ function RightHeaderPanel(): React.ReactElement {
     const isWindowInFullscreen = !!document.fullscreenElement;
 
     if (isWindowInFullscreen) {
-      if (document.fullscreenElement) document.exitFullscreen();
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
       dispatch(settingsActions.setFullScreenFlag(false));
     } else {
       const body = document.body;
       const requestMethod = body?.requestFullscreen;
-      if (requestMethod) requestMethod.call(body);
+      if (requestMethod) {
+        requestMethod.call(body);
+      }
       dispatch(settingsActions.setFullScreenFlag(true));
     }
   };
@@ -55,6 +59,7 @@ function RightHeaderPanel(): React.ReactElement {
 
   useEffect(() => {
     document.addEventListener('fullscreenchange', escapeHandler, false);
+
     return () => {
       document.removeEventListener('fullscreenchange', escapeHandler, false);
     };

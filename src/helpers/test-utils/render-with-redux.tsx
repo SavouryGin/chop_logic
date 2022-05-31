@@ -1,8 +1,8 @@
 import React, { ReactElement, ReactNode } from 'react';
-import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, Reducer } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import { Reducer, createStore } from '@reduxjs/toolkit';
+import { RenderOptions, RenderResult, render } from '@testing-library/react';
 
 interface IProps {
   children?: ReactNode;
@@ -17,6 +17,7 @@ function renderWithRedux(ui: ReactElement, reducer: Reducer, initialState = {}, 
       </Provider>
     );
   };
+
   return render(ui, { wrapper: Wrapper, ...renderOptions });
 }
 
