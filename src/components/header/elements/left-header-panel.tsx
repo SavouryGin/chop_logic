@@ -1,10 +1,10 @@
-import React from 'react';
 import Button from 'components/button';
+import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { useAppDispatch, useAppSelector } from 'hooks';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 function LeftHeaderPanel(): React.ReactElement {
   const dispatch = useAppDispatch();

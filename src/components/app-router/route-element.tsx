@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
 import FallbackPage from 'pages/fallback-page';
+import React, { Suspense } from 'react';
 
 type RouteElementProps = {
   component: React.FC;

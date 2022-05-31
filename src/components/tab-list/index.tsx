@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
-import { TabListProps } from 'types';
-import { useAppSelector } from 'hooks';
-import { settingsSelectors } from 'store/settings/selectors';
 import Tab from './elements/tab';
 import TabContent from './elements/tab-content';
+import formatClassName from 'helpers/formatters/format-class-name';
+import { TabListProps } from 'types';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 
@@ -22,6 +22,7 @@ function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElem
 
   const titles = tabs.map((item) => {
     const { tabId, tabTitle } = item;
+
     return <Tab key={tabId} title={tabTitle} onSelect={setActiveTab} tabId={tabId} isActive={tabId === activeTab} />;
   });
 

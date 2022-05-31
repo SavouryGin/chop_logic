@@ -1,14 +1,14 @@
+import Label from '../label';
 import React, { useContext, useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { Guid } from 'guid-typescript';
 import { ComponentProps, InputHandlersProps } from 'types';
-import { settingsSelectors } from 'store/settings/selectors';
-import { inputTexts } from 'assets/texts';
-import { useAppSelector } from 'hooks';
-import { Icon, InputID } from 'enums';
 import { FormContext } from 'components/form';
+import { Guid } from 'guid-typescript';
+import { Icon, InputID } from 'enums';
+import { inputTexts } from 'assets/texts';
+import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
-import Label from '../label';
+import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 
@@ -46,10 +46,18 @@ function Checkbox({ name, onChange, getCheckboxEvent, setCheckboxValue, inputId,
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.checked;
     setIsChecked(value);
-    if (isSoundEnabled) soundPlayer.seatbelt.play();
-    if (onChangeInput) onChangeInput(e);
-    if (onChange) onChange();
-    if (getCheckboxEvent) getCheckboxEvent(e);
+    if (isSoundEnabled) {
+      soundPlayer.seatbelt.play();
+    }
+    if (onChangeInput) {
+      onChangeInput(e);
+    }
+    if (onChange) {
+      onChange();
+    }
+    if (getCheckboxEvent) {
+      getCheckboxEvent(e);
+    }
   };
 
   useEffect(() => {

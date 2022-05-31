@@ -1,9 +1,9 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { combineReducers } from '@reduxjs/toolkit';
 import { routesMap } from 'components/app-router/map';
+import { screen } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 import Navigation from '../index';
 

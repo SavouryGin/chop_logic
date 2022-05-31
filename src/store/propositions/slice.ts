@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import converter from 'logic/propositions/converter';
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export const propositionsInitialState: PropositionsInitialState = {
   flags: {
@@ -56,7 +56,9 @@ export const propositionsSlice = createSlice({
 
     reiterateStep: (state) => {
       const selectedStep = state.directProofsTableData.find((item) => item.id === state.selectedIds[0]);
-      if (!selectedStep) return state;
+      if (!selectedStep) {
+        return state;
+      }
       const index = state.directProofsTableData.length + 1;
       const newStep = {
         ...selectedStep,

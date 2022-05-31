@@ -1,7 +1,7 @@
+import validator from './validator';
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
-import validator from './validator';
 
 const parser = {
   getCharsArray(input: string): string[] {
@@ -23,9 +23,12 @@ const parser = {
           acc = '';
         }
       } else {
-        if (!acc.length) output.push(char);
+        if (!acc.length) {
+          output.push(char);
+        }
       }
     }
+
     return output;
   },
 
@@ -42,6 +45,7 @@ const parser = {
     const splitIndex = innerExpression.indexOf(delimiterItem);
     const firstArgument = innerExpression.slice(0, splitIndex);
     const secondArgument = innerExpression.slice(splitIndex + 1, expression.length - 1);
+
     return { firstArgument, secondArgument };
   },
 
@@ -98,8 +102,11 @@ const parser = {
   getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string) {
     const indexes = [];
     for (let i = 0; i < array.length; i++) {
-      if (array[i].input === symbol) indexes.push(i);
+      if (array[i].input === symbol) {
+        indexes.push(i);
+      }
     }
+
     return indexes;
   },
 };

@@ -1,3 +1,4 @@
+import parser from '../parser';
 import { PropositionalError } from 'errors/propositional-error';
 import {
   testFirstSubExpression,
@@ -11,7 +12,6 @@ import {
   testThirdSubExpression,
   testThirdVariable,
 } from '__mocks__/test-data/propositions';
-import parser from '../parser';
 
 describe('Propositions parser tests', () => {
   it('getCharsArray() method returns a correct array', () => {

@@ -1,10 +1,10 @@
 import React from 'react';
-import { fireEvent, screen } from '@testing-library/react';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { testTabs } from '__mocks__/test-data/tablist';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { TabListProps } from 'types';
+import { combineReducers } from '@reduxjs/toolkit';
+import { fireEvent, screen } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { testTabs } from '__mocks__/test-data/tablist';
 
 import TabList from 'components/tab-list';
 

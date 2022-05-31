@@ -3,9 +3,9 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
+import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'assets/texts';
 import { useAppSelector } from 'hooks';
-import { soundPlayer } from 'helpers/sounds';
 
 import './styles.scss';
 

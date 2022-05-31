@@ -1,9 +1,9 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
+import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import Footer from '../index';
 

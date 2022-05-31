@@ -1,8 +1,8 @@
+import Button from 'components/button';
 import React, { useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps, FormContextProps, FormInput, FormValues } from 'types';
-import Button from 'components/button';
 import { ButtonID, Icon } from 'enums';
+import { ComponentProps, FormContextProps, FormInput, FormValues } from 'types';
 import { soundPlayer } from 'helpers/sounds';
 
 export type FormProps = ComponentProps & {
@@ -32,7 +32,9 @@ function Form({ className, onSubmit, inputs, initialValues, passValues, submitBu
   };
 
   useEffect(() => {
-    if (passValues) passValues(formValues);
+    if (passValues) {
+      passValues(formValues);
+    }
   }, [formValues]);
 
   return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { Link, NavLink } from 'react-router-dom';
 import { ClassNameProp } from 'types';
 import { Icon } from 'enums';
+import { Link, NavLink } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
+import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 

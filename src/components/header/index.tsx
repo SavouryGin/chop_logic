@@ -1,9 +1,9 @@
+import AppHeading from './elements/app-heading';
+import LeftHeaderPanel from './elements/left-header-panel';
 import React from 'react';
+import RightHeaderPanel from './elements/right-header-panel';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps } from 'types';
-import RightHeaderPanel from './elements/right-header-panel';
-import LeftHeaderPanel from './elements/left-header-panel';
-import AppHeading from './elements/app-heading';
 
 import './styles.scss';
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { propositionsInitialState, propositionsSlice } from 'store/propositions/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { combineReducers } from '@reduxjs/toolkit';
+import { propositionsInitialState, propositionsSlice } from 'store/propositions/slice';
+import { screen } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { titles } from 'assets/texts/propositions';
 
 import Propositions, { propositionsTabs } from 'pages/propositions';

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
 import Form from 'components/form';
-import TextInput from 'components/inputs/text-input';
 import FormulaPreview from 'components/formula-preview';
-import { FormValues } from 'types';
+import React, { useState } from 'react';
+import TextInput from 'components/inputs/text-input';
 import { ButtonID, InputID } from 'enums';
+import { FormValues } from 'types';
+import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 import { propositionsActions } from 'store/propositions/slice';
 import { useAppDispatch } from 'hooks';
-import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 
 import './styles.scss';
 
