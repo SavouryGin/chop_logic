@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, Page } from 'enums';
-import { RoutesMapItem } from 'types/routing';
+import { RoutesMapItem } from 'types';
 import { paths } from './paths';
 
 const Predicates = React.lazy(() => import('pages/predicates'));
