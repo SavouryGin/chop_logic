@@ -36,7 +36,7 @@ const parser = {
     position: number,
     expression: PropositionalExpression,
   ): { firstArgument: PropositionalExpression; secondArgument: PropositionalExpression } {
-    const innerExpression = this.removeSurroundingParenthesis(expression);
+    const innerExpression = this.removeSurroundingElements(expression);
     const delimiterItem = innerExpression.find((item) => item.position === position);
     if (!delimiterItem) {
       throw new PropositionalError(`Cannot split the given expression into two arguments by position "${position}"`);
@@ -49,8 +49,8 @@ const parser = {
     return { firstArgument, secondArgument };
   },
 
-  removeSurroundingParenthesis(expression: PropositionalExpression): PropositionalExpression {
-    return expression.slice(1, expression.length - 1);
+  removeSurroundingElements<T>(array: T[]): T[] {
+    return array.slice(1, array.length - 1);
   },
 
   extractAllSubExpressions(expression: PropositionalExpression): PropositionalExpression[] {
@@ -70,12 +70,17 @@ const parser = {
   },
 
   findMainOperator(expression: PropositionalExpression): PropositionalSymbol {
+    if (expression.length < 3) {
+      throw new PropositionalError(`Cannot find the main operator. The given expression is incorrect: ${expression}`);
+    }
+
     const subExpressions = this.extractAllSubExpressions(expression);
     if (subExpressions.length === 1) {
       return subExpressions[0][1];
     }
+
     const subIndexes = subExpressions.map((subExpression) => subExpression.map((symbol) => symbol.position));
-    let mainIndexes = expression.map((symbol) => symbol.position).slice(1, expression.length - 2);
+    let mainIndexes = this.removeSurroundingElements(expression).map((symbol) => symbol.position);
 
     for (const item of subIndexes.slice(0, subIndexes.length - 1)) {
       mainIndexes = mainIndexes.filter((index) => !item.includes(index));
@@ -83,8 +88,8 @@ const parser = {
 
     const mainOperator = expression.find((item) => item.position === mainIndexes[0]);
 
-    if (!mainOperator) {
-      throw new PropositionalError('cannot find the main operator of the sub expression');
+    if (!mainOperator || mainOperator.type === 'parentheses') {
+      throw new PropositionalError(`Cannot find the main operator of the sub expression ${expression}.`);
     }
 
     return mainOperator;

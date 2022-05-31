@@ -61,15 +61,20 @@ describe('Propositions parser tests', () => {
     }).toThrow(PropositionalError);
   });
 
-  it('removeSurroundingParenthesis() method returns a correct propositional expression', () => {
-    expect(parser.removeSurroundingParenthesis([testParenthesis, ...testFirstSubExpression, testParenthesis])).toEqual(
-      testFirstSubExpression,
-    );
-    expect(parser.removeSurroundingParenthesis([testParenthesis, ...testSecondSubExpression, testParenthesis])).toEqual(
+  it('removeSurroundingElements() method returns a correct propositional expression', () => {
+    expect(parser.removeSurroundingElements([testParenthesis, ...testFirstSubExpression, testParenthesis])).toEqual(testFirstSubExpression);
+    expect(parser.removeSurroundingElements([testParenthesis, ...testSecondSubExpression, testParenthesis])).toEqual(
       testSecondSubExpression,
     );
-    expect(parser.removeSurroundingParenthesis([testParenthesis, testParenthesis])).toEqual([]);
-    expect(parser.removeSurroundingParenthesis([])).toEqual([]);
+    expect(parser.removeSurroundingElements([testParenthesis, testParenthesis])).toEqual([]);
+    expect(parser.removeSurroundingElements([])).toEqual([]);
+  });
+
+  it('removeSurroundingElements() method returns a generic array', () => {
+    expect(parser.removeSurroundingElements([1, 2, 3, 4, 5])).toEqual([2, 3, 4]);
+    expect(parser.removeSurroundingElements(['a', 'b', 'c'])).toEqual(['b']);
+    expect(parser.removeSurroundingElements(['a', 'c'])).toEqual([]);
+    expect(parser.removeSurroundingElements([])).toEqual([]);
   });
 
   it('extractAllSubExpressions() method returns an array of correct propositional expressions', () => {
@@ -128,7 +133,7 @@ describe('Propositions parser tests', () => {
     }).toThrow(PropositionalError);
   });
 
-  it('getAllIndexesOfTheSymbol() return an array of indexes', () => {
+  it('getAllIndexesOfTheSymbol() method returns an array of indexes', () => {
     expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, 'p')).toEqual([4, 11, 22]);
     expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, 'q')).toEqual([15]);
     expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, '=>')).toEqual([7, 18]);
@@ -136,5 +141,27 @@ describe('Propositions parser tests', () => {
     expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, ')')).toEqual([4, 5]);
     expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, 's')).toEqual([]);
     expect(parser.getAllIndexesOfTheSymbol([], ')')).toEqual([]);
+  });
+
+  it('findMainOperator() method returns a correct propositional symbol', () => {
+    expect(parser.findMainOperator(testPropositionalExpression)).toEqual(testPropositionalExpression[7]);
+    expect(parser.findMainOperator(testFirstSubExpression)).toEqual(testFirstSubExpression[1]);
+    expect(parser.findMainOperator(testSecondSubExpression)).toEqual(testSecondSubExpression[10]);
+    expect(parser.findMainOperator(testThirdSubExpression)).toEqual(testThirdSubExpression[4]);
+    expect(parser.findMainOperator(testFourthSubExpression)).toEqual(testFourthSubExpression[1]);
+    expect(parser.findMainOperator(testFirstVariable)).toEqual(testFirstVariable[1]);
+    expect(parser.findMainOperator(testSecondVariable)).toEqual(testSecondVariable[1]);
+  });
+
+  it('findMainOperator() method throws an error if the input expression is incorrect', () => {
+    expect(() => {
+      parser.findMainOperator([testParenthesis]);
+    }).toThrow(PropositionalError);
+    expect(() => {
+      parser.findMainOperator([]);
+    }).toThrow(PropositionalError);
+    expect(() => {
+      parser.findMainOperator([testParenthesis, testParenthesis, testParenthesis]);
+    }).toThrow(PropositionalError);
   });
 });
