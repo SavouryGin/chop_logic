@@ -90,7 +90,7 @@ const parser = {
     return mainOperator;
   },
 
-  findClosestParenthesis(openIndex: number, array: number[]) {
+  findClosestParenthesis(openIndex: number, array: number[]): number {
     const closestIndex = Math.min(...array.filter((item) => item > openIndex));
     if (Number.isFinite(closestIndex) && Number.isSafeInteger(closestIndex) && closestIndex >= 0) {
       return closestIndex;
@@ -99,7 +99,7 @@ const parser = {
     }
   },
 
-  getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string) {
+  getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string): number[] {
     const indexes = [];
     for (let i = 0; i < array.length; i++) {
       if (array[i].input === symbol) {
