@@ -546,11 +546,18 @@ const fourthVariable: PropositionalExpression = [
   },
 ];
 
-const parenthesis: PropositionalSymbol = {
+const openParenthesis: PropositionalSymbol = {
+  input: '(',
+  representation: '(',
+  type: 'parentheses',
+  position: 0,
+};
+
+const closeParenthesis: PropositionalSymbol = {
   input: ')',
   representation: ')',
   type: 'parentheses',
-  position: 0,
+  position: 2,
 };
 
 const propositionalFormula: PropositionalFormula = {
@@ -637,7 +644,8 @@ const testData = {
   secondSubFormula,
   firstSubFormula,
   propositionalFormula,
-  parenthesis,
+  openParenthesis,
+  closeParenthesis,
   fourthVariable,
   thirdVariable,
   secondVariable,

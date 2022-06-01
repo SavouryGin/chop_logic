@@ -51,13 +51,13 @@ describe('Propositions parser tests', () => {
   });
 
   it('removeSurroundingElements() method returns a correct propositional expression', () => {
-    expect(parser.removeSurroundingElements([testData.parenthesis, ...testData.firstSubExpression, testData.parenthesis])).toEqual(
+    expect(parser.removeSurroundingElements([testData.openParenthesis, ...testData.firstSubExpression, testData.openParenthesis])).toEqual(
       testData.firstSubExpression,
     );
-    expect(parser.removeSurroundingElements([testData.parenthesis, ...testData.secondSubExpression, testData.parenthesis])).toEqual(
+    expect(parser.removeSurroundingElements([testData.openParenthesis, ...testData.secondSubExpression, testData.openParenthesis])).toEqual(
       testData.secondSubExpression,
     );
-    expect(parser.removeSurroundingElements([testData.parenthesis, testData.parenthesis])).toEqual([]);
+    expect(parser.removeSurroundingElements([testData.openParenthesis, testData.openParenthesis])).toEqual([]);
     expect(parser.removeSurroundingElements([])).toEqual([]);
   });
 
@@ -99,10 +99,10 @@ describe('Propositions parser tests', () => {
 
   it('extractAllSubExpressions() method throws an error if the input expression is incorrect', () => {
     expect(() => {
-      parser.extractAllSubExpressions([testData.parenthesis]);
+      parser.extractAllSubExpressions([testData.openParenthesis]);
     }).toThrow(PropositionalError);
     expect(() => {
-      parser.extractAllSubExpressions([testData.parenthesis, ...testData.fourthSubExpression]);
+      parser.extractAllSubExpressions([testData.openParenthesis, ...testData.fourthSubExpression]);
     }).toThrow(PropositionalError);
   });
 
@@ -146,13 +146,13 @@ describe('Propositions parser tests', () => {
 
   it('findMainOperator() method throws an error if the input expression is incorrect', () => {
     expect(() => {
-      parser.findMainOperator([testData.parenthesis]);
+      parser.findMainOperator([testData.openParenthesis]);
     }).toThrow(PropositionalError);
     expect(() => {
       parser.findMainOperator([]);
     }).toThrow(PropositionalError);
     expect(() => {
-      parser.findMainOperator([testData.parenthesis, testData.parenthesis, testData.parenthesis]);
+      parser.findMainOperator([testData.openParenthesis, testData.openParenthesis, testData.openParenthesis]);
     }).toThrow(PropositionalError);
   });
 });

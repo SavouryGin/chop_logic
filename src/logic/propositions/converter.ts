@@ -16,7 +16,7 @@ const converter = {
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
     const mainSymbol = parser.findMainOperator(expression);
     if (validator.isIncorrectMainSymbol(mainSymbol)) {
-      throw new PropositionalError(`Cannot convert expression to formula.\nThe main symbol is incorrect: ${mainSymbol}`);
+      throw new PropositionalError(`Cannot convert expression to formula.\nThe main symbol is incorrect: ${mainSymbol.input}`);
     }
     const operator = factory.createOperator(mainSymbol);
 
