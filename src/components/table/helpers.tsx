@@ -1,8 +1,8 @@
+import Formula from 'components/formula';
 import React from 'react';
+import { Language, LocalText, PropositionalExpression, TableColumnProps, TableDataItem } from 'types';
 import { isLocalText } from 'helpers/checkers/is-local-text';
 import { isPropositionalExpression } from 'helpers/checkers/is-propositional-expression';
-import { Language, LocalText, PropositionalExpression, TableColumnProps, TableDataItem } from 'types';
-import Formula from 'components/formula';
 
 export function getDataCellsValues(tableRow: TableDataItem, columns: TableColumnProps[], language: Language): (string | JSX.Element)[] {
   const stringValues = [];

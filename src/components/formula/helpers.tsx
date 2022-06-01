@@ -5,6 +5,7 @@ export function getPreformattedSymbol(symbol: PropositionalSymbol, key: number):
   switch (symbol.type) {
     case 'operator': {
       const text = symbol.input === '~' ? symbol.representation : ` ${symbol.representation} `;
+
       return (
         <span key={`symbol-${key}`} className={'formula__operator'}>
           {text}

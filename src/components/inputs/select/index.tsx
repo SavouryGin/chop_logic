@@ -1,14 +1,14 @@
+import Label from '../label';
 import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
+import { FormContext } from 'components/form';
 import { Guid } from 'guid-typescript';
 import { InputID } from 'enums';
-import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
-import { soundPlayer } from 'helpers/sounds';
-import { FormContext } from 'components/form';
 import { inputTexts } from 'assets/texts';
-import Label from '../label';
+import { settingsSelectors } from 'store/settings/selectors';
+import { soundPlayer } from 'helpers/sounds';
+import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 
@@ -38,6 +38,7 @@ function Select({ options, className, inputId, name, defaultOption, onChange, ..
 
   const optionList = options.map((item) => {
     const key = Guid.create().toString();
+
     return (
       <option value={item.value} key={key}>
         {item.option[language]}
@@ -49,9 +50,15 @@ function Select({ options, className, inputId, name, defaultOption, onChange, ..
     const selectedOption = e.target.value;
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
-    if (isSoundEnabled) soundPlayer.switch.play();
-    if (onChangeInput) onChangeInput(e);
-    if (onChange) onChange();
+    if (isSoundEnabled) {
+      soundPlayer.switch.play();
+    }
+    if (onChangeInput) {
+      onChangeInput(e);
+    }
+    if (onChange) {
+      onChange();
+    }
   };
 
   return (

@@ -1,11 +1,11 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
-import { inputTexts } from 'assets/texts';
+import userEvent from '@testing-library/user-event';
 import { InputID } from 'enums';
+import { combineReducers } from '@reduxjs/toolkit';
+import { inputTexts } from 'assets/texts';
+import { screen } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 import Checkbox from 'components/inputs/checkbox';
 

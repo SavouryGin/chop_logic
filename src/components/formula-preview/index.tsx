@@ -1,14 +1,14 @@
-import React from 'react';
 import Formula from 'components/formula';
 import Label from 'components/inputs/label';
+import React from 'react';
 import converter from 'logic/propositions/converter';
 import formatClassName from 'helpers/formatters/format-class-name';
+import { ComponentProps, PropositionalSymbol } from 'types';
+import { InputID } from 'enums';
+import { inputTexts } from 'assets/texts';
+import { isPropositionalExpression } from 'helpers/checkers/is-propositional-expression';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-import { ComponentProps, PropositionalSymbol } from 'types';
-import { inputTexts } from 'assets/texts';
-import { InputID } from 'enums';
-import { isPropositionalExpression } from 'helpers/checkers/is-propositional-expression';
 
 import './styles.scss';
 

@@ -1,5 +1,5 @@
-import React from 'react';
 import Checkbox from 'components/inputs/checkbox';
+import React from 'react';
 import { Guid } from 'guid-typescript';
 import { TableIdsProps } from 'types';
 

@@ -1,11 +1,11 @@
-import React from 'react';
 import Button from 'components/button';
+import React from 'react';
 import { ButtonID } from 'enums';
-import { soundPlayer } from 'helpers/sounds';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { PropositionsFlag } from 'store/propositions/interfaces';
 import { propositionsActions as actions } from 'store/propositions/slice';
 import { propositionsSelectors } from 'store/propositions/selectors';
-import { PropositionsFlag } from 'store/propositions/interfaces';
+import { soundPlayer } from 'helpers/sounds';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 function DirectProofsEditorToolbar(): React.ReactElement {
   const dispatch = useAppDispatch();

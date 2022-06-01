@@ -1,9 +1,9 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { TabProps } from 'types';
-import { useAppSelector } from 'hooks';
-import { soundPlayer } from 'helpers/sounds';
 import { settingsSelectors } from 'store/settings/selectors';
+import { soundPlayer } from 'helpers/sounds';
+import { useAppSelector } from 'hooks';
 
 function Tab({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement {
   const classNames = formatClassName(['tab-list__tab', { 'tab-list__tab_active': isActive }]);
@@ -13,7 +13,9 @@ function Tab({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement
   const onClickTab = (e: React.MouseEvent<HTMLHeadingElement>) => {
     e.stopPropagation();
     onSelect(tabId);
-    if (isSoundEnabled) soundPlayer.seatbelt.play();
+    if (isSoundEnabled) {
+      soundPlayer.seatbelt.play();
+    }
   };
 
   return (

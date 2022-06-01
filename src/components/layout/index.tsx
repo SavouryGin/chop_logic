@@ -1,7 +1,7 @@
-import React from 'react';
-import Header from 'components/header';
 import Footer from 'components/footer';
+import Header from 'components/header';
 import Navigation from 'components/navigation';
+import React from 'react';
 import Sidebar from 'components/sidebar';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Outlet } from 'react-router-dom';

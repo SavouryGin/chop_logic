@@ -1,6 +1,6 @@
-import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from 'types';
 import { DirectProofsTableItem, PropositionsFlags } from './interfaces';
+import { RootState } from 'types';
+import { createSelector } from '@reduxjs/toolkit';
 
 const getPropositionsFlags = (state: RootState): PropositionsFlags => state.propositions.flags;
 

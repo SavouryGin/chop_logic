@@ -1,14 +1,15 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
+import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
 
 import Footer from '../index';
+import { externalLinks } from 'assets/const/settings';
 
 const testProps = {
-  className: 'test-classname',
+  className: 'test-class',
   isDarkMode: false,
 };
 
@@ -46,9 +47,9 @@ describe('Footer component:', () => {
 
   it('all links have correct href attributes', () => {
     const links = screen.getAllByRole('link');
-    expect(links[0]).toHaveProperty('href', 'mailto:savourygin@gmail.com');
-    expect(links[1]).toHaveProperty('href', 'https://telegram.me/savoury_gin');
-    expect(links[2]).toHaveProperty('href', 'https://github.com/SavouryGin');
+    expect(links[0]).toHaveProperty('href', externalLinks.mail);
+    expect(links[1]).toHaveProperty('href', externalLinks.telegram);
+    expect(links[2]).toHaveProperty('href', externalLinks.gitHub);
   });
 
   it('all links have icons', () => {

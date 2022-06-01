@@ -1,16 +1,7 @@
 import React from 'react';
 import { Icon, Page } from 'enums';
-import { LocalText } from 'types';
+import { RoutesMapItem } from 'types';
 import { paths } from './paths';
-
-type RoutesMapItem = {
-  id: Page;
-  url: string;
-  element: React.FC;
-  title: LocalText;
-  key: string;
-  icon: Icon;
-};
 
 const Predicates = React.lazy(() => import('pages/predicates'));
 const TruthTables = React.lazy(() => import('pages/truth-tables'));

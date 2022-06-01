@@ -1,13 +1,13 @@
+import Label from '../label';
 import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { InputID } from 'enums';
 import { ComponentProps, InputHandlersProps } from 'types';
+import { FormContext } from 'components/form';
+import { InputID } from 'enums';
 import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
-import { FormContext } from 'components/form';
-import Label from '../label';
+import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 
@@ -54,9 +54,15 @@ function TextInput({ name, inputId, onChange, ...rest }: TextInputProps): React.
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || '';
     setInputValue(value);
-    if (isSoundEnabled) soundPlayer.snap.play();
-    if (onChangeInput) onChangeInput(e);
-    if (onChange) onChange();
+    if (isSoundEnabled) {
+      soundPlayer.snap.play();
+    }
+    if (onChangeInput) {
+      onChangeInput(e);
+    }
+    if (onChange) {
+      onChange();
+    }
   };
 
   return (

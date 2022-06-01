@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import constants from 'assets/const/propositions';
+import { propositionsActions as actions } from 'store/propositions/slice';
+import { fillerText } from 'assets/texts/propositions';
 import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { fillerText } from 'assets/texts/propositions';
-import { propositionsActions as actions } from 'store/propositions/slice';
-import constants from 'assets/const/propositions';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 function DirectProofsEditorTable(): React.ReactElement {
   const dispatch = useAppDispatch();
   const tableData = useAppSelector(propositionsSelectors.getDirectProofsTableData);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const [selectedIds, setSelectedIds] = useState<Array<string>>(useAppSelector(propositionsSelectors.getSelectedIds));
+  const [selectedIds, setSelectedIds] = useState<string[]>(useAppSelector(propositionsSelectors.getSelectedIds));
   const takeSelectedIds = (ids: string[]) => setSelectedIds(ids);
 
   useEffect(() => {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { TableColumnProps, TableDataItem, TableIdsProps } from 'types';
-import { useAppSelector } from 'hooks';
-import { settingsSelectors } from 'store/settings/selectors';
 import SelectAllCheckbox from './select-all-checkbox';
+import { TableColumnProps, TableDataItem, TableIdsProps } from 'types';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks';
 
 type TableHeadProps = {
   columns: TableColumnProps[];
@@ -17,6 +17,7 @@ function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, da
 
   const headerCells = columns.map((column, index) => {
     const title = column.title ? column.title[language] : '';
+
     return (
       <th key={index} className='table__cell table__cell_heading'>
         {title}

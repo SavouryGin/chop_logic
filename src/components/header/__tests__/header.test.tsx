@@ -1,9 +1,9 @@
 import React from 'react';
-import { fireEvent, screen } from '@testing-library/react';
-import { ButtonID, Icon } from 'enums';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { ButtonID, Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
-import { settingsSlice, settingsInitialState } from 'store/settings/slice';
+import { fireEvent, screen } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 import Header from '../index';
 

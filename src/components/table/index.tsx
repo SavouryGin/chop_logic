@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import TableBody from './elements/table-body';
+import TableHead from './elements/table-head';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { TableProps } from 'types';
-import { useAppSelector } from 'hooks';
 import { settingsSelectors } from 'store/settings/selectors';
-import TableHead from './elements/table-head';
-import TableBody from './elements/table-body';
+import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 
@@ -19,7 +19,9 @@ function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   // Effects
   useEffect(() => {
-    if (rest.passSelectedIds) rest.passSelectedIds(selectedIds);
+    if (rest.passSelectedIds) {
+      rest.passSelectedIds(selectedIds);
+    }
   }, [selectedIds]);
 
   useEffect(() => {

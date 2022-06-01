@@ -1,10 +1,10 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsSlice, settingsInitialState } from 'store/settings/slice';
-import { buttonTexts } from 'assets/texts';
 import { ButtonID } from 'enums';
+import { buttonTexts } from 'assets/texts';
+import { combineReducers } from '@reduxjs/toolkit';
+import { fireEvent, screen } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 import Layout from '../index';
 

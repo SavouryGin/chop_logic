@@ -1,13 +1,13 @@
+import ModalWindow from '../index';
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsSlice, settingsInitialState } from 'store/settings/slice';
-import { testText } from '__mocks__/test-data/texts';
+import userEvent from '@testing-library/user-event';
 import { ButtonID } from 'enums';
 import { buttonTexts } from 'assets/texts';
-import ModalWindow from '../index';
+import { combineReducers } from '@reduxjs/toolkit';
+import { screen, waitFor } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { testText } from '__mocks__/test-data/texts';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,

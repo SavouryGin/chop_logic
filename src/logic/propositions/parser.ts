@@ -1,3 +1,4 @@
+import validator from './validator';
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
@@ -22,33 +23,41 @@ const parser = {
           acc = '';
         }
       } else {
-        if (!acc.length) output.push(char);
+        if (!acc.length) {
+          output.push(char);
+        }
       }
     }
+
     return output;
   },
 
-  splitExpressionByIndex(
-    index: number,
+  splitExpressionByPosition(
+    position: number,
     expression: PropositionalExpression,
   ): { firstArgument: PropositionalExpression; secondArgument: PropositionalExpression } {
-    const innerExpression = expression.slice(1, expression.length - 1);
-    const delimiterItem = innerExpression.find((item) => item.position === index);
-    if (!delimiterItem) throw new PropositionalError('cannot split sub expression into two arguments');
+    const innerExpression = this.removeSurroundingElements(expression);
+    const delimiterItem = innerExpression.find((item) => item.position === position);
+    if (!delimiterItem) {
+      throw new PropositionalError(`Cannot split the given expression into two arguments by position "${position}"`);
+    }
+
     const splitIndex = innerExpression.indexOf(delimiterItem);
     const firstArgument = innerExpression.slice(0, splitIndex);
     const secondArgument = innerExpression.slice(splitIndex + 1, expression.length - 1);
+
     return { firstArgument, secondArgument };
   },
 
-  extractSubExpressionsFrom(expression: PropositionalExpression): PropositionalExpression[] {
+  removeSurroundingElements<T>(array: T[]): T[] {
+    return array.slice(1, array.length - 1);
+  },
+
+  extractAllSubExpressions(expression: PropositionalExpression): PropositionalExpression[] {
     const result: PropositionalExpression[] = [];
     const openIndexes = this.getAllIndexesOfTheSymbol(expression, '(').reverse();
     let closeIndexes = this.getAllIndexesOfTheSymbol(expression, ')');
-
-    if (openIndexes.length !== closeIndexes.length) {
-      throw new PropositionalError('the number of open parenthesis does not match with the number of close parenthesis');
-    }
+    validator.checkNumberOfParenthesis(openIndexes, closeIndexes);
 
     for (const openIndex of openIndexes) {
       const closeIndex = this.findClosestParenthesis(openIndex, closeIndexes);
@@ -60,13 +69,18 @@ const parser = {
     return result;
   },
 
-  findTheMainOperatorOf(expression: PropositionalExpression): PropositionalSymbol {
-    const subExpressions = this.extractSubExpressionsFrom(expression);
+  findMainOperator(expression: PropositionalExpression): PropositionalSymbol {
+    if (expression.length < 3) {
+      throw new PropositionalError(`Cannot find the main operator. The given expression is incorrect: ${expression}`);
+    }
+
+    const subExpressions = this.extractAllSubExpressions(expression);
     if (subExpressions.length === 1) {
       return subExpressions[0][1];
     }
+
     const subIndexes = subExpressions.map((subExpression) => subExpression.map((symbol) => symbol.position));
-    let mainIndexes = expression.map((symbol) => symbol.position).slice(1, expression.length - 2);
+    let mainIndexes = this.removeSurroundingElements(expression).map((symbol) => symbol.position);
 
     for (const item of subIndexes.slice(0, subIndexes.length - 1)) {
       mainIndexes = mainIndexes.filter((index) => !item.includes(index));
@@ -74,22 +88,30 @@ const parser = {
 
     const mainOperator = expression.find((item) => item.position === mainIndexes[0]);
 
-    if (!mainOperator) {
-      throw new PropositionalError('cannot find the main operator of the sub expression');
+    if (!mainOperator || mainOperator.type === 'parentheses') {
+      throw new PropositionalError(`Cannot find the main operator of the sub expression ${expression}.`);
     }
 
     return mainOperator;
   },
 
-  findClosestParenthesis(openIndex: number, array: number[]) {
-    return Math.min(...array.filter((item) => item > openIndex));
+  findClosestParenthesis(openIndex: number, array: number[]): number {
+    const closestIndex = Math.min(...array.filter((item) => item > openIndex));
+    if (Number.isFinite(closestIndex) && Number.isSafeInteger(closestIndex) && closestIndex >= 0) {
+      return closestIndex;
+    } else {
+      throw new PropositionalError(`Cannot find the closest parenthesis index to the index "${openIndex}".`);
+    }
   },
 
-  getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string) {
+  getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string): number[] {
     const indexes = [];
     for (let i = 0; i < array.length; i++) {
-      if (array[i].input === symbol) indexes.push(i);
+      if (array[i].input === symbol) {
+        indexes.push(i);
+      }
     }
+
     return indexes;
   },
 };
