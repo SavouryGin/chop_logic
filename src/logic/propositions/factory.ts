@@ -1,8 +1,8 @@
-import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
-import { PropositionalFormula, PropositionalSymbol } from 'types';
-import { PropositionalError } from 'errors/propositional-error';
 import constants from 'assets/const/propositions';
 import regularExpressions from 'helpers/regular-expressions';
+import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
+import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalFormula, PropositionalSymbol } from 'types';
 
 const factory = {
   createOperator(symbol: PropositionalSymbol): PropositionalOperator {

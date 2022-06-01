@@ -1,13 +1,13 @@
+import AppLink from 'components/app-link';
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import AppLink from 'components/app-link';
-import { routesMap } from 'components/app-router/map';
 import { ComponentProps } from 'types';
-import { useAppSelector } from 'hooks';
+import { routesMap } from 'components/app-router/map';
 import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks';
 
-import './styles.scss';
 import { uiElementTexts } from 'assets/texts';
+import './styles.scss';
 
 export type NavigationProps = ComponentProps;
 

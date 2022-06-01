@@ -1,7 +1,7 @@
-import { settingsActions } from 'store/settings/slice';
-import { propositionsActions } from 'store/propositions/slice';
-import { PropositionsFlag } from 'store/propositions/interfaces';
 import { AppDispatch } from 'types';
+import { PropositionsFlag } from 'store/propositions/interfaces';
+import { propositionsActions } from 'store/propositions/slice';
+import { settingsActions } from 'store/settings/slice';
 
 export function closePropositionsPopup(dispatch: AppDispatch, flag: PropositionsFlag) {
   dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));

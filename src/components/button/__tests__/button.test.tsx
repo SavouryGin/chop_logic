@@ -1,12 +1,12 @@
-import React from 'react';
-import userEvent from '@testing-library/user-event';
-import { screen } from '@testing-library/react';
-import { ButtonID, Icon } from 'enums';
-import { combineReducers } from '@reduxjs/toolkit';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { buttonTexts } from 'assets/texts';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import Button from '../index';
+import React from 'react';
+import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import userEvent from '@testing-library/user-event';
+import { ButtonID, Icon } from 'enums';
+import { buttonTexts } from 'assets/texts';
+import { combineReducers } from '@reduxjs/toolkit';
+import { screen } from '@testing-library/react';
+import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 const testProps = {
   icon: Icon.Default,

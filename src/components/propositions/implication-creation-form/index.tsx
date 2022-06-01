@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
 import Form from 'components/form';
-import TextInput from 'components/inputs/text-input';
 import FormulaPreview from 'components/formula-preview';
+import React, { useState } from 'react';
+import TextInput from 'components/inputs/text-input';
 import converter from 'logic/propositions/converter';
-import { FormValues } from 'types';
 import { ButtonID, GreekSymbol, InputID, LogicalSymbolHexCode } from 'enums';
-import { propositionsActions } from 'store/propositions/slice';
-import { formsTexts } from 'assets/texts/propositions';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { settingsSelectors } from 'store/settings/selectors';
+import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
+import { formsTexts } from 'assets/texts/propositions';
+import { propositionsActions } from 'store/propositions/slice';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
 function ImplicationCreationForm(): React.ReactElement {

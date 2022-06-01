@@ -1,21 +1,11 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
+import { AppLinkProps } from 'types';
 import { Link, NavLink } from 'react-router-dom';
-import { ClassNameProp } from 'types';
-import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
 import { soundPlayer } from 'helpers/sounds';
-
+import { useAppSelector } from 'hooks';
 import './styles.scss';
-
-export type AppLinkProps = {
-  path: string;
-  text?: string;
-  icon?: Icon;
-  isNavigation?: boolean;
-  className?: ClassNameProp;
-};
 
 function AppLink({ path, text, isNavigation, icon, ...rest }: AppLinkProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);

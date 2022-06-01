@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
 import Checkbox from 'components/inputs/checkbox';
-import Select from 'components/inputs/select';
 import Form from 'components/form';
+import React, { useState } from 'react';
+import Select from 'components/inputs/select';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps, FormValues } from 'types';
 import { ButtonID, InputID } from 'enums';
+import { ComponentProps, FormValues } from 'types';
+import { languageOptions } from 'assets/const/settings';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { languageOptions } from './constants';
 
 import './styles.scss';
 
