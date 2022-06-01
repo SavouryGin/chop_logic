@@ -1,17 +1,6 @@
 import parser from '../parser';
+import testData from '__mocks__/test-data/propositions';
 import { PropositionalError } from 'errors/propositional-error';
-import {
-  testFirstSubExpression,
-  testFirstVariable,
-  testFourthSubExpression,
-  testFourthVariable,
-  testParenthesis,
-  testPropositionalExpression,
-  testSecondSubExpression,
-  testSecondVariable,
-  testThirdSubExpression,
-  testThirdVariable,
-} from '__mocks__/test-data/propositions';
 
 describe('Propositions parser tests', () => {
   it('getCharsArray() method returns a correct array', () => {
@@ -32,29 +21,29 @@ describe('Propositions parser tests', () => {
   });
 
   it('splitExpressionByPosition() method returns two sub expressions', () => {
-    expect(parser.splitExpressionByPosition(7, testPropositionalExpression)).toEqual({
-      firstArgument: testFirstSubExpression,
-      secondArgument: testSecondSubExpression,
+    expect(parser.splitExpressionByPosition(7, testData.propositionalExpression)).toEqual({
+      firstArgument: testData.firstSubExpression,
+      secondArgument: testData.secondSubExpression,
     });
-    expect(parser.splitExpressionByPosition(18, testSecondSubExpression)).toEqual({
-      firstArgument: testThirdSubExpression,
-      secondArgument: testFourthSubExpression,
+    expect(parser.splitExpressionByPosition(18, testData.secondSubExpression)).toEqual({
+      firstArgument: testData.thirdSubExpression,
+      secondArgument: testData.fourthSubExpression,
     });
-    expect(parser.splitExpressionByPosition(13, testThirdSubExpression)).toEqual({
-      firstArgument: testSecondVariable,
-      secondArgument: testThirdVariable,
+    expect(parser.splitExpressionByPosition(13, testData.thirdSubExpression)).toEqual({
+      firstArgument: testData.secondVariable,
+      secondArgument: testData.thirdVariable,
     });
   });
 
   it('splitExpressionByPosition() method throws an error if the given arguments are incorrect', () => {
     expect(() => {
-      parser.splitExpressionByPosition(100, testFirstSubExpression);
+      parser.splitExpressionByPosition(100, testData.firstSubExpression);
     }).toThrow(PropositionalError);
     expect(() => {
-      parser.splitExpressionByPosition(-1, testFirstSubExpression);
+      parser.splitExpressionByPosition(-1, testData.firstSubExpression);
     }).toThrow(PropositionalError);
     expect(() => {
-      parser.splitExpressionByPosition(2, testSecondSubExpression);
+      parser.splitExpressionByPosition(2, testData.secondSubExpression);
     }).toThrow(PropositionalError);
     expect(() => {
       parser.splitExpressionByPosition(0, []);
@@ -62,11 +51,13 @@ describe('Propositions parser tests', () => {
   });
 
   it('removeSurroundingElements() method returns a correct propositional expression', () => {
-    expect(parser.removeSurroundingElements([testParenthesis, ...testFirstSubExpression, testParenthesis])).toEqual(testFirstSubExpression);
-    expect(parser.removeSurroundingElements([testParenthesis, ...testSecondSubExpression, testParenthesis])).toEqual(
-      testSecondSubExpression,
+    expect(parser.removeSurroundingElements([testData.parenthesis, ...testData.firstSubExpression, testData.parenthesis])).toEqual(
+      testData.firstSubExpression,
     );
-    expect(parser.removeSurroundingElements([testParenthesis, testParenthesis])).toEqual([]);
+    expect(parser.removeSurroundingElements([testData.parenthesis, ...testData.secondSubExpression, testData.parenthesis])).toEqual(
+      testData.secondSubExpression,
+    );
+    expect(parser.removeSurroundingElements([testData.parenthesis, testData.parenthesis])).toEqual([]);
     expect(parser.removeSurroundingElements([])).toEqual([]);
   });
 
@@ -79,39 +70,39 @@ describe('Propositions parser tests', () => {
 
   it('extractAllSubExpressions() method returns an array of correct propositional expressions', () => {
     expect(parser.extractAllSubExpressions([])).toEqual([]);
-    expect(parser.extractAllSubExpressions(testPropositionalExpression)).toEqual([
-      testFourthVariable,
-      testFourthSubExpression,
-      testThirdVariable,
-      testSecondVariable,
-      testThirdSubExpression,
-      testSecondSubExpression,
-      testFirstVariable,
-      testFirstSubExpression,
-      testPropositionalExpression,
+    expect(parser.extractAllSubExpressions(testData.propositionalExpression)).toEqual([
+      testData.fourthVariable,
+      testData.fourthSubExpression,
+      testData.thirdVariable,
+      testData.secondVariable,
+      testData.thirdSubExpression,
+      testData.secondSubExpression,
+      testData.firstVariable,
+      testData.firstSubExpression,
+      testData.propositionalExpression,
     ]);
-    expect(parser.extractAllSubExpressions(testSecondSubExpression)).toEqual([
-      testFourthVariable,
-      testFourthSubExpression,
-      testThirdVariable,
-      testSecondVariable,
-      testThirdSubExpression,
-      testSecondSubExpression,
+    expect(parser.extractAllSubExpressions(testData.secondSubExpression)).toEqual([
+      testData.fourthVariable,
+      testData.fourthSubExpression,
+      testData.thirdVariable,
+      testData.secondVariable,
+      testData.thirdSubExpression,
+      testData.secondSubExpression,
     ]);
-    expect(parser.extractAllSubExpressions(testThirdSubExpression)).toEqual([
-      testThirdVariable,
-      testSecondVariable,
-      testThirdSubExpression,
+    expect(parser.extractAllSubExpressions(testData.thirdSubExpression)).toEqual([
+      testData.thirdVariable,
+      testData.secondVariable,
+      testData.thirdSubExpression,
     ]);
-    expect(parser.extractAllSubExpressions(testFourthSubExpression)).toEqual([testFourthVariable, testFourthSubExpression]);
+    expect(parser.extractAllSubExpressions(testData.fourthSubExpression)).toEqual([testData.fourthVariable, testData.fourthSubExpression]);
   });
 
   it('extractAllSubExpressions() method throws an error if the input expression is incorrect', () => {
     expect(() => {
-      parser.extractAllSubExpressions([testParenthesis]);
+      parser.extractAllSubExpressions([testData.parenthesis]);
     }).toThrow(PropositionalError);
     expect(() => {
-      parser.extractAllSubExpressions([testParenthesis, ...testFourthSubExpression]);
+      parser.extractAllSubExpressions([testData.parenthesis, ...testData.fourthSubExpression]);
     }).toThrow(PropositionalError);
   });
 
@@ -134,34 +125,34 @@ describe('Propositions parser tests', () => {
   });
 
   it('getAllIndexesOfTheSymbol() method returns an array of indexes', () => {
-    expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, 'p')).toEqual([4, 11, 22]);
-    expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, 'q')).toEqual([15]);
-    expect(parser.getAllIndexesOfTheSymbol(testPropositionalExpression, '=>')).toEqual([7, 18]);
-    expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, '~')).toEqual([1]);
-    expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, ')')).toEqual([4, 5]);
-    expect(parser.getAllIndexesOfTheSymbol(testFirstSubExpression, 's')).toEqual([]);
+    expect(parser.getAllIndexesOfTheSymbol(testData.propositionalExpression, 'p')).toEqual([4, 11, 22]);
+    expect(parser.getAllIndexesOfTheSymbol(testData.propositionalExpression, 'q')).toEqual([15]);
+    expect(parser.getAllIndexesOfTheSymbol(testData.propositionalExpression, '=>')).toEqual([7, 18]);
+    expect(parser.getAllIndexesOfTheSymbol(testData.firstSubExpression, '~')).toEqual([1]);
+    expect(parser.getAllIndexesOfTheSymbol(testData.firstSubExpression, ')')).toEqual([4, 5]);
+    expect(parser.getAllIndexesOfTheSymbol(testData.firstSubExpression, 's')).toEqual([]);
     expect(parser.getAllIndexesOfTheSymbol([], ')')).toEqual([]);
   });
 
   it('findMainOperator() method returns a correct propositional symbol', () => {
-    expect(parser.findMainOperator(testPropositionalExpression)).toEqual(testPropositionalExpression[7]);
-    expect(parser.findMainOperator(testFirstSubExpression)).toEqual(testFirstSubExpression[1]);
-    expect(parser.findMainOperator(testSecondSubExpression)).toEqual(testSecondSubExpression[10]);
-    expect(parser.findMainOperator(testThirdSubExpression)).toEqual(testThirdSubExpression[4]);
-    expect(parser.findMainOperator(testFourthSubExpression)).toEqual(testFourthSubExpression[1]);
-    expect(parser.findMainOperator(testFirstVariable)).toEqual(testFirstVariable[1]);
-    expect(parser.findMainOperator(testSecondVariable)).toEqual(testSecondVariable[1]);
+    expect(parser.findMainOperator(testData.propositionalExpression)).toEqual(testData.propositionalExpression[7]);
+    expect(parser.findMainOperator(testData.firstSubExpression)).toEqual(testData.firstSubExpression[1]);
+    expect(parser.findMainOperator(testData.secondSubExpression)).toEqual(testData.secondSubExpression[10]);
+    expect(parser.findMainOperator(testData.thirdSubExpression)).toEqual(testData.thirdSubExpression[4]);
+    expect(parser.findMainOperator(testData.fourthSubExpression)).toEqual(testData.fourthSubExpression[1]);
+    expect(parser.findMainOperator(testData.firstVariable)).toEqual(testData.firstVariable[1]);
+    expect(parser.findMainOperator(testData.secondVariable)).toEqual(testData.secondVariable[1]);
   });
 
   it('findMainOperator() method throws an error if the input expression is incorrect', () => {
     expect(() => {
-      parser.findMainOperator([testParenthesis]);
+      parser.findMainOperator([testData.parenthesis]);
     }).toThrow(PropositionalError);
     expect(() => {
       parser.findMainOperator([]);
     }).toThrow(PropositionalError);
     expect(() => {
-      parser.findMainOperator([testParenthesis, testParenthesis, testParenthesis]);
+      parser.findMainOperator([testData.parenthesis, testData.parenthesis, testData.parenthesis]);
     }).toThrow(PropositionalError);
   });
 });

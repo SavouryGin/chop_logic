@@ -1,7 +1,7 @@
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
-export const testPropositionalSymbols: PropositionalSymbol[] = [
+export const propositionalSymbols: PropositionalSymbol[] = [
   {
     input: '~',
     type: 'operator',
@@ -46,12 +46,12 @@ export const testPropositionalSymbols: PropositionalSymbol[] = [
   },
 ];
 
-export const testPropositionalAtom: PropositionalFormula = {
+export const propositionalAtom: PropositionalFormula = {
   operator: PropositionalOperator.Var,
   values: 'P',
 };
 
-export const testPropositionalExpression: PropositionalExpression = [
+const propositionalExpression: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -216,7 +216,7 @@ export const testPropositionalExpression: PropositionalExpression = [
   },
 ];
 
-export const testFirstSubExpression: PropositionalExpression = [
+const firstSubExpression: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -255,7 +255,7 @@ export const testFirstSubExpression: PropositionalExpression = [
   },
 ];
 
-export const testSecondSubExpression: PropositionalExpression = [
+const secondSubExpression: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -366,7 +366,7 @@ export const testSecondSubExpression: PropositionalExpression = [
   },
 ];
 
-export const testThirdSubExpression: PropositionalExpression = [
+const thirdSubExpression: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -423,7 +423,7 @@ export const testThirdSubExpression: PropositionalExpression = [
   },
 ];
 
-export const testFourthSubExpression: PropositionalExpression = [
+const fourthSubExpression: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -462,7 +462,7 @@ export const testFourthSubExpression: PropositionalExpression = [
   },
 ];
 
-export const testFirstVariable: PropositionalExpression = [
+const firstVariable: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -483,7 +483,7 @@ export const testFirstVariable: PropositionalExpression = [
   },
 ];
 
-export const testSecondVariable: PropositionalExpression = [
+const secondVariable: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -504,7 +504,7 @@ export const testSecondVariable: PropositionalExpression = [
   },
 ];
 
-export const testThirdVariable: PropositionalExpression = [
+const thirdVariable: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -525,7 +525,7 @@ export const testThirdVariable: PropositionalExpression = [
   },
 ];
 
-export const testFourthVariable: PropositionalExpression = [
+const fourthVariable: PropositionalExpression = [
   {
     input: '(',
     representation: '(',
@@ -546,9 +546,109 @@ export const testFourthVariable: PropositionalExpression = [
   },
 ];
 
-export const testParenthesis: PropositionalSymbol = {
+const parenthesis: PropositionalSymbol = {
   input: ')',
   representation: ')',
   type: 'parentheses',
   position: 0,
 };
+
+const propositionalFormula: PropositionalFormula = {
+  operator: 4,
+  values: [
+    {
+      operator: 1,
+      values: [
+        {
+          operator: 0,
+          values: 'P',
+        },
+      ],
+    },
+    {
+      operator: 4,
+      values: [
+        {
+          operator: 3,
+          values: [
+            {
+              operator: 0,
+              values: 'P',
+            },
+            {
+              operator: 0,
+              values: 'Q',
+            },
+          ],
+        },
+        {
+          operator: 1,
+          values: [
+            {
+              operator: 0,
+              values: 'P',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const firstSubFormula: PropositionalFormula = {
+  operator: 1,
+  values: [
+    {
+      operator: 0,
+      values: 'P',
+    },
+  ],
+};
+
+const secondSubFormula: PropositionalFormula = {
+  operator: 4,
+  values: [
+    {
+      operator: 3,
+      values: [
+        {
+          operator: 0,
+          values: 'P',
+        },
+        {
+          operator: 0,
+          values: 'Q',
+        },
+      ],
+    },
+    {
+      operator: 1,
+      values: [
+        {
+          operator: 0,
+          values: 'P',
+        },
+      ],
+    },
+  ],
+};
+
+const testData = {
+  secondSubFormula,
+  firstSubFormula,
+  propositionalFormula,
+  parenthesis,
+  fourthVariable,
+  thirdVariable,
+  secondVariable,
+  firstVariable,
+  fourthSubExpression,
+  thirdSubExpression,
+  secondSubExpression,
+  firstSubExpression,
+  propositionalExpression,
+  propositionalAtom,
+  propositionalSymbols,
+};
+
+export default testData;
