@@ -63,7 +63,7 @@ const factory = {
         type: 'operator',
         position,
       };
-    } else if (constants.parentheses.includes(char)) {
+    } else if (constants.parentheses.includes(char as LogicalSymbolRawInput)) {
       return {
         input: char,
         representation: char,

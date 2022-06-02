@@ -1,11 +1,13 @@
 import constants from 'assets/const/propositions';
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalSymbol } from 'types';
+import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const validator = {
   isNotVariable(char: string): boolean {
-    return constants.logicalOperators.includes(char as LogicalSymbolRawInput) || constants.parentheses.includes(char);
+    return (
+      constants.logicalOperators.includes(char as LogicalSymbolRawInput) || constants.parentheses.includes(char as LogicalSymbolRawInput)
+    );
   },
 
   isIncorrectMainSymbol(symbol: PropositionalSymbol): boolean {
@@ -30,6 +32,22 @@ const validator = {
         'Cannot extract sub expressions: the number of open parenthesis does not match with the number of close parenthesis.',
       );
     }
+  },
+
+  isVariableParenthesized(variable: PropositionalSymbol, expression: PropositionalExpression): boolean {
+    const leftSymbol = expression.find((symbol) => symbol.position === variable.position - 1);
+    const rightSymbol = expression.find((symbol) => symbol.position === variable.position + 1);
+
+    if (
+      leftSymbol?.type === 'parentheses' &&
+      rightSymbol?.type === 'parentheses' &&
+      leftSymbol?.input === LogicalSymbolRawInput.OpenParenthesis &&
+      rightSymbol?.input === LogicalSymbolRawInput.CloseParenthesis
+    ) {
+      return true;
+    }
+
+    return false;
   },
 };
 
