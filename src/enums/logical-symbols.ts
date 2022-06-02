@@ -12,4 +12,6 @@ export enum LogicalSymbolRawInput {
   Disjunction = '|',
   Negation = '~',
   Equivalence = '<=>',
+  OpenParenthesis = '(',
+  CloseParenthesis = ')',
 }
