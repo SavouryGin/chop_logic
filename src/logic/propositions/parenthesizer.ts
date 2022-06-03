@@ -1,4 +1,5 @@
 import constants from 'assets/const/propositions';
+import searcher from './searcher';
 import validator from './validator';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
@@ -23,14 +24,42 @@ const parenthesizer = {
   },
 
   parenthesizeNegations(expression: PropositionalExpression): PropositionalExpression {
-    for (const symbol of expression) {
+    const output: PropositionalExpression = [];
+    const closeParenthesisPositions: number[] = [];
+
+    for (let i = 0; i < expression.length; i++) {
+      const symbol = expression[i];
       const isParenthesizingNeeded = validator.isNegationSymbol(symbol) && !validator.isNegationParenthesized(symbol, expression);
       if (isParenthesizingNeeded) {
-        console.log('isNegationParenthesized', validator.isNegationParenthesized(symbol, expression));
+        const nextSymbol = expression[i + 1];
+        if (!nextSymbol) {
+          continue;
+        }
+        const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
+        if (closeParenthesis) {
+          closeParenthesisPositions.push(closeParenthesis.position);
+        }
+
+        output.push(constants.openParenthesisSymbol as PropositionalSymbol, symbol);
+      } else {
+        output.push(symbol);
       }
     }
 
-    return expression;
+    return this.insertCloseParenthesisAfterPositions(output, closeParenthesisPositions);
+  },
+
+  insertCloseParenthesisAfterPositions(expression: PropositionalExpression, positions: number[]): PropositionalExpression {
+    const output: PropositionalExpression = [];
+    for (const symbol of expression) {
+      if (positions.includes(symbol.position)) {
+        output.push(symbol, constants.closeParenthesisSymbol as PropositionalSymbol);
+      } else {
+        output.push(symbol);
+      }
+    }
+
+    return this.renumberPositions(output);
   },
 
   renumberPositions(input: PropositionalExpression): PropositionalExpression {
