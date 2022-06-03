@@ -12,7 +12,7 @@ const converter = {
     const preparedArray = parser.joinLogicalSymbols(charsArray);
     const expression = preparedArray.map((char, index) => factory.createPropositionalSymbol(char, index));
 
-    return parenthesizer.parenthesizeVariables(expression);
+    return parenthesizer.parenthesizeNegations(parenthesizer.parenthesizeVariables(expression));
   },
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {

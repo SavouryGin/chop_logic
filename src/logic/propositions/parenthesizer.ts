@@ -22,6 +22,17 @@ const parenthesizer = {
     return this.renumberPositions(output);
   },
 
+  parenthesizeNegations(expression: PropositionalExpression): PropositionalExpression {
+    for (const symbol of expression) {
+      const isParenthesizingNeeded = validator.isNegationSymbol(symbol) && !validator.isNegationParenthesized(symbol, expression);
+      if (isParenthesizingNeeded) {
+        console.log('isNegationParenthesized', validator.isNegationParenthesized(symbol, expression));
+      }
+    }
+
+    return expression;
+  },
+
   renumberPositions(input: PropositionalExpression): PropositionalExpression {
     return input.map((item, index) => {
       return { ...item, position: index };
