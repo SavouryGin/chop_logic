@@ -1,3 +1,4 @@
+import searcher from './searcher';
 import validator from './validator';
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
@@ -60,7 +61,7 @@ const parser = {
     validator.checkNumberOfParenthesis(openIndexes, closeIndexes);
 
     for (const openIndex of openIndexes) {
-      const closeIndex = this.findClosestParenthesis(openIndex, closeIndexes);
+      const closeIndex = searcher.findClosestParenthesis(openIndex, closeIndexes);
       const subExpression = expression.slice(openIndex, closeIndex + 1);
       result.push(subExpression);
       closeIndexes = closeIndexes.filter((item) => item !== closeIndex);
@@ -93,15 +94,6 @@ const parser = {
     }
 
     return mainOperator;
-  },
-
-  findClosestParenthesis(openIndex: number, array: number[]): number {
-    const closestIndex = Math.min(...array.filter((item) => item > openIndex));
-    if (Number.isFinite(closestIndex) && Number.isSafeInteger(closestIndex) && closestIndex >= 0) {
-      return closestIndex;
-    } else {
-      throw new PropositionalError(`Cannot find the closest parenthesis index to the index "${openIndex}".`);
-    }
   },
 
   getAllIndexesOfTheSymbol(array: PropositionalExpression, symbol: string): number[] {
