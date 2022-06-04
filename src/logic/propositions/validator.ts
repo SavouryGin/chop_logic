@@ -35,6 +35,19 @@ const validator = {
     return false;
   },
 
+  isBinarySymbol(symbol: PropositionalSymbol): boolean {
+    const isBinaryInput =
+      symbol.input === LogicalSymbolRawInput.Conjunction ||
+      symbol.input === LogicalSymbolRawInput.Disjunction ||
+      symbol.input === LogicalSymbolRawInput.Implication ||
+      symbol.input === LogicalSymbolRawInput.Equivalence;
+    if (symbol.type === 'operator' && isBinaryInput) {
+      return true;
+    }
+
+    return false;
+  },
+
   checkNumberOfParenthesis(openIndexes: number[], closeIndexes: number[]): void {
     if (openIndexes.length !== closeIndexes.length) {
       throw new PropositionalError(
@@ -67,6 +80,48 @@ const validator = {
     const rightSymbol = searcher.findMatchingCloseParenthesis(expression, leftSymbol);
 
     if (rightSymbol?.type === 'parentheses' && rightSymbol.input === LogicalSymbolRawInput.CloseParenthesis) {
+      return true;
+    }
+
+    return false;
+  },
+
+  isBinaryOperatorParenthesized(operator: PropositionalSymbol, expression: PropositionalExpression): boolean {
+    const leftSymbol = expression.find((symbol) => symbol.position === operator.position - 1);
+    if (leftSymbol?.type !== 'parentheses' || leftSymbol?.input !== LogicalSymbolRawInput.CloseParenthesis) {
+      return false;
+    }
+
+    const rightSymbol = expression.find((symbol) => symbol.position === operator.position + 1);
+    if (leftSymbol?.type !== 'parentheses' || rightSymbol?.input !== LogicalSymbolRawInput.OpenParenthesis) {
+      return false;
+    }
+
+    console.log('leftSymbol', leftSymbol);
+    console.log('rightSymbol', rightSymbol);
+
+    const leftOpenParenthesis = searcher.findMatchingOpenParenthesis(expression, leftSymbol);
+    const rightCloseParenthesis = searcher.findMatchingCloseParenthesis(expression, rightSymbol);
+
+    if (!leftOpenParenthesis || !rightCloseParenthesis) {
+      return false;
+    }
+
+    console.log('leftOpenParenthesis', leftOpenParenthesis);
+    console.log('rightCloseParenthesis', rightCloseParenthesis);
+
+    const leftOpenSecondParenthesis = expression.find((symbol) => symbol.position === leftOpenParenthesis.position - 1);
+    const rightCloseSecondParenthesis = expression.find((symbol) => symbol.position === rightCloseParenthesis.position + 1);
+
+    console.log('leftOpenSecondParenthesis', leftOpenSecondParenthesis);
+    console.log('rightCloseSecondParenthesis', rightCloseSecondParenthesis);
+
+    if (
+      leftOpenSecondParenthesis?.type === 'parentheses' &&
+      rightCloseSecondParenthesis?.type === 'parentheses' &&
+      leftOpenSecondParenthesis?.input !== LogicalSymbolRawInput.OpenParenthesis &&
+      rightCloseSecondParenthesis.input === LogicalSymbolRawInput.CloseParenthesis
+    ) {
       return true;
     }
 
