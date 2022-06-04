@@ -61,7 +61,7 @@ const parser = {
     validator.checkNumberOfParenthesis(openIndexes, closeIndexes);
 
     for (const openIndex of openIndexes) {
-      const closeIndex = searcher.findClosestParenthesis(openIndex, closeIndexes);
+      const closeIndex = searcher.findClosestParenthesisIndexes(openIndex, closeIndexes);
       const subExpression = expression.slice(openIndex, closeIndex + 1);
       result.push(subExpression);
       closeIndexes = closeIndexes.filter((item) => item !== closeIndex);

@@ -27,7 +27,23 @@ const searcher = {
     return undefined;
   },
 
-  findClosestParenthesis(openIndex: number, array: number[]): number {
+  findMatchingOpenParenthesis(expression: PropositionalExpression, closeParenthesis: PropositionalSymbol): PropositionalSymbol | undefined {
+    const previousOpenParenthesisPositions: number[] = [];
+
+    for (const symbol of expression) {
+      const isPreviousParenthesis = symbol.position < closeParenthesis.position && symbol.type === 'parentheses';
+      const isOpenPreviousParenthesis = isPreviousParenthesis && symbol.input === LogicalSymbolRawInput.OpenParenthesis;
+      if (isOpenPreviousParenthesis) {
+        previousOpenParenthesisPositions.push(symbol.position);
+      }
+    }
+
+    const closesOpenParenthesisPosition = previousOpenParenthesisPositions[previousOpenParenthesisPositions.length - 1];
+
+    return expression.find((symbol) => symbol.position === closesOpenParenthesisPosition);
+  },
+
+  findClosestParenthesisIndexes(openIndex: number, array: number[]): number {
     const closestIndex = Math.min(...array.filter((item) => item > openIndex));
     if (Number.isFinite(closestIndex) && Number.isSafeInteger(closestIndex) && closestIndex >= 0) {
       return closestIndex;
