@@ -106,24 +106,6 @@ describe('Propositions parser tests', () => {
     }).toThrow(PropositionalError);
   });
 
-  it('findClosestParenthesis() returns the closest index', () => {
-    expect(parser.findClosestParenthesis(1, [2, 5, 4])).toBe(2);
-    expect(parser.findClosestParenthesis(3, [2, 5, 4])).toBe(4);
-    expect(parser.findClosestParenthesis(3, [2, 5, 6, 7])).toBe(5);
-  });
-
-  it('findClosestParenthesis() throws an error if inputs are invalid', () => {
-    expect(() => {
-      parser.findClosestParenthesis(6, [2, 5, 4]);
-    }).toThrow(PropositionalError);
-    expect(() => {
-      parser.findClosestParenthesis(-1, [-2, -5, -4]);
-    }).toThrow(PropositionalError);
-    expect(() => {
-      parser.findClosestParenthesis(Infinity, [NaN, NaN, NaN]);
-    }).toThrow(PropositionalError);
-  });
-
   it('getAllIndexesOfTheSymbol() method returns an array of indexes', () => {
     expect(parser.getAllIndexesOfTheSymbol(testData.propositionalExpression, 'p')).toEqual([4, 11, 22]);
     expect(parser.getAllIndexesOfTheSymbol(testData.propositionalExpression, 'q')).toEqual([15]);
