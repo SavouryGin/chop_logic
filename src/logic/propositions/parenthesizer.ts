@@ -46,41 +46,51 @@ const parenthesizer = {
       }
     }
 
-    return this.insertCloseParenthesisAfterPositions(output, closeParenthesisPositions);
+    return this.insertParenthesisAfterPositions(output, closeParenthesisPositions);
   },
 
   parenthesizeBinaryOperators(expression: PropositionalExpression): PropositionalExpression {
     const output: PropositionalExpression = [];
     const closeParenthesisPositions: number[] = [];
+    const openParenthesisPositions: number[] = [];
 
     for (let i = 0; i < expression.length; i++) {
       const symbol = expression[i];
       const isParenthesizingNeeded = validator.isBinarySymbol(symbol) && !validator.isBinaryOperatorParenthesized(symbol, expression);
-      console.log('isParenthesizingNeeded', isParenthesizingNeeded);
+
       if (isParenthesizingNeeded) {
         const nextSymbol = expression[i + 1];
-        if (!nextSymbol) {
+        const previousSymbol = expression[i - 1];
+        if (!nextSymbol || !previousSymbol) {
           continue;
         }
         const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
-        if (closeParenthesis) {
+        const openParenthesis = searcher.findMatchingOpenParenthesis(expression, previousSymbol);
+        if (closeParenthesis && openParenthesis) {
           closeParenthesisPositions.push(closeParenthesis.position);
+          openParenthesisPositions.push(openParenthesis.position);
         }
 
-        output.push(constants.openParenthesisSymbol as PropositionalSymbol, symbol);
+        output.push(symbol);
       } else {
         output.push(symbol);
       }
     }
 
-    return this.insertCloseParenthesisAfterPositions(output, closeParenthesisPositions);
+    return this.insertParenthesisAfterPositions(output, closeParenthesisPositions, openParenthesisPositions);
   },
 
-  insertCloseParenthesisAfterPositions(expression: PropositionalExpression, positions: number[]): PropositionalExpression {
+  insertParenthesisAfterPositions(
+    expression: PropositionalExpression,
+    closePositions: number[] = [],
+    openPositions: number[] = [],
+  ): PropositionalExpression {
     const output: PropositionalExpression = [];
     for (const symbol of expression) {
-      if (positions.includes(symbol.position)) {
+      if (closePositions.includes(symbol.position)) {
         output.push(symbol, constants.closeParenthesisSymbol as PropositionalSymbol);
+      } else if (openPositions.includes(symbol.position)) {
+        output.push(constants.openParenthesisSymbol as PropositionalSymbol, symbol);
       } else {
         output.push(symbol);
       }
