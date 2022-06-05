@@ -13,10 +13,8 @@ const converter = {
     const expression = preparedArray.map((char, index) => factory.createPropositionalSymbol(char, index));
     const withVariables = parenthesizer.parenthesizeVariables(expression);
     const withNegations = parenthesizer.parenthesizeNegations(withVariables);
-    const withBinaryOperators = parenthesizer.parenthesizeBinaryOperators(withNegations);
-    console.log(withBinaryOperators);
 
-    return parenthesizer.parenthesizeNegations(parenthesizer.parenthesizeVariables(expression));
+    return parenthesizer.parenthesizeBinaryOperators(withNegations);
   },
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {

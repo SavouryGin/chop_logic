@@ -97,9 +97,6 @@ const validator = {
       return false;
     }
 
-    console.log('leftSymbol', leftSymbol);
-    console.log('rightSymbol', rightSymbol);
-
     const leftOpenParenthesis = searcher.findMatchingOpenParenthesis(expression, leftSymbol);
     const rightCloseParenthesis = searcher.findMatchingCloseParenthesis(expression, rightSymbol);
 
@@ -107,14 +104,8 @@ const validator = {
       return false;
     }
 
-    console.log('leftOpenParenthesis', leftOpenParenthesis);
-    console.log('rightCloseParenthesis', rightCloseParenthesis);
-
     const leftOpenSecondParenthesis = expression.find((symbol) => symbol.position === leftOpenParenthesis.position - 1);
     const rightCloseSecondParenthesis = expression.find((symbol) => symbol.position === rightCloseParenthesis.position + 1);
-
-    console.log('leftOpenSecondParenthesis', leftOpenSecondParenthesis);
-    console.log('rightCloseSecondParenthesis', rightCloseSecondParenthesis);
 
     if (
       leftOpenSecondParenthesis?.type === 'parentheses' &&
