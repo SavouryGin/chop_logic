@@ -1,6 +1,7 @@
 import constants from 'assets/const/propositions';
 import searcher from './searcher';
 import validator from './validator';
+import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const parenthesizer = {
@@ -34,25 +35,30 @@ const parenthesizer = {
     }
 
     for (const negation of allNegations) {
-      if (validator.isNegationParenthesized(negation, expression)) {
-        continue;
-      }
-      const nextSymbol = expression[negation.position + 1];
-
-      if (!nextSymbol) {
-        continue;
-      }
-      const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
-
-      if (!closeParenthesis) {
-        continue;
-      }
-
-      openParenthesisPositions.push(negation.position === 0 ? 0 : negation.position - 1);
-      closeParenthesisPositions.push(closeParenthesis.position);
+      const { openIndex, closeIndex } = this.getNegationParenthesis(negation, expression);
+      openParenthesisPositions.push(openIndex);
+      closeParenthesisPositions.push(closeIndex);
     }
 
     return this.insertParenthesisByPositions(expression, openParenthesisPositions, closeParenthesisPositions);
+  },
+
+  getNegationParenthesis(negation: PropositionalSymbol, expression: PropositionalExpression): { openIndex: number; closeIndex: number } {
+    if (validator.isNegationParenthesized(negation, expression)) {
+      throw new PropositionalError('Error 1');
+    }
+    const nextSymbol = expression[negation.position + 1];
+
+    if (!nextSymbol) {
+      throw new PropositionalError('Error 2');
+    }
+    const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
+
+    if (!closeParenthesis) {
+      throw new PropositionalError('Error 3');
+    }
+
+    return { openIndex: negation.position === 0 ? 0 : negation.position - 1, closeIndex: closeParenthesis.position };
   },
 
   parenthesizeBinaryOperators(expression: PropositionalExpression): PropositionalExpression {
