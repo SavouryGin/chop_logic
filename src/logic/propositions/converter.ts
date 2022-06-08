@@ -13,9 +13,9 @@ const converter = {
     const expression = preparedArray.map((char, index) => factory.createPropositionalSymbol(char, index));
     const withVariables = parenthesizer.parenthesizeVariables(expression);
     const withNegations = parenthesizer.parenthesizeNegations(withVariables);
-    console.log('withNegations', withNegations);
 
-    return parenthesizer.parenthesizeBinaryOperators(withNegations);
+    return withNegations;
+    // return parenthesizer.parenthesizeBinaryOperators(withNegations);
   },
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {

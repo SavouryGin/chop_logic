@@ -25,8 +25,8 @@ const parenthesizer = {
   },
 
   parenthesizeNegations(expression: PropositionalExpression): PropositionalExpression {
-    const openParenthesisPositions: number[] = [];
-    const closeParenthesisPositions: number[] = [];
+    // const openParenthesisPositions: number[] = [];
+    // const closeParenthesisPositions: number[] = [];
 
     const allNegations = expression.filter((item) => validator.isNegationSymbol(item));
 
@@ -34,16 +34,50 @@ const parenthesizer = {
       return expression;
     }
 
+    let output: PropositionalExpression = expression;
+
+    console.log(allNegations);
     for (const negation of allNegations) {
-      const { openIndex, closeIndex } = this.getNegationParenthesis(negation, expression);
-      openParenthesisPositions.push(openIndex);
-      closeParenthesisPositions.push(closeIndex);
+      try {
+        console.log('negation', negation);
+        const { openIndex, closeIndex } = this.getNegationParenthesisPositions(negation, output);
+        console.log('indexes', openIndex, closeIndex);
+        // openParenthesisPositions.push(openIndex);
+        // closeParenthesisPositions.push(closeIndex);
+
+        output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
+      } catch (e: any) {
+        console.log(e);
+        continue;
+      }
     }
 
-    return this.insertParenthesisByPositions(expression, openParenthesisPositions, closeParenthesisPositions);
+    // return this.insertParenthesisByPositions(expression, openParenthesisPositions, closeParenthesisPositions);
+    return output;
   },
 
-  getNegationParenthesis(negation: PropositionalSymbol, expression: PropositionalExpression): { openIndex: number; closeIndex: number } {
+  insertOpenAndCloseParenthesis(expression: PropositionalExpression, openPosition: number, closePosition: number): PropositionalExpression {
+    const output: PropositionalExpression = [];
+    const open = constants.openParenthesisSymbol as PropositionalSymbol;
+    const close = constants.closeParenthesisSymbol as PropositionalSymbol;
+
+    for (const symbol of expression) {
+      if (symbol.position === openPosition) {
+        output.push(open, symbol);
+      } else if (symbol.position === closePosition) {
+        output.push(symbol, close);
+      } else {
+        output.push(symbol);
+      }
+    }
+
+    return this.renumberPositions(output);
+  },
+
+  getNegationParenthesisPositions(
+    negation: PropositionalSymbol,
+    expression: PropositionalExpression,
+  ): { openIndex: number; closeIndex: number } {
     if (validator.isNegationParenthesized(negation, expression)) {
       throw new PropositionalError('Error 1');
     }
@@ -52,6 +86,7 @@ const parenthesizer = {
     if (!nextSymbol) {
       throw new PropositionalError('Error 2');
     }
+    console.log('NEXT', nextSymbol);
     const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
 
     if (!closeParenthesis) {
@@ -106,6 +141,7 @@ const parenthesizer = {
       } else {
         output.push(symbol);
       }
+      console.log(output);
     }
 
     return this.renumberPositions(output);

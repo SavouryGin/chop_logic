@@ -72,7 +72,7 @@ const parser = {
 
   findMainOperator(expression: PropositionalExpression): PropositionalSymbol {
     if (expression.length < 3) {
-      throw new PropositionalError(`Cannot find the main operator. The given expression is incorrect: ${expression}`);
+      throw new PropositionalError(`Cannot find the main operator. The given expression is incorrect.`);
     }
 
     const subExpressions = this.extractAllSubExpressions(expression);
@@ -90,7 +90,7 @@ const parser = {
     const mainOperator = expression.find((item) => item.position === mainIndexes[0]);
 
     if (!mainOperator || mainOperator.type === 'parentheses') {
-      throw new PropositionalError(`Cannot find the main operator of the sub expression ${expression}.`);
+      throw new PropositionalError(`Cannot find the main operator of the sub expression.`);
     }
 
     return mainOperator;
