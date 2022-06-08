@@ -25,26 +25,20 @@ const parenthesizer = {
   },
 
   parenthesizeNegations(expression: PropositionalExpression): PropositionalExpression {
-    // const openParenthesisPositions: number[] = [];
-    // const closeParenthesisPositions: number[] = [];
-
     const allNegations = expression.filter((item) => validator.isNegationSymbol(item));
-
     if (!allNegations.length) {
       return expression;
     }
 
     let output: PropositionalExpression = expression;
 
-    console.log(allNegations);
-    for (const negation of allNegations) {
+    for (let i = 0; i < allNegations.length; i++) {
       try {
-        console.log('negation', negation);
+        console.log('OUTPUT', output);
+        const negation = output.filter((item) => validator.isNegationSymbol(item))[i];
+        console.log('NEGATION', negation);
         const { openIndex, closeIndex } = this.getNegationParenthesisPositions(negation, output);
         console.log('indexes', openIndex, closeIndex);
-        // openParenthesisPositions.push(openIndex);
-        // closeParenthesisPositions.push(closeIndex);
-
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: any) {
         console.log(e);
@@ -52,7 +46,6 @@ const parenthesizer = {
       }
     }
 
-    // return this.insertParenthesisByPositions(expression, openParenthesisPositions, closeParenthesisPositions);
     return output;
   },
 
@@ -93,7 +86,7 @@ const parenthesizer = {
       throw new PropositionalError('Error 3');
     }
 
-    return { openIndex: negation.position === 0 ? 0 : negation.position - 1, closeIndex: closeParenthesis.position };
+    return { openIndex: negation.position === 0 ? 0 : negation.position, closeIndex: closeParenthesis.position };
   },
 
   parenthesizeBinaryOperators(expression: PropositionalExpression): PropositionalExpression {
@@ -141,7 +134,6 @@ const parenthesizer = {
       } else {
         output.push(symbol);
       }
-      console.log(output);
     }
 
     return this.renumberPositions(output);
