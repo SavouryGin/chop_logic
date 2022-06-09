@@ -34,14 +34,10 @@ const parenthesizer = {
 
     for (let i = 0; i < allNegations.length; i++) {
       try {
-        console.log('OUTPUT', output);
         const negation = output.filter((item) => validator.isNegationSymbol(item))[i];
-        console.log('NEGATION', negation);
         const { openIndex, closeIndex } = this.getNegationParenthesisPositions(negation, output);
-        console.log('indexes', openIndex, closeIndex);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: any) {
-        console.log(e);
         continue;
       }
     }
@@ -79,7 +75,7 @@ const parenthesizer = {
     if (!nextSymbol) {
       throw new PropositionalError('Error 2');
     }
-    console.log('NEXT', nextSymbol);
+
     const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
 
     if (!closeParenthesis) {
