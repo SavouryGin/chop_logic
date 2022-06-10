@@ -38,8 +38,13 @@ const parenthesizer = {
         const { openIndex, closeIndex } = this.getNegationParenthesisPositions(negation, output);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: any) {
+        console.log(e);
         continue;
       }
+    }
+
+    if (validator.isNegationSymbol(output[0])) {
+      return this.wrapWithParenthesis(output);
     }
 
     return output;
@@ -68,72 +73,80 @@ const parenthesizer = {
     expression: PropositionalExpression,
   ): { openIndex: number; closeIndex: number } {
     if (validator.isNegationParenthesized(negation, expression)) {
-      throw new PropositionalError('Error 1');
+      throw new PropositionalError('The given negation expression is already parenthesized.');
     }
     const nextSymbol = expression[negation.position + 1];
 
     if (!nextSymbol) {
-      throw new PropositionalError('Error 2');
+      throw new PropositionalError('Cannot find the next symbol after the negation symbol.');
     }
 
     const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
 
     if (!closeParenthesis) {
-      throw new PropositionalError('Error 3');
+      throw new PropositionalError('Cannot find the close parenthesis for the negation expression.');
     }
 
     return { openIndex: negation.position === 0 ? 0 : negation.position, closeIndex: closeParenthesis.position };
   },
 
-  parenthesizeBinaryOperators(expression: PropositionalExpression): PropositionalExpression {
-    const output: PropositionalExpression = [];
-    const closeParenthesisPositions: number[] = [];
-    const openParenthesisPositions: number[] = [];
-
-    for (let i = 0; i < expression.length; i++) {
-      const symbol = expression[i];
-      const isParenthesizingNeeded = validator.isBinarySymbol(symbol) && !validator.isBinaryOperatorParenthesized(symbol, expression);
-
-      if (isParenthesizingNeeded) {
-        const nextSymbol = expression[i + 1];
-        const previousSymbol = expression[i - 1];
-        if (!nextSymbol || !previousSymbol) {
-          continue;
-        }
-        const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
-        const openParenthesis = searcher.findMatchingOpenParenthesis(expression, previousSymbol);
-        if (closeParenthesis && openParenthesis) {
-          closeParenthesisPositions.push(closeParenthesis.position);
-          openParenthesisPositions.push(openParenthesis.position);
-        }
-
-        output.push(symbol);
-      } else {
-        output.push(symbol);
-      }
-    }
-
-    return this.insertParenthesisByPositions(output, openParenthesisPositions, closeParenthesisPositions);
+  wrapWithParenthesis(expression: PropositionalExpression): PropositionalExpression {
+    return this.renumberPositions([
+      constants.openParenthesisSymbol as PropositionalSymbol,
+      ...expression,
+      constants.closeParenthesisSymbol as PropositionalSymbol,
+    ]);
   },
 
-  insertParenthesisByPositions(
-    expression: PropositionalExpression,
-    openPositions: number[] = [],
-    closePositions: number[] = [],
-  ): PropositionalExpression {
-    const output: PropositionalExpression = [];
-    for (const symbol of expression) {
-      if (closePositions.includes(symbol.position)) {
-        output.push(symbol, constants.closeParenthesisSymbol as PropositionalSymbol);
-      } else if (openPositions.includes(symbol.position)) {
-        output.push(constants.openParenthesisSymbol as PropositionalSymbol, symbol);
-      } else {
-        output.push(symbol);
-      }
-    }
+  // parenthesizeBinaryOperators(expression: PropositionalExpression): PropositionalExpression {
+  //   const output: PropositionalExpression = [];
+  //   const closeParenthesisPositions: number[] = [];
+  //   const openParenthesisPositions: number[] = [];
 
-    return this.renumberPositions(output);
-  },
+  //   for (let i = 0; i < expression.length; i++) {
+  //     const symbol = expression[i];
+  //     const isParenthesizingNeeded = validator.isBinarySymbol(symbol) && !validator.isBinaryOperatorParenthesized(symbol, expression);
+
+  //     if (isParenthesizingNeeded) {
+  //       const nextSymbol = expression[i + 1];
+  //       const previousSymbol = expression[i - 1];
+  //       if (!nextSymbol || !previousSymbol) {
+  //         continue;
+  //       }
+  //       const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
+  //       const openParenthesis = searcher.findMatchingOpenParenthesis(expression, previousSymbol);
+  //       if (closeParenthesis && openParenthesis) {
+  //         closeParenthesisPositions.push(closeParenthesis.position);
+  //         openParenthesisPositions.push(openParenthesis.position);
+  //       }
+
+  //       output.push(symbol);
+  //     } else {
+  //       output.push(symbol);
+  //     }
+  //   }
+
+  //   return this.insertParenthesisByPositions(output, openParenthesisPositions, closeParenthesisPositions);
+  // },
+
+  // insertParenthesisByPositions(
+  //   expression: PropositionalExpression,
+  //   openPositions: number[] = [],
+  //   closePositions: number[] = [],
+  // ): PropositionalExpression {
+  //   const output: PropositionalExpression = [];
+  //   for (const symbol of expression) {
+  //     if (closePositions.includes(symbol.position)) {
+  //       output.push(symbol, constants.closeParenthesisSymbol as PropositionalSymbol);
+  //     } else if (openPositions.includes(symbol.position)) {
+  //       output.push(constants.openParenthesisSymbol as PropositionalSymbol, symbol);
+  //     } else {
+  //       output.push(symbol);
+  //     }
+  //   }
+
+  //   return this.renumberPositions(output);
+  // },
 
   renumberPositions(input: PropositionalExpression): PropositionalExpression {
     return input.map((item, index) => {
