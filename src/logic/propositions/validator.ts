@@ -19,6 +19,14 @@ const validator = {
     return true;
   },
 
+  isOpenParenthesisSymbol(symbol: PropositionalSymbol): boolean {
+    if (symbol.type === 'parentheses' && symbol.input === LogicalSymbolRawInput.OpenParenthesis) {
+      return true;
+    }
+
+    return false;
+  },
+
   isBinaryOperator(operator: PropositionalOperator): boolean {
     if (operator === PropositionalOperator.Var || operator === PropositionalOperator.Not) {
       return false;
