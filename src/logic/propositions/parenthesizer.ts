@@ -38,16 +38,33 @@ const parenthesizer = {
         const { openIndex, closeIndex } = this.getNegationParenthesisPositions(negation, output);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: any) {
-        console.log(e);
+        // console.error(e);
         continue;
       }
     }
 
-    if (validator.isNegationSymbol(output[0])) {
-      return this.wrapWithParenthesis(output);
-    }
+    try {
+      if (validator.isNegationSymbol(output[0]) && validator.isOpenParenthesisSymbol(output[1])) {
+        return this.parenthesizeNegations(output);
+      } else {
+        return output;
+      }
+    } catch (e: any) {
+      console.log(e);
 
-    return output;
+      return [];
+    }
+  },
+
+  wrapConsecutiveNegations(expression: PropositionalExpression): PropositionalExpression {
+    console.log('wrapper', expression);
+    if (validator.isNegationSymbol(expression[0])) {
+      console.log(this.wrapWithParenthesis(expression.slice(1)));
+
+      return this.wrapConsecutiveNegations(this.wrapWithParenthesis(expression));
+    } else {
+      return expression;
+    }
   },
 
   insertOpenAndCloseParenthesis(expression: PropositionalExpression, openPosition: number, closePosition: number): PropositionalExpression {
@@ -90,10 +107,10 @@ const parenthesizer = {
     return { openIndex: negation.position === 0 ? 0 : negation.position, closeIndex: closeParenthesis.position };
   },
 
-  wrapWithParenthesis(expression: PropositionalExpression): PropositionalExpression {
+  wrapWithParenthesis(input: PropositionalExpression): PropositionalExpression {
     return this.renumberPositions([
       constants.openParenthesisSymbol as PropositionalSymbol,
-      ...expression,
+      ...input,
       constants.closeParenthesisSymbol as PropositionalSymbol,
     ]);
   },
