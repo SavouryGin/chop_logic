@@ -30,6 +30,13 @@ const parenthesizer = {
       return expression;
     }
 
+    const isAllNegationParenthesized = allNegations.every((negation) => validator.isNegationParenthesized(negation, expression));
+    console.log('isAllNegationParenthesized', isAllNegationParenthesized);
+
+    if (isAllNegationParenthesized) {
+      return expression;
+    }
+
     let output: PropositionalExpression = expression;
 
     for (let i = 0; i < allNegations.length; i++) {
@@ -37,33 +44,21 @@ const parenthesizer = {
         const negation = output.filter((item) => validator.isNegationSymbol(item))[i];
         const { openIndex, closeIndex } = this.getNegationParenthesisPositions(negation, output);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
-      } catch (e: any) {
-        // console.error(e);
+      } catch (e: unknown) {
         continue;
       }
     }
 
+    console.log(output);
     try {
-      if (validator.isNegationSymbol(output[0]) && validator.isOpenParenthesisSymbol(output[1])) {
-        return this.parenthesizeNegations(output);
+      if (validator.isNegationSymbol(output[0])) {
+        return output;
+        // return this.parenthesizeNegations(output);
       } else {
         return output;
       }
-    } catch (e: any) {
-      console.log(e);
-
+    } catch (e: unknown) {
       return [];
-    }
-  },
-
-  wrapConsecutiveNegations(expression: PropositionalExpression): PropositionalExpression {
-    console.log('wrapper', expression);
-    if (validator.isNegationSymbol(expression[0])) {
-      console.log(this.wrapWithParenthesis(expression.slice(1)));
-
-      return this.wrapConsecutiveNegations(this.wrapWithParenthesis(expression));
-    } else {
-      return expression;
     }
   },
 
@@ -90,17 +85,20 @@ const parenthesizer = {
     expression: PropositionalExpression,
   ): { openIndex: number; closeIndex: number } {
     if (validator.isNegationParenthesized(negation, expression)) {
+      console.log('here1');
       throw new PropositionalError('The given negation expression is already parenthesized.');
     }
     const nextSymbol = expression[negation.position + 1];
 
     if (!nextSymbol) {
+      console.log('here2');
       throw new PropositionalError('Cannot find the next symbol after the negation symbol.');
     }
 
     const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
 
     if (!closeParenthesis) {
+      console.log('here3');
       throw new PropositionalError('Cannot find the close parenthesis for the negation expression.');
     }
 
