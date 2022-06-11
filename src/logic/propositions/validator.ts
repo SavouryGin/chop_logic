@@ -1,16 +1,9 @@
-import constants from 'assets/const/propositions';
 import searcher from './searcher';
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const validator = {
-  isNotVariable(char: string): boolean {
-    return (
-      constants.logicalOperators.includes(char as LogicalSymbolRawInput) || constants.parentheses.includes(char as LogicalSymbolRawInput)
-    );
-  },
-
   isIncorrectMainSymbol(symbol: PropositionalSymbol): boolean {
     if (symbol.type === 'variable' || symbol.type === 'operator') {
       return false;
@@ -19,8 +12,24 @@ const validator = {
     return true;
   },
 
-  isOpenParenthesisSymbol(symbol: PropositionalSymbol): boolean {
+  isOpenParenthesisSymbol(symbol: PropositionalSymbol | undefined): boolean {
+    if (!symbol) {
+      return false;
+    }
+
     if (symbol.type === 'parentheses' && symbol.input === LogicalSymbolRawInput.OpenParenthesis) {
+      return true;
+    }
+
+    return false;
+  },
+
+  isCloseParenthesisSymbol(symbol: PropositionalSymbol | undefined): boolean {
+    if (!symbol) {
+      return false;
+    }
+
+    if (symbol.type === 'parentheses' && symbol.input === LogicalSymbolRawInput.CloseParenthesis) {
       return true;
     }
 
@@ -68,12 +77,7 @@ const validator = {
     const leftSymbol = expression.find((symbol) => symbol.position === variable.position - 1);
     const rightSymbol = expression.find((symbol) => symbol.position === variable.position + 1);
 
-    if (
-      leftSymbol?.type === 'parentheses' &&
-      rightSymbol?.type === 'parentheses' &&
-      leftSymbol?.input === LogicalSymbolRawInput.OpenParenthesis &&
-      rightSymbol?.input === LogicalSymbolRawInput.CloseParenthesis
-    ) {
+    if (this.isOpenParenthesisSymbol(leftSymbol) && this.isCloseParenthesisSymbol(rightSymbol)) {
       return true;
     }
 
@@ -82,12 +86,13 @@ const validator = {
 
   isNegationParenthesized(operator: PropositionalSymbol, expression: PropositionalExpression): boolean {
     const leftSymbol = expression.find((symbol) => symbol.position === operator.position - 1);
-    if (leftSymbol?.type !== 'parentheses' || leftSymbol?.input !== LogicalSymbolRawInput.OpenParenthesis) {
+    if (!this.isOpenParenthesisSymbol(leftSymbol) || !leftSymbol) {
       return false;
     }
+
     const rightSymbol = searcher.findMatchingCloseParenthesis(expression, leftSymbol);
 
-    if (rightSymbol?.type === 'parentheses' && rightSymbol.input === LogicalSymbolRawInput.CloseParenthesis) {
+    if (this.isCloseParenthesisSymbol(rightSymbol)) {
       return true;
     }
 

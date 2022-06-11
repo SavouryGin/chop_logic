@@ -44,6 +44,12 @@ export const propositionalSymbols: PropositionalSymbol[] = [
     position: 6,
     representation: ')',
   },
+  {
+    input: '(',
+    type: 'parentheses',
+    position: 7,
+    representation: '(',
+  },
 ];
 
 export const propositionalAtom: PropositionalFormula = {
