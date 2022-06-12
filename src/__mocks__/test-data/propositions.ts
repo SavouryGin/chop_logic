@@ -1,7 +1,7 @@
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
-export const propositionalSymbols: PropositionalSymbol[] = [
+const propositionalSymbols: PropositionalSymbol[] = [
   {
     input: '~',
     type: 'operator',
@@ -52,7 +52,7 @@ export const propositionalSymbols: PropositionalSymbol[] = [
   },
 ];
 
-export const propositionalAtom: PropositionalFormula = {
+const propositionalAtom: PropositionalFormula = {
   operator: PropositionalOperator.Var,
   values: 'P',
 };
