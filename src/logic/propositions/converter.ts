@@ -14,7 +14,8 @@ const converter = {
     const withVariables = parenthesizer.parenthesizeVariables(expression);
     const withNegations = parenthesizer.parenthesizeNegations(withVariables);
 
-    return parenthesizer.parenthesizeBinaryOperators(withNegations);
+    return withNegations;
+    // return parenthesizer.parenthesizeBinaryOperators(withNegations);
   },
 
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
