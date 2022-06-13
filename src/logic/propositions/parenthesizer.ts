@@ -70,7 +70,6 @@ const parenthesizer = {
     negation: PropositionalSymbol,
     expression: PropositionalExpression,
   ): { openIndex: number; closeIndex: number } {
-    console.log('negation', negation);
     if (validator.isNegationParenthesized(negation, expression)) {
       throw new PropositionalError('The given negation expression is already parenthesized.');
     }
