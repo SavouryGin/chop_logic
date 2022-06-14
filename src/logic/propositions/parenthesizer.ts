@@ -30,17 +30,34 @@ const parenthesizer = {
       return expression;
     }
 
-    let output = expression;
+    let output = [...expression];
 
     for (const negation of allNegations) {
-      if (validator.isNegationParenthesized(negation, output)) {
-        continue;
-      }
-
       try {
         const { openIndex, closeIndex } = this.getNegationParenthesisPositions(negation, output);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: unknown) {
+        continue;
+      }
+    }
+
+    return output;
+  },
+
+  parenthesizeBinaryOperators(expression: PropositionalExpression): PropositionalExpression {
+    const allBinaries = expression.filter((item) => validator.isBinarySymbol(item));
+    if (!allBinaries.length) {
+      return expression;
+    }
+
+    let output = [...expression];
+
+    for (const operator of allBinaries) {
+      try {
+        const { openIndex, closeIndex } = this.getBinaryParenthesisPositions(operator, output);
+        output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
+      } catch (e: unknown) {
+        console.log(e);
         continue;
       }
     }
@@ -86,6 +103,26 @@ const parenthesizer = {
     }
 
     return { openIndex: negation.position === 0 ? 0 : negation.position, closeIndex: closeParenthesis.position };
+  },
+
+  getBinaryParenthesisPositions(
+    operator: PropositionalSymbol,
+    expression: PropositionalExpression,
+  ): { openIndex: number; closeIndex: number } {
+    if (validator.isBinaryOperatorParenthesized(operator, expression)) {
+      throw new PropositionalError('The given binary operator is already parenthesized.');
+    }
+
+    const previousSymbol = expression[operator.position - 1];
+    const nextSymbol = expression[operator.position + 1];
+    const openParenthesis = searcher.findMatchingOpenParenthesis(expression, previousSymbol);
+    const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
+
+    if (!openParenthesis || !closeParenthesis) {
+      throw new PropositionalError('Cannot find a close or open parenthesis for the binary operator.');
+    }
+
+    return { openIndex: openParenthesis.position, closeIndex: closeParenthesis.position };
   },
 
   wrapWithParenthesis(input: PropositionalExpression): PropositionalExpression {
