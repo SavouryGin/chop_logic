@@ -101,12 +101,12 @@ const validator = {
 
   isBinaryOperatorParenthesized(operator: PropositionalSymbol, expression: PropositionalExpression): boolean {
     const leftSymbol = expression.find((symbol) => symbol.position === operator.position - 1);
-    if (leftSymbol?.type !== 'parentheses' || leftSymbol?.input !== LogicalSymbolRawInput.CloseParenthesis) {
+    if (!this.isCloseParenthesisSymbol(leftSymbol) || !leftSymbol) {
       return false;
     }
 
     const rightSymbol = expression.find((symbol) => symbol.position === operator.position + 1);
-    if (leftSymbol?.type !== 'parentheses' || rightSymbol?.input !== LogicalSymbolRawInput.OpenParenthesis) {
+    if (!this.isOpenParenthesisSymbol(rightSymbol) || !rightSymbol) {
       return false;
     }
 
@@ -120,12 +120,7 @@ const validator = {
     const leftOpenSecondParenthesis = expression.find((symbol) => symbol.position === leftOpenParenthesis.position - 1);
     const rightCloseSecondParenthesis = expression.find((symbol) => symbol.position === rightCloseParenthesis.position + 1);
 
-    if (
-      leftOpenSecondParenthesis?.type === 'parentheses' &&
-      rightCloseSecondParenthesis?.type === 'parentheses' &&
-      leftOpenSecondParenthesis?.input !== LogicalSymbolRawInput.OpenParenthesis &&
-      rightCloseSecondParenthesis.input === LogicalSymbolRawInput.CloseParenthesis
-    ) {
+    if (this.isOpenParenthesisSymbol(leftOpenSecondParenthesis) && this.isCloseParenthesisSymbol(rightCloseSecondParenthesis)) {
       return true;
     }
 
