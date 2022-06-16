@@ -29,16 +29,22 @@ const searcher = {
 
   findMatchingOpenParenthesis(expression: PropositionalExpression, closeParenthesis: PropositionalSymbol): PropositionalSymbol | undefined {
     const previousOpenParenthesisPositions: number[] = [];
+    let previousCloseParenthesisPositionsCounter = 0;
 
     for (const symbol of expression) {
       const isPreviousParenthesis = symbol.position < closeParenthesis.position && symbol.type === 'parentheses';
       const isOpenPreviousParenthesis = isPreviousParenthesis && symbol.input === LogicalSymbolRawInput.OpenParenthesis;
+      const isClosePreviousParenthesis = isPreviousParenthesis && symbol.input === LogicalSymbolRawInput.CloseParenthesis;
       if (isOpenPreviousParenthesis) {
         previousOpenParenthesisPositions.push(symbol.position);
       }
+      if (isClosePreviousParenthesis) {
+        previousCloseParenthesisPositionsCounter++;
+      }
     }
 
-    const closesOpenParenthesisPosition = previousOpenParenthesisPositions[previousOpenParenthesisPositions.length - 1];
+    const closesOpenParenthesisPosition =
+      previousOpenParenthesisPositions[previousOpenParenthesisPositions.length - 1 - previousCloseParenthesisPositionsCounter];
 
     return expression.find((symbol) => symbol.position === closesOpenParenthesisPosition);
   },
