@@ -567,38 +567,38 @@ const closeParenthesis: PropositionalSymbol = {
 };
 
 const propositionalFormula: PropositionalFormula = {
-  operator: 4,
+  operator: PropositionalOperator.Implies,
   values: [
     {
-      operator: 1,
+      operator: PropositionalOperator.Not,
       values: [
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'P',
         },
       ],
     },
     {
-      operator: 4,
+      operator: PropositionalOperator.Implies,
       values: [
         {
-          operator: 3,
+          operator: PropositionalOperator.And,
           values: [
             {
-              operator: 0,
+              operator: PropositionalOperator.Var,
               values: 'P',
             },
             {
-              operator: 0,
+              operator: PropositionalOperator.Var,
               values: 'Q',
             },
           ],
         },
         {
-          operator: 1,
+          operator: PropositionalOperator.Not,
           values: [
             {
-              operator: 0,
+              operator: PropositionalOperator.Var,
               values: 'P',
             },
           ],
@@ -609,36 +609,36 @@ const propositionalFormula: PropositionalFormula = {
 };
 
 const firstSubFormula: PropositionalFormula = {
-  operator: 1,
+  operator: PropositionalOperator.Not,
   values: [
     {
-      operator: 0,
+      operator: PropositionalOperator.Var,
       values: 'P',
     },
   ],
 };
 
 const secondSubFormula: PropositionalFormula = {
-  operator: 4,
+  operator: PropositionalOperator.Implies,
   values: [
     {
-      operator: 3,
+      operator: PropositionalOperator.And,
       values: [
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'P',
         },
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'Q',
         },
       ],
     },
     {
-      operator: 1,
+      operator: PropositionalOperator.Not,
       values: [
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'P',
         },
       ],

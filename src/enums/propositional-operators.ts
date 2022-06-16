@@ -1,8 +1,8 @@
 export enum PropositionalOperator {
-  Var,
-  Not,
-  Or,
-  And,
-  Implies,
-  Equiv,
+  Var = 'VAR',
+  Not = 'NOT',
+  Or = 'OR',
+  And = 'AND',
+  Implies = 'IMPLIES',
+  Equiv = 'EQUIV',
 }
