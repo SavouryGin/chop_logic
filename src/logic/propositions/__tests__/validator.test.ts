@@ -1,6 +1,7 @@
 import testData from '__mocks__/test-data/propositions';
 import validator from '../validator';
 import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalOperator } from 'enums';
 
 describe('Propositions validator tests', () => {
   it('isIncorrectMainSymbol() test', () => {
@@ -28,12 +29,12 @@ describe('Propositions validator tests', () => {
   });
 
   it('isBinaryOperator() test', () => {
-    expect(validator.isBinaryOperator(0)).toBeFalsy();
-    expect(validator.isBinaryOperator(1)).toBeFalsy();
-    expect(validator.isBinaryOperator(2)).toBeTruthy();
-    expect(validator.isBinaryOperator(3)).toBeTruthy();
-    expect(validator.isBinaryOperator(4)).toBeTruthy();
-    expect(validator.isBinaryOperator(5)).toBeTruthy();
+    expect(validator.isBinaryOperator(PropositionalOperator.Var)).toBeFalsy();
+    expect(validator.isBinaryOperator(PropositionalOperator.Not)).toBeFalsy();
+    expect(validator.isBinaryOperator(PropositionalOperator.Or)).toBeTruthy();
+    expect(validator.isBinaryOperator(PropositionalOperator.And)).toBeTruthy();
+    expect(validator.isBinaryOperator(PropositionalOperator.Implies)).toBeTruthy();
+    expect(validator.isBinaryOperator(PropositionalOperator.Equiv)).toBeTruthy();
   });
 
   it('isNegationSymbol() test', () => {

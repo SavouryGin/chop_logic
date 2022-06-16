@@ -45,18 +45,21 @@ const parenthesizer = {
   },
 
   parenthesizeBinaryOperators(expression: PropositionalExpression): PropositionalExpression {
-    const allBinaries = expression.filter((item) => validator.isBinarySymbol(item));
-    if (!allBinaries.length) {
+    const binariesCount = expression.filter((item) => validator.isBinarySymbol(item)).length;
+    if (!binariesCount) {
       return expression;
     }
 
     let output = [...expression];
 
-    for (const operator of allBinaries) {
+    for (let i = 0; i < binariesCount; i++) {
       try {
+        const allBinaries = output.filter((item) => validator.isBinarySymbol(item));
+        const operator = allBinaries[i];
         const { openIndex, closeIndex } = this.getBinaryParenthesisPositions(operator, output);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: unknown) {
+        console.log(e);
         continue;
       }
     }
@@ -117,8 +120,12 @@ const parenthesizer = {
     const openParenthesis = searcher.findMatchingOpenParenthesis(expression, previousSymbol);
     const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
 
-    if (!openParenthesis || !closeParenthesis) {
-      throw new PropositionalError('Cannot find a close or open parenthesis for the binary operator.');
+    if (!openParenthesis) {
+      throw new PropositionalError('Cannot find an open parenthesis for the binary operator.');
+    }
+
+    if (!closeParenthesis) {
+      throw new PropositionalError('Cannot find a close parenthesis for the binary operator.');
     }
 
     return { openIndex: openParenthesis.position, closeIndex: closeParenthesis.position };
