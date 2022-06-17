@@ -43,6 +43,8 @@ const searcher = {
       }
     }
 
+    console.log('previousOpenParenthesisPositions', previousOpenParenthesisPositions);
+    console.log('previousCloseParenthesisPositionsCounter', previousCloseParenthesisPositionsCounter);
     const closesOpenParenthesisPosition =
       previousOpenParenthesisPositions[previousOpenParenthesisPositions.length - 1 - previousCloseParenthesisPositionsCounter];
 
