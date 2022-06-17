@@ -119,12 +119,8 @@ const validator = {
 
     const leftOpenSecondParenthesis = expression.find((symbol) => symbol.position === leftOpenParenthesis.position - 1);
     const rightCloseSecondParenthesis = expression.find((symbol) => symbol.position === rightCloseParenthesis.position + 1);
-    console.log('leftOpenSecondParenthesis', leftOpenSecondParenthesis);
-    console.log('rightCloseSecondParenthesis', rightCloseSecondParenthesis);
 
     if (this.isOpenParenthesisSymbol(leftOpenSecondParenthesis) && this.isCloseParenthesisSymbol(rightCloseSecondParenthesis)) {
-      console.log('TRUE');
-
       return true;
     }
 

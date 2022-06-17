@@ -57,10 +57,9 @@ const parenthesizer = {
         const allBinaries = output.filter((item) => validator.isBinarySymbol(item));
         const operator = allBinaries[i];
         const { openIndex, closeIndex } = this.getBinaryParenthesisPositions(operator, output);
-        console.log('openIndex', openIndex, 'closeIndex', closeIndex);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: unknown) {
-        console.log(e);
+        console.error(e);
         continue;
       }
     }
