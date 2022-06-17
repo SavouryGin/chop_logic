@@ -100,6 +100,8 @@ const validator = {
   },
 
   isBinaryOperatorParenthesized(operator: PropositionalSymbol, expression: PropositionalExpression): boolean {
+    console.log('expression', expression);
+    console.log('operator', operator);
     const leftSymbol = expression.find((symbol) => symbol.position === operator.position - 1);
     if (!this.isCloseParenthesisSymbol(leftSymbol) || !leftSymbol) {
       return false;
@@ -109,9 +111,13 @@ const validator = {
     if (!this.isOpenParenthesisSymbol(rightSymbol) || !rightSymbol) {
       return false;
     }
+    console.log('leftSymbol', leftSymbol);
+    console.log('rightSymbol', rightSymbol);
 
     const leftOpenParenthesis = searcher.findMatchingOpenParenthesis(expression, leftSymbol);
     const rightCloseParenthesis = searcher.findMatchingCloseParenthesis(expression, rightSymbol);
+    console.log('leftOpenParenthesis', leftOpenParenthesis);
+    console.log('rightCloseParenthesis', rightCloseParenthesis);
 
     if (!leftOpenParenthesis || !rightCloseParenthesis) {
       return false;
@@ -119,8 +125,12 @@ const validator = {
 
     const leftOpenSecondParenthesis = expression.find((symbol) => symbol.position === leftOpenParenthesis.position - 1);
     const rightCloseSecondParenthesis = expression.find((symbol) => symbol.position === rightCloseParenthesis.position + 1);
+    console.log('leftOpenSecondParenthesis', leftOpenSecondParenthesis);
+    console.log('rightCloseSecondParenthesis', rightCloseSecondParenthesis);
 
     if (this.isOpenParenthesisSymbol(leftOpenSecondParenthesis) && this.isCloseParenthesisSymbol(rightCloseSecondParenthesis)) {
+      console.log('TRUE');
+
       return true;
     }
 
