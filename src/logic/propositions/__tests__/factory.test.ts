@@ -1,21 +1,21 @@
 import factory from '../factory';
-import testData from '__mocks__/test-data/propositions';
+import mocks from '__mocks__/data/propositions';
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 
 describe('Propositions factory tests', () => {
   it('createOperator() method returns a propositional operator correctly', () => {
-    expect(factory.createOperator(testData.propositionalSymbols[0])).toBe(PropositionalOperator.Not);
-    expect(factory.createOperator(testData.propositionalSymbols[1])).toBe(PropositionalOperator.And);
-    expect(factory.createOperator(testData.propositionalSymbols[2])).toBe(PropositionalOperator.Or);
-    expect(factory.createOperator(testData.propositionalSymbols[3])).toBe(PropositionalOperator.Implies);
-    expect(factory.createOperator(testData.propositionalSymbols[4])).toBe(PropositionalOperator.Equiv);
-    expect(factory.createOperator(testData.propositionalSymbols[5])).toBe(PropositionalOperator.Var);
+    expect(factory.createOperator(mocks.propositionalSymbols[0])).toBe(PropositionalOperator.Not);
+    expect(factory.createOperator(mocks.propositionalSymbols[1])).toBe(PropositionalOperator.And);
+    expect(factory.createOperator(mocks.propositionalSymbols[2])).toBe(PropositionalOperator.Or);
+    expect(factory.createOperator(mocks.propositionalSymbols[3])).toBe(PropositionalOperator.Implies);
+    expect(factory.createOperator(mocks.propositionalSymbols[4])).toBe(PropositionalOperator.Equiv);
+    expect(factory.createOperator(mocks.propositionalSymbols[5])).toBe(PropositionalOperator.Var);
   });
 
   it('createOperator() method throws an error if the input is incorrect', () => {
     expect(() => {
-      factory.createOperator(testData.propositionalSymbols[6]);
+      factory.createOperator(mocks.propositionalSymbols[6]);
     }).toThrow(PropositionalError);
   });
 
@@ -43,18 +43,18 @@ describe('Propositions factory tests', () => {
   });
 
   it('createPropositionalSymbol() method returns a correct propositional symbol', () => {
-    expect(factory.createPropositionalSymbol('~', 0)).toEqual(testData.propositionalSymbols[0]);
-    expect(factory.createPropositionalSymbol('&', 1)).toEqual(testData.propositionalSymbols[1]);
-    expect(factory.createPropositionalSymbol('|', 2)).toEqual(testData.propositionalSymbols[2]);
-    expect(factory.createPropositionalSymbol('=>', 3)).toEqual(testData.propositionalSymbols[3]);
-    expect(factory.createPropositionalSymbol('<=>', 4)).toEqual(testData.propositionalSymbols[4]);
-    expect(factory.createPropositionalSymbol('p', 5)).toEqual(testData.propositionalSymbols[5]);
-    expect(factory.createPropositionalSymbol(')', 6)).toEqual(testData.propositionalSymbols[6]);
+    expect(factory.createPropositionalSymbol('~', 0)).toEqual(mocks.propositionalSymbols[0]);
+    expect(factory.createPropositionalSymbol('&', 1)).toEqual(mocks.propositionalSymbols[1]);
+    expect(factory.createPropositionalSymbol('|', 2)).toEqual(mocks.propositionalSymbols[2]);
+    expect(factory.createPropositionalSymbol('=>', 3)).toEqual(mocks.propositionalSymbols[3]);
+    expect(factory.createPropositionalSymbol('<=>', 4)).toEqual(mocks.propositionalSymbols[4]);
+    expect(factory.createPropositionalSymbol('p', 5)).toEqual(mocks.propositionalSymbols[5]);
+    expect(factory.createPropositionalSymbol(')', 6)).toEqual(mocks.propositionalSymbols[6]);
   });
 
   it('createPropositionalSymbol() method does not confuse symbols', () => {
-    expect(factory.createPropositionalSymbol('|', 0)).not.toEqual(testData.propositionalSymbols[0]);
-    expect(factory.createPropositionalSymbol('~', 1)).not.toEqual(testData.propositionalSymbols[1]);
+    expect(factory.createPropositionalSymbol('|', 0)).not.toEqual(mocks.propositionalSymbols[0]);
+    expect(factory.createPropositionalSymbol('~', 1)).not.toEqual(mocks.propositionalSymbols[1]);
   });
 
   it('createPropositionalSymbol() method throws an error if the input is incorrect', () => {
@@ -113,7 +113,7 @@ describe('Propositions factory tests', () => {
   });
 
   it('createAtom() method returns a correct propositional formula', () => {
-    expect(factory.createAtom(testData.propositionalSymbols[5])).toEqual(testData.propositionalAtom);
+    expect(factory.createAtom(mocks.propositionalSymbols[5])).toEqual(mocks.propositionalAtom);
 
     expect(
       factory.createAtom({
@@ -128,21 +128,21 @@ describe('Propositions factory tests', () => {
   });
 
   it('createBinary() method returns a correct propositional formula', () => {
-    expect(factory.createBinary(PropositionalOperator.And, testData.propositionalAtom, testData.propositionalAtom)).toEqual({
+    expect(factory.createBinary(PropositionalOperator.And, mocks.propositionalAtom, mocks.propositionalAtom)).toEqual({
       operator: PropositionalOperator.And,
-      values: [testData.propositionalAtom, testData.propositionalAtom],
+      values: [mocks.propositionalAtom, mocks.propositionalAtom],
     });
 
-    expect(factory.createBinary(PropositionalOperator.Or, testData.propositionalAtom, testData.propositionalAtom)).toEqual({
+    expect(factory.createBinary(PropositionalOperator.Or, mocks.propositionalAtom, mocks.propositionalAtom)).toEqual({
       operator: PropositionalOperator.Or,
-      values: [testData.propositionalAtom, testData.propositionalAtom],
+      values: [mocks.propositionalAtom, mocks.propositionalAtom],
     });
   });
 
   it('createNegation() method returns a correct propositional formula', () => {
-    expect(factory.createNegation(testData.propositionalAtom)).toEqual({
+    expect(factory.createNegation(mocks.propositionalAtom)).toEqual({
       operator: PropositionalOperator.Not,
-      values: [testData.propositionalAtom],
+      values: [mocks.propositionalAtom],
     });
   });
 });

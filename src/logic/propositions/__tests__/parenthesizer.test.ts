@@ -1,43 +1,39 @@
+import mocks from '__mocks__/data/propositions';
 import parenthesizer from '../parenthesizer';
-import testData from '__mocks__/test-data/propositions';
 
 describe('Parenthesizer tests', () => {
   it('parenthesizeVariables() test', () => {
-    expect(parenthesizer.parenthesizeVariables([testData.oneVariableExpression[1]])).toEqual(testData.oneVariableExpression);
+    expect(parenthesizer.parenthesizeVariables([mocks.oneVariableExpression[1]])).toEqual(mocks.oneVariableExpression);
     expect(
-      parenthesizer.parenthesizeVariables([
-        testData.propositionalSymbols[5],
-        testData.propositionalSymbols[1],
-        testData.propositionalSymbols[5],
-      ]),
-    ).toEqual(testData.twoVariablesExpression);
+      parenthesizer.parenthesizeVariables([mocks.propositionalSymbols[5], mocks.propositionalSymbols[1], mocks.propositionalSymbols[5]]),
+    ).toEqual(mocks.twoVariablesExpression);
   });
 
   it('parenthesizeNegations() test with one negation', () => {
-    expect(parenthesizer.parenthesizeNegations(testData.oneVariableExpression)).toEqual(testData.oneVariableExpression);
+    expect(parenthesizer.parenthesizeNegations(mocks.oneVariableExpression)).toEqual(mocks.oneVariableExpression);
     const testInput = [
-      testData.propositionalSymbols[0],
-      { ...testData.propositionalSymbols[7], position: 1 },
-      { ...testData.propositionalSymbols[5], position: 2 },
-      { ...testData.propositionalSymbols[6], position: 3 },
+      mocks.propositionalSymbols[0],
+      { ...mocks.propositionalSymbols[7], position: 1 },
+      { ...mocks.propositionalSymbols[5], position: 2 },
+      { ...mocks.propositionalSymbols[6], position: 3 },
     ];
 
-    expect(parenthesizer.parenthesizeNegations(testInput)).toEqual(testData.oneNegationExpression);
+    expect(parenthesizer.parenthesizeNegations(testInput)).toEqual(mocks.oneNegationExpression);
   });
 
   it('parenthesizeNegations() test with three negations', () => {
     const testInput = [
-      testData.propositionalSymbols[0],
-      { ...testData.propositionalSymbols[0], position: 1 },
-      { ...testData.propositionalSymbols[0], position: 2 },
-      { ...testData.propositionalSymbols[7], position: 3 },
-      { ...testData.propositionalSymbols[5], position: 4 },
-      { ...testData.propositionalSymbols[6], position: 5 },
+      mocks.propositionalSymbols[0],
+      { ...mocks.propositionalSymbols[0], position: 1 },
+      { ...mocks.propositionalSymbols[0], position: 2 },
+      { ...mocks.propositionalSymbols[7], position: 3 },
+      { ...mocks.propositionalSymbols[5], position: 4 },
+      { ...mocks.propositionalSymbols[6], position: 5 },
     ];
-    expect(parenthesizer.parenthesizeNegations(testInput)).toEqual(testData.threeNegationsExpression);
+    expect(parenthesizer.parenthesizeNegations(testInput)).toEqual(mocks.threeNegationsExpression);
   });
 
   it('parenthesizeNegations() test without negations', () => {
-    expect(parenthesizer.parenthesizeNegations(testData.oneVariableExpression)).toEqual(testData.oneVariableExpression);
+    expect(parenthesizer.parenthesizeNegations(mocks.oneVariableExpression)).toEqual(mocks.oneVariableExpression);
   });
 });
