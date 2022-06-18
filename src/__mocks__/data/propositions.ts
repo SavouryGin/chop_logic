@@ -567,38 +567,38 @@ const closeParenthesis: PropositionalSymbol = {
 };
 
 const propositionalFormula: PropositionalFormula = {
-  operator: 4,
+  operator: PropositionalOperator.Implies,
   values: [
     {
-      operator: 1,
+      operator: PropositionalOperator.Not,
       values: [
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'P',
         },
       ],
     },
     {
-      operator: 4,
+      operator: PropositionalOperator.Implies,
       values: [
         {
-          operator: 3,
+          operator: PropositionalOperator.And,
           values: [
             {
-              operator: 0,
+              operator: PropositionalOperator.Var,
               values: 'P',
             },
             {
-              operator: 0,
+              operator: PropositionalOperator.Var,
               values: 'Q',
             },
           ],
         },
         {
-          operator: 1,
+          operator: PropositionalOperator.Not,
           values: [
             {
-              operator: 0,
+              operator: PropositionalOperator.Var,
               values: 'P',
             },
           ],
@@ -609,36 +609,36 @@ const propositionalFormula: PropositionalFormula = {
 };
 
 const firstSubFormula: PropositionalFormula = {
-  operator: 1,
+  operator: PropositionalOperator.Not,
   values: [
     {
-      operator: 0,
+      operator: PropositionalOperator.Var,
       values: 'P',
     },
   ],
 };
 
 const secondSubFormula: PropositionalFormula = {
-  operator: 4,
+  operator: PropositionalOperator.Implies,
   values: [
     {
-      operator: 3,
+      operator: PropositionalOperator.And,
       values: [
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'P',
         },
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'Q',
         },
       ],
     },
     {
-      operator: 1,
+      operator: PropositionalOperator.Not,
       values: [
         {
-          operator: 0,
+          operator: PropositionalOperator.Var,
           values: 'P',
         },
       ],
@@ -646,7 +646,187 @@ const secondSubFormula: PropositionalFormula = {
   ],
 };
 
-const testData = {
+const oneVariableExpression: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 0,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 1,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 2,
+  },
+];
+
+const twoVariablesExpression: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 0,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 1,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 2,
+  },
+  {
+    input: '&',
+    representation: '∧',
+    type: 'operator',
+    position: 3,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 4,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 5,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 6,
+  },
+];
+
+const oneNegationExpression: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 0,
+  },
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 1,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 2,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 3,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 4,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 5,
+  },
+];
+
+const threeNegationsExpression: PropositionalExpression = [
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 0,
+  },
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 1,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 2,
+  },
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 3,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 4,
+  },
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 5,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 6,
+  },
+  {
+    input: 'p',
+    representation: 'P',
+    type: 'variable',
+    position: 7,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 8,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 9,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 10,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 11,
+  },
+];
+
+const propositions = {
   secondSubFormula,
   firstSubFormula,
   propositionalFormula,
@@ -663,6 +843,10 @@ const testData = {
   propositionalExpression,
   propositionalAtom,
   propositionalSymbols,
+  oneVariableExpression,
+  twoVariablesExpression,
+  oneNegationExpression,
+  threeNegationsExpression,
 };
 
-export default testData;
+export default propositions;
