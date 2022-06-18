@@ -28,19 +28,26 @@ const searcher = {
   },
 
   findMatchingOpenParenthesis(expression: PropositionalExpression, closeParenthesis: PropositionalSymbol): PropositionalSymbol | undefined {
-    const previousOpenParenthesisPositions: number[] = [];
+    const previousOpenParenthesis: number[] = [];
 
     for (const symbol of expression) {
       const isPreviousParenthesis = symbol.position < closeParenthesis.position && symbol.type === 'parentheses';
-      const isOpenPreviousParenthesis = isPreviousParenthesis && symbol.input === LogicalSymbolRawInput.OpenParenthesis;
-      if (isOpenPreviousParenthesis) {
-        previousOpenParenthesisPositions.push(symbol.position);
+      const isOpenParenthesisPrevious = isPreviousParenthesis && symbol.input === LogicalSymbolRawInput.OpenParenthesis;
+      const isCloseParenthesisPrevious = isPreviousParenthesis && symbol.input === LogicalSymbolRawInput.CloseParenthesis;
+      const isTargetCloseParenthesis = symbol.position === closeParenthesis.position;
+
+      if (isOpenParenthesisPrevious) {
+        previousOpenParenthesis.push(symbol.position);
+      } else if (isCloseParenthesisPrevious) {
+        previousOpenParenthesis.pop();
+      } else if (isTargetCloseParenthesis) {
+        const index = previousOpenParenthesis[previousOpenParenthesis.length - 1];
+
+        return expression[index] || undefined;
       }
     }
 
-    const closesOpenParenthesisPosition = previousOpenParenthesisPositions[previousOpenParenthesisPositions.length - 1];
-
-    return expression.find((symbol) => symbol.position === closesOpenParenthesisPosition);
+    return undefined;
   },
 
   findClosestParenthesisIndexes(openIndex: number, array: number[]): number {

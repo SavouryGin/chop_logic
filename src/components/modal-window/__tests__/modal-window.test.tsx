@@ -7,7 +7,7 @@ import { buttonTexts } from 'assets/texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen, waitFor } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { testText } from '__mocks__/test-data/texts';
+import { testText } from '__mocks__/data/texts';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,
