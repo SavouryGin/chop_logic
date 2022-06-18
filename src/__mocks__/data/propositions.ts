@@ -826,7 +826,7 @@ const threeNegationsExpression: PropositionalExpression = [
   },
 ];
 
-const testData = {
+const propositions = {
   secondSubFormula,
   firstSubFormula,
   propositionalFormula,
@@ -849,4 +849,4 @@ const testData = {
   threeNegationsExpression,
 };
 
-export default testData;
+export default propositions;

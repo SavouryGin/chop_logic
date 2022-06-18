@@ -4,7 +4,7 @@ import { LocalText } from 'types';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { testTableColumns, testTableData } from '__mocks__/test-data/table';
+import { testTableColumns, testTableData } from '__mocks__/data/table';
 
 import Table from 'components/table';
 

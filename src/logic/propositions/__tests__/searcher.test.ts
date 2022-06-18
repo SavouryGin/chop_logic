@@ -1,3 +1,4 @@
+import mocks from '__mocks__/data/propositions';
 import searcher from '../searcher';
 import { PropositionalError } from 'errors/propositional-error';
 
@@ -18,5 +19,29 @@ describe('Propositions searcher tests', () => {
     expect(() => {
       searcher.findClosestParenthesisIndexes(Infinity, [NaN, NaN, NaN]);
     }).toThrow(PropositionalError);
+  });
+
+  it('findMatchingCloseParenthesis() test', () => {
+    expect(searcher.findMatchingCloseParenthesis(mocks.propositionalExpression, mocks.propositionalExpression[0])).toEqual(
+      mocks.propositionalExpression[26],
+    );
+    expect(searcher.findMatchingCloseParenthesis(mocks.propositionalExpression, mocks.propositionalExpression[1])).toEqual(
+      mocks.propositionalExpression[6],
+    );
+    expect(searcher.findMatchingCloseParenthesis(mocks.propositionalExpression, mocks.propositionalExpression[9])).toEqual(
+      mocks.propositionalExpression[17],
+    );
+  });
+
+  it('findMatchingOpenParenthesis() test', () => {
+    expect(searcher.findMatchingOpenParenthesis(mocks.propositionalExpression, mocks.propositionalExpression[26])).toEqual(
+      mocks.propositionalExpression[0],
+    );
+    expect(searcher.findMatchingOpenParenthesis(mocks.propositionalExpression, mocks.propositionalExpression[5])).toEqual(
+      mocks.propositionalExpression[3],
+    );
+    expect(searcher.findMatchingOpenParenthesis(mocks.propositionalExpression, mocks.propositionalExpression[17])).toEqual(
+      mocks.propositionalExpression[9],
+    );
   });
 });

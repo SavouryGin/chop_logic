@@ -1,31 +1,31 @@
-import testData from '__mocks__/test-data/propositions';
+import mocks from '__mocks__/data/propositions';
 import validator from '../validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalOperator } from 'enums';
 
 describe('Propositions validator tests', () => {
   it('isIncorrectMainSymbol() test', () => {
-    expect(validator.isIncorrectMainSymbol(testData.propositionalSymbols[0])).toBeFalsy();
-    expect(validator.isIncorrectMainSymbol(testData.propositionalSymbols[1])).toBeFalsy();
-    expect(validator.isIncorrectMainSymbol(testData.propositionalSymbols[2])).toBeFalsy();
-    expect(validator.isIncorrectMainSymbol(testData.propositionalSymbols[3])).toBeFalsy();
-    expect(validator.isIncorrectMainSymbol(testData.propositionalSymbols[4])).toBeFalsy();
-    expect(validator.isIncorrectMainSymbol(testData.propositionalSymbols[5])).toBeFalsy();
-    expect(validator.isIncorrectMainSymbol(testData.propositionalSymbols[6])).toBeTruthy();
+    expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[0])).toBeFalsy();
+    expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[1])).toBeFalsy();
+    expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[2])).toBeFalsy();
+    expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[3])).toBeFalsy();
+    expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[4])).toBeFalsy();
+    expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[5])).toBeFalsy();
+    expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[6])).toBeTruthy();
   });
 
   it('isOpenParenthesisSymbol() test', () => {
-    expect(validator.isOpenParenthesisSymbol(testData.propositionalSymbols[7])).toBeTruthy();
-    expect(validator.isOpenParenthesisSymbol(testData.propositionalSymbols[6])).toBeFalsy();
-    expect(validator.isOpenParenthesisSymbol(testData.propositionalSymbols[5])).toBeFalsy();
-    expect(validator.isOpenParenthesisSymbol(testData.propositionalSymbols[4])).toBeFalsy();
+    expect(validator.isOpenParenthesisSymbol(mocks.propositionalSymbols[7])).toBeTruthy();
+    expect(validator.isOpenParenthesisSymbol(mocks.propositionalSymbols[6])).toBeFalsy();
+    expect(validator.isOpenParenthesisSymbol(mocks.propositionalSymbols[5])).toBeFalsy();
+    expect(validator.isOpenParenthesisSymbol(mocks.propositionalSymbols[4])).toBeFalsy();
   });
 
   it('isCloseParenthesisSymbol() test', () => {
-    expect(validator.isCloseParenthesisSymbol(testData.propositionalSymbols[6])).toBeTruthy();
-    expect(validator.isCloseParenthesisSymbol(testData.propositionalSymbols[7])).toBeFalsy();
-    expect(validator.isCloseParenthesisSymbol(testData.propositionalSymbols[5])).toBeFalsy();
-    expect(validator.isCloseParenthesisSymbol(testData.propositionalSymbols[4])).toBeFalsy();
+    expect(validator.isCloseParenthesisSymbol(mocks.propositionalSymbols[6])).toBeTruthy();
+    expect(validator.isCloseParenthesisSymbol(mocks.propositionalSymbols[7])).toBeFalsy();
+    expect(validator.isCloseParenthesisSymbol(mocks.propositionalSymbols[5])).toBeFalsy();
+    expect(validator.isCloseParenthesisSymbol(mocks.propositionalSymbols[4])).toBeFalsy();
   });
 
   it('isBinaryOperator() test', () => {
@@ -38,25 +38,25 @@ describe('Propositions validator tests', () => {
   });
 
   it('isNegationSymbol() test', () => {
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[0])).toBeTruthy();
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[1])).toBeFalsy();
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[2])).toBeFalsy();
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[3])).toBeFalsy();
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[4])).toBeFalsy();
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[5])).toBeFalsy();
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[6])).toBeFalsy();
-    expect(validator.isNegationSymbol(testData.propositionalSymbols[7])).toBeFalsy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[0])).toBeTruthy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[1])).toBeFalsy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[2])).toBeFalsy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[3])).toBeFalsy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[4])).toBeFalsy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[5])).toBeFalsy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[6])).toBeFalsy();
+    expect(validator.isNegationSymbol(mocks.propositionalSymbols[7])).toBeFalsy();
   });
 
   it('isBinarySymbol() test', () => {
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[0])).toBeFalsy();
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[1])).toBeTruthy();
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[2])).toBeTruthy();
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[3])).toBeTruthy();
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[4])).toBeTruthy();
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[5])).toBeFalsy();
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[6])).toBeFalsy();
-    expect(validator.isBinarySymbol(testData.propositionalSymbols[7])).toBeFalsy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[0])).toBeFalsy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[1])).toBeTruthy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[2])).toBeTruthy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[3])).toBeTruthy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[4])).toBeTruthy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[5])).toBeFalsy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[6])).toBeFalsy();
+    expect(validator.isBinarySymbol(mocks.propositionalSymbols[7])).toBeFalsy();
   });
 
   it('checkNumberOfParenthesis() tests', () => {
@@ -74,23 +74,30 @@ describe('Propositions validator tests', () => {
   });
 
   it('isVariableParenthesized() test', () => {
-    expect(validator.isVariableParenthesized(testData.propositionalExpression[4], testData.propositionalExpression)).toBeTruthy();
-    expect(validator.isVariableParenthesized(testData.propositionalExpression[11], testData.propositionalExpression)).toBeTruthy();
-    expect(validator.isVariableParenthesized(testData.propositionalExpression[15], testData.propositionalExpression)).toBeTruthy();
-    expect(validator.isVariableParenthesized(testData.propositionalExpression[22], testData.propositionalExpression)).toBeTruthy();
-    expect(validator.isVariableParenthesized(testData.propositionalExpression[4], testData.firstVariable.slice(1))).toBeFalsy();
-    expect(validator.isVariableParenthesized(testData.propositionalExpression[4], testData.thirdSubExpression)).toBeFalsy();
+    expect(validator.isVariableParenthesized(mocks.propositionalExpression[4], mocks.propositionalExpression)).toBeTruthy();
+    expect(validator.isVariableParenthesized(mocks.propositionalExpression[11], mocks.propositionalExpression)).toBeTruthy();
+    expect(validator.isVariableParenthesized(mocks.propositionalExpression[15], mocks.propositionalExpression)).toBeTruthy();
+    expect(validator.isVariableParenthesized(mocks.propositionalExpression[22], mocks.propositionalExpression)).toBeTruthy();
+    expect(validator.isVariableParenthesized(mocks.propositionalExpression[4], mocks.firstVariable.slice(1))).toBeFalsy();
+    expect(validator.isVariableParenthesized(mocks.propositionalExpression[4], mocks.thirdSubExpression)).toBeFalsy();
   });
 
   it('isNegationParenthesized() test', () => {
-    expect(validator.isNegationParenthesized(testData.fourthSubExpression[1], testData.fourthSubExpression)).toBeTruthy();
-    expect(validator.isNegationParenthesized(testData.firstSubExpression[1], testData.firstSubExpression)).toBeTruthy();
-    expect(validator.isNegationParenthesized(testData.propositionalExpression[2], testData.propositionalExpression)).toBeTruthy();
-    expect(validator.isNegationParenthesized(testData.propositionalSymbols[0], testData.firstSubExpression)).toBeFalsy();
-    expect(validator.isNegationParenthesized(testData.propositionalSymbols[0], testData.propositionalExpression)).toBeFalsy();
-    expect(validator.isNegationParenthesized(testData.propositionalSymbols[0], [testData.propositionalSymbols[0]])).toBeFalsy();
+    expect(validator.isNegationParenthesized(mocks.fourthSubExpression[1], mocks.fourthSubExpression)).toBeTruthy();
+    expect(validator.isNegationParenthesized(mocks.firstSubExpression[1], mocks.firstSubExpression)).toBeTruthy();
+    expect(validator.isNegationParenthesized(mocks.propositionalExpression[2], mocks.propositionalExpression)).toBeTruthy();
+    expect(validator.isNegationParenthesized(mocks.propositionalSymbols[0], mocks.firstSubExpression)).toBeFalsy();
+    expect(validator.isNegationParenthesized(mocks.propositionalSymbols[0], mocks.propositionalExpression)).toBeFalsy();
+    expect(validator.isNegationParenthesized(mocks.propositionalSymbols[0], [mocks.propositionalSymbols[0]])).toBeFalsy();
     expect(
-      validator.isNegationParenthesized(testData.propositionalSymbols[0], [testData.propositionalSymbols[0], testData.closeParenthesis]),
+      validator.isNegationParenthesized(mocks.propositionalSymbols[0], [mocks.propositionalSymbols[0], mocks.closeParenthesis]),
     ).toBeFalsy();
+  });
+
+  it('isBinaryOperatorParenthesized() test', () => {
+    expect(validator.isBinaryOperatorParenthesized(mocks.twoVariablesExpression[3], mocks.twoVariablesExpression)).toBeFalsy();
+    expect(validator.isBinaryOperatorParenthesized(mocks.propositionalExpression[7], mocks.propositionalExpression)).toBeTruthy();
+    expect(validator.isBinaryOperatorParenthesized(mocks.propositionalExpression[13], mocks.propositionalExpression)).toBeTruthy();
+    expect(validator.isBinaryOperatorParenthesized(mocks.propositionalExpression[18], mocks.propositionalExpression)).toBeTruthy();
   });
 });

@@ -59,7 +59,6 @@ const parenthesizer = {
         const { openIndex, closeIndex } = this.getBinaryParenthesisPositions(operator, output);
         output = this.insertOpenAndCloseParenthesis(output, openIndex, closeIndex);
       } catch (e: unknown) {
-        console.error(e);
         continue;
       }
     }
