@@ -1,6 +1,6 @@
-import { ComponentProps, LocalText } from './general';
+import { CommonProps, LocalText } from './general';
 
-export type TableProps = ComponentProps & {
+export type TableProps = CommonProps & {
   columns: TableColumnProps[];
   data: TableDataItem[];
   hasCheckboxColumn?: boolean;

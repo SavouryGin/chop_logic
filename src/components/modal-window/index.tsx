@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Browser, ButtonID, Icon } from 'enums';
-import { ComponentProps } from 'types';
+import { CommonProps } from 'types';
 import { detectBrowser } from 'helpers/checkers/detect-browser';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 import './styles.scss';
 
-export type ModalWindowProps = ComponentProps & {
+export type ModalWindowProps = CommonProps & {
   isOpened: boolean;
   onClose: () => void;
   title: string;

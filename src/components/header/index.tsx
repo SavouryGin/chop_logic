@@ -3,11 +3,11 @@ import LeftHeaderPanel from './elements/left-header-panel';
 import React from 'react';
 import RightHeaderPanel from './elements/right-header-panel';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
+import { CommonProps } from 'types';
 
 import './styles.scss';
 
-export type HeaderProps = ComponentProps;
+export type HeaderProps = CommonProps;
 
 function Header({ className }: HeaderProps): React.ReactElement {
   return (

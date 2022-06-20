@@ -1,28 +1,15 @@
 import Label from '../label';
 import React, { useContext, useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps, InputHandlersProps } from 'types';
+import { CheckboxProps } from 'types';
 import { FormContext } from 'components/form';
 import { Guid } from 'guid-typescript';
-import { Icon, InputID } from 'enums';
+import { Icon } from 'enums';
 import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
-
-export type CheckboxProps = ComponentProps &
-  InputHandlersProps & {
-    name: string;
-    inputId?: InputID;
-    label?: string;
-    defaultValue?: boolean;
-    isDisabled?: boolean;
-    isRequired?: boolean;
-    getCheckboxEvent?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    setCheckboxValue?: boolean;
-  };
 
 function Checkbox({ name, onChange, getCheckboxEvent, setCheckboxValue, inputId, ...rest }: CheckboxProps): React.ReactElement {
   const formContext = useContext(FormContext);
