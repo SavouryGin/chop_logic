@@ -7,7 +7,6 @@ import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 import { propositionsActions } from 'store/propositions/slice';
 import { useAppDispatch } from 'hooks';
-
 import './styles.scss';
 
 function PremiseForm(): React.ReactElement {

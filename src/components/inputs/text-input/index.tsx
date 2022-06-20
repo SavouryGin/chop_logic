@@ -1,32 +1,13 @@
 import Label from '../label';
 import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps, InputHandlersProps } from 'types';
 import { FormContext } from 'components/form';
-import { InputID } from 'enums';
+import { TextInputProps } from 'types';
 import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
-
-export type TextInputProps = ComponentProps &
-  InputHandlersProps & {
-    name: string;
-    inputId: InputID;
-    label?: string;
-    defaultValue?: string;
-    placeholder?: string;
-    isDisabled?: boolean;
-    isRequired?: boolean;
-    isReadOnly?: boolean;
-    isInvalid?: boolean;
-    isAutocomplete?: boolean;
-    maxLength?: number;
-    minLength?: number;
-    value?: string;
-  };
 
 function TextInput({ name, inputId, onChange, ...rest }: TextInputProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);

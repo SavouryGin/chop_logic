@@ -1,28 +1,14 @@
 import Label from '../label';
 import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps, InputHandlersProps, SelectEntity } from 'types';
 import { FormContext } from 'components/form';
 import { Guid } from 'guid-typescript';
-import { InputID } from 'enums';
+import { SelectProps } from 'types';
 import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
-
-export type SelectProps = ComponentProps &
-  InputHandlersProps & {
-    name: string;
-    options: SelectEntity[];
-    inputId: InputID;
-    label?: string;
-    defaultOption?: SelectEntity;
-    isRequired?: boolean;
-    isDisabled?: boolean;
-    formId?: string;
-  };
 
 function Select({ options, className, inputId, name, defaultOption, onChange, ...rest }: SelectProps): React.ReactElement {
   const formContext = useContext(FormContext);

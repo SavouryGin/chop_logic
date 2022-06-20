@@ -3,18 +3,13 @@ import Label from 'components/inputs/label';
 import React from 'react';
 import converter from 'logic/propositions/converter';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps, PropositionalSymbol } from 'types';
+import { FormulaPreviewProps } from 'types';
 import { InputID } from 'enums';
 import { inputTexts } from 'assets/texts';
 import { isPropositionalExpression } from 'helpers/checkers/is-propositional-expression';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
-
-export type FormulaPreviewProps = ComponentProps & {
-  text: string | PropositionalSymbol[];
-};
 
 function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -26,8 +21,8 @@ function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactEl
 
   return (
     <div className={classNames}>
-      <Label text={labelText} id={'formula-preview'} isDarkMode={isDarkMode} />
-      <Formula id={'formula-preview'} content={parsedText} className='formula-preview__formula' />
+      <Label id='formula-preview' text={labelText} isDarkMode={isDarkMode} />
+      <Formula id='formula-preview' content={parsedText} className='formula-preview__formula' />
     </div>
   );
 }

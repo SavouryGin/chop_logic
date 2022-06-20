@@ -1,12 +1,12 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
+import { CommonProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
 import './styles.scss';
 
-export type SidebarProps = ComponentProps;
+export type SidebarProps = CommonProps;
 
 function Sidebar(props: SidebarProps): React.ReactElement {
   const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsSidebarAnimationActive);

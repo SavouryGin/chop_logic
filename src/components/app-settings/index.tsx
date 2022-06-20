@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Select from 'components/inputs/select';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ButtonID, InputID } from 'enums';
-import { ComponentProps, FormValues } from 'types';
+import { CommonProps, FormValues } from 'types';
 import { languageOptions } from 'assets/const/settings';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 import './styles.scss';
 
-export type AppSettingsProps = ComponentProps;
+export type AppSettingsProps = CommonProps;
 
 function AppSettings({ className }: AppSettingsProps): React.ReactElement {
   const dispatch = useAppDispatch();

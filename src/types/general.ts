@@ -16,7 +16,7 @@ export type ClassNames = {
 
 export type ClassNameProp = string | ClassNames;
 
-export type ComponentProps = {
+export type CommonProps = {
   className?: ClassNameProp;
   id?: string;
 };

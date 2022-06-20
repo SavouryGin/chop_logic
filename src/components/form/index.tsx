@@ -1,19 +1,9 @@
 import Button from 'components/button';
 import React, { useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ButtonID, Icon } from 'enums';
-import { ComponentProps, FormContextProps, FormInput, FormValues } from 'types';
+import { FormContextProps, FormInput, FormProps } from 'types';
+import { Icon } from 'enums';
 import { soundPlayer } from 'helpers/sounds';
-
-export type FormProps = ComponentProps & {
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  inputs: React.ReactElement;
-  initialValues: FormValues;
-  submitButtonId: ButtonID;
-  action?: string;
-  isSubmitDisabled?: boolean;
-  passValues?: (values: FormValues) => void;
-};
 
 export const FormContext = React.createContext({} as FormContextProps);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
+import { CommonProps } from 'types';
 import { Icon } from 'enums';
 import { externalLinks } from 'assets/const/settings';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -9,7 +9,7 @@ import { uiElementTexts } from 'assets/texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-type FooterProps = ComponentProps;
+type FooterProps = CommonProps;
 
 function Footer({ className }: FooterProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
