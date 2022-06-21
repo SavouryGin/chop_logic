@@ -1,26 +1,12 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ButtonID, Icon } from 'enums';
-import { CommonProps } from 'types';
+import { ButtonProps } from 'types';
 import { buttonTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-export type ButtonProps = CommonProps & {
-  buttonId: ButtonID;
-  title?: string;
-  icon?: Icon;
-  text?: string;
-  type?: 'button' | 'submit' | 'reset';
-  size?: 'small' | 'normal' | 'large';
-  onClick?: () => void;
-  sound?: HTMLAudioElement;
-  isDisabled?: boolean;
-};
-
-function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps): React.ReactElement {
+const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -61,6 +47,6 @@ function Button({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
       </span>
     </button>
   );
-}
+};
 
 export default Button;
