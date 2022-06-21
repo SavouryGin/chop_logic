@@ -1,5 +1,5 @@
 import Checkbox from 'components/inputs/checkbox';
-import React from 'react';
+import React, { useMemo } from 'react';
 import Select from 'components/inputs/select';
 import { AppSettingInitialValues } from 'types';
 import { InputID } from 'enums';
@@ -10,7 +10,9 @@ type AppSettingsInputsProps = {
 };
 
 const AppSettingsInputs = ({ initialValues }: AppSettingsInputsProps) => {
-  const defaultLanguage = languageOptions.find((item) => item.value === initialValues.language);
+  const defaultLanguage = useMemo(() => {
+    return languageOptions.find((item) => item.value === initialValues.language);
+  }, [initialValues.language]);
 
   return (
     <>
