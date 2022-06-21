@@ -1,5 +1,5 @@
-import Formula from 'components/formula';
-import Label from 'components/inputs/label';
+import Formula from 'components/controls/formula';
+import Label from 'components/controls/label';
 import React from 'react';
 import converter from 'logic/propositions/converter';
 import formatClassName from 'helpers/formatters/format-class-name';

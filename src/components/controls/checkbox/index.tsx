@@ -2,7 +2,7 @@ import Label from '../label';
 import React, { useContext, useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { CheckboxProps } from 'types';
-import { FormContext } from 'components/form';
+import { FormContext } from 'components/controls/form';
 import { Guid } from 'guid-typescript';
 import { Icon } from 'enums';
 import { inputTexts } from 'assets/texts';

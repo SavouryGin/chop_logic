@@ -1,5 +1,5 @@
 import AppSettings from 'components/app-settings';
-import Button from 'components/button';
+import Button from 'components/controls/button';
 import ModalWindow from 'components/modal-window';
 import React, { useCallback, useEffect } from 'react';
 import { ButtonID, Icon } from 'enums';

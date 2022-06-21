@@ -1,5 +1,5 @@
 import AppSettingsInputs from './elements';
-import Form from 'components/form';
+import Form from 'components/controls/form';
 import React, { useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { AppSettingInitialValues, CommonProps, FormValues } from 'types';

@@ -1,4 +1,4 @@
-import Formula from 'components/formula';
+import Formula from 'components/controls/formula';
 import React from 'react';
 import { Language, LocalText, PropositionalExpression, TableColumnProps, TableDataItem } from 'types';
 import { isLocalText } from 'helpers/checkers/is-local-text';

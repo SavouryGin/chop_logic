@@ -1,4 +1,4 @@
-import Button from 'components/button';
+import Button from 'components/controls/button';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import formatClassName from 'helpers/formatters/format-class-name';

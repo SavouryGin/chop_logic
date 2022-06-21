@@ -7,7 +7,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-import Select from 'components/inputs/select';
+import Select from 'components/controls/select';
 
 const testSelectOptions: SelectEntity[] = [
   { option: { en: 'One', ru: 'Один' }, value: 1, add: 123 },

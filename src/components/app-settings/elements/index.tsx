@@ -1,6 +1,6 @@
-import Checkbox from 'components/inputs/checkbox';
+import Checkbox from 'components/controls/checkbox';
 import React, { useMemo } from 'react';
-import Select from 'components/inputs/select';
+import Select from 'components/controls/select';
 import { AppSettingInitialValues } from 'types';
 import { InputID } from 'enums';
 import { languageOptions } from 'assets/const/settings';

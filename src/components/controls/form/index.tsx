@@ -1,4 +1,4 @@
-import Button from 'components/button';
+import Button from 'components/controls/button';
 import React, { useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { FormContextProps, FormInput, FormProps } from 'types';
@@ -7,7 +7,7 @@ import { soundPlayer } from 'helpers/sounds';
 
 export const FormContext = React.createContext({} as FormContextProps);
 
-function Form({ className, onSubmit, inputs, initialValues, passValues, submitButtonId, ...rest }: FormProps): React.ReactElement {
+const Form = ({ className, onSubmit, inputs, initialValues, passValues, submitButtonId, ...rest }: FormProps) => {
   const formClassNames = formatClassName(['form', className]);
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -47,6 +47,6 @@ function Form({ className, onSubmit, inputs, initialValues, passValues, submitBu
       />
     </form>
   );
-}
+};
 
 export default Form;

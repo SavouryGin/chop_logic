@@ -6,7 +6,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-import TextInput from 'components/inputs/text-input';
+import TextInput from 'components/controls/text-input';
 
 const testProps = {
   name: 'test input',

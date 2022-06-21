@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from 'enums';
 import { render, screen } from '@testing-library/react';
 
-import Label from 'components/inputs/label';
+import Label from 'components/controls/label';
 
 const testProps = {
   text: 'test-label',

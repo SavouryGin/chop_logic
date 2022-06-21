@@ -1,4 +1,4 @@
-import Button from 'components/button';
+import Button from 'components/controls/button';
 import React from 'react';
 import { ButtonID } from 'enums';
 import { PropositionsFlag } from 'store/propositions/interfaces';

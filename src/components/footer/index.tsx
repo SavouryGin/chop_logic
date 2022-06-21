@@ -9,9 +9,7 @@ import { uiElementTexts } from 'assets/texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-type FooterProps = CommonProps;
-
-function Footer({ className }: FooterProps): React.ReactElement {
+const Footer = ({ className }: CommonProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -39,6 +37,6 @@ function Footer({ className }: FooterProps): React.ReactElement {
       </span>
     </footer>
   );
-}
+};
 
 export default Footer;
