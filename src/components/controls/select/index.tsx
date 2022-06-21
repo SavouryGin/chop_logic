@@ -1,7 +1,7 @@
 import Label from '../label';
 import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { FormContext } from 'components/form';
+import { FormContext } from 'components/controls/form';
 import { Guid } from 'guid-typescript';
 import { SelectProps } from 'types';
 import { inputTexts } from 'assets/texts';

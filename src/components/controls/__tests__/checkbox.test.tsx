@@ -7,7 +7,7 @@ import { inputTexts } from 'assets/texts';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-import Checkbox from 'components/inputs/checkbox';
+import Checkbox from 'components/controls/checkbox';
 
 const testProps = {
   name: 'test checkbox',

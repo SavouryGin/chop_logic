@@ -1,7 +1,7 @@
-import Form from 'components/form';
-import FormulaPreview from 'components/formula-preview';
+import Form from 'components/controls/form';
+import FormulaPreview from 'components/controls/formula-preview';
 import React, { useState } from 'react';
-import TextInput from 'components/inputs/text-input';
+import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
