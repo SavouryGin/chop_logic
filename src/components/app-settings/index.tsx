@@ -1,28 +1,22 @@
-import Checkbox from 'components/inputs/checkbox';
+import AppSettingsInputs from './elements';
 import Form from 'components/form';
 import React, { useState } from 'react';
-import Select from 'components/inputs/select';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ButtonID, InputID } from 'enums';
-import { CommonProps, FormValues } from 'types';
-import { languageOptions } from 'assets/const/settings';
+import { AppSettingInitialValues, CommonProps, FormValues } from 'types';
+import { ButtonID } from 'enums';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings/slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-export type AppSettingsProps = CommonProps;
-
-function AppSettings({ className }: AppSettingsProps): React.ReactElement {
+const AppSettings = ({ className }: CommonProps) => {
   const dispatch = useAppDispatch();
-  const settingsInitialValues = {
+  const settingsInitialValues: AppSettingInitialValues = {
     isDarkMode: useAppSelector(selectors.getIsDarkMode),
     isSoundsEnabled: useAppSelector(selectors.getIsSoundsEnabled),
     language: useAppSelector(selectors.getLanguage),
   };
   const [formValues, setFormValues] = useState(settingsInitialValues);
-  const defaultLanguage = languageOptions.find((item) => item.value === settingsInitialValues.language);
   const settingsClassNames = formatClassName(['settings', className]);
 
   const closePopup = () => {
@@ -36,35 +30,25 @@ function AppSettings({ className }: AppSettingsProps): React.ReactElement {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Dispatch the settings to the store
     dispatch(settingsActions.setUpFlag({ flag: 'isDarkMode', value: formValues.isDarkMode }));
     dispatch(settingsActions.setUpFlag({ flag: 'isSoundsEnabled', value: formValues.isSoundsEnabled }));
     dispatch(settingsActions.setLanguage(formValues.language));
-    // Close the modal window
     closePopup();
   };
 
-  const takeValues = (values: FormValues) => setFormValues(values as typeof settingsInitialValues);
-
-  const formInputs = (
-    <>
-      <Select inputId={InputID.LanguageSelect} name='language' options={languageOptions} defaultOption={defaultLanguage} />
-      <Checkbox inputId={InputID.isDarkModeCheckbox} name='isDarkMode' defaultValue={settingsInitialValues.isDarkMode} />
-      <Checkbox inputId={InputID.isSoundsCheckbox} name='isSoundsEnabled' defaultValue={settingsInitialValues.isSoundsEnabled} />
-    </>
-  );
+  const takeValues = (values: FormValues) => setFormValues(values as AppSettingInitialValues);
 
   return (
     <div className={settingsClassNames} data-testid='settings'>
       <Form
         onSubmit={onSubmit}
         initialValues={settingsInitialValues}
-        inputs={formInputs}
+        inputs={<AppSettingsInputs initialValues={settingsInitialValues} />}
         passValues={takeValues}
         submitButtonId={ButtonID.ApplySettings}
       />
     </div>
   );
-}
+};
 
 export default AppSettings;

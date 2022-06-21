@@ -1,5 +1,5 @@
 import { ButtonID, InputID } from 'enums';
-import { CommonProps, LocalText } from './general';
+import { CommonProps, Language, LocalText } from './general';
 
 export type InputHandlersProps = {
   onChange?: () => void;
@@ -79,3 +79,9 @@ export type TextInputProps = CommonProps &
     minLength?: number;
     value?: string;
   };
+
+export type AppSettingInitialValues = {
+  isDarkMode: boolean;
+  isSoundsEnabled: boolean;
+  language: Language;
+};
