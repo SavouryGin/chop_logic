@@ -1,4 +1,4 @@
-import constants from 'assets/const/propositions';
+import constants from 'presets/propositions';
 import searcher from './searcher';
 import validator from './validator';
 import { PropositionalError } from 'errors/propositional-error';

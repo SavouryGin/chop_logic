@@ -3,7 +3,7 @@ import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import userEvent from '@testing-library/user-event';
 import { InputID } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
-import { inputTexts } from 'assets/texts';
+import { inputTexts } from 'texts';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 

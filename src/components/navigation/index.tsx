@@ -6,7 +6,7 @@ import { routesMap } from 'components/app-router/map';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'texts';
 import './styles.scss';
 
 export type NavigationProps = CommonProps;

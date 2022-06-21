@@ -6,7 +6,7 @@ import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 import Footer from '../index';
-import { externalLinks } from 'assets/const/settings';
+import { externalLinks } from 'presets/settings';
 
 const testProps = {
   className: 'test-class',

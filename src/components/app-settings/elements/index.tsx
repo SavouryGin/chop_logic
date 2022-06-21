@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import Select from 'components/controls/select';
 import { AppSettingInitialValues } from 'types';
 import { InputID } from 'enums';
-import { languageOptions } from 'assets/const/settings';
+import { languageOptions } from 'presets/settings';
 
 type AppSettingsInputsProps = {
   initialValues: AppSettingInitialValues;

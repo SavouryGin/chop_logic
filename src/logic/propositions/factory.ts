@@ -1,4 +1,4 @@
-import constants from 'assets/const/propositions';
+import constants from 'presets/propositions';
 import regularExpressions from 'helpers/regular-expressions';
 import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';

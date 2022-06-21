@@ -9,7 +9,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { Icon } from 'enums';
 import { TabItem } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
-import { titles } from 'assets/texts/propositions';
+import { titles } from 'texts/propositions';
 import { useAppSelector } from 'hooks';
 
 import './styles.scss';

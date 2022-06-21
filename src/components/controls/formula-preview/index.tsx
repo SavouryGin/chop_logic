@@ -5,7 +5,7 @@ import converter from 'logic/propositions/converter';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { FormulaPreviewProps } from 'types';
 import { InputID } from 'enums';
-import { inputTexts } from 'assets/texts';
+import { inputTexts } from 'texts';
 import { isPropositionalExpression } from 'helpers/checkers/is-propositional-expression';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
