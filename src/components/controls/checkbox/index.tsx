@@ -5,7 +5,7 @@ import { CheckboxProps } from 'types';
 import { FormContext } from 'components/controls/form';
 import { Guid } from 'guid-typescript';
 import { Icon } from 'enums';
-import { inputTexts } from 'assets/texts';
+import { inputTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';

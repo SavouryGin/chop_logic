@@ -6,7 +6,7 @@ import converter from 'logic/propositions/converter';
 import { ButtonID, GreekSymbol, InputID, LogicalSymbolHexCode } from 'enums';
 import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
-import { formsTexts } from 'assets/texts/propositions';
+import { formsTexts } from 'texts/propositions';
 import { propositionsActions } from 'store/propositions/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';

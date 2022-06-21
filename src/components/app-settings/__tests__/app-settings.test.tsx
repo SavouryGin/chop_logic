@@ -1,10 +1,10 @@
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { ButtonID, InputID } from 'enums';
-import { buttonTexts, inputTexts } from 'assets/texts';
+import { buttonTexts, inputTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { languageOptions } from 'assets/const/settings';
+import { languageOptions } from 'presets/settings';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 import AppSettings from '../index';

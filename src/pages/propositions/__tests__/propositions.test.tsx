@@ -4,7 +4,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsInitialState, propositionsSlice } from 'store/propositions/slice';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { titles } from 'assets/texts/propositions';
+import { titles } from 'texts/propositions';
 
 import Propositions, { propositionsTabs } from 'pages/propositions';
 

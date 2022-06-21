@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { FormContext } from 'components/controls/form';
 import { TextInputProps } from 'types';
-import { inputTexts } from 'assets/texts';
+import { inputTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';

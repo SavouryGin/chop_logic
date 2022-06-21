@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
-import constants from 'assets/const/propositions';
+import constants from 'presets/propositions';
 import { propositionsActions as actions } from 'store/propositions/slice';
-import { fillerText } from 'assets/texts/propositions';
+import { fillerText } from 'texts/propositions';
 import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';

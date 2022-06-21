@@ -1,7 +1,7 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ButtonProps } from 'types';
-import { buttonTexts } from 'assets/texts';
+import { buttonTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

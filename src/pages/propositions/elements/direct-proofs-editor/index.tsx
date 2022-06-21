@@ -8,7 +8,7 @@ import { PropositionsFlag } from 'store/propositions/interfaces';
 import { propositionsActions as actions } from 'store/propositions/slice';
 import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'assets/texts/ui-elements';
+import { uiElementTexts } from 'texts/ui-elements';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 import './styles.scss';
