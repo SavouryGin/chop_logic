@@ -11,19 +11,29 @@ import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-function Checkbox({ name, onChange, getCheckboxEvent, setCheckboxValue, inputId, ...rest }: CheckboxProps): React.ReactElement {
+const Checkbox = ({
+  onChange,
+  className,
+  label,
+  defaultValue,
+  getCheckboxEvent,
+  isDisabled,
+  isRequired,
+  setCheckboxValue,
+  inputId,
+  id,
+  ...rest
+}: CheckboxProps) => {
   const formContext = useContext(FormContext);
-  const { onChangeInput } = formContext;
-  // Flags
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  // Values
-  const [isChecked, setIsChecked] = useState(!!rest.defaultValue || false);
-  const id = inputId ? `checkbox_id_${inputId}` : rest.id || Guid.create().toString();
-  const labelText = inputId ? inputTexts[inputId].label[language] : rest.label;
-  // Class names
-  const checkboxClassNames = formatClassName(['checkbox-input', rest.className, { 'checkbox-input_disabled': !!rest.isDisabled }]);
+  const [isChecked, setIsChecked] = useState(!!defaultValue || false);
+
+  const { onChangeInput } = formContext;
+  const calculatedId = inputId ? `checkbox_id_${inputId}` : id || Guid.create().toString();
+  const labelText = inputId ? inputTexts[inputId].label[language] : label;
+  const checkboxClassNames = formatClassName(['checkbox-input', className, { 'checkbox-input_disabled': !!isDisabled }]);
   const inputClassNames = formatClassName(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
   const labelClassNames = formatClassName([
     'checkbox-input__label',
@@ -57,18 +67,16 @@ function Checkbox({ name, onChange, getCheckboxEvent, setCheckboxValue, inputId,
     <div className={checkboxClassNames}>
       <input
         type='checkbox'
-        id={id}
-        name={name}
+        id={calculatedId}
         className={inputClassNames}
-        disabled={rest.isDisabled}
+        disabled={isDisabled}
         checked={isChecked}
         onChange={onCheckboxChange}
-        onBlur={rest.onBlur}
-        onFocus={rest.onFocus}
+        {...rest}
       ></input>
-      <Label text={labelText} id={id} isRequired={rest.isRequired} isDarkMode={isDarkMode} className={labelClassNames} />
+      <Label text={labelText} id={calculatedId} isRequired={isRequired} isDarkMode={isDarkMode} className={labelClassNames} />
     </div>
   );
-}
+};
 
 export default Checkbox;
