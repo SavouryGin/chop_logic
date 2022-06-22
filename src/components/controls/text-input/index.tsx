@@ -9,28 +9,42 @@ import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-function TextInput({ name, inputId, onChange, ...rest }: TextInputProps): React.ReactElement {
+function TextInput({
+  inputId,
+  onChange,
+  isDisabled,
+  isInvalid,
+  className,
+  isReadOnly,
+  isRequired,
+  isAutocomplete,
+  id,
+  label,
+  placeholder,
+  defaultValue,
+  ...rest
+}: TextInputProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
   const inputClassNames = formatClassName([
-    rest.className,
+    className,
     'text-input',
     {
       'text-input_dark': isDarkMode,
-      'text-input_invalid': !!rest.isInvalid,
-      'text-input_invalid_dark': !!rest.isInvalid && isDarkMode,
-      'text-input_disabled': !!rest.isDisabled,
+      'text-input_invalid': !!isInvalid,
+      'text-input_invalid_dark': !!isInvalid && isDarkMode,
+      'text-input_disabled': !!isDisabled,
     },
   ]);
   const fieldClassNames = formatClassName(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
-  const id = rest.id || `text_input_id_${inputId}`;
-  const labelText = rest.label || inputTexts[inputId].label[language];
-  const placeholderText = rest.placeholder || inputTexts[inputId]?.placeholder?.[language];
-  const defaultValue = rest.defaultValue || inputTexts[inputId]?.defaultTextValue?.[language];
-  const [inputValue, setInputValue] = useState(defaultValue || '');
+  const calculatedId = id || `text_input_id_${inputId}`;
+  const labelText = label || inputTexts[inputId].label[language];
+  const placeholderText = placeholder || inputTexts[inputId]?.placeholder?.[language];
+  const inputDefaultValue = defaultValue || inputTexts[inputId]?.defaultTextValue?.[language];
+  const [inputValue, setInputValue] = useState(inputDefaultValue || '');
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || '';
@@ -48,22 +62,18 @@ function TextInput({ name, inputId, onChange, ...rest }: TextInputProps): React.
 
   return (
     <div className={inputClassNames}>
-      <Label text={labelText} id={id} isRequired={rest.isRequired} isDarkMode={isDarkMode} />
+      <Label text={labelText} id={calculatedId} isRequired={isRequired} isDarkMode={isDarkMode} />
       <input
         type='text'
-        name={name}
-        id={id}
+        id={calculatedId}
         value={inputValue}
         onChange={onInputChange}
-        onBlur={rest.onBlur}
-        onFocus={rest.onFocus}
         placeholder={placeholderText}
         className={fieldClassNames}
-        disabled={rest.isDisabled}
-        readOnly={rest.isReadOnly}
-        maxLength={rest.maxLength}
-        minLength={rest.minLength}
-        autoComplete={rest.isAutocomplete ? 'on' : 'off'}
+        disabled={isDisabled}
+        readOnly={isReadOnly}
+        autoComplete={isAutocomplete ? 'on' : 'off'}
+        {...rest}
       />
     </div>
   );

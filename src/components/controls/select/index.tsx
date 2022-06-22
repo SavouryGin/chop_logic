@@ -10,17 +10,30 @@ import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-function Select({ options, className, inputId, name, defaultOption, onChange, ...rest }: SelectProps): React.ReactElement {
+function Select({
+  options,
+  className,
+  inputId,
+  id,
+  isDisabled,
+  label,
+  isRequired,
+  defaultOption,
+  formId,
+  onChange,
+  ...rest
+}: SelectProps): React.ReactElement {
   const formContext = useContext(FormContext);
-  const { onChangeInput } = formContext;
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const id = rest.id || `select_id_${inputId}`;
-  const labelText = rest.label || inputTexts[inputId].label[language];
-  const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!rest.isDisabled, select_dark: isDarkMode }]);
-  const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
   const [selectedValue, setSelectedValue] = useState(defaultOption);
+
+  const { onChangeInput } = formContext;
+  const calculatedId = id || `select_id_${inputId}`;
+  const labelText = label || inputTexts[inputId].label[language];
+  const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!isDisabled, select_dark: isDarkMode }]);
+  const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
 
   const optionList = options.map((item) => {
     const key = Guid.create().toString();
@@ -50,20 +63,18 @@ function Select({ options, className, inputId, name, defaultOption, onChange, ..
   return (
     <div className={wrapperClassNames}>
       <select
-        name={name}
-        id={id}
+        id={calculatedId}
         value={selectedValue?.value}
-        form={rest.formId}
-        disabled={rest.isDisabled}
-        required={rest.isRequired}
+        form={formId}
+        disabled={isDisabled}
+        required={isRequired}
         className={selectClassNames}
         onChange={onSelectChange}
-        onBlur={rest.onBlur}
-        onFocus={rest.onFocus}
+        {...rest}
       >
         {optionList}
       </select>
-      <Label id={id} text={labelText} isRequired={rest.isRequired} isDarkMode={isDarkMode} className={'select__label'} />
+      <Label id={calculatedId} text={labelText} isRequired={isRequired} isDarkMode={isDarkMode} className={'select__label'} />
     </div>
   );
 }
