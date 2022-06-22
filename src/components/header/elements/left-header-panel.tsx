@@ -6,7 +6,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-function LeftHeaderPanel(): React.ReactElement {
+const LeftHeaderPanel = () => {
   const dispatch = useAppDispatch();
   const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -55,6 +55,6 @@ function LeftHeaderPanel(): React.ReactElement {
       />
     </div>
   );
-}
+};
 
 export default LeftHeaderPanel;

@@ -1,25 +1,16 @@
-import Button from 'components/controls/button';
+import ModalWindowContent from './elements/modal-window-contents';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { Browser, ButtonID, Icon } from 'enums';
-import { CommonProps } from 'types';
+import { Browser } from 'enums';
+import { ModalWindowProps } from 'types';
 import { detectBrowser } from 'helpers/checkers/detect-browser';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-export type ModalWindowProps = CommonProps & {
-  isOpened: boolean;
-  onClose: () => void;
-  title: string;
-  content?: React.ReactElement;
-};
-
-function ModalWindow({ isOpened, onClose, content, title, ...rest }: ModalWindowProps): React.ReactElement | null {
+const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps) => {
   const targetElement = document.getElementById('modal');
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -36,7 +27,7 @@ function ModalWindow({ isOpened, onClose, content, title, ...rest }: ModalWindow
   ]);
   const windowClassNames = formatClassName([
     'modal-window',
-    rest.className,
+    className,
     { 'modal-window_dark': isDarkMode, 'modal-window_closing': isAnimationActive },
   ]);
 
@@ -49,21 +40,13 @@ function ModalWindow({ isOpened, onClose, content, title, ...rest }: ModalWindow
     }, 900);
   };
 
-  const window = (
-    <div className={windowClassNames} role='dialog' aria-modal='true' id={rest.id}>
-      <header className='modal-window__header' id='modal-window-heading'>
-        {title}
-        <Button buttonId={ButtonID.Cancel} onClick={onClickClose} icon={Icon.Cancel} sound={soundPlayer.slideClick} size='small' />
-      </header>
-      <div className={contentClassNames} role='region' aria-labelledby='modal-window-heading'>
-        {content}
-      </div>
+  const portal = (
+    <div className={backgroundClassNames}>
+      <ModalWindowContent windowClassNames={windowClassNames} contentClassNames={contentClassNames} onClickClose={onClickClose} {...rest} />
     </div>
   );
 
-  const portal = <div className={backgroundClassNames}>{window}</div>;
-
   return !isOpened || !targetElement ? null : ReactDOM.createPortal(portal, targetElement);
-}
+};
 
 export default ModalWindow;

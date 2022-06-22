@@ -9,7 +9,7 @@ import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-function RightHeaderPanel(): React.ReactElement {
+const RightHeaderPanel = () => {
   const dispatch = useAppDispatch();
   const isSidebarOpened = useAppSelector(settingsSelectors.getIsSidebarOpened);
   const isFullScreen = useAppSelector(settingsSelectors.getIsFullScreen);
@@ -88,6 +88,6 @@ function RightHeaderPanel(): React.ReactElement {
       />
     </div>
   );
-}
+};
 
 export default RightHeaderPanel;
