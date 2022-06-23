@@ -9,7 +9,7 @@ import { propositionsActions } from 'store/propositions/slice';
 import { useAppDispatch } from 'hooks';
 import './styles.scss';
 
-function PremiseForm(): React.ReactElement {
+const PremiseForm = () => {
   const dispatch = useAppDispatch();
   const premiseInitialValue = { premise: '' };
   const [formValue, setFormValue] = useState(premiseInitialValue);
@@ -41,6 +41,6 @@ function PremiseForm(): React.ReactElement {
       />
     </div>
   );
-}
+};
 
 export default PremiseForm;

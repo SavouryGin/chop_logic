@@ -7,7 +7,7 @@ import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-function DirectProofsEditorTable(): React.ReactElement {
+const DirectProofsEditorTable = () => {
   const dispatch = useAppDispatch();
   const tableData = useAppSelector(propositionsSelectors.getDirectProofsTableData);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -26,6 +26,6 @@ function DirectProofsEditorTable(): React.ReactElement {
       {tableData.length === 0 && noStepsFiller}
     </div>
   );
-}
+};
 
 export default DirectProofsEditorTable;

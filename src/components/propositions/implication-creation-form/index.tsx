@@ -12,7 +12,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
-function ImplicationCreationForm(): React.ReactElement {
+const ImplicationCreationForm = () => {
   const dispatch = useAppDispatch();
   const implicationCreationInitialValues = { firstVariable: '', secondVariable: '' };
   const [formValue, setFormValue] = useState(implicationCreationInitialValues);
@@ -49,6 +49,6 @@ function ImplicationCreationForm(): React.ReactElement {
       />
     </div>
   );
-}
+};
 
 export default ImplicationCreationForm;

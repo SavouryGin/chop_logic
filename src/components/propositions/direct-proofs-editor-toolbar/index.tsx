@@ -7,13 +7,12 @@ import { propositionsSelectors } from 'store/propositions/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-function DirectProofsEditorToolbar(): React.ReactElement {
+const DirectProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
   const selectedIds = useAppSelector(propositionsSelectors.getSelectedIds);
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
 
-  // Handlers
   const deleteSteps = () => {
     dispatch(actions.deleteSteps());
   };
@@ -54,6 +53,6 @@ function DirectProofsEditorToolbar(): React.ReactElement {
       <Button buttonId={ButtonID.ImplicationElimination} sound={soundPlayer.slideClick} size='large' />
     </div>
   );
-}
+};
 
 export default DirectProofsEditorToolbar;

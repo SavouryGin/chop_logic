@@ -23,3 +23,25 @@ export type TableIdsProps = {
   selectedIds: string[];
   setSelectedIds: (value: React.SetStateAction<string[]>) => void;
 };
+
+export type SelectAllCheckboxProps = {
+  allRowIds: string[];
+} & TableIdsProps;
+
+export type SelectRowCheckboxProps = {
+  rowId: string;
+} & TableIdsProps;
+
+export type TableBodyProps = {
+  data: TableDataItem[];
+  columns: TableColumnProps[];
+  hasCheckboxColumn: boolean;
+  className?: string;
+} & TableIdsProps;
+
+export type TableHeadProps = {
+  columns: TableColumnProps[];
+  hasCheckboxColumn: boolean;
+  data: TableDataItem[];
+  className?: string;
+} & TableIdsProps;
