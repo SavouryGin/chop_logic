@@ -72,3 +72,18 @@ export type SelectEntity = {
   value: string | number;
   [key: string]: unknown;
 };
+
+export type ButtonText = {
+  [key in ButtonID]: {
+    title: LocalText;
+    innerText?: LocalText;
+  };
+};
+
+export type InputText = {
+  [key in InputID]: {
+    label: LocalText;
+    defaultTextValue?: LocalText;
+    placeholder?: LocalText;
+  };
+};

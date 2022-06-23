@@ -8,9 +8,7 @@ export type TableProps = CommonProps & {
 };
 
 export type TableColumnProps = {
-  // The field to which the column is bound
   field?: string;
-  // The title of the column
   title?: LocalText;
 };
 
