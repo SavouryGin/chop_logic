@@ -1,17 +1,10 @@
 import React from 'react';
 import SelectAllCheckbox from './select-all-checkbox';
-import { TableColumnProps, TableDataItem, TableIdsProps } from 'types';
+import { TableHeadProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
-type TableHeadProps = {
-  columns: TableColumnProps[];
-  hasCheckboxColumn: boolean;
-  data: TableDataItem[];
-  className?: string;
-} & TableIdsProps;
-
-function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, data, ...rest }: TableHeadProps): React.ReactElement {
+const TableHead = ({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, data, className }: TableHeadProps) => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const allRowIds = data.map((item) => item.id);
 
@@ -26,13 +19,13 @@ function TableHead({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, da
   });
 
   return (
-    <thead className={rest.className}>
+    <thead className={className}>
       <tr className={'table__row'}>
         {hasCheckboxColumn && <SelectAllCheckbox selectedIds={selectedIds} allRowIds={allRowIds} setSelectedIds={setSelectedIds} />}
         {headerCells}
       </tr>
     </thead>
   );
-}
+};
 
 export default TableHead;

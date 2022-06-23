@@ -4,14 +4,11 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { routesMap } from 'components/app-router/map';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
-
 import { uiElementTexts } from 'texts';
+import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-export type NavigationProps = CommonProps;
-
-function Navigation(props: NavigationProps): React.ReactElement {
+const Navigation = (props: CommonProps) => {
   const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);
   const language = useAppSelector(settingsSelectors.getLanguage);
   const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
@@ -30,6 +27,6 @@ function Navigation(props: NavigationProps): React.ReactElement {
       <ul className='navigation__list'>{links}</ul>
     </nav>
   );
-}
+};
 
 export default Navigation;
