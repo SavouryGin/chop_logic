@@ -1,13 +1,5 @@
 import { GreekSymbol, InputID } from 'enums';
-import { LocalText } from 'types';
-
-type InputText = {
-  [key in InputID]: {
-    label: LocalText;
-    defaultTextValue?: LocalText;
-    placeholder?: LocalText;
-  };
-};
+import { InputText } from 'types';
 
 export const inputTexts: InputText = {
   [InputID.DefaultInput]: {
