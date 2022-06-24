@@ -10,10 +10,9 @@ import { propositionsSelectors } from 'store/propositions/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts/ui-elements';
 import { useAppDispatch, useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-function DirectProofsEditor(): React.ReactElement {
+const DirectProofsEditor = () => {
   const dispatch = useAppDispatch();
   const isPremiseOpened = useAppSelector(propositionsSelectors.getIsPremiseOpened);
   const isImplicationCreationOpened = useAppSelector(propositionsSelectors.getIsImplicationCreationOpened);
@@ -41,6 +40,6 @@ function DirectProofsEditor(): React.ReactElement {
       />
     </div>
   );
-}
+};
 
 export default DirectProofsEditor;

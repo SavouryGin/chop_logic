@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Predicates(): React.ReactElement {
+const Predicates = () => {
   return <div className='predicates'>Predicates</div>;
-}
+};
 
 export default Predicates;

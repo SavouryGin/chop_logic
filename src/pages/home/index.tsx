@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.scss';
 
-function Home(): React.ReactElement {
+const Home = () => {
   return (
     <div className='home'>
       Home page
@@ -10,6 +10,6 @@ function Home(): React.ReactElement {
       <div>Test div</div>
     </div>
   );
-}
+};
 
 export default Home;
