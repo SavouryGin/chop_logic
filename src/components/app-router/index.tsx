@@ -5,8 +5,8 @@ import React, { useMemo } from 'react';
 import RouterElement from './route-element';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Page } from 'enums';
-import { paths } from './paths';
-import { routesMap } from './map';
+import { paths } from 'presets/paths';
+import { routesMap } from 'presets/map';
 
 const AppRouter = () => {
   const pages = useMemo(() => {

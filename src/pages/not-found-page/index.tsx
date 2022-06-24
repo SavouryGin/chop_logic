@@ -1,7 +1,7 @@
 import AppLink from 'components/app-link';
 import React from 'react';
 import { Icon, Page } from 'enums';
-import { paths } from 'components/app-router/paths';
+import { paths } from 'presets/paths';
 import './styles.scss';
 
 const NotFoundPage = () => {
