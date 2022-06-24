@@ -8,7 +8,7 @@ interface IProps {
   children?: ReactNode;
 }
 
-function renderWithRedux(ui: ReactElement, reducer: Reducer, preloadedState = {}, renderOptions?: RenderOptions): RenderResult {
+const renderWithRedux = (ui: ReactElement, reducer: Reducer, preloadedState = {}, renderOptions?: RenderOptions): RenderResult => {
   const mockedStore = configureStore({ reducer, preloadedState });
   const Wrapper: React.FC = ({ children }: IProps) => {
     return (
@@ -19,6 +19,6 @@ function renderWithRedux(ui: ReactElement, reducer: Reducer, preloadedState = {}
   };
 
   return render(ui, { wrapper: Wrapper, ...renderOptions });
-}
+};
 
 export default renderWithRedux;
