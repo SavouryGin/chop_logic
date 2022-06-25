@@ -20,3 +20,22 @@ export const formsTexts: TextContainer = {
     ru: 'Введите значения для мета-переменных в схеме аксиом:',
   },
 };
+
+export const errorsTexts: TextContainer = {
+  inputError: {
+    en: 'Invalid character entered.',
+    ru: 'Введён некорректный символ.',
+  },
+  syntaxError: {
+    en: 'The entered character set cannot be converted to a propositional expression.',
+    ru: 'Введённый набор символов нельзя преобразовать в пропозициональное выражение.',
+  },
+  parenthesisError: {
+    en: 'Parentheses are incorrectly placed in the expression.',
+    ru: 'В выражении неправильно расставлены скобки.',
+  },
+  semanticError: {
+    en: 'The entered expression cannot be converted into a propositional formula.',
+    ru: 'Введённое выражение нельзя преобразовать в пропозициональную формулу.',
+  },
+};

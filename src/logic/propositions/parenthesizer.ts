@@ -3,6 +3,7 @@ import searcher from './searcher';
 import validator from './validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { errorsTexts } from 'texts';
 
 const parenthesizer = {
   parenthesizeVariables(expression: PropositionalExpression): PropositionalExpression {
@@ -89,18 +90,18 @@ const parenthesizer = {
     expression: PropositionalExpression,
   ): { openIndex: number; closeIndex: number } {
     if (validator.isNegationParenthesized(negation, expression)) {
-      throw new PropositionalError('The given negation expression is already parenthesized.');
+      throw new PropositionalError('The given negation expression is already parenthesized.', errorsTexts.parenthesisError);
     }
     const nextSymbol = expression[negation.position + 1];
 
     if (!nextSymbol) {
-      throw new PropositionalError('Cannot find the next symbol after the negation symbol.');
+      throw new PropositionalError('Cannot find the next symbol after the negation symbol.', errorsTexts.parenthesisError);
     }
 
     const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
 
     if (!closeParenthesis) {
-      throw new PropositionalError('Cannot find the close parenthesis for the negation expression.');
+      throw new PropositionalError('Cannot find the close parenthesis for the negation expression.', errorsTexts.parenthesisError);
     }
 
     return { openIndex: negation.position === 0 ? 0 : negation.position, closeIndex: closeParenthesis.position };
@@ -111,7 +112,7 @@ const parenthesizer = {
     expression: PropositionalExpression,
   ): { openIndex: number; closeIndex: number } {
     if (validator.isBinaryOperatorParenthesized(operator, expression)) {
-      throw new PropositionalError('The given binary operator is already parenthesized.');
+      throw new PropositionalError('The given binary operator is already parenthesized.', errorsTexts.parenthesisError);
     }
 
     const previousSymbol = expression[operator.position - 1];
@@ -120,11 +121,11 @@ const parenthesizer = {
     const closeParenthesis = searcher.findMatchingCloseParenthesis(expression, nextSymbol);
 
     if (!openParenthesis) {
-      throw new PropositionalError('Cannot find an open parenthesis for the binary operator.');
+      throw new PropositionalError('Cannot find an open parenthesis for the binary operator.', errorsTexts.parenthesisError);
     }
 
     if (!closeParenthesis) {
-      throw new PropositionalError('Cannot find a close parenthesis for the binary operator.');
+      throw new PropositionalError('Cannot find a close parenthesis for the binary operator.', errorsTexts.parenthesisError);
     }
 
     return { openIndex: openParenthesis.position, closeIndex: closeParenthesis.position };

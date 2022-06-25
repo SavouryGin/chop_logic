@@ -3,6 +3,7 @@ import validator from './validator';
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { errorsTexts } from 'texts';
 
 const parser = {
   getCharsArray(input: string): string[] {
@@ -40,7 +41,10 @@ const parser = {
     const innerExpression = this.removeSurroundingElements(expression);
     const delimiterItem = innerExpression.find((item) => item.position === position);
     if (!delimiterItem) {
-      throw new PropositionalError(`Cannot split the given expression into two arguments by position "${position}"`);
+      throw new PropositionalError(
+        `Cannot split the given expression into two arguments by position "${position}"`,
+        errorsTexts.syntaxError,
+      );
     }
 
     const splitIndex = innerExpression.indexOf(delimiterItem);
@@ -72,7 +76,7 @@ const parser = {
 
   findMainOperator(expression: PropositionalExpression): PropositionalSymbol {
     if (expression.length < 3) {
-      throw new PropositionalError(`Cannot find the main operator. The given expression is incorrect.`);
+      throw new PropositionalError(`Cannot find the main operator. The given expression is incorrect.`, errorsTexts.syntaxError);
     }
 
     const subExpressions = this.extractAllSubExpressions(expression);
@@ -90,7 +94,7 @@ const parser = {
     const mainOperator = expression.find((item) => item.position === mainIndexes[0]);
 
     if (!mainOperator || mainOperator.type === 'parentheses') {
-      throw new PropositionalError(`Cannot find the main operator of the sub expression.`);
+      throw new PropositionalError(`Cannot find the main operator of the sub expression.`, errorsTexts.syntaxError);
     }
 
     return mainOperator;
