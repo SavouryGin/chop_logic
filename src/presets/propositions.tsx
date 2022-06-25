@@ -75,6 +75,8 @@ const constants = {
     type: 'parentheses',
     position: 0,
   },
+
+  implicationCreationInitialValues: { firstVariable: '', secondVariable: '' },
 };
 
 export default Object.freeze(constants);

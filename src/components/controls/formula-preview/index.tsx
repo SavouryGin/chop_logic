@@ -3,7 +3,6 @@ import Label from 'components/controls/label';
 import React from 'react';
 import converter from 'logic/propositions/converter';
 import formatClassName from 'helpers/formatters/format-class-name';
-import validator from 'logic/propositions/validator';
 import { FormulaPreviewProps } from 'types';
 import { InputID } from 'enums';
 import { inputTexts } from 'texts';
@@ -16,13 +15,16 @@ function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactEl
   const language = useAppSelector(settingsSelectors.getLanguage);
   const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
-
-  const parsedText = validator.isPropositionalExpression(text) ? text : converter.convertStringToExpression(text);
+  const convertedInput = converter.convertStringToFormulaPreview(text);
 
   return (
     <div className={classNames}>
       <Label id='formula-preview' text={labelText} isDarkMode={isDarkMode} />
-      <Formula id='formula-preview' content={parsedText} className='formula-preview__formula' />
+      {typeof convertedInput === 'string' ? (
+        <p className='formula-preview__error'>{convertedInput}</p>
+      ) : (
+        <Formula id='formula-preview' content={convertedInput} className='formula-preview__formula' />
+      )}
     </div>
   );
 }
