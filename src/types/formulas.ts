@@ -2,7 +2,7 @@ import { CommonProps } from './general';
 import { PropositionalSymbol } from './propositions';
 
 export type FormulaPreviewProps = CommonProps & {
-  text: string | PropositionalSymbol[];
+  text: string;
 };
 
 export type FormulaProps = CommonProps & {

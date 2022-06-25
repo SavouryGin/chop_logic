@@ -82,9 +82,7 @@ const validator = {
 
   checkNumberOfParenthesis(openIndexes: number[], closeIndexes: number[]): void {
     if (openIndexes.length !== closeIndexes.length) {
-      throw new PropositionalError(
-        'Cannot extract sub expressions: the number of open parenthesis does not match with the number of close parenthesis.',
-      );
+      throw new PropositionalError('The number of open parenthesis does not match with the number of close parenthesis.');
     }
   },
 
