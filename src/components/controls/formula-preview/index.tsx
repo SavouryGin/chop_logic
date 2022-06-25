@@ -6,6 +6,7 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { FormulaPreviewProps } from 'types';
 import { InputID } from 'enums';
 import { inputTexts } from 'texts';
+import { isLocalText } from 'helpers/checkers/is-local-text';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
@@ -20,8 +21,8 @@ function FormulaPreview({ text, className }: FormulaPreviewProps): React.ReactEl
   return (
     <div className={classNames}>
       <Label id='formula-preview' text={labelText} isDarkMode={isDarkMode} />
-      {typeof convertedInput === 'string' ? (
-        <p className='formula-preview__error'>{convertedInput}</p>
+      {isLocalText(convertedInput) ? (
+        <p className='formula-preview__error'>{convertedInput[language]}</p>
       ) : (
         <Formula id='formula-preview' content={convertedInput} className='formula-preview__formula' />
       )}

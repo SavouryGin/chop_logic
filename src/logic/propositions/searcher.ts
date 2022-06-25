@@ -1,6 +1,7 @@
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { errorsTexts } from 'texts';
 
 const searcher = {
   findMatchingCloseParenthesis(expression: PropositionalExpression, openParenthesis: PropositionalSymbol): PropositionalSymbol | undefined {
@@ -55,7 +56,7 @@ const searcher = {
     if (Number.isFinite(closestIndex) && Number.isSafeInteger(closestIndex) && closestIndex >= 0) {
       return closestIndex;
     } else {
-      throw new PropositionalError(`Cannot find the closest parenthesis index to the index "${openIndex}".`);
+      throw new PropositionalError(`Cannot find the closest parenthesis index to the index "${openIndex}".`, errorsTexts.parenthesisError);
     }
   },
 };

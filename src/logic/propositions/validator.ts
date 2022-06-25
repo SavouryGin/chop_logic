@@ -2,6 +2,7 @@ import searcher from './searcher';
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { errorsTexts } from 'texts';
 
 const validator = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -82,7 +83,10 @@ const validator = {
 
   checkNumberOfParenthesis(openIndexes: number[], closeIndexes: number[]): void {
     if (openIndexes.length !== closeIndexes.length) {
-      throw new PropositionalError('The number of open parenthesis does not match with the number of close parenthesis.');
+      throw new PropositionalError(
+        'The number of open parenthesis does not match with the number of close parenthesis.',
+        errorsTexts.parenthesisError,
+      );
     }
   },
 
