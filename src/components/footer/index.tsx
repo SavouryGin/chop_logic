@@ -1,17 +1,15 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
+import { CommonProps } from 'types';
 import { Icon } from 'enums';
-import { externalLinks } from 'assets/const/settings';
+import { externalLinks } from 'presets/settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-type FooterProps = ComponentProps;
-
-function Footer({ className }: FooterProps): React.ReactElement {
+const Footer = ({ className }: CommonProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -39,6 +37,6 @@ function Footer({ className }: FooterProps): React.ReactElement {
       </span>
     </footer>
   );
-}
+};
 
 export default Footer;

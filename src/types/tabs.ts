@@ -1,6 +1,6 @@
-import { ComponentProps, LocalText } from './general';
+import { CommonProps, LocalText } from './general';
 
-export type TabListProps = ComponentProps & {
+export type TabListProps = CommonProps & {
   tabs: TabItem[];
   defaultTabId?: string;
   mode?: 'vertical' | 'horizontal';

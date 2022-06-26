@@ -25,6 +25,8 @@ const config = {
       hooks: path.resolve(__dirname, './src/hooks'),
       errors: path.resolve(__dirname, './src/errors'),
       logic: path.resolve(__dirname, './src/logic'),
+      texts: path.resolve(__dirname, './src/texts'),
+      presets: path.resolve(__dirname, './src/presets'),
       __mocks__: path.resolve(__dirname, './src/__mocks__'),
     },
   },

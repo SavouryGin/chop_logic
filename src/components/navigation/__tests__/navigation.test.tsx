@@ -1,11 +1,10 @@
+import Navigation from '../index';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { routesMap } from 'components/app-router/map';
+import { routesMap } from 'presets/map';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-
-import Navigation from '../index';
 
 const testProps = {
   className: 'test-class-name',

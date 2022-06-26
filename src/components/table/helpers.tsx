@@ -1,8 +1,8 @@
-import Formula from 'components/formula';
+import Formula from 'components/controls/formula';
 import React from 'react';
+import validator from 'logic/propositions/validator';
 import { Language, LocalText, PropositionalExpression, TableColumnProps, TableDataItem } from 'types';
 import { isLocalText } from 'helpers/checkers/is-local-text';
-import { isPropositionalExpression } from 'helpers/checkers/is-propositional-expression';
 
 export function getDataCellsValues(tableRow: TableDataItem, columns: TableColumnProps[], language: Language): (string | JSX.Element)[] {
   const stringValues = [];
@@ -13,7 +13,7 @@ export function getDataCellsValues(tableRow: TableDataItem, columns: TableColumn
       value = '';
     } else if (isLocalText(tableRow[column.field])) {
       value = (tableRow[column.field] as LocalText)[language];
-    } else if (isPropositionalExpression(tableRow[column.field])) {
+    } else if (validator.isPropositionalExpression(tableRow[column.field])) {
       const props = tableRow[column.field] as PropositionalExpression;
       value = <Formula content={props} />;
     } else {

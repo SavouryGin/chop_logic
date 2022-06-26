@@ -5,15 +5,13 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { TabListProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElement {
+const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal' }: TabListProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const mode = rest.mode || 'horizontal';
   const tabsClassNames = formatClassName([
     'tab-list',
-    rest.className,
+    className,
     { 'tab-list_dark': isDarkMode, 'tab-list_vertical': mode === 'vertical' },
   ]);
   const tabIds = tabs.map((item) => item.tabId);
@@ -36,6 +34,6 @@ function TabList({ tabs, defaultTabId, ...rest }: TabListProps): React.ReactElem
       {<TabContent content={tabContent} tabId={activeTab} />}
     </div>
   );
-}
+};
 
 export default TabList;

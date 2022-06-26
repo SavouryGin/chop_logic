@@ -16,7 +16,14 @@ export type ClassNames = {
 
 export type ClassNameProp = string | ClassNames;
 
-export type ComponentProps = {
+export type CommonProps = {
   className?: ClassNameProp;
   id?: string;
+};
+
+export type ModalWindowProps = CommonProps & {
+  isOpened: boolean;
+  onClose: () => void;
+  title: string;
+  content?: React.ReactElement;
 };

@@ -2,8 +2,24 @@ import searcher from './searcher';
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { errorsTexts } from 'texts';
 
 const validator = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  isPropositionalExpression(array: any): array is PropositionalExpression {
+    if (!array || !Array.isArray(array)) {
+      return false;
+    }
+
+    for (const item of array) {
+      if (item.input === undefined || item.type === undefined) {
+        return false;
+      }
+    }
+
+    return true;
+  },
+
   isIncorrectMainSymbol(symbol: PropositionalSymbol): boolean {
     if (symbol.type === 'variable' || symbol.type === 'operator') {
       return false;
@@ -68,7 +84,8 @@ const validator = {
   checkNumberOfParenthesis(openIndexes: number[], closeIndexes: number[]): void {
     if (openIndexes.length !== closeIndexes.length) {
       throw new PropositionalError(
-        'Cannot extract sub expressions: the number of open parenthesis does not match with the number of close parenthesis.',
+        'The number of open parenthesis does not match with the number of close parenthesis.',
+        errorsTexts.parenthesisError,
       );
     }
   },

@@ -1,12 +1,8 @@
-import Checkbox from 'components/inputs/checkbox';
+import Checkbox from 'components/controls/checkbox';
 import React from 'react';
-import { TableIdsProps } from 'types';
+import { SelectRowCheckboxProps } from 'types';
 
-export type SelectRowCheckboxProps = {
-  rowId: string;
-} & TableIdsProps;
-
-function SelectRowCheckbox({ rowId, selectedIds, setSelectedIds }: SelectRowCheckboxProps): React.ReactElement {
+const SelectRowCheckbox = ({ rowId, selectedIds, setSelectedIds }: SelectRowCheckboxProps) => {
   const onChangeRowCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked, id } = e.target;
     if (checked) {
@@ -27,6 +23,6 @@ function SelectRowCheckbox({ rowId, selectedIds, setSelectedIds }: SelectRowChec
       />
     </td>
   );
-}
+};
 
 export default SelectRowCheckbox;

@@ -1,8 +1,9 @@
-import constants from 'assets/const/propositions';
+import constants from 'presets/propositions';
 import regularExpressions from 'helpers/regular-expressions';
 import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalFormula, PropositionalSymbol } from 'types';
+import { errorsTexts } from 'texts';
 
 const factory = {
   createOperator(symbol: PropositionalSymbol): PropositionalOperator {
@@ -26,7 +27,7 @@ const factory = {
         if (symbol.type === 'variable') {
           return PropositionalOperator.Var;
         } else {
-          throw new PropositionalError(`Cannot create a correct operator from input "${symbol.input}"`);
+          throw new PropositionalError(`Cannot create an operator from input "${symbol.input}".`, errorsTexts.inputError);
         }
       }
     }
@@ -50,7 +51,7 @@ const factory = {
         return LogicalSymbolHexCode.Equivalence;
       }
       default: {
-        throw new PropositionalError(`Cannot get a correct logical representation from the input "${char}"`);
+        throw new PropositionalError(`Cannot get a logical representation of the symbol "${char}".`, errorsTexts.inputError);
       }
     }
   },
@@ -78,7 +79,7 @@ const factory = {
         position,
       };
     } else {
-      throw new PropositionalError(`Cannot create a propositional symbol from the input "${char}" at position ${position}`);
+      throw new PropositionalError(`Cannot create a propositional symbol from the input "${char}".`, errorsTexts.inputError);
     }
   },
 

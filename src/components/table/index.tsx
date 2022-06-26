@@ -5,22 +5,18 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { TableProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
-  // Selectors
+const Table = ({ columns, data, hasCheckboxColumn, passSelectedIds, className }: TableProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  // Class names
-  const tableClassNames = formatClassName(['table', rest.className, { table_dark: isDarkMode }]);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const tableClassNames = formatClassName(['table', className, { table_dark: isDarkMode }]);
   const headClassNames = formatClassName(['table__head', { table__head_dark: isDarkMode }]);
   const bodyClassNames = formatClassName(['table__body', { table__body_dark: isDarkMode }]);
-  // State
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  // Effects
+
   useEffect(() => {
-    if (rest.passSelectedIds) {
-      rest.passSelectedIds(selectedIds);
+    if (passSelectedIds) {
+      passSelectedIds(selectedIds);
     }
   }, [selectedIds]);
 
@@ -35,19 +31,19 @@ function Table({ columns, data, ...rest }: TableProps): React.ReactElement {
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
         data={data}
-        hasCheckboxColumn={!!rest.hasCheckboxColumn}
+        hasCheckboxColumn={!!hasCheckboxColumn}
         className={headClassNames}
       />
       <TableBody
         columns={columns}
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
-        hasCheckboxColumn={!!rest.hasCheckboxColumn}
+        hasCheckboxColumn={!!hasCheckboxColumn}
         data={data}
         className={bodyClassNames}
       />
     </table>
   );
-}
+};
 
 export default Table;

@@ -2,6 +2,7 @@
 
 .premise-form {
   padding: $default-padding;
+  min-width: $min-popup-form-width;
 
   &__input {
     margin-bottom: $big-margin;

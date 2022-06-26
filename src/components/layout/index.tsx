@@ -7,10 +7,9 @@ import formatClassName from 'helpers/formatters/format-class-name';
 import { Outlet } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-
 import './styles.scss';
 
-function Layout(): React.ReactElement {
+const Layout = () => {
   // Store flags
   const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
   const isSidebarOpen = useAppSelector(settingsSelectors.getIsSidebarOpened);
@@ -34,6 +33,6 @@ function Layout(): React.ReactElement {
       <Footer className={footerClassNames} />
     </div>
   );
-}
+};
 
 export default Layout;

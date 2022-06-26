@@ -1,7 +1,7 @@
 import React from 'react';
 
-function TruthTables(): React.ReactElement {
+const TruthTables = () => {
   return <div className='truth-tables'>Truth tables</div>;
-}
+};
 
 export default TruthTables;
