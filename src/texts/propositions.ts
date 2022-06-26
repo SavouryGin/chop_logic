@@ -23,8 +23,8 @@ export const formsTexts: TextContainer = {
 
 export const errorsTexts: TextContainer = {
   inputError: {
-    en: 'Invalid character entered.',
-    ru: 'Введён некорректный символ.',
+    en: 'One or more invalid characters entered.',
+    ru: 'Введены один или несколько недопустимых символов.',
   },
   syntaxError: {
     en: 'The entered character set cannot be converted to a propositional expression.',
