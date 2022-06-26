@@ -2,20 +2,12 @@ import factory from './factory';
 import parenthesizer from './parenthesizer';
 import parser from './parser';
 import validator from './validator';
-import { LocalText, PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalOperator } from 'enums';
 import { errorsTexts } from 'texts';
 
 const converter = {
-  convertStringToFormulaPreview(input: string): PropositionalExpression | LocalText {
-    try {
-      return this.convertStringToExpression(input);
-    } catch (err: unknown) {
-      return (err as PropositionalError).displayedErrorMessage;
-    }
-  },
-
   convertStringToExpression(input: string): PropositionalExpression {
     const charsArray = parser.getCharsArray(input);
     const preparedArray = parser.joinLogicalSymbols(charsArray);
