@@ -16,6 +16,10 @@
     padding: 0 $small-padding;
     font-size: $tiny-font-size;
     color: $light-strong-accent-color;
+
+    &_dark {
+      color: $dark-strong-accent-color;
+    }
   }
 
   // Default colors
