@@ -11,14 +11,15 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const FormulaPreview = ({ text, className }: FormulaPreviewProps) => {
+const FormulaPreview = ({ text, className, passError }: FormulaPreviewProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const language = useAppSelector(settingsSelectors.getLanguage);
+  const [error, setError] = useState<PropositionalError | null>(null);
+  const [expression, setExpression] = useState<PropositionalExpression>([]);
+
   const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
   const errorClassNames = formatClassName(['formula-preview__error', { 'formula-preview__error_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
-  const [error, setError] = useState<PropositionalError | null>(null);
-  const [expression, setExpression] = useState<PropositionalExpression>([]);
 
   useEffect(() => {
     if (text.length) {
@@ -30,8 +31,17 @@ const FormulaPreview = ({ text, className }: FormulaPreviewProps) => {
       } catch (err: unknown) {
         setError(err as PropositionalError);
       }
+    } else {
+      setExpression([]);
+      setError(null);
     }
   }, [text]);
+
+  useEffect(() => {
+    if (passError) {
+      passError(error);
+    }
+  }, [error]);
 
   return (
     <div className={classNames}>
