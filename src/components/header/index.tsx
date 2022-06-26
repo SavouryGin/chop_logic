@@ -3,13 +3,10 @@ import LeftHeaderPanel from './elements/left-header-panel';
 import React from 'react';
 import RightHeaderPanel from './elements/right-header-panel';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { ComponentProps } from 'types';
-
+import { CommonProps } from 'types';
 import './styles.scss';
 
-export type HeaderProps = ComponentProps;
-
-function Header({ className }: HeaderProps): React.ReactElement {
+const Header = ({ className }: CommonProps) => {
   return (
     <header className={formatClassName(['header', className])}>
       <LeftHeaderPanel />
@@ -17,6 +14,6 @@ function Header({ className }: HeaderProps): React.ReactElement {
       <RightHeaderPanel />
     </header>
   );
-}
+};
 
 export default Header;

@@ -1,13 +1,9 @@
-import Checkbox from 'components/inputs/checkbox';
+import Checkbox from 'components/controls/checkbox';
 import React from 'react';
 import { Guid } from 'guid-typescript';
-import { TableIdsProps } from 'types';
+import { SelectAllCheckboxProps } from 'types';
 
-type SelectAllCheckboxProps = {
-  allRowIds: string[];
-} & TableIdsProps;
-
-function SelectAllCheckbox({ selectedIds, setSelectedIds, allRowIds }: SelectAllCheckboxProps): React.ReactElement {
+const SelectAllCheckbox = ({ selectedIds, setSelectedIds, allRowIds }: SelectAllCheckboxProps) => {
   const tableId = Guid.create().toString();
   const onChangeSelectAllCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
@@ -30,6 +26,6 @@ function SelectAllCheckbox({ selectedIds, setSelectedIds, allRowIds }: SelectAll
       />
     </th>
   );
-}
+};
 
 export default SelectAllCheckbox;

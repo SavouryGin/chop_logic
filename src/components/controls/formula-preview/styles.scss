@@ -1,0 +1,31 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+
+.formula-preview {
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius;
+  height: $formula-preview-height;
+  margin-bottom: $big-margin;
+
+  &__formula {
+    padding: 0 $small-padding;
+  }
+
+  &__error {
+    padding: 0 $small-padding;
+    font-size: $tiny-font-size;
+    color: $light-strong-accent-color;
+
+    &_dark {
+      color: $dark-strong-accent-color;
+    }
+  }
+
+  // Default colors
+  border: $light-weak-border;
+
+  &_dark {
+    border: $dark-weak-border;
+  }
+}

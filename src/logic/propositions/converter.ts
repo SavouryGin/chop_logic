@@ -5,6 +5,7 @@ import validator from './validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalOperator } from 'enums';
+import { errorsTexts } from 'texts';
 
 const converter = {
   convertStringToExpression(input: string): PropositionalExpression {
@@ -20,7 +21,7 @@ const converter = {
   convertExpressionToFormula(expression: PropositionalExpression): PropositionalFormula {
     const mainSymbol = parser.findMainOperator(expression);
     if (validator.isIncorrectMainSymbol(mainSymbol)) {
-      throw new PropositionalError(`Cannot convert expression to formula.\nThe main symbol is incorrect: ${mainSymbol.input}`);
+      throw new PropositionalError(`Cannot convert this expression to a formula.`, errorsTexts.semanticError);
     }
     const operator = factory.createOperator(mainSymbol);
 
@@ -45,7 +46,7 @@ const converter = {
     if (!firstVariable.length || !secondVariable.length) {
       return [];
     }
-    const input = `(${firstVariable} => (${secondVariable} => ${firstVariable}))`;
+    const input = `${firstVariable} => (${secondVariable} => ${firstVariable})`;
 
     return this.convertStringToExpression(input);
   },

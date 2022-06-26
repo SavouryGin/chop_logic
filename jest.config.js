@@ -13,6 +13,8 @@ module.exports = {
     '^hooks(.*)$': '<rootDir>/src/hooks$1',
     '^errors(.*)$': '<rootDir>/src/errors$1',
     '^logic(.*)$': '<rootDir>/src/logic$1',
+    '^texts(.*)$': '<rootDir>/src/texts$1',
+    '^presets(.*)$': '<rootDir>/src/presets$1',
     '^__mocks__(.*)$': '<rootDir>/src/__mocks__$1',
     '\\.(css|scss)$': '<rootDir>/src/__mocks__/style-mock.js',
   },

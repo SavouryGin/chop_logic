@@ -1,15 +1,15 @@
 import React, { ReactElement, ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { Reducer, createStore } from '@reduxjs/toolkit';
+import { Reducer, configureStore } from '@reduxjs/toolkit';
 import { RenderOptions, RenderResult, render } from '@testing-library/react';
 
 interface IProps {
   children?: ReactNode;
 }
 
-function renderWithRedux(ui: ReactElement, reducer: Reducer, initialState = {}, renderOptions?: RenderOptions): RenderResult {
-  const mockedStore = createStore(reducer, initialState);
+const renderWithRedux = (ui: ReactElement, reducer: Reducer, preloadedState = {}, renderOptions?: RenderOptions): RenderResult => {
+  const mockedStore = configureStore({ reducer, preloadedState });
   const Wrapper: React.FC = ({ children }: IProps) => {
     return (
       <Provider store={mockedStore}>
@@ -19,6 +19,6 @@ function renderWithRedux(ui: ReactElement, reducer: Reducer, initialState = {}, 
   };
 
   return render(ui, { wrapper: Wrapper, ...renderOptions });
-}
+};
 
 export default renderWithRedux;

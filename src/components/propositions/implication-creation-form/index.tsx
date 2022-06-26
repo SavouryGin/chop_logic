@@ -1,37 +1,36 @@
-import Form from 'components/form';
-import FormulaPreview from 'components/formula-preview';
+import Form from 'components/controls/form';
+import FormulaPreview from 'components/controls/formula-preview';
 import React, { useState } from 'react';
-import TextInput from 'components/inputs/text-input';
-import converter from 'logic/propositions/converter';
+import TextInput from 'components/controls/text-input';
+import constants from 'presets/propositions';
 import { ButtonID, GreekSymbol, InputID, LogicalSymbolHexCode } from 'enums';
 import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
-import { formsTexts } from 'assets/texts/propositions';
+import { formsTexts } from 'texts/propositions';
 import { propositionsActions } from 'store/propositions/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
-function ImplicationCreationForm(): React.ReactElement {
+const ImplicationCreationForm = () => {
   const dispatch = useAppDispatch();
-  const implicationCreationInitialValues = { firstVariable: '', secondVariable: '' };
-  const [formValue, setFormValue] = useState(implicationCreationInitialValues);
-  const isDisabled = formValue.firstVariable.length === 0 || formValue.secondVariable.length === 0;
+  const [values, setValues] = useState(constants.implicationCreationInitialValues);
+  const isDisabled = values.firstVariable.length === 0 || values.secondVariable.length === 0;
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(propositionsActions.createImplication({ ...formValue }));
+    dispatch(propositionsActions.createImplication({ ...values }));
     closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
   };
 
-  const takeValues = (values: FormValues) => setFormValue(values as typeof implicationCreationInitialValues);
+  const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);
 
   const content = (
     <>
       <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
       <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
-      <FormulaPreview text={converter.convertToICExpression(formValue.firstVariable, formValue.secondVariable)} />
+      <FormulaPreview text={`${values.firstVariable} => (${values.secondVariable} => ${values.firstVariable})`} />
     </>
   );
 
@@ -41,7 +40,7 @@ function ImplicationCreationForm(): React.ReactElement {
       <p className='implication-creation-form__formula'>{`${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Phi} )`}</p>
       <Form
         onSubmit={onSubmit}
-        initialValues={implicationCreationInitialValues}
+        initialValues={constants.implicationCreationInitialValues}
         inputs={content}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
@@ -49,6 +48,6 @@ function ImplicationCreationForm(): React.ReactElement {
       />
     </div>
   );
-}
+};
 
 export default ImplicationCreationForm;

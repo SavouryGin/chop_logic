@@ -2,6 +2,7 @@
 
 .implication-creation-form {
   padding: $default-padding;
+  min-width: $min-popup-form-width;
 
   &__input {
     margin: $big-padding 0;

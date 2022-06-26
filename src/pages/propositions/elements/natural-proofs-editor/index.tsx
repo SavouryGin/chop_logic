@@ -1,9 +1,8 @@
 import React from 'react';
-
 import './styles.scss';
 
-function NaturalProofsEditor(): React.ReactElement {
+const NaturalProofsEditor = () => {
   return <div className='natural-proofs-editor'>NaturalProofsEditor</div>;
-}
+};
 
 export default NaturalProofsEditor;

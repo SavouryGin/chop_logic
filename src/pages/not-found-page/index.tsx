@@ -1,17 +1,16 @@
 import AppLink from 'components/app-link';
 import React from 'react';
 import { Icon, Page } from 'enums';
-import { paths } from 'components/app-router/paths';
-
+import { paths } from 'presets/paths';
 import './styles.scss';
 
-function NotFoundPage(): React.ReactElement {
+const NotFoundPage = () => {
   return (
     <div className='not-found-page' data-testid='not-found-page'>
       <h2 className='not-found-page__header'>404 Page not found</h2>
       <AppLink path={paths[Page.Home]} text={'Go Home'} isNavigation icon={Icon.Home} />
     </div>
   );
-}
+};
 
 export default NotFoundPage;

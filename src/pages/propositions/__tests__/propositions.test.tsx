@@ -1,12 +1,12 @@
+import Propositions from 'pages/propositions';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsInitialState, propositionsSlice } from 'store/propositions/slice';
+import { propositionsTabs } from 'presets/propositions';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-import { titles } from 'assets/texts/propositions';
-
-import Propositions, { propositionsTabs } from 'pages/propositions';
+import { titles } from 'texts/propositions';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,

@@ -7,10 +7,9 @@ import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-function AppLink({ path, text, isNavigation, icon, ...rest }: AppLinkProps): React.ReactElement {
+const AppLink = ({ path, text, isNavigation, icon, ...rest }: AppLinkProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-
   const classNames = formatClassName(['app-link', rest.className, { 'app-link_dark': isDarkMode }]);
 
   const onLinkHover = () => {
@@ -34,6 +33,6 @@ function AppLink({ path, text, isNavigation, icon, ...rest }: AppLinkProps): Rea
       {isNavigation ? navLink : link}
     </span>
   );
-}
+};
 
 export default AppLink;
