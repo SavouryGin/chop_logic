@@ -18,6 +18,8 @@ describe('Propositions converter tests', () => {
 
   it('convertToICExpression() method returns a correct propositional expression', () => {
     expect(converter.convertToICExpression('(~(p))', '((p) & (q))')).toEqual(mocks.propositionalExpression);
+    expect(converter.convertToICExpression('~p', 'p&q')).toEqual(mocks.propositionalExpression);
+    expect(converter.convertToICExpression('(~p)', '(p & q)')).toEqual(mocks.propositionalExpression);
   });
 
   it('convertExpressionToFormula() method returns a correct propositional formula', () => {

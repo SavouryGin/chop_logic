@@ -1,9 +1,9 @@
-import constants from 'presets/propositions';
 import searcher from './searcher';
 import validator from './validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 import { errorsTexts } from 'texts';
+import { preparedSymbols } from 'presets/propositions';
 
 const parenthesizer = {
   parenthesizeVariables(expression: PropositionalExpression): PropositionalExpression {
@@ -12,11 +12,7 @@ const parenthesizer = {
     for (const symbol of expression) {
       const isParenthesizingNeeded = symbol.type === 'variable' && !validator.isVariableParenthesized(symbol, expression);
       if (isParenthesizingNeeded) {
-        output.push(
-          constants.openParenthesisSymbol as PropositionalSymbol,
-          symbol,
-          constants.closeParenthesisSymbol as PropositionalSymbol,
-        );
+        output.push(preparedSymbols.openParenthesis, symbol, preparedSymbols.closeParenthesis);
       } else {
         output.push(symbol);
       }
@@ -69,8 +65,8 @@ const parenthesizer = {
 
   insertOpenAndCloseParenthesis(expression: PropositionalExpression, openPosition: number, closePosition: number): PropositionalExpression {
     const output: PropositionalExpression = [];
-    const open = constants.openParenthesisSymbol as PropositionalSymbol;
-    const close = constants.closeParenthesisSymbol as PropositionalSymbol;
+    const open = preparedSymbols.openParenthesis;
+    const close = preparedSymbols.closeParenthesis;
 
     for (const symbol of expression) {
       if (symbol.position === openPosition) {
@@ -132,11 +128,7 @@ const parenthesizer = {
   },
 
   wrapWithParenthesis(input: PropositionalExpression): PropositionalExpression {
-    return this.renumberPositions([
-      constants.openParenthesisSymbol as PropositionalSymbol,
-      ...input,
-      constants.closeParenthesisSymbol as PropositionalSymbol,
-    ]);
+    return this.renumberPositions([preparedSymbols.openParenthesis, ...input, preparedSymbols.closeParenthesis]);
   },
 
   renumberPositions(input: PropositionalExpression): PropositionalExpression {
