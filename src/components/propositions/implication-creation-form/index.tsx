@@ -1,5 +1,4 @@
 import Form from 'components/controls/form';
-import FormulaPreview from 'components/controls/formula-preview';
 import React, { useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'presets/propositions';
@@ -30,7 +29,6 @@ const ImplicationCreationForm = () => {
     <>
       <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
       <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
-      <FormulaPreview text={`${values.firstVariable} => (${values.secondVariable} => ${values.firstVariable})`} />
     </>
   );
 
