@@ -4,8 +4,8 @@ import HeuristicsOfPropositions from 'pages/propositions/elements/heuristics-of-
 import NaturalProofsEditor from 'pages/propositions/elements/natural-proofs-editor';
 import React from 'react';
 import RulesOfInference from 'pages/propositions/elements/rules-of-inference';
-import { LogicalSymbolRawInput } from 'enums';
-import { TabItem } from 'types';
+import { LogicalSymbolHexCode, LogicalSymbolRawInput } from 'enums';
+import { PropositionalSymbol, TabItem } from 'types';
 import { titles } from 'texts';
 
 export const propositionsTabs: TabItem[] = [
@@ -36,6 +36,29 @@ export const propositionsTabs: TabItem[] = [
   },
 ];
 
+export const preparedSymbols: { [key in string]: PropositionalSymbol } = {
+  openParenthesis: {
+    input: LogicalSymbolRawInput.OpenParenthesis,
+    representation: '(',
+    type: 'parentheses',
+    position: 0,
+  },
+
+  closeParenthesis: {
+    input: LogicalSymbolRawInput.CloseParenthesis,
+    representation: ')',
+    type: 'parentheses',
+    position: 0,
+  },
+
+  implication: {
+    input: LogicalSymbolRawInput.Implication,
+    representation: LogicalSymbolHexCode.Implication,
+    type: 'operator',
+    position: 0,
+  },
+};
+
 const constants = {
   logicalOperators: [
     LogicalSymbolRawInput.Implication,
@@ -61,20 +84,6 @@ const constants = {
       title: { en: 'Comment', ru: 'Коммент.' },
     },
   ],
-
-  openParenthesisSymbol: {
-    input: LogicalSymbolRawInput.OpenParenthesis,
-    representation: '(',
-    type: 'parentheses',
-    position: 0,
-  },
-
-  closeParenthesisSymbol: {
-    input: LogicalSymbolRawInput.CloseParenthesis,
-    representation: ')',
-    type: 'parentheses',
-    position: 0,
-  },
 
   implicationCreationInitialValues: { firstVariable: '', secondVariable: '' },
 };
