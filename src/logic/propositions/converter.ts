@@ -6,6 +6,7 @@ import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalOperator } from 'enums';
 import { errorsTexts } from 'texts';
+import { preparedSymbols } from 'presets/propositions';
 
 const converter = {
   convertStringToExpression(input: string): PropositionalExpression {
@@ -46,9 +47,22 @@ const converter = {
     if (!firstVariable.length || !secondVariable.length) {
       return [];
     }
-    const input = `${firstVariable} => (${secondVariable} => ${firstVariable})`;
 
-    return this.convertStringToExpression(input);
+    const firstExpression = this.convertStringToExpression(firstVariable);
+    const secondExpression = this.convertStringToExpression(secondVariable);
+    const output = [
+      preparedSymbols.openParenthesis,
+      ...firstExpression,
+      preparedSymbols.implication,
+      preparedSymbols.openParenthesis,
+      ...secondExpression,
+      preparedSymbols.implication,
+      ...firstExpression,
+      preparedSymbols.closeParenthesis,
+      preparedSymbols.closeParenthesis,
+    ];
+
+    return parenthesizer.renumberPositions(output);
   },
 };
 
