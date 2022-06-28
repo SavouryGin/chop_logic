@@ -64,6 +64,12 @@ const converter = {
 
     return parenthesizer.renumberPositions(output);
   },
+
+  convertFormulaToUserFriendlyExpression(formula: PropositionalFormula): PropositionalExpression {
+    console.log(formula);
+
+    return [];
+  },
 };
 
 export default Object.freeze(converter);
