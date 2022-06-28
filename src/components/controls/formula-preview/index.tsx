@@ -25,9 +25,10 @@ const FormulaPreview = ({ text, className, passError }: FormulaPreviewProps) => 
     if (text.length) {
       try {
         const convertedInput = converter.convertStringToExpression(text);
-        converter.convertExpressionToFormula(convertedInput);
+        const formula = converter.convertExpressionToFormula(convertedInput);
+        const userFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
         setError(null);
-        setExpression(convertedInput);
+        setExpression(userFriendlyExpression);
       } catch (err: unknown) {
         setError(err as PropositionalError);
       }
