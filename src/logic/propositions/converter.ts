@@ -67,8 +67,29 @@ const converter = {
 
   convertFormulaToUserFriendlyExpression(formula: PropositionalFormula): PropositionalExpression {
     console.log(formula);
+    let output: PropositionalExpression = [];
 
-    return [];
+    if (formula.operator === PropositionalOperator.Var) {
+      output = [
+        {
+          input: formula.values as string,
+          representation: formula.values as string,
+          type: 'variable',
+          position: 0,
+        },
+      ];
+    } else if (formula.operator === PropositionalOperator.Not) {
+      output = [preparedSymbols.negation, ...this.convertFormulaToUserFriendlyExpression(formula.values[0] as PropositionalFormula)];
+    } else if (validator.isBinaryOperator(formula.operator)) {
+      const operator = factory.createBinarySymbol(formula.operator);
+      const leftOperand = this.convertFormulaToUserFriendlyExpression(formula.values[0] as PropositionalFormula);
+      const rightOperand = this.convertFormulaToUserFriendlyExpression(formula.values[1] as PropositionalFormula);
+      output = [preparedSymbols.openParenthesis, ...leftOperand, operator, ...rightOperand, preparedSymbols.closeParenthesis];
+    }
+
+    console.log(output);
+
+    return parenthesizer.renumberPositions(output);
   },
 };
 
