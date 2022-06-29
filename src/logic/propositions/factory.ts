@@ -1,4 +1,4 @@
-import constants from 'presets/propositions';
+import constants, { preparedSymbols } from 'presets/propositions';
 import regularExpressions from 'helpers/regular-expressions';
 import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
@@ -106,6 +106,29 @@ const factory = {
       operator: PropositionalOperator.Not,
       values: [argument],
     };
+  },
+
+  createBinarySymbol(input: PropositionalOperator): PropositionalSymbol {
+    switch (input) {
+      case 'OR': {
+        return preparedSymbols.disjunction;
+      }
+      case 'AND': {
+        return preparedSymbols.conjunction;
+      }
+      case 'IMPLIES': {
+        return preparedSymbols.implication;
+      }
+      case 'EQUIV': {
+        return preparedSymbols.equivalence;
+      }
+      default: {
+        throw new PropositionalError(
+          `Cannot convert the given propositional operator to a user friendly expression: ${input}`,
+          errorsTexts.semanticError,
+        );
+      }
+    }
   },
 };
 
