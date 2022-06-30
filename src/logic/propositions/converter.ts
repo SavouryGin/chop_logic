@@ -66,10 +66,26 @@ const converter = {
   },
 
   convertFormulaToUserFriendlyExpression(formula: PropositionalFormula): PropositionalExpression {
-    console.log(formula);
+    let expression = this.convertFormulaToExpression(formula);
+
+    if (validator.isOpenParenthesisSymbol(expression[0]) && validator.isCloseParenthesisSymbol(expression[expression.length - 1])) {
+      expression = parser.removeSurroundingElements(expression);
+    }
+
+    return parenthesizer.renumberPositions(expression);
+  },
+
+  convertFormulaToExpression(formula: PropositionalFormula): PropositionalExpression {
     let output: PropositionalExpression = [];
 
-    if (formula.operator === PropositionalOperator.Var) {
+    if (formula.operator === PropositionalOperator.Not) {
+      output = [preparedSymbols.negation, ...this.convertFormulaToExpression(formula.values[0] as PropositionalFormula)];
+    } else if (validator.isBinaryOperator(formula.operator)) {
+      const operator = factory.createBinarySymbol(formula.operator);
+      const leftOperand = this.convertFormulaToExpression(formula.values[0] as PropositionalFormula);
+      const rightOperand = this.convertFormulaToExpression(formula.values[1] as PropositionalFormula);
+      output = [preparedSymbols.openParenthesis, ...leftOperand, operator, ...rightOperand, preparedSymbols.closeParenthesis];
+    } else if (formula.operator === PropositionalOperator.Var) {
       output = [
         {
           input: formula.values as string,
@@ -78,18 +94,9 @@ const converter = {
           position: 0,
         },
       ];
-    } else if (formula.operator === PropositionalOperator.Not) {
-      output = [preparedSymbols.negation, ...this.convertFormulaToUserFriendlyExpression(formula.values[0] as PropositionalFormula)];
-    } else if (validator.isBinaryOperator(formula.operator)) {
-      const operator = factory.createBinarySymbol(formula.operator);
-      const leftOperand = this.convertFormulaToUserFriendlyExpression(formula.values[0] as PropositionalFormula);
-      const rightOperand = this.convertFormulaToUserFriendlyExpression(formula.values[1] as PropositionalFormula);
-      output = [preparedSymbols.openParenthesis, ...leftOperand, operator, ...rightOperand, preparedSymbols.closeParenthesis];
     }
 
-    console.log(output);
-
-    return parenthesizer.renumberPositions(output);
+    return output;
   },
 };
 
