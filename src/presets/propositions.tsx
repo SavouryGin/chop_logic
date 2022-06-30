@@ -104,7 +104,7 @@ const constants = {
       title: { en: '#', ru: '№' },
     },
     {
-      field: 'expression',
+      field: 'friendlyExpression',
       title: { en: 'Formula', ru: 'Формула' },
     },
     {
