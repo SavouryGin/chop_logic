@@ -18,6 +18,7 @@ export type DirectProofsTableItem = {
   id: string;
   step: number;
   expression: PropositionalExpression;
+  friendlyExpression: PropositionalExpression;
   comment: LocalText | string;
   formula: PropositionalFormula;
 };
