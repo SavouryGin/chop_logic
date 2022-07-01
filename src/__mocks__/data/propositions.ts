@@ -222,6 +222,87 @@ const propositionalExpression: PropositionalExpression = [
   },
 ];
 
+const friendlyPropositionalExpression: PropositionalExpression = [
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 0,
+  },
+  {
+    input: 'P',
+    representation: 'P',
+    type: 'variable',
+    position: 1,
+  },
+  {
+    input: '=>',
+    representation: '⇒',
+    type: 'operator',
+    position: 2,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 3,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 4,
+  },
+  {
+    input: 'P',
+    representation: 'P',
+    type: 'variable',
+    position: 5,
+  },
+  {
+    input: '&',
+    representation: '∧',
+    type: 'operator',
+    position: 6,
+  },
+  {
+    input: 'Q',
+    representation: 'Q',
+    type: 'variable',
+    position: 7,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 8,
+  },
+  {
+    input: '=>',
+    representation: '⇒',
+    type: 'operator',
+    position: 9,
+  },
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 10,
+  },
+  {
+    input: 'P',
+    representation: 'P',
+    type: 'variable',
+    position: 11,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 12,
+  },
+];
+
 const firstSubExpression: PropositionalExpression = [
   {
     input: '(',
@@ -841,6 +922,7 @@ const propositions = {
   secondSubExpression,
   firstSubExpression,
   propositionalExpression,
+  friendlyPropositionalExpression,
   propositionalAtom,
   propositionalSymbols,
   oneVariableExpression,
