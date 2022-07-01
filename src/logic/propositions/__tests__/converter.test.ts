@@ -42,4 +42,72 @@ describe('Propositions converter tests', () => {
       ]);
     }).toThrow(PropositionalError);
   });
+
+  it('convertFormulaToUserFriendlyExpression() return an un-parenthesized expression', () => {
+    expect(converter.convertFormulaToUserFriendlyExpression(mocks.propositionalFormula)).toEqual(mocks.friendlyPropositionalExpression);
+    expect(converter.convertFormulaToUserFriendlyExpression(mocks.firstSubFormula)).toEqual([
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 0,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 1,
+      },
+    ]);
+    expect(converter.convertFormulaToUserFriendlyExpression(mocks.secondSubFormula)).toEqual([
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 1,
+      },
+      {
+        input: '&',
+        representation: '∧',
+        type: 'operator',
+        position: 2,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 3,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 4,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 5,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 6,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 7,
+      },
+    ]);
+  });
 });
