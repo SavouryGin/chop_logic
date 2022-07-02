@@ -109,8 +109,12 @@ const validator = {
 
     const rightSymbol = searcher.findMatchingCloseParenthesis(expression, leftSymbol);
 
-    if (this.isCloseParenthesisSymbol(rightSymbol)) {
-      return true;
+    if (this.isCloseParenthesisSymbol(rightSymbol) && rightSymbol) {
+      if (rightSymbol.position - leftSymbol.position > 5) {
+        return false;
+      } else {
+        return true;
+      }
     }
 
     return false;
