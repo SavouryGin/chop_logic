@@ -65,6 +65,13 @@ const converter = {
     return parenthesizer.renumberPositions(output);
   },
 
+  convertStringToUserFriendlyExpression(input: string): PropositionalExpression {
+    const convertedInput = converter.convertStringToExpression(input);
+    const formula = converter.convertExpressionToFormula(convertedInput);
+
+    return converter.convertFormulaToUserFriendlyExpression(formula);
+  },
+
   convertFormulaToUserFriendlyExpression(formula: PropositionalFormula): PropositionalExpression {
     let expression = this.convertFormulaToExpression(formula);
 
