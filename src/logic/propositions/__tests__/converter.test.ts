@@ -110,4 +110,10 @@ describe('Propositions converter tests', () => {
       },
     ]);
   });
+
+  it('convertStringToUserFriendlyExpression() returns an un-parenthesized expression', () => {
+    expect(converter.convertStringToUserFriendlyExpression('~p=>((p&q)=>~p)')).toEqual(mocks.friendlyPropositionalExpression);
+    expect(converter.convertStringToUserFriendlyExpression('((~p)=>((p&q)=>~p))')).toEqual(mocks.friendlyPropositionalExpression);
+    expect(converter.convertStringToUserFriendlyExpression('~ (~p => q)')).toEqual(mocks.secondFriendlyExpression);
+  });
 });

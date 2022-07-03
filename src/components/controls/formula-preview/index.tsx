@@ -24,11 +24,8 @@ const FormulaPreview = ({ text, className, passError }: FormulaPreviewProps) => 
   useEffect(() => {
     if (text.length) {
       try {
-        const convertedInput = converter.convertStringToExpression(text);
-        const formula = converter.convertExpressionToFormula(convertedInput);
-        const userFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+        setExpression(converter.convertStringToUserFriendlyExpression(text));
         setError(null);
-        setExpression(userFriendlyExpression);
       } catch (err: unknown) {
         setError(err as PropositionalError);
       }

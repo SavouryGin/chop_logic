@@ -17,6 +17,7 @@ export type PropositionsFlag = keyof PropositionsFlags;
 export type DirectProofsTableItem = {
   id: string;
   step: number;
+  rawInput: string;
   expression: PropositionalExpression;
   friendlyExpression: PropositionalExpression;
   comment: LocalText | string;
