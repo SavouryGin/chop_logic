@@ -907,6 +907,51 @@ const threeNegationsExpression: PropositionalExpression = [
   },
 ];
 
+const secondFriendlyExpression: PropositionalExpression = [
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 0,
+  },
+  {
+    input: '(',
+    representation: '(',
+    type: 'parentheses',
+    position: 1,
+  },
+  {
+    input: '~',
+    representation: '¬',
+    type: 'operator',
+    position: 2,
+  },
+  {
+    input: 'P',
+    representation: 'P',
+    type: 'variable',
+    position: 3,
+  },
+  {
+    input: '=>',
+    representation: '⇒',
+    type: 'operator',
+    position: 4,
+  },
+  {
+    input: 'Q',
+    representation: 'Q',
+    type: 'variable',
+    position: 5,
+  },
+  {
+    input: ')',
+    representation: ')',
+    type: 'parentheses',
+    position: 6,
+  },
+];
+
 const propositions = {
   secondSubFormula,
   firstSubFormula,
@@ -923,6 +968,7 @@ const propositions = {
   firstSubExpression,
   propositionalExpression,
   friendlyPropositionalExpression,
+  secondFriendlyExpression,
   propositionalAtom,
   propositionalSymbols,
   oneVariableExpression,
