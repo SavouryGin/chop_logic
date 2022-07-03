@@ -25,7 +25,8 @@ export const propositionsSlice = createSlice({
     },
 
     addPromise: (state, action: PayloadAction<string>) => {
-      const expression = converter.convertStringToExpression(action.payload);
+      const rawInput = action.payload;
+      const expression = converter.convertStringToExpression(rawInput);
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.directProofsTableData.length + 1;
@@ -33,6 +34,7 @@ export const propositionsSlice = createSlice({
       const newItem: DirectProofsTableItem = {
         id,
         step,
+        rawInput,
         expression,
         friendlyExpression,
         formula,
@@ -83,6 +85,7 @@ export const propositionsSlice = createSlice({
       const newItem: DirectProofsTableItem = {
         step,
         id,
+        rawInput: `${firstVariable}, ${secondVariable}`,
         expression,
         friendlyExpression,
         formula,
