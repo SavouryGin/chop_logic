@@ -6,7 +6,7 @@
 }
 
 @mixin button-colors($mode) {
-  color: if($mode == dark, $dark-background-color, $light-background-color);
+  color: if($mode == dark, $dark-background-color, $light-font-color);
   background: if($mode == dark, $dark-strong-accent-color, $light-strong-accent-color);
 }
 
