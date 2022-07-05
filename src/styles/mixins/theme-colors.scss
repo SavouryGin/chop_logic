@@ -6,14 +6,14 @@
 }
 
 @mixin button-colors($mode) {
-  color: if($mode == dark, $dark-background-color, $light-background-color);
+  color: if($mode == dark, $dark-background-color, $light-font-color);
   background: if($mode == dark, $dark-strong-accent-color, $light-strong-accent-color);
 }
 
 @mixin button-gradient($mode) {
   background: if(
     $mode == dark,
-    linear-gradient(to left, hsl(140, 100%, 16%) 0%, hsl(140, 100%, 32%) 8%, hsl(140deg 100% 32%) 92%, hsl(140deg 100% 16%) 100%),
+    linear-gradient(to left, hsl(140, 39%, 43%) 0%, hsl(140, 39%, 32%) 8%, hsl(140, 39%, 32%) 92%, hsl(140, 39%, 16%) 100%),
     linear-gradient(to left, hsl(340deg 100% 16%) 0%, hsl(340deg 100% 32%) 8%, hsl(340deg 100% 32%) 92%, hsl(340deg 100% 16%) 100%)
   );
 }
