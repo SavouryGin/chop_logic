@@ -7,21 +7,23 @@ import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { PropositionalError } from 'errors/propositional-error';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
-import { formsTexts } from 'texts/propositions';
+import { formsTexts } from 'texts';
 import { propositionsActions } from 'store/propositions/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
-const ImplicationCreationForm = () => {
+const ImplicationDistributionForm = () => {
   const dispatch = useAppDispatch();
-  const [values, setValues] = useState(constants.implicationCreationInitialValues);
+  const [values, setValues] = useState(constants.implicationDistributionInitialValues);
   const [formError, setFormError] = useState<PropositionalError | null>(null);
   const language = useAppSelector(settingsSelectors.getLanguage);
 
-  const isFormEmpty = !values.firstVariable || !values.secondVariable;
+  const isFormEmpty = !values.firstVariable || !values.secondVariable || !values.thirdVariable;
   const isFormInvalid = !!formError || isFormEmpty;
-  const previewString = isFormEmpty ? '' : `${values.firstVariable} => (${values.secondVariable} => ${values.firstVariable})`;
+  const previewString = isFormEmpty
+    ? ''
+    : `(${values.firstVariable} => (${values.secondVariable} => ${values.thirdVariable})) => ((${values.firstVariable} => ${values.secondVariable}) => (${values.firstVariable} => ${values.thirdVariable}))`;
 
   const takeError = (err: PropositionalError | null) => setFormError(err);
 
@@ -31,20 +33,21 @@ const ImplicationCreationForm = () => {
     closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
   };
 
-  const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);
+  const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationDistributionInitialValues);
 
   const content = (
     <>
-      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
-      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
+      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-distribution-form__input' />
+      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-distribution-form__input' />
+      <TextInput name='thirdVariable' inputId={InputID.ThirdMetaVariable} className='implication-distribution-form__input' />
       <FormulaPreview text={previewString} passError={takeError} />
     </>
   );
 
   return (
-    <div className='implication-creation-form'>
+    <div className='implication-distribution-form'>
       <p>{formsTexts.enterValues[language]}</p>
-      <p className='implication-creation-form__formula'>{constants.implicationCreationFormula}</p>
+      <p className='implication-distribution-form__formula'>{constants.implicationDistributionFormula}</p>
       <Form
         onSubmit={onSubmit}
         initialValues={constants.implicationCreationInitialValues}
@@ -57,4 +60,4 @@ const ImplicationCreationForm = () => {
   );
 };
 
-export default ImplicationCreationForm;
+export default ImplicationDistributionForm;

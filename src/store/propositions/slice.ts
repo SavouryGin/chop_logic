@@ -6,6 +6,7 @@ export const propositionsInitialState: PropositionsInitialState = {
   flags: {
     isPremiseOpened: false,
     isImplicationCreationOpened: false,
+    isImplicationDistributionOpened: false,
   },
   directProofsTableData: [],
   selectedIds: [],

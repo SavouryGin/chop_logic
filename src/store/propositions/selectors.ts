@@ -5,17 +5,22 @@ import { createSelector } from '@reduxjs/toolkit';
 const getPropositionsFlags = (state: RootState): PropositionsFlags => state.propositions.flags;
 
 const getIsPremiseOpened = createSelector(getPropositionsFlags, (data: PropositionsFlags): boolean => data.isPremiseOpened);
+const getDirectProofsTableData = (state: RootState): DirectProofsTableItem[] => state.propositions.directProofsTableData;
+const getSelectedIds = (state: RootState): string[] => state.propositions.selectedIds;
 const getIsImplicationCreationOpened = createSelector(
   getPropositionsFlags,
   (data: PropositionsFlags): boolean => data.isImplicationCreationOpened,
 );
-const getDirectProofsTableData = (state: RootState): DirectProofsTableItem[] => state.propositions.directProofsTableData;
-const getSelectedIds = (state: RootState): string[] => state.propositions.selectedIds;
+const getIsImplicationDistributionOpened = createSelector(
+  getPropositionsFlags,
+  (data: PropositionsFlags): boolean => data.isImplicationDistributionOpened,
+);
 
 export const propositionsSelectors = {
   getPropositionsFlags,
   getDirectProofsTableData,
+  getSelectedIds,
   getIsPremiseOpened,
   getIsImplicationCreationOpened,
-  getSelectedIds,
+  getIsImplicationDistributionOpened,
 };
