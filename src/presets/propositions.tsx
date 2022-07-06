@@ -4,7 +4,7 @@ import HeuristicsOfPropositions from 'pages/propositions/elements/heuristics-of-
 import NaturalProofsEditor from 'pages/propositions/elements/natural-proofs-editor';
 import React from 'react';
 import RulesOfInference from 'pages/propositions/elements/rules-of-inference';
-import { LogicalSymbolHexCode, LogicalSymbolRawInput } from 'enums';
+import { GreekSymbol, LogicalSymbolHexCode, LogicalSymbolRawInput } from 'enums';
 import { PropositionalSymbol, TabItem } from 'types';
 import { titles } from 'texts';
 
@@ -114,6 +114,12 @@ const constants = {
   ],
 
   implicationCreationInitialValues: { firstVariable: '', secondVariable: '' },
+
+  implicationDistributionInitialValues: { firstVariable: '', secondVariable: '', thirdVariable: '' },
+
+  implicationCreationFormula: `${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Phi} )`,
+
+  implicationDistributionFormula: `( ${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Chi} )) ${LogicalSymbolHexCode.Implication} (( ${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Psi} ) ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Chi} ))`,
 };
 
 export default Object.freeze(constants);

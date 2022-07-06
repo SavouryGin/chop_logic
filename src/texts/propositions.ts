@@ -15,9 +15,9 @@ export const fillerText = {
 };
 
 export const formsTexts: TextContainer = {
-  implicationCreation: {
+  enterValues: {
     en: 'Enter values for the meta-variables in the schema:',
-    ru: 'Введите значения для мета-переменных в схеме аксиом:',
+    ru: 'Введите значения для мета-переменных в схеме:',
   },
 };
 

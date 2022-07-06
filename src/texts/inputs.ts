@@ -23,6 +23,9 @@ export const inputTexts: InputText = {
   [InputID.SecondMetaVariable]: {
     label: { en: `${GreekSymbol.Psi} :`, ru: `${GreekSymbol.Psi} :` },
   },
+  [InputID.ThirdMetaVariable]: {
+    label: { en: `${GreekSymbol.Chi} :`, ru: `${GreekSymbol.Chi} :` },
+  },
   [InputID.Preview]: {
     label: { en: 'Preview', ru: 'Предпросмотр' },
   },
