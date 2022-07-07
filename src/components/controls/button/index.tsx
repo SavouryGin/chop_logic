@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { ButtonProps } from 'types';
 import { buttonTexts } from 'texts';
@@ -6,7 +6,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps) => {
+const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -49,4 +49,4 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
   );
 };
 
-export default Button;
+export default memo(Button);

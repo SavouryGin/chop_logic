@@ -1,5 +1,5 @@
 import Button from 'components/controls/button';
-import React from 'react';
+import React, { memo } from 'react';
 import { ButtonID } from 'enums';
 import { propositionsActions as actions } from 'store/propositions/slice';
 import { propositionsSelectors } from 'store/propositions/selectors';
@@ -52,4 +52,4 @@ const DirectProofsEditorToolbar = () => {
   );
 };
 
-export default DirectProofsEditorToolbar;
+export default memo(DirectProofsEditorToolbar);

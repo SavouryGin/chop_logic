@@ -29,8 +29,8 @@ const ImplicationDistributionForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(propositionsActions.createImplication({ ...values }));
-    closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
+    dispatch(propositionsActions.createImplicationDistribution({ ...values }));
+    closePropositionsPopup(dispatch, 'isImplicationDistributionOpened');
   };
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationDistributionInitialValues);
