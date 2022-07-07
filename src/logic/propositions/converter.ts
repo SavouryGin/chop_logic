@@ -65,6 +65,45 @@ const converter = {
     return parenthesizer.renumberPositions(output);
   },
 
+  convertToIDExpression(firstVariable: string, secondVariable: string, thirdVariable: string): PropositionalExpression {
+    if (!firstVariable.length || !secondVariable.length || !thirdVariable.length) {
+      return [];
+    }
+
+    const firstExpression = this.convertStringToExpression(firstVariable);
+    const secondExpression = this.convertStringToExpression(secondVariable);
+    const thirdExpression = this.convertStringToExpression(thirdVariable);
+    const output = [
+      preparedSymbols.openParenthesis,
+      preparedSymbols.openParenthesis,
+      ...firstExpression,
+      preparedSymbols.implication,
+      preparedSymbols.openParenthesis,
+      ...secondExpression,
+      preparedSymbols.implication,
+      ...thirdExpression,
+      preparedSymbols.closeParenthesis,
+      preparedSymbols.closeParenthesis,
+      preparedSymbols.implication,
+      preparedSymbols.openParenthesis,
+      preparedSymbols.openParenthesis,
+      ...firstExpression,
+      preparedSymbols.implication,
+      ...secondExpression,
+      preparedSymbols.closeParenthesis,
+      preparedSymbols.implication,
+      preparedSymbols.openParenthesis,
+      ...firstExpression,
+      preparedSymbols.implication,
+      ...thirdExpression,
+      preparedSymbols.closeParenthesis,
+      preparedSymbols.closeParenthesis,
+      preparedSymbols.closeParenthesis,
+    ];
+
+    return parenthesizer.renumberPositions(output);
+  },
+
   convertStringToUserFriendlyExpression(input: string): PropositionalExpression {
     const convertedInput = converter.convertStringToExpression(input);
     const formula = converter.convertExpressionToFormula(convertedInput);

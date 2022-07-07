@@ -95,6 +95,29 @@ export const propositionsSlice = createSlice({
       state.selectedIds = [];
       state.directProofsTableData = [...state.directProofsTableData, newItem];
     },
+
+    createImplicationDistribution: (
+      state,
+      action: PayloadAction<{ firstVariable: string; secondVariable: string; thirdVariable: string }>,
+    ) => {
+      const { firstVariable, secondVariable, thirdVariable } = action.payload;
+      const expression = converter.convertToIDExpression(firstVariable, secondVariable, thirdVariable);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+      const step = state.directProofsTableData.length + 1;
+      const id = `proof-step-${step}`;
+      const newItem: DirectProofsTableItem = {
+        step,
+        id,
+        rawInput: `${firstVariable}, ${secondVariable}`,
+        expression,
+        friendlyExpression,
+        formula,
+        comment: { en: 'ID', ru: 'ДИ' },
+      };
+      state.selectedIds = [];
+      state.directProofsTableData = [...state.directProofsTableData, newItem];
+    },
   },
 });
 
