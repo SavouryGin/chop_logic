@@ -23,7 +23,7 @@ const ImplicationDistributionForm = () => {
   const isFormInvalid = !!formError || isFormEmpty;
   const previewString = isFormEmpty
     ? ''
-    : `(${values.firstVariable} => (${values.secondVariable} => ${values.thirdVariable})) => ((${values.firstVariable} => ${values.secondVariable}) => (${values.firstVariable} => ${values.thirdVariable}))`;
+    : `((${values.firstVariable} => (${values.secondVariable} => ${values.thirdVariable})) => ((${values.firstVariable} => ${values.secondVariable}) => (${values.firstVariable} => ${values.thirdVariable})))`;
 
   const takeError = (err: PropositionalError | null) => setFormError(err);
 
