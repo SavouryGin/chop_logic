@@ -73,6 +73,7 @@ const converter = {
     const firstExpression = this.convertStringToExpression(firstVariable);
     const secondExpression = this.convertStringToExpression(secondVariable);
     const thirdExpression = this.convertStringToExpression(thirdVariable);
+
     const output = [
       preparedSymbols.openParenthesis,
       preparedSymbols.openParenthesis,

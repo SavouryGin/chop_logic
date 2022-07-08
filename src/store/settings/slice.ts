@@ -7,7 +7,7 @@ export const settingsInitialState: SettingsInitialState = {
   flags: {
     isNavigationOpen: false,
     isSidebarOpen: false,
-    isDarkMode: true,
+    isDarkMode: false,
     isFullScreen: false,
     isSettingOpen: false,
     isSoundsEnabled: false,

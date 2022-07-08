@@ -109,7 +109,7 @@ export const propositionsSlice = createSlice({
       const newItem: DirectProofsTableItem = {
         step,
         id,
-        rawInput: `${firstVariable}, ${secondVariable}`,
+        rawInput: `${firstVariable}, ${secondVariable}, ${thirdVariable}`,
         expression,
         friendlyExpression,
         formula,
