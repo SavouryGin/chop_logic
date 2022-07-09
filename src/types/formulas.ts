@@ -1,9 +1,9 @@
 import { CommonProps } from './general';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalSymbol } from './propositions';
+import { PropositionalExpression, PropositionalSymbol } from './propositions';
 
 export type FormulaPreviewProps = CommonProps & {
-  text: string;
+  preview: PropositionalExpression | PropositionalError;
   passError?: (err: PropositionalError | null) => void;
 };
 
