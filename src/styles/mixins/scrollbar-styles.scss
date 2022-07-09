@@ -5,6 +5,11 @@
   // Chrome, Safari
   &::-webkit-scrollbar {
     width: $scrollbar-width;
+    height: $scrollbar-height;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {

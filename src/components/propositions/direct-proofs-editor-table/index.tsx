@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'presets/propositions';
 import { propositionsActions as actions } from 'store/propositions/slice';
@@ -28,4 +28,4 @@ const DirectProofsEditorTable = () => {
   );
 };
 
-export default DirectProofsEditorTable;
+export default memo(DirectProofsEditorTable);

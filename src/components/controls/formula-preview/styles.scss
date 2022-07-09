@@ -1,5 +1,6 @@
 @import 'styles/colors.scss';
 @import 'styles/sizes.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
 
 .formula-preview {
   display: flex;
@@ -7,6 +8,8 @@
   border-radius: $border-radius;
   height: $formula-preview-height;
   margin-bottom: $big-margin;
+  overflow-x: auto;
+  @include scrollbar-styles(light);
 
   &__formula {
     padding: 0 $small-padding;
@@ -27,5 +30,6 @@
 
   &_dark {
     border: $dark-weak-border;
+    @include scrollbar-styles(dark);
   }
 }

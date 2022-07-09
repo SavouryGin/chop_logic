@@ -1,9 +1,14 @@
 @import 'styles/sizes.scss';
 @import 'styles/colors.scss';
 @import 'styles/fonts.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
 
 .table {
   border-collapse: collapse;
+
+  & td {
+    @include scrollbar-styles(light);
+  }
 
   &__cell {
     text-align: center;
@@ -47,6 +52,10 @@
 
   // Dark theme colors
   &_dark {
+    & td {
+      @include scrollbar-styles(dark);
+    }
+
     .table__cell {
       border: $dark-border;
     }
