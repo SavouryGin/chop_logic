@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Icon } from 'enums';
 import { LabelProps } from 'types';
@@ -16,4 +16,4 @@ function Label({ text, isRequired, isDarkMode, className, id }: LabelProps): Rea
   );
 }
 
-export default Label;
+export default memo(Label);

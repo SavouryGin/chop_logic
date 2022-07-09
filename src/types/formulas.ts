@@ -4,7 +4,6 @@ import { PropositionalExpression, PropositionalSymbol } from './propositions';
 
 export type FormulaPreviewProps = CommonProps & {
   preview: PropositionalExpression | PropositionalError;
-  passError?: (err: PropositionalError | null) => void;
 };
 
 export type FormulaProps = CommonProps & {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import TableBody from './elements/table-body';
 import TableHead from './elements/table-head';
 import formatClassName from 'helpers/formatters/format-class-name';
@@ -46,4 +46,4 @@ const Table = ({ columns, data, hasCheckboxColumn, passSelectedIds, className }:
   );
 };
 
-export default Table;
+export default memo(Table);

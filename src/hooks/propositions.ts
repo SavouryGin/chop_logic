@@ -16,7 +16,7 @@ export const usePropositionalFormulaPreview = (input: string): PropositionalExpr
     } else {
       setOutput([]);
     }
-  });
+  }, [input]);
 
   return output;
 };
@@ -40,7 +40,7 @@ export const useImplicationCreationPreview = (
     } else {
       setOutput([]);
     }
-  });
+  }, [firstVariable, secondVariable]);
 
   return output;
 };
@@ -65,7 +65,7 @@ export const useImplicationDistributionPreview = (
     } else {
       setOutput([]);
     }
-  });
+  }, [firstVariable, secondVariable, thirdVariable]);
 
   return output;
 };

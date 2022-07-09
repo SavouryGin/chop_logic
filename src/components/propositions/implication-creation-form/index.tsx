@@ -1,6 +1,6 @@
 import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'presets/propositions';
 import { ButtonID, InputID } from 'enums';
@@ -16,14 +16,18 @@ const ImplicationCreationForm = () => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationCreationInitialValues);
   const language = useAppSelector(settingsSelectors.getLanguage);
-
-  // const isFormEmpty = !values.firstVariable || !values.secondVariable;
-  // const isFormInvalid = !!formError || isFormEmpty;
-  // const previewString = isFormEmpty ? '' : `${values.firstVariable} => (${values.secondVariable} => ${values.firstVariable})`;
   const preview = useImplicationCreationPreview(values.firstVariable, values.secondVariable);
+
   const hasError = !Array.isArray(preview);
   const isEmpty = !values.firstVariable || !values.secondVariable;
   const isFormInvalid = hasError || isEmpty;
+  const formContent = (
+    <>
+      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
+      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
+      <FormulaPreview preview={preview} />
+    </>
+  );
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,14 +37,6 @@ const ImplicationCreationForm = () => {
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);
 
-  const content = (
-    <>
-      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-creation-form__input' />
-      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-creation-form__input' />
-      <FormulaPreview preview={preview} />
-    </>
-  );
-
   return (
     <div className='implication-creation-form'>
       <p>{formsTexts.enterValues[language]}</p>
@@ -48,7 +44,7 @@ const ImplicationCreationForm = () => {
       <Form
         onSubmit={onSubmit}
         initialValues={constants.implicationCreationInitialValues}
-        inputs={content}
+        inputs={formContent}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
@@ -57,4 +53,4 @@ const ImplicationCreationForm = () => {
   );
 };
 
-export default ImplicationCreationForm;
+export default memo(ImplicationCreationForm);

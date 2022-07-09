@@ -1,6 +1,6 @@
 import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'presets/propositions';
 import { ButtonID, InputID } from 'enums';
@@ -16,14 +16,19 @@ const ImplicationDistributionForm = () => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationDistributionInitialValues);
   const language = useAppSelector(settingsSelectors.getLanguage);
-
-  // const previewString = isFormEmpty
-  //   ? ''
-  //   : `((${values.firstVariable} => (${values.secondVariable} => ${values.thirdVariable})) => ((${values.firstVariable} => ${values.secondVariable}) => (${values.firstVariable} => ${values.thirdVariable})))`;
   const preview = useImplicationDistributionPreview(values.firstVariable, values.secondVariable, values.thirdVariable);
+
   const hasError = !Array.isArray(preview);
   const isEmpty = !values.firstVariable || !values.secondVariable || !values.thirdVariable;
   const isFormInvalid = hasError || isEmpty;
+  const formContent = (
+    <>
+      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-distribution-form__input' />
+      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-distribution-form__input' />
+      <TextInput name='thirdVariable' inputId={InputID.ThirdMetaVariable} className='implication-distribution-form__input' />
+      <FormulaPreview preview={preview} />
+    </>
+  );
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,15 +38,6 @@ const ImplicationDistributionForm = () => {
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationDistributionInitialValues);
 
-  const content = (
-    <>
-      <TextInput name='firstVariable' inputId={InputID.FirstMetaVariable} className='implication-distribution-form__input' />
-      <TextInput name='secondVariable' inputId={InputID.SecondMetaVariable} className='implication-distribution-form__input' />
-      <TextInput name='thirdVariable' inputId={InputID.ThirdMetaVariable} className='implication-distribution-form__input' />
-      <FormulaPreview preview={preview} />
-    </>
-  );
-
   return (
     <div className='implication-distribution-form'>
       <p>{formsTexts.enterValues[language]}</p>
@@ -49,7 +45,7 @@ const ImplicationDistributionForm = () => {
       <Form
         onSubmit={onSubmit}
         initialValues={constants.implicationCreationInitialValues}
-        inputs={content}
+        inputs={formContent}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
@@ -58,4 +54,4 @@ const ImplicationDistributionForm = () => {
   );
 };
 
-export default ImplicationDistributionForm;
+export default memo(ImplicationDistributionForm);
