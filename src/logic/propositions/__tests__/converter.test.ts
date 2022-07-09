@@ -116,4 +116,12 @@ describe('Propositions converter tests', () => {
     expect(converter.convertStringToUserFriendlyExpression('((~p)=>((p&q)=>~p))')).toEqual(mocks.friendlyPropositionalExpression);
     expect(converter.convertStringToUserFriendlyExpression('~ (~p => q)')).toEqual(mocks.secondFriendlyExpression);
   });
+
+  it('implication distribution tests', () => {
+    expect(converter.convertToIDExpression('p', '~q', 'r|s')).toEqual(mocks.implicationDistributionExpression);
+    expect(converter.convertExpressionToFormula(mocks.implicationDistributionExpression)).toEqual(mocks.implicationDistributionFormula);
+    expect(converter.convertFormulaToUserFriendlyExpression(mocks.implicationDistributionFormula)).toEqual(
+      mocks.friendlyImplicationDistributionExpression,
+    );
+  });
 });
