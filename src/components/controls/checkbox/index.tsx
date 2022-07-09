@@ -1,5 +1,5 @@
 import Label from '../label';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { CheckboxProps } from 'types';
 import { FormContext } from 'components/controls/form';
@@ -79,4 +79,4 @@ const Checkbox = ({
   );
 };
 
-export default Checkbox;
+export default memo(Checkbox);

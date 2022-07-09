@@ -1,6 +1,6 @@
 import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
@@ -17,6 +17,12 @@ const PremiseForm = () => {
   const preview = usePropositionalFormulaPreview(formValue.premise);
   const hasError = !Array.isArray(preview);
   const isFormInvalid = hasError || !formValue.premise;
+  const formContent = (
+    <>
+      <TextInput name='premise' inputId={InputID.Premise} className='premise-form__input' isRequired />
+      <FormulaPreview preview={preview} />
+    </>
+  );
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof premiseInitialValue);
 
@@ -26,19 +32,12 @@ const PremiseForm = () => {
     closePropositionsPopup(dispatch, 'isPremiseOpened');
   };
 
-  const content = (
-    <>
-      <TextInput name='premise' inputId={InputID.Premise} className='premise-form__input' isRequired />
-      <FormulaPreview preview={preview} />
-    </>
-  );
-
   return (
     <div className='premise-form'>
       <Form
         onSubmit={onSubmit}
         initialValues={premiseInitialValue}
-        inputs={content}
+        inputs={formContent}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
@@ -47,4 +46,4 @@ const PremiseForm = () => {
   );
 };
 
-export default PremiseForm;
+export default memo(PremiseForm);

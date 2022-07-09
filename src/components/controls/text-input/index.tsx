@@ -1,5 +1,5 @@
 import Label from '../label';
-import React, { useContext, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { FormContext } from 'components/controls/form';
 import { TextInputProps } from 'types';
@@ -9,7 +9,7 @@ import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-function TextInput({
+const TextInput = ({
   inputId,
   onChange,
   isDisabled,
@@ -23,7 +23,7 @@ function TextInput({
   placeholder,
   defaultValue,
   ...rest
-}: TextInputProps): React.ReactElement {
+}: TextInputProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -77,6 +77,6 @@ function TextInput({
       />
     </div>
   );
-}
+};
 
-export default TextInput;
+export default memo(TextInput);

@@ -1,6 +1,6 @@
 import Formula from 'components/controls/formula';
-import Label from '../label';
-import React from 'react';
+import Label from 'components/controls/label';
+import React, { memo } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { FormulaPreviewProps } from 'types';
 import { InputID } from 'enums';
@@ -12,32 +12,10 @@ import './styles.scss';
 const FormulaPreview = ({ preview, className }: FormulaPreviewProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  // const [error, setError] = useState<PropositionalError | null>(null);
-  // const [expression, setExpression] = useState<PropositionalExpression>([]);
 
   const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
   const errorClassNames = formatClassName(['formula-preview__error', { 'formula-preview__error_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
-
-  // useEffect(() => {
-  //   if (text.length) {
-  //     try {
-  //       setExpression(converter.convertStringToUserFriendlyExpression(text));
-  //       setError(null);
-  //     } catch (err: unknown) {
-  //       setError(err as PropositionalError);
-  //     }
-  //   } else {
-  //     setExpression([]);
-  //     setError(null);
-  //   }
-  // }, [text]);
-
-  // useEffect(() => {
-  //   if (passError) {
-  //     passError(error);
-  //   }
-  // }, [error]);
 
   return (
     <div className={classNames}>
@@ -51,4 +29,4 @@ const FormulaPreview = ({ preview, className }: FormulaPreviewProps) => {
   );
 };
 
-export default FormulaPreview;
+export default memo(FormulaPreview);
