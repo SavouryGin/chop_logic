@@ -52,8 +52,8 @@ export const buttonTexts: ButtonText = {
     innerText: { en: 'Implication Distribution', ru: 'Дистрибуция импликации' },
   },
   [ButtonID.ContradictionRealization]: {
-    title: { en: 'Contradiction Realization', ru: 'Реализация противоречия' },
-    innerText: { en: 'Contradiction Realization', ru: 'Реализация противоречия' },
+    title: { en: 'Contradiction Realization', ru: 'Создание противоречия' },
+    innerText: { en: 'Contradiction Realization', ru: 'Создание противоречия' },
   },
   [ButtonID.ImplicationElimination]: {
     title: { en: 'Implication Elimination', ru: 'Удаление импликации' },
