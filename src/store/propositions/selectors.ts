@@ -15,6 +15,10 @@ const getIsImplicationDistributionOpened = createSelector(
   getPropositionsFlags,
   (data: PropositionsFlags): boolean => data.isImplicationDistributionOpened,
 );
+const getIsContradictionRealizationOpened = createSelector(
+  getPropositionsFlags,
+  (data: PropositionsFlags): boolean => data.isContradictionRealizationOpened,
+);
 
 export const propositionsSelectors = {
   getPropositionsFlags,
@@ -23,4 +27,5 @@ export const propositionsSelectors = {
   getIsPremiseOpened,
   getIsImplicationCreationOpened,
   getIsImplicationDistributionOpened,
+  getIsContradictionRealizationOpened,
 };

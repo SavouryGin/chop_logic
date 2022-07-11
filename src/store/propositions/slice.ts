@@ -7,6 +7,7 @@ export const propositionsInitialState: PropositionsInitialState = {
     isPremiseOpened: false,
     isImplicationCreationOpened: false,
     isImplicationDistributionOpened: false,
+    isContradictionRealizationOpened: false,
   },
   directProofsTableData: [],
   selectedIds: [],

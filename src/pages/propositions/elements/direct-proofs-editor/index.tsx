@@ -1,3 +1,4 @@
+import ContradictionRealizationForm from 'components/propositions/contradiction-realization-form';
 import DirectProofsEditorTable from 'components/propositions/direct-proofs-editor-table';
 import DirectProofsEditorToolbar from 'components/propositions/direct-proofs-editor-toolbar';
 import ImplicationCreationForm from 'components/propositions/implication-creation-form';
@@ -18,6 +19,7 @@ const DirectProofsEditor = () => {
   const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
   const isImplicationCreationOpened = useAppSelector(selectors.getIsImplicationCreationOpened);
   const isImplicationDistributionOpened = useAppSelector(selectors.getIsImplicationDistributionOpened);
+  const isContradictionRealizationOpened = useAppSelector(selectors.getIsContradictionRealizationOpened);
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   const closePopupByFlag = (flag: PropositionsFlag) => {
@@ -45,6 +47,12 @@ const DirectProofsEditor = () => {
         onClose={() => closePopupByFlag('isImplicationDistributionOpened')}
         title={uiElementTexts.implicationDistribution[language]}
         content={<ImplicationDistributionForm />}
+      />
+      <ModalWindow
+        isOpened={isContradictionRealizationOpened}
+        onClose={() => closePopupByFlag('isContradictionRealizationOpened')}
+        title={uiElementTexts.contradictionRealization[language]}
+        content={<ContradictionRealizationForm />}
       />
     </div>
   );

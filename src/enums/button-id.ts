@@ -13,6 +13,6 @@ export enum ButtonID {
   Delete,
   ImplicationCreation,
   ImplicationDistribution,
-  ImplicationReversal,
+  ContradictionRealization,
   ImplicationElimination,
 }

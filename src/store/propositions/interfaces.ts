@@ -11,6 +11,7 @@ export interface PropositionsFlags {
   isPremiseOpened: boolean;
   isImplicationCreationOpened: boolean;
   isImplicationDistributionOpened: boolean;
+  isContradictionRealizationOpened: boolean;
 }
 
 export type PropositionsFlag = keyof PropositionsFlags;
