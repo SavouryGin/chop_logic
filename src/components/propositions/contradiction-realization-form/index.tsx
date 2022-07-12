@@ -7,6 +7,7 @@ import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 import { formsTexts } from 'texts';
+import { propositionsActions } from 'store/propositions/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';
 import './styles.scss';
@@ -30,7 +31,7 @@ const ContradictionRealizationForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // dispatch(propositionsActions.createImplication({ ...values }));
+    dispatch(propositionsActions.createContradictionRealization({ ...values }));
     closePropositionsPopup(dispatch, 'isContradictionRealizationOpened');
   };
 
