@@ -8,14 +8,14 @@ import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 import { formsTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppDispatch, useAppSelector, useImplicationCreationPreview } from 'hooks';
+import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';
 import './styles.scss';
 
 const ContradictionRealizationForm = () => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.contradictionRealization);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const preview = useImplicationCreationPreview(values.firstVariable, values.secondVariable);
+  const preview = useContradictionRealizationPreview(values.firstVariable, values.secondVariable);
 
   const hasError = !Array.isArray(preview);
   const isEmpty = !values.firstVariable || !values.secondVariable;
