@@ -1,0 +1,5 @@
+@import 'styles/mixins/form-styles.scss';
+
+.contradiction-realization-form {
+  @include propositionsFormStyles();
+}

@@ -7,6 +7,7 @@ export const propositionsInitialState: PropositionsInitialState = {
     isPremiseOpened: false,
     isImplicationCreationOpened: false,
     isImplicationDistributionOpened: false,
+    isContradictionRealizationOpened: false,
   },
   directProofsTableData: [],
   selectedIds: [],
@@ -114,6 +115,26 @@ export const propositionsSlice = createSlice({
         friendlyExpression,
         formula,
         comment: { en: 'ID', ru: 'ДИ' },
+      };
+      state.selectedIds = [];
+      state.directProofsTableData = [...state.directProofsTableData, newItem];
+    },
+
+    createContradictionRealization: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
+      const { firstVariable, secondVariable } = action.payload;
+      const expression = converter.convertToCRExpression(firstVariable, secondVariable);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+      const step = state.directProofsTableData.length + 1;
+      const id = `proof-step-${step}`;
+      const newItem: DirectProofsTableItem = {
+        step,
+        id,
+        rawInput: `${firstVariable}, ${secondVariable}`,
+        expression,
+        friendlyExpression,
+        formula,
+        comment: { en: 'CR', ru: 'СП' },
       };
       state.selectedIds = [];
       state.directProofsTableData = [...state.directProofsTableData, newItem];
