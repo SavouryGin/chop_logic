@@ -32,6 +32,10 @@ const DirectProofsEditorToolbar = () => {
     dispatch(actions.setUpFlag({ flag: 'isImplicationDistributionOpened', value: true }));
   };
 
+  const openCR = () => {
+    dispatch(actions.setUpFlag({ flag: 'isContradictionRealizationOpened', value: true }));
+  };
+
   return (
     <div className='direct-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} />
@@ -46,7 +50,7 @@ const DirectProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' isDisabled={isDeleteDisabled} onClick={deleteSteps} />
       <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} size='large' onClick={openIC} />
       <Button buttonId={ButtonID.ImplicationDistribution} sound={soundPlayer.slideClick} size='large' onClick={openID} />
-      <Button buttonId={ButtonID.ImplicationReversal} sound={soundPlayer.slideClick} size='large' />
+      <Button buttonId={ButtonID.ContradictionRealization} sound={soundPlayer.slideClick} size='large' onClick={openCR} />
       <Button buttonId={ButtonID.ImplicationElimination} sound={soundPlayer.slideClick} size='large' />
     </div>
   );

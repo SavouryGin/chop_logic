@@ -45,6 +45,30 @@ export const useImplicationCreationPreview = (
   return output;
 };
 
+export const useContradictionRealizationPreview = (
+  firstVariable: string,
+  secondVariable: string,
+): PropositionalExpression | PropositionalError => {
+  const [output, setOutput] = useState<PropositionalExpression | PropositionalError>([]);
+
+  useEffect(() => {
+    if (firstVariable && secondVariable) {
+      try {
+        const expression = converter.convertToCRExpression(firstVariable, secondVariable);
+        const formula = converter.convertExpressionToFormula(expression);
+        const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+        setOutput(friendlyExpression);
+      } catch (err: unknown) {
+        setOutput(err as PropositionalError);
+      }
+    } else {
+      setOutput([]);
+    }
+  }, [firstVariable, secondVariable]);
+
+  return output;
+};
+
 export const useImplicationDistributionPreview = (
   firstVariable: string,
   secondVariable: string,

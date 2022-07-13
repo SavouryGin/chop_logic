@@ -115,11 +115,15 @@ const constants = {
 
   implicationCreationInitialValues: { firstVariable: '', secondVariable: '' },
 
+  contradictionRealization: { firstVariable: '', secondVariable: '' },
+
   implicationDistributionInitialValues: { firstVariable: '', secondVariable: '', thirdVariable: '' },
 
   implicationCreationFormula: `${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Phi} )`,
 
   implicationDistributionFormula: `( ${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Psi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Chi} )) ${LogicalSymbolHexCode.Implication} (( ${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Psi} ) ${LogicalSymbolHexCode.Implication} ( ${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Chi} ))`,
+
+  contradictionRealizationFormula: `( ${LogicalSymbolHexCode.Negation}${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Psi} ) ${LogicalSymbolHexCode.Implication} (( ${LogicalSymbolHexCode.Negation}${GreekSymbol.Phi} ${LogicalSymbolHexCode.Implication} ${LogicalSymbolHexCode.Negation}${GreekSymbol.Psi} ) ${LogicalSymbolHexCode.Implication} ${GreekSymbol.Phi} )`,
 };
 
 export default Object.freeze(constants);

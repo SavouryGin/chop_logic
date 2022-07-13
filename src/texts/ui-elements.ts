@@ -7,4 +7,5 @@ export const uiElementTexts: { [key in string]: LocalText } = {
   premise: { en: 'Premise', ru: 'Посылка' },
   implicationCreation: { en: 'Implication Introduction', ru: 'Введение импликации' },
   implicationDistribution: { en: 'Implication Distribution', ru: 'Дистрибуция импликация' },
+  contradictionRealization: { en: 'Contradiction Realization', ru: 'Создание противоречия' },
 };
