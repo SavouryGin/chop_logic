@@ -124,4 +124,12 @@ describe('Propositions converter tests', () => {
       mocks.friendlyImplicationDistributionExpression,
     );
   });
+
+  it('contradiction realization tests', () => {
+    expect(converter.convertToCRExpression('p=>q', '~r')).toEqual(mocks.contradictionRealizationExpression);
+    expect(converter.convertExpressionToFormula(mocks.contradictionRealizationExpression)).toEqual(mocks.contradictionRealizationFormula);
+    expect(converter.convertFormulaToUserFriendlyExpression(mocks.contradictionRealizationFormula)).toEqual(
+      mocks.contradictionRealizationFriendlyExpression,
+    );
+  });
 });
