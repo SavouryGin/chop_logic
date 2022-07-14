@@ -1,7 +1,7 @@
 import searcher from './searcher';
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { errorsTexts } from 'texts';
 
 const validator = {
@@ -146,6 +146,28 @@ const validator = {
     }
 
     return false;
+  },
+
+  isIEApplicable(first: PropositionalFormula, second: PropositionalFormula): boolean {
+    // No implications
+    if (first.operator !== PropositionalOperator.Implies && second.operator !== PropositionalOperator.Implies) {
+      return false;
+    }
+
+    // One implication in the first formula
+    if (first.operator === PropositionalOperator.Implies && second.operator !== PropositionalOperator.Implies) {
+      const antecedent = first.values[0];
+
+      if (this.areTwoFormulasEqual(antecedent, second)) {
+        return true;
+      }
+    }
+
+    return false;
+  },
+
+  areTwoFormulasEqual(first: string | PropositionalFormula, second: string | PropositionalFormula): boolean {
+    return JSON.stringify(first) === JSON.stringify(second);
   },
 };
 

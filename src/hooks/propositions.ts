@@ -98,15 +98,16 @@ export const useImplicationDistributionPreview = (
 
 export const useImplicationEliminationEnabling = () => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const selectedIds = useAppSelector(propositionsSelectors.getSelectedIds);
+  const formulas = useAppSelector(propositionsSelectors.getSelectedFormulas);
 
   useEffect(() => {
-    if (selectedIds.length !== 2) {
+    if (formulas.length !== 2) {
       setIsEnabled(false);
     } else {
+      console.log(formulas);
       setIsEnabled(true);
     }
-  }, [selectedIds.length]);
+  }, [formulas.length]);
 
   return isEnabled;
 };
