@@ -1,6 +1,8 @@
 import converter from 'logic/propositions/converter';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
+import { propositionsSelectors } from 'store/propositions/selectors';
+import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';
 
 export const usePropositionalFormulaPreview = (input: string): PropositionalExpression | PropositionalError => {
@@ -92,4 +94,19 @@ export const useImplicationDistributionPreview = (
   }, [firstVariable, secondVariable, thirdVariable]);
 
   return output;
+};
+
+export const useImplicationEliminationEnabling = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const selectedIds = useAppSelector(propositionsSelectors.getSelectedIds);
+
+  useEffect(() => {
+    if (selectedIds.length !== 2) {
+      setIsEnabled(false);
+    } else {
+      setIsEnabled(true);
+    }
+  }, [selectedIds.length]);
+
+  return isEnabled;
 };
