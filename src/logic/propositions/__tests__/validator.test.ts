@@ -108,4 +108,11 @@ describe('Propositions validator tests', () => {
     expect(validator.areTwoFormulasEqual('P', mocks.propositionalFormula)).toBeFalsy();
     expect(validator.areTwoFormulasEqual('P', 'Q')).toBeFalsy();
   });
+
+  it('isIEApplicable() test', () => {
+    expect(validator.isIEApplicable(mocks.propositionalFormula, mocks.firstSubFormula)).toBeTruthy();
+    expect(validator.isIEApplicable(mocks.firstSubFormula, mocks.propositionalFormula)).toBeTruthy();
+    expect(validator.isIEApplicable(mocks.propositionalFormula, mocks.secondSubFormula)).toBeFalsy();
+    expect(validator.isIEApplicable(mocks.propositionalFormula, mocks.propositionalFormula)).toBeFalsy();
+  });
 });

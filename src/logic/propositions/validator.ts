@@ -149,18 +149,29 @@ const validator = {
   },
 
   isIEApplicable(first: PropositionalFormula, second: PropositionalFormula): boolean {
-    // No implications
-    if (first.operator !== PropositionalOperator.Implies && second.operator !== PropositionalOperator.Implies) {
-      return false;
-    }
+    const isFirstImplication = first.operator === PropositionalOperator.Implies && first.values.length === 2;
+    const isSecondImplication = second.operator === PropositionalOperator.Implies && second.values.length === 2;
 
     // One implication in the first formula
-    if (first.operator === PropositionalOperator.Implies && second.operator !== PropositionalOperator.Implies) {
+    if (isFirstImplication && !isSecondImplication) {
       const antecedent = first.values[0];
 
-      if (this.areTwoFormulasEqual(antecedent, second)) {
-        return true;
-      }
+      return this.areTwoFormulasEqual(antecedent, second);
+    }
+
+    // One implication in the second formula
+    if (!isFirstImplication && isSecondImplication) {
+      const antecedent = second.values[0];
+
+      return this.areTwoFormulasEqual(antecedent, first);
+    }
+
+    // Two implications
+    if (isFirstImplication && isSecondImplication) {
+      const firstAntecedent = first.values[0];
+      const secondAntecedent = second.values[0];
+
+      return this.areTwoFormulasEqual(firstAntecedent, second) || this.areTwoFormulasEqual(secondAntecedent, first);
     }
 
     return false;
