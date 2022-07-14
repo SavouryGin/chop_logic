@@ -1,4 +1,5 @@
 import converter from 'logic/propositions/converter';
+import validator from 'logic/propositions/validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
 import { propositionsSelectors } from 'store/propositions/selectors';
@@ -105,7 +106,7 @@ export const useImplicationEliminationEnabling = () => {
       setIsEnabled(false);
     } else {
       console.log(formulas);
-      setIsEnabled(true);
+      setIsEnabled(validator.isIEApplicable(formulas[0], formulas[1]));
     }
   }, [formulas.length]);
 
