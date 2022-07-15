@@ -1,6 +1,8 @@
 import converter from 'logic/propositions/converter';
+import validator from 'logic/propositions/validator';
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PropositionalFormula } from 'types';
 
 export const propositionsInitialState: PropositionsInitialState = {
   flags: {
@@ -138,6 +140,17 @@ export const propositionsSlice = createSlice({
       };
       state.selectedIds = [];
       state.directProofsTableData = [...state.directProofsTableData, newItem];
+    },
+
+    eliminateImplication: (state, action: PayloadAction<PropositionalFormula[]>) => {
+      const formulas = action.payload;
+      if (formulas.length !== 2) {
+        return state;
+      }
+
+      if (!validator.isIEApplicable(formulas[0], formulas[1])) {
+        return state;
+      }
     },
   },
 });

@@ -12,6 +12,7 @@ const DirectProofsEditorToolbar = () => {
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useImplicationEliminationEnabling();
+  const selectedFormulas = useAppSelector(propositionsSelectors.getSelectedFormulas);
 
   const deleteSteps = () => {
     dispatch(actions.deleteSteps());
@@ -37,6 +38,10 @@ const DirectProofsEditorToolbar = () => {
     dispatch(actions.setUpFlag({ flag: 'isContradictionRealizationOpened', value: true }));
   };
 
+  const performIE = () => {
+    dispatch(actions.eliminateImplication(selectedFormulas));
+  };
+
   return (
     <div className='direct-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} />
@@ -57,6 +62,7 @@ const DirectProofsEditorToolbar = () => {
         sound={soundPlayer.slideClick}
         isDisabled={!isImplicationEliminationEnabled}
         size='large'
+        onClick={performIE}
       />
     </div>
   );
