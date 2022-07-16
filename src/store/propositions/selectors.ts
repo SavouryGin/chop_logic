@@ -32,11 +32,18 @@ const getSelectedFormulas = (state: RootState): PropositionalFormula[] => {
   return selectedItems.map((item) => item.formula);
 };
 
+const getSelectedTableItems = (state: RootState): DirectProofsTableItem[] => {
+  const selectedIds = state.propositions.selectedIds;
+
+  return state.propositions.directProofsTableData.filter((item) => selectedIds.includes(item.id));
+};
+
 export const propositionsSelectors = {
   getPropositionsFlags,
   getDirectProofsTableData,
   getSelectedIds,
   getSelectedFormulas,
+  getSelectedTableItems,
   getIsPremiseOpened,
   getIsImplicationCreationOpened,
   getIsImplicationDistributionOpened,

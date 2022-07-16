@@ -105,7 +105,6 @@ export const useImplicationEliminationEnabling = () => {
     if (formulas.length !== 2) {
       setIsEnabled(false);
     } else {
-      console.log(formulas);
       setIsEnabled(validator.isIEApplicable(formulas[0], formulas[1]));
     }
   }, [formulas.length]);
