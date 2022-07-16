@@ -152,7 +152,7 @@ const converter = {
   },
 
   convertFormulaToUserFriendlyExpression(formula: PropositionalFormula): PropositionalExpression {
-    let expression = this.convertFormulaToDraftExpression(formula);
+    let expression = this._convertFormulaToDraftFriendlyExpression(formula);
 
     if (validator.isOpenParenthesisSymbol(expression[0]) && validator.isCloseParenthesisSymbol(expression[expression.length - 1])) {
       expression = parser.removeSurroundingElements(expression);
@@ -162,20 +162,47 @@ const converter = {
   },
 
   convertFormulaToExpression(formula: PropositionalFormula): PropositionalExpression {
-    const expression = this.convertFormulaToDraftExpression(formula);
+    const expression = this._convertFormulaToDraftExpression(formula);
 
     return parenthesizer.renumberPositions(expression);
   },
 
-  convertFormulaToDraftExpression(formula: PropositionalFormula): PropositionalExpression {
+  _convertFormulaToDraftExpression(formula: PropositionalFormula): PropositionalExpression {
     let output: PropositionalExpression = [];
 
     if (formula.operator === PropositionalOperator.Not) {
-      output = [preparedSymbols.negation, ...this.convertFormulaToDraftExpression(formula.values[0] as PropositionalFormula)];
+      output = parenthesizer.wrapWithParenthesis([
+        preparedSymbols.negation,
+        ...this._convertFormulaToDraftExpression(formula.values[0] as PropositionalFormula),
+      ]);
     } else if (validator.isBinaryOperator(formula.operator)) {
       const operator = factory.createBinarySymbol(formula.operator);
-      const leftOperand = this.convertFormulaToDraftExpression(formula.values[0] as PropositionalFormula);
-      const rightOperand = this.convertFormulaToDraftExpression(formula.values[1] as PropositionalFormula);
+      const leftOperand = this._convertFormulaToDraftExpression(formula.values[0] as PropositionalFormula);
+      const rightOperand = this._convertFormulaToDraftExpression(formula.values[1] as PropositionalFormula);
+      output = parenthesizer.wrapWithParenthesis([...leftOperand, operator, ...rightOperand]);
+    } else if (formula.operator === PropositionalOperator.Var) {
+      output = parenthesizer.wrapWithParenthesis([
+        {
+          input: formula.values as string,
+          representation: formula.values as string,
+          type: 'variable',
+          position: 0,
+        },
+      ]);
+    }
+
+    return output;
+  },
+
+  _convertFormulaToDraftFriendlyExpression(formula: PropositionalFormula): PropositionalExpression {
+    let output: PropositionalExpression = [];
+
+    if (formula.operator === PropositionalOperator.Not) {
+      output = [preparedSymbols.negation, ...this._convertFormulaToDraftFriendlyExpression(formula.values[0] as PropositionalFormula)];
+    } else if (validator.isBinaryOperator(formula.operator)) {
+      const operator = factory.createBinarySymbol(formula.operator);
+      const leftOperand = this._convertFormulaToDraftFriendlyExpression(formula.values[0] as PropositionalFormula);
+      const rightOperand = this._convertFormulaToDraftFriendlyExpression(formula.values[1] as PropositionalFormula);
       output = [preparedSymbols.openParenthesis, ...leftOperand, operator, ...rightOperand, preparedSymbols.closeParenthesis];
     } else if (formula.operator === PropositionalOperator.Var) {
       output = [
