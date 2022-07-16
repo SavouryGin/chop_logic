@@ -152,7 +152,7 @@ const converter = {
   },
 
   convertFormulaToUserFriendlyExpression(formula: PropositionalFormula): PropositionalExpression {
-    let expression = this.convertFormulaToExpression(formula);
+    let expression = this.convertFormulaToDraftExpression(formula);
 
     if (validator.isOpenParenthesisSymbol(expression[0]) && validator.isCloseParenthesisSymbol(expression[expression.length - 1])) {
       expression = parser.removeSurroundingElements(expression);
@@ -162,14 +162,20 @@ const converter = {
   },
 
   convertFormulaToExpression(formula: PropositionalFormula): PropositionalExpression {
+    const expression = this.convertFormulaToDraftExpression(formula);
+
+    return parenthesizer.renumberPositions(expression);
+  },
+
+  convertFormulaToDraftExpression(formula: PropositionalFormula): PropositionalExpression {
     let output: PropositionalExpression = [];
 
     if (formula.operator === PropositionalOperator.Not) {
-      output = [preparedSymbols.negation, ...this.convertFormulaToExpression(formula.values[0] as PropositionalFormula)];
+      output = [preparedSymbols.negation, ...this.convertFormulaToDraftExpression(formula.values[0] as PropositionalFormula)];
     } else if (validator.isBinaryOperator(formula.operator)) {
       const operator = factory.createBinarySymbol(formula.operator);
-      const leftOperand = this.convertFormulaToExpression(formula.values[0] as PropositionalFormula);
-      const rightOperand = this.convertFormulaToExpression(formula.values[1] as PropositionalFormula);
+      const leftOperand = this.convertFormulaToDraftExpression(formula.values[0] as PropositionalFormula);
+      const rightOperand = this.convertFormulaToDraftExpression(formula.values[1] as PropositionalFormula);
       output = [preparedSymbols.openParenthesis, ...leftOperand, operator, ...rightOperand, preparedSymbols.closeParenthesis];
     } else if (formula.operator === PropositionalOperator.Var) {
       output = [
@@ -183,42 +189,6 @@ const converter = {
     }
 
     return output;
-  },
-
-  getImplicationEliminationConsequent(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula): PropositionalFormula {
-    const isFirstImplication = firstFormula.operator === PropositionalOperator.Implies && firstFormula.values.length === 2;
-    const isSecondImplication = secondFormula.operator === PropositionalOperator.Implies && secondFormula.values.length === 2;
-
-    if (isFirstImplication && !isSecondImplication) {
-      const antecedent = firstFormula.values[0] as PropositionalFormula;
-      const consequent = firstFormula.values[1] as PropositionalFormula;
-
-      if (validator.areTwoFormulasEqual(antecedent, secondFormula)) {
-        return consequent;
-      }
-    }
-
-    if (!isFirstImplication && isSecondImplication) {
-      const antecedent = secondFormula.values[0] as PropositionalFormula;
-      const consequent = secondFormula.values[1] as PropositionalFormula;
-
-      if (validator.areTwoFormulasEqual(antecedent, firstFormula)) {
-        return consequent;
-      }
-    }
-
-    const firstAntecedent = firstFormula.values[0] as PropositionalFormula;
-    const firstConsequent = firstFormula.values[1] as PropositionalFormula;
-    const secondAntecedent = secondFormula.values[0] as PropositionalFormula;
-    const secondConsequent = secondFormula.values[1] as PropositionalFormula;
-
-    if (validator.areTwoFormulasEqual(firstAntecedent, secondFormula)) {
-      return firstConsequent;
-    } else if (validator.areTwoFormulasEqual(secondAntecedent, firstFormula)) {
-      return secondConsequent;
-    } else {
-      throw new PropositionalError('Cannot perform the implication elimination.', errorsTexts.semanticError);
-    }
   },
 };
 

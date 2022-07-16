@@ -12,7 +12,7 @@ const DirectProofsEditorToolbar = () => {
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useImplicationEliminationEnabling();
-  const selectedFormulas = useAppSelector(propositionsSelectors.getSelectedFormulas);
+  const selectedItems = useAppSelector(propositionsSelectors.getSelectedTableItems);
 
   const deleteSteps = () => {
     dispatch(actions.deleteSteps());
@@ -39,7 +39,7 @@ const DirectProofsEditorToolbar = () => {
   };
 
   const performIE = () => {
-    dispatch(actions.eliminateImplication(selectedFormulas));
+    dispatch(actions.eliminateImplication(selectedItems));
   };
 
   return (
