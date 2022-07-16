@@ -117,8 +117,19 @@ describe('Propositions converter tests', () => {
     expect(converter.convertStringToUserFriendlyExpression('~ (~p => q)')).toEqual(mocks.secondFriendlyExpression);
   });
 
+  it('convertFormulaToExpression() returns a correct expression', () => {
+    expect(converter.convertFormulaToExpression(mocks.contradictionRealizationFormula)).toEqual(mocks.contradictionRealizationExpression);
+    expect(converter.convertFormulaToExpression(mocks.contradictionRealizationFormula)).not.toEqual(
+      mocks.contradictionRealizationFriendlyExpression,
+    );
+    expect(converter.convertFormulaToExpression(mocks.implicationDistributionFormula)).toEqual(mocks.implicationDistributionExpression);
+    expect(converter.convertFormulaToExpression(mocks.implicationDistributionFormula)).not.toEqual(
+      mocks.friendlyImplicationDistributionExpression,
+    );
+  });
+
   it('implication distribution tests', () => {
-    expect(converter.convertToIDExpression('p', '~q', 'r|s')).toEqual(mocks.implicationDistributionExpression);
+    expect(converter.convertToIDExpression('P', '~Q', 'R|S')).toEqual(mocks.implicationDistributionExpression);
     expect(converter.convertExpressionToFormula(mocks.implicationDistributionExpression)).toEqual(mocks.implicationDistributionFormula);
     expect(converter.convertFormulaToUserFriendlyExpression(mocks.implicationDistributionFormula)).toEqual(
       mocks.friendlyImplicationDistributionExpression,
@@ -126,7 +137,7 @@ describe('Propositions converter tests', () => {
   });
 
   it('contradiction realization tests', () => {
-    expect(converter.convertToCRExpression('p=>q', '~r')).toEqual(mocks.contradictionRealizationExpression);
+    expect(converter.convertToCRExpression('P=>Q', '~R')).toEqual(mocks.contradictionRealizationExpression);
     expect(converter.convertExpressionToFormula(mocks.contradictionRealizationExpression)).toEqual(mocks.contradictionRealizationFormula);
     expect(converter.convertFormulaToUserFriendlyExpression(mocks.contradictionRealizationFormula)).toEqual(
       mocks.contradictionRealizationFriendlyExpression,
