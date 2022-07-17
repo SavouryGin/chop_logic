@@ -1,4 +1,6 @@
 import converter from 'logic/propositions/converter';
+import executor from 'logic/propositions/executor';
+import validator from 'logic/propositions/validator';
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
@@ -136,6 +138,37 @@ export const propositionsSlice = createSlice({
         formula,
         comment: { en: 'CR', ru: 'СП' },
       };
+      state.selectedIds = [];
+      state.directProofsTableData = [...state.directProofsTableData, newItem];
+    },
+
+    eliminateImplication: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
+      const items = action.payload;
+      if (items.length !== 2) {
+        return state;
+      }
+
+      const formulas = items.map((item) => item.formula);
+
+      if (!validator.isIEApplicable(formulas[0], formulas[1])) {
+        return state;
+      }
+
+      const formula = executor.performIE(formulas[0], formulas[1]);
+      const expression = converter.convertFormulaToExpression(formula);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+      const step = state.directProofsTableData.length + 1;
+      const id = `proof-step-${step}`;
+      const newItem: DirectProofsTableItem = {
+        step,
+        id,
+        expression,
+        friendlyExpression,
+        formula,
+        rawInput: `${items[0].rawInput}, ${items[1].rawInput}`,
+        comment: { en: `IE: ${items[0].step}, ${items[1].step}`, ru: `УИ: ${items[0].step}, ${items[1].step}` },
+      };
+
       state.selectedIds = [];
       state.directProofsTableData = [...state.directProofsTableData, newItem];
     },

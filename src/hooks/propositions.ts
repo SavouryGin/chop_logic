@@ -1,6 +1,9 @@
 import converter from 'logic/propositions/converter';
+import validator from 'logic/propositions/validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
+import { propositionsSelectors } from 'store/propositions/selectors';
+import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';
 
 export const usePropositionalFormulaPreview = (input: string): PropositionalExpression | PropositionalError => {
@@ -92,4 +95,19 @@ export const useImplicationDistributionPreview = (
   }, [firstVariable, secondVariable, thirdVariable]);
 
   return output;
+};
+
+export const useImplicationEliminationEnabling = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const formulas = useAppSelector(propositionsSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    if (formulas.length !== 2) {
+      setIsEnabled(false);
+    } else {
+      setIsEnabled(validator.isIEApplicable(formulas[0], formulas[1]));
+    }
+  }, [formulas.length]);
+
+  return isEnabled;
 };
