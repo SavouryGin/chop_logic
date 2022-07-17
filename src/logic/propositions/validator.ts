@@ -1,7 +1,7 @@
 import searcher from './searcher';
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalExpression, PropositionalSymbol } from 'types';
+import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { errorsTexts } from 'texts';
 
 const validator = {
@@ -146,6 +146,39 @@ const validator = {
     }
 
     return false;
+  },
+
+  isIEApplicable(first: PropositionalFormula, second: PropositionalFormula): boolean {
+    const isFirstImplication = first.operator === PropositionalOperator.Implies && first.values.length === 2;
+    const isSecondImplication = second.operator === PropositionalOperator.Implies && second.values.length === 2;
+
+    // One implication in the first formula
+    if (isFirstImplication && !isSecondImplication) {
+      const antecedent = first.values[0];
+
+      return this.areTwoFormulasEqual(antecedent, second);
+    }
+
+    // One implication in the second formula
+    if (!isFirstImplication && isSecondImplication) {
+      const antecedent = second.values[0];
+
+      return this.areTwoFormulasEqual(antecedent, first);
+    }
+
+    // Two implications
+    if (isFirstImplication && isSecondImplication) {
+      const firstAntecedent = first.values[0];
+      const secondAntecedent = second.values[0];
+
+      return this.areTwoFormulasEqual(firstAntecedent, second) || this.areTwoFormulasEqual(secondAntecedent, first);
+    }
+
+    return false;
+  },
+
+  areTwoFormulasEqual(first: string | PropositionalFormula, second: string | PropositionalFormula): boolean {
+    return JSON.stringify(first) === JSON.stringify(second);
   },
 };
 

@@ -972,7 +972,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 2,
   },
   {
-    input: 'p',
+    input: 'P',
     representation: 'P',
     type: 'variable',
     position: 3,
@@ -1014,7 +1014,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 9,
   },
   {
-    input: 'q',
+    input: 'Q',
     representation: 'Q',
     type: 'variable',
     position: 10,
@@ -1050,7 +1050,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 15,
   },
   {
-    input: 'r',
+    input: 'R',
     representation: 'R',
     type: 'variable',
     position: 16,
@@ -1074,7 +1074,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 19,
   },
   {
-    input: 's',
+    input: 'S',
     representation: 'S',
     type: 'variable',
     position: 20,
@@ -1128,7 +1128,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 28,
   },
   {
-    input: 'p',
+    input: 'P',
     representation: 'P',
     type: 'variable',
     position: 29,
@@ -1164,7 +1164,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 34,
   },
   {
-    input: 'q',
+    input: 'Q',
     representation: 'Q',
     type: 'variable',
     position: 35,
@@ -1206,7 +1206,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 41,
   },
   {
-    input: 'p',
+    input: 'P',
     representation: 'P',
     type: 'variable',
     position: 42,
@@ -1236,7 +1236,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 46,
   },
   {
-    input: 'r',
+    input: 'R',
     representation: 'R',
     type: 'variable',
     position: 47,
@@ -1260,7 +1260,7 @@ const implicationDistributionExpression: PropositionalExpression = [
     position: 50,
   },
   {
-    input: 's',
+    input: 'S',
     representation: 'S',
     type: 'variable',
     position: 51,
@@ -1536,7 +1536,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 5,
   },
   {
-    input: 'p',
+    input: 'P',
     representation: 'P',
     type: 'variable',
     position: 6,
@@ -1560,7 +1560,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 9,
   },
   {
-    input: 'q',
+    input: 'Q',
     representation: 'Q',
     type: 'variable',
     position: 10,
@@ -1608,7 +1608,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 17,
   },
   {
-    input: 'r',
+    input: 'R',
     representation: 'R',
     type: 'variable',
     position: 18,
@@ -1674,7 +1674,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 28,
   },
   {
-    input: 'p',
+    input: 'P',
     representation: 'P',
     type: 'variable',
     position: 29,
@@ -1698,7 +1698,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 32,
   },
   {
-    input: 'q',
+    input: 'Q',
     representation: 'Q',
     type: 'variable',
     position: 33,
@@ -1758,7 +1758,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 42,
   },
   {
-    input: 'r',
+    input: 'R',
     representation: 'R',
     type: 'variable',
     position: 43,
@@ -1806,7 +1806,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 50,
   },
   {
-    input: 'p',
+    input: 'P',
     representation: 'P',
     type: 'variable',
     position: 51,
@@ -1830,7 +1830,7 @@ const contradictionRealizationExpression: PropositionalExpression = [
     position: 54,
   },
   {
-    input: 'q',
+    input: 'Q',
     representation: 'Q',
     type: 'variable',
     position: 55,
