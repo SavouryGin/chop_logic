@@ -23,6 +23,9 @@
     }
 
     .tab-list__content {
+      min-height: 92%;
+      display: flex;
+      justify-content: center;
       border-bottom: none;
     }
   }
