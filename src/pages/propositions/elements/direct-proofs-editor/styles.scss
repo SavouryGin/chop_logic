@@ -3,6 +3,10 @@
 @import 'styles/fonts.scss';
 
 .direct-proofs-editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   &__table {
     margin-bottom: $big-margin;
 
