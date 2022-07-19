@@ -37,7 +37,7 @@ const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps
     setTimeout(() => {
       onClose();
       dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
-    }, 300);
+    }, 500);
   };
 
   const portal = (

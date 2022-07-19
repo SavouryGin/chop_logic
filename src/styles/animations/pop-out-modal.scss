@@ -1,7 +1,7 @@
 @mixin pop-out-modal {
-  animation: pop-out-modal ease 400ms forwards;
-  -webkit-animation: pop-out-modal ease 400ms forwards;
-  -moz-animation: pop-out-modal ease 400ms forwards;
+  animation: pop-out-modal ease 600ms forwards;
+  -webkit-animation: pop-out-modal ease 600ms forwards;
+  -moz-animation: pop-out-modal ease 600ms forwards;
 }
 
 @keyframes pop-out-modal {
