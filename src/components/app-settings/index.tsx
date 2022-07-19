@@ -25,7 +25,7 @@ const AppSettings = ({ className }: CommonProps) => {
     setTimeout(() => {
       dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false }));
       dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
-    }, 900);
+    }, 500);
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
