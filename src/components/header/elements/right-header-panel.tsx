@@ -24,7 +24,7 @@ const RightHeaderPanel = () => {
       setTimeout(() => {
         dispatch(settingsActions.toggleFlag('isSidebarOpen'));
         dispatch(settingsActions.toggleFlag('isSidebarAnimationActive'));
-      }, 900);
+      }, 500);
     } else {
       dispatch(settingsActions.toggleFlag('isSidebarOpen'));
     }

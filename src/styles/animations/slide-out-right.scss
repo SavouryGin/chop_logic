@@ -1,7 +1,7 @@
 @mixin slide-out-right {
-  animation: slide-out-right ease 1000ms;
-  -webkit-animation: slide-out-right ease 1000ms;
-  -moz-animation: slide-out-right ease 1000ms;
+  animation: slide-out-right ease 600ms;
+  -webkit-animation: slide-out-right ease 600ms;
+  -moz-animation: slide-out-right ease 600ms;
 }
 
 @keyframes slide-out-right {

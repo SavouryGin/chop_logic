@@ -2236,6 +2236,122 @@ const contradictionRealizationFormula: PropositionalFormula = {
   ],
 };
 
+const implicationEliminationFormula: PropositionalFormula = {
+  operator: PropositionalOperator.Implies,
+  values: [
+    {
+      operator: PropositionalOperator.Or,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'P',
+        },
+        {
+          operator: PropositionalOperator.Not,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Q',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Implies,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'P',
+            },
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Q',
+            },
+          ],
+        },
+        {
+          operator: PropositionalOperator.Or,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'P',
+            },
+            {
+              operator: PropositionalOperator.Not,
+              values: [
+                {
+                  operator: PropositionalOperator.Var,
+                  values: 'Q',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const implicationEliminationConsequent: PropositionalFormula = {
+  operator: PropositionalOperator.Implies,
+  values: [
+    {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'P',
+        },
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+      ],
+    },
+    {
+      operator: PropositionalOperator.Or,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'P',
+        },
+        {
+          operator: PropositionalOperator.Not,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Q',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const implicationEliminationAntecedent: PropositionalFormula = {
+  operator: PropositionalOperator.Or,
+  values: [
+    {
+      operator: PropositionalOperator.Var,
+      values: 'P',
+    },
+    {
+      operator: PropositionalOperator.Not,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+      ],
+    },
+  ],
+};
+
 const propositions = {
   secondSubFormula,
   firstSubFormula,
@@ -2265,6 +2381,9 @@ const propositions = {
   contradictionRealizationExpression,
   contradictionRealizationFriendlyExpression,
   contradictionRealizationFormula,
+  implicationEliminationFormula,
+  implicationEliminationConsequent,
+  implicationEliminationAntecedent,
 };
 
 export default propositions;
