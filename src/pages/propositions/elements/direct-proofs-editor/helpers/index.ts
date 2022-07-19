@@ -9,5 +9,5 @@ export function closePropositionsPopup(dispatch: AppDispatch, flag: Propositions
   setTimeout(() => {
     dispatch(propositionsActions.setUpFlag({ flag, value: false }));
     dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
-  }, 900);
+  }, 500);
 }

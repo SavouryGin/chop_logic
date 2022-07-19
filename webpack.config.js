@@ -7,6 +7,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const config = {
   mode: isProd ? 'production' : 'development',
   entry: './src/index.tsx',
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index-bundle.js',

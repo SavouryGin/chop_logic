@@ -23,7 +23,11 @@
     }
 
     .tab-list__content {
+      display: flex;
+      justify-content: start;
       border-bottom: none;
+      padding-bottom: 0;
+      height: 92%;
     }
   }
 }
