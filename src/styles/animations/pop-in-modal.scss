@@ -1,7 +1,7 @@
 @mixin pop-in-modal {
-  animation: pop-in-modal ease 1000ms;
-  -webkit-animation: pop-in-modal ease 1000ms;
-  -moz-animation: pop-in-modal ease 1000ms;
+  animation: pop-in-modal ease 600ms;
+  -webkit-animation: pop-in-modal ease 600ms;
+  -moz-animation: pop-in-modal ease 600ms;
 }
 
 @keyframes pop-in-modal {

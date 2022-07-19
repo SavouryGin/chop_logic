@@ -1,7 +1,7 @@
 @mixin slide-in-left {
-  animation: slide-in-left ease 1000ms;
-  -webkit-animation: slide-in-left ease 1000ms;
-  -moz-animation: slide-in-left ease 1000ms;
+  animation: slide-in-left ease 600ms;
+  -webkit-animation: slide-in-left ease 600ms;
+  -moz-animation: slide-in-left ease 600ms;
 }
 
 @keyframes slide-in-left {
