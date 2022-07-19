@@ -19,7 +19,7 @@ const LeftHeaderPanel = () => {
       setTimeout(() => {
         dispatch(settingsActions.toggleFlag('isNavigationOpen'));
         dispatch(settingsActions.toggleFlag('isMenuAnimationActive'));
-      }, 900);
+      }, 500);
     } else {
       dispatch(settingsActions.toggleFlag('isNavigationOpen'));
     }
