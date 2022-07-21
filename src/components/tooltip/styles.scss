@@ -1,0 +1,26 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
+@import 'styles/animations/pop-in-modal.scss';
+
+.tooltip {
+  position: relative;
+
+  &__container {
+    display: none;
+    position: absolute;
+    z-index: $tooltip-z-index;
+    border-radius: $border-radius;
+    font-size: $tiny-font-size;
+    background-color: $light-font-color;
+    color: $light-background-color;
+    padding: $small-padding;
+    @include pop-in-modal();
+
+    top: -38px;
+
+    &_visible {
+      display: block;
+    }
+  }
+}
