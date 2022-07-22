@@ -1,6 +1,6 @@
-import React, { ReactElement, useMemo, useState } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import React, { ReactElement } from 'react';
 import { CommonProps } from 'types';
+import { useHover } from 'hooks';
 import './styles.scss';
 
 type TooltipProps = CommonProps & {
@@ -10,29 +10,17 @@ type TooltipProps = CommonProps & {
 };
 
 const Tooltip = ({ text, children }: TooltipProps) => {
-  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
-  const tooltipClass = useMemo(() => {
-    return formatClassName(['tooltip__container', { tooltip__container_visible: isTooltipVisible }]);
-  }, [isTooltipVisible]);
-
-  const onHover = () => {
-    setIsTooltipVisible(true);
-  };
-
-  const onLeave = () => {
-    setIsTooltipVisible(false);
-  };
-
+  const [hoverRef, isHovered] = useHover<HTMLDivElement>();
+  console.log(isHovered);
   const tooltipContainer = (
-    <div className={tooltipClass}>
-      <div className='tooltip__arrow'></div>
+    <div className='tooltip__container'>
       <div className='tooltip__text'>{text}</div>
     </div>
   );
 
   return (
-    <div className='tooltip' onMouseOver={onHover} onMouseLeave={onLeave}>
-      {isTooltipVisible && tooltipContainer}
+    <div ref={hoverRef} className='tooltip'>
+      {tooltipContainer}
       {children}
     </div>
   );
