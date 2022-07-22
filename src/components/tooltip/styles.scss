@@ -4,21 +4,27 @@
 
 .tooltip {
   position: relative;
+  text-decoration: underline dotted $light-weak-accent-color;
+
+  &:hover {
+    text-decoration: none;
+  }
 
   &__container {
+    display: block;
     position: absolute;
+    max-width: $max-tooltip-width;
+    max-height: $max-tooltip-width;
+    overflow: auto;
+    top: 100%;
+    left: 100%;
     z-index: $tooltip-z-index;
     border-radius: $border-radius;
     font-size: $tiny-font-size;
     background-color: $light-font-color;
     color: $light-background-color;
-    padding: $small-padding;
-    opacity: 0.6;
+    padding: $small-padding * 2 $small-padding;
 
-    top: -38px;
-
-    &_visible {
-      display: block;
-    }
+    opacity: 0.8;
   }
 }
