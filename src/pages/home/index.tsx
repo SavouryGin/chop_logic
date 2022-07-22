@@ -12,8 +12,12 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
-      <Tooltip text='test tooltip text'>
-        <div>Test div for tooltip</div>
+      <Tooltip
+        text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt necessitatibus, maxime dolores impedit
+          minus consequatur vero vitae accusantium nulla error, eaque harum excepturi sequi consequuntur pariatur, fugit architecto a
+          dignissimos?'
+      >
+        <span>Test div for tooltip</span>
       </Tooltip>
     </div>
   );

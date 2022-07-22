@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { CommonProps } from 'types';
 import { useHover } from 'hooks';
 import './styles.scss';
@@ -6,23 +6,19 @@ import './styles.scss';
 type TooltipProps = CommonProps & {
   text: string;
   position?: 'top' | 'left' | 'right' | 'bottom';
-  children?: ReactElement | string;
+  children?: React.ReactElement | string;
 };
 
 const Tooltip = ({ text, children }: TooltipProps) => {
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
   console.log(isHovered);
-  const tooltipContainer = (
-    <div className='tooltip__container'>
-      <div className='tooltip__text'>{text}</div>
-    </div>
-  );
+  const tooltipContainer = <span className='tooltip__container'>{text}</span>;
 
   return (
-    <div ref={hoverRef} className='tooltip'>
-      {tooltipContainer}
+    <span ref={hoverRef} className='tooltip'>
+      {isHovered && tooltipContainer}
       {children}
-    </div>
+    </span>
   );
 };
 
