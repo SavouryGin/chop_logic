@@ -1,7 +1,8 @@
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
-import { useHover } from 'hooks';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector, useHover } from 'hooks';
 import './styles.scss';
 
 type TooltipProps = CommonProps & {
@@ -12,15 +13,17 @@ type TooltipProps = CommonProps & {
 
 const Tooltip = ({ text, children, position = 'bottom' }: TooltipProps) => {
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
+  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const tooltipClass = formatClassName(['tooltip', { tooltip_dark: isDarkMode }]);
   const containerClass = formatClassName(['tooltip__container', `tooltip__container_${position}`]);
   console.log(isHovered);
-  const tooltipContainer = <div className={containerClass}>{text}</div>;
+  const tooltipContainer = <span className={containerClass}>{text}</span>;
 
   return (
-    <div ref={hoverRef} className='tooltip'>
+    <span ref={hoverRef} className={tooltipClass}>
       {isHovered && tooltipContainer}
       {children}
-    </div>
+    </span>
   );
 };
 
