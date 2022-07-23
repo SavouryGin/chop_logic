@@ -13,13 +13,17 @@ const Home = () => {
       <br></br>
       <br></br>
       <Tooltip
-        position='top'
         text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt necessitatibus, maxime dolores impedit
           minus consequatur vero vitae accusantium nulla error, eaque harum excepturi sequi consequuntur pariatur, fugit architecto a
           dignissimos?'
       >
         <span>Test div for tooltip</span>
       </Tooltip>
+      <br></br>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consectetur cupiditate omnis deleniti temporibus dolore alias
+        ducimus corporis repellat ullam asperiores ab vel magni ratione saepe, expedita porro pariatur ex?
+      </p>
     </div>
   );
 };
