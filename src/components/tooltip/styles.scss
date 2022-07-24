@@ -1,0 +1,46 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+@import 'styles/z-indexes.scss';
+
+.tooltip {
+  position: relative;
+  text-decoration: underline dotted $light-weak-accent-color;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &__container {
+    display: inline-block;
+    position: absolute;
+    max-width: $max-tooltip-width;
+    max-height: $max-tooltip-width;
+    overflow: auto;
+    z-index: $tooltip-z-index;
+    border-radius: $border-radius;
+    font-size: $tiny-font-size;
+    padding: $small-padding * 2 $small-padding;
+    opacity: 0.8;
+    // Light colors
+    background-color: $light-font-color;
+    color: $light-background-color;
+
+    &_bottom {
+      top: 100%;
+    }
+
+    &_top {
+      bottom: 100%;
+    }
+  }
+
+  &_dark {
+    text-decoration: underline dotted $dark-weak-accent-color;
+
+    .tooltip__container {
+      background-color: $dark-font-color;
+      color: $dark-background-color;
+    }
+  }
+}
