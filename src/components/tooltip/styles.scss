@@ -20,6 +20,7 @@
     z-index: $tooltip-z-index;
     border-radius: $border-radius;
     font-size: $tiny-font-size;
+    white-space: pre-wrap;
     padding: $small-padding * 2 $small-padding;
     opacity: 0.8;
     // Light colors

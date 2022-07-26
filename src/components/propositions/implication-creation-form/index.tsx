@@ -2,11 +2,12 @@ import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
+import Tooltip from 'components/tooltip';
 import constants from 'presets/propositions';
-import { ButtonID, InputID } from 'enums';
+import { ButtonID, Icon, InputID } from 'enums';
 import { FormValues } from 'types';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
-import { formsTexts } from 'texts/propositions';
+import { formsTexts, tooltipTexts } from 'texts/propositions';
 import { propositionsActions } from 'store/propositions/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationCreationPreview } from 'hooks';
@@ -37,9 +38,16 @@ const ImplicationCreationForm = () => {
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);
 
+  const tooltip = (
+    <Tooltip text={tooltipTexts.inputTooltip[language]}>
+      <span role='img' aria-label='Hint' className={Icon.Down}></span>
+    </Tooltip>
+  );
+
   return (
     <div className='implication-creation-form'>
       <p>{formsTexts.enterValues[language]}</p>
+      {tooltip}
       <p className='implication-creation-form__formula'>{constants.implicationCreationFormula}</p>
       <Form
         onSubmit={onSubmit}
