@@ -16,8 +16,8 @@ export const fillerText = {
 
 export const formsTexts: TextContainer = {
   enterValues: {
-    en: 'Enter values (any valid propositional formulas) \nfor the meta-variables in the schema:',
-    ru: 'Введите значения (любые допустимые пропозициональные\n формулы) для мета-переменных в схеме:',
+    en: 'Enter values for the meta-variables in the schema:',
+    ru: 'Введите значения для мета-переменных в схеме:',
   },
 };
 
