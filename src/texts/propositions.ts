@@ -16,8 +16,8 @@ export const fillerText = {
 
 export const formsTexts: TextContainer = {
   enterValues: {
-    en: 'Enter values for the meta-variables in the schema:',
-    ru: 'Введите значения для мета-переменных в схеме:',
+    en: 'Enter values (any valid propositional formulas) \nfor the meta-variables in the schema:',
+    ru: 'Введите значения (любые допустимые пропозициональные\n формулы) для мета-переменных в схеме:',
   },
 };
 
@@ -37,5 +37,12 @@ export const errorsTexts: TextContainer = {
   semanticError: {
     en: 'The entered expression cannot be converted into a propositional formula.',
     ru: 'Введённое выражение нельзя преобразовать в пропозициональную формулу.',
+  },
+};
+
+export const tooltipTexts: TextContainer = {
+  inputTooltip: {
+    en: 'P, Q, R, ... - for variables\n~ - for negation\n& - for conjunction\n| - for disjunction\n=> - for implication\n<=> - for equivalence',
+    ru: 'P, Q, R, ... - переменные\n~ - отрицание\n& - конъюнкция\n| - дизъюнкция\n=> - импликация\n<=> - эквивалентность',
   },
 };
