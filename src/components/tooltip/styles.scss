@@ -36,6 +36,10 @@
     }
   }
 
+  &__icon {
+    text-decoration: none;
+  }
+
   &_dark {
     text-decoration: underline dotted $dark-weak-accent-color;
 

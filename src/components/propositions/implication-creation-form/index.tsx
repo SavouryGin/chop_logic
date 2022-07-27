@@ -38,11 +38,7 @@ const ImplicationCreationForm = () => {
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);
 
-  const tooltip = (
-    <Tooltip text={tooltipTexts.inputTooltip[language]}>
-      <span role='img' aria-label='Hint' className={Icon.Down}></span>
-    </Tooltip>
-  );
+  const tooltip = <Tooltip text={tooltipTexts.inputTooltip[language]} icon={Icon.Default}></Tooltip>;
 
   return (
     <div className='implication-creation-form'>
