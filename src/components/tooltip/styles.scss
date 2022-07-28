@@ -12,7 +12,8 @@
   }
 
   &__container {
-    display: inline-block;
+    display: block;
+    width: max-content;
     position: absolute;
     max-width: $max-tooltip-width;
     max-height: $max-tooltip-width;
@@ -22,17 +23,19 @@
     font-size: $tiny-font-size;
     white-space: pre-wrap;
     padding: $small-padding * 2 $small-padding;
-    opacity: 0.8;
+    // opacity: 0.8;
     // Light colors
     background-color: $light-font-color;
     color: $light-background-color;
 
     &_bottom {
       top: 100%;
+      left: 0;
     }
 
     &_top {
       bottom: 100%;
+      left: 0;
     }
   }
 

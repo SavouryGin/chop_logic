@@ -28,4 +28,5 @@ export enum Icon {
   Required = 'chop-icon__fire',
   Check = 'chop-icon__checkbox-checked',
   Uncheck = 'chop-icon__checkbox-unchecked',
+  Info = 'chop-icon__exclamation-triangle',
 }

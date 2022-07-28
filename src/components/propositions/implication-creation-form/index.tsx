@@ -38,12 +38,14 @@ const ImplicationCreationForm = () => {
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);
 
-  const tooltip = <Tooltip text={tooltipTexts.inputTooltip[language]} icon={Icon.Default}></Tooltip>;
+  const tooltip = <Tooltip text={tooltipTexts.inputTooltip[language]} icon={Icon.Info}></Tooltip>;
 
   return (
     <div className='implication-creation-form'>
-      <p>{formsTexts.enterValues[language]}</p>
-      {tooltip}
+      <p>
+        {formsTexts.enterValues[language]}
+        {tooltip}
+      </p>
       <p className='implication-creation-form__formula'>{constants.implicationCreationFormula}</p>
       <Form
         onSubmit={onSubmit}
