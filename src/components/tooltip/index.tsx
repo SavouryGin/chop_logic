@@ -16,11 +16,13 @@ const Tooltip = ({ text, children, position = 'bottom', icon }: TooltipProps) =>
   const iconElement = <span role='img' aria-label='Hint' className={iconClass}></span>;
 
   return (
-    <span ref={hoverRef} className={tooltipClass}>
-      {icon && iconElement}
+    <>
       {isHovered && tooltipContainer}
-      {children}
-    </span>
+      <span ref={hoverRef} className={tooltipClass}>
+        {icon && iconElement}
+        {children}
+      </span>
+    </>
   );
 };
 
