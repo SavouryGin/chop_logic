@@ -43,8 +43,7 @@ const ImplicationCreationForm = () => {
   return (
     <div className='implication-creation-form'>
       <p>
-        {formsTexts.enterValues[language]}
-        {tooltip}
+        {formsTexts.enterValues[language]} {tooltip}
       </p>
       <p className='implication-creation-form__formula'>{constants.implicationCreationFormula}</p>
       <Form
