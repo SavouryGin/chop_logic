@@ -8,4 +8,5 @@ export enum InputID {
   SecondMetaVariable,
   ThirdMetaVariable,
   Preview,
+  Variable,
 }
