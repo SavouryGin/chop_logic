@@ -29,4 +29,7 @@ export const inputTexts: InputText = {
   [InputID.Preview]: {
     label: { en: 'Preview', ru: 'Предпросмотр' },
   },
+  [InputID.Variable]: {
+    label: { en: 'Propositional Variable:', ru: 'Пропозициональная переменная:' },
+  },
 };
