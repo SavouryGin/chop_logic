@@ -8,4 +8,5 @@ export const uiElementTexts: { [key in string]: LocalText } = {
   implicationCreation: { en: 'Implication Introduction', ru: 'Введение импликации' },
   implicationDistribution: { en: 'Implication Distribution', ru: 'Дистрибуция импликация' },
   contradictionRealization: { en: 'Contradiction Realization', ru: 'Создание противоречия' },
+  replacerForm: { en: 'Replace', ru: 'Замена' },
 };

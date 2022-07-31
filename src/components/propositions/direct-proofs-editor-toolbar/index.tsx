@@ -42,6 +42,10 @@ const DirectProofsEditorToolbar = () => {
     dispatch(actions.eliminateImplication(selectedItems));
   };
 
+  const openReplacer = () => {
+    dispatch(actions.setUpFlag({ flag: 'isReplacerFormOpened', value: true }));
+  };
+
   return (
     <div className='direct-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} />
@@ -52,7 +56,7 @@ const DirectProofsEditorToolbar = () => {
         isDisabled={isReiterationDisabled}
         onClick={reiterateStep}
       />
-      <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' />
+      <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' onClick={openReplacer} />
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' isDisabled={isDeleteDisabled} onClick={deleteSteps} />
       <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} size='large' onClick={openIC} />
       <Button buttonId={ButtonID.ImplicationDistribution} sound={soundPlayer.slideClick} size='large' onClick={openID} />
