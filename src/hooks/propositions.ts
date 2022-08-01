@@ -114,10 +114,20 @@ export const useImplicationEliminationEnabling = (): boolean => {
 
 export const useReplacePossibleStatus = (variable: string): boolean => {
   const [isPossible, setIsPossible] = useState(false);
+  const data = useAppSelector(propositionsSelectors.getDirectProofsTableData);
 
   useEffect(() => {
-    if (!variable.trim().length) {
+    if (!variable.trim().length || !data.length) {
       setIsPossible(false);
+    } else {
+      const input = variable.trim().toUpperCase();
+      let isMatch = false;
+
+      data.forEach((item) => {
+        isMatch = item.friendlyExpression.some((symbol) => symbol.representation === input);
+      });
+
+      setIsPossible(isMatch);
     }
   }, [variable]);
 
