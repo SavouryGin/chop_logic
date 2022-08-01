@@ -9,9 +9,11 @@ import { useAppDispatch, useAppSelector, useImplicationEliminationEnabling } fro
 const DirectProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
   const selectedIds = useAppSelector(propositionsSelectors.getSelectedIds);
+  const tableDataLength = useAppSelector(propositionsSelectors.getDirectProofsTableDataLength);
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useImplicationEliminationEnabling();
+  const isReplacerDisabled = tableDataLength === 0;
   const selectedItems = useAppSelector(propositionsSelectors.getSelectedTableItems);
 
   const deleteSteps = () => {
@@ -56,7 +58,13 @@ const DirectProofsEditorToolbar = () => {
         isDisabled={isReiterationDisabled}
         onClick={reiterateStep}
       />
-      <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' onClick={openReplacer} />
+      <Button
+        buttonId={ButtonID.Replace}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={openReplacer}
+        isDisabled={isReplacerDisabled}
+      />
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' isDisabled={isDeleteDisabled} onClick={deleteSteps} />
       <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} size='large' onClick={openIC} />
       <Button buttonId={ButtonID.ImplicationDistribution} sound={soundPlayer.slideClick} size='large' onClick={openID} />
