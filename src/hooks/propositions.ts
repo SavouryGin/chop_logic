@@ -97,7 +97,7 @@ export const useImplicationDistributionPreview = (
   return output;
 };
 
-export const useImplicationEliminationEnabling = () => {
+export const useImplicationEliminationEnabling = (): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
   const formulas = useAppSelector(propositionsSelectors.getSelectedFormulas);
 
@@ -110,4 +110,16 @@ export const useImplicationEliminationEnabling = () => {
   }, [formulas.length]);
 
   return isEnabled;
+};
+
+export const useReplacePossibleStatus = (variable: string): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+
+  useEffect(() => {
+    if (!variable.trim().length) {
+      setIsPossible(false);
+    }
+  }, [variable]);
+
+  return isPossible;
 };
