@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Browser } from 'enums';
 import { ModalWindowProps } from 'types';
-import { detectBrowser } from 'helpers/checkers/detect-browser';
+import { detectBrowser } from 'helpers/checkers';
 import { settingsActions } from 'store/settings/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
