@@ -175,9 +175,13 @@ export const propositionsSlice = createSlice({
       state.directProofsTableData = [...state.directProofsTableData, newItem];
     },
 
-    replacePropositionalVariable: (state, action: PayloadAction<string>) => {
-      const newVariable = action.payload;
-      state.directProofsTableData = replacer.replacePropositionalVariableInTableItems(state.directProofsTableData, newVariable);
+    replacePropositionalVariable: (state, action: PayloadAction<{ newVariable: string; oldVariable: string }>) => {
+      const { newVariable, oldVariable } = action.payload;
+      state.directProofsTableData = replacer.replacePropositionalVariableInTableItems(
+        state.directProofsTableData,
+        newVariable,
+        oldVariable,
+      );
     },
   },
 });
