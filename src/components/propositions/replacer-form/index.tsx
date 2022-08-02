@@ -10,21 +10,23 @@ import './styles.scss';
 
 const ReplacerForm = () => {
   const dispatch = useAppDispatch();
-  const replacerInitialValue = { symbol: '' };
-  const [formValue, setFormValue] = useState(replacerInitialValue);
-  const isReplacePossible = useReplacePossibleStatus(formValue.symbol);
+  const replacerInitialValue = { newVariable: '', oldVariable: '' };
+  const [formValues, setFormValues] = useState(replacerInitialValue);
+  const isReplacePossible = useReplacePossibleStatus(formValues.oldVariable);
+  const isReplaceDisabled = !isReplacePossible || formValues.newVariable.length !== 1;
 
   const formContent = (
     <>
-      <TextInput name='symbol' inputId={InputID.Variable} className='replacer-form__input' isRequired />
+      <TextInput name='oldVariable' inputId={InputID.OldVariable} className='replacer-form__input' isRequired />
+      <TextInput name='newVariable' inputId={InputID.NewVariable} className='replacer-form__input' isRequired />
     </>
   );
 
-  const takeValues = (values: FormValues) => setFormValue(values as typeof replacerInitialValue);
+  const takeValues = (values: FormValues) => setFormValues(values as typeof replacerInitialValue);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(propositionsActions.addPromise(formValue.symbol));
+    dispatch(propositionsActions.replacePropositionalVariable(formValues));
     closePropositionsPopup(dispatch, 'isPremiseOpened');
   };
 
@@ -36,7 +38,7 @@ const ReplacerForm = () => {
         inputs={formContent}
         submitButtonId={ButtonID.ApplySettings}
         passValues={takeValues}
-        isSubmitDisabled={!isReplacePossible}
+        isSubmitDisabled={isReplaceDisabled}
       />
     </div>
   );

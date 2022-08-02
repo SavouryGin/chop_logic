@@ -1,11 +1,22 @@
 import { DirectProofsTableItem } from 'store/propositions/interfaces';
 
 const replacer = {
-  replacePropositionalVariableInTableItems(data: DirectProofsTableItem[], variable: string): DirectProofsTableItem[] {
+  replacePropositionalVariableInTableItems(
+    data: DirectProofsTableItem[],
+    newVariable: string,
+    oldVariable: string,
+  ): DirectProofsTableItem[] {
     console.log(data);
-    console.log(variable);
 
-    return data;
+    return data.map((item) => this.replacePropositionalVariableInItem(item, newVariable, oldVariable));
+  },
+
+  replacePropositionalVariableInItem(item: DirectProofsTableItem, newVariable: string, oldVariable: string): DirectProofsTableItem {
+    console.log(newVariable, oldVariable);
+
+    return {
+      ...item,
+    };
   },
 };
 
