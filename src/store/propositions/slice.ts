@@ -1,5 +1,6 @@
 import converter from 'logic/propositions/converter';
 import executor from 'logic/propositions/executor';
+import replacer from 'logic/propositions/replacer';
 import validator from 'logic/propositions/validator';
 import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
@@ -172,6 +173,11 @@ export const propositionsSlice = createSlice({
 
       state.selectedIds = [];
       state.directProofsTableData = [...state.directProofsTableData, newItem];
+    },
+
+    replacePropositionalVariable: (state, action: PayloadAction<string>) => {
+      const newVariable = action.payload;
+      state.directProofsTableData = replacer.replacePropositionalVariableInTableItems(state.directProofsTableData, newVariable);
     },
   },
 });
