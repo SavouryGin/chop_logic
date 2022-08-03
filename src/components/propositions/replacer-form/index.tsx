@@ -27,7 +27,7 @@ const ReplacerForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(propositionsActions.replacePropositionalVariable(formValues));
-    closePropositionsPopup(dispatch, 'isPremiseOpened');
+    closePropositionsPopup(dispatch, 'isReplacerFormOpened');
   };
 
   return (
