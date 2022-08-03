@@ -2,6 +2,7 @@ import converter from 'logic/propositions/converter';
 import validator from 'logic/propositions/validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
+import { isLatinLetter } from 'helpers/checkers';
 import { propositionsSelectors } from 'store/propositions/selectors';
 import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';
@@ -119,15 +120,19 @@ export const useReplacePossibleStatus = (variable: string): boolean => {
   useEffect(() => {
     if (!variable.trim().length || !data.length) {
       setIsPossible(false);
+    } else if (!isLatinLetter(variable)) {
+      setIsPossible(false);
     } else {
       const input = variable.trim().toUpperCase();
       let isMatch = false;
 
-      data.forEach((item) => {
+      for (const item of data) {
         isMatch = item.friendlyExpression.some((symbol) => symbol.representation === input);
-      });
-
-      setIsPossible(isMatch);
+        if (isMatch) {
+          setIsPossible(true);
+          break;
+        }
+      }
     }
   }, [variable]);
 
