@@ -29,4 +29,10 @@ export const inputTexts: InputText = {
   [InputID.Preview]: {
     label: { en: 'Preview', ru: 'Предпросмотр' },
   },
+  [InputID.OldVariable]: {
+    label: { en: 'Variable to replace:', ru: 'Переменная для замены:' },
+  },
+  [InputID.NewVariable]: {
+    label: { en: 'New Variable:', ru: 'Новая переменная:' },
+  },
 };

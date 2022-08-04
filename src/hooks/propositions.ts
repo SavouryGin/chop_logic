@@ -2,6 +2,7 @@ import converter from 'logic/propositions/converter';
 import validator from 'logic/propositions/validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
+import { isLatinLetter } from 'helpers/checkers';
 import { propositionsSelectors } from 'store/propositions/selectors';
 import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';
@@ -97,7 +98,7 @@ export const useImplicationDistributionPreview = (
   return output;
 };
 
-export const useImplicationEliminationEnabling = () => {
+export const useImplicationEliminationEnabling = (): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
   const formulas = useAppSelector(propositionsSelectors.getSelectedFormulas);
 
@@ -110,4 +111,30 @@ export const useImplicationEliminationEnabling = () => {
   }, [formulas.length]);
 
   return isEnabled;
+};
+
+export const useReplacePossibleStatus = (variable: string): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const data = useAppSelector(propositionsSelectors.getDirectProofsTableData);
+
+  useEffect(() => {
+    if (!variable.trim().length || !data.length) {
+      setIsPossible(false);
+    } else if (!isLatinLetter(variable)) {
+      setIsPossible(false);
+    } else {
+      const input = variable.trim().toUpperCase();
+      let isMatch = false;
+
+      for (const item of data) {
+        isMatch = item.friendlyExpression.some((symbol) => symbol.representation === input);
+        if (isMatch) {
+          setIsPossible(true);
+          break;
+        }
+      }
+    }
+  }, [variable]);
+
+  return isPossible;
 };
