@@ -1,10 +1,5 @@
-@import 'styles/sizes.scss';
+@import 'styles/mixins/form-styles.scss';
 
 .premise-form {
-  padding: $default-padding;
-  min-width: $min-popup-form-width;
-
-  &__input {
-    margin-bottom: $big-margin;
-  }
+  @include propositionsFormStyles();
 }
