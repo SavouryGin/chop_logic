@@ -12,7 +12,8 @@
   }
 
   &__container {
-    display: inline-block;
+    display: block;
+    width: max-content;
     position: absolute;
     max-width: $max-tooltip-width;
     max-height: $max-tooltip-width;
@@ -20,6 +21,7 @@
     z-index: $tooltip-z-index;
     border-radius: $border-radius;
     font-size: $tiny-font-size;
+    white-space: pre-wrap;
     padding: $small-padding * 2 $small-padding;
     opacity: 0.8;
     // Light colors
@@ -28,11 +30,17 @@
 
     &_bottom {
       top: 100%;
+      left: 0;
     }
 
     &_top {
       bottom: 100%;
+      left: 0;
     }
+  }
+
+  &__icon {
+    text-decoration: none;
   }
 
   &_dark {

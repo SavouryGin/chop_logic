@@ -8,6 +8,8 @@ const getIsPremiseOpened = createSelector(getPropositionsFlags, (data: Propositi
 
 const getDirectProofsTableData = (state: RootState): DirectProofsTableItem[] => state.propositions.directProofsTableData;
 
+const getDirectProofsTableDataLength = (state: RootState): number => state.propositions.directProofsTableData.length;
+
 const getSelectedIds = (state: RootState): string[] => state.propositions.selectedIds;
 
 const getIsImplicationCreationOpened = createSelector(
@@ -24,6 +26,8 @@ const getIsContradictionRealizationOpened = createSelector(
   getPropositionsFlags,
   (data: PropositionsFlags): boolean => data.isContradictionRealizationOpened,
 );
+
+const getIsReplacerFormOpened = createSelector(getPropositionsFlags, (data: PropositionsFlags): boolean => data.isReplacerFormOpened);
 
 const getSelectedFormulas = (state: RootState): PropositionalFormula[] => {
   const selectedIds = state.propositions.selectedIds;
@@ -44,8 +48,10 @@ export const propositionsSelectors = {
   getSelectedIds,
   getSelectedFormulas,
   getSelectedTableItems,
+  getDirectProofsTableDataLength,
   getIsPremiseOpened,
   getIsImplicationCreationOpened,
   getIsImplicationDistributionOpened,
   getIsContradictionRealizationOpened,
+  getIsReplacerFormOpened,
 };
