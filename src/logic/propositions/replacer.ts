@@ -54,4 +54,4 @@ const replacer = {
   },
 };
 
-export default replacer;
+export default Object.freeze(replacer);
