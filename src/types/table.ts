@@ -24,6 +24,7 @@ export type TableIdsProps = {
 
 export type SelectAllCheckboxProps = {
   allRowIds: string[];
+  tableId: string;
 } & TableIdsProps;
 
 export type SelectRowCheckboxProps = {
