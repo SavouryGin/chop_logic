@@ -1,4 +1,5 @@
 import ContradictionRealizationForm from '../contradiction-realization-form';
+import DirectProofsEditorToolbar from '../direct-proofs-editor-toolbar';
 import ImplicationCreationForm from '../implication-creation-form';
 import ImplicationDistributionForm from '../implication-distribution-form';
 import PremiseForm from '../premise-form';
@@ -42,6 +43,11 @@ describe('Propositions Forms component:', () => {
 
   it('ReplacerForm matches the snapshot', () => {
     const { asFragment } = renderWithRedux(<ReplacerForm />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('DirectProofsEditorToolbar matches the snapshot', () => {
+    const { asFragment } = renderWithRedux(<DirectProofsEditorToolbar />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });

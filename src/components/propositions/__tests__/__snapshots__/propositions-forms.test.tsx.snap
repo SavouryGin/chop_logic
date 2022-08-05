@@ -6,16 +6,7 @@ exports[`Propositions Forms component: ContradictionRealizationForm matches the 
     class="contradiction-realization-form"
   >
     <p>
-      Enter values for the meta-variables in the schema: 
-      <span
-        class="tooltip"
-      >
-        <span
-          aria-label="Hint"
-          class="chop-icon__exclamation-triangle"
-          role="img"
-        />
-      </span>
+      Enter values for the meta-variables in the schema:
     </p>
     <p
       class="contradiction-realization-form__formula"
@@ -116,22 +107,178 @@ exports[`Propositions Forms component: ContradictionRealizationForm matches the 
 </DocumentFragment>
 `;
 
+exports[`Propositions Forms component: DirectProofsEditorToolbar matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="direct-proofs-editor__toolbar"
+  >
+    <button
+      class="button button_large"
+      id="button_id_8"
+      title="Enter premise"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_8"
+      >
+        Premise
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_9"
+      title="Reiterate proof step"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_9"
+      >
+        Reiteration
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_10"
+      title="Replace symbol"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_10"
+      >
+        Replace
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_11"
+      title="Delete proof step"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_11"
+      >
+        Delete
+      </span>
+    </button>
+    <button
+      class="button button_large"
+      id="button_id_12"
+      title="Implication Creation"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_12"
+      >
+        Implication Creation
+      </span>
+    </button>
+    <button
+      class="button button_large"
+      id="button_id_13"
+      title="Implication Distribution"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_13"
+      >
+        Implication Distribution
+      </span>
+    </button>
+    <button
+      class="button button_large"
+      id="button_id_14"
+      title="Contradiction Realization"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_14"
+      >
+        Contradiction Realization
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_15"
+      title="Implication Elimination"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_15"
+      >
+        Implication Elimination
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Propositions Forms component: ImplicationCreationForm matches the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="implication-creation-form"
   >
     <p>
-      Enter values for the meta-variables in the schema: 
-      <span
-        class="tooltip"
-      >
-        <span
-          aria-label="Hint"
-          class="chop-icon__exclamation-triangle"
-          role="img"
-        />
-      </span>
+      Enter values for the meta-variables in the schema:
     </p>
     <p
       class="implication-creation-form__formula"
@@ -238,16 +385,7 @@ exports[`Propositions Forms component: ImplicationDistributionForm matches the s
     class="implication-distribution-form"
   >
     <p>
-      Enter values for the meta-variables in the schema: 
-      <span
-        class="tooltip"
-      >
-        <span
-          aria-label="Hint"
-          class="chop-icon__exclamation-triangle"
-          role="img"
-        />
-      </span>
+      Enter values for the meta-variables in the schema:
     </p>
     <p
       class="implication-distribution-form__formula"
