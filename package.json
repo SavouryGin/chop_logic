@@ -8,7 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "serve dist",
     "lint": "eslint src --quiet --fix --ext .ts,.tsx",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage --collectCoverageFrom='src/**/*.{ts,tsx}'"
   },
   "repository": {
     "type": "git",
