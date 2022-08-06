@@ -46,7 +46,7 @@ const ImplicationDistributionForm = () => {
         onSubmit={onSubmit}
         initialValues={constants.implicationCreationInitialValues}
         inputs={formContent}
-        submitButtonId={ButtonID.ApplySettings}
+        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
       />

@@ -36,7 +36,7 @@ const ReplacerForm = () => {
         onSubmit={onSubmit}
         initialValues={replacerInitialValue}
         inputs={formContent}
-        submitButtonId={ButtonID.ApplySettings}
+        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isReplaceDisabled}
       />

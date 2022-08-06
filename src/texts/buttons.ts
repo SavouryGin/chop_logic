@@ -23,8 +23,8 @@ export const buttonTexts: ButtonText = {
   [ButtonID.Tools]: {
     title: { en: 'Tools', ru: 'Инструменты' },
   },
-  [ButtonID.ApplySettings]: {
-    title: { en: 'Apply Settings', ru: 'Применить настройки' },
+  [ButtonID.Apply]: {
+    title: { en: 'Apply', ru: 'Применить' },
     innerText: { en: 'Apply', ru: 'Применить' },
   },
   [ButtonID.Premise]: {
