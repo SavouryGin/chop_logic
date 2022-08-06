@@ -6,7 +6,7 @@ export enum ButtonID {
   Settings,
   FullScreen,
   Tools,
-  ApplySettings,
+  Apply,
   Premise,
   Reiteration,
   Replace,
