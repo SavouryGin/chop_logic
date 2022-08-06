@@ -38,7 +38,7 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
       className={buttonClassNames}
       onClick={onButtonClick}
       id={`button_id_${buttonId}`}
-      disabled={rest.isDisabled}
+      disabled={!!rest.isDisabled}
     >
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>
