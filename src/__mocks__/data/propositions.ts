@@ -1,4 +1,5 @@
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
+import { DirectProofsTableItem } from 'store/propositions/interfaces';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
 const propositionalSymbols: PropositionalSymbol[] = [
@@ -2352,6 +2353,796 @@ const implicationEliminationAntecedent: PropositionalFormula = {
   ],
 };
 
+const testTableItem: DirectProofsTableItem[] = [
+  {
+    step: 1,
+    id: 'proof-step-1',
+    rawInput: 'P, Q',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 2,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 3,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 4,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 5,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 6,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 8,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 9,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 10,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 11,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 12,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 13,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 14,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 15,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 16,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 17,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 18,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 19,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 20,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 21,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 22,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 23,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 24,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 25,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 26,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 27,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 28,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 29,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 30,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 31,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 32,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 33,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 34,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 35,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 2,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 3,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 4,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 6,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 8,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 9,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 10,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 11,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 12,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 13,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 14,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 15,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 16,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 17,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Implies,
+          values: [
+            {
+              operator: PropositionalOperator.Not,
+              values: [
+                {
+                  operator: PropositionalOperator.Var,
+                  values: 'P',
+                },
+              ],
+            },
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Q',
+            },
+          ],
+        },
+        {
+          operator: PropositionalOperator.Implies,
+          values: [
+            {
+              operator: PropositionalOperator.Implies,
+              values: [
+                {
+                  operator: PropositionalOperator.Not,
+                  values: [
+                    {
+                      operator: PropositionalOperator.Var,
+                      values: 'P',
+                    },
+                  ],
+                },
+                {
+                  operator: PropositionalOperator.Not,
+                  values: [
+                    {
+                      operator: PropositionalOperator.Var,
+                      values: 'Q',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              operator: PropositionalOperator.Var,
+              values: 'P',
+            },
+          ],
+        },
+      ],
+    },
+    comment: {
+      en: 'CR',
+      ru: 'СП',
+    },
+  },
+];
+
+const testTableItemWithReplacedVariable: DirectProofsTableItem[] = [
+  {
+    step: 1,
+    id: 'proof-step-1',
+    rawInput: 'Z, Q',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 2,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 3,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 4,
+      },
+      {
+        input: 'Z',
+        representation: 'Z',
+        type: 'variable',
+        position: 5,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 6,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 8,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 9,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 10,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 11,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 12,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 13,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 14,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 15,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 16,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 17,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 18,
+      },
+      {
+        input: 'Z',
+        representation: 'Z',
+        type: 'variable',
+        position: 19,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 20,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 21,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 22,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 23,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 24,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 25,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 26,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 27,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 28,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 29,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 30,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 31,
+      },
+      {
+        input: 'Z',
+        representation: 'Z',
+        type: 'variable',
+        position: 32,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 33,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 34,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 35,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: 'Z',
+        representation: 'Z',
+        type: 'variable',
+        position: 2,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 3,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 4,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 6,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 8,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 9,
+      },
+      {
+        input: 'Z',
+        representation: 'Z',
+        type: 'variable',
+        position: 10,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 11,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 12,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 13,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 14,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 15,
+      },
+      {
+        input: 'Z',
+        representation: 'Z',
+        type: 'variable',
+        position: 16,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 17,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Implies,
+          values: [
+            {
+              operator: PropositionalOperator.Not,
+              values: [
+                {
+                  operator: PropositionalOperator.Var,
+                  values: 'Z',
+                },
+              ],
+            },
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Q',
+            },
+          ],
+        },
+        {
+          operator: PropositionalOperator.Implies,
+          values: [
+            {
+              operator: PropositionalOperator.Implies,
+              values: [
+                {
+                  operator: PropositionalOperator.Not,
+                  values: [
+                    {
+                      operator: PropositionalOperator.Var,
+                      values: 'Z',
+                    },
+                  ],
+                },
+                {
+                  operator: PropositionalOperator.Not,
+                  values: [
+                    {
+                      operator: PropositionalOperator.Var,
+                      values: 'Q',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Z',
+            },
+          ],
+        },
+      ],
+    },
+    comment: {
+      en: 'CR',
+      ru: 'СП',
+    },
+  },
+];
+
 const propositions = {
   secondSubFormula,
   firstSubFormula,
@@ -2384,6 +3175,8 @@ const propositions = {
   implicationEliminationFormula,
   implicationEliminationConsequent,
   implicationEliminationAntecedent,
+  testTableItem,
+  testTableItemWithReplacedVariable,
 };
 
 export default propositions;
