@@ -57,7 +57,7 @@ describe('AppSettings tests:', () => {
   });
 
   it('displays the apply button', () => {
-    const applyBtn = screen.getByTitle(buttonTexts[ButtonID.ApplySettings].title.en);
+    const applyBtn = screen.getByTitle(buttonTexts[ButtonID.Apply].title.en);
     expect(applyBtn).toHaveProperty('type', 'submit');
     expect(applyBtn).toHaveTextContent('Apply');
   });
