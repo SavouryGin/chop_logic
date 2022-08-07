@@ -113,4 +113,116 @@ describe('DirectProofsEditor tab:', () => {
     expect(secondRow).toHaveTextContent('1');
     expect(secondRow).toHaveTextContent('Premise');
   });
+
+  it('user can add a IC to the proof table through the form', async () => {
+    // Check initial table values
+    expect(screen.getAllByRole('row')).toHaveLength(1);
+    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+
+    // Open the form
+    fireEvent.click(screen.getByTitle('Implication Creation'));
+    const testFirstVariable = 'P';
+    const testSecondVariable = 'Q';
+
+    // Find the controls
+    const [firstInput, secondInput] = screen.getAllByRole('textbox');
+    const applyBtn = screen.getByTitle('Apply');
+    expect(firstInput).toHaveAttribute('name', 'firstVariable');
+    expect(secondInput).toHaveAttribute('name', 'secondVariable');
+    expect(applyBtn).toBeDisabled();
+
+    // Enter a value
+    await userEvent.type(firstInput, testFirstVariable);
+    await userEvent.type(secondInput, testSecondVariable);
+    expect(firstInput).toHaveValue(testFirstVariable);
+    expect(secondInput).toHaveValue(testSecondVariable);
+    expect(applyBtn).toBeEnabled();
+
+    // Click apply & close the popup
+    await userEvent.click(applyBtn);
+
+    // Check that a new formula was added
+    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('cell')).toHaveLength(4);
+    expect(screen.getAllByRole('row')).toHaveLength(2);
+    const secondRow = screen.getAllByRole('row')[1];
+    expect(secondRow).toHaveTextContent('1');
+    expect(secondRow).toHaveTextContent('IC');
+  });
+
+  it('user can add a ID to the proof table through the form', async () => {
+    // Check initial table values
+    expect(screen.getAllByRole('row')).toHaveLength(1);
+    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+
+    // Open the form
+    fireEvent.click(screen.getByTitle('Implication Distribution'));
+    const testFirstVariable = 'P';
+    const testSecondVariable = 'Q';
+    const testThirdVariable = 'R';
+
+    // Find the controls
+    const [firstInput, secondInput, thirdInput] = screen.getAllByRole('textbox');
+    const applyBtn = screen.getByTitle('Apply');
+    expect(firstInput).toHaveAttribute('name', 'firstVariable');
+    expect(secondInput).toHaveAttribute('name', 'secondVariable');
+    expect(thirdInput).toHaveAttribute('name', 'thirdVariable');
+    expect(applyBtn).toBeDisabled();
+
+    // Enter a value
+    await userEvent.type(firstInput, testFirstVariable);
+    await userEvent.type(secondInput, testSecondVariable);
+    await userEvent.type(thirdInput, testThirdVariable);
+    expect(firstInput).toHaveValue(testFirstVariable);
+    expect(secondInput).toHaveValue(testSecondVariable);
+    expect(thirdInput).toHaveValue(testThirdVariable);
+    expect(applyBtn).toBeEnabled();
+
+    // Click apply & close the popup
+    await userEvent.click(applyBtn);
+
+    // Check that a new formula was added
+    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('cell')).toHaveLength(4);
+    expect(screen.getAllByRole('row')).toHaveLength(2);
+    const secondRow = screen.getAllByRole('row')[1];
+    expect(secondRow).toHaveTextContent('1');
+    expect(secondRow).toHaveTextContent('ID');
+  });
+
+  it('user can add a CR to the proof table through the form', async () => {
+    // Check initial table values
+    expect(screen.getAllByRole('row')).toHaveLength(1);
+    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+
+    // Open the form
+    fireEvent.click(screen.getByTitle('Contradiction Realization'));
+    const testFirstVariable = 'P';
+    const testSecondVariable = 'Q';
+
+    // Find the controls
+    const [firstInput, secondInput] = screen.getAllByRole('textbox');
+    const applyBtn = screen.getByTitle('Apply');
+    expect(firstInput).toHaveAttribute('name', 'firstVariable');
+    expect(secondInput).toHaveAttribute('name', 'secondVariable');
+    expect(applyBtn).toBeDisabled();
+
+    // Enter a value
+    await userEvent.type(firstInput, testFirstVariable);
+    await userEvent.type(secondInput, testSecondVariable);
+    expect(firstInput).toHaveValue(testFirstVariable);
+    expect(secondInput).toHaveValue(testSecondVariable);
+    expect(applyBtn).toBeEnabled();
+
+    // Click apply & close the popup
+    await userEvent.click(applyBtn);
+
+    // Check that a new formula was added
+    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('cell')).toHaveLength(4);
+    expect(screen.getAllByRole('row')).toHaveLength(2);
+    const secondRow = screen.getAllByRole('row')[1];
+    expect(secondRow).toHaveTextContent('1');
+    expect(secondRow).toHaveTextContent('CR');
+  });
 });
