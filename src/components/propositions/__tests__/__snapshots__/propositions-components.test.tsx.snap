@@ -1,0 +1,679 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Propositions Forms component: ContradictionRealizationForm matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="contradiction-realization-form"
+  >
+    <p>
+      Enter values for the meta-variables in the schema:
+    </p>
+    <p
+      class="contradiction-realization-form__formula"
+    >
+      ( ¬Φ ⇒ Ψ ) ⇒ (( ¬Φ ⇒ ¬Ψ ) ⇒ Φ )
+    </p>
+    <form
+      action="/"
+      aria-label="form"
+      class="form"
+    >
+      <div
+        class="implication-creation-form__input text-input"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="text_input_id_5"
+        >
+          <span
+            class="label__text"
+          >
+            Φ :
+          </span>
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_5"
+          name="firstVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="implication-creation-form__input text-input"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="text_input_id_6"
+        >
+          <span
+            class="label__text"
+          >
+            Ψ :
+          </span>
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_6"
+          name="secondVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="formula-preview"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="formula-preview"
+        >
+          <span
+            class="label__text"
+          >
+            Preview
+          </span>
+        </label>
+        <pre
+          class="formula formula-preview__formula"
+        />
+      </div>
+      <button
+        class="button button_large button_disabled"
+        disabled=""
+        id="button_id_7"
+        title="Apply"
+        type="submit"
+      >
+        <span
+          class="button__shadow"
+        />
+        <span
+          class="button__edge"
+        />
+        <span
+          class="button__front chop-icon__check"
+          data-testid="button_id_7"
+        >
+          Apply
+        </span>
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Propositions Forms component: DirectProofsEditorToolbar matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="direct-proofs-editor__toolbar"
+  >
+    <button
+      class="button button_large"
+      id="button_id_8"
+      title="Enter premise"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_8"
+      >
+        Premise
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_9"
+      title="Reiterate proof step"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_9"
+      >
+        Reiteration
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_10"
+      title="Replace symbol"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_10"
+      >
+        Replace
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_11"
+      title="Delete proof step"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_11"
+      >
+        Delete
+      </span>
+    </button>
+    <button
+      class="button button_large"
+      id="button_id_12"
+      title="Implication Creation"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_12"
+      >
+        Implication Creation
+      </span>
+    </button>
+    <button
+      class="button button_large"
+      id="button_id_13"
+      title="Implication Distribution"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_13"
+      >
+        Implication Distribution
+      </span>
+    </button>
+    <button
+      class="button button_large"
+      id="button_id_14"
+      title="Contradiction Realization"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_14"
+      >
+        Contradiction Realization
+      </span>
+    </button>
+    <button
+      class="button button_large button_disabled"
+      disabled=""
+      id="button_id_15"
+      title="Implication Elimination"
+      type="button"
+    >
+      <span
+        class="button__shadow"
+      />
+      <span
+        class="button__edge"
+      />
+      <span
+        class="button__front"
+        data-testid="button_id_15"
+      >
+        Implication Elimination
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Propositions Forms component: ImplicationCreationForm matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="implication-creation-form"
+  >
+    <p>
+      Enter values for the meta-variables in the schema:
+    </p>
+    <p
+      class="implication-creation-form__formula"
+    >
+      Φ ⇒ ( Ψ ⇒ Φ )
+    </p>
+    <form
+      action="/"
+      aria-label="form"
+      class="form"
+    >
+      <div
+        class="implication-creation-form__input text-input"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="text_input_id_5"
+        >
+          <span
+            class="label__text"
+          >
+            Φ :
+          </span>
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_5"
+          name="firstVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="implication-creation-form__input text-input"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="text_input_id_6"
+        >
+          <span
+            class="label__text"
+          >
+            Ψ :
+          </span>
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_6"
+          name="secondVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="formula-preview"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="formula-preview"
+        >
+          <span
+            class="label__text"
+          >
+            Preview
+          </span>
+        </label>
+        <pre
+          class="formula formula-preview__formula"
+        />
+      </div>
+      <button
+        class="button button_large button_disabled"
+        disabled=""
+        id="button_id_7"
+        title="Apply"
+        type="submit"
+      >
+        <span
+          class="button__shadow"
+        />
+        <span
+          class="button__edge"
+        />
+        <span
+          class="button__front chop-icon__check"
+          data-testid="button_id_7"
+        >
+          Apply
+        </span>
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Propositions Forms component: ImplicationDistributionForm matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="implication-distribution-form"
+  >
+    <p>
+      Enter values for the meta-variables in the schema:
+    </p>
+    <p
+      class="implication-distribution-form__formula"
+    >
+      ( Φ ⇒ ( Ψ ⇒ Χ )) ⇒ (( Φ ⇒ Ψ ) ⇒ ( Φ ⇒ Χ ))
+    </p>
+    <form
+      action="/"
+      aria-label="form"
+      class="form"
+    >
+      <div
+        class="implication-distribution-form__input text-input"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="text_input_id_5"
+        >
+          <span
+            class="label__text"
+          >
+            Φ :
+          </span>
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_5"
+          name="firstVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="implication-distribution-form__input text-input"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="text_input_id_6"
+        >
+          <span
+            class="label__text"
+          >
+            Ψ :
+          </span>
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_6"
+          name="secondVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="implication-distribution-form__input text-input"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="text_input_id_7"
+        >
+          <span
+            class="label__text"
+          >
+            Χ :
+          </span>
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_7"
+          name="thirdVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="formula-preview"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="formula-preview"
+        >
+          <span
+            class="label__text"
+          >
+            Preview
+          </span>
+        </label>
+        <pre
+          class="formula formula-preview__formula"
+        />
+      </div>
+      <button
+        class="button button_large button_disabled"
+        disabled=""
+        id="button_id_7"
+        title="Apply"
+        type="submit"
+      >
+        <span
+          class="button__shadow"
+        />
+        <span
+          class="button__edge"
+        />
+        <span
+          class="button__front chop-icon__check"
+          data-testid="button_id_7"
+        >
+          Apply
+        </span>
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Propositions Forms component: PremiseForm matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="premise-form"
+  >
+    <form
+      action="/"
+      aria-label="form"
+      class="form"
+    >
+      <div
+        class="premise-form__input text-input"
+      >
+        <label
+          class="label label_required"
+          data-testid="label-test-id"
+          for="text_input_id_4"
+        >
+          <span
+            class="label__text"
+          >
+            Enter a formula:
+          </span>
+          <abbr
+            class="label__asterisk chop-icon__fire"
+            title="required"
+          />
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_4"
+          name="premise"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="formula-preview"
+      >
+        <label
+          class="label"
+          data-testid="label-test-id"
+          for="formula-preview"
+        >
+          <span
+            class="label__text"
+          >
+            Preview
+          </span>
+        </label>
+        <pre
+          class="formula formula-preview__formula"
+        />
+      </div>
+      <button
+        class="button button_large button_disabled"
+        disabled=""
+        id="button_id_7"
+        title="Apply"
+        type="submit"
+      >
+        <span
+          class="button__shadow"
+        />
+        <span
+          class="button__edge"
+        />
+        <span
+          class="button__front chop-icon__check"
+          data-testid="button_id_7"
+        >
+          Apply
+        </span>
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Propositions Forms component: ReplacerForm matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="replacer-form"
+  >
+    <form
+      action="/"
+      aria-label="form"
+      class="form"
+    >
+      <div
+        class="replacer-form__input text-input"
+      >
+        <label
+          class="label label_required"
+          data-testid="label-test-id"
+          for="text_input_id_10"
+        >
+          <span
+            class="label__text"
+          >
+            Variable to replace:
+          </span>
+          <abbr
+            class="label__asterisk chop-icon__fire"
+            title="required"
+          />
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_10"
+          name="oldVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="replacer-form__input text-input"
+      >
+        <label
+          class="label label_required"
+          data-testid="label-test-id"
+          for="text_input_id_9"
+        >
+          <span
+            class="label__text"
+          >
+            New Variable:
+          </span>
+          <abbr
+            class="label__asterisk chop-icon__fire"
+            title="required"
+          />
+        </label>
+        <input
+          autocomplete="off"
+          class="text-input__field"
+          id="text_input_id_9"
+          name="newVariable"
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        class="button button_large button_disabled"
+        disabled=""
+        id="button_id_7"
+        title="Apply"
+        type="submit"
+      >
+        <span
+          class="button__shadow"
+        />
+        <span
+          class="button__edge"
+        />
+        <span
+          class="button__front chop-icon__check"
+          data-testid="button_id_7"
+        >
+          Apply
+        </span>
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -45,7 +45,7 @@ const AppSettings = ({ className }: CommonProps) => {
         initialValues={settingsInitialValues}
         inputs={<AppSettingsInputs initialValues={settingsInitialValues} />}
         passValues={takeValues}
-        submitButtonId={ButtonID.ApplySettings}
+        submitButtonId={ButtonID.Apply}
       />
     </div>
   );

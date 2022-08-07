@@ -38,7 +38,7 @@ const PremiseForm = () => {
         onSubmit={onSubmit}
         initialValues={premiseInitialValue}
         inputs={formContent}
-        submitButtonId={ButtonID.ApplySettings}
+        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
       />
