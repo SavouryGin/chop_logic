@@ -59,4 +59,48 @@ export const buttonTexts: ButtonText = {
     title: { en: 'Implication Elimination', ru: 'Удаление импликации' },
     innerText: { en: 'Implication Elimination', ru: 'Удаление импликации' },
   },
+  [ButtonID.Assumption]: {
+    title: { en: 'Assumption', ru: 'Гипотеза' },
+    innerText: { en: 'Assumption', ru: 'Гипотеза' },
+  },
+  [ButtonID.NotIntroduction]: {
+    title: { en: 'Negation Introduction', ru: 'Введение отрицания' },
+    innerText: { en: 'NI', ru: 'ВО' },
+  },
+  [ButtonID.NotElimination]: {
+    title: { en: 'Negation Elimination', ru: 'Удаление отрицания' },
+    innerText: { en: 'NE', ru: 'УО' },
+  },
+  [ButtonID.AndIntroduction]: {
+    title: { en: 'Conjunction Introduction', ru: 'Введение конъюнкции' },
+    innerText: { en: 'CI', ru: 'ВК' },
+  },
+  [ButtonID.AndElimination]: {
+    title: { en: 'Conjunction Elimination', ru: 'Удаление конъюнкции' },
+    innerText: { en: 'CE', ru: 'УК' },
+  },
+  [ButtonID.OrIntroduction]: {
+    title: { en: 'Disjunction Introduction', ru: 'Введение дизъюнкции' },
+    innerText: { en: 'DI', ru: 'ВД' },
+  },
+  [ButtonID.OrElimination]: {
+    title: { en: 'Disjunction Elimination', ru: 'Удаление отрицания' },
+    innerText: { en: 'DE', ru: 'УО' },
+  },
+  [ButtonID.ImpliesIntroduction]: {
+    title: { en: 'Implication Introduction', ru: 'Введение импликации' },
+    innerText: { en: 'II', ru: 'ВИ' },
+  },
+  [ButtonID.ImpliesElimination]: {
+    title: { en: 'Implication Elimination', ru: 'Удаление импликации' },
+    innerText: { en: 'IE', ru: 'УИ' },
+  },
+  [ButtonID.EquivIntroduction]: {
+    title: { en: 'Equivalence Introduction', ru: 'Введение эквивалентности' },
+    innerText: { en: 'EI', ru: 'ВЭ' },
+  },
+  [ButtonID.EquivElimination]: {
+    title: { en: 'Equivalence Elimination', ru: 'Удаление эквивалентности' },
+    innerText: { en: 'EE', ru: 'УЭ' },
+  },
 };
