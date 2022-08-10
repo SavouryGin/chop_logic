@@ -1,0 +1,16 @@
+@import 'styles/z-indexes.scss';
+
+@mixin toolbar-styles($rows, $columns) {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: $panel-z-index;
+
+  display: grid;
+  grid-template-rows: repeat($rows, 1fr);
+  grid-template-columns: repeat($columns, 1fr);
+  column-gap: $default-margin;
+  row-gap: $big-margin;
+  align-items: center;
+  justify-items: center;
+}
