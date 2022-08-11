@@ -1,13 +1,13 @@
 import { AppDispatch } from 'types';
-import { PropositionsFlag } from 'store/propositions/direct-proofs/interfaces';
-import { propositionsActions } from 'store/propositions/direct-proofs/slice';
+import { PropositionsDirectProofsFlag } from 'store/propositions/direct-proofs/interfaces';
+import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
 import { settingsActions } from 'store/settings/slice';
 
-export function closePropositionsPopup(dispatch: AppDispatch, flag: PropositionsFlag) {
+export function closePropositionsPopup(dispatch: AppDispatch, flag: PropositionsDirectProofsFlag) {
   dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
   // wait for closing CSS animation
   setTimeout(() => {
-    dispatch(propositionsActions.setUpFlag({ flag, value: false }));
+    dispatch(actions.setUpFlag({ flag, value: false }));
     dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
   }, 500);
 }

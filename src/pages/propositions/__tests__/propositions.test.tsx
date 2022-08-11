@@ -2,7 +2,7 @@ import Propositions from 'pages/propositions';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsInitialState, propositionsSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsDirectProofsInitialState, propositionsDirectProofsSlice } from 'store/propositions/direct-proofs/slice';
 import { propositionsTabs } from 'presets/propositions';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
@@ -10,12 +10,12 @@ import { titles } from 'texts/propositions';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,
-  propositions: propositionsSlice.reducer,
+  propositionsDirectProofs: propositionsDirectProofsSlice.reducer,
 });
 
 const mockedState = {
   settings: settingsInitialState,
-  propositions: propositionsInitialState,
+  propositionsDirectProofs: propositionsDirectProofsInitialState,
 };
 
 describe('Propositions page:', () => {
