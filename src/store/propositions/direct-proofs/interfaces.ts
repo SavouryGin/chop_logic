@@ -21,7 +21,3 @@ export type DirectProofsTableItem = ProofTableItem & {
   friendlyExpression: PropositionalExpression;
   formula: PropositionalFormula;
 };
-
-export type NaturalProofsTableDataItem = ProofTableItem & {
-  formula: PropositionalFormula;
-};
