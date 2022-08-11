@@ -1,5 +1,5 @@
 import converter from './converter';
-import { DirectProofsTableItem } from 'store/propositions/interfaces';
+import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const replacer = {
