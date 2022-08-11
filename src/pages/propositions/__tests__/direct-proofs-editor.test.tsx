@@ -5,17 +5,17 @@ import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fillerText } from 'texts/propositions';
 import { fireEvent, screen } from '@testing-library/react';
-import { propositionsInitialState, propositionsSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsDirectProofsInitialState, propositionsDirectProofsSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,
-  propositions: propositionsSlice.reducer,
+  propositionsDirectProofs: propositionsDirectProofsSlice.reducer,
 });
 
 const mockedState = {
   settings: settingsInitialState,
-  propositions: propositionsInitialState,
+  propositionsDirectProofs: propositionsDirectProofsInitialState,
 };
 
 describe('DirectProofsEditor tab:', () => {
