@@ -1,5 +1,5 @@
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
-import { DirectProofsTableItem } from 'store/propositions/interfaces';
+import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 
 const propositionalSymbols: PropositionalSymbol[] = [

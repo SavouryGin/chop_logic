@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fillerText } from 'texts/propositions';
 import { fireEvent, screen } from '@testing-library/react';
-import { propositionsInitialState, propositionsSlice } from 'store/propositions/slice';
+import { propositionsInitialState, propositionsSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 const mockedReducer = combineReducers({

@@ -1,20 +1,20 @@
 import Button from 'components/controls/button';
 import React, { memo } from 'react';
 import { ButtonID } from 'enums';
-import { propositionsActions as actions } from 'store/propositions/slice';
-import { propositionsSelectors } from 'store/propositions/selectors';
+import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDirectProofsSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector, useImplicationEliminationEnabling } from 'hooks';
 
 const DirectProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
-  const selectedIds = useAppSelector(propositionsSelectors.getSelectedIds);
-  const tableDataLength = useAppSelector(propositionsSelectors.getDirectProofsTableDataLength);
+  const selectedIds = useAppSelector(selectors.getSelectedIds);
+  const tableDataLength = useAppSelector(selectors.getDirectProofsTableDataLength);
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useImplicationEliminationEnabling();
   const isReplacerDisabled = tableDataLength === 0;
-  const selectedItems = useAppSelector(propositionsSelectors.getSelectedTableItems);
+  const selectedItems = useAppSelector(selectors.getSelectedTableItems);
 
   const deleteSteps = () => {
     dispatch(actions.deleteSteps());
