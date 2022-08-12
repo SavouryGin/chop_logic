@@ -115,7 +115,7 @@ export const useImplicationEliminationEnabling = (): boolean => {
 
 export const useReplacePossibleStatus = (variable: string): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const data = useAppSelector(propositionsDirectProofsSelectors.getDirectProofsTableData);
+  const data = useAppSelector(propositionsDirectProofsSelectors.getTableData);
 
   useEffect(() => {
     if (!variable.trim().length || !data.length) {

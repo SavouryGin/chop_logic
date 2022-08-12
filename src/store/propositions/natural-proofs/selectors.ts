@@ -4,18 +4,21 @@ import { createSelector } from '@reduxjs/toolkit';
 
 const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNaturalProofs.flags;
 
-const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isPremiseOpened);
-
 const getTableData = (state: RootState): NaturalProofsTableDataItem[] => state.propositionsNaturalProofs.tableData;
 
 const getTableDataLength = (state: RootState): number => state.propositionsNaturalProofs.tableData.length;
 
 const getSelectedIds = (state: RootState): string[] => state.propositionsNaturalProofs.selectedIds;
 
+const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isPremiseOpened);
+
+const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
+
 export const propositionsDirectProofsSelectors = {
   getFlags,
-  getIsPremiseOpened,
   getTableData,
   getTableDataLength,
   getSelectedIds,
+  getIsPremiseOpened,
+  getIsReplacerFormOpened,
 };
