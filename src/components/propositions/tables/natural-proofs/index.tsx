@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'presets/propositions';
+import { propositionsNaturalProofsActions as actions } from 'store/propositions/natural-proofs/slice';
 import { fillerText } from 'texts';
+import { propositionsNaturalProofsSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 const NaturalProofsEditorTable = () => {
+  const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const tableData = useAppSelector(selectors.getTableData);
+  const [selectedIds, setSelectedIds] = useState<string[]>(useAppSelector(selectors.getSelectedIds));
   const takeSelectedIds = (ids: string[]) => setSelectedIds(ids);
 
   useEffect(() => {
-    console.log(selectedIds);
+    dispatch(actions.setSelectedIds(selectedIds));
   }, [selectedIds]);
 
-  const noStepsFiller = <div className='direct-proofs-editor__filler'>{fillerText[language]}</div>;
+  const noStepsFiller = <div className='natural-proofs-editor__filler'>{fillerText[language]}</div>;
 
   return (
     <div className='natural-proofs-editor__table'>
-      <Table columns={constants.directProofsEditorTableColumns} data={[]} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
+      <Table columns={constants.naturalProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
       {noStepsFiller}
     </div>
   );

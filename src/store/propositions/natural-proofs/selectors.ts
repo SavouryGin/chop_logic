@@ -14,7 +14,7 @@ const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsNaturalPr
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
-export const propositionsDirectProofsSelectors = {
+export const propositionsNaturalProofsSelectors = {
   getFlags,
   getTableData,
   getTableDataLength,
