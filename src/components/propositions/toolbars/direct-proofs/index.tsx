@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector, useImplicationEliminationEnabling } fro
 const DirectProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
   const selectedIds = useAppSelector(selectors.getSelectedIds);
-  const tableDataLength = useAppSelector(selectors.getDirectProofsTableDataLength);
+  const tableDataLength = useAppSelector(selectors.getTableDataLength);
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useImplicationEliminationEnabling();
