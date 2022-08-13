@@ -2,10 +2,10 @@ import converter from 'logic/propositions/converter';
 import executor from 'logic/propositions/executor';
 import replacer from 'logic/propositions/replacer';
 import validator from 'logic/propositions/validator';
-import { DirectProofsTableItem, PropositionsFlag, PropositionsInitialState } from './interfaces';
+import { DirectProofsTableItem, PropositionsDirectProofsFlag, PropositionsDirectProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export const propositionsInitialState: PropositionsInitialState = {
+export const propositionsDirectProofsInitialState: PropositionsDirectProofsInitialState = {
   flags: {
     isPremiseOpened: false,
     isImplicationCreationOpened: false,
@@ -13,15 +13,15 @@ export const propositionsInitialState: PropositionsInitialState = {
     isContradictionRealizationOpened: false,
     isReplacerFormOpened: false,
   },
-  directProofsTableData: [],
+  tableData: [],
   selectedIds: [],
 };
 
-export const propositionsSlice = createSlice({
-  name: 'propositions',
-  initialState: propositionsInitialState,
+export const propositionsDirectProofsSlice = createSlice({
+  name: 'propositionsDirectProofs',
+  initialState: propositionsDirectProofsInitialState,
   reducers: {
-    setUpFlag: (state, action: PayloadAction<{ flag: PropositionsFlag; value: boolean }>) => {
+    setUpFlag: (state, action: PayloadAction<{ flag: PropositionsDirectProofsFlag; value: boolean }>) => {
       const { flag, value } = action.payload;
       state.flags[flag] = value;
     },
@@ -35,7 +35,7 @@ export const propositionsSlice = createSlice({
       const expression = converter.convertStringToExpression(rawInput);
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
-      const step = state.directProofsTableData.length + 1;
+      const step = state.tableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         id,
@@ -46,11 +46,11 @@ export const propositionsSlice = createSlice({
         formula,
         comment: { en: 'Premise', ru: 'Посылка' },
       };
-      state.directProofsTableData = [...state.directProofsTableData, newItem];
+      state.tableData = [...state.tableData, newItem];
     },
 
     deleteSteps: (state) => {
-      const newSteps = state.directProofsTableData
+      const newSteps = state.tableData
         .filter((item) => !state.selectedIds.includes(item.id))
         .map((item, index) => {
           return {
@@ -61,15 +61,15 @@ export const propositionsSlice = createSlice({
         });
 
       state.selectedIds = [];
-      state.directProofsTableData = newSteps;
+      state.tableData = newSteps;
     },
 
     reiterateStep: (state) => {
-      const selectedStep = state.directProofsTableData.find((item) => item.id === state.selectedIds[0]);
+      const selectedStep = state.tableData.find((item) => item.id === state.selectedIds[0]);
       if (!selectedStep) {
         return state;
       }
-      const index = state.directProofsTableData.length + 1;
+      const index = state.tableData.length + 1;
       const newStep = {
         ...selectedStep,
         id: `proof-step-${index}`,
@@ -78,7 +78,7 @@ export const propositionsSlice = createSlice({
       };
 
       state.selectedIds = [];
-      state.directProofsTableData = [...state.directProofsTableData, newStep];
+      state.tableData = [...state.tableData, newStep];
     },
 
     createImplication: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
@@ -86,7 +86,7 @@ export const propositionsSlice = createSlice({
       const expression = converter.convertToICExpression(firstVariable, secondVariable);
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
-      const step = state.directProofsTableData.length + 1;
+      const step = state.tableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         step,
@@ -98,7 +98,7 @@ export const propositionsSlice = createSlice({
         comment: { en: 'IC', ru: 'ВИ' },
       };
       state.selectedIds = [];
-      state.directProofsTableData = [...state.directProofsTableData, newItem];
+      state.tableData = [...state.tableData, newItem];
     },
 
     createImplicationDistribution: (
@@ -109,7 +109,7 @@ export const propositionsSlice = createSlice({
       const expression = converter.convertToIDExpression(firstVariable, secondVariable, thirdVariable);
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
-      const step = state.directProofsTableData.length + 1;
+      const step = state.tableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         step,
@@ -121,7 +121,7 @@ export const propositionsSlice = createSlice({
         comment: { en: 'ID', ru: 'ДИ' },
       };
       state.selectedIds = [];
-      state.directProofsTableData = [...state.directProofsTableData, newItem];
+      state.tableData = [...state.tableData, newItem];
     },
 
     createContradictionRealization: (state, action: PayloadAction<{ firstVariable: string; secondVariable: string }>) => {
@@ -129,7 +129,7 @@ export const propositionsSlice = createSlice({
       const expression = converter.convertToCRExpression(firstVariable, secondVariable);
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
-      const step = state.directProofsTableData.length + 1;
+      const step = state.tableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         step,
@@ -141,7 +141,7 @@ export const propositionsSlice = createSlice({
         comment: { en: 'CR', ru: 'СП' },
       };
       state.selectedIds = [];
-      state.directProofsTableData = [...state.directProofsTableData, newItem];
+      state.tableData = [...state.tableData, newItem];
     },
 
     eliminateImplication: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
@@ -159,7 +159,7 @@ export const propositionsSlice = createSlice({
       const formula = executor.performIE(formulas[0], formulas[1]);
       const expression = converter.convertFormulaToExpression(formula);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
-      const step = state.directProofsTableData.length + 1;
+      const step = state.tableData.length + 1;
       const id = `proof-step-${step}`;
       const newItem: DirectProofsTableItem = {
         step,
@@ -172,18 +172,14 @@ export const propositionsSlice = createSlice({
       };
 
       state.selectedIds = [];
-      state.directProofsTableData = [...state.directProofsTableData, newItem];
+      state.tableData = [...state.tableData, newItem];
     },
 
     replacePropositionalVariable: (state, action: PayloadAction<{ newVariable: string; oldVariable: string }>) => {
       const { newVariable, oldVariable } = action.payload;
-      state.directProofsTableData = replacer.replacePropositionalVariableInTableItems(
-        state.directProofsTableData,
-        newVariable,
-        oldVariable,
-      );
+      state.tableData = replacer.replacePropositionalVariableInTableItems(state.tableData, newVariable, oldVariable);
     },
   },
 });
 
-export const propositionsActions = { ...propositionsSlice.actions };
+export const propositionsDirectProofsActions = { ...propositionsDirectProofsSlice.actions };

@@ -1,23 +1,23 @@
-import ContradictionRealizationForm from '../contradiction-realization-form';
-import DirectProofsEditorToolbar from '../direct-proofs-editor-toolbar';
-import ImplicationCreationForm from '../implication-creation-form';
-import ImplicationDistributionForm from '../implication-distribution-form';
-import PremiseForm from '../premise-form';
+import ContradictionRealizationForm from '../forms/contradiction-realization';
+import DirectProofsEditorToolbar from '../toolbars/direct-proofs';
+import ImplicationCreationForm from '../forms/implication-creation';
+import ImplicationDistributionForm from '../forms/implication-distribution';
+import PremiseForm from '../forms/premise';
 import React from 'react';
-import ReplacerForm from '../replacer-form';
+import ReplacerForm from '../forms/replacer';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsInitialState, propositionsSlice } from 'store/propositions/slice';
+import { propositionsDirectProofsInitialState, propositionsDirectProofsSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,
-  propositions: propositionsSlice.reducer,
+  propositionsDirectProofs: propositionsDirectProofsSlice.reducer,
 });
 
 const mockedState = {
   settings: settingsInitialState,
-  propositions: propositionsInitialState,
+  propositionsDirectProofs: propositionsDirectProofsInitialState,
 };
 
 describe('Propositions Forms component:', () => {

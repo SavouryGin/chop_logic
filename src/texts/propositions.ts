@@ -14,6 +14,11 @@ export const fillerText = {
   ru: 'Введите посылку или аксиому, чтобы начать доказательство',
 };
 
+export const fillerNaturalText = {
+  en: 'Enter a premise or an assumption to start the proof',
+  ru: 'Введите посылку или гипотезу, чтобы начать доказательство',
+};
+
 export const formsTexts: TextContainer = {
   enterValues: {
     en: 'Enter values for the meta-variables in the schema:',

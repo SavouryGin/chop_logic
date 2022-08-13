@@ -5,18 +5,18 @@ import TextInput from 'components/controls/text-input';
 import constants from 'presets/propositions';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
-import { formsTexts } from 'texts/propositions';
-import { propositionsActions } from 'store/propositions/slice';
+import { formsTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppDispatch, useAppSelector, useImplicationCreationPreview } from 'hooks';
+import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';
 import './styles.scss';
 
-const ImplicationCreationForm = () => {
+const ContradictionRealizationForm = () => {
   const dispatch = useAppDispatch();
-  const [values, setValues] = useState(constants.implicationCreationInitialValues);
+  const [values, setValues] = useState(constants.contradictionRealization);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const preview = useImplicationCreationPreview(values.firstVariable, values.secondVariable);
+  const preview = useContradictionRealizationPreview(values.firstVariable, values.secondVariable);
 
   const hasError = !Array.isArray(preview);
   const isEmpty = !values.firstVariable || !values.secondVariable;
@@ -31,16 +31,16 @@ const ImplicationCreationForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(propositionsActions.createImplication({ ...values }));
-    closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
+    dispatch(actions.createContradictionRealization({ ...values }));
+    closePropositionsPopup(dispatch, 'isContradictionRealizationOpened');
   };
 
-  const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);
+  const takeValues = (input: FormValues) => setValues(input as typeof constants.contradictionRealization);
 
   return (
-    <div className='implication-creation-form'>
+    <div className='contradiction-realization-form'>
       <p>{formsTexts.enterValues[language]}</p>
-      <p className='implication-creation-form__formula'>{constants.implicationCreationFormula}</p>
+      <p className='contradiction-realization-form__formula'>{constants.contradictionRealizationFormula}</p>
       <Form
         onSubmit={onSubmit}
         initialValues={constants.implicationCreationInitialValues}
@@ -53,4 +53,4 @@ const ImplicationCreationForm = () => {
   );
 };
 
-export default memo(ImplicationCreationForm);
+export default memo(ContradictionRealizationForm);

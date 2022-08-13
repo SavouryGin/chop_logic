@@ -1,3 +1,4 @@
+import { LocalText } from './general';
 import { PropositionalOperator } from 'enums';
 
 export type PropositionalSymbol = {
@@ -13,4 +14,11 @@ export type PropositionalExpression = PropositionalSymbol[];
 export type PropositionalFormula = {
   operator: PropositionalOperator;
   values: PropositionalFormula[] | string;
+};
+
+export type ProofTableItem = {
+  id: string;
+  step: number;
+  rawInput: string;
+  comment: LocalText | string;
 };
