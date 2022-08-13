@@ -1,4 +1,4 @@
-import { ButtonID } from 'enums';
+import { ButtonID, LogicalSymbolHexCode } from 'enums';
 import { ButtonText } from 'types';
 
 export const buttonTexts: ButtonText = {
@@ -65,42 +65,42 @@ export const buttonTexts: ButtonText = {
   },
   [ButtonID.NotIntroduction]: {
     title: { en: 'Negation Introduction', ru: 'Введение отрицания' },
-    innerText: { en: 'NI', ru: 'ВО' },
+    innerText: { en: `${LogicalSymbolHexCode.Negation} I`, ru: `В ${LogicalSymbolHexCode.Negation}` },
   },
   [ButtonID.NotElimination]: {
     title: { en: 'Negation Elimination', ru: 'Удаление отрицания' },
-    innerText: { en: 'NE', ru: 'УО' },
+    innerText: { en: `${LogicalSymbolHexCode.Negation} E`, ru: `У ${LogicalSymbolHexCode.Negation}` },
   },
   [ButtonID.AndIntroduction]: {
     title: { en: 'Conjunction Introduction', ru: 'Введение конъюнкции' },
-    innerText: { en: 'CI', ru: 'ВК' },
+    innerText: { en: `${LogicalSymbolHexCode.Conjunction} I`, ru: `В ${LogicalSymbolHexCode.Conjunction}` },
   },
   [ButtonID.AndElimination]: {
     title: { en: 'Conjunction Elimination', ru: 'Удаление конъюнкции' },
-    innerText: { en: 'CE', ru: 'УК' },
+    innerText: { en: `${LogicalSymbolHexCode.Conjunction} E`, ru: `У ${LogicalSymbolHexCode.Conjunction}` },
   },
   [ButtonID.OrIntroduction]: {
     title: { en: 'Disjunction Introduction', ru: 'Введение дизъюнкции' },
-    innerText: { en: 'DI', ru: 'ВД' },
+    innerText: { en: `${LogicalSymbolHexCode.Disjunction} I`, ru: `В ${LogicalSymbolHexCode.Disjunction}` },
   },
   [ButtonID.OrElimination]: {
-    title: { en: 'Disjunction Elimination', ru: 'Удаление отрицания' },
-    innerText: { en: 'DE', ru: 'УО' },
+    title: { en: 'Disjunction Elimination', ru: 'Удаление дизъюнкции' },
+    innerText: { en: `${LogicalSymbolHexCode.Disjunction} E`, ru: `У ${LogicalSymbolHexCode.Disjunction}` },
   },
   [ButtonID.ImpliesIntroduction]: {
     title: { en: 'Implication Introduction', ru: 'Введение импликации' },
-    innerText: { en: 'II', ru: 'ВИ' },
+    innerText: { en: `${LogicalSymbolHexCode.Implication} I`, ru: `В ${LogicalSymbolHexCode.Implication}` },
   },
   [ButtonID.ImpliesElimination]: {
     title: { en: 'Implication Elimination', ru: 'Удаление импликации' },
-    innerText: { en: 'IE', ru: 'УИ' },
+    innerText: { en: `${LogicalSymbolHexCode.Implication} E`, ru: `У ${LogicalSymbolHexCode.Implication}` },
   },
   [ButtonID.EquivIntroduction]: {
     title: { en: 'Equivalence Introduction', ru: 'Введение эквивалентности' },
-    innerText: { en: 'EI', ru: 'ВЭ' },
+    innerText: { en: `${LogicalSymbolHexCode.Equivalence} I`, ru: `В ${LogicalSymbolHexCode.Equivalence}` },
   },
   [ButtonID.EquivElimination]: {
     title: { en: 'Equivalence Elimination', ru: 'Удаление эквивалентности' },
-    innerText: { en: 'EE', ru: 'УЭ' },
+    innerText: { en: `${LogicalSymbolHexCode.Equivalence} E`, ru: `У ${LogicalSymbolHexCode.Equivalence}` },
   },
 };
