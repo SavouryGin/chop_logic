@@ -5,9 +5,9 @@ import TextInput from 'components/controls/text-input';
 import constants from 'presets/propositions';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
 import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
 import { formsTexts } from 'texts';
-import { propositionsActions } from 'store/propositions/slice';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationDistributionPreview } from 'hooks';
 import './styles.scss';
@@ -32,7 +32,7 @@ const ImplicationDistributionForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(propositionsActions.createImplicationDistribution({ ...values }));
+    dispatch(actions.createImplicationDistribution({ ...values }));
     closePropositionsPopup(dispatch, 'isImplicationDistributionOpened');
   };
 

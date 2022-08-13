@@ -3,7 +3,7 @@ import validator from 'logic/propositions/validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
 import { isLatinLetter } from 'helpers/checkers';
-import { propositionsSelectors } from 'store/propositions/selectors';
+import { propositionsDirectProofsSelectors } from 'store/propositions/direct-proofs/selectors';
 import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';
 
@@ -100,7 +100,7 @@ export const useImplicationDistributionPreview = (
 
 export const useImplicationEliminationEnabling = (): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const formulas = useAppSelector(propositionsSelectors.getSelectedFormulas);
+  const formulas = useAppSelector(propositionsDirectProofsSelectors.getSelectedFormulas);
 
   useEffect(() => {
     if (formulas.length !== 2) {
@@ -115,7 +115,7 @@ export const useImplicationEliminationEnabling = (): boolean => {
 
 export const useReplacePossibleStatus = (variable: string): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const data = useAppSelector(propositionsSelectors.getDirectProofsTableData);
+  const data = useAppSelector(propositionsDirectProofsSelectors.getTableData);
 
   useEffect(() => {
     if (!variable.trim().length || !data.length) {
