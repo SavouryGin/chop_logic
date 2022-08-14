@@ -5,6 +5,7 @@ export const propositionsNaturalProofsInitialState: PropositionsNaturalProofsIni
   flags: {
     isPremiseOpened: false,
     isReplacerFormOpened: false,
+    isAssumptionOpened: false,
   },
   tableData: [],
   selectedIds: [],
