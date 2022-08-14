@@ -16,6 +16,7 @@ const NaturalProofsEditor = () => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
+  const isAssumptionOpened = useAppSelector(selectors.getIsAssumptionOpened);
 
   const editorClass = formatClassName(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
 
@@ -23,11 +24,21 @@ const NaturalProofsEditor = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
   };
 
+  const closeAssumption = () => {
+    dispatch(actions.setUpFlag({ flag: 'isAssumptionOpened', value: false }));
+  };
+
   return (
     <div className={editorClass}>
       <NaturalProofsEditorTable />
       <NaturalProofsEditorToolbar />
       <ModalWindow isOpened={isPremiseOpened} onClose={closePremise} title={uiElementTexts.premise[language]} content={<PremiseForm />} />
+      <ModalWindow
+        isOpened={isAssumptionOpened}
+        onClose={closeAssumption}
+        title={uiElementTexts.assumption[language]}
+        content={<PremiseForm />}
+      />
     </div>
   );
 };

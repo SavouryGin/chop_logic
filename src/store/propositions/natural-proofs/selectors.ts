@@ -12,6 +12,8 @@ const getSelectedIds = (state: RootState): string[] => state.propositionsNatural
 
 const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isPremiseOpened);
 
+const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isAssumptionOpened);
+
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
 export const propositionsNaturalProofsSelectors = {
@@ -20,5 +22,6 @@ export const propositionsNaturalProofsSelectors = {
   getTableDataLength,
   getSelectedIds,
   getIsPremiseOpened,
+  getIsAssumptionOpened,
   getIsReplacerFormOpened,
 };
