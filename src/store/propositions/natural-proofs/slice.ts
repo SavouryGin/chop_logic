@@ -66,6 +66,21 @@ export const propositionsNaturalProofsSlice = createSlice({
       };
       state.tableData = [...state.tableData, newItem];
     },
+
+    deleteSteps: (state) => {
+      const newSteps = state.tableData
+        .filter((item) => !state.selectedIds.includes(item.id))
+        .map((item, index) => {
+          return {
+            ...item,
+            step: index + 1,
+            id: `proof-step-${index + 1}`,
+          };
+        });
+
+      state.selectedIds = [];
+      state.tableData = newSteps;
+    },
   },
 });
 
