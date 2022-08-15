@@ -44,6 +44,28 @@ export const propositionsNaturalProofsSlice = createSlice({
       };
       state.tableData = [...state.tableData, newItem];
     },
+
+    addAssumption: (state, action: PayloadAction<string>) => {
+      const rawInput = action.payload;
+      const itemsCount = state.tableData.length;
+      const expression = converter.convertStringToExpression(rawInput);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+      const step = itemsCount + 1;
+      const id = `proof-step-${step}`;
+      const level = itemsCount > 0 ? state.tableData[itemsCount - 1].level + 1 : 1;
+      const newItem: NaturalProofsTableDataItem = {
+        level,
+        id,
+        step,
+        rawInput,
+        expression,
+        friendlyExpression,
+        formula,
+        comment: { en: 'Assumption', ru: 'Гипотеза' },
+      };
+      state.tableData = [...state.tableData, newItem];
+    },
   },
 });
 

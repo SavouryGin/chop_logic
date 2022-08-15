@@ -10,7 +10,7 @@ import { propositionsNaturalProofsActions } from 'store/propositions/natural-pro
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
-const PremiseForm = ({ mode = 'direct' }: { mode?: 'natural' | 'direct' | 'assumption' }) => {
+const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }) => {
   const dispatch = useAppDispatch();
   const premiseInitialValue = { premise: '' };
   const [formValue, setFormValue] = useState(premiseInitialValue);
@@ -32,9 +32,16 @@ const PremiseForm = ({ mode = 'direct' }: { mode?: 'natural' | 'direct' | 'assum
     if (mode === 'direct') {
       dispatch(propositionsDirectProofsActions.addPremise(formValue.premise));
       closeDirectProofsPopup(dispatch, 'isPremiseOpened');
-    } else if (mode === 'natural') {
+    }
+
+    if (mode === 'natural') {
       dispatch(propositionsNaturalProofsActions.addPremise(formValue.premise));
       closeNaturalProofsPopup(dispatch, 'isPremiseOpened');
+    }
+
+    if (mode === 'assumption') {
+      dispatch(propositionsNaturalProofsActions.addAssumption(formValue.premise));
+      closeNaturalProofsPopup(dispatch, 'isAssumptionOpened');
     }
   };
 

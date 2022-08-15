@@ -37,7 +37,7 @@ describe('Propositions Forms component:', () => {
   });
 
   it('PremiseForm matches the snapshot', () => {
-    const { asFragment } = renderWithRedux(<PremiseForm />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PremiseForm mode='direct' />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 
