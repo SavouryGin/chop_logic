@@ -16,6 +16,10 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.setUpFlag({ flag: 'isAssumptionOpened', value: true }));
   };
 
+  const deleteSteps = () => {
+    dispatch(actions.deleteSteps());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} />
@@ -26,7 +30,7 @@ const NaturalProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.ImpliesIntroduction} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.EquivIntroduction} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.Assumption} sound={soundPlayer.keyboard} size='large' onClick={openAssumption} />
-      <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' />
+      <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' onClick={deleteSteps} />
       <Button buttonId={ButtonID.NotElimination} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.AndElimination} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.OrElimination} sound={soundPlayer.keyboard} size='large' />
