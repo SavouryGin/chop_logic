@@ -1,5 +1,6 @@
+import converter from 'logic/propositions/converter';
+import { NaturalProofsTableDataItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
 
 export const propositionsNaturalProofsInitialState: PropositionsNaturalProofsInitialState = {
   flags: {
@@ -22,6 +23,26 @@ export const propositionsNaturalProofsSlice = createSlice({
 
     setSelectedIds: (state, action: PayloadAction<string[]>) => {
       state.selectedIds = action.payload;
+    },
+
+    addPremise: (state, action: PayloadAction<string>) => {
+      const rawInput = action.payload;
+      const expression = converter.convertStringToExpression(rawInput);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+      const step = state.tableData.length + 1;
+      const id = `proof-step-${step}`;
+      const newItem: NaturalProofsTableDataItem = {
+        level: 0,
+        id,
+        step,
+        rawInput,
+        expression,
+        friendlyExpression,
+        formula,
+        comment: { en: 'Premise', ru: 'Посылка' },
+      };
+      state.tableData = [...state.tableData, newItem];
     },
   },
 });

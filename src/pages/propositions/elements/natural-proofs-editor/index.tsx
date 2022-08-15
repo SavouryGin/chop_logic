@@ -32,12 +32,17 @@ const NaturalProofsEditor = () => {
     <div className={editorClass}>
       <NaturalProofsEditorTable />
       <NaturalProofsEditorToolbar />
-      <ModalWindow isOpened={isPremiseOpened} onClose={closePremise} title={uiElementTexts.premise[language]} content={<PremiseForm />} />
+      <ModalWindow
+        isOpened={isPremiseOpened}
+        onClose={closePremise}
+        title={uiElementTexts.premise[language]}
+        content={<PremiseForm mode='natural' />}
+      />
       <ModalWindow
         isOpened={isAssumptionOpened}
         onClose={closeAssumption}
         title={uiElementTexts.assumption[language]}
-        content={<PremiseForm />}
+        content={<PremiseForm mode='assumption' />}
       />
     </div>
   );
