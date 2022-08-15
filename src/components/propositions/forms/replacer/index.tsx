@@ -4,7 +4,7 @@ import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
-import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
+import { closeDirectProofsPopup } from 'pages/propositions/helpers';
 import { useAppDispatch, useReplacePossibleStatus } from 'hooks';
 import './styles.scss';
 
@@ -27,7 +27,7 @@ const ReplacerForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(actions.replacePropositionalVariable(formValues));
-    closePropositionsPopup(dispatch, 'isReplacerFormOpened');
+    closeDirectProofsPopup(dispatch, 'isReplacerFormOpened');
   };
 
   return (
