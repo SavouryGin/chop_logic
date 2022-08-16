@@ -15,7 +15,7 @@ export function getDataCellsValues(tableRow: TableDataItem, columns: TableColumn
       value = (tableRow[column.field] as LocalText)[language];
     } else if (validator.isPropositionalExpression(tableRow[column.field])) {
       const props = tableRow[column.field] as PropositionalExpression;
-      value = <Formula content={props} />;
+      value = <Formula content={props} level={tableRow?.level as number} />;
     } else {
       value = (tableRow[column.field] as string).toString();
     }

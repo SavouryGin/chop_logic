@@ -6,13 +6,22 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-function Formula({ content, className }: FormulaProps): React.ReactElement {
+function Formula({ content, className, level }: FormulaProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const classNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
 
-  const formula = content.map((item, index) => getPreformattedSymbol(item, index));
+  const indentation = level ? <div>{'*'.repeat(level)}</div> : null;
 
-  return <pre className={classNames}>{formula}</pre>;
+  const formula = <pre className={classNames}>{content.map((item, index) => getPreformattedSymbol(item, index))}</pre>;
+
+  return indentation ? (
+    <div className='formula__'>
+      {indentation}
+      {formula}
+    </div>
+  ) : (
+    formula
+  );
 }
 
 export default Formula;
