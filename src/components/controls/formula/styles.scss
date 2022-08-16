@@ -1,8 +1,18 @@
 @import 'styles/fonts.scss';
 @import 'styles/colors.scss';
+@import 'styles/sizes.scss';
 
 .formula {
   font-family: $Monospace;
+
+  &__wrapper {
+    display: inline-flex;
+  }
+
+  &__indentation {
+    background-color: $light-font-color;
+    margin-right: $default-margin;
+  }
 
   &__operator {
     color: $light-operator-color;
