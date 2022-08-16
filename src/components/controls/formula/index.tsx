@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { memo, useMemo } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
+import { CommonSymbolHexCode } from 'enums';
 import { FormulaProps } from 'types';
 import { getPreformattedSymbol } from './helpers';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -10,12 +11,21 @@ function Formula({ content, className, level }: FormulaProps): React.ReactElemen
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const classNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
 
-  const indentation = level ? <div>{'*'.repeat(level)}</div> : null;
+  const formula = useMemo(
+    () => <pre className={classNames}>{content.map((item, index) => getPreformattedSymbol(item, index))}</pre>,
+    [content.length],
+  );
 
-  const formula = <pre className={classNames}>{content.map((item, index) => getPreformattedSymbol(item, index))}</pre>;
+  const indentation = useMemo(
+    () =>
+      [...Array(level)].map((_i: any, index: number) => (
+        <div className='formula__indentation' key={`indentation-${index}`}>{`${CommonSymbolHexCode.Space}`}</div>
+      )),
+    [level],
+  );
 
-  return indentation ? (
-    <div className='formula__'>
+  return level ? (
+    <div className='formula__wrapper'>
       {indentation}
       {formula}
     </div>
@@ -24,4 +34,4 @@ function Formula({ content, className, level }: FormulaProps): React.ReactElemen
   );
 }
 
-export default Formula;
+export default memo(Formula);
