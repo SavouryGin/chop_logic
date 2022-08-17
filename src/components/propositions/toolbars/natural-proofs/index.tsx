@@ -29,6 +29,7 @@ const NaturalProofsEditorToolbar = () => {
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
+      <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.NotIntroduction} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.AndIntroduction} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.OrIntroduction} sound={soundPlayer.keyboard} size='large' />
@@ -36,6 +37,7 @@ const NaturalProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.EquivIntroduction} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.Assumption} sound={soundPlayer.keyboard} size='large' onClick={openAssumption} />
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' onClick={deleteSteps} isDisabled={isDeleteDisabled} />
+      <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.NotElimination} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.AndElimination} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.OrElimination} sound={soundPlayer.keyboard} size='large' />
