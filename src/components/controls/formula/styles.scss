@@ -10,8 +10,12 @@
   }
 
   &__indentation {
-    background-color: $light-font-color;
+    background-color: $light-strong-accent-color;
     margin-right: $default-margin;
+
+    &_dark {
+      background-color: $dark-strong-accent-color;
+    }
   }
 
   &__operator {

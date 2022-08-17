@@ -10,18 +10,19 @@ import './styles.scss';
 function Formula({ content, className, level }: FormulaProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const classNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
+  const indentationClass = formatClassName(['formula__indentation', { formula__indentation_dark: isDarkMode }]);
 
   const formula = useMemo(
     () => <pre className={classNames}>{content.map((item, index) => getPreformattedSymbol(item, index))}</pre>,
-    [content.length],
+    [content.length, isDarkMode],
   );
 
   const indentation = useMemo(
     () =>
       [...Array(level)].map((_i: any, index: number) => (
-        <div className='formula__indentation' key={`indentation-${index}`}>{`${CommonSymbolHexCode.Space}`}</div>
+        <div className={indentationClass} key={`indentation-${index}`}>{`${CommonSymbolHexCode.Space}`}</div>
       )),
-    [level],
+    [level, isDarkMode],
   );
 
   return level ? (
