@@ -26,4 +26,5 @@ export enum ButtonID {
   ImpliesElimination,
   EquivIntroduction,
   EquivElimination,
+  Shortcut,
 }
