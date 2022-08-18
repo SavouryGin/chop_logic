@@ -10,6 +10,8 @@ const NaturalProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
   const isPremiseDisabled = !usePremiseEnabling();
   const selectedIds = useAppSelector(selectors.getSelectedIds);
+  const tableDataLength = useAppSelector(selectors.getTableDataLength);
+  const isReplacerDisabled = tableDataLength === 0;
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
 
@@ -29,7 +31,7 @@ const NaturalProofsEditorToolbar = () => {
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
-      <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' />
+      <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' isDisabled={isReplacerDisabled} />
       <Button buttonId={ButtonID.NotIntroduction} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.AndIntroduction} sound={soundPlayer.keyboard} size='large' />
       <Button buttonId={ButtonID.OrIntroduction} sound={soundPlayer.keyboard} size='large' />
