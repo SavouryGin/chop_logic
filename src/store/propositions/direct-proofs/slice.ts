@@ -30,7 +30,7 @@ export const propositionsDirectProofsSlice = createSlice({
       state.selectedIds = action.payload;
     },
 
-    addPromise: (state, action: PayloadAction<string>) => {
+    addPremise: (state, action: PayloadAction<string>) => {
       const rawInput = action.payload;
       const expression = converter.convertStringToExpression(rawInput);
       const formula = converter.convertExpressionToFormula(expression);

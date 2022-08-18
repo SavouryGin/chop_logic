@@ -6,7 +6,7 @@ import constants from 'presets/propositions';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
-import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
+import { closeDirectProofsPopup } from 'pages/propositions/helpers';
 import { formsTexts } from 'texts/propositions';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationCreationPreview } from 'hooks';
@@ -32,7 +32,7 @@ const ImplicationCreationForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(actions.createImplication({ ...values }));
-    closePropositionsPopup(dispatch, 'isImplicationCreationOpened');
+    closeDirectProofsPopup(dispatch, 'isImplicationCreationOpened');
   };
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationCreationInitialValues);

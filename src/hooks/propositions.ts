@@ -4,6 +4,7 @@ import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
 import { isLatinLetter } from 'helpers/checkers';
 import { propositionsDirectProofsSelectors } from 'store/propositions/direct-proofs/selectors';
+import { propositionsNaturalProofsSelectors } from 'store/propositions/natural-proofs/selectors';
 import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';
 
@@ -109,6 +110,23 @@ export const useImplicationEliminationEnabling = (): boolean => {
       setIsEnabled(validator.isIEApplicable(formulas[0], formulas[1]));
     }
   }, [formulas.length]);
+
+  return isEnabled;
+};
+
+export const usePremiseEnabling = (): boolean => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const data = useAppSelector(propositionsNaturalProofsSelectors.getTableData);
+
+  useEffect(() => {
+    if (!data.length) {
+      setIsEnabled(true);
+    } else {
+      const lastItemLevel = data[data.length - 1].level;
+
+      setIsEnabled(lastItemLevel === 0 ? true : false);
+    }
+  }, [data.length]);
 
   return isEnabled;
 };

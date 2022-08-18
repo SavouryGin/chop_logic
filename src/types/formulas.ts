@@ -8,4 +8,5 @@ export type FormulaPreviewProps = CommonProps & {
 
 export type FormulaProps = CommonProps & {
   content: PropositionalSymbol[];
+  level?: number;
 };

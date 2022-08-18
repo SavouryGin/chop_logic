@@ -103,4 +103,8 @@ export const buttonTexts: ButtonText = {
     title: { en: 'Equivalence Elimination', ru: 'Удаление эквивалентности' },
     innerText: { en: `${LogicalSymbolHexCode.Equivalence} E`, ru: `У ${LogicalSymbolHexCode.Equivalence}` },
   },
+  [ButtonID.Shortcut]: {
+    title: { en: 'Shortcut', ru: 'Краткий вывод' },
+    innerText: { en: 'Shortcut', ru: 'Кр. вывод' },
+  },
 };

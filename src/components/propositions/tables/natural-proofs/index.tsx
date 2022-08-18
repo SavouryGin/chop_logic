@@ -23,7 +23,7 @@ const NaturalProofsEditorTable = () => {
   return (
     <div className='natural-proofs-editor__table'>
       <Table columns={constants.naturalProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
-      {noStepsFiller}
+      {tableData.length === 0 && noStepsFiller}
     </div>
   );
 };
