@@ -6,7 +6,7 @@ import constants from 'presets/propositions';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
-import { closePropositionsPopup } from 'pages/propositions/elements/direct-proofs-editor/helpers';
+import { closeDirectProofsPopup } from 'pages/propositions/helpers';
 import { formsTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationDistributionPreview } from 'hooks';
@@ -33,7 +33,7 @@ const ImplicationDistributionForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(actions.createImplicationDistribution({ ...values }));
-    closePropositionsPopup(dispatch, 'isImplicationDistributionOpened');
+    closeDirectProofsPopup(dispatch, 'isImplicationDistributionOpened');
   };
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.implicationDistributionInitialValues);

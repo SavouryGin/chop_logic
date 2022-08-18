@@ -15,3 +15,7 @@ export enum LogicalSymbolRawInput {
   OpenParenthesis = '(',
   CloseParenthesis = ')',
 }
+
+export enum CommonSymbolHexCode {
+  Space = '\xA0',
+}

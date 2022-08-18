@@ -51,7 +51,12 @@ const DirectProofsEditor = () => {
     <div className={editorClass}>
       <DirectProofsEditorTable />
       <DirectProofsEditorToolbar />
-      <ModalWindow isOpened={isPremiseOpened} onClose={closePremise} title={uiElementTexts.premise[language]} content={<PremiseForm />} />
+      <ModalWindow
+        isOpened={isPremiseOpened}
+        onClose={closePremise}
+        title={uiElementTexts.premise[language]}
+        content={<PremiseForm mode='direct' />}
+      />
       <ModalWindow
         isOpened={isImplicationCreationOpened}
         onClose={closeIC}

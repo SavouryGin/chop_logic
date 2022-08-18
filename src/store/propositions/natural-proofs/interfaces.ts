@@ -9,6 +9,7 @@ export interface PropositionsNaturalProofsInitialState {
 export interface PropositionsNaturalProofsFlags {
   isPremiseOpened: boolean;
   isReplacerFormOpened: boolean;
+  isAssumptionOpened: boolean;
 }
 
 export type PropositionsNaturalProofsFlag = keyof PropositionsNaturalProofsFlags;
