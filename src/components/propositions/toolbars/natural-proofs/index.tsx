@@ -1,8 +1,8 @@
 import Button from 'components/controls/button';
 import React from 'react';
 import { ButtonID } from 'enums';
-import { propositionsNaturalProofsActions as actions } from 'store/propositions/natural-proofs/slice';
-import { propositionsNaturalProofsSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector, usePremiseEnabling } from 'hooks';
 
