@@ -5,7 +5,7 @@ import validator from 'logic/propositions/validator';
 import { DirectProofsTableItem, PropositionsDirectProofsFlag, PropositionsDirectProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export const propositionsDirectProofsInitialState: PropositionsDirectProofsInitialState = {
+export const propositionsDPInitialState: PropositionsDirectProofsInitialState = {
   flags: {
     isPremiseOpened: false,
     isImplicationCreationOpened: false,
@@ -17,9 +17,9 @@ export const propositionsDirectProofsInitialState: PropositionsDirectProofsIniti
   selectedIds: [],
 };
 
-export const propositionsDirectProofsSlice = createSlice({
-  name: 'propositionsDirectProofs',
-  initialState: propositionsDirectProofsInitialState,
+export const propositionsDPSlice = createSlice({
+  name: 'propositionsDP',
+  initialState: propositionsDPInitialState,
   reducers: {
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsDirectProofsFlag; value: boolean }>) => {
       const { flag, value } = action.payload;
@@ -182,4 +182,4 @@ export const propositionsDirectProofsSlice = createSlice({
   },
 });
 
-export const propositionsDirectProofsActions = { ...propositionsDirectProofsSlice.actions };
+export const propositionsDPActions = { ...propositionsDPSlice.actions };

@@ -1,8 +1,8 @@
 import { NaturalProofsTableDataItem } from 'store/propositions/natural-proofs/interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsNaturalProofsActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { put, select, takeEvery } from 'redux-saga/effects';
-import { propositionsNaturalProofsSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
 export function* deleteNaturalProofsStepsWatcher(): Generator {
   yield takeEvery(actions.deleteSteps, deleteNaturalProofsStepsSaga);

@@ -3,8 +3,8 @@ import validator from 'logic/propositions/validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
 import { isLatinLetter } from 'helpers/checkers';
-import { propositionsDirectProofsSelectors } from 'store/propositions/direct-proofs/selectors';
-import { propositionsNaturalProofsSelectors } from 'store/propositions/natural-proofs/selectors';
+import { propositionsDPSelectors } from 'store/propositions/direct-proofs/selectors';
+import { propositionsNPSelectors } from 'store/propositions/natural-proofs/selectors';
 import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';
 
@@ -101,7 +101,7 @@ export const useImplicationDistributionPreview = (
 
 export const useImplicationEliminationEnabling = (): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const formulas = useAppSelector(propositionsDirectProofsSelectors.getSelectedFormulas);
+  const formulas = useAppSelector(propositionsDPSelectors.getSelectedFormulas);
 
   useEffect(() => {
     if (formulas.length !== 2) {
@@ -116,7 +116,7 @@ export const useImplicationEliminationEnabling = (): boolean => {
 
 export const usePremiseEnabling = (): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const data = useAppSelector(propositionsNaturalProofsSelectors.getTableData);
+  const data = useAppSelector(propositionsNPSelectors.getTableData);
 
   useEffect(() => {
     if (!data.length) {
@@ -133,7 +133,7 @@ export const usePremiseEnabling = (): boolean => {
 
 export const useReplacePossibleStatus = (variable: string): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const data = useAppSelector(propositionsDirectProofsSelectors.getTableData);
+  const data = useAppSelector(propositionsDPSelectors.getTableData);
 
   useEffect(() => {
     if (!variable.trim().length || !data.length) {

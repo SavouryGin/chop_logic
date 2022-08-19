@@ -1,8 +1,8 @@
 import Button from 'components/controls/button';
 import React, { memo } from 'react';
 import { ButtonID } from 'enums';
-import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
-import { propositionsDirectProofsSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector, useImplicationEliminationEnabling } from 'hooks';
 

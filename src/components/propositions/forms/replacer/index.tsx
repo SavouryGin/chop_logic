@@ -3,7 +3,7 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { closeDirectProofsPopup } from 'pages/propositions/helpers';
 import { useAppDispatch, useReplacePossibleStatus } from 'hooks';
 import './styles.scss';
