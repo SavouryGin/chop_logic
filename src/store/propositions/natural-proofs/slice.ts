@@ -25,6 +25,10 @@ export const propositionsNaturalProofsSlice = createSlice({
       state.selectedIds = action.payload;
     },
 
+    setTableData: (state, action: PayloadAction<NaturalProofsTableDataItem[]>) => {
+      state.tableData = action.payload;
+    },
+
     addPremise: (state, action: PayloadAction<string>) => {
       const rawInput = action.payload;
       const expression = converter.convertStringToExpression(rawInput);
@@ -68,18 +72,19 @@ export const propositionsNaturalProofsSlice = createSlice({
     },
 
     deleteSteps: (state) => {
-      const newSteps = state.tableData
-        .filter((item) => !state.selectedIds.includes(item.id))
-        .map((item, index) => {
-          return {
-            ...item,
-            step: index + 1,
-            id: `proof-step-${index + 1}`,
-          };
-        });
+      return state;
+      // const newSteps = state.tableData
+      //   .filter((item) => !state.selectedIds.includes(item.id))
+      //   .map((item, index) => {
+      //     return {
+      //       ...item,
+      //       step: index + 1,
+      //       id: `proof-step-${index + 1}`,
+      //     };
+      //   });
 
-      state.selectedIds = [];
-      state.tableData = newSteps;
+      // state.selectedIds = [];
+      // state.tableData = newSteps;
     },
   },
 });
