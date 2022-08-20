@@ -30,6 +30,10 @@ export const propositionsDPSlice = createSlice({
       state.selectedIds = action.payload;
     },
 
+    setTableData: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
+      state.tableData = action.payload;
+    },
+
     addPremise: (state, action: PayloadAction<string>) => {
       const rawInput = action.payload;
       const expression = converter.convertStringToExpression(rawInput);
@@ -50,18 +54,7 @@ export const propositionsDPSlice = createSlice({
     },
 
     deleteSteps: (state) => {
-      const newSteps = state.tableData
-        .filter((item) => !state.selectedIds.includes(item.id))
-        .map((item, index) => {
-          return {
-            ...item,
-            step: index + 1,
-            id: `proof-step-${index + 1}`,
-          };
-        });
-
-      state.selectedIds = [];
-      state.tableData = newSteps;
+      return state;
     },
 
     reiterateStep: (state) => {
