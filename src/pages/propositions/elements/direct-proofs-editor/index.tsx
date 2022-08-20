@@ -1,3 +1,4 @@
+import ConfirmDeleteProofStepsPopup from 'components/propositions/popups/confirm-delete';
 import ContradictionRealizationForm from 'components/propositions/forms/contradiction-realization';
 import DirectProofsEditorTable from 'components/propositions/tables/direct-proofs';
 import DirectProofsEditorToolbar from 'components/propositions/toolbars/direct-proofs';
@@ -24,6 +25,7 @@ const DirectProofsEditor = () => {
   const isReplacerFormOpened = useAppSelector(selectors.getIsReplacerFormOpened);
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
 
   const editorClass = formatClassName(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
 
@@ -45,6 +47,10 @@ const DirectProofsEditor = () => {
 
   const closeReplacer = () => {
     dispatch(actions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+  };
+
+  const closeDeleteSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
   };
 
   return (
@@ -80,6 +86,12 @@ const DirectProofsEditor = () => {
         onClose={closeReplacer}
         title={uiElementTexts.replacerForm[language]}
         content={<ReplacerForm />}
+      />
+      <ModalWindow
+        isOpened={isConfirmDeletePopupOpened}
+        onClose={closeDeleteSteps}
+        title={uiElementTexts.confirmation[language]}
+        content={<ConfirmDeleteProofStepsPopup />}
       />
     </div>
   );
