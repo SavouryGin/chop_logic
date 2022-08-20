@@ -4,7 +4,7 @@ import { propositionsNPActions as actions } from 'store/propositions/natural-pro
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
-export function* deleteNaturalProofsStepsWatcher(): Generator {
+export function* deleteNaturalProofStepsWatcher(): Generator {
   yield takeEvery(actions.deleteSteps, deleteNaturalProofsStepsSaga);
 }
 
@@ -26,6 +26,6 @@ export function* deleteNaturalProofsStepsSaga(): SagaIterator {
     yield put(actions.setSelectedIds([]));
     yield put(actions.setTableData(newData));
   } catch (error: unknown) {
-    console.log(error);
+    console.error(error);
   }
 }

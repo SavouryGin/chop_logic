@@ -1,8 +1,9 @@
+import propositionsDPSagas from './propositions/direct-proofs/sagas';
+import propositionsNPSagas from './propositions/natural-proofs/sagas';
 import { all } from 'redux-saga/effects';
-import { deleteNaturalProofsStepsWatcher } from './propositions/natural-proofs/sagas/delete-steps';
 
 function* rootSaga(): Generator {
-  yield all([deleteNaturalProofsStepsWatcher()]);
+  yield all([propositionsDPSagas(), propositionsNPSagas()]);
 }
 
 export default rootSaga;
