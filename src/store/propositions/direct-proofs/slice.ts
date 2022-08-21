@@ -16,6 +16,7 @@ export const propositionsDPInitialState: PropositionsDirectProofsInitialState = 
   },
   tableData: [],
   selectedIds: [],
+  dependentItems: [],
 };
 
 export const propositionsDPSlice = createSlice({
@@ -33,6 +34,10 @@ export const propositionsDPSlice = createSlice({
 
     setTableData: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
       state.tableData = action.payload;
+    },
+
+    setDependentItems: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
+      state.dependentItems = action.payload;
     },
 
     addPremise: (state, action: PayloadAction<string>) => {

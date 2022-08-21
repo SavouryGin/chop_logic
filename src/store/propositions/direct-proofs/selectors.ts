@@ -8,6 +8,8 @@ const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsDirectPro
 
 const getTableData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.tableData;
 
+const getDependentItems = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.dependentItems;
+
 const getTableDataLength = (state: RootState): number => state.propositionsDP.tableData.length;
 
 const getSelectedIds = (state: RootState): string[] => state.propositionsDP.selectedIds;
@@ -50,6 +52,7 @@ const getSelectedTableItems = (state: RootState): DirectProofsTableItem[] => {
 export const propositionsDPSelectors = {
   getFlags,
   getTableData,
+  getDependentItems,
   getSelectedIds,
   getSelectedFormulas,
   getSelectedTableItems,
