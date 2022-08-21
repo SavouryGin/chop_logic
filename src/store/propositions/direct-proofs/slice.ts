@@ -165,8 +165,20 @@ export const propositionsDPSlice = createSlice({
         comment: { en: `IE: ${items[0].step}, ${items[1].step}`, ru: `УИ: ${items[0].step}, ${items[1].step}` },
       };
 
+      // Uncheck checkboxes in the table
       state.selectedIds = [];
-      state.tableData = [...state.tableData, newItem];
+      // Update dependentSteps field
+      const newTableData = state.tableData.map((item) => {
+        if (item.id === items[0].id || item.id === items[1].id) {
+          return {
+            ...item,
+            dependentSteps: [step],
+          };
+        } else {
+          return item;
+        }
+      });
+      state.tableData = [...newTableData, newItem];
     },
 
     replacePropositionalVariable: (state, action: PayloadAction<{ newVariable: string; oldVariable: string }>) => {
