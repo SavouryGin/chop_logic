@@ -1,0 +1,17 @@
+@import 'styles/sizes.scss';
+
+.confirm-delete-formulas {
+  padding: $default-padding;
+  min-width: $min-popup-form-width;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    margin-bottom: $default-margin * 2;
+  }
+
+  &__table {
+    margin-bottom: $default-margin * 4;
+  }
+}
