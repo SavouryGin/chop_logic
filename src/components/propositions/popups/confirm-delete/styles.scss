@@ -1,17 +1,23 @@
 @import 'styles/sizes.scss';
 
-.confirm-delete-formulas {
+.confirm-delete-popup {
   padding: $default-padding;
   min-width: $min-popup-form-width;
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   &__text {
     margin-bottom: $default-margin * 2;
   }
 
-  &__table {
-    margin-bottom: $default-margin * 4;
+  &__formula {
+    margin-bottom: $default-margin;
+    display: flex;
+    align-items: baseline;
+    gap: $default-margin;
+  }
+
+  &__button {
+    margin-top: $default-margin * 2;
   }
 }
