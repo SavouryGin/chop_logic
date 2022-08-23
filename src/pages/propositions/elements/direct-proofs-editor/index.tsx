@@ -53,6 +53,11 @@ const DirectProofsEditor = () => {
     dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
   };
 
+  const confirmDeleteSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
+    dispatch(actions.deleteSteps({ isConfirmed: true }));
+  };
+
   return (
     <div className={editorClass}>
       <DirectProofsEditorTable />
@@ -91,7 +96,7 @@ const DirectProofsEditor = () => {
         isOpened={isConfirmDeletePopupOpened}
         onClose={closeDeleteSteps}
         title={uiElementTexts.confirmation[language]}
-        content={<ConfirmDeleteProofStepsPopup />}
+        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} />}
       />
     </div>
   );

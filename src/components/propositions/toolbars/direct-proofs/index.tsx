@@ -17,7 +17,7 @@ const DirectProofsEditorToolbar = () => {
   const selectedItems = useAppSelector(selectors.getSelectedTableItems);
 
   const deleteSteps = () => {
-    dispatch(actions.deleteSteps());
+    dispatch(actions.deleteSteps({ isConfirmed: false }));
   };
 
   const reiterateStep = () => {
