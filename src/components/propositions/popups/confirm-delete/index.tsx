@@ -9,7 +9,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const ConfirmDeleteProofStepsPopup = () => {
+const ConfirmDeleteProofStepsPopup = ({ onConfirm }: { onConfirm: () => void }) => {
   const dependencies = useAppSelector(selectors.getDependentItems);
   const language = useAppSelector(settingsSelectors.getLanguage);
 
@@ -26,7 +26,7 @@ const ConfirmDeleteProofStepsPopup = () => {
     <div className='confirm-delete-popup'>
       <div className='confirm-delete-popup__text'>{popupsTexts.deleteConfirmation[language]}</div>
       {formulas}
-      <Button buttonId={ButtonID.Apply} size='large' className='confirm-delete-popup__button' />
+      <Button buttonId={ButtonID.Apply} size='large' className='confirm-delete-popup__button' onClick={onConfirm} />
     </div>
   );
 };
