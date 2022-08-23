@@ -177,7 +177,7 @@ export const propositionsDPSlice = createSlice({
         if (item.id === items[0].id || item.id === items[1].id) {
           return {
             ...item,
-            dependentSteps: [step],
+            dependentSteps: item.dependentSteps ? [...item.dependentSteps, step] : [step],
           };
         } else {
           return item;
