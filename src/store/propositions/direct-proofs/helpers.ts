@@ -12,7 +12,7 @@ export const findDependentDPItemsToDelete = (selectedIds: string[], tableData: D
 
   const uniqueDependentSteps = new Set(dependentSteps);
 
-  return tableData.filter((item) => uniqueDependentSteps.has(item.step));
+  return tableData.filter((item) => uniqueDependentSteps.has(item.step) && !selectedIds.includes(item.id));
 };
 
 export const updateDPTableData = (tableData: DirectProofsTableItem[], idsToFilter: string[]): DirectProofsTableItem[] => {
