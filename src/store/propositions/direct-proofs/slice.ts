@@ -168,6 +168,7 @@ export const propositionsDPSlice = createSlice({
         formula,
         rawInput: `${items[0].rawInput}, ${items[1].rawInput}`,
         comment: { en: `IE: ${items[0].step}, ${items[1].step}`, ru: `УИ: ${items[0].step}, ${items[1].step}` },
+        dependentOn: [items[0].step, items[1].step],
       };
 
       // Uncheck checkboxes in the table
