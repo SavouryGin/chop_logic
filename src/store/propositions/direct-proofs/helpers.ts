@@ -26,3 +26,7 @@ export const updateDPTableData = (tableData: DirectProofsTableItem[], idsToFilte
       };
     });
 };
+
+export const updateDependentSteps = (_tableData: DirectProofsTableItem[], _newItem: DirectProofsTableItem): DirectProofsTableItem[] => {
+  return [];
+};
