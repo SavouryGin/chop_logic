@@ -5,16 +5,13 @@ export const findDependentDPItemsToDelete = (selectedIds: string[], tableData: D
   const dependentSteps: number[] = [];
 
   for (const selectedItem of selectedItems) {
-    console.log('selectedItem', selectedItem);
     const dependencies = tableData.filter((item) => item.dependentOn?.includes(selectedItem.step)).map((item) => item.step);
-    console.log('dependencies', dependencies);
     if (dependencies.length) {
       dependentSteps.push(...dependencies);
     }
   }
 
   const uniqueDependentSteps = new Set(dependentSteps);
-  console.log(uniqueDependentSteps);
 
   return tableData.filter((item) => uniqueDependentSteps.has(item.step) && !selectedIds.includes(item.id));
 };
