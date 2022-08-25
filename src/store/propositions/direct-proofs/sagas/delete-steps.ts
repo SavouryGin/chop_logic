@@ -15,11 +15,9 @@ export function* deleteDirectProofStepsSaga(action: { payload: { isConfirmed: bo
     const selectedIds: string[] = yield select(selectors.getSelectedIds);
     const tableData: DirectProofsTableItem[] = yield select(selectors.getTableData);
     const dependentItems = findDependentDPItemsToDelete(selectedIds, tableData);
+    const isConfirmationNeeded = dependentItems.length && selectedIds.length !== tableData.length;
 
-    if (!dependentItems.length) {
-      yield put(actions.setTableData(updateDPTableData(tableData, selectedIds)));
-      yield put(actions.setSelectedIds([]));
-    } else {
+    if (isConfirmationNeeded) {
       if (isConfirmed) {
         const dependentIds = dependentItems.map((item) => item.id);
         const idsToDelete = [...dependentIds, ...selectedIds];
@@ -33,6 +31,9 @@ export function* deleteDirectProofStepsSaga(action: { payload: { isConfirmed: bo
 
         return;
       }
+    } else {
+      yield put(actions.setTableData(updateDPTableData(tableData, selectedIds)));
+      yield put(actions.setSelectedIds([]));
     }
   } catch (error: unknown) {
     console.error(error);
