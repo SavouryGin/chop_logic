@@ -171,20 +171,8 @@ export const propositionsDPSlice = createSlice({
         dependentOn: [items[0].step, items[1].step],
       };
 
-      // Uncheck checkboxes in the table
       state.selectedIds = [];
-      // Update dependentSteps field
-      const newTableData = state.tableData.map((item) => {
-        if (item.id === items[0].id || item.id === items[1].id) {
-          return {
-            ...item,
-            dependentSteps: item.dependentSteps ? [...item.dependentSteps, step] : [step],
-          };
-        } else {
-          return item;
-        }
-      });
-      state.tableData = [...newTableData, newItem];
+      state.tableData = [...state.tableData, newItem];
     },
 
     replacePropositionalVariable: (state, action: PayloadAction<{ newVariable: string; oldVariable: string }>) => {
