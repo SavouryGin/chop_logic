@@ -87,10 +87,9 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
-        id,
+        id: Guid.create().toString(),
         rawInput: `${firstVariable}, ${secondVariable}`,
         expression,
         friendlyExpression,
@@ -110,10 +109,9 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
-        id,
+        id: Guid.create().toString(),
         rawInput: `${firstVariable}, ${secondVariable}, ${thirdVariable}`,
         expression,
         friendlyExpression,
@@ -130,10 +128,9 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
-        id,
+        id: Guid.create().toString(),
         rawInput: `${firstVariable}, ${secondVariable}`,
         expression,
         friendlyExpression,
@@ -160,16 +157,15 @@ export const propositionsDPSlice = createSlice({
       const expression = converter.convertFormulaToExpression(formula);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
-        id,
         expression,
         friendlyExpression,
         formula,
+        id: Guid.create().toString(),
         rawInput: `${items[0].rawInput}, ${items[1].rawInput}`,
         comment: { en: `IE: ${items[0].step}, ${items[1].step}`, ru: `УИ: ${items[0].step}, ${items[1].step}` },
-        dependentOn: [items[0].step, items[1].step],
+        dependentOn: [items[0].id, items[1].id],
       };
 
       state.selectedIds = [];

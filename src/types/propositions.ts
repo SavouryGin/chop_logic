@@ -21,5 +21,5 @@ export type ProofTableItem = {
   step: number;
   rawInput: string;
   comment: LocalText | string;
-  dependentOn?: number[];
+  dependentOn?: string[];
 };
