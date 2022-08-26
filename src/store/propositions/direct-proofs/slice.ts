@@ -3,6 +3,7 @@ import executor from 'logic/propositions/executor';
 import replacer from 'logic/propositions/replacer';
 import validator from 'logic/propositions/validator';
 import { DirectProofsTableItem, PropositionsDirectProofsFlag, PropositionsDirectProofsInitialState } from './interfaces';
+import { Guid } from 'guid-typescript';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export const propositionsDPInitialState: PropositionsDirectProofsInitialState = {
@@ -46,7 +47,7 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = `proof-step-${step}`;
+      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         id,
         step,
@@ -71,7 +72,7 @@ export const propositionsDPSlice = createSlice({
       const index = state.tableData.length + 1;
       const newStep = {
         ...selectedStep,
-        id: `proof-step-${index}`,
+        id: Guid.create().toString(),
         step: index,
         comment: { en: `Reiter. ${selectedStep.step}`, ru: `Повтор ${selectedStep.step}` },
       };
@@ -86,7 +87,7 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = `proof-step-${step}`;
+      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
         id,
@@ -109,7 +110,7 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = `proof-step-${step}`;
+      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
         id,
@@ -129,7 +130,7 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = `proof-step-${step}`;
+      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
         id,
@@ -159,7 +160,7 @@ export const propositionsDPSlice = createSlice({
       const expression = converter.convertFormulaToExpression(formula);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = `proof-step-${step}`;
+      const id = Guid.create().toString();
       const newItem: DirectProofsTableItem = {
         step,
         id,
