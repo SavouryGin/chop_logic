@@ -3,6 +3,7 @@
 @mixin propositionsFormStyles() {
   padding: $default-padding;
   min-width: $min-popup-form-width;
+  overflow-x: hidden;
 
   &__input {
     margin: $big-padding 0;
