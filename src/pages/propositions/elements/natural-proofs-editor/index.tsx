@@ -4,8 +4,8 @@ import NaturalProofsEditorToolbar from 'components/propositions/toolbars/natural
 import PremiseForm from 'components/propositions/forms/premise';
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { propositionsNaturalProofsActions as actions } from 'store/propositions/natural-proofs/slice';
-import { propositionsNaturalProofsSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector } from 'hooks';

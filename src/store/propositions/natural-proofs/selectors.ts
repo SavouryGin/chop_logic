@@ -2,13 +2,13 @@ import { NaturalProofsTableDataItem, PropositionsNaturalProofsFlags } from './in
 import { RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
-const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNaturalProofs.flags;
+const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
 
-const getTableData = (state: RootState): NaturalProofsTableDataItem[] => state.propositionsNaturalProofs.tableData;
+const getTableData = (state: RootState): NaturalProofsTableDataItem[] => state.propositionsNP.tableData;
 
-const getTableDataLength = (state: RootState): number => state.propositionsNaturalProofs.tableData.length;
+const getTableDataLength = (state: RootState): number => state.propositionsNP.tableData.length;
 
-const getSelectedIds = (state: RootState): string[] => state.propositionsNaturalProofs.selectedIds;
+const getSelectedIds = (state: RootState): string[] => state.propositionsNP.selectedIds;
 
 const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isPremiseOpened);
 
@@ -16,7 +16,7 @@ const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNatura
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
-export const propositionsNaturalProofsSelectors = {
+export const propositionsNPSelectors = {
   getFlags,
   getTableData,
   getTableDataLength,

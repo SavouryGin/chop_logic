@@ -26,6 +26,13 @@ export const formsTexts: TextContainer = {
   },
 };
 
+export const popupsTexts: TextContainer = {
+  deleteConfirmation: {
+    en: 'The following formula(s) will also be removed from the proof as dependencies:',
+    ru: 'Следующие формула(-ы) будут также удалены из доказательства как зависимости:',
+  },
+};
+
 export const errorsTexts: TextContainer = {
   inputError: {
     en: 'One or more invalid characters entered.',

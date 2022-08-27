@@ -4,6 +4,7 @@ export interface PropositionsDirectProofsInitialState {
   flags: PropositionsDirectProofsFlags;
   tableData: DirectProofsTableItem[];
   selectedIds: string[];
+  dependentItems: DirectProofsTableItem[];
 }
 
 export interface PropositionsDirectProofsFlags {
@@ -12,6 +13,7 @@ export interface PropositionsDirectProofsFlags {
   isImplicationDistributionOpened: boolean;
   isContradictionRealizationOpened: boolean;
   isReplacerFormOpened: boolean;
+  isConfirmDeletePopupOpened: boolean;
 }
 
 export type PropositionsDirectProofsFlag = keyof PropositionsDirectProofsFlags;
