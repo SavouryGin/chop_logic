@@ -2,15 +2,17 @@ import { DirectProofsTableItem, PropositionsDirectProofsFlags } from './interfac
 import { PropositionalFormula, RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
-const getFlags = (state: RootState): PropositionsDirectProofsFlags => state.propositionsDirectProofs.flags;
+const getFlags = (state: RootState): PropositionsDirectProofsFlags => state.propositionsDP.flags;
 
 const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isPremiseOpened);
 
-const getTableData = (state: RootState): DirectProofsTableItem[] => state.propositionsDirectProofs.tableData;
+const getTableData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.tableData;
 
-const getTableDataLength = (state: RootState): number => state.propositionsDirectProofs.tableData.length;
+const getDependentItems = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.dependentItems;
 
-const getSelectedIds = (state: RootState): string[] => state.propositionsDirectProofs.selectedIds;
+const getTableDataLength = (state: RootState): number => state.propositionsDP.tableData.length;
+
+const getSelectedIds = (state: RootState): string[] => state.propositionsDP.selectedIds;
 
 const getIsImplicationCreationOpened = createSelector(
   getFlags,
@@ -29,22 +31,28 @@ const getIsContradictionRealizationOpened = createSelector(
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isReplacerFormOpened);
 
+const getIsConfirmDeletePopupOpened = createSelector(
+  getFlags,
+  (data: PropositionsDirectProofsFlags): boolean => data.isConfirmDeletePopupOpened,
+);
+
 const getSelectedFormulas = (state: RootState): PropositionalFormula[] => {
-  const selectedIds = state.propositionsDirectProofs.selectedIds;
-  const selectedItems = state.propositionsDirectProofs.tableData.filter((item) => selectedIds.includes(item.id));
+  const selectedIds = state.propositionsDP.selectedIds;
+  const selectedItems = state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
 
   return selectedItems.map((item) => item.formula);
 };
 
 const getSelectedTableItems = (state: RootState): DirectProofsTableItem[] => {
-  const selectedIds = state.propositionsDirectProofs.selectedIds;
+  const selectedIds = state.propositionsDP.selectedIds;
 
-  return state.propositionsDirectProofs.tableData.filter((item) => selectedIds.includes(item.id));
+  return state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
 };
 
-export const propositionsDirectProofsSelectors = {
+export const propositionsDPSelectors = {
   getFlags,
   getTableData,
+  getDependentItems,
   getSelectedIds,
   getSelectedFormulas,
   getSelectedTableItems,
@@ -54,4 +62,5 @@ export const propositionsDirectProofsSelectors = {
   getIsImplicationDistributionOpened,
   getIsContradictionRealizationOpened,
   getIsReplacerFormOpened,
+  getIsConfirmDeletePopupOpened,
 };

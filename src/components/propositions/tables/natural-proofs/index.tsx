@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'presets/propositions';
-import { propositionsNaturalProofsActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { fillerNaturalText } from 'texts';
-import { propositionsNaturalProofsSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 

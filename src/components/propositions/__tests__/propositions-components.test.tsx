@@ -7,17 +7,17 @@ import React from 'react';
 import ReplacerForm from '../forms/replacer';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsDirectProofsInitialState, propositionsDirectProofsSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,
-  propositionsDirectProofs: propositionsDirectProofsSlice.reducer,
+  propositionsDP: propositionsDPSlice.reducer,
 });
 
 const mockedState = {
   settings: settingsInitialState,
-  propositionsDirectProofs: propositionsDirectProofsInitialState,
+  propositionsDP: propositionsDPInitialState,
 };
 
 describe('Propositions Forms component:', () => {

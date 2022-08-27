@@ -1,3 +1,4 @@
+import ConfirmDeleteProofStepsPopup from 'components/propositions/popups/confirm-delete';
 import ContradictionRealizationForm from 'components/propositions/forms/contradiction-realization';
 import DirectProofsEditorTable from 'components/propositions/tables/direct-proofs';
 import DirectProofsEditorToolbar from 'components/propositions/toolbars/direct-proofs';
@@ -8,8 +9,8 @@ import PremiseForm from 'components/propositions/forms/premise';
 import React from 'react';
 import ReplacerForm from 'components/propositions/forms/replacer';
 import formatClassName from 'helpers/formatters/format-class-name';
-import { propositionsDirectProofsActions as actions } from 'store/propositions/direct-proofs/slice';
-import { propositionsDirectProofsSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts/ui-elements';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -24,6 +25,7 @@ const DirectProofsEditor = () => {
   const isReplacerFormOpened = useAppSelector(selectors.getIsReplacerFormOpened);
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
 
   const editorClass = formatClassName(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
 
@@ -45,6 +47,15 @@ const DirectProofsEditor = () => {
 
   const closeReplacer = () => {
     dispatch(actions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+  };
+
+  const closeDeleteSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
+  };
+
+  const confirmDeleteSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
+    dispatch(actions.deleteSteps({ isConfirmed: true }));
   };
 
   return (
@@ -80,6 +91,12 @@ const DirectProofsEditor = () => {
         onClose={closeReplacer}
         title={uiElementTexts.replacerForm[language]}
         content={<ReplacerForm />}
+      />
+      <ModalWindow
+        isOpened={isConfirmDeletePopupOpened}
+        onClose={closeDeleteSteps}
+        title={uiElementTexts.confirmation[language]}
+        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} />}
       />
     </div>
   );

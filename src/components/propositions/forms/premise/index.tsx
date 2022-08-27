@@ -5,8 +5,8 @@ import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { closeDirectProofsPopup, closeNaturalProofsPopup } from 'pages/propositions/helpers';
-import { propositionsDirectProofsActions } from 'store/propositions/direct-proofs/slice';
-import { propositionsNaturalProofsActions } from 'store/propositions/natural-proofs/slice';
+import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
@@ -30,17 +30,17 @@ const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }) =>
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (mode === 'direct') {
-      dispatch(propositionsDirectProofsActions.addPremise(formValue.premise));
+      dispatch(propositionsDPActions.addPremise(formValue.premise));
       closeDirectProofsPopup(dispatch, 'isPremiseOpened');
     }
 
     if (mode === 'natural') {
-      dispatch(propositionsNaturalProofsActions.addPremise(formValue.premise));
+      dispatch(propositionsNPActions.addPremise(formValue.premise));
       closeNaturalProofsPopup(dispatch, 'isPremiseOpened');
     }
 
     if (mode === 'assumption') {
-      dispatch(propositionsNaturalProofsActions.addAssumption(formValue.premise));
+      dispatch(propositionsNPActions.addAssumption(formValue.premise));
       closeNaturalProofsPopup(dispatch, 'isAssumptionOpened');
     }
   };

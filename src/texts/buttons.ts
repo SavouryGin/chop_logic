@@ -45,19 +45,19 @@ export const buttonTexts: ButtonText = {
   },
   [ButtonID.ImplicationCreation]: {
     title: { en: 'Implication Creation', ru: 'Введение импликации' },
-    innerText: { en: 'Implication Creation', ru: 'Введение импликации' },
+    innerText: { en: 'IC', ru: 'ВИ' },
   },
   [ButtonID.ImplicationDistribution]: {
     title: { en: 'Implication Distribution', ru: 'Дистрибуция импликации' },
-    innerText: { en: 'Implication Distribution', ru: 'Дистрибуция импликации' },
+    innerText: { en: 'ID', ru: 'ДИ' },
   },
   [ButtonID.ContradictionRealization]: {
     title: { en: 'Contradiction Realization', ru: 'Создание противоречия' },
-    innerText: { en: 'Contradiction Realization', ru: 'Создание противоречия' },
+    innerText: { en: 'CR', ru: 'СП' },
   },
   [ButtonID.ImplicationElimination]: {
     title: { en: 'Implication Elimination', ru: 'Удаление импликации' },
-    innerText: { en: 'Implication Elimination', ru: 'Удаление импликации' },
+    innerText: { en: 'IE', ru: 'УИ' },
   },
   [ButtonID.Assumption]: {
     title: { en: 'Assumption', ru: 'Гипотеза' },

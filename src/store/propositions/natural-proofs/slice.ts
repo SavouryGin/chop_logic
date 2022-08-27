@@ -2,7 +2,7 @@ import converter from 'logic/propositions/converter';
 import { NaturalProofsTableDataItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export const propositionsNaturalProofsInitialState: PropositionsNaturalProofsInitialState = {
+export const propositionsNPInitialState: PropositionsNaturalProofsInitialState = {
   flags: {
     isPremiseOpened: false,
     isReplacerFormOpened: false,
@@ -12,9 +12,9 @@ export const propositionsNaturalProofsInitialState: PropositionsNaturalProofsIni
   selectedIds: [],
 };
 
-export const propositionsNaturalProofsSlice = createSlice({
-  name: 'propositionsNaturalProofs',
-  initialState: propositionsNaturalProofsInitialState,
+export const propositionsNP = createSlice({
+  name: 'propositionsNP',
+  initialState: propositionsNPInitialState,
   reducers: {
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsNaturalProofsFlag; value: boolean }>) => {
       const { flag, value } = action.payload;
@@ -23,6 +23,10 @@ export const propositionsNaturalProofsSlice = createSlice({
 
     setSelectedIds: (state, action: PayloadAction<string[]>) => {
       state.selectedIds = action.payload;
+    },
+
+    setTableData: (state, action: PayloadAction<NaturalProofsTableDataItem[]>) => {
+      state.tableData = action.payload;
     },
 
     addPremise: (state, action: PayloadAction<string>) => {
@@ -68,20 +72,9 @@ export const propositionsNaturalProofsSlice = createSlice({
     },
 
     deleteSteps: (state) => {
-      const newSteps = state.tableData
-        .filter((item) => !state.selectedIds.includes(item.id))
-        .map((item, index) => {
-          return {
-            ...item,
-            step: index + 1,
-            id: `proof-step-${index + 1}`,
-          };
-        });
-
-      state.selectedIds = [];
-      state.tableData = newSteps;
+      return state;
     },
   },
 });
 
-export const propositionsNaturalProofsActions = { ...propositionsNaturalProofsSlice.actions };
+export const propositionsNPActions = { ...propositionsNP.actions };

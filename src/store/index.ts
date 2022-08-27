@@ -1,12 +1,13 @@
+import createSagaMiddleware from 'redux-saga';
+import rootReducer from './root-reducer';
+import rootSaga from './root-saga';
 import { configureStore } from '@reduxjs/toolkit';
-import { propositionsDirectProofsSlice } from './propositions/direct-proofs/slice';
-import { propositionsNaturalProofsSlice } from './propositions/natural-proofs/slice';
-import { settingsSlice } from './settings/slice';
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: {
-    settings: settingsSlice.reducer,
-    propositionsDirectProofs: propositionsDirectProofsSlice.reducer,
-    propositionsNaturalProofs: propositionsNaturalProofsSlice.reducer,
-  },
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([sagaMiddleware]),
 });
+
+sagaMiddleware.run(rootSaga);
