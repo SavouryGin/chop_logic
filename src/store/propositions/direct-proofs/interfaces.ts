@@ -5,6 +5,7 @@ export interface PropositionsDirectProofsInitialState {
   tableData: DirectProofsTableItem[];
   selectedIds: string[];
   dependentItems: DirectProofsTableItem[];
+  error: string | null;
 }
 
 export interface PropositionsDirectProofsFlags {

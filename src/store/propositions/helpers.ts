@@ -1,4 +1,4 @@
-import { DirectProofsTableItem } from './interfaces';
+import { DirectProofsTableItem } from './direct-proofs/interfaces';
 import { LocalText } from 'types';
 
 export const findDependentDPItemsToDelete = (selectedIds: string[], tableData: DirectProofsTableItem[]): DirectProofsTableItem[] => {
