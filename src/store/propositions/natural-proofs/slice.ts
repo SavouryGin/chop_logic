@@ -71,7 +71,7 @@ export const propositionsNP = createSlice({
       state.tableData = [...state.tableData, newItem];
     },
 
-    deleteSteps: (state) => {
+    deleteSteps: (state, _action: PayloadAction<{ isConfirmed: boolean }>) => {
       return state;
     },
   },

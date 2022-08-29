@@ -1,5 +1,6 @@
 import { DirectProofsTableItem } from './direct-proofs/interfaces';
 import { LocalText } from 'types';
+import { NaturalProofsTableDataItem } from './natural-proofs/interfaces';
 
 export const findDependentDPItemsToDelete = (selectedIds: string[], tableData: DirectProofsTableItem[]): DirectProofsTableItem[] => {
   const selectedItems: DirectProofsTableItem[] = tableData.filter((item) => selectedIds.includes(item.id));
@@ -17,6 +18,15 @@ export const findDependentDPItemsToDelete = (selectedIds: string[], tableData: D
   return tableData.filter((item) => uniqueIds.has(item.id) && !selectedIds.includes(item.id));
 };
 
+export const findDependentNPItemsToDelete = (
+  selectedIds: string[],
+  tableData: NaturalProofsTableDataItem[],
+): NaturalProofsTableDataItem[] => {
+  console.log(selectedIds);
+
+  return tableData;
+};
+
 export const updateDPTableData = (tableData: DirectProofsTableItem[], idsToFilter: string[]): DirectProofsTableItem[] => {
   return tableData
     .filter((item) => !idsToFilter.includes(item.id))
@@ -28,7 +38,39 @@ export const updateDPTableData = (tableData: DirectProofsTableItem[], idsToFilte
     });
 };
 
-export const updateTableComments = (tableData: DirectProofsTableItem[]): DirectProofsTableItem[] => {
+export const updateNPTableData = (tableData: NaturalProofsTableDataItem[], idsToFilter: string[]): NaturalProofsTableDataItem[] => {
+  return tableData
+    .filter((item) => !idsToFilter.includes(item.id))
+    .map((item, index) => {
+      return {
+        ...item,
+        step: index + 1,
+      };
+    });
+};
+
+export const updateDPTableComments = (tableData: DirectProofsTableItem[]): DirectProofsTableItem[] => {
+  return tableData.map((item) => {
+    let newComment: LocalText | undefined;
+
+    if (item.dependentOn) {
+      const [id1, id2] = item.dependentOn;
+      const dependency1 = tableData.find((x) => x.id === id1);
+      const dependency2 = tableData.find((x) => x.id === id2);
+
+      if (dependency1 && dependency2) {
+        newComment = { en: `IE: ${dependency1.step}, ${dependency2.step}`, ru: `УИ: ${dependency1.step}, ${dependency2.step}` };
+      }
+    }
+
+    return {
+      ...item,
+      comment: newComment || item.comment,
+    };
+  });
+};
+
+export const updateNPTableComments = (tableData: NaturalProofsTableDataItem[]): NaturalProofsTableDataItem[] => {
   return tableData.map((item) => {
     let newComment: LocalText | undefined;
 
