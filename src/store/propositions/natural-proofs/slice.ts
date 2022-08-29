@@ -7,9 +7,12 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isPremiseOpened: false,
     isReplacerFormOpened: false,
     isAssumptionOpened: false,
+    isConfirmDeletePopupOpened: false,
   },
   tableData: [],
   selectedIds: [],
+  dependentItems: [],
+  error: null,
 };
 
 export const propositionsNP = createSlice({
@@ -73,6 +76,14 @@ export const propositionsNP = createSlice({
 
     deleteSteps: (state, _action: PayloadAction<{ isConfirmed: boolean }>) => {
       return state;
+    },
+
+    setDependentItems: (state, action: PayloadAction<NaturalProofsTableDataItem[]>) => {
+      state.dependentItems = action.payload;
+    },
+
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
     },
   },
 });
