@@ -22,4 +22,5 @@ export type NaturalProofsTableDataItem = ProofTableItem & {
   expression: PropositionalExpression;
   friendlyExpression: PropositionalExpression;
   level: number;
+  isAssumption?: boolean;
 };
