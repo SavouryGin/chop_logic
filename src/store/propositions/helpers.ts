@@ -22,9 +22,27 @@ export const findDependentNPItemsToDelete = (
   selectedIds: string[],
   tableData: NaturalProofsTableDataItem[],
 ): NaturalProofsTableDataItem[] => {
-  console.log(selectedIds);
+  const selectedItems: NaturalProofsTableDataItem[] = tableData.filter((item) => selectedIds.includes(item.id));
+  const dependentStepsIds: string[] = [];
 
-  return tableData;
+  for (const selectedItem of selectedItems) {
+    if (selectedItem.isAssumption) {
+      const assumptionLevel = selectedItem.level;
+      const dependencies = tableData.filter((item) => item.level >= assumptionLevel).map((item) => item.id);
+      if (dependencies.length) {
+        dependentStepsIds.push(...dependencies);
+      }
+    } else {
+      const dependencies = tableData.filter((item) => item.dependentOn?.includes(selectedItem.id)).map((item) => item.id);
+      if (dependencies.length) {
+        dependentStepsIds.push(...dependencies);
+      }
+    }
+  }
+
+  const uniqueIds = new Set(dependentStepsIds);
+
+  return tableData.filter((item) => uniqueIds.has(item.id) && !selectedIds.includes(item.id));
 };
 
 export const updateDPTableData = (tableData: DirectProofsTableItem[], idsToFilter: string[]): DirectProofsTableItem[] => {
