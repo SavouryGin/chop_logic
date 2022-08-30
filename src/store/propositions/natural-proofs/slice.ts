@@ -69,6 +69,7 @@ export const propositionsNP = createSlice({
         expression,
         friendlyExpression,
         formula,
+        isAssumption: true,
         comment: { en: 'Assumption', ru: 'Гипотеза' },
       };
       state.tableData = [...state.tableData, newItem];
