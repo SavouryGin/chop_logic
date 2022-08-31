@@ -1,10 +1,10 @@
-import { NaturalProofsTableDataItem, PropositionsNaturalProofsFlags } from './interfaces';
+import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from './interfaces';
 import { RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
 
-const getTableData = (state: RootState): NaturalProofsTableDataItem[] => state.propositionsNP.tableData;
+const getTableData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.tableData;
 
 const getTableDataLength = (state: RootState): number => state.propositionsNP.tableData.length;
 

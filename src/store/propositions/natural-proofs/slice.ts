@@ -1,5 +1,5 @@
 import converter from 'logic/propositions/converter';
-import { NaturalProofsTableDataItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
+import { NaturalProofsTableItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export const propositionsNPInitialState: PropositionsNaturalProofsInitialState = {
@@ -28,7 +28,7 @@ export const propositionsNP = createSlice({
       state.selectedIds = action.payload;
     },
 
-    setTableData: (state, action: PayloadAction<NaturalProofsTableDataItem[]>) => {
+    setTableData: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
       state.tableData = action.payload;
     },
 
@@ -39,7 +39,7 @@ export const propositionsNP = createSlice({
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
       const id = `proof-step-${step}`;
-      const newItem: NaturalProofsTableDataItem = {
+      const newItem: NaturalProofsTableItem = {
         level: 0,
         id,
         step,
@@ -61,7 +61,7 @@ export const propositionsNP = createSlice({
       const step = itemsCount + 1;
       const id = `proof-step-${step}`;
       const level = itemsCount > 0 ? state.tableData[itemsCount - 1].level + 1 : 1;
-      const newItem: NaturalProofsTableDataItem = {
+      const newItem: NaturalProofsTableItem = {
         level,
         id,
         step,
@@ -79,7 +79,7 @@ export const propositionsNP = createSlice({
       return state;
     },
 
-    setDependentItems: (state, action: PayloadAction<NaturalProofsTableDataItem[]>) => {
+    setDependentItems: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
       state.dependentItems = action.payload;
     },
 
