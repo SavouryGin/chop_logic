@@ -16,6 +16,11 @@ const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNatura
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
+const getIsConfirmDeletePopupOpened = createSelector(
+  getFlags,
+  (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmDeletePopupOpened,
+);
+
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
@@ -24,4 +29,5 @@ export const propositionsNPSelectors = {
   getIsPremiseOpened,
   getIsAssumptionOpened,
   getIsReplacerFormOpened,
+  getIsConfirmDeletePopupOpened,
 };
