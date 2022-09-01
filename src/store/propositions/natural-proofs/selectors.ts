@@ -6,6 +6,8 @@ const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.pro
 
 const getTableData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.tableData;
 
+const getDependentItems = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.dependentItems;
+
 const getTableDataLength = (state: RootState): number => state.propositionsNP.tableData.length;
 
 const getSelectedIds = (state: RootState): string[] => state.propositionsNP.selectedIds;
@@ -26,6 +28,7 @@ export const propositionsNPSelectors = {
   getTableData,
   getTableDataLength,
   getSelectedIds,
+  getDependentItems,
   getIsPremiseOpened,
   getIsAssumptionOpened,
   getIsReplacerFormOpened,

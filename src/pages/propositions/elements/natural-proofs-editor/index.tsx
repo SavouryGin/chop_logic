@@ -19,6 +19,7 @@ const NaturalProofsEditor = () => {
   const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
   const isAssumptionOpened = useAppSelector(selectors.getIsAssumptionOpened);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
+  const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClassName(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
 
@@ -59,7 +60,7 @@ const NaturalProofsEditor = () => {
         isOpened={isConfirmDeletePopupOpened}
         onClose={closeDeleteSteps}
         title={uiElementTexts.confirmation[language]}
-        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} />}
+        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} dependencies={dependencies} />}
       />
     </div>
   );
