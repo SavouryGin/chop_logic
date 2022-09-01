@@ -23,3 +23,10 @@ export type ProofTableItem = {
   comment: LocalText | string;
   dependentOn?: string[];
 };
+
+export interface ConfirmDeleteProofStepsPopupProps<
+  T extends { id: string; friendlyExpression: PropositionalExpression; step: number; comment: string | LocalText },
+> {
+  onConfirm: () => void;
+  dependencies: T[];
+}

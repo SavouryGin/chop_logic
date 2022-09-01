@@ -26,6 +26,7 @@ const DirectProofsEditor = () => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
+  const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClassName(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
 
@@ -96,7 +97,7 @@ const DirectProofsEditor = () => {
         isOpened={isConfirmDeletePopupOpened}
         onClose={closeDeleteSteps}
         title={uiElementTexts.confirmation[language]}
-        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} />}
+        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} dependencies={dependencies} />}
       />
     </div>
   );
