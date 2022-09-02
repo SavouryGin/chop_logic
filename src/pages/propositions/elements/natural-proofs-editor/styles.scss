@@ -11,8 +11,8 @@
     position: absolute;
     width: 100%;
     margin-bottom: 1rem;
-    max-height: 78%;
-    height: 78%;
+    max-height: 70%;
+    height: 70%;
     display: flex;
     overflow: auto;
     flex-direction: column;
@@ -32,6 +32,7 @@
 
   &__toolbar {
     @include toolbar-styles(2, 8);
+    background-color: $light-background-color;
   }
 
   &__filler {
@@ -40,8 +41,11 @@
 
   // Dark styles
   &_dark {
-    .direct-proofs-editor__table {
+    .natural-proofs-editor__table {
       @include scrollbar-styles(dark);
+    }
+    .natural-proofs-editor__table {
+      background-color: $dark-background-color;
     }
   }
 }
