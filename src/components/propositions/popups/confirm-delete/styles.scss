@@ -5,6 +5,7 @@
   min-width: $min-popup-form-width;
   display: flex;
   flex-direction: column;
+  max-height: $max-popup-height;
 
   &__text {
     margin-bottom: $default-margin * 2;
