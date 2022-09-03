@@ -1,3 +1,4 @@
+import ConfirmDeleteProofStepsPopup from 'components/propositions/popups/confirm-delete';
 import ModalWindow from 'components/modal-window';
 import NaturalProofsEditorTable from 'components/propositions/tables/natural-proofs';
 import NaturalProofsEditorToolbar from 'components/propositions/toolbars/natural-proofs';
@@ -17,6 +18,8 @@ const NaturalProofsEditor = () => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
   const isAssumptionOpened = useAppSelector(selectors.getIsAssumptionOpened);
+  const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
+  const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClassName(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
 
@@ -26,6 +29,15 @@ const NaturalProofsEditor = () => {
 
   const closeAssumption = () => {
     dispatch(actions.setUpFlag({ flag: 'isAssumptionOpened', value: false }));
+  };
+
+  const closeDeleteSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
+  };
+
+  const confirmDeleteSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
+    dispatch(actions.deleteSteps({ isConfirmed: true }));
   };
 
   return (
@@ -43,6 +55,12 @@ const NaturalProofsEditor = () => {
         onClose={closeAssumption}
         title={uiElementTexts.assumption[language]}
         content={<PremiseForm mode='assumption' />}
+      />
+      <ModalWindow
+        isOpened={isConfirmDeletePopupOpened}
+        onClose={closeDeleteSteps}
+        title={uiElementTexts.confirmation[language]}
+        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} dependencies={dependencies} />}
       />
     </div>
   );

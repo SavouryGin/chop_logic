@@ -2,21 +2,25 @@ import { ProofTableItem, PropositionalExpression, PropositionalFormula } from 't
 
 export interface PropositionsNaturalProofsInitialState {
   flags: PropositionsNaturalProofsFlags;
-  tableData: NaturalProofsTableDataItem[];
+  tableData: NaturalProofsTableItem[];
   selectedIds: string[];
+  dependentItems: NaturalProofsTableItem[];
+  error: string | null;
 }
 
 export interface PropositionsNaturalProofsFlags {
   isPremiseOpened: boolean;
   isReplacerFormOpened: boolean;
   isAssumptionOpened: boolean;
+  isConfirmDeletePopupOpened: boolean;
 }
 
 export type PropositionsNaturalProofsFlag = keyof PropositionsNaturalProofsFlags;
 
-export type NaturalProofsTableDataItem = ProofTableItem & {
+export type NaturalProofsTableItem = ProofTableItem & {
   formula: PropositionalFormula;
   expression: PropositionalExpression;
   friendlyExpression: PropositionalExpression;
   level: number;
+  isAssumption?: boolean;
 };
