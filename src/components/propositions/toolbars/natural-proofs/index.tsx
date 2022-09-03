@@ -24,7 +24,7 @@ const NaturalProofsEditorToolbar = () => {
   };
 
   const deleteSteps = () => {
-    dispatch(actions.deleteSteps());
+    dispatch(actions.deleteSteps({ isConfirmed: false }));
   };
 
   return (

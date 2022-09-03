@@ -1,5 +1,5 @@
 import converter from 'logic/propositions/converter';
-import { NaturalProofsTableDataItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
+import { NaturalProofsTableItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export const propositionsNPInitialState: PropositionsNaturalProofsInitialState = {
@@ -7,9 +7,12 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isPremiseOpened: false,
     isReplacerFormOpened: false,
     isAssumptionOpened: false,
+    isConfirmDeletePopupOpened: false,
   },
   tableData: [],
   selectedIds: [],
+  dependentItems: [],
+  error: null,
 };
 
 export const propositionsNP = createSlice({
@@ -25,7 +28,7 @@ export const propositionsNP = createSlice({
       state.selectedIds = action.payload;
     },
 
-    setTableData: (state, action: PayloadAction<NaturalProofsTableDataItem[]>) => {
+    setTableData: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
       state.tableData = action.payload;
     },
 
@@ -36,7 +39,7 @@ export const propositionsNP = createSlice({
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
       const id = `proof-step-${step}`;
-      const newItem: NaturalProofsTableDataItem = {
+      const newItem: NaturalProofsTableItem = {
         level: 0,
         id,
         step,
@@ -58,7 +61,7 @@ export const propositionsNP = createSlice({
       const step = itemsCount + 1;
       const id = `proof-step-${step}`;
       const level = itemsCount > 0 ? state.tableData[itemsCount - 1].level + 1 : 1;
-      const newItem: NaturalProofsTableDataItem = {
+      const newItem: NaturalProofsTableItem = {
         level,
         id,
         step,
@@ -66,13 +69,22 @@ export const propositionsNP = createSlice({
         expression,
         friendlyExpression,
         formula,
+        isAssumption: true,
         comment: { en: 'Assumption', ru: 'Гипотеза' },
       };
       state.tableData = [...state.tableData, newItem];
     },
 
-    deleteSteps: (state) => {
+    deleteSteps: (state, _action: PayloadAction<{ isConfirmed: boolean }>) => {
       return state;
+    },
+
+    setDependentItems: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
+      state.dependentItems = action.payload;
+    },
+
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
     },
   },
 });

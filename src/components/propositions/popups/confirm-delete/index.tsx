@@ -2,15 +2,18 @@ import Button from 'components/controls/button';
 import Formula from 'components/controls/formula';
 import React from 'react';
 import { ButtonID } from 'enums';
-import { LocalText } from 'types';
+import { ConfirmDeleteProofStepsPopupProps, LocalText } from 'types';
+import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
+import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { popupsTexts } from 'texts';
-import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const ConfirmDeleteProofStepsPopup = ({ onConfirm }: { onConfirm: () => void }) => {
-  const dependencies = useAppSelector(selectors.getDependentItems);
+const ConfirmDeleteProofStepsPopup = ({
+  onConfirm,
+  dependencies,
+}: ConfirmDeleteProofStepsPopupProps<DirectProofsTableItem | NaturalProofsTableItem>) => {
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   const formulas = dependencies.map((item) => {

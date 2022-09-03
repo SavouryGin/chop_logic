@@ -50,6 +50,10 @@ export const errorsTexts: TextContainer = {
     en: 'The entered expression cannot be converted into a propositional formula.',
     ru: 'Введённое выражение нельзя преобразовать в пропозициональную формулу.',
   },
+  generalError: {
+    en: 'Something went wrong.',
+    ru: 'Что-то пошло не так.',
+  },
 };
 
 export const tooltipTexts: TextContainer = {
