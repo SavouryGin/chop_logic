@@ -18,6 +18,11 @@ const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNatura
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
+const getIsOrIntroductionFormOpened = createSelector(
+  getFlags,
+  (data: PropositionsNaturalProofsFlags): boolean => data.isOrIntroductionFormOpened,
+);
+
 const getIsConfirmDeletePopupOpened = createSelector(
   getFlags,
   (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmDeletePopupOpened,
@@ -33,4 +38,5 @@ export const propositionsNPSelectors = {
   getIsAssumptionOpened,
   getIsReplacerFormOpened,
   getIsConfirmDeletePopupOpened,
+  getIsOrIntroductionFormOpened,
 };
