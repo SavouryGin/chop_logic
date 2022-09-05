@@ -9,7 +9,7 @@ import { closeNaturalProofsPopup } from 'pages/propositions/helpers';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
-const OrIntroductionForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }) => {
+const OrIntroductionForm = () => {
   const dispatch = useAppDispatch();
   const orIntroInitialValue = { orValue: '' };
   const [formValue, setFormValue] = useState(orIntroInitialValue);
@@ -29,7 +29,7 @@ const OrIntroductionForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formValue);
-    closeNaturalProofsPopup(dispatch, 'isAssumptionOpened');
+    closeNaturalProofsPopup(dispatch, 'isOrIntroductionFormOpened');
   };
 
   return (

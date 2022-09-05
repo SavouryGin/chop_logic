@@ -13,6 +13,7 @@ export interface PropositionsNaturalProofsFlags {
   isReplacerFormOpened: boolean;
   isAssumptionOpened: boolean;
   isConfirmDeletePopupOpened: boolean;
+  isOrIntroductionFormOpened: boolean;
 }
 
 export type PropositionsNaturalProofsFlag = keyof PropositionsNaturalProofsFlags;
