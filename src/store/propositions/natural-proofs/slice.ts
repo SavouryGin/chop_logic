@@ -8,6 +8,7 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isReplacerFormOpened: false,
     isAssumptionOpened: false,
     isConfirmDeletePopupOpened: false,
+    isOrIntroductionFormOpened: false,
   },
   tableData: [],
   selectedIds: [],
