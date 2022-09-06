@@ -14,7 +14,7 @@ const NaturalProofsEditorToolbar = () => {
   const isReplacerDisabled = tableDataLength === 0;
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
-  const isOrIntroductionDisabled = selectedIds.length !== 1;
+  const isOrIntroductionDisabled = selectedIds.length === 0;
 
   const openPremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));
