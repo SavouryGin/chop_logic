@@ -6,19 +6,23 @@ import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { closeNaturalProofsPopup } from 'pages/propositions/helpers';
 // import { propositionsNPActions as action } from 'store/propositions/natural-proofs/slice';
-import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
+import { settingsSelectors } from 'store/settings/selectors';
+import { uiElementTexts } from 'texts';
+import { useAppDispatch, useAppSelector, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
 const OrIntroductionForm = () => {
   const dispatch = useAppDispatch();
   const orIntroInitialValue = { orValue: '' };
   const [formValue, setFormValue] = useState(orIntroInitialValue);
+  const language = useAppSelector(settingsSelectors.getLanguage);
 
   const preview = usePropositionalFormulaPreview(formValue.orValue);
   const hasError = !Array.isArray(preview);
   const isFormInvalid = hasError || !formValue.orValue;
   const formContent = (
     <>
+      <p>{uiElementTexts.orIntroductionInfo[language]}</p>
       <TextInput name='orValue' inputId={InputID.Premise} className='or-introduction-form__input' isRequired />
       <FormulaPreview preview={preview} />
     </>
