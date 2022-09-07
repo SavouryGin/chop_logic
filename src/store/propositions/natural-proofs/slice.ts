@@ -87,6 +87,10 @@ export const propositionsNP = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+
+    createDisjunction: (state, _action: PayloadAction<string>) => {
+      return state;
+    },
   },
 });
 
