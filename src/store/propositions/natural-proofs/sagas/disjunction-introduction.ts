@@ -1,3 +1,4 @@
+import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { put, select, takeEvery } from 'redux-saga/effects';
@@ -9,9 +10,10 @@ export function* disjunctionIntroductionWatcher(): Generator {
 
 export function* disjunctionIntroductionSaga(action: { payload: string }): SagaIterator {
   try {
-    const selectedIds: string[] = yield select(selectors.getSelectedIds);
+    const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getSelectedTableItems);
+
     const input = action.payload;
-    console.log('SAGA', selectedIds, input);
+    console.log('SAGA', selectedItems, input);
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Delete action error';
     yield put(actions.setError(errorMessage));

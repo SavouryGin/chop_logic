@@ -28,6 +28,14 @@ const getIsConfirmDeletePopupOpened = createSelector(
   (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmDeletePopupOpened,
 );
 
+const getSelectedTableItems = createSelector(
+  getSelectedIds,
+  getTableData,
+  (selectedIds: string[], data: NaturalProofsTableItem[]): NaturalProofsTableItem[] => {
+    return data.filter((item) => selectedIds.includes(item.id));
+  },
+);
+
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
@@ -39,4 +47,5 @@ export const propositionsNPSelectors = {
   getIsReplacerFormOpened,
   getIsConfirmDeletePopupOpened,
   getIsOrIntroductionFormOpened,
+  getSelectedTableItems,
 };
