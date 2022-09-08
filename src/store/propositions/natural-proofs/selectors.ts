@@ -36,6 +36,8 @@ const getSelectedTableItems = createSelector(
   },
 );
 
+const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[length - 1].level || 0);
+
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
@@ -48,4 +50,5 @@ export const propositionsNPSelectors = {
   getIsConfirmDeletePopupOpened,
   getIsOrIntroductionFormOpened,
   getSelectedTableItems,
+  getLastTableItemLevel,
 };
