@@ -36,7 +36,7 @@ const getSelectedTableItems = createSelector(
   },
 );
 
-const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[length - 1].level || 0);
+const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[data.length - 1]?.level || 0);
 
 export const propositionsNPSelectors = {
   getFlags,

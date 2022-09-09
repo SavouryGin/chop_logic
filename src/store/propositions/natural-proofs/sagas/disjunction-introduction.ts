@@ -19,7 +19,6 @@ export function* disjunctionIntroductionSaga(action: { payload: string }): SagaI
 
     const newItems = executor.performDI({ rawInput, level, dataLength, selectedItems });
 
-    console.log('SAGA', selectedItems, rawInput, dataLength);
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
