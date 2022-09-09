@@ -1,5 +1,6 @@
 import { DirectProofsTableItem } from './direct-proofs/interfaces';
 import { LocalText } from 'types';
+import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem } from './natural-proofs/interfaces';
 
 export const findDependentDPItemsToDelete = (selectedIds: string[], tableData: DirectProofsTableItem[]): DirectProofsTableItem[] => {
@@ -23,7 +24,7 @@ export const findDependentNPItemsToDelete = (selectedIds: string[], tableData: N
   const dependentStepsIds: string[] = [];
 
   for (const selectedItem of selectedItems) {
-    if (selectedItem.isAssumption) {
+    if (selectedItem.formulaBase === NPFormulaBase.Assumption) {
       const assumptionLevel = selectedItem.level;
       const dependencies = tableData.filter((item) => item.level >= assumptionLevel).map((item) => item.id);
       if (dependencies.length) {
