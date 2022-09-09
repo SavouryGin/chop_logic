@@ -1,3 +1,4 @@
+import { NPFormulaBase } from 'enums';
 import { ProofTableItem, PropositionalExpression, PropositionalFormula } from 'types';
 
 export interface PropositionsNaturalProofsInitialState {
@@ -23,5 +24,5 @@ export type NaturalProofsTableItem = ProofTableItem & {
   expression: PropositionalExpression;
   friendlyExpression: PropositionalExpression;
   level: number;
-  isAssumption?: boolean;
+  formulaBase: NPFormulaBase;
 };

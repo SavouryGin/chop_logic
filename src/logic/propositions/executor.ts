@@ -1,9 +1,9 @@
 import converter from './converter';
 import validator from './validator';
+import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalFormula } from 'types';
-import { PropositionalOperator } from 'enums';
 import { errorsTexts } from 'texts/propositions';
 
 const executor = {
@@ -72,6 +72,7 @@ const executor = {
         friendlyExpression: firstFriendlyExpression,
         comment: { en: `DI: ${item.step}`, ru: `ВД: ${item.step}` },
         dependentOn: [item.id],
+        formulaBase: NPFormulaBase.DI,
       };
 
       const secondNewItem: NaturalProofsTableItem = {
@@ -84,6 +85,7 @@ const executor = {
         friendlyExpression: secondFriendlyExpression,
         comment: { en: `DI: ${item.step}`, ru: `ВД: ${item.step}` },
         dependentOn: [item.id],
+        formulaBase: NPFormulaBase.DI,
       };
 
       newItems.push(firstNewItem, secondNewItem);
