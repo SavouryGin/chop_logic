@@ -2,6 +2,7 @@ import ConfirmDeleteProofStepsPopup from 'components/propositions/popups/confirm
 import ModalWindow from 'components/modal-window';
 import NaturalProofsEditorTable from 'components/propositions/tables/natural-proofs';
 import NaturalProofsEditorToolbar from 'components/propositions/toolbars/natural-proofs';
+import OrIntroductionForm from 'components/propositions/forms/or-introduction';
 import PremiseForm from 'components/propositions/forms/premise';
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
@@ -19,6 +20,7 @@ const NaturalProofsEditor = () => {
   const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
   const isAssumptionOpened = useAppSelector(selectors.getIsAssumptionOpened);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
+  const isOrIntroductionFormOpened = useAppSelector(selectors.getIsOrIntroductionFormOpened);
   const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClassName(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
@@ -38,6 +40,10 @@ const NaturalProofsEditor = () => {
   const confirmDeleteSteps = () => {
     dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
     dispatch(actions.deleteSteps({ isConfirmed: true }));
+  };
+
+  const closeOrIntroduction = () => {
+    dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: false }));
   };
 
   return (
@@ -61,6 +67,12 @@ const NaturalProofsEditor = () => {
         onClose={closeDeleteSteps}
         title={uiElementTexts.confirmation[language]}
         content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} dependencies={dependencies} />}
+      />
+      <ModalWindow
+        isOpened={isOrIntroductionFormOpened}
+        onClose={closeOrIntroduction}
+        title={uiElementTexts.orIntroduction[language]}
+        content={<OrIntroductionForm />}
       />
     </div>
   );

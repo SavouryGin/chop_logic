@@ -27,7 +27,8 @@
     .direct-proofs-editor__table {
       @include scrollbar-styles(dark);
     }
-    .direct-proofs-editor__table {
+
+    .direct-proofs-editor__toolbar {
       background-color: $dark-background-color;
     }
   }

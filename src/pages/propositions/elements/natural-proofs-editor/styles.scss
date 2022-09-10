@@ -26,7 +26,8 @@
     .natural-proofs-editor__table {
       @include scrollbar-styles(dark);
     }
-    .natural-proofs-editor__table {
+
+    .natural-proofs-editor__toolbar {
       background-color: $dark-background-color;
     }
   }
