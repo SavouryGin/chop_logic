@@ -30,4 +30,10 @@
       height: 90%;
     }
   }
+
+  @media (min-height: $min-big-screen-height) {
+    .tab-list__content {
+      height: 92%;
+    }
+  }
 }

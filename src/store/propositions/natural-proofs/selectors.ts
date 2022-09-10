@@ -18,10 +18,25 @@ const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNatura
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
+const getIsOrIntroductionFormOpened = createSelector(
+  getFlags,
+  (data: PropositionsNaturalProofsFlags): boolean => data.isOrIntroductionFormOpened,
+);
+
 const getIsConfirmDeletePopupOpened = createSelector(
   getFlags,
   (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmDeletePopupOpened,
 );
+
+const getSelectedTableItems = createSelector(
+  getSelectedIds,
+  getTableData,
+  (selectedIds: string[], data: NaturalProofsTableItem[]): NaturalProofsTableItem[] => {
+    return data.filter((item) => selectedIds.includes(item.id));
+  },
+);
+
+const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[data.length - 1]?.level || 0);
 
 export const propositionsNPSelectors = {
   getFlags,
@@ -33,4 +48,7 @@ export const propositionsNPSelectors = {
   getIsAssumptionOpened,
   getIsReplacerFormOpened,
   getIsConfirmDeletePopupOpened,
+  getIsOrIntroductionFormOpened,
+  getSelectedTableItems,
+  getLastTableItemLevel,
 };

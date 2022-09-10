@@ -6,3 +6,4 @@ export * from './input-id';
 export * from './greek-symbols';
 export * from './logical-symbols';
 export * from './propositional-operators';
+export * from './np-formula-base';

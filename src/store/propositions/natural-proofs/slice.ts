@@ -1,4 +1,5 @@
 import converter from 'logic/propositions/converter';
+import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
@@ -8,6 +9,7 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isReplacerFormOpened: false,
     isAssumptionOpened: false,
     isConfirmDeletePopupOpened: false,
+    isOrIntroductionFormOpened: false,
   },
   tableData: [],
   selectedIds: [],
@@ -48,6 +50,7 @@ export const propositionsNP = createSlice({
         friendlyExpression,
         formula,
         comment: { en: 'Premise', ru: 'Посылка' },
+        formulaBase: NPFormulaBase.Premise,
       };
       state.tableData = [...state.tableData, newItem];
     },
@@ -69,8 +72,8 @@ export const propositionsNP = createSlice({
         expression,
         friendlyExpression,
         formula,
-        isAssumption: true,
         comment: { en: 'Assumption', ru: 'Гипотеза' },
+        formulaBase: NPFormulaBase.Assumption,
       };
       state.tableData = [...state.tableData, newItem];
     },
@@ -85,6 +88,10 @@ export const propositionsNP = createSlice({
 
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
+    },
+
+    createDisjunction: (state, _action: PayloadAction<string>) => {
+      return state;
     },
   },
 });
