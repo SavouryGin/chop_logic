@@ -43,7 +43,7 @@ export const findDependentNPItemsToDelete = (selectedIds: string[], tableData: N
   return tableData.filter((item) => uniqueIds.has(item.id) && !selectedIds.includes(item.id));
 };
 
-export const updateTableData = <T extends { id: string }>(tableData: T[], idsToFilter: string[]): T[] => {
+export const removeSelectedItemsFromTable = <T extends { id: string }>(tableData: T[], idsToFilter: string[]): T[] => {
   return tableData
     .filter((item) => !idsToFilter.includes(item.id))
     .map((item, index) => {
@@ -77,11 +77,24 @@ export const updateDPTableComments = (tableData: DirectProofsTableItem[]): Direc
 
 export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): NaturalProofsTableItem[] => {
   return tableData.map((item) => {
+    let newComment = item.comment;
+
     // TODO: update dependent comments
+    switch (item.formulaBase) {
+      case NPFormulaBase.DI: {
+        if (item.dependentOn?.length) {
+          const dependentId = item.dependentOn[0];
+          const dependency = tableData.find((x) => x.id === dependentId);
+          if (dependency) {
+            newComment = { en: `DI: ${dependency.step}`, ru: `ВД: ${dependency.step}` };
+          }
+        }
+      }
+    }
 
     return {
       ...item,
-      comment: item.comment,
+      comment: newComment,
     };
   });
 };
