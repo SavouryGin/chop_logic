@@ -15,6 +15,17 @@ const NaturalProofsEditorToolbar = () => {
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
   const isOrIntroductionDisabled = selectedIds.length === 0;
+  // TODO: replace with the real rules
+  const isNotIntroductionDisabled = true;
+  const isAndIntroductionDisabled = true;
+  const isImpliesIntroductionDisabled = true;
+  const isEquivIntroductionDisabled = true;
+  const isShortcutDisabled = true;
+  const isNotEliminationDisabled = true;
+  const isAndEliminationDisabled = true;
+  const isOrEliminationDisabled = true;
+  const isImpliesEliminationDisabled = true;
+  const isEquivEliminationDisabled = true;
 
   const openPremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));
@@ -37,8 +48,8 @@ const NaturalProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
       <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' isDisabled={isReplacerDisabled} />
-      <Button buttonId={ButtonID.NotIntroduction} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.AndIntroduction} sound={soundPlayer.keyboard} size='large' />
+      <Button buttonId={ButtonID.NotIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isNotIntroductionDisabled} />
+      <Button buttonId={ButtonID.AndIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isAndIntroductionDisabled} />
       <Button
         buttonId={ButtonID.OrIntroduction}
         sound={soundPlayer.keyboard}
@@ -46,16 +57,21 @@ const NaturalProofsEditorToolbar = () => {
         onClick={openOrIntroduction}
         isDisabled={isOrIntroductionDisabled}
       />
-      <Button buttonId={ButtonID.ImpliesIntroduction} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.EquivIntroduction} sound={soundPlayer.keyboard} size='large' />
+      <Button
+        buttonId={ButtonID.ImpliesIntroduction}
+        sound={soundPlayer.keyboard}
+        size='large'
+        isDisabled={isImpliesIntroductionDisabled}
+      />
+      <Button buttonId={ButtonID.EquivIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isEquivIntroductionDisabled} />
       <Button buttonId={ButtonID.Assumption} sound={soundPlayer.keyboard} size='large' onClick={openAssumption} />
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' onClick={deleteSteps} isDisabled={isDeleteDisabled} />
-      <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.NotElimination} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.AndElimination} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.OrElimination} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.ImpliesElimination} sound={soundPlayer.keyboard} size='large' />
-      <Button buttonId={ButtonID.EquivElimination} sound={soundPlayer.keyboard} size='large' />
+      <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' isDisabled={isShortcutDisabled} />
+      <Button buttonId={ButtonID.NotElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isNotEliminationDisabled} />
+      <Button buttonId={ButtonID.AndElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isAndEliminationDisabled} />
+      <Button buttonId={ButtonID.OrElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isOrEliminationDisabled} />
+      <Button buttonId={ButtonID.ImpliesElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isImpliesEliminationDisabled} />
+      <Button buttonId={ButtonID.EquivElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isEquivEliminationDisabled} />
     </div>
   );
 };
