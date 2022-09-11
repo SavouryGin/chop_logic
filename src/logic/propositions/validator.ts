@@ -180,6 +180,14 @@ const validator = {
   areTwoFormulasEqual(first: string | PropositionalFormula, second: string | PropositionalFormula): boolean {
     return JSON.stringify(first) === JSON.stringify(second);
   },
+
+  isDEApplicable(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula, thirdFormula: PropositionalFormula): boolean {
+    // TODO: implement rule
+    // if F | G, F => H, G => H then H
+    console.log(firstFormula, secondFormula, thirdFormula);
+
+    return true;
+  },
 };
 
 export default Object.freeze(validator);
