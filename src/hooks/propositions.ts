@@ -131,7 +131,7 @@ export const usePremiseEnabling = (): boolean => {
   return isEnabled;
 };
 
-export const useReplacePossibleStatus = (variable: string): boolean => {
+export const useIsDPReplacePossible = (variable: string): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const data = useAppSelector(propositionsDPSelectors.getTableData);
 
@@ -153,6 +153,19 @@ export const useReplacePossibleStatus = (variable: string): boolean => {
       }
     }
   }, [variable]);
+
+  return isPossible;
+};
+
+export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const data = useAppSelector(propositionsNPSelectors.getTableData);
+
+  useEffect(() => {
+    console.log(data);
+
+    setIsPossible(false);
+  }, [selectedIds.length]);
 
   return isPossible;
 };
