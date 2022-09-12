@@ -3,6 +3,7 @@ import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { errorsTexts } from 'texts';
+import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
 
 const validator = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -185,6 +186,27 @@ const validator = {
     // TODO: implement rule
     // if F | G, F => H, G => H then H
     console.log(firstFormula, secondFormula, thirdFormula);
+    const formulasArray = [firstFormula, secondFormula, thirdFormula];
+
+    const disjunctionFormulaIndex = formulasArray.findIndex((item) => item.operator === PropositionalOperator.Or);
+
+    console.log('disjunctionFormulaIndex', disjunctionFormulaIndex);
+
+    if (disjunctionFormulaIndex === -1) {
+      return false;
+    }
+
+    const disjunction = formulasArray[disjunctionFormulaIndex];
+    console.log('disjunction', disjunction);
+
+    const [firstImplication, secondImplication] = removeArrayItemByIndex(formulasArray, disjunctionFormulaIndex);
+
+    if (firstImplication.operator !== PropositionalOperator.Implies || secondImplication.operator !== PropositionalOperator.Implies) {
+      return false;
+    }
+
+    console.log('firstImplication', firstImplication);
+    console.log('secondImplication', secondImplication);
 
     return true;
   },
