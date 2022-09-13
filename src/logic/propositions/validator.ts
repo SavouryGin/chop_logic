@@ -183,21 +183,15 @@ const validator = {
   },
 
   isDEApplicable(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula, thirdFormula: PropositionalFormula): boolean {
-    // TODO: implement rule
     // if F | G, F => H, G => H then H
-    console.log(firstFormula, secondFormula, thirdFormula);
     const formulasArray = [firstFormula, secondFormula, thirdFormula];
-
     const disjunctionFormulaIndex = formulasArray.findIndex((item) => item.operator === PropositionalOperator.Or);
-
-    console.log('disjunctionFormulaIndex', disjunctionFormulaIndex);
 
     if (disjunctionFormulaIndex === -1) {
       return false;
     }
 
     const disjunction = formulasArray[disjunctionFormulaIndex];
-    console.log('disjunction', disjunction);
 
     const [firstImplication, secondImplication] = removeArrayItemByIndex(formulasArray, disjunctionFormulaIndex);
 
@@ -205,8 +199,25 @@ const validator = {
       return false;
     }
 
-    console.log('firstImplication', firstImplication);
-    console.log('secondImplication', secondImplication);
+    const firstAntecedent = firstImplication.values[0];
+    const secondAntecedent = secondImplication.values[0];
+    const firstClose = disjunction.values[0];
+    const secondClose = disjunction.values[1];
+
+    const firstMatch = this.areTwoFormulasEqual(firstAntecedent, firstClose) && this.areTwoFormulasEqual(secondAntecedent, secondClose);
+    const secondMatch = this.areTwoFormulasEqual(firstAntecedent, secondClose) && this.areTwoFormulasEqual(secondAntecedent, firstClose);
+
+    if (!firstMatch && !secondMatch) {
+      return false;
+    }
+
+    const firstConsequent = firstImplication.values[1];
+    const secondConsequent = secondImplication.values[1];
+    const areConsequencesDifferent = !this.areTwoFormulasEqual(firstConsequent, secondConsequent);
+
+    if (areConsequencesDifferent) {
+      return false;
+    }
 
     return true;
   },
