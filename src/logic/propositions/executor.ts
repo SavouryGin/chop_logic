@@ -5,6 +5,7 @@ import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interf
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalFormula } from 'types';
 import { errorsTexts } from 'texts/propositions';
+import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
 
 const executor = {
   performIE(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula): PropositionalFormula {
@@ -93,6 +94,38 @@ const executor = {
     }
 
     return newItems;
+  },
+
+  performDE(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem {
+    const { level, dataLength, selectedItems } = data;
+    const step = dataLength + 1;
+    const [item1, item2, item3] = selectedItems;
+    const firstFormula = item1.formula;
+    const secondFormula = item2.formula;
+    const thirdFormula = item3.formula;
+    if (!firstFormula || !secondFormula || !thirdFormula) {
+      throw new PropositionalError('Cannot perform Disjunction Introduction.', errorsTexts.semanticError);
+    }
+
+    const formulasArray = [firstFormula, secondFormula, thirdFormula];
+    const disjunctionFormulaIndex = formulasArray.findIndex((item) => item.operator === PropositionalOperator.Or);
+    const implications = removeArrayItemByIndex(formulasArray, disjunctionFormulaIndex);
+    const newFormula = implications[0].values[1] as PropositionalFormula;
+    const expression = converter.convertFormulaToExpression(newFormula);
+    const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+
+    return {
+      level,
+      step,
+      id: `proof-step-${step}`,
+      rawInput: `${item1.rawInput}, ${item2.rawInput}, ${item3.rawInput}`,
+      formulaBase: NPFormulaBase.DE,
+      dependentOn: [item1.id, item2.id, item3.id],
+      comment: { en: `DE: ${item1.step}, ${item2.step}, ${item3.step}`, ru: `УД: ${item1.step}, ${item2.step}, ${item3.step}` },
+      formula: newFormula,
+      expression,
+      friendlyExpression,
+    };
   },
 };
 
