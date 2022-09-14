@@ -1,4 +1,4 @@
-// import executor from 'logic/propositions/executor';
+import executor from 'logic/propositions/executor';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
@@ -14,13 +14,13 @@ export function* disjunctionEliminationSaga(): SagaIterator {
     const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getSelectedTableItems);
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     console.log('Saga', selectedItems);
-    // const dataLength: number = yield select(selectors.getTableDataLength);
-    // const level: number = yield select(selectors.getLastTableItemLevel);
-    // const rawInput = action.payload;
+    const dataLength: number = yield select(selectors.getTableDataLength);
+    const level: number = yield select(selectors.getLastTableItemLevel);
 
-    // const newItems = executor.performDI({ rawInput, level, dataLength, selectedItems });
+    const newItem = executor.performDE({ level, dataLength, selectedItems });
+    console.log(newItem);
 
-    yield put(actions.setTableData([...tableData]));
+    yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Delete action error';
