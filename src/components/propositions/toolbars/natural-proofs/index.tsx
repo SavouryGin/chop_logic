@@ -43,6 +43,10 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: true }));
   };
 
+  const eliminateDisjunction = () => {
+    dispatch(actions.eliminateDisjunction());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
@@ -69,7 +73,13 @@ const NaturalProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' isDisabled={isShortcutDisabled} />
       <Button buttonId={ButtonID.NotElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isNotEliminationDisabled} />
       <Button buttonId={ButtonID.AndElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isAndEliminationDisabled} />
-      <Button buttonId={ButtonID.OrElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isOrEliminationDisabled} />
+      <Button
+        buttonId={ButtonID.OrElimination}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={eliminateDisjunction}
+        isDisabled={isOrEliminationDisabled}
+      />
       <Button buttonId={ButtonID.ImpliesElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isImpliesEliminationDisabled} />
       <Button buttonId={ButtonID.EquivElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isEquivEliminationDisabled} />
     </div>
