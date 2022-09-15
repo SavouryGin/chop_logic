@@ -13,12 +13,10 @@ export function* disjunctionEliminationSaga(): SagaIterator {
   try {
     const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getSelectedTableItems);
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
-    console.log('Saga', selectedItems);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
 
     const newItem = executor.performDE({ level, dataLength, selectedItems });
-    console.log(newItem);
 
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));

@@ -1,5 +1,6 @@
 import converter from './converter';
 import validator from './validator';
+import { Guid } from 'guid-typescript';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
@@ -67,7 +68,7 @@ const executor = {
         level,
         rawInput: `${rawInput}, ${item.rawInput}`,
         step: itemsCounter,
-        id: `proof-step-${itemsCounter}`,
+        id: Guid.create().toString(),
         expression: firstExpression,
         formula: firstFormula,
         friendlyExpression: firstFriendlyExpression,
@@ -80,7 +81,7 @@ const executor = {
         level,
         rawInput: `${item.rawInput}, ${rawInput}`,
         step: itemsCounter + 1,
-        id: `proof-step-${itemsCounter + 1}`,
+        id: Guid.create().toString(),
         expression: secondExpression,
         formula: secondFormula,
         friendlyExpression: secondFriendlyExpression,
@@ -117,7 +118,7 @@ const executor = {
     return {
       level,
       step,
-      id: `proof-step-${step}`,
+      id: Guid.create().toString(),
       rawInput: `${item1.rawInput}, ${item2.rawInput}, ${item3.rawInput}`,
       formulaBase: NPFormulaBase.DE,
       dependentOn: [item1.id, item2.id, item3.id],
