@@ -5,14 +5,14 @@ import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { closeDirectProofsPopup } from 'pages/propositions/helpers';
-import { useAppDispatch, useReplacePossibleStatus } from 'hooks';
+import { useAppDispatch, useIsDPReplacePossible } from 'hooks';
 import './styles.scss';
 
 const ReplacerForm = () => {
   const dispatch = useAppDispatch();
   const replacerInitialValue = { newVariable: '', oldVariable: '' };
   const [formValues, setFormValues] = useState(replacerInitialValue);
-  const isReplacePossible = useReplacePossibleStatus(formValues.oldVariable);
+  const isReplacePossible = useIsDPReplacePossible(formValues.oldVariable);
   const isReplaceDisabled = !isReplacePossible || formValues.newVariable.length !== 1;
 
   const formContent = (

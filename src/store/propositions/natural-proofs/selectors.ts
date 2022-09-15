@@ -1,5 +1,5 @@
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from './interfaces';
-import { RootState } from 'types';
+import { PropositionalFormula, RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
@@ -36,6 +36,14 @@ const getSelectedTableItems = createSelector(
   },
 );
 
+const getSelectedFormulas = createSelector(
+  getSelectedIds,
+  getTableData,
+  (selectedIds: string[], data: NaturalProofsTableItem[]): PropositionalFormula[] => {
+    return data.filter((item) => selectedIds.includes(item.id)).map((item) => item.formula);
+  },
+);
+
 const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[data.length - 1]?.level || 0);
 
 export const propositionsNPSelectors = {
@@ -51,4 +59,5 @@ export const propositionsNPSelectors = {
   getIsOrIntroductionFormOpened,
   getSelectedTableItems,
   getLastTableItemLevel,
+  getSelectedFormulas,
 };
