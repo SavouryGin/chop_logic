@@ -89,6 +89,23 @@ export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): Natu
             newComment = { en: `DI: ${dependency.step}`, ru: `ВД: ${dependency.step}` };
           }
         }
+        break;
+      }
+
+      case NPFormulaBase.DE: {
+        if (item.dependentOn?.length) {
+          const [id1, id2, id3] = item.dependentOn;
+          const dependency1 = tableData.find((x) => x.id === id1);
+          const dependency2 = tableData.find((x) => x.id === id2);
+          const dependency3 = tableData.find((x) => x.id === id3);
+
+          if (dependency1 && dependency2 && dependency3) {
+            newComment = {
+              en: `DE: ${dependency1.step}, ${dependency2.step}, ${dependency3.step}`,
+              ru: `УД: ${dependency1.step}, ${dependency2.step}, ${dependency3.step}`,
+            };
+          }
+        }
       }
     }
 

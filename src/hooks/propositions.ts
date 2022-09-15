@@ -131,7 +131,7 @@ export const usePremiseEnabling = (): boolean => {
   return isEnabled;
 };
 
-export const useReplacePossibleStatus = (variable: string): boolean => {
+export const useIsDPReplacePossible = (variable: string): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const data = useAppSelector(propositionsDPSelectors.getTableData);
 
@@ -153,6 +153,22 @@ export const useReplacePossibleStatus = (variable: string): boolean => {
       }
     }
   }, [variable]);
+
+  return isPossible;
+};
+
+export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    if (formulas.length !== 3) {
+      setIsPossible(false);
+    } else {
+      // if F | G, F => H, G => H then H
+      setIsPossible(validator.isDEApplicable(formulas[0], formulas[1], formulas[2]));
+    }
+  }, [selectedIds.length]);
 
   return isPossible;
 };

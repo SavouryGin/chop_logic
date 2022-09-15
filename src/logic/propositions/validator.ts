@@ -3,6 +3,7 @@ import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { errorsTexts } from 'texts';
+import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
 
 const validator = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -179,6 +180,46 @@ const validator = {
 
   areTwoFormulasEqual(first: string | PropositionalFormula, second: string | PropositionalFormula): boolean {
     return JSON.stringify(first) === JSON.stringify(second);
+  },
+
+  isDEApplicable(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula, thirdFormula: PropositionalFormula): boolean {
+    // if F | G, F => H, G => H then H
+    const formulasArray = [firstFormula, secondFormula, thirdFormula];
+    const disjunctionFormulaIndex = formulasArray.findIndex((item) => item.operator === PropositionalOperator.Or);
+
+    if (disjunctionFormulaIndex === -1) {
+      return false;
+    }
+
+    const disjunction = formulasArray[disjunctionFormulaIndex];
+
+    const [firstImplication, secondImplication] = removeArrayItemByIndex(formulasArray, disjunctionFormulaIndex);
+
+    if (firstImplication.operator !== PropositionalOperator.Implies || secondImplication.operator !== PropositionalOperator.Implies) {
+      return false;
+    }
+
+    const firstAntecedent = firstImplication.values[0];
+    const secondAntecedent = secondImplication.values[0];
+    const firstClose = disjunction.values[0];
+    const secondClose = disjunction.values[1];
+
+    const firstMatch = this.areTwoFormulasEqual(firstAntecedent, firstClose) && this.areTwoFormulasEqual(secondAntecedent, secondClose);
+    const secondMatch = this.areTwoFormulasEqual(firstAntecedent, secondClose) && this.areTwoFormulasEqual(secondAntecedent, firstClose);
+
+    if (!firstMatch && !secondMatch) {
+      return false;
+    }
+
+    const firstConsequent = firstImplication.values[1];
+    const secondConsequent = secondImplication.values[1];
+    const areConsequencesDifferent = !this.areTwoFormulasEqual(firstConsequent, secondConsequent);
+
+    if (areConsequencesDifferent) {
+      return false;
+    }
+
+    return true;
   },
 };
 

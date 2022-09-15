@@ -1,4 +1,5 @@
 import converter from 'logic/propositions/converter';
+import { Guid } from 'guid-typescript';
 import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
@@ -40,7 +41,7 @@ export const propositionsNP = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = `proof-step-${step}`;
+      const id = Guid.create().toString();
       const newItem: NaturalProofsTableItem = {
         level: 0,
         id,
@@ -62,7 +63,7 @@ export const propositionsNP = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = itemsCount + 1;
-      const id = `proof-step-${step}`;
+      const id = Guid.create().toString();
       const level = itemsCount > 0 ? state.tableData[itemsCount - 1].level + 1 : 1;
       const newItem: NaturalProofsTableItem = {
         level,
@@ -91,6 +92,10 @@ export const propositionsNP = createSlice({
     },
 
     createDisjunction: (state, _action: PayloadAction<string>) => {
+      return state;
+    },
+
+    eliminateDisjunction: (state) => {
       return state;
     },
   },
