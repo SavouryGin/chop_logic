@@ -11,7 +11,7 @@ import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
-const OrIntroductionForm = () => {
+const AndIntroductionForm = () => {
   const dispatch = useAppDispatch();
   const andIntroInitialValue = { andValue: '' };
   const [formValue, setFormValue] = useState(andIntroInitialValue);
@@ -22,8 +22,8 @@ const OrIntroductionForm = () => {
   const isFormInvalid = hasError || !formValue.andValue;
   const formContent = (
     <>
-      <p>{uiElementTexts.orIntroductionInfo[language]}</p>
-      <TextInput name='andValue' inputId={InputID.Premise} className='or-introduction-form__input' isRequired />
+      <p>{uiElementTexts.andIntroductionInfo[language]}</p>
+      <TextInput name='andValue' inputId={InputID.Premise} className='and-introduction-form__input' isRequired />
       <FormulaPreview preview={preview} />
     </>
   );
@@ -50,4 +50,4 @@ const OrIntroductionForm = () => {
   );
 };
 
-export default memo(OrIntroductionForm);
+export default memo(AndIntroductionForm);
