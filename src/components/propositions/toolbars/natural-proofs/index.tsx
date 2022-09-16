@@ -16,9 +16,9 @@ const NaturalProofsEditorToolbar = () => {
   const isDeleteDisabled = selectedIds.length === 0;
   const isOrIntroductionDisabled = selectedIds.length === 0;
   const isOrEliminationDisabled = !useIsOrEliminationPossible(selectedIds);
+  const isAndIntroductionDisabled = !selectedIds.length;
   // TODO: replace with the real rules
   const isNotIntroductionDisabled = true;
-  const isAndIntroductionDisabled = true;
   const isImpliesIntroductionDisabled = true;
   const isEquivIntroductionDisabled = true;
   const isShortcutDisabled = true;
