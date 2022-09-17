@@ -12,8 +12,13 @@ export const uiElementTexts: { [key in string]: LocalText } = {
   replacerForm: { en: 'Replace', ru: 'Замена' },
   confirmation: { en: 'Please confirm the action', ru: 'Пожалуйста, подтвердите действие' },
   orIntroduction: { en: 'Disjunction Introduction', ru: 'Введение дизъюнкции' },
+  andIntroduction: { en: 'Conjunction Introduction', ru: 'Введение конъюнкции' },
   orIntroductionInfo: {
-    en: 'Enter the formula you wish to disjoin to the checked item',
-    ru: 'Введите формулу, которую вы хотите соединить дизъюнкцией с выбранным элементом',
+    en: 'Enter the formula you wish to disjoin to the checked items',
+    ru: 'Введите формулу, которую вы хотите соединить дизъюнкцией с выбранными элементами',
+  },
+  andIntroductionInfo: {
+    en: 'Enter the formula you wish to conjoin to the checked items',
+    ru: 'Введите формулу, которую вы хотите соединить конъюнкцией с выбранными элементами',
   },
 };
