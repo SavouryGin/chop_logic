@@ -99,6 +99,10 @@ export const propositionsNP = createSlice({
     eliminateDisjunction: (state) => {
       return state;
     },
+
+    createConjunction: (state, _action: PayloadAction<string>) => {
+      return state;
+    },
   },
 });
 

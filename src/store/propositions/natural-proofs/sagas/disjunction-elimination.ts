@@ -21,7 +21,7 @@ export function* disjunctionEliminationSaga(): SagaIterator {
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
-    const errorMessage = (error as any)?.message || 'Delete action error';
+    const errorMessage = (error as any)?.message || 'Disjunction elimination error';
     yield put(actions.setError(errorMessage));
   }
 }
