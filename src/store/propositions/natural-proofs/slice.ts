@@ -11,7 +11,6 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isAssumptionOpened: false,
     isConfirmDeletePopupOpened: false,
     isOrIntroductionFormOpened: false,
-    isAndIntroductionFormOpened: false,
   },
   tableData: [],
   selectedIds: [],
@@ -100,7 +99,7 @@ export const propositionsNP = createSlice({
       return state;
     },
 
-    createConjunction: (state, _action: PayloadAction<string>) => {
+    createConjunction: (state) => {
       return state;
     },
   },

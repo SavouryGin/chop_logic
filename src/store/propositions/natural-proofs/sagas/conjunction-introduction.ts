@@ -9,15 +9,14 @@ export function* conjunctionIntroductionWatcher(): Generator {
   yield takeEvery(actions.createConjunction, conjunctionIntroductionSaga);
 }
 
-export function* conjunctionIntroductionSaga(action: { payload: string }): SagaIterator {
+export function* conjunctionIntroductionSaga(): SagaIterator {
   try {
     const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getSelectedTableItems);
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
-    const rawInput = action.payload;
 
-    const newItems = executor.performCI({ rawInput, level, dataLength, selectedItems });
+    const newItems = executor.performCI({ level, dataLength, selectedItems });
 
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
