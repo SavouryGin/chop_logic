@@ -17,7 +17,7 @@ export function* conjunctionIntroductionSaga(action: { payload: string }): SagaI
     const level: number = yield select(selectors.getLastTableItemLevel);
     const rawInput = action.payload;
 
-    const newItems = executor.performDI({ rawInput, level, dataLength, selectedItems });
+    const newItems = executor.performCI({ rawInput, level, dataLength, selectedItems });
 
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));

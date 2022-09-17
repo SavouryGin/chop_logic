@@ -97,6 +97,58 @@ const executor = {
     return newItems;
   },
 
+  performCI(data: {
+    rawInput: string;
+    level: number;
+    dataLength: number;
+    selectedItems: NaturalProofsTableItem[];
+  }): NaturalProofsTableItem[] {
+    const { rawInput, level, dataLength, selectedItems } = data;
+    const newItems: NaturalProofsTableItem[] = [];
+    let itemsCounter = dataLength + 1;
+    const operand = converter.convertStringToExpression(rawInput);
+
+    for (const item of selectedItems) {
+      const firstExpression = converter.convertToConjunctionExpression(operand, item.expression);
+      const secondExpression = converter.convertToConjunctionExpression(item.expression, operand);
+      const firstFormula = converter.convertExpressionToFormula(firstExpression);
+      const secondFormula = converter.convertExpressionToFormula(secondExpression);
+      const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstFormula);
+      const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondFormula);
+
+      const firstNewItem: NaturalProofsTableItem = {
+        level,
+        rawInput: `${rawInput}, ${item.rawInput}`,
+        step: itemsCounter,
+        id: Guid.create().toString(),
+        expression: firstExpression,
+        formula: firstFormula,
+        friendlyExpression: firstFriendlyExpression,
+        comment: { en: `CI: ${item.step}`, ru: `ВК: ${item.step}` },
+        dependentOn: [item.id],
+        formulaBase: NPFormulaBase.CI,
+      };
+
+      const secondNewItem: NaturalProofsTableItem = {
+        level,
+        rawInput: `${item.rawInput}, ${rawInput}`,
+        step: itemsCounter + 1,
+        id: Guid.create().toString(),
+        expression: secondExpression,
+        formula: secondFormula,
+        friendlyExpression: secondFriendlyExpression,
+        comment: { en: `CI: ${item.step}`, ru: `ВК: ${item.step}` },
+        dependentOn: [item.id],
+        formulaBase: NPFormulaBase.CI,
+      };
+
+      newItems.push(firstNewItem, secondNewItem);
+      itemsCounter += 2;
+    }
+
+    return newItems;
+  },
+
   performDE(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem {
     const { level, dataLength, selectedItems } = data;
     const step = dataLength + 1;
