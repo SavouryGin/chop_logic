@@ -43,10 +43,6 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: true }));
   };
 
-  const openAndIntroduction = () => {
-    dispatch(actions.setUpFlag({ flag: 'isAndIntroductionFormOpened', value: true }));
-  };
-
   const eliminateDisjunction = () => {
     dispatch(actions.eliminateDisjunction());
   };
@@ -57,13 +53,7 @@ const NaturalProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
       <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' isDisabled={isReplacerDisabled} />
       <Button buttonId={ButtonID.NotIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isNotIntroductionDisabled} />
-      <Button
-        buttonId={ButtonID.AndIntroduction}
-        sound={soundPlayer.keyboard}
-        size='large'
-        onClick={openAndIntroduction}
-        isDisabled={isAndIntroductionDisabled}
-      />
+      <Button buttonId={ButtonID.AndIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isAndIntroductionDisabled} />
       <Button
         buttonId={ButtonID.OrIntroduction}
         sound={soundPlayer.keyboard}

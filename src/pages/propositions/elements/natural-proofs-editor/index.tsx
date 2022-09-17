@@ -1,4 +1,3 @@
-import AndIntroductionForm from 'components/propositions/forms/and-introduction';
 import ConfirmDeleteProofStepsPopup from 'components/propositions/popups/confirm-delete';
 import ModalWindow from 'components/modal-window';
 import NaturalProofsEditorTable from 'components/propositions/tables/natural-proofs';
@@ -22,7 +21,6 @@ const NaturalProofsEditor = (): React.ReactElement => {
   const isAssumptionOpened = useAppSelector(selectors.getIsAssumptionOpened);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
   const isOrIntroductionFormOpened = useAppSelector(selectors.getIsOrIntroductionFormOpened);
-  const isAndIntroductionFormOpened = useAppSelector(selectors.getIsAndIntroductionFormOpened);
   const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClassName(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
@@ -46,10 +44,6 @@ const NaturalProofsEditor = (): React.ReactElement => {
 
   const closeOrIntroduction = () => {
     dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: false }));
-  };
-
-  const closeAndIntroduction = () => {
-    dispatch(actions.setUpFlag({ flag: 'isAndIntroductionFormOpened', value: false }));
   };
 
   return (
@@ -79,12 +73,6 @@ const NaturalProofsEditor = (): React.ReactElement => {
         onClose={closeOrIntroduction}
         title={uiElementTexts.orIntroduction[language]}
         content={<OrIntroductionForm />}
-      />
-      <ModalWindow
-        isOpened={isAndIntroductionFormOpened}
-        onClose={closeAndIntroduction}
-        title={uiElementTexts.andIntroduction[language]}
-        content={<AndIntroductionForm />}
       />
     </div>
   );
