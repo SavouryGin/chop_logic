@@ -159,6 +159,21 @@ const converter = {
     return parenthesizer.renumberPositions(output);
   },
 
+  convertToConjunctionExpression(
+    firstExpression: PropositionalExpression,
+    secondExpression: PropositionalExpression,
+  ): PropositionalExpression {
+    const output = [
+      preparedSymbols.openParenthesis,
+      ...firstExpression,
+      preparedSymbols.conjunction,
+      ...secondExpression,
+      preparedSymbols.closeParenthesis,
+    ];
+
+    return parenthesizer.renumberPositions(output);
+  },
+
   convertStringToUserFriendlyExpression(input: string): PropositionalExpression {
     const convertedInput = converter.convertStringToExpression(input);
     const formula = converter.convertExpressionToFormula(convertedInput);
