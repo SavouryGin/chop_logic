@@ -5,11 +5,11 @@ import { propositionsNPActions as actions } from 'store/propositions/natural-pro
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
-export function* disjunctionIntroductionWatcher(): Generator {
-  yield takeEvery(actions.createDisjunction, disjunctionIntroductionSaga);
+export function* conjunctionIntroductionWatcher(): Generator {
+  yield takeEvery(actions.createConjunction, conjunctionIntroductionSaga);
 }
 
-export function* disjunctionIntroductionSaga(action: { payload: string }): SagaIterator {
+export function* conjunctionIntroductionSaga(action: { payload: string }): SagaIterator {
   try {
     const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getSelectedTableItems);
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
@@ -22,7 +22,7 @@ export function* disjunctionIntroductionSaga(action: { payload: string }): SagaI
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
-    const errorMessage = (error as any)?.message || 'Disjunction introduction error';
+    const errorMessage = (error as any)?.message || 'Conjunction introduction error';
     yield put(actions.setError(errorMessage));
   }
 }
