@@ -33,7 +33,7 @@ const AndIntroductionForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(actions.createDisjunction(formValue.andValue));
-    closeNaturalProofsPopup(dispatch, 'isOrIntroductionFormOpened');
+    closeNaturalProofsPopup(dispatch, 'isAndIntroductionFormOpened');
   };
 
   return (
