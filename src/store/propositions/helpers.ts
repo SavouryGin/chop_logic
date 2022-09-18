@@ -92,6 +92,27 @@ export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): Natu
         break;
       }
 
+      case NPFormulaBase.CI: {
+        if (item.dependentOn?.length) {
+          const [id1, id2] = item.dependentOn;
+          const dependency1 = tableData.find((x) => x.id === id1);
+          const dependency2 = tableData.find((x) => x.id === id2);
+
+          if (dependency1 && dependency2) {
+            newComment = {
+              en: `CI: ${dependency1.step}, ${dependency2.step}`,
+              ru: `ВК: ${dependency1.step}, ${dependency2.step}`,
+            };
+          } else if (dependency1 && !dependency2) {
+            newComment = {
+              en: `CI: ${dependency1.step}`,
+              ru: `ВК: ${dependency1.step}`,
+            };
+          }
+        }
+        break;
+      }
+
       case NPFormulaBase.DE: {
         if (item.dependentOn?.length) {
           const [id1, id2, id3] = item.dependentOn;

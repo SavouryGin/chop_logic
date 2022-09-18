@@ -100,7 +100,6 @@ const executor = {
   performCI(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem[] {
     const { level, dataLength, selectedItems } = data;
     let itemsCounter = dataLength + 1;
-    console.log('selected', selectedItems);
     const isOneItemSelected = selectedItems.length === 1;
     const isEqualItemsSelected =
       selectedItems.length === 2 && validator.areTwoFormulasEqual(selectedItems[0].formula, selectedItems[1].formula);
@@ -110,20 +109,21 @@ const executor = {
       const expression = converter.convertToConjunctionExpression(operand, operand);
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
-      const newItem: NaturalProofsTableItem = {
-        level,
-        rawInput: `${selectedItems[0].rawInput}, ${selectedItems[0].rawInput}`,
-        step: itemsCounter,
-        id: Guid.create().toString(),
-        expression,
-        formula,
-        friendlyExpression,
-        comment: { en: `CI: ${selectedItems[0].step}`, ru: `ВК: ${selectedItems[0].step}` },
-        dependentOn: [selectedItems[0].id],
-        formulaBase: NPFormulaBase.CI,
-      };
 
-      return [newItem];
+      return [
+        {
+          level,
+          rawInput: `${selectedItems[0].rawInput}, ${selectedItems[0].rawInput}`,
+          step: itemsCounter,
+          id: Guid.create().toString(),
+          expression,
+          formula,
+          friendlyExpression,
+          comment: { en: `CI: ${selectedItems[0].step}`, ru: `ВК: ${selectedItems[0].step}` },
+          dependentOn: [selectedItems[0].id],
+          formulaBase: NPFormulaBase.CI,
+        },
+      ];
     } else {
       const newItems: NaturalProofsTableItem[] = [];
 
@@ -131,40 +131,23 @@ const executor = {
         const restItems = selectedItems.filter((x) => x.id !== item.id);
 
         for (const restItem of restItems) {
-          const firstExpression = converter.convertToConjunctionExpression(restItem.expression, item.expression);
-          // const secondExpression = converter.convertToConjunctionExpression(item.expression, restItem.expression);
-          const firstFormula = converter.convertExpressionToFormula(firstExpression);
-          // const secondFormula = converter.convertExpressionToFormula(secondExpression);
-          const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstFormula);
-          // const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondFormula);
+          const expression = converter.convertToConjunctionExpression(restItem.expression, item.expression);
+          const formula = converter.convertExpressionToFormula(expression);
+          const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
 
-          const firstNewItem: NaturalProofsTableItem = {
+          newItems.push({
             level,
             rawInput: `${restItem.rawInput}, ${item.rawInput}`,
             step: itemsCounter,
             id: Guid.create().toString(),
-            expression: firstExpression,
-            formula: firstFormula,
-            friendlyExpression: firstFriendlyExpression,
+            expression,
+            formula,
+            friendlyExpression,
             comment: { en: `CI: ${item.step}, ${restItem.step}`, ru: `ВК: ${item.step}, ${restItem.step}` },
             dependentOn: [item.id, restItem.id],
             formulaBase: NPFormulaBase.CI,
-          };
+          });
 
-          // const secondNewItem: NaturalProofsTableItem = {
-          //   level,
-          //   rawInput: `${item.rawInput}, ${restItem.rawInput}`,
-          //   step: itemsCounter + 1,
-          //   id: Guid.create().toString(),
-          //   expression: secondExpression,
-          //   formula: secondFormula,
-          //   friendlyExpression: secondFriendlyExpression,
-          //   comment: { en: `CI: ${item.step}`, ru: `ВК: ${item.step}` },
-          //   dependentOn: [item.id],
-          //   formulaBase: NPFormulaBase.CI,
-          // };
-
-          newItems.push(firstNewItem);
           itemsCounter += 1;
         }
       }
