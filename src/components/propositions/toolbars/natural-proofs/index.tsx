@@ -47,13 +47,23 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.eliminateDisjunction());
   };
 
+  const createConjunction = () => {
+    dispatch(actions.createConjunction());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
       <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' isDisabled={isReplacerDisabled} />
       <Button buttonId={ButtonID.NotIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isNotIntroductionDisabled} />
-      <Button buttonId={ButtonID.AndIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isAndIntroductionDisabled} />
+      <Button
+        buttonId={ButtonID.AndIntroduction}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={createConjunction}
+        isDisabled={isAndIntroductionDisabled}
+      />
       <Button
         buttonId={ButtonID.OrIntroduction}
         sound={soundPlayer.keyboard}

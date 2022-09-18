@@ -99,9 +99,13 @@ const executor = {
 
   performCI(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem[] {
     const { level, dataLength, selectedItems } = data;
-    const itemsCounter = dataLength + 1;
+    let itemsCounter = dataLength + 1;
+    console.log('selected', selectedItems);
+    const isOneItemSelected = selectedItems.length === 1;
+    const isEqualItemsSelected =
+      selectedItems.length === 2 && validator.areTwoFormulasEqual(selectedItems[0].formula, selectedItems[1].formula);
 
-    if (selectedItems.length === 1) {
+    if (isOneItemSelected || isEqualItemsSelected) {
       const operand = selectedItems[0].expression;
       const expression = converter.convertToConjunctionExpression(operand, operand);
       const formula = converter.convertExpressionToFormula(expression);
@@ -120,48 +124,53 @@ const executor = {
       };
 
       return [newItem];
+    } else {
+      const newItems: NaturalProofsTableItem[] = [];
+
+      for (const item of selectedItems) {
+        const restItems = selectedItems.filter((x) => x.id !== item.id);
+
+        for (const restItem of restItems) {
+          const firstExpression = converter.convertToConjunctionExpression(restItem.expression, item.expression);
+          // const secondExpression = converter.convertToConjunctionExpression(item.expression, restItem.expression);
+          const firstFormula = converter.convertExpressionToFormula(firstExpression);
+          // const secondFormula = converter.convertExpressionToFormula(secondExpression);
+          const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstFormula);
+          // const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondFormula);
+
+          const firstNewItem: NaturalProofsTableItem = {
+            level,
+            rawInput: `${restItem.rawInput}, ${item.rawInput}`,
+            step: itemsCounter,
+            id: Guid.create().toString(),
+            expression: firstExpression,
+            formula: firstFormula,
+            friendlyExpression: firstFriendlyExpression,
+            comment: { en: `CI: ${item.step}, ${restItem.step}`, ru: `ВК: ${item.step}, ${restItem.step}` },
+            dependentOn: [item.id, restItem.id],
+            formulaBase: NPFormulaBase.CI,
+          };
+
+          // const secondNewItem: NaturalProofsTableItem = {
+          //   level,
+          //   rawInput: `${item.rawInput}, ${restItem.rawInput}`,
+          //   step: itemsCounter + 1,
+          //   id: Guid.create().toString(),
+          //   expression: secondExpression,
+          //   formula: secondFormula,
+          //   friendlyExpression: secondFriendlyExpression,
+          //   comment: { en: `CI: ${item.step}`, ru: `ВК: ${item.step}` },
+          //   dependentOn: [item.id],
+          //   formulaBase: NPFormulaBase.CI,
+          // };
+
+          newItems.push(firstNewItem);
+          itemsCounter += 1;
+        }
+      }
+
+      return newItems;
     }
-
-    // for (const item of selectedItems) {
-    //   const firstExpression = converter.convertToConjunctionExpression(operand, item.expression);
-    //   const secondExpression = converter.convertToConjunctionExpression(item.expression, operand);
-    //   const firstFormula = converter.convertExpressionToFormula(firstExpression);
-    //   const secondFormula = converter.convertExpressionToFormula(secondExpression);
-    //   const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstFormula);
-    //   const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondFormula);
-
-    //   const firstNewItem: NaturalProofsTableItem = {
-    //     level,
-    //     rawInput: `${rawInput}, ${item.rawInput}`,
-    //     step: itemsCounter,
-    //     id: Guid.create().toString(),
-    //     expression: firstExpression,
-    //     formula: firstFormula,
-    //     friendlyExpression: firstFriendlyExpression,
-    //     comment: { en: `CI: ${item.step}`, ru: `ВК: ${item.step}` },
-    //     dependentOn: [item.id],
-    //     formulaBase: NPFormulaBase.CI,
-    //   };
-
-    //   const secondNewItem: NaturalProofsTableItem = {
-    //     level,
-    //     rawInput: `${item.rawInput}, ${rawInput}`,
-    //     step: itemsCounter + 1,
-    //     id: Guid.create().toString(),
-    //     expression: secondExpression,
-    //     formula: secondFormula,
-    //     friendlyExpression: secondFriendlyExpression,
-    //     comment: { en: `CI: ${item.step}`, ru: `ВК: ${item.step}` },
-    //     dependentOn: [item.id],
-    //     formulaBase: NPFormulaBase.CI,
-    //   };
-
-    //   newItems.push(firstNewItem, secondNewItem);
-    //   itemsCounter += 2;
-    // }
-
-    // return newItems;
-    return [];
   },
 
   performDE(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem {
