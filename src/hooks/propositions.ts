@@ -181,7 +181,7 @@ export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
     if (!formulas.length) {
       setIsPossible(false);
     } else {
-      setIsPossible(true);
+      setIsPossible(validator.isCEApplicable(formulas));
     }
   }, [selectedIds.length]);
 
