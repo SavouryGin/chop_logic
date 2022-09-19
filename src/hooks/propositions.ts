@@ -172,3 +172,18 @@ export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
 
   return isPossible;
 };
+
+export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    if (!formulas.length) {
+      setIsPossible(false);
+    } else {
+      setIsPossible(true);
+    }
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
