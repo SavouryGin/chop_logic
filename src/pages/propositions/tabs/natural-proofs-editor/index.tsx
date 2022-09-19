@@ -1,9 +1,9 @@
-import ConfirmDeleteProofStepsPopup from 'components/propositions/popups/confirm-delete';
+import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/popups/confirm-delete';
 import ModalWindow from 'components/modal-window';
-import NaturalProofsEditorTable from 'components/propositions/tables/natural-proofs';
-import NaturalProofsEditorToolbar from 'components/propositions/toolbars/natural-proofs';
-import OrIntroductionForm from 'components/propositions/forms/or-introduction';
-import PremiseForm from 'components/propositions/forms/premise';
+import NaturalProofsEditorTable from 'pages/propositions/components/tables/natural-proofs';
+import NaturalProofsEditorToolbar from 'pages/propositions/components/toolbars/natural-proofs';
+import OrIntroductionForm from 'pages/propositions/components/forms/or-introduction';
+import PremiseForm from 'pages/propositions/components/forms/premise';
 import React, { memo } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';

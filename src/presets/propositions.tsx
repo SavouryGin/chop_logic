@@ -1,9 +1,9 @@
-import DefinitionsOfPropositions from 'pages/propositions/elements/definitions-of-propositions';
-import DirectProofsEditor from 'pages/propositions/elements/direct-proofs-editor';
-import HeuristicsOfPropositions from 'pages/propositions/elements/heuristics-of-propositions';
-import NaturalProofsEditor from 'pages/propositions/elements/natural-proofs-editor';
+import DefinitionsOfPropositions from 'pages/propositions/tabs/definitions-of-propositions';
+import DirectProofsEditor from 'pages/propositions/tabs/direct-proofs-editor';
+import HeuristicsOfPropositions from 'pages/propositions/tabs/heuristics-of-propositions';
+import NaturalProofsEditor from 'pages/propositions/tabs/natural-proofs-editor';
 import React from 'react';
-import RulesOfInference from 'pages/propositions/elements/rules-of-inference';
+import RulesOfInference from 'pages/propositions/tabs/rules-of-inference';
 import { GreekSymbol, LogicalSymbolHexCode, LogicalSymbolRawInput } from 'enums';
 import { PropositionalSymbol, TabItem } from 'types';
 import { titles } from 'texts';
