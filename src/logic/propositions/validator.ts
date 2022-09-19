@@ -221,6 +221,10 @@ const validator = {
 
     return true;
   },
+
+  isCEApplicable(formulas: PropositionalFormula[]): boolean {
+    return formulas.every((item) => item.operator === PropositionalOperator.And);
+  },
 };
 
 export default Object.freeze(validator);
