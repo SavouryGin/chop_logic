@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import { conjunctionEliminationWatcher } from './conjunction-elimination';
 import { conjunctionIntroductionWatcher } from './conjunction-introduction';
 import { deleteNaturalProofStepsWatcher } from './delete-steps';
 import { disjunctionEliminationWatcher } from './disjunction-elimination';
@@ -10,6 +11,7 @@ function* propositionsNPSagas(): Generator {
     disjunctionIntroductionWatcher(),
     disjunctionEliminationWatcher(),
     conjunctionIntroductionWatcher(),
+    conjunctionEliminationWatcher(),
   ]);
 }
 
