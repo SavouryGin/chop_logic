@@ -16,9 +16,9 @@ export function* conjunctionEliminationSaga(): SagaIterator {
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
 
-    const newItem = executor.performDE({ level, dataLength, selectedItems });
+    const newItems = executor.performCE({ level, dataLength, selectedItems });
 
-    yield put(actions.setTableData([...tableData, newItem]));
+    yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Disjunction elimination error';

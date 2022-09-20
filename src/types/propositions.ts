@@ -1,4 +1,5 @@
 import { LocalText } from './general';
+import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalOperator } from 'enums';
 
 export type PropositionalSymbol = {
@@ -30,3 +31,5 @@ export interface ConfirmDeleteProofStepsPopupProps<
   onConfirm: () => void;
   dependencies: T[];
 }
+
+export type NPExecutorData = { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] };

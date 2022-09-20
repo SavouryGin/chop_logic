@@ -1,10 +1,10 @@
 import converter from './converter';
 import validator from './validator';
 import { Guid } from 'guid-typescript';
+import { NPExecutorData, PropositionalFormula } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalFormula } from 'types';
 import { errorsTexts } from 'texts/propositions';
 import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
 
@@ -45,13 +45,7 @@ const executor = {
     }
   },
 
-  performDI(data: {
-    rawInput: string;
-    level: number;
-    dataLength: number;
-    selectedItems: NaturalProofsTableItem[];
-  }): NaturalProofsTableItem[] {
-    const { rawInput, level, dataLength, selectedItems } = data;
+  performDI({ rawInput, level, dataLength, selectedItems }: NPExecutorData & { rawInput: string }): NaturalProofsTableItem[] {
     const newItems: NaturalProofsTableItem[] = [];
     let itemsCounter = dataLength + 1;
     const operand = converter.convertStringToExpression(rawInput);
@@ -97,8 +91,7 @@ const executor = {
     return newItems;
   },
 
-  performCI(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem[] {
-    const { level, dataLength, selectedItems } = data;
+  performCI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
     let itemsCounter = dataLength + 1;
     const isOneItemSelected = selectedItems.length === 1;
     const isEqualItemsSelected =
@@ -156,8 +149,7 @@ const executor = {
     }
   },
 
-  performDE(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem {
-    const { level, dataLength, selectedItems } = data;
+  performDE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
     const [item1, item2, item3] = selectedItems;
     const firstFormula = item1.formula;
@@ -186,6 +178,12 @@ const executor = {
       expression,
       friendlyExpression,
     };
+  },
+
+  performCE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    console.log(level, dataLength, selectedItems);
+
+    return [];
   },
 };
 
