@@ -181,9 +181,53 @@ const executor = {
   },
 
   performCE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
-    console.log(level, dataLength, selectedItems);
+    const newItems: NaturalProofsTableItem[] = [];
+    let itemsCounter = dataLength + 1;
 
-    return [];
+    for (const item of selectedItems) {
+      if (item.formula.operator !== PropositionalOperator.And) {
+        throw new PropositionalError('Cannot perform Conjunction Elimination.', errorsTexts.semanticError);
+      }
+
+      const firstConjunct = item.formula.values[0] as PropositionalFormula;
+      const secondConjunct = item.formula.values[1] as PropositionalFormula;
+
+      const firstExpression = converter.convertFormulaToExpression(firstConjunct);
+      const secondExpression = converter.convertFormulaToExpression(secondConjunct);
+      const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstConjunct);
+      const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondConjunct);
+
+      const firstNewItem: NaturalProofsTableItem = {
+        level,
+        rawInput: `${item.rawInput}`,
+        step: itemsCounter,
+        id: Guid.create().toString(),
+        expression: firstExpression,
+        formula: firstConjunct,
+        friendlyExpression: firstFriendlyExpression,
+        comment: { en: `CE: ${item.step}`, ru: `УК: ${item.step}` },
+        dependentOn: [item.id],
+        formulaBase: NPFormulaBase.CE,
+      };
+
+      const secondNewItem: NaturalProofsTableItem = {
+        level,
+        rawInput: `${item.rawInput}`,
+        step: itemsCounter + 1,
+        id: Guid.create().toString(),
+        expression: secondExpression,
+        formula: secondConjunct,
+        friendlyExpression: secondFriendlyExpression,
+        comment: { en: `CE: ${item.step}`, ru: `УК: ${item.step}` },
+        dependentOn: [item.id],
+        formulaBase: NPFormulaBase.CE,
+      };
+
+      newItems.push(firstNewItem, secondNewItem);
+      itemsCounter += 2;
+    }
+
+    return newItems;
   },
 };
 
