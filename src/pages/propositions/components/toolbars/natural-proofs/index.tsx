@@ -4,7 +4,7 @@ import { ButtonID } from 'enums';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { soundPlayer } from 'helpers/sounds';
-import { useAppDispatch, useAppSelector, useIsOrEliminationPossible, usePremiseEnabling } from 'hooks';
+import { useAppDispatch, useAppSelector, useIsAndEliminationPossible, useIsOrEliminationPossible, usePremiseEnabling } from 'hooks';
 
 const NaturalProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
@@ -16,14 +16,14 @@ const NaturalProofsEditorToolbar = () => {
   const isDeleteDisabled = selectedIds.length === 0;
   const isOrIntroductionDisabled = selectedIds.length === 0;
   const isOrEliminationDisabled = !useIsOrEliminationPossible(selectedIds);
+  const isAndIntroductionDisabled = !selectedIds.length;
+  const isAndEliminationDisabled = !useIsAndEliminationPossible(selectedIds);
   // TODO: replace with the real rules
   const isNotIntroductionDisabled = true;
-  const isAndIntroductionDisabled = true;
   const isImpliesIntroductionDisabled = true;
   const isEquivIntroductionDisabled = true;
   const isShortcutDisabled = true;
   const isNotEliminationDisabled = true;
-  const isAndEliminationDisabled = true;
   const isImpliesEliminationDisabled = true;
   const isEquivEliminationDisabled = true;
 
@@ -47,13 +47,27 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.eliminateDisjunction());
   };
 
+  const createConjunction = () => {
+    dispatch(actions.createConjunction());
+  };
+
+  const eliminateConjunction = () => {
+    dispatch(actions.eliminateConjunction());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
       <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' isDisabled={isReplacerDisabled} />
       <Button buttonId={ButtonID.NotIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isNotIntroductionDisabled} />
-      <Button buttonId={ButtonID.AndIntroduction} sound={soundPlayer.keyboard} size='large' isDisabled={isAndIntroductionDisabled} />
+      <Button
+        buttonId={ButtonID.AndIntroduction}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={createConjunction}
+        isDisabled={isAndIntroductionDisabled}
+      />
       <Button
         buttonId={ButtonID.OrIntroduction}
         sound={soundPlayer.keyboard}
@@ -72,7 +86,13 @@ const NaturalProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' onClick={deleteSteps} isDisabled={isDeleteDisabled} />
       <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' isDisabled={isShortcutDisabled} />
       <Button buttonId={ButtonID.NotElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isNotEliminationDisabled} />
-      <Button buttonId={ButtonID.AndElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isAndEliminationDisabled} />
+      <Button
+        buttonId={ButtonID.AndElimination}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={eliminateConjunction}
+        isDisabled={isAndEliminationDisabled}
+      />
       <Button
         buttonId={ButtonID.OrElimination}
         sound={soundPlayer.keyboard}
