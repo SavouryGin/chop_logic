@@ -1,10 +1,10 @@
-import ConfirmDeleteProofStepsPopup from 'components/propositions/popups/confirm-delete';
+import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/popups/confirm-delete';
 import ModalWindow from 'components/modal-window';
-import NaturalProofsEditorTable from 'components/propositions/tables/natural-proofs';
-import NaturalProofsEditorToolbar from 'components/propositions/toolbars/natural-proofs';
-import OrIntroductionForm from 'components/propositions/forms/or-introduction';
-import PremiseForm from 'components/propositions/forms/premise';
-import React from 'react';
+import NaturalProofsEditorTable from 'pages/propositions/components/tables/natural-proofs';
+import NaturalProofsEditorToolbar from 'pages/propositions/components/toolbars/natural-proofs';
+import OrIntroductionForm from 'pages/propositions/components/forms/or-introduction';
+import PremiseForm from 'pages/propositions/components/forms/premise';
+import React, { memo } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
@@ -13,7 +13,7 @@ import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
-const NaturalProofsEditor = () => {
+const NaturalProofsEditor = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -78,4 +78,4 @@ const NaturalProofsEditor = () => {
   );
 };
 
-export default NaturalProofsEditor;
+export default memo(NaturalProofsEditor);

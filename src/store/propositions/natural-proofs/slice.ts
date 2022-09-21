@@ -98,6 +98,14 @@ export const propositionsNP = createSlice({
     eliminateDisjunction: (state) => {
       return state;
     },
+
+    createConjunction: (state) => {
+      return state;
+    },
+
+    eliminateConjunction: (state) => {
+      return state;
+    },
   },
 });
 

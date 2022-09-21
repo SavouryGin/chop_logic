@@ -1,10 +1,10 @@
 import converter from './converter';
 import validator from './validator';
 import { Guid } from 'guid-typescript';
+import { NPExecutorData, PropositionalFormula } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalFormula } from 'types';
 import { errorsTexts } from 'texts/propositions';
 import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
 
@@ -45,13 +45,7 @@ const executor = {
     }
   },
 
-  performDI(data: {
-    rawInput: string;
-    level: number;
-    dataLength: number;
-    selectedItems: NaturalProofsTableItem[];
-  }): NaturalProofsTableItem[] {
-    const { rawInput, level, dataLength, selectedItems } = data;
+  performDI({ rawInput, level, dataLength, selectedItems }: NPExecutorData & { rawInput: string }): NaturalProofsTableItem[] {
     const newItems: NaturalProofsTableItem[] = [];
     let itemsCounter = dataLength + 1;
     const operand = converter.convertStringToExpression(rawInput);
@@ -97,8 +91,65 @@ const executor = {
     return newItems;
   },
 
-  performDE(data: { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] }): NaturalProofsTableItem {
-    const { level, dataLength, selectedItems } = data;
+  performCI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    let itemsCounter = dataLength + 1;
+    const isOneItemSelected = selectedItems.length === 1;
+    const isEqualItemsSelected =
+      selectedItems.length === 2 && validator.areTwoFormulasEqual(selectedItems[0].formula, selectedItems[1].formula);
+
+    if (isOneItemSelected || isEqualItemsSelected) {
+      const operand = selectedItems[0].expression;
+      const expression = converter.convertToConjunctionExpression(operand, operand);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+
+      return [
+        {
+          level,
+          rawInput: `${selectedItems[0].rawInput}, ${selectedItems[0].rawInput}`,
+          step: itemsCounter,
+          id: Guid.create().toString(),
+          expression,
+          formula,
+          friendlyExpression,
+          comment: { en: `CI: ${selectedItems[0].step}`, ru: `ВК: ${selectedItems[0].step}` },
+          dependentOn: [selectedItems[0].id],
+          formulaBase: NPFormulaBase.CI,
+        },
+      ];
+    } else {
+      const newItems: NaturalProofsTableItem[] = [];
+
+      for (const item of selectedItems) {
+        const restItems = selectedItems.filter((x) => x.id !== item.id);
+
+        for (const restItem of restItems) {
+          const expression = converter.convertToConjunctionExpression(restItem.expression, item.expression);
+          const formula = converter.convertExpressionToFormula(expression);
+          const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+
+          newItems.push({
+            level,
+            rawInput: `${restItem.rawInput}, ${item.rawInput}`,
+            step: itemsCounter,
+            id: Guid.create().toString(),
+            expression,
+            formula,
+            friendlyExpression,
+            comment: { en: `CI: ${item.step}, ${restItem.step}`, ru: `ВК: ${item.step}, ${restItem.step}` },
+            dependentOn: [item.id, restItem.id],
+            formulaBase: NPFormulaBase.CI,
+          });
+
+          itemsCounter += 1;
+        }
+      }
+
+      return newItems;
+    }
+  },
+
+  performDE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
     const [item1, item2, item3] = selectedItems;
     const firstFormula = item1.formula;
@@ -127,6 +178,56 @@ const executor = {
       expression,
       friendlyExpression,
     };
+  },
+
+  performCE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    const newItems: NaturalProofsTableItem[] = [];
+    let itemsCounter = dataLength + 1;
+
+    for (const item of selectedItems) {
+      if (item.formula.operator !== PropositionalOperator.And) {
+        throw new PropositionalError('Cannot perform Conjunction Elimination.', errorsTexts.semanticError);
+      }
+
+      const firstConjunct = item.formula.values[0] as PropositionalFormula;
+      const secondConjunct = item.formula.values[1] as PropositionalFormula;
+
+      const firstExpression = converter.convertFormulaToExpression(firstConjunct);
+      const secondExpression = converter.convertFormulaToExpression(secondConjunct);
+      const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstConjunct);
+      const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondConjunct);
+
+      const firstNewItem: NaturalProofsTableItem = {
+        level,
+        rawInput: `${item.rawInput}`,
+        step: itemsCounter,
+        id: Guid.create().toString(),
+        expression: firstExpression,
+        formula: firstConjunct,
+        friendlyExpression: firstFriendlyExpression,
+        comment: { en: `CE: ${item.step}`, ru: `УК: ${item.step}` },
+        dependentOn: [item.id],
+        formulaBase: NPFormulaBase.CE,
+      };
+
+      const secondNewItem: NaturalProofsTableItem = {
+        level,
+        rawInput: `${item.rawInput}`,
+        step: itemsCounter + 1,
+        id: Guid.create().toString(),
+        expression: secondExpression,
+        formula: secondConjunct,
+        friendlyExpression: secondFriendlyExpression,
+        comment: { en: `CE: ${item.step}`, ru: `УК: ${item.step}` },
+        dependentOn: [item.id],
+        formulaBase: NPFormulaBase.CE,
+      };
+
+      newItems.push(firstNewItem, secondNewItem);
+      itemsCounter += 2;
+    }
+
+    return newItems;
   },
 };
 
