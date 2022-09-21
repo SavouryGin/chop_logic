@@ -113,6 +113,21 @@ export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): Natu
         break;
       }
 
+      case NPFormulaBase.CE: {
+        if (item.dependentOn?.length) {
+          const [id] = item.dependentOn;
+          const dependency = tableData.find((x) => x.id === id);
+
+          if (dependency) {
+            newComment = {
+              en: `CE: ${dependency.step}`,
+              ru: `УК: ${dependency.step}`,
+            };
+          }
+        }
+        break;
+      }
+
       case NPFormulaBase.DE: {
         if (item.dependentOn?.length) {
           const [id1, id2, id3] = item.dependentOn;
