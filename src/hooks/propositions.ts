@@ -196,7 +196,7 @@ export const useIsNotIntroductionPossible = (selectedIds: string[]): boolean => 
     if (formulas.length !== 2) {
       setIsPossible(false);
     } else {
-      setIsPossible(validator.isCEApplicable(formulas));
+      setIsPossible(validator.isNIApplicable(formulas));
     }
   }, [selectedIds.length]);
 

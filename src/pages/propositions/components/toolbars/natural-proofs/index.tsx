@@ -4,7 +4,14 @@ import { ButtonID } from 'enums';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { soundPlayer } from 'helpers/sounds';
-import { useAppDispatch, useAppSelector, useIsAndEliminationPossible, useIsOrEliminationPossible, usePremiseEnabling } from 'hooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useIsAndEliminationPossible,
+  useIsNotIntroductionPossible,
+  useIsOrEliminationPossible,
+  usePremiseEnabling,
+} from 'hooks';
 
 const NaturalProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
@@ -18,8 +25,8 @@ const NaturalProofsEditorToolbar = () => {
   const isOrEliminationDisabled = !useIsOrEliminationPossible(selectedIds);
   const isAndIntroductionDisabled = !selectedIds.length;
   const isAndEliminationDisabled = !useIsAndEliminationPossible(selectedIds);
+  const isNotIntroductionDisabled = !useIsNotIntroductionPossible(selectedIds);
   // TODO: replace with the real rules
-  const isNotIntroductionDisabled = true;
   const isImpliesIntroductionDisabled = true;
   const isEquivIntroductionDisabled = true;
   const isShortcutDisabled = true;
