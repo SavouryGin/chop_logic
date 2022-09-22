@@ -183,7 +183,7 @@ const validator = {
   },
 
   isDEApplicable(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula, thirdFormula: PropositionalFormula): boolean {
-    // if F | G, F => H, G => H then H
+    // if F | G, F => H, G => H, then H
     const formulasArray = [firstFormula, secondFormula, thirdFormula];
     const disjunctionFormulaIndex = formulasArray.findIndex((item) => item.operator === PropositionalOperator.Or);
 
@@ -224,6 +224,38 @@ const validator = {
 
   isCEApplicable(formulas: PropositionalFormula[]): boolean {
     return formulas.every((item) => item.operator === PropositionalOperator.And);
+  },
+
+  isNIApplicable(formulas: PropositionalFormula[]): boolean {
+    // if F => G and F => ~G, then ~F
+    const [firstFormula, secondFormula] = formulas;
+    const isTwoImplications =
+      firstFormula.operator === PropositionalOperator.Implies && secondFormula.operator === PropositionalOperator.Implies;
+
+    if (!isTwoImplications) {
+      return false;
+    }
+
+    const firstConsequent = firstFormula.values[1] as PropositionalFormula;
+    const secondConsequent = secondFormula.values[1] as PropositionalFormula;
+
+    if (firstConsequent.operator === PropositionalOperator.Not && secondConsequent.operator !== PropositionalOperator.Not) {
+      const firstSubFormula = firstConsequent.values[0] as PropositionalFormula;
+
+      if (this.areTwoFormulasEqual(firstSubFormula, secondConsequent)) {
+        return true;
+      }
+    }
+
+    if (secondConsequent.operator === PropositionalOperator.Not && firstConsequent.operator !== PropositionalOperator.Not) {
+      const secondSubFormula = secondConsequent.values[0] as PropositionalFormula;
+
+      if (this.areTwoFormulasEqual(secondSubFormula, firstConsequent)) {
+        return true;
+      }
+    }
+
+    return false;
   },
 };
 
