@@ -236,6 +236,13 @@ const validator = {
       return false;
     }
 
+    const firstAntecedent = firstFormula.values[0] as PropositionalFormula;
+    const secondAntecedent = secondFormula.values[0] as PropositionalFormula;
+
+    if (!this.areTwoFormulasEqual(firstAntecedent, secondAntecedent)) {
+      return false;
+    }
+
     const firstConsequent = firstFormula.values[1] as PropositionalFormula;
     const secondConsequent = secondFormula.values[1] as PropositionalFormula;
 
