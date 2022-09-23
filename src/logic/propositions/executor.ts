@@ -1,4 +1,5 @@
 import converter from './converter';
+import factory from './factory';
 import validator from './validator';
 import { Guid } from 'guid-typescript';
 import { NPExecutorData, PropositionalFormula } from 'types';
@@ -228,6 +229,40 @@ const executor = {
     }
 
     return newItems;
+  },
+
+  performNE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+    const step = dataLength + 1;
+    const [item1, item2] = selectedItems;
+    const firstFormula = item1.formula;
+    const secondFormula = item2.formula;
+
+    if (!firstFormula || !secondFormula) {
+      throw new PropositionalError('Cannot perform Negation Introduction.', errorsTexts.semanticError);
+    }
+
+    if (!validator.isNIApplicable([firstFormula, secondFormula])) {
+      throw new PropositionalError('Cannot perform Negation Introduction.', errorsTexts.semanticError);
+    }
+
+    // if F => G and F => ~G, then ~F
+    const antecedent = firstFormula.values[0] as PropositionalFormula;
+    const newFormula = factory.createNegation(antecedent);
+    const expression = converter.convertFormulaToExpression(newFormula);
+    const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+
+    return {
+      level,
+      step,
+      id: Guid.create().toString(),
+      rawInput: `${item1.rawInput}, ${item2.rawInput}`,
+      formulaBase: NPFormulaBase.NI,
+      dependentOn: [item1.id, item2.id],
+      comment: { en: `NI: ${item1.step}, ${item2.step}`, ru: `ВО: ${item1.step}, ${item2.step}` },
+      formula: newFormula,
+      expression,
+      friendlyExpression,
+    };
   },
 };
 
