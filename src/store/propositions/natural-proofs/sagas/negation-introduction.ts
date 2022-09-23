@@ -16,9 +16,9 @@ export function* negationIntroductionSaga(): SagaIterator {
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
 
-    const newItems = executor.performDI({ level, dataLength, selectedItems });
+    const newItem = executor.performNE({ level, dataLength, selectedItems });
 
-    yield put(actions.setTableData([...tableData, ...newItems]));
+    yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Negation introduction error';
