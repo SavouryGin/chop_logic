@@ -246,7 +246,7 @@ const validator = {
     const firstConsequent = firstFormula.values[1] as PropositionalFormula;
     const secondConsequent = secondFormula.values[1] as PropositionalFormula;
 
-    if (firstConsequent.operator === PropositionalOperator.Not && secondConsequent.operator !== PropositionalOperator.Not) {
+    if (firstConsequent.operator === PropositionalOperator.Not) {
       const firstSubFormula = firstConsequent.values[0] as PropositionalFormula;
 
       if (this.areTwoFormulasEqual(firstSubFormula, secondConsequent)) {
@@ -254,7 +254,7 @@ const validator = {
       }
     }
 
-    if (secondConsequent.operator === PropositionalOperator.Not && firstConsequent.operator !== PropositionalOperator.Not) {
+    if (secondConsequent.operator === PropositionalOperator.Not) {
       const secondSubFormula = secondConsequent.values[0] as PropositionalFormula;
 
       if (this.areTwoFormulasEqual(secondSubFormula, firstConsequent)) {
