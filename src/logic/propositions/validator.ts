@@ -264,6 +264,21 @@ const validator = {
 
     return false;
   },
+
+  isNEApplicable(formulas: PropositionalFormula[]): boolean {
+    if (formulas.length !== 1) {
+      return false;
+    }
+
+    const formula = formulas[0];
+    const subFormula = formula.values[0] as PropositionalFormula;
+
+    if (formula.operator === PropositionalOperator.Not && subFormula.operator === PropositionalOperator.Not) {
+      return true;
+    }
+
+    return false;
+  },
 };
 
 export default Object.freeze(validator);
