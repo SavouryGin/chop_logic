@@ -208,11 +208,7 @@ export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
 
   useEffect(() => {
-    if (formulas.length !== 1) {
-      setIsPossible(false);
-    } else {
-      setIsPossible(validator.isNIApplicable(formulas));
-    }
+    setIsPossible(validator.isNEApplicable(formulas));
   }, [selectedIds.length]);
 
   return isPossible;
