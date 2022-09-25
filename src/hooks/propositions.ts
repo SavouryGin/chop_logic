@@ -202,3 +202,18 @@ export const useIsNotIntroductionPossible = (selectedIds: string[]): boolean => 
 
   return isPossible;
 };
+
+export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    if (formulas.length !== 1) {
+      setIsPossible(false);
+    } else {
+      setIsPossible(validator.isNIApplicable(formulas));
+    }
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
