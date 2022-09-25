@@ -8,6 +8,7 @@ import {
   useAppDispatch,
   useAppSelector,
   useIsAndEliminationPossible,
+  useIsNotEliminationPossible,
   useIsNotIntroductionPossible,
   useIsOrEliminationPossible,
   usePremiseEnabling,
@@ -26,11 +27,11 @@ const NaturalProofsEditorToolbar = () => {
   const isAndIntroductionDisabled = !selectedIds.length;
   const isAndEliminationDisabled = !useIsAndEliminationPossible(selectedIds);
   const isNotIntroductionDisabled = !useIsNotIntroductionPossible(selectedIds);
+  const isNotEliminationDisabled = !useIsNotEliminationPossible(selectedIds);
   // TODO: replace with the real rules
   const isImpliesIntroductionDisabled = true;
   const isEquivIntroductionDisabled = true;
   const isShortcutDisabled = true;
-  const isNotEliminationDisabled = true;
   const isImpliesEliminationDisabled = true;
   const isEquivEliminationDisabled = true;
 
