@@ -110,6 +110,10 @@ export const propositionsNP = createSlice({
     createNegation: (state) => {
       return state;
     },
+
+    eliminateNegation: (state) => {
+      return state;
+    },
   },
 });
 
