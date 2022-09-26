@@ -4,6 +4,7 @@ import { conjunctionIntroductionWatcher } from './conjunction-introduction';
 import { deleteNaturalProofStepsWatcher } from './delete-steps';
 import { disjunctionEliminationWatcher } from './disjunction-elimination';
 import { disjunctionIntroductionWatcher } from './disjunction-introduction';
+import { negationEliminationWatcher } from './negation-elimination';
 import { negationIntroductionWatcher } from './negation-introduction';
 
 function* propositionsNPSagas(): Generator {
@@ -14,6 +15,7 @@ function* propositionsNPSagas(): Generator {
     conjunctionIntroductionWatcher(),
     conjunctionEliminationWatcher(),
     negationIntroductionWatcher(),
+    negationEliminationWatcher(),
   ]);
 }
 
