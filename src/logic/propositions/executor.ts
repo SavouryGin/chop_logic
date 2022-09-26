@@ -267,15 +267,15 @@ const executor = {
 
   performNE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
-    const [item] = selectedItems;
+    const item = selectedItems[0];
     const selectedFormula = item.formula;
 
     if (!selectedFormula) {
       throw new PropositionalError('Cannot perform Negation Elimination.', errorsTexts.semanticError);
     }
 
-    if (!validator.isNIApplicable([selectedFormula])) {
-      throw new PropositionalError('Cannot perform Negation Introduction.', errorsTexts.semanticError);
+    if (!validator.isNEApplicable([selectedFormula])) {
+      throw new PropositionalError('Cannot perform Negation Elimination.', errorsTexts.semanticError);
     }
 
     const newFormula = (selectedFormula.values[0] as PropositionalFormula).values[0] as PropositionalFormula;

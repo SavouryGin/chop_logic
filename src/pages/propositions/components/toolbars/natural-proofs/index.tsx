@@ -67,6 +67,10 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.createNegation());
   };
 
+  const eliminateNegation = () => {
+    dispatch(actions.eliminateNegation());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
@@ -103,7 +107,13 @@ const NaturalProofsEditorToolbar = () => {
       <Button buttonId={ButtonID.Assumption} sound={soundPlayer.keyboard} size='large' onClick={openAssumption} />
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' onClick={deleteSteps} isDisabled={isDeleteDisabled} />
       <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' isDisabled={isShortcutDisabled} />
-      <Button buttonId={ButtonID.NotElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isNotEliminationDisabled} />
+      <Button
+        buttonId={ButtonID.NotElimination}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={eliminateNegation}
+        isDisabled={isNotEliminationDisabled}
+      />
       <Button
         buttonId={ButtonID.AndElimination}
         sound={soundPlayer.keyboard}

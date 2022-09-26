@@ -15,12 +15,12 @@ export function* negationEliminationSaga(): SagaIterator {
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
-
     const newItem = executor.performNE({ level, dataLength, selectedItems });
 
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
+    console.error(error);
     const errorMessage = (error as any)?.message || 'Negation elimination error';
     yield put(actions.setError(errorMessage));
   }
