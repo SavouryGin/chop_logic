@@ -16,7 +16,7 @@ export function* negationEliminationSaga(): SagaIterator {
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
 
-    const newItem = executor.performDE({ level, dataLength, selectedItems });
+    const newItem = executor.performNE({ level, dataLength, selectedItems });
 
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
