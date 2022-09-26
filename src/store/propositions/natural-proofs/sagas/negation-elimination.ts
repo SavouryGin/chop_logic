@@ -20,7 +20,6 @@ export function* negationEliminationSaga(): SagaIterator {
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
-    console.error(error);
     const errorMessage = (error as any)?.message || 'Negation elimination error';
     yield put(actions.setError(errorMessage));
   }

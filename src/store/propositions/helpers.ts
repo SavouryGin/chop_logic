@@ -103,6 +103,11 @@ export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): Natu
 
       case NPFormulaBase.NI: {
         newComment = commentsUpdater.updateNIComment({ item, tableData, defaultComment: item.comment });
+        break;
+      }
+
+      case NPFormulaBase.NE: {
+        newComment = commentsUpdater.updateNEComment({ item, tableData, defaultComment: item.comment });
       }
     }
 
@@ -192,6 +197,22 @@ export const commentsUpdater = {
         return {
           en: `NI: ${dependency1.step}, ${dependency2.step}`,
           ru: `BO: ${dependency1.step}, ${dependency2.step}`,
+        };
+      }
+    }
+
+    return defaultComment;
+  },
+
+  updateNEComment({ item, tableData, defaultComment }: NPCommentData): LocalText | string {
+    if (item.dependentOn?.length) {
+      const [id] = item.dependentOn;
+      const dependency = tableData.find((x) => x.id === id);
+
+      if (dependency) {
+        return {
+          en: `NE: ${dependency.step}`,
+          ru: `УО: ${dependency.step}`,
         };
       }
     }

@@ -28,7 +28,7 @@ export const formsTexts: TextContainer = {
 
 export const popupsTexts: TextContainer = {
   deleteConfirmation: {
-    en: 'The following formula(s) will also be removed from the proof as dependencies:',
+    en: 'The following formula(s) is going to be removed from the proof as dependencies:',
     ru: 'Следующие формула(-ы) будут также удалены из доказательства как зависимости:',
   },
 };
