@@ -231,7 +231,7 @@ const executor = {
     return newItems;
   },
 
-  performNE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+  performNI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
     const [item1, item2] = selectedItems;
     const firstFormula = item1.formula;
@@ -259,6 +259,37 @@ const executor = {
       formulaBase: NPFormulaBase.NI,
       dependentOn: [item1.id, item2.id],
       comment: { en: `NI: ${item1.step}, ${item2.step}`, ru: `ВО: ${item1.step}, ${item2.step}` },
+      formula: newFormula,
+      expression,
+      friendlyExpression,
+    };
+  },
+
+  performNE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+    const step = dataLength + 1;
+    const [item] = selectedItems;
+    const selectedFormula = item.formula;
+
+    if (!selectedFormula) {
+      throw new PropositionalError('Cannot perform Negation Elimination.', errorsTexts.semanticError);
+    }
+
+    if (!validator.isNIApplicable([selectedFormula])) {
+      throw new PropositionalError('Cannot perform Negation Introduction.', errorsTexts.semanticError);
+    }
+
+    const newFormula = (selectedFormula.values[0] as PropositionalFormula).values[0] as PropositionalFormula;
+    const expression = converter.convertFormulaToExpression(newFormula);
+    const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+
+    return {
+      level,
+      step,
+      id: Guid.create().toString(),
+      rawInput: `${item.rawInput}`,
+      formulaBase: NPFormulaBase.NE,
+      dependentOn: [item.id],
+      comment: { en: `NE: ${item.step}`, ru: `УО: ${item.step}` },
       formula: newFormula,
       expression,
       friendlyExpression,
