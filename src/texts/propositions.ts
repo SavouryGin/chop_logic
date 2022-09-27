@@ -28,7 +28,7 @@ export const formsTexts: TextContainer = {
 
 export const popupsTexts: TextContainer = {
   deleteConfirmation: {
-    en: 'The following formula(s) will also be removed from the proof as dependencies:',
+    en: 'The following formula(s) is going to be removed from the proof as dependencies:',
     ru: 'Следующие формула(-ы) будут также удалены из доказательства как зависимости:',
   },
 };
@@ -53,12 +53,5 @@ export const errorsTexts: TextContainer = {
   generalError: {
     en: 'Something went wrong.',
     ru: 'Что-то пошло не так.',
-  },
-};
-
-export const tooltipTexts: TextContainer = {
-  inputTooltip: {
-    en: 'P, Q, R, ... - for variables\n~ - for negation\n& - for conjunction\n| - for disjunction\n=> - for implication\n<=> - for equivalence',
-    ru: 'P, Q, R, ... - переменные\n~ - отрицание\n& - конъюнкция\n| - дизъюнкция\n=> - импликация\n<=> - эквивалентность',
   },
 };

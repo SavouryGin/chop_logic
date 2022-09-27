@@ -187,3 +187,29 @@ export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
 
   return isPossible;
 };
+
+export const useIsNotIntroductionPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    if (formulas.length !== 2) {
+      setIsPossible(false);
+    } else {
+      setIsPossible(validator.isNIApplicable(formulas));
+    }
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
+
+export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    setIsPossible(validator.isNEApplicable(formulas));
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
