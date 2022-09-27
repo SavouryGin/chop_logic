@@ -55,10 +55,3 @@ export const errorsTexts: TextContainer = {
     ru: 'Что-то пошло не так.',
   },
 };
-
-export const tooltipTexts: TextContainer = {
-  inputTooltip: {
-    en: 'P, Q, R, ... - for variables\n~ - for negation\n& - for conjunction\n| - for disjunction\n=> - for implication\n<=> - for equivalence',
-    ru: 'P, Q, R, ... - переменные\n~ - отрицание\n& - конъюнкция\n| - дизъюнкция\n=> - импликация\n<=> - эквивалентность',
-  },
-};
