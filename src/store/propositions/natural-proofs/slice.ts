@@ -106,6 +106,14 @@ export const propositionsNP = createSlice({
     eliminateConjunction: (state) => {
       return state;
     },
+
+    createNegation: (state) => {
+      return state;
+    },
+
+    eliminateNegation: (state) => {
+      return state;
+    },
   },
 });
 

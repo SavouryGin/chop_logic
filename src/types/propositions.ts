@@ -33,3 +33,9 @@ export interface ConfirmDeleteProofStepsPopupProps<
 }
 
 export type NPExecutorData = { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] };
+
+export type NPCommentData = {
+  item: NaturalProofsTableItem;
+  tableData: NaturalProofsTableItem[];
+  defaultComment: LocalText | string;
+};
