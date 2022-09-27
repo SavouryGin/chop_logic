@@ -207,7 +207,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
         class="button__front"
         data-testid="button_id_12"
       >
-        Implication Creation
+        IC
       </span>
     </button>
     <button
@@ -226,7 +226,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
         class="button__front"
         data-testid="button_id_13"
       >
-        Implication Distribution
+        ID
       </span>
     </button>
     <button
@@ -245,7 +245,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
         class="button__front"
         data-testid="button_id_14"
       >
-        Contradiction Realization
+        CR
       </span>
     </button>
     <button
@@ -265,7 +265,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
         class="button__front"
         data-testid="button_id_15"
       >
-        Implication Elimination
+        IE
       </span>
     </button>
   </div>
