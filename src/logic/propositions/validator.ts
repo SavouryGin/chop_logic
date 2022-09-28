@@ -279,6 +279,29 @@ const validator = {
 
     return false;
   },
+
+  isEIApplicable(formulas: PropositionalFormula[]): boolean {
+    if (formulas.length !== 2) {
+      return false;
+    }
+
+    const [firstFormula, secondFormula] = formulas;
+
+    if (firstFormula.operator !== PropositionalOperator.Implies || secondFormula.operator !== PropositionalOperator.Implies) {
+      return false;
+    }
+
+    const firstAntecedent = firstFormula.values[0] as PropositionalFormula;
+    const firstConsequent = firstFormula.values[1] as PropositionalFormula;
+    const secondAntecedent = secondFormula.values[0] as PropositionalFormula;
+    const secondConsequent = secondFormula.values[1] as PropositionalFormula;
+
+    if (this.areTwoFormulasEqual(firstAntecedent, secondConsequent) && this.areTwoFormulasEqual(firstConsequent, secondAntecedent)) {
+      return true;
+    }
+
+    return false;
+  },
 };
 
 export default Object.freeze(validator);
