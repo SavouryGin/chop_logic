@@ -1,4 +1,4 @@
-@import '../colors.scss';
+@import '../variables/colors.scss';
 
 @mixin input-colors($mode) {
   color: if($mode == dark, $dark-font-color, $light-font-color);
