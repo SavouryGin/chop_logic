@@ -213,3 +213,14 @@ export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
 
   return isPossible;
 };
+
+export const useIsEquivalenceIntroductionPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    setIsPossible(validator.isEIApplicable(formulas));
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
