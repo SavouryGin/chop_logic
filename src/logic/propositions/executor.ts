@@ -295,6 +295,60 @@ const executor = {
       friendlyExpression,
     };
   },
+
+  performEI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    // If F=>G and G=>F then F<=>G
+    const step = dataLength + 1;
+    const firstSelectedFormula = selectedItems[0].formula;
+    const secondSelectedFormula = selectedItems[1].formula;
+
+    if (!validator.isEIApplicable([firstSelectedFormula, secondSelectedFormula])) {
+      throw new PropositionalError('Cannot perform Equivalence Introduction.', errorsTexts.semanticError);
+    }
+
+    const firstOperand = firstSelectedFormula.values[0] as PropositionalFormula;
+    const secondOperand = firstSelectedFormula.values[1] as PropositionalFormula;
+
+    const firstEquivalence = factory.createBinary(PropositionalOperator.Equiv, firstOperand, secondOperand);
+    const secondEquivalence = factory.createBinary(PropositionalOperator.Equiv, secondOperand, firstOperand);
+    const firstExpression = converter.convertFormulaToExpression(firstEquivalence);
+    const secondExpression = converter.convertFormulaToExpression(secondEquivalence);
+    const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstEquivalence);
+    const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondEquivalence);
+    const comment = {
+      en: `EI: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+      ru: `ВЭ: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+    };
+    const dependentOn = [selectedItems[0].id, selectedItems[1].id];
+
+    const firstNewItem: NaturalProofsTableItem = {
+      level,
+      rawInput: `${selectedItems[0].rawInput}, ${selectedItems[1].rawInput}`,
+      step: step,
+      id: Guid.create().toString(),
+      expression: firstExpression,
+      formula: firstEquivalence,
+      friendlyExpression: firstFriendlyExpression,
+      comment,
+      dependentOn,
+      formulaBase: NPFormulaBase.EI,
+    };
+
+    const secondNewItem: NaturalProofsTableItem = {
+      level,
+      rawInput: `${selectedItems[1].rawInput}, ${selectedItems[0].rawInput}`,
+      step: step + 1,
+      id: Guid.create().toString(),
+      expression: secondExpression,
+      formula: secondEquivalence,
+      friendlyExpression: secondFriendlyExpression,
+      comment,
+      dependentOn,
+      formulaBase: NPFormulaBase.EI,
+    };
+
+    return [firstNewItem, secondNewItem];
+  },
 };
 
 export default Object.freeze(executor);

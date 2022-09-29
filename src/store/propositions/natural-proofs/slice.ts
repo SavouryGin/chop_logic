@@ -114,6 +114,10 @@ export const propositionsNP = createSlice({
     eliminateNegation: (state) => {
       return state;
     },
+
+    createEquivalence: (state) => {
+      return state;
+    },
   },
 });
 
