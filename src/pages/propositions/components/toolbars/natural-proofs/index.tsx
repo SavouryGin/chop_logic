@@ -8,6 +8,7 @@ import {
   useAppDispatch,
   useAppSelector,
   useIsAndEliminationPossible,
+  useIsEquivalenceEliminationPossible,
   useIsEquivalenceIntroductionPossible,
   useIsNotEliminationPossible,
   useIsNotIntroductionPossible,
@@ -30,11 +31,11 @@ const NaturalProofsEditorToolbar = () => {
   const isNotIntroductionDisabled = !useIsNotIntroductionPossible(selectedIds);
   const isNotEliminationDisabled = !useIsNotEliminationPossible(selectedIds);
   const isEquivIntroductionDisabled = !useIsEquivalenceIntroductionPossible(selectedIds);
+  const isEquivEliminationDisabled = !useIsEquivalenceEliminationPossible(selectedIds);
   // TODO: replace with the real rules
   const isImpliesIntroductionDisabled = true;
   const isShortcutDisabled = true;
   const isImpliesEliminationDisabled = true;
-  const isEquivEliminationDisabled = true;
 
   const openPremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));

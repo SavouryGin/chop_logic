@@ -302,6 +302,14 @@ const validator = {
 
     return false;
   },
+
+  isEEApplicable(formulas: PropositionalFormula[]): boolean {
+    if (!formulas.length) {
+      return false;
+    }
+
+    return formulas.every((formula) => formula.operator === PropositionalOperator.Equiv);
+  },
 };
 
 export default Object.freeze(validator);
