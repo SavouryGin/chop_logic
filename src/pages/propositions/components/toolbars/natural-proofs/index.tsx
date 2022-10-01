@@ -77,6 +77,10 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.createEquivalence());
   };
 
+  const eliminateEquivalence = () => {
+    dispatch(actions.eliminateEquivalence());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
@@ -141,7 +145,13 @@ const NaturalProofsEditorToolbar = () => {
         isDisabled={isOrEliminationDisabled}
       />
       <Button buttonId={ButtonID.ImpliesElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isImpliesEliminationDisabled} />
-      <Button buttonId={ButtonID.EquivElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isEquivEliminationDisabled} />
+      <Button
+        buttonId={ButtonID.EquivElimination}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={eliminateEquivalence}
+        isDisabled={isEquivEliminationDisabled}
+      />
     </div>
   );
 };

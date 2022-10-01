@@ -355,12 +355,15 @@ const executor = {
     let itemsCounter = dataLength + 1;
 
     for (const item of selectedItems) {
-      if (item.formula.operator !== PropositionalOperator.And) {
+      if (item.formula.operator !== PropositionalOperator.Equiv) {
         throw new PropositionalError('Cannot perform Equivalence Elimination.', errorsTexts.semanticError);
       }
 
-      const firstFormula = item.formula.values[0] as PropositionalFormula;
-      const secondFormula = item.formula.values[1] as PropositionalFormula;
+      const firstOperand = item.formula.values[0] as PropositionalFormula;
+      const secondOperand = item.formula.values[1] as PropositionalFormula;
+
+      const firstFormula = factory.createBinary(PropositionalOperator.Implies, firstOperand, secondOperand);
+      const secondFormula = factory.createBinary(PropositionalOperator.Implies, secondOperand, firstOperand);
 
       const firstExpression = converter.convertFormulaToExpression(firstFormula);
       const secondExpression = converter.convertFormulaToExpression(secondFormula);
