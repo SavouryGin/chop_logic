@@ -349,6 +349,60 @@ const executor = {
 
     return [firstNewItem, secondNewItem];
   },
+
+  performEE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    const newItems: NaturalProofsTableItem[] = [];
+    let itemsCounter = dataLength + 1;
+
+    for (const item of selectedItems) {
+      if (item.formula.operator !== PropositionalOperator.And) {
+        throw new PropositionalError('Cannot perform Equivalence Elimination.', errorsTexts.semanticError);
+      }
+
+      const firstFormula = item.formula.values[0] as PropositionalFormula;
+      const secondFormula = item.formula.values[1] as PropositionalFormula;
+
+      const firstExpression = converter.convertFormulaToExpression(firstFormula);
+      const secondExpression = converter.convertFormulaToExpression(secondFormula);
+      const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstFormula);
+      const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondFormula);
+      const comment = { en: `EE: ${item.step}`, ru: `УЭ: ${item.step}` };
+      const dependentOn = [item.id];
+      const formulaBase = NPFormulaBase.EE;
+      const rawInput = `${item.rawInput}`;
+
+      const firstNewItem: NaturalProofsTableItem = {
+        step: itemsCounter,
+        id: Guid.create().toString(),
+        formula: firstFormula,
+        expression: firstExpression,
+        friendlyExpression: firstFriendlyExpression,
+        level,
+        rawInput,
+        comment,
+        dependentOn,
+        formulaBase,
+      };
+
+      const secondNewItem: NaturalProofsTableItem = {
+        step: itemsCounter + 1,
+        id: Guid.create().toString(),
+        formula: secondFormula,
+        expression: secondExpression,
+        friendlyExpression: secondFriendlyExpression,
+        level,
+        rawInput,
+        comment,
+        dependentOn,
+        formulaBase,
+      };
+
+      newItems.push(firstNewItem, secondNewItem);
+      itemsCounter += 2;
+    }
+
+    return newItems;
+  },
 };
 
 export default Object.freeze(executor);

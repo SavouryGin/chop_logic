@@ -118,6 +118,10 @@ export const propositionsNP = createSlice({
     createEquivalence: (state) => {
       return state;
     },
+
+    eliminateEquivalence: (state) => {
+      return state;
+    },
   },
 });
 
