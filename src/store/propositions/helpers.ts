@@ -108,6 +108,17 @@ export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): Natu
 
       case NPFormulaBase.NE: {
         newComment = commentsUpdater.updateNEComment({ item, tableData, defaultComment: item.comment });
+        break;
+      }
+
+      case NPFormulaBase.EI: {
+        newComment = commentsUpdater.updateEIComment({ item, tableData, defaultComment: item.comment });
+        break;
+      }
+
+      case NPFormulaBase.EE: {
+        newComment = commentsUpdater.updateEEComment({ item, tableData, defaultComment: item.comment });
+        break;
       }
     }
 
@@ -213,6 +224,39 @@ export const commentsUpdater = {
         return {
           en: `NE: ${dependency.step}`,
           ru: `УО: ${dependency.step}`,
+        };
+      }
+    }
+
+    return defaultComment;
+  },
+
+  updateEIComment({ item, tableData, defaultComment }: NPCommentData): LocalText | string {
+    if (item.dependentOn?.length) {
+      const [id1, id2] = item.dependentOn;
+      const dependency1 = tableData.find((x) => x.id === id1);
+      const dependency2 = tableData.find((x) => x.id === id2);
+
+      if (dependency1 && dependency2) {
+        return {
+          en: `EI: ${dependency1.step}, ${dependency2.step}`,
+          ru: `ВЭ: ${dependency1.step}, ${dependency2.step}`,
+        };
+      }
+    }
+
+    return defaultComment;
+  },
+
+  updateEEComment({ item, tableData, defaultComment }: NPCommentData): LocalText | string {
+    if (item.dependentOn?.length) {
+      const [id] = item.dependentOn;
+      const dependency = tableData.find((x) => x.id === id);
+
+      if (dependency) {
+        return {
+          en: `EE: ${dependency.step}`,
+          ru: `УЭ: ${dependency.step}`,
         };
       }
     }

@@ -295,6 +295,117 @@ const executor = {
       friendlyExpression,
     };
   },
+
+  performEI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    // If F=>G and G=>F then F<=>G
+    const step = dataLength + 1;
+    const firstSelectedFormula = selectedItems[0].formula;
+    const secondSelectedFormula = selectedItems[1].formula;
+
+    if (!validator.isEIApplicable([firstSelectedFormula, secondSelectedFormula])) {
+      throw new PropositionalError('Cannot perform Equivalence Introduction.', errorsTexts.semanticError);
+    }
+
+    const firstOperand = firstSelectedFormula.values[0] as PropositionalFormula;
+    const secondOperand = firstSelectedFormula.values[1] as PropositionalFormula;
+
+    const firstEquivalence = factory.createBinary(PropositionalOperator.Equiv, firstOperand, secondOperand);
+    const secondEquivalence = factory.createBinary(PropositionalOperator.Equiv, secondOperand, firstOperand);
+    const firstExpression = converter.convertFormulaToExpression(firstEquivalence);
+    const secondExpression = converter.convertFormulaToExpression(secondEquivalence);
+    const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstEquivalence);
+    const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondEquivalence);
+    const comment = {
+      en: `EI: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+      ru: `ВЭ: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+    };
+    const dependentOn = [selectedItems[0].id, selectedItems[1].id];
+
+    const firstNewItem: NaturalProofsTableItem = {
+      level,
+      rawInput: `${selectedItems[0].rawInput}, ${selectedItems[1].rawInput}`,
+      step: step,
+      id: Guid.create().toString(),
+      expression: firstExpression,
+      formula: firstEquivalence,
+      friendlyExpression: firstFriendlyExpression,
+      comment,
+      dependentOn,
+      formulaBase: NPFormulaBase.EI,
+    };
+
+    const secondNewItem: NaturalProofsTableItem = {
+      level,
+      rawInput: `${selectedItems[1].rawInput}, ${selectedItems[0].rawInput}`,
+      step: step + 1,
+      id: Guid.create().toString(),
+      expression: secondExpression,
+      formula: secondEquivalence,
+      friendlyExpression: secondFriendlyExpression,
+      comment,
+      dependentOn,
+      formulaBase: NPFormulaBase.EI,
+    };
+
+    return [firstNewItem, secondNewItem];
+  },
+
+  performEE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    const newItems: NaturalProofsTableItem[] = [];
+    let itemsCounter = dataLength + 1;
+
+    for (const item of selectedItems) {
+      if (item.formula.operator !== PropositionalOperator.Equiv) {
+        throw new PropositionalError('Cannot perform Equivalence Elimination.', errorsTexts.semanticError);
+      }
+
+      const firstOperand = item.formula.values[0] as PropositionalFormula;
+      const secondOperand = item.formula.values[1] as PropositionalFormula;
+
+      const firstFormula = factory.createBinary(PropositionalOperator.Implies, firstOperand, secondOperand);
+      const secondFormula = factory.createBinary(PropositionalOperator.Implies, secondOperand, firstOperand);
+
+      const firstExpression = converter.convertFormulaToExpression(firstFormula);
+      const secondExpression = converter.convertFormulaToExpression(secondFormula);
+      const firstFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(firstFormula);
+      const secondFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(secondFormula);
+      const comment = { en: `EE: ${item.step}`, ru: `УЭ: ${item.step}` };
+      const dependentOn = [item.id];
+      const formulaBase = NPFormulaBase.EE;
+      const rawInput = `${item.rawInput}`;
+
+      const firstNewItem: NaturalProofsTableItem = {
+        step: itemsCounter,
+        id: Guid.create().toString(),
+        formula: firstFormula,
+        expression: firstExpression,
+        friendlyExpression: firstFriendlyExpression,
+        level,
+        rawInput,
+        comment,
+        dependentOn,
+        formulaBase,
+      };
+
+      const secondNewItem: NaturalProofsTableItem = {
+        step: itemsCounter + 1,
+        id: Guid.create().toString(),
+        formula: secondFormula,
+        expression: secondExpression,
+        friendlyExpression: secondFriendlyExpression,
+        level,
+        rawInput,
+        comment,
+        dependentOn,
+        formulaBase,
+      };
+
+      newItems.push(firstNewItem, secondNewItem);
+      itemsCounter += 2;
+    }
+
+    return newItems;
+  },
 };
 
 export default Object.freeze(executor);
