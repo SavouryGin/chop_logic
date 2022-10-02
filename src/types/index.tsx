@@ -6,4 +6,3 @@ export * from './propositions';
 export * from './routing';
 export * from './formulas';
 export * from './controls';
-export * from './components';

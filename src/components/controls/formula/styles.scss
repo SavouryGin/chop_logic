@@ -1,6 +1,6 @@
 @import 'styles/fonts.scss';
-@import 'styles/colors.scss';
-@import 'styles/sizes.scss';
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/sizes.scss';
 
 .formula {
   font-family: $Monospace;

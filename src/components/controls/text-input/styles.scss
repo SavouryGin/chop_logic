@@ -1,7 +1,7 @@
 @import 'styles/mixins/text-styles.scss';
 @import 'styles/mixins/input-styles.scss';
-@import 'styles/colors.scss';
-@import 'styles/sizes.scss';
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/sizes.scss';
 
 .text-input {
   display: flex;
