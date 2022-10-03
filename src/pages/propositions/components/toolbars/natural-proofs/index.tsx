@@ -10,15 +10,16 @@ import {
   useIsAndEliminationPossible,
   useIsEquivalenceEliminationPossible,
   useIsEquivalenceIntroductionPossible,
+  useIsImplicationEliminationPossible,
   useIsNotEliminationPossible,
   useIsNotIntroductionPossible,
   useIsOrEliminationPossible,
-  usePremiseEnabling,
+  useIsPremisePossible,
 } from 'hooks';
 
 const NaturalProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
-  const isPremiseDisabled = !usePremiseEnabling();
+  const isPremiseDisabled = !useIsPremisePossible();
   const selectedIds = useAppSelector(selectors.getSelectedIds);
   const tableDataLength = useAppSelector(selectors.getTableDataLength);
   const isReplacerDisabled = tableDataLength === 0;
@@ -32,10 +33,10 @@ const NaturalProofsEditorToolbar = () => {
   const isNotEliminationDisabled = !useIsNotEliminationPossible(selectedIds);
   const isEquivIntroductionDisabled = !useIsEquivalenceIntroductionPossible(selectedIds);
   const isEquivEliminationDisabled = !useIsEquivalenceEliminationPossible(selectedIds);
+  const isImpliesEliminationDisabled = !useIsImplicationEliminationPossible(selectedIds);
   // TODO: replace with the real rules
   const isImpliesIntroductionDisabled = true;
   const isShortcutDisabled = true;
-  const isImpliesEliminationDisabled = true;
 
   const openPremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));
