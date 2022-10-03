@@ -235,3 +235,14 @@ export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): bool
 
   return isPossible;
 };
+
+export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    setIsPossible(validator.isIEforNPApplicable(formulas));
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
