@@ -406,6 +406,29 @@ const executor = {
 
     return newItems;
   },
+
+  performIEforNP({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+    const step = dataLength + 1;
+    const firstFormula = selectedItems[0].formula;
+    const secondFormula = selectedItems[1].formula;
+
+    const newFormula = this.performIE(firstFormula, secondFormula);
+    const expression = converter.convertFormulaToExpression(newFormula);
+    const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+
+    return {
+      level,
+      step,
+      id: Guid.create().toString(),
+      rawInput: `${selectedItems[0].rawInput}, ${selectedItems[1].rawInput}`,
+      formulaBase: NPFormulaBase.IE,
+      dependentOn: [selectedItems[0].id, selectedItems[1].id],
+      comment: { en: `IE: ${selectedItems[0].step}`, ru: `УИ: ${selectedItems[1].step}` },
+      formula: newFormula,
+      expression,
+      friendlyExpression,
+    };
+  },
 };
 
 export default Object.freeze(executor);

@@ -16,9 +16,9 @@ export function* implicationEliminationSaga(): SagaIterator {
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
 
-    const newItems = executor.performEE({ level, dataLength, selectedItems });
+    const newItem = executor.performIEforNP({ level, dataLength, selectedItems });
 
-    yield put(actions.setTableData([...tableData, ...newItems]));
+    yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Implication elimination error';
