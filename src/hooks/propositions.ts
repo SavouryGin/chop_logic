@@ -246,3 +246,19 @@ export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boo
 
   return isPossible;
 };
+
+export const useIsImpliesIntroductionPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+
+  useEffect(() => {
+    if (!items.length || items[0]?.level === 0) {
+      setIsPossible(false);
+    } else {
+      const isAllItemsInOneAssumption = items.every((item) => item.level === items[0].level);
+      setIsPossible(isAllItemsInOneAssumption);
+    }
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
