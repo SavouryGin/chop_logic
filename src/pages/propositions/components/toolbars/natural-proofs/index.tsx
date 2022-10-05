@@ -11,6 +11,7 @@ import {
   useIsEquivalenceEliminationPossible,
   useIsEquivalenceIntroductionPossible,
   useIsImpliesEliminationForNPPossible,
+  useIsImpliesIntroductionPossible,
   useIsNotEliminationPossible,
   useIsNotIntroductionPossible,
   useIsOrEliminationPossible,
@@ -34,8 +35,8 @@ const NaturalProofsEditorToolbar = () => {
   const isEquivIntroductionDisabled = !useIsEquivalenceIntroductionPossible(selectedIds);
   const isEquivEliminationDisabled = !useIsEquivalenceEliminationPossible(selectedIds);
   const isImpliesEliminationDisabled = !useIsImpliesEliminationForNPPossible(selectedIds);
+  const isImpliesIntroductionDisabled = !useIsImpliesIntroductionPossible(selectedIds);
   // TODO: replace with the real rules
-  const isImpliesIntroductionDisabled = true;
   const isShortcutDisabled = true;
 
   const openPremise = () => {
