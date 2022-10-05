@@ -423,7 +423,10 @@ const executor = {
       rawInput: `${selectedItems[0].rawInput}, ${selectedItems[1].rawInput}`,
       formulaBase: NPFormulaBase.IE,
       dependentOn: [selectedItems[0].id, selectedItems[1].id],
-      comment: { en: `IE: ${selectedItems[0].step}`, ru: `УИ: ${selectedItems[1].step}` },
+      comment: {
+        en: `IE: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+        ru: `УИ: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+      },
       formula: newFormula,
       expression,
       friendlyExpression,

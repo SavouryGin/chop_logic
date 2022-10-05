@@ -120,6 +120,11 @@ export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): Natu
         newComment = commentsUpdater.updateEEComment({ item, tableData, defaultComment: item.comment });
         break;
       }
+
+      case NPFormulaBase.IE: {
+        newComment = commentsUpdater.updateIEComment({ item, tableData, defaultComment: item.comment });
+        break;
+      }
     }
 
     return {
@@ -257,6 +262,23 @@ export const commentsUpdater = {
         return {
           en: `EE: ${dependency.step}`,
           ru: `УЭ: ${dependency.step}`,
+        };
+      }
+    }
+
+    return defaultComment;
+  },
+
+  updateIEComment({ item, tableData, defaultComment }: NPCommentData): LocalText | string {
+    if (item.dependentOn?.length) {
+      const [id1, id2] = item.dependentOn;
+      const dependency1 = tableData.find((x) => x.id === id1);
+      const dependency2 = tableData.find((x) => x.id === id2);
+
+      if (dependency1 && dependency2) {
+        return {
+          en: `IE: ${dependency1.step}, ${dependency2.step}`,
+          ru: `УИ: ${dependency1.step}, ${dependency2.step}`,
         };
       }
     }
