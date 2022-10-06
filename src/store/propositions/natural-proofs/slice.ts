@@ -126,6 +126,10 @@ export const propositionsNP = createSlice({
     eliminateImplication: (state) => {
       return state;
     },
+
+    createImplication: (state) => {
+      return state;
+    },
   },
 });
 
