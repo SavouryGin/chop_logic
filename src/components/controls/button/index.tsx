@@ -6,7 +6,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: ButtonProps): React.ReactElement => {
+const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, ...rest }: ButtonProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -19,7 +19,7 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
   const buttonClassNames = formatClassName([
     'button',
     rest.className,
-    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large', button_disabled: !!rest.isDisabled },
+    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large', button_disabled: !!isDisabled },
   ]);
 
   const onButtonClick = () => {
@@ -36,9 +36,9 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, ...rest }: Bu
       type={rest.type || 'button'}
       title={buttonTitle}
       className={buttonClassNames}
-      onClick={onButtonClick}
+      onClick={!isDisabled ? onButtonClick : undefined}
       id={`button_id_${buttonId}`}
-      disabled={!!rest.isDisabled}
+      disabled={isDisabled}
     >
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>
