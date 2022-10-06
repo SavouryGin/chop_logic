@@ -11,14 +11,14 @@ export function* implicationIntroductionWatcher(): Generator {
 
 export function* implicationIntroductionSaga(): SagaIterator {
   try {
-    const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getSelectedTableItems);
+    const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getAllSubProofsItems);
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
 
-    const newItem = executor.performNI({ level, dataLength, selectedItems });
+    const newItem = executor.performII({ level, dataLength, selectedItems });
 
-    yield put(actions.setTableData([...tableData, newItem]));
+    yield put(actions.setTableData([...tableData, ...newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Implication introduction error';

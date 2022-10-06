@@ -87,6 +87,10 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.eliminateImplication());
   };
 
+  const createImplication = () => {
+    dispatch(actions.createImplication());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
@@ -117,6 +121,7 @@ const NaturalProofsEditorToolbar = () => {
         buttonId={ButtonID.ImpliesIntroduction}
         sound={soundPlayer.keyboard}
         size='large'
+        onClick={createImplication}
         isDisabled={isImpliesIntroductionDisabled}
       />
       <Button

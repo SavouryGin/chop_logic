@@ -432,6 +432,12 @@ const executor = {
       friendlyExpression,
     };
   },
+
+  performII({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+    console.log(level, dataLength, selectedItems);
+
+    return [];
+  },
 };
 
 export default Object.freeze(executor);
