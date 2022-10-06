@@ -119,6 +119,7 @@
 
   // Disabled styles
   &_disabled {
-    @include input-disabled-styles();
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 }
