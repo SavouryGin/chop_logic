@@ -18,7 +18,7 @@ export function* implicationIntroductionSaga(): SagaIterator {
 
     const newItem = executor.performII({ level, dataLength, selectedItems });
 
-    yield put(actions.setTableData([...tableData, ...newItem]));
+    yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Implication introduction error';

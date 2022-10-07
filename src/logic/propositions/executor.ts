@@ -433,10 +433,44 @@ const executor = {
     };
   },
 
-  performII({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
-    console.log(level, dataLength, selectedItems);
+  performII({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+    const firstSubProofItem = selectedItems[0];
+    const lastSubProofItem = selectedItems[selectedItems.length - 1];
+    const firstSubProofFormula = firstSubProofItem.formula;
+    const lastSubProofFormula = lastSubProofItem.formula;
+    const step = dataLength + 1;
 
-    return [];
+    if (!firstSubProofFormula || !lastSubProofFormula) {
+      throw new PropositionalError('Cannot perform Implication Introduction.', errorsTexts.semanticError);
+    }
+
+    const newFormula = factory.createBinary(PropositionalOperator.Implies, firstSubProofFormula, lastSubProofFormula);
+    const expression = converter.convertFormulaToExpression(newFormula);
+    const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+    const dependentOn = selectedItems.length > 1 ? [firstSubProofItem.id, lastSubProofItem.id] : [firstSubProofItem.id];
+    const comment =
+      selectedItems.length > 1
+        ? {
+            en: `II: ${firstSubProofItem.step}, ${lastSubProofItem.step}`,
+            ru: `ВИ: ${firstSubProofItem.step}, ${lastSubProofItem.step}`,
+          }
+        : {
+            en: `II: ${firstSubProofItem.step}`,
+            ru: `ВИ: ${firstSubProofItem.step}`,
+          };
+
+    return {
+      level: level - 1,
+      step,
+      id: Guid.create().toString(),
+      rawInput: `${firstSubProofItem.rawInput}, ${lastSubProofItem.rawInput}`,
+      formulaBase: NPFormulaBase.II,
+      dependentOn,
+      comment,
+      formula: newFormula,
+      expression,
+      friendlyExpression,
+    };
   },
 };
 
