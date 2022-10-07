@@ -71,9 +71,6 @@ const getAllSubProofsItems = createSelector(
 
     itemsSplittedByLevel.push(accumulator);
 
-    console.log('itemsSplittedByLevel', itemsSplittedByLevel);
-    console.log('accumulator', accumulator);
-
     return itemsSplittedByLevel.find((array) => array.includes(selectedItems[0])) || [];
   },
 );
