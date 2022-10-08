@@ -406,6 +406,72 @@ const executor = {
 
     return newItems;
   },
+
+  performIEforNP({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+    const step = dataLength + 1;
+    const firstFormula = selectedItems[0].formula;
+    const secondFormula = selectedItems[1].formula;
+
+    const newFormula = this.performIE(firstFormula, secondFormula);
+    const expression = converter.convertFormulaToExpression(newFormula);
+    const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+
+    return {
+      level,
+      step,
+      id: Guid.create().toString(),
+      rawInput: `${selectedItems[0].rawInput}, ${selectedItems[1].rawInput}`,
+      formulaBase: NPFormulaBase.IE,
+      dependentOn: [selectedItems[0].id, selectedItems[1].id],
+      comment: {
+        en: `IE: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+        ru: `УИ: ${selectedItems[0].step}, ${selectedItems[1].step}`,
+      },
+      formula: newFormula,
+      expression,
+      friendlyExpression,
+    };
+  },
+
+  performII({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+    const firstSubProofItem = selectedItems[0];
+    const lastSubProofItem = selectedItems[selectedItems.length - 1];
+    const firstSubProofFormula = firstSubProofItem.formula;
+    const lastSubProofFormula = lastSubProofItem.formula;
+    const step = dataLength + 1;
+
+    if (!firstSubProofFormula || !lastSubProofFormula) {
+      throw new PropositionalError('Cannot perform Implication Introduction.', errorsTexts.semanticError);
+    }
+
+    const newFormula = factory.createBinary(PropositionalOperator.Implies, firstSubProofFormula, lastSubProofFormula);
+    const expression = converter.convertFormulaToExpression(newFormula);
+    const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+    const dependentOn = selectedItems.length > 1 ? [firstSubProofItem.id, lastSubProofItem.id] : [firstSubProofItem.id];
+    const comment =
+      selectedItems.length > 1
+        ? {
+            en: `II: ${firstSubProofItem.step}, ${lastSubProofItem.step}`,
+            ru: `ВИ: ${firstSubProofItem.step}, ${lastSubProofItem.step}`,
+          }
+        : {
+            en: `II: ${firstSubProofItem.step}`,
+            ru: `ВИ: ${firstSubProofItem.step}`,
+          };
+
+    return {
+      level: level - 1,
+      step,
+      id: Guid.create().toString(),
+      rawInput: `${firstSubProofItem.rawInput}, ${lastSubProofItem.rawInput}`,
+      formulaBase: NPFormulaBase.II,
+      dependentOn,
+      comment,
+      formula: newFormula,
+      expression,
+      friendlyExpression,
+    };
+  },
 };
 
 export default Object.freeze(executor);

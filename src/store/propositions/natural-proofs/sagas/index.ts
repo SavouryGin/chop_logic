@@ -6,6 +6,8 @@ import { disjunctionEliminationWatcher } from './disjunction-elimination';
 import { disjunctionIntroductionWatcher } from './disjunction-introduction';
 import { equivalenceEliminationWatcher } from './equivalence-elimination';
 import { equivalenceIntroductionWatcher } from './equivalence-introduction';
+import { implicationEliminationWatcher } from './implication-elimination';
+import { implicationIntroductionWatcher } from './implication-introduction';
 import { negationEliminationWatcher } from './negation-elimination';
 import { negationIntroductionWatcher } from './negation-introduction';
 
@@ -20,6 +22,8 @@ function* propositionsNPSagas(): Generator {
     negationEliminationWatcher(),
     equivalenceIntroductionWatcher(),
     equivalenceEliminationWatcher(),
+    implicationEliminationWatcher(),
+    implicationIntroductionWatcher(),
   ]);
 }
 

@@ -310,6 +310,14 @@ const validator = {
 
     return formulas.every((formula) => formula.operator === PropositionalOperator.Equiv);
   },
+
+  isIEforNPApplicable(formulas: PropositionalFormula[]): boolean {
+    if (formulas.length !== 2) {
+      return false;
+    }
+
+    return this.isIEApplicable(formulas[0], formulas[1]);
+  },
 };
 
 export default Object.freeze(validator);

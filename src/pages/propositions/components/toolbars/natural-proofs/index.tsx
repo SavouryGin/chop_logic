@@ -10,15 +10,17 @@ import {
   useIsAndEliminationPossible,
   useIsEquivalenceEliminationPossible,
   useIsEquivalenceIntroductionPossible,
+  useIsImpliesEliminationForNPPossible,
+  useIsImpliesIntroductionPossible,
   useIsNotEliminationPossible,
   useIsNotIntroductionPossible,
   useIsOrEliminationPossible,
-  usePremiseEnabling,
+  useIsPremisePossible,
 } from 'hooks';
 
 const NaturalProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
-  const isPremiseDisabled = !usePremiseEnabling();
+  const isPremiseDisabled = !useIsPremisePossible();
   const selectedIds = useAppSelector(selectors.getSelectedIds);
   const tableDataLength = useAppSelector(selectors.getTableDataLength);
   const isReplacerDisabled = tableDataLength === 0;
@@ -32,10 +34,10 @@ const NaturalProofsEditorToolbar = () => {
   const isNotEliminationDisabled = !useIsNotEliminationPossible(selectedIds);
   const isEquivIntroductionDisabled = !useIsEquivalenceIntroductionPossible(selectedIds);
   const isEquivEliminationDisabled = !useIsEquivalenceEliminationPossible(selectedIds);
+  const isImpliesEliminationDisabled = !useIsImpliesEliminationForNPPossible(selectedIds);
+  const isImpliesIntroductionDisabled = !useIsImpliesIntroductionPossible(selectedIds);
   // TODO: replace with the real rules
-  const isImpliesIntroductionDisabled = true;
   const isShortcutDisabled = true;
-  const isImpliesEliminationDisabled = true;
 
   const openPremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));
@@ -81,6 +83,14 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.eliminateEquivalence());
   };
 
+  const eliminateImplication = () => {
+    dispatch(actions.eliminateImplication());
+  };
+
+  const createImplication = () => {
+    dispatch(actions.createImplication());
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
@@ -111,6 +121,7 @@ const NaturalProofsEditorToolbar = () => {
         buttonId={ButtonID.ImpliesIntroduction}
         sound={soundPlayer.keyboard}
         size='large'
+        onClick={createImplication}
         isDisabled={isImpliesIntroductionDisabled}
       />
       <Button
@@ -144,7 +155,13 @@ const NaturalProofsEditorToolbar = () => {
         onClick={eliminateDisjunction}
         isDisabled={isOrEliminationDisabled}
       />
-      <Button buttonId={ButtonID.ImpliesElimination} sound={soundPlayer.keyboard} size='large' isDisabled={isImpliesEliminationDisabled} />
+      <Button
+        buttonId={ButtonID.ImpliesElimination}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={eliminateImplication}
+        isDisabled={isImpliesEliminationDisabled}
+      />
       <Button
         buttonId={ButtonID.EquivElimination}
         sound={soundPlayer.keyboard}

@@ -122,6 +122,14 @@ export const propositionsNP = createSlice({
     eliminateEquivalence: (state) => {
       return state;
     },
+
+    eliminateImplication: (state) => {
+      return state;
+    },
+
+    createImplication: (state) => {
+      return state;
+    },
   },
 });
 

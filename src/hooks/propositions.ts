@@ -99,7 +99,7 @@ export const useImplicationDistributionPreview = (
   return output;
 };
 
-export const useImplicationEliminationEnabling = (): boolean => {
+export const useIsImplicationEliminationPossible = (selectedIds: string[]): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
   const formulas = useAppSelector(propositionsDPSelectors.getSelectedFormulas);
 
@@ -109,12 +109,12 @@ export const useImplicationEliminationEnabling = (): boolean => {
     } else {
       setIsEnabled(validator.isIEApplicable(formulas[0], formulas[1]));
     }
-  }, [formulas.length]);
+  }, [selectedIds.length]);
 
   return isEnabled;
 };
 
-export const usePremiseEnabling = (): boolean => {
+export const useIsPremisePossible = (): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
   const data = useAppSelector(propositionsNPSelectors.getTableData);
 
@@ -231,6 +231,33 @@ export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): bool
 
   useEffect(() => {
     setIsPossible(validator.isEEApplicable(formulas));
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
+
+export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+
+  useEffect(() => {
+    setIsPossible(validator.isIEforNPApplicable(formulas));
+  }, [selectedIds.length]);
+
+  return isPossible;
+};
+
+export const useIsImpliesIntroductionPossible = (selectedIds: string[]): boolean => {
+  const [isPossible, setIsPossible] = useState(false);
+  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+
+  useEffect(() => {
+    if (!items.length || items[0]?.level === 0) {
+      setIsPossible(false);
+    } else {
+      const isAllItemsInOneAssumption = items.every((item) => item.level === items[0].level);
+      setIsPossible(isAllItemsInOneAssumption);
+    }
   }, [selectedIds.length]);
 
   return isPossible;
