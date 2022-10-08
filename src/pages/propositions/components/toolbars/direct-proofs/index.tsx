@@ -4,7 +4,7 @@ import { ButtonID } from 'enums';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { soundPlayer } from 'helpers/sounds';
-import { useAppDispatch, useAppSelector, useImplicationEliminationEnabling } from 'hooks';
+import { useAppDispatch, useAppSelector, useIsImplicationEliminationPossible } from 'hooks';
 
 const DirectProofsEditorToolbar = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +12,7 @@ const DirectProofsEditorToolbar = () => {
   const tableDataLength = useAppSelector(selectors.getTableDataLength);
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
-  const isImplicationEliminationEnabled = useImplicationEliminationEnabling();
+  const isImplicationEliminationEnabled = useIsImplicationEliminationPossible(selectedIds);
   const isReplacerDisabled = tableDataLength === 0;
   const selectedItems = useAppSelector(selectors.getSelectedTableItems);
 
