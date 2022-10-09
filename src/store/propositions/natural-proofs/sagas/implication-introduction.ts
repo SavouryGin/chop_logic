@@ -15,7 +15,7 @@ export function* implicationIntroductionSaga(): SagaIterator {
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
-    const assumptionId: string | null = yield select(selectors.getLastItemAssumptionId);
+    const assumptionId: string | null = yield select(selectors.getPreviousLevelAssumptionId);
 
     const newItem = executor.performII({ level, dataLength, selectedItems, assumptionId });
 
