@@ -32,7 +32,7 @@ export interface ConfirmDeleteProofStepsPopupProps<
   dependencies: T[];
 }
 
-export type NPExecutorData = { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[] };
+export type NPExecutorData = { level: number; dataLength: number; selectedItems: NaturalProofsTableItem[]; assumptionId: string | null };
 
 export type NPCommentData = {
   item: NaturalProofsTableItem;
