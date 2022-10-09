@@ -25,4 +25,5 @@ export type NaturalProofsTableItem = ProofTableItem & {
   friendlyExpression: PropositionalExpression;
   level: number;
   formulaBase: NPFormulaBase;
+  assumptionId: string | null;
 };

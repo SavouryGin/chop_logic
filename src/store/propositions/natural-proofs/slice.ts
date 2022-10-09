@@ -52,6 +52,7 @@ export const propositionsNP = createSlice({
         formula,
         comment: { en: 'Premise', ru: 'Посылка' },
         formulaBase: NPFormulaBase.Premise,
+        assumptionId: null,
       };
       state.tableData = [...state.tableData, newItem];
     },
@@ -75,6 +76,7 @@ export const propositionsNP = createSlice({
         formula,
         comment: { en: 'Assumption', ru: 'Гипотеза' },
         formulaBase: NPFormulaBase.Assumption,
+        assumptionId: Guid.create().toString(),
       };
       state.tableData = [...state.tableData, newItem];
     },

@@ -46,7 +46,7 @@ const executor = {
     }
   },
 
-  performDI({ rawInput, level, dataLength, selectedItems }: NPExecutorData & { rawInput: string }): NaturalProofsTableItem[] {
+  performDI({ rawInput, level, dataLength, selectedItems, assumptionId }: NPExecutorData & { rawInput: string }): NaturalProofsTableItem[] {
     const newItems: NaturalProofsTableItem[] = [];
     let itemsCounter = dataLength + 1;
     const operand = converter.convertStringToExpression(rawInput);
@@ -61,6 +61,7 @@ const executor = {
 
       const firstNewItem: NaturalProofsTableItem = {
         level,
+        assumptionId,
         rawInput: `${rawInput}, ${item.rawInput}`,
         step: itemsCounter,
         id: Guid.create().toString(),
@@ -74,6 +75,7 @@ const executor = {
 
       const secondNewItem: NaturalProofsTableItem = {
         level,
+        assumptionId,
         rawInput: `${item.rawInput}, ${rawInput}`,
         step: itemsCounter + 1,
         id: Guid.create().toString(),
@@ -92,7 +94,7 @@ const executor = {
     return newItems;
   },
 
-  performCI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+  performCI({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem[] {
     let itemsCounter = dataLength + 1;
     const isOneItemSelected = selectedItems.length === 1;
     const isEqualItemsSelected =
@@ -107,6 +109,7 @@ const executor = {
       return [
         {
           level,
+          assumptionId,
           rawInput: `${selectedItems[0].rawInput}, ${selectedItems[0].rawInput}`,
           step: itemsCounter,
           id: Guid.create().toString(),
@@ -131,6 +134,7 @@ const executor = {
 
           newItems.push({
             level,
+            assumptionId,
             rawInput: `${restItem.rawInput}, ${item.rawInput}`,
             step: itemsCounter,
             id: Guid.create().toString(),
@@ -150,7 +154,7 @@ const executor = {
     }
   },
 
-  performDE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+  performDE({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
     const [item1, item2, item3] = selectedItems;
     const firstFormula = item1.formula;
@@ -169,6 +173,7 @@ const executor = {
 
     return {
       level,
+      assumptionId,
       step,
       id: Guid.create().toString(),
       rawInput: `${item1.rawInput}, ${item2.rawInput}, ${item3.rawInput}`,
@@ -181,7 +186,7 @@ const executor = {
     };
   },
 
-  performCE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+  performCE({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem[] {
     const newItems: NaturalProofsTableItem[] = [];
     let itemsCounter = dataLength + 1;
 
@@ -200,6 +205,7 @@ const executor = {
 
       const firstNewItem: NaturalProofsTableItem = {
         level,
+        assumptionId,
         rawInput: `${item.rawInput}`,
         step: itemsCounter,
         id: Guid.create().toString(),
@@ -213,6 +219,7 @@ const executor = {
 
       const secondNewItem: NaturalProofsTableItem = {
         level,
+        assumptionId,
         rawInput: `${item.rawInput}`,
         step: itemsCounter + 1,
         id: Guid.create().toString(),
@@ -231,7 +238,7 @@ const executor = {
     return newItems;
   },
 
-  performNI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+  performNI({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
     const [item1, item2] = selectedItems;
     const firstFormula = item1.formula;
@@ -253,6 +260,7 @@ const executor = {
 
     return {
       level,
+      assumptionId,
       step,
       id: Guid.create().toString(),
       rawInput: `${item1.rawInput}, ${item2.rawInput}`,
@@ -265,7 +273,7 @@ const executor = {
     };
   },
 
-  performNE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+  performNE({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
     const item = selectedItems[0];
     const selectedFormula = item.formula;
@@ -284,6 +292,7 @@ const executor = {
 
     return {
       level,
+      assumptionId,
       step,
       id: Guid.create().toString(),
       rawInput: `${item.rawInput}`,
@@ -296,7 +305,7 @@ const executor = {
     };
   },
 
-  performEI({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+  performEI({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem[] {
     // If F=>G and G=>F then F<=>G
     const step = dataLength + 1;
     const firstSelectedFormula = selectedItems[0].formula;
@@ -323,6 +332,7 @@ const executor = {
 
     const firstNewItem: NaturalProofsTableItem = {
       level,
+      assumptionId,
       rawInput: `${selectedItems[0].rawInput}, ${selectedItems[1].rawInput}`,
       step: step,
       id: Guid.create().toString(),
@@ -336,6 +346,7 @@ const executor = {
 
     const secondNewItem: NaturalProofsTableItem = {
       level,
+      assumptionId,
       rawInput: `${selectedItems[1].rawInput}, ${selectedItems[0].rawInput}`,
       step: step + 1,
       id: Guid.create().toString(),
@@ -350,7 +361,7 @@ const executor = {
     return [firstNewItem, secondNewItem];
   },
 
-  performEE({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem[] {
+  performEE({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem[] {
     const newItems: NaturalProofsTableItem[] = [];
     let itemsCounter = dataLength + 1;
 
@@ -376,6 +387,7 @@ const executor = {
 
       const firstNewItem: NaturalProofsTableItem = {
         step: itemsCounter,
+        assumptionId,
         id: Guid.create().toString(),
         formula: firstFormula,
         expression: firstExpression,
@@ -389,6 +401,7 @@ const executor = {
 
       const secondNewItem: NaturalProofsTableItem = {
         step: itemsCounter + 1,
+        assumptionId,
         id: Guid.create().toString(),
         formula: secondFormula,
         expression: secondExpression,
@@ -407,7 +420,7 @@ const executor = {
     return newItems;
   },
 
-  performIEforNP({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+  performIEforNP({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem {
     const step = dataLength + 1;
     const firstFormula = selectedItems[0].formula;
     const secondFormula = selectedItems[1].formula;
@@ -419,6 +432,7 @@ const executor = {
     return {
       level,
       step,
+      assumptionId,
       id: Guid.create().toString(),
       rawInput: `${selectedItems[0].rawInput}, ${selectedItems[1].rawInput}`,
       formulaBase: NPFormulaBase.IE,
@@ -433,7 +447,7 @@ const executor = {
     };
   },
 
-  performII({ level, dataLength, selectedItems }: NPExecutorData): NaturalProofsTableItem {
+  performII({ level, dataLength, selectedItems, assumptionId }: NPExecutorData): NaturalProofsTableItem {
     const firstSubProofItem = selectedItems[0];
     const lastSubProofItem = selectedItems[selectedItems.length - 1];
     const firstSubProofFormula = firstSubProofItem.formula;
@@ -448,6 +462,7 @@ const executor = {
     const expression = converter.convertFormulaToExpression(newFormula);
     const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
     const dependentOn = selectedItems.length > 1 ? [firstSubProofItem.id, lastSubProofItem.id] : [firstSubProofItem.id];
+    const newLevel = level - 1;
     const comment =
       selectedItems.length > 1
         ? {
@@ -460,8 +475,9 @@ const executor = {
           };
 
     return {
-      level: level - 1,
+      level: newLevel,
       step,
+      assumptionId,
       id: Guid.create().toString(),
       rawInput: `${firstSubProofItem.rawInput}, ${lastSubProofItem.rawInput}`,
       formulaBase: NPFormulaBase.II,
