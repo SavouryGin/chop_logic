@@ -160,9 +160,10 @@ export const useIsDPReplacePossible = (variable: string): boolean => {
 export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    if (formulas.length !== 3) {
+    if (formulas.length !== 3 || areSelectedItemsIncompatible) {
       setIsPossible(false);
     } else {
       // if F | G, F => H, G => H then H
@@ -176,9 +177,10 @@ export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
 export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    if (!formulas.length) {
+    if (!formulas.length || areSelectedItemsIncompatible) {
       setIsPossible(false);
     } else {
       setIsPossible(validator.isCEApplicable(formulas));
@@ -191,9 +193,10 @@ export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
 export const useIsNotIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    if (formulas.length !== 2) {
+    if (formulas.length !== 2 || areSelectedItemsIncompatible) {
       setIsPossible(false);
     } else {
       setIsPossible(validator.isNIApplicable(formulas));
@@ -206,9 +209,14 @@ export const useIsNotIntroductionPossible = (selectedIds: string[]): boolean => 
 export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    setIsPossible(validator.isNEApplicable(formulas));
+    if (areSelectedItemsIncompatible) {
+      setIsPossible(false);
+    } else {
+      setIsPossible(validator.isNEApplicable(formulas));
+    }
   }, [selectedIds.length]);
 
   return isPossible;
@@ -217,9 +225,14 @@ export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
 export const useIsEquivalenceIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    setIsPossible(validator.isEIApplicable(formulas));
+    if (areSelectedItemsIncompatible) {
+      setIsPossible(false);
+    } else {
+      setIsPossible(validator.isEIApplicable(formulas));
+    }
   }, [selectedIds.length]);
 
   return isPossible;
@@ -228,9 +241,14 @@ export const useIsEquivalenceIntroductionPossible = (selectedIds: string[]): boo
 export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    setIsPossible(validator.isEEApplicable(formulas));
+    if (areSelectedItemsIncompatible) {
+      setIsPossible(false);
+    } else {
+      setIsPossible(validator.isEEApplicable(formulas));
+    }
   }, [selectedIds.length]);
 
   return isPossible;
@@ -239,9 +257,14 @@ export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): bool
 export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    setIsPossible(validator.isIEforNPApplicable(formulas));
+    if (areSelectedItemsIncompatible) {
+      setIsPossible(false);
+    } else {
+      setIsPossible(validator.isIEforNPApplicable(formulas));
+    }
   }, [selectedIds.length]);
 
   return isPossible;
@@ -253,7 +276,7 @@ export const useIsImpliesIntroductionPossible = (selectedIds: string[]): boolean
   const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
 
   useEffect(() => {
-    if (!items.length || items[0]?.level === 0) {
+    if (!items.length || items[0]?.level === 0 || areSelectedItemsIncompatible) {
       setIsPossible(false);
     } else {
       const isAllItemsInOneAssumption = items.every((item) => item.level === items[0].level);
