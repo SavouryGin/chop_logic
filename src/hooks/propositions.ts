@@ -250,6 +250,7 @@ export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boo
 export const useIsImpliesIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+  const isFromDifferentSubProofs = useAppSelector(propositionsNPSelectors.getIsSelectedItemsFromDifferentAssumptions);
 
   useEffect(() => {
     if (!items.length || items[0]?.level === 0) {
