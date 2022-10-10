@@ -97,40 +97,25 @@ const getPreviousLevelAssumptionId = createSelector(getTableData, (data: Natural
   return data[0].assumptionId;
 });
 
-const getIsSelectedItemsFromDifferentAssumptions = createSelector(
-  getSelectedTableItems,
-  getTableData,
-  (selectedItems: NaturalProofsTableItem[], data: NaturalProofsTableItem[]): boolean => {
-    if (selectedItems.length <= 1) {
-      return false;
-    }
-
-    const firstSelectedItem = selectedItems.reduce((prev, current) => {
-      return prev.step < current.step ? prev : current;
-    });
-    const lastSelectedItem = selectedItems.reduce((prev, current) => {
-      return prev.step > current.step ? prev : current;
-    });
-    const firstSelectedItemIndex = firstSelectedItem.step - 1;
-    const lastSelectedItemIndex = lastSelectedItem.step - 1;
-
-    console.log(firstSelectedItem, firstSelectedItemIndex);
-    console.log(lastSelectedItem, lastSelectedItemIndex);
-
-    const initialLevel = firstSelectedItem.level;
-    console.log('initialLevel', initialLevel);
-
-    for (let i = firstSelectedItemIndex + 1; i < lastSelectedItemIndex; i++) {
-      if (data[i].level < initialLevel) {
-        console.log('inner item', i, data[i]);
-
-        return true;
-      }
-    }
-
+const getAreSelectedItemsIncompatible = createSelector(getSelectedTableItems, (selectedItems: NaturalProofsTableItem[]): boolean => {
+  if (selectedItems.length <= 1) {
     return false;
-  },
-);
+  }
+
+  const firstSelectedItem = selectedItems.reduce((prev, current) => {
+    return prev.step < current.step ? prev : current;
+  });
+
+  const initialLevel = firstSelectedItem.level;
+
+  selectedItems.forEach((item) => {
+    if (item.assumptionId !== firstSelectedItem.assumptionId && item.level >= initialLevel) {
+      return true;
+    }
+  });
+
+  return false;
+});
 
 export const propositionsNPSelectors = {
   getFlags,
@@ -149,5 +134,5 @@ export const propositionsNPSelectors = {
   getAllSubProofsItems,
   getLastItemAssumptionId,
   getPreviousLevelAssumptionId,
-  getIsSelectedItemsFromDifferentAssumptions,
+  getAreSelectedItemsIncompatible,
 };
