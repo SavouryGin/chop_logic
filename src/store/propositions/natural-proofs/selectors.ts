@@ -98,8 +98,10 @@ const getPreviousLevelAssumptionId = createSelector(getTableData, (data: Natural
 });
 
 const getAreSelectedItemsIncompatible = createSelector(getSelectedTableItems, (selectedItems: NaturalProofsTableItem[]): boolean => {
-  if (selectedItems.length <= 1) {
-    return false;
+  let areIncompatible = false;
+
+  if (!selectedItems.length) {
+    return areIncompatible;
   }
 
   const firstSelectedItem = selectedItems.reduce((prev, current) => {
@@ -110,11 +112,11 @@ const getAreSelectedItemsIncompatible = createSelector(getSelectedTableItems, (s
 
   selectedItems.forEach((item) => {
     if (item.assumptionId !== firstSelectedItem.assumptionId && item.level >= initialLevel) {
-      return true;
+      areIncompatible = true;
     }
   });
 
-  return false;
+  return areIncompatible;
 });
 
 export const propositionsNPSelectors = {
