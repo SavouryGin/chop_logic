@@ -97,28 +97,6 @@ const getPreviousLevelAssumptionId = createSelector(getTableData, (data: Natural
   return data[0].assumptionId;
 });
 
-const getAreSelectedItemsIncompatible = createSelector(getSelectedTableItems, (selectedItems: NaturalProofsTableItem[]): boolean => {
-  let areIncompatible = false;
-
-  if (!selectedItems.length) {
-    return areIncompatible;
-  }
-
-  const firstSelectedItem = selectedItems.reduce((prev, current) => {
-    return prev.step < current.step ? prev : current;
-  });
-
-  const initialLevel = firstSelectedItem.level;
-
-  selectedItems.forEach((item) => {
-    if (item.assumptionId !== firstSelectedItem.assumptionId && item.level >= initialLevel) {
-      areIncompatible = true;
-    }
-  });
-
-  return areIncompatible;
-});
-
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
@@ -136,5 +114,4 @@ export const propositionsNPSelectors = {
   getAllSubProofsItems,
   getLastItemAssumptionId,
   getPreviousLevelAssumptionId,
-  getAreSelectedItemsIncompatible,
 };
