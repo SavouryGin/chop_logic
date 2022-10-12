@@ -160,15 +160,13 @@ export const useIsDPReplacePossible = (variable: string): boolean => {
 export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const areSelectedItemsIncompatible = useAppSelector(propositionsNPSelectors.getAreSelectedItemsIncompatible);
+  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
 
   useEffect(() => {
-    if (formulas.length !== 3 || areSelectedItemsIncompatible) {
-      setIsPossible(false);
-    } else {
-      // if F | G, F => H, G => H then H
-      setIsPossible(validator.isDEApplicable(formulas[0], formulas[1], formulas[2]));
-    }
+    // if F | G, F => H, G => H then H
+    const isValid = validator.isDEItemsCompatible(items, currentLevel) && validator.isDEApplicable(formulas[0], formulas[1], formulas[2]);
+    setIsPossible(isValid);
   }, [selectedIds.length]);
 
   return isPossible;
