@@ -1,5 +1,6 @@
 import searcher from './searcher';
 import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
+import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { errorsTexts } from 'texts';
@@ -317,6 +318,23 @@ const validator = {
     }
 
     return this.isIEApplicable(formulas[0], formulas[1]);
+  },
+
+  isDEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 3) {
+      return false;
+    }
+
+    const isAllOnOneLevel = items.every((item) => item.level === items[0].level);
+    const isAllInOneSubProof = items.every((item) => item.assumptionId === items[0].assumptionId);
+
+    if (isAllOnOneLevel && isAllInOneSubProof) {
+      return true;
+    } else if (isAllOnOneLevel && !isAllInOneSubProof) {
+      return false;
+    } else {
+      return items.every((item) => item.level <= currentLevel);
+    }
   },
 };
 

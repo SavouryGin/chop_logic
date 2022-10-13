@@ -15,9 +15,10 @@ export function* disjunctionIntroductionSaga(action: { payload: string }): SagaI
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
+    const assumptionId: string | null = yield select(selectors.getLastItemAssumptionId);
     const rawInput = action.payload;
 
-    const newItems = executor.performDI({ rawInput, level, dataLength, selectedItems });
+    const newItems = executor.performDI({ rawInput, level, dataLength, selectedItems, assumptionId });
 
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
