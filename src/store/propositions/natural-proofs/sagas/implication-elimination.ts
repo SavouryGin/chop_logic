@@ -15,8 +15,9 @@ export function* implicationEliminationSaga(): SagaIterator {
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
+    const assumptionId: string | null = yield select(selectors.getLastItemAssumptionId);
 
-    const newItem = executor.performIEforNP({ level, dataLength, selectedItems });
+    const newItem = executor.performIEforNP({ level, dataLength, selectedItems, assumptionId });
 
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));

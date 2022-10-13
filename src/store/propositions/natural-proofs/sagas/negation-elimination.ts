@@ -15,7 +15,9 @@ export function* negationEliminationSaga(): SagaIterator {
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
-    const newItem = executor.performNE({ level, dataLength, selectedItems });
+    const assumptionId: string | null = yield select(selectors.getLastItemAssumptionId);
+
+    const newItem = executor.performNE({ level, dataLength, selectedItems, assumptionId });
 
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));

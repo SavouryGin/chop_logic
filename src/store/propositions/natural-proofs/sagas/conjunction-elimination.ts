@@ -15,8 +15,9 @@ export function* conjunctionEliminationSaga(): SagaIterator {
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
+    const assumptionId: string | null = yield select(selectors.getLastItemAssumptionId);
 
-    const newItems = executor.performCE({ level, dataLength, selectedItems });
+    const newItems = executor.performCE({ level, dataLength, selectedItems, assumptionId });
 
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
