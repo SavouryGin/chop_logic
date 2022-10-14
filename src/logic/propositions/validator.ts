@@ -297,18 +297,10 @@ const validator = {
   },
 
   isEEApplicable(formulas: PropositionalFormula[]): boolean {
-    if (!formulas.length) {
-      return false;
-    }
-
     return formulas.every((formula) => formula.operator === PropositionalOperator.Equiv);
   },
 
   isIEforNPApplicable(formulas: PropositionalFormula[]): boolean {
-    if (formulas.length !== 2) {
-      return false;
-    }
-
     return this.isIEApplicable(formulas[0], formulas[1]);
   },
 
@@ -358,6 +350,22 @@ const validator = {
   },
 
   isEIItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 2) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isEEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (!items.length) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isIEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
     if (items.length !== 2) {
       return false;
     }
