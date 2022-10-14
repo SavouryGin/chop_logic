@@ -217,9 +217,12 @@ export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
 export const useIsEquivalenceIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
 
   useEffect(() => {
-    setIsPossible(validator.isEIApplicable(formulas));
+    const isValid = validator.isEIItemsCompatible(items, currentLevel) && validator.isEIApplicable(formulas);
+    setIsPossible(isValid);
   }, [selectedIds.length]);
 
   return isPossible;
