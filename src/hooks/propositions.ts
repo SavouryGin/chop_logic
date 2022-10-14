@@ -231,9 +231,12 @@ export const useIsEquivalenceIntroductionPossible = (selectedIds: string[]): boo
 export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
 
   useEffect(() => {
-    setIsPossible(validator.isEEApplicable(formulas));
+    const isValid = validator.isEEItemsCompatible(items, currentLevel) && validator.isEEApplicable(formulas);
+    setIsPossible(isValid);
   }, [selectedIds.length]);
 
   return isPossible;
@@ -242,9 +245,12 @@ export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): bool
 export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
 
   useEffect(() => {
-    setIsPossible(validator.isIEforNPApplicable(formulas));
+    const isValid = validator.isIEItemsCompatible(items, currentLevel) && validator.isIEforNPApplicable(formulas);
+    setIsPossible(isValid);
   }, [selectedIds.length]);
 
   return isPossible;
