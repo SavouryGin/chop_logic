@@ -261,12 +261,8 @@ export const useIsImpliesIntroductionPossible = (selectedIds: string[]): boolean
   const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
 
   useEffect(() => {
-    if (!items.length || items[0]?.level === 0) {
-      setIsPossible(false);
-    } else {
-      const isAllItemsInOneAssumption = items.every((item) => item.level === items[0].level);
-      setIsPossible(isAllItemsInOneAssumption);
-    }
+    const isValid = validator.isIIItemsCompatible(items);
+    setIsPossible(isValid);
   }, [selectedIds.length]);
 
   return isPossible;
