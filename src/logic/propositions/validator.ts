@@ -320,11 +320,7 @@ const validator = {
     return this.isIEApplicable(formulas[0], formulas[1]);
   },
 
-  isDEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
-    if (items.length !== 3) {
-      return false;
-    }
-
+  isItemsLevelsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
     const isAllOnOneLevel = items.every((item) => item.level === items[0].level);
     const isAllInOneSubProof = items.every((item) => item.assumptionId === items[0].assumptionId);
 
@@ -335,6 +331,22 @@ const validator = {
     } else {
       return items.every((item) => item.level <= currentLevel);
     }
+  },
+
+  isDEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 3) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isCEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (!items.length) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
   },
 };
 
