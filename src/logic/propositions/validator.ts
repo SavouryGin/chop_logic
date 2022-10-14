@@ -267,10 +267,6 @@ const validator = {
   },
 
   isNEApplicable(formulas: PropositionalFormula[]): boolean {
-    if (formulas.length !== 1) {
-      return false;
-    }
-
     const formula = formulas[0];
     const subFormula = formula.values[0] as PropositionalFormula;
 
@@ -351,6 +347,14 @@ const validator = {
 
   isNIItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
     if (items.length !== 2) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isNEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 1) {
       return false;
     }
 
