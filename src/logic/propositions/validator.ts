@@ -348,6 +348,14 @@ const validator = {
 
     return this.isItemsLevelsCompatible(items, currentLevel);
   },
+
+  isNIItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 2) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
 };
 
 export default Object.freeze(validator);
