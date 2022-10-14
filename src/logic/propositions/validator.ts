@@ -372,6 +372,14 @@ const validator = {
 
     return this.isItemsLevelsCompatible(items, currentLevel);
   },
+
+  isIIItemsCompatible(items: NaturalProofsTableItem[]): boolean {
+    if (!items.length || items[0]?.level === 0) {
+      return false;
+    }
+
+    return items.every((item) => item.level === items[0].level);
+  },
 };
 
 export default Object.freeze(validator);
