@@ -175,13 +175,12 @@ export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
 export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
 
   useEffect(() => {
-    if (!formulas.length) {
-      setIsPossible(false);
-    } else {
-      setIsPossible(validator.isCEApplicable(formulas));
-    }
+    const isValid = validator.isCEItemsCompatible(items, currentLevel) && validator.isCEApplicable(formulas);
+    setIsPossible(isValid);
   }, [selectedIds.length]);
 
   return isPossible;
