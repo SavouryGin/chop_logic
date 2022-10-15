@@ -386,7 +386,7 @@ const validator = {
       selectedItems.length === 2 &&
       selectedItems[0].formulaBase === NPFormulaBase.Assumption &&
       lastItem?.id === selectedItems[1].id &&
-      selectedItems[0].level === selectedItems[1].level
+      selectedItems[0].assumptionId === selectedItems[1].assumptionId
     ) {
       return true;
     }
