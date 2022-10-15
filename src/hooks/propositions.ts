@@ -259,9 +259,10 @@ export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boo
 export const useIsImpliesIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
   const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
+  const lastItem = useAppSelector(propositionsNPSelectors.getLastTableItem);
 
   useEffect(() => {
-    const isValid = validator.isIIItemsCompatible(items);
+    const isValid = validator.isIIItemsCompatible(items, lastItem);
     setIsPossible(isValid);
   }, [selectedIds.length]);
 
