@@ -77,6 +77,11 @@ const getAllSubProofsItems = createSelector(
 
 const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[data.length - 1]?.level || 0);
 
+const getLastTableItem = createSelector(
+  getTableData,
+  (data: NaturalProofsTableItem[]): NaturalProofsTableItem | undefined => data[data.length - 1],
+);
+
 const getLastItemAssumptionId = createSelector(
   getTableData,
   (data: NaturalProofsTableItem[]): string | null => data[data.length - 1]?.assumptionId,
@@ -111,6 +116,7 @@ export const propositionsNPSelectors = {
   getSelectedTableItems,
   getLastTableItemLevel,
   getSelectedFormulas,
+  getLastTableItem,
   getAllSubProofsItems,
   getLastItemAssumptionId,
   getPreviousLevelAssumptionId,

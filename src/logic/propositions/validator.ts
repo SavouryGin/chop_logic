@@ -1,5 +1,5 @@
 import searcher from './searcher';
-import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
+import { LogicalSymbolRawInput, NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
@@ -373,12 +373,25 @@ const validator = {
     return this.isItemsLevelsCompatible(items, currentLevel);
   },
 
-  isIIItemsCompatible(items: NaturalProofsTableItem[]): boolean {
-    if (!items.length || items[0]?.level === 0) {
+  isIIItemsCompatible(selectedItems: NaturalProofsTableItem[], lastItem?: NaturalProofsTableItem): boolean {
+    if (!selectedItems.length || selectedItems.length > 2 || selectedItems[0].level === 0) {
       return false;
     }
 
-    return items.every((item) => item.level === items[0].level);
+    if (selectedItems.length === 1 && lastItem?.id === selectedItems[0].id) {
+      return true;
+    }
+
+    if (
+      selectedItems.length === 2 &&
+      selectedItems[0].formulaBase === NPFormulaBase.Assumption &&
+      lastItem?.id === selectedItems[1].id &&
+      selectedItems[0].level === selectedItems[1].level
+    ) {
+      return true;
+    }
+
+    return false;
   },
 };
 
