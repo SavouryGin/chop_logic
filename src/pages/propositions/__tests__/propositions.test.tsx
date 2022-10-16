@@ -3,7 +3,7 @@ import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
-import { propositionsTabs } from 'presets/propositions';
+import { propositionsDirectProofsTabs } from 'presets/propositions';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { titles } from 'texts/propositions';
@@ -34,11 +34,11 @@ describe('Propositions page:', () => {
   });
 
   it('renders the correct number of tabs', () => {
-    expect(screen.getAllByRole('tab')).toHaveLength(propositionsTabs.length);
+    expect(screen.getAllByRole('tab')).toHaveLength(propositionsDirectProofsTabs.length);
   });
 
   it('the tabs have correct titles', () => {
-    for (const item of propositionsTabs) {
+    for (const item of propositionsDirectProofsTabs) {
       expect(screen.getByTestId(item.tabId)).toHaveTextContent(item.tabTitle.en);
     }
   });

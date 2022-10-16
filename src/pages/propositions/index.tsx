@@ -2,21 +2,21 @@ import React from 'react';
 import TabList from 'components/tab-list';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Icon } from 'enums';
-import { propositionsTabs } from 'presets/propositions';
+import { propositionsDirectProofsTabs } from 'presets/propositions';
 import { settingsSelectors } from 'store/settings/selectors';
 import { titles } from 'texts/propositions';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const Propositions = () => {
+const PropositionsDirectProofs = () => {
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   return (
-    <article className='propositions'>
-      <h2 className={formatClassName(['propositions__title', Icon.Propositions])}>{titles.page[language]}</h2>
-      <TabList tabs={propositionsTabs} className='propositions__tabs' />
+    <article className='propositions-direct-proofs'>
+      <h2 className={formatClassName(['propositions-direct-proofs__title', Icon.Propositions])}>{titles.page[language]}</h2>
+      <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' />
     </article>
   );
 };
 
-export default Propositions;
+export default PropositionsDirectProofs;
