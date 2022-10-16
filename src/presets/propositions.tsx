@@ -1,10 +1,10 @@
-import AxiomSchemesForDirectPropositionProofs from 'pages/propositions/tabs/axiom-schemes';
-import DirectProofsEditor from 'pages/propositions/tabs/direct-proofs-editor';
-import DirectProofsPropositionDefinitions from 'pages/propositions/tabs/direct-proofs-definitions';
-import HeuristicsOfPropositions from 'pages/propositions/tabs/heuristics-of-propositions';
-import NaturalProofsEditor from 'pages/propositions/tabs/natural-proofs-editor';
+import AxiomSchemesForDirectPropositionProofs from 'pages/propositions/tabs/direct-proofs/axiom-schemes';
+import DirectProofsEditor from 'pages/propositions/tabs/direct-proofs/editor';
+import DirectProofsPropositionDefinitions from 'pages/propositions/tabs/direct-proofs/definitions';
+import HeuristicsOfPropositions from 'pages/propositions/tabs/natural-proofs/heuristics';
+import NaturalProofsEditor from 'pages/propositions/tabs/natural-proofs/editor';
 import React from 'react';
-import RulesOfInference from 'pages/propositions/tabs/rules-of-inference';
+import RulesOfInference from 'pages/propositions/tabs/natural-proofs/rules';
 import { GreekSymbol, LogicalSymbolHexCode, LogicalSymbolRawInput } from 'enums';
 import { PropositionalSymbol, TabItem } from 'types';
 import { titles } from 'texts';
