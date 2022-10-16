@@ -1,5 +1,6 @@
 import AxiomSchemesForDirectPropositionProofs from 'pages/propositions/tabs/axiom-schemes';
 import DirectProofsEditor from 'pages/propositions/tabs/direct-proofs-editor';
+import DirectProofsPropositionDefinitions from 'pages/propositions/tabs/direct-proofs-definitions';
 import HeuristicsOfPropositions from 'pages/propositions/tabs/heuristics-of-propositions';
 import NaturalProofsEditor from 'pages/propositions/tabs/natural-proofs-editor';
 import React from 'react';
@@ -14,7 +15,11 @@ export const propositionsDirectProofsTabs: TabItem[] = [
     tabTitle: titles.direct,
     tabId: 'direct-proofs-editor',
   },
-
+  {
+    tabContent: <DirectProofsPropositionDefinitions />,
+    tabTitle: titles.definitions,
+    tabId: 'direct-proofs-definitions',
+  },
   {
     tabContent: <AxiomSchemesForDirectPropositionProofs />,
     tabTitle: titles.axioms,
