@@ -1,4 +1,4 @@
-import DefinitionsOfPropositions from 'pages/propositions/tabs/definitions-of-propositions';
+import AxiomSchemesForDirectPropositionProofs from 'pages/propositions/tabs/axiom-schemes';
 import DirectProofsEditor from 'pages/propositions/tabs/direct-proofs-editor';
 import HeuristicsOfPropositions from 'pages/propositions/tabs/heuristics-of-propositions';
 import NaturalProofsEditor from 'pages/propositions/tabs/natural-proofs-editor';
@@ -8,21 +8,25 @@ import { GreekSymbol, LogicalSymbolHexCode, LogicalSymbolRawInput } from 'enums'
 import { PropositionalSymbol, TabItem } from 'types';
 import { titles } from 'texts';
 
-export const propositionsTabs: TabItem[] = [
+export const propositionsDirectProofsTabs: TabItem[] = [
   {
     tabContent: <DirectProofsEditor />,
     tabTitle: titles.direct,
     tabId: 'direct-proofs-editor',
   },
+
+  {
+    tabContent: <AxiomSchemesForDirectPropositionProofs />,
+    tabTitle: titles.axioms,
+    tabId: 'axiom-schemes-for-direct-proofs',
+  },
+];
+
+export const propositionsNaturalProofsTabs: TabItem[] = [
   {
     tabContent: <NaturalProofsEditor />,
     tabTitle: titles.natural,
     tabId: 'natural-proofs-editor',
-  },
-  {
-    tabContent: <DefinitionsOfPropositions />,
-    tabTitle: titles.definitions,
-    tabId: 'definitions-of-propositions',
   },
   {
     tabContent: <HeuristicsOfPropositions />,
