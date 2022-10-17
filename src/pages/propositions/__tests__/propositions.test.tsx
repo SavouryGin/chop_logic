@@ -1,4 +1,4 @@
-import Propositions from 'pages/propositions';
+import Propositions from 'pages/propositions/sub-pages/direct-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
