@@ -2,7 +2,7 @@ import AppLink from 'components/app-link';
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
-import { routesMap } from 'presets/map';
+import { routesMap } from 'pages/app-router/map';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
 import { useAppSelector } from 'hooks';

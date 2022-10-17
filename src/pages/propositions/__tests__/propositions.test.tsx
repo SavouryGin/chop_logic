@@ -3,7 +3,7 @@ import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
-import { propositionsDirectProofsTabs } from 'presets/propositions';
+import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { titles } from 'texts/propositions';
