@@ -2,7 +2,7 @@ import React from 'react';
 import TabList from 'components/tab-list';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Icon } from 'enums';
-import { propositionsDirectProofsTabs } from 'presets/propositions';
+import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
 import { titles } from 'texts/propositions';
 import { useAppSelector } from 'hooks';

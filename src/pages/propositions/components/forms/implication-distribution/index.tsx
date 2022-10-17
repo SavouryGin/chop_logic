@@ -2,7 +2,7 @@ import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
-import constants from 'presets/propositions';
+import constants from 'pages/propositions/constants';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
