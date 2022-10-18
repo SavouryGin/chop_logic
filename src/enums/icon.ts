@@ -32,4 +32,5 @@ export enum Icon {
   LinkedIn = 'chop-icon__linkedin-square',
   File = 'chop-icon__file-empty',
   Files = 'chop-icon__files-empty',
+  Facebook = 'chop-icon__facebook2',
 }

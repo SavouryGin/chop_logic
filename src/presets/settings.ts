@@ -10,4 +10,5 @@ export const externalLinks: { [key in string]: string } = {
   gitHub: 'https://github.com/SavouryGin',
   linkedIn: 'https://www.linkedin.com/in/dmitrii-suroviagin/',
   mail: 'mailto:Dmitrii.Suroviagin@gmail.com',
+  facebook: 'https://www.facebook.com/dmitrii.suroviagin',
 };
