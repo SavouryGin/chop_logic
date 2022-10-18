@@ -39,13 +39,13 @@ export const propositionsNaturalProofsTabs: TabItem[] = [
     tabId: 'natural-proofs-definitions',
   },
   {
-    tabContent: <HeuristicsOfPropositions />,
-    tabTitle: titles.heuristics,
-    tabId: 'heuristics-of-propositions',
-  },
-  {
     tabContent: <RulesOfInference />,
     tabTitle: titles.rules,
     tabId: 'rules-of-inference',
+  },
+  {
+    tabContent: <HeuristicsOfPropositions />,
+    tabTitle: titles.heuristics,
+    tabId: 'heuristics-of-propositions',
   },
 ];

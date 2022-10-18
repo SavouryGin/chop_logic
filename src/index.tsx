@@ -1,4 +1,4 @@
-import App from 'pages/app';
+import App from 'app';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client';
 import 'styles/icons.scss';
 import 'styles/reset.scss';
 
-// React 18 new root API
+// React 18 root API
 const rootContainer = document.getElementById('root');
 if (!rootContainer) {
   throw new Error('Failed to find the root element.');

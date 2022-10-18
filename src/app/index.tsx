@@ -1,4 +1,4 @@
-import AppRouter from 'pages/app-router';
+import AppRouter from 'router';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from 'store';
