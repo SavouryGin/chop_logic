@@ -29,4 +29,7 @@ export enum Icon {
   Check = 'chop-icon__checkbox-checked',
   Uncheck = 'chop-icon__checkbox-unchecked',
   Info = 'chop-icon__exclamation-triangle',
+  LinkedIn = 'chop-icon__linkedin-square',
+  File = 'chop-icon__file-empty',
+  Files = 'chop-icon__files-empty',
 }
