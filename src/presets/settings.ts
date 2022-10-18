@@ -8,5 +8,6 @@ export const languageOptions: SelectEntity[] = [
 export const externalLinks: { [key in string]: string } = {
   telegram: 'https://telegram.me/savoury_gin',
   gitHub: 'https://github.com/SavouryGin',
+  linkedIn: 'https://www.linkedin.com/in/dmitrii-suroviagin/',
   mail: 'mailto:Dmitrii.Suroviagin@gmail.com',
 };

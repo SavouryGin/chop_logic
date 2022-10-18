@@ -34,6 +34,9 @@ const Footer = ({ className }: CommonProps) => {
         <a href={externalLinks.gitHub} target='_blank' rel='noreferrer' className={Icon.Github} onMouseOver={onLinkHover}>
           GitHub
         </a>
+        <a href={externalLinks.linkedIn} target='_blank' rel='noreferrer' className={Icon.LinkedIn} onMouseOver={onLinkHover}>
+          LinkedIn
+        </a>
       </span>
     </footer>
   );

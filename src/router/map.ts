@@ -25,7 +25,7 @@ export const routesMap: RoutesMapItem[] = [
     url: paths[Page.PropositionsDirectProofs],
     element: PropositionsDirect,
     title: { en: 'Direct Proofs', ru: 'Прямые доказательства' },
-    icon: Icon.Propositions,
+    icon: Icon.File,
   },
   {
     id: Page.PropositionsNaturalProofs,
@@ -33,7 +33,7 @@ export const routesMap: RoutesMapItem[] = [
     url: paths[Page.PropositionsNaturalProofs],
     element: PropositionsNatural,
     title: { en: 'Natural Proofs', ru: 'Структурные доказательства' },
-    icon: Icon.Propositions,
+    icon: Icon.Files,
   },
   {
     id: Page.Predicates,
