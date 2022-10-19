@@ -11,6 +11,7 @@ const config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index-bundle.js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
