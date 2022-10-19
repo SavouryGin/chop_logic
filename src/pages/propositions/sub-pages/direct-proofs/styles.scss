@@ -1,39 +1,5 @@
-@import 'styles/variables/sizes.scss';
-@import 'styles/mixins/text-styles.scss';
+@import 'styles/mixins/page-styles.scss';
 
 .propositions-direct-proofs {
-  height: 100%;
-  display: grid;
-  grid-template-rows: 20px auto;
-
-  &__title {
-    font-size: $tiny-font-size;
-    padding: 0;
-    margin-bottom: $small-margin;
-    text-align: right;
-
-    &::before {
-      margin-right: $default-margin;
-    }
-  }
-
-  &__tabs {
-    .tab-list__tab {
-      font-size: $small-font-size;
-    }
-
-    .tab-list__content {
-      display: flex;
-      justify-content: start;
-      border-bottom: none;
-      padding-bottom: 0;
-      height: 90%;
-    }
-  }
-
-  @media (min-height: $min-big-screen-height) {
-    .tab-list__content {
-      height: 92%;
-    }
-  }
+  @include propositions-proofs-editor-styles();
 }
