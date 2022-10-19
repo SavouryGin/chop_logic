@@ -3,7 +3,7 @@ import validator from './validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 import { errorsTexts } from 'texts';
-import { preparedSymbols } from 'presets/propositions';
+import { preparedSymbols } from 'pages/propositions/constants';
 
 const parenthesizer = {
   parenthesizeVariables(expression: PropositionalExpression): PropositionalExpression {

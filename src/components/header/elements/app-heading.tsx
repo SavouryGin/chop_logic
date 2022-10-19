@@ -1,7 +1,7 @@
 import AppLink from 'components/app-link';
 import React from 'react';
 import { Page } from 'enums';
-import { paths } from 'presets/paths';
+import { paths } from 'router/paths';
 
 const AppHeading = () => {
   return (

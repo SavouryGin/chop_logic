@@ -5,17 +5,35 @@ import { paths } from './paths';
 
 const Predicates = React.lazy(() => import('pages/predicates'));
 const TruthTables = React.lazy(() => import('pages/truth-tables'));
-const Propositions = React.lazy(() => import('pages/propositions'));
+const PropositionsIntroduction = React.lazy(() => import('pages/propositions/sub-pages/introduction'));
+const PropositionsDirect = React.lazy(() => import('pages/propositions/sub-pages/direct-proofs'));
+const PropositionsNatural = React.lazy(() => import('pages/propositions/sub-pages/natural-proofs'));
 const Syllogisms = React.lazy(() => import('pages/syllogisms'));
 
 export const routesMap: RoutesMapItem[] = [
   {
-    id: Page.Propositions,
-    key: `page-${Page.Propositions}`,
-    url: paths[Page.Propositions],
-    element: Propositions,
+    id: Page.PropositionsIntro,
+    key: `page-${Page.PropositionsIntro}`,
+    url: paths[Page.PropositionsIntro],
+    element: PropositionsIntroduction,
     title: { en: 'Propositions', ru: 'Высказывания' },
     icon: Icon.Propositions,
+  },
+  {
+    id: Page.PropositionsDirectProofs,
+    key: `page-${Page.PropositionsDirectProofs}`,
+    url: paths[Page.PropositionsDirectProofs],
+    element: PropositionsDirect,
+    title: { en: 'Direct Proofs', ru: 'Прямые доказательства' },
+    icon: Icon.File,
+  },
+  {
+    id: Page.PropositionsNaturalProofs,
+    key: `page-${Page.PropositionsNaturalProofs}`,
+    url: paths[Page.PropositionsNaturalProofs],
+    element: PropositionsNatural,
+    title: { en: 'Natural Proofs', ru: 'Структурные доказательства' },
+    icon: Icon.Files,
   },
   {
     id: Page.Predicates,
