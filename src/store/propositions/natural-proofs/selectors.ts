@@ -48,34 +48,18 @@ const getAllSubProofsItems = createSelector(
   getSelectedTableItems,
   getTableData,
   (selectedItems: NaturalProofsTableItem[], data: NaturalProofsTableItem[]): NaturalProofsTableItem[] => {
-    const isAllSelectedItemsInOneSubProof = selectedItems.every((item) => item.level === selectedItems[0].level);
+    const selectedSubProofId = selectedItems[0].assumptionId;
 
-    if (!isAllSelectedItemsInOneSubProof) {
-      return [];
-    }
-
-    const itemsSplittedByLevel: NaturalProofsTableItem[][] = [];
-    let accumulator: NaturalProofsTableItem[] = [];
-
-    for (let i = 0; i < data.length; i++) {
-      const previousLevel = i > 1 ? data[i - 1].level : 0;
-      const currentLevel = data[i].level;
-
-      if (currentLevel === previousLevel) {
-        accumulator.push(data[i]);
-      } else {
-        itemsSplittedByLevel.push(accumulator);
-        accumulator = [data[i]];
-      }
-    }
-
-    itemsSplittedByLevel.push(accumulator);
-
-    return itemsSplittedByLevel.find((array) => array.includes(selectedItems[0])) || [];
+    return data.filter((item) => item.assumptionId !== null && item.assumptionId === selectedSubProofId);
   },
 );
 
 const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[data.length - 1]?.level || 0);
+
+const getLastTableItem = createSelector(
+  getTableData,
+  (data: NaturalProofsTableItem[]): NaturalProofsTableItem | undefined => data[data.length - 1],
+);
 
 const getLastItemAssumptionId = createSelector(
   getTableData,
@@ -111,6 +95,7 @@ export const propositionsNPSelectors = {
   getSelectedTableItems,
   getLastTableItemLevel,
   getSelectedFormulas,
+  getLastTableItem,
   getAllSubProofsItems,
   getLastItemAssumptionId,
   getPreviousLevelAssumptionId,

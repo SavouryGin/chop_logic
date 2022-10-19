@@ -1,5 +1,5 @@
 import searcher from './searcher';
-import { LogicalSymbolRawInput, PropositionalOperator } from 'enums';
+import { LogicalSymbolRawInput, NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
@@ -267,10 +267,6 @@ const validator = {
   },
 
   isNEApplicable(formulas: PropositionalFormula[]): boolean {
-    if (formulas.length !== 1) {
-      return false;
-    }
-
     const formula = formulas[0];
     const subFormula = formula.values[0] as PropositionalFormula;
 
@@ -282,10 +278,6 @@ const validator = {
   },
 
   isEIApplicable(formulas: PropositionalFormula[]): boolean {
-    if (formulas.length !== 2) {
-      return false;
-    }
-
     const [firstFormula, secondFormula] = formulas;
 
     if (firstFormula.operator !== PropositionalOperator.Implies || secondFormula.operator !== PropositionalOperator.Implies) {
@@ -305,26 +297,14 @@ const validator = {
   },
 
   isEEApplicable(formulas: PropositionalFormula[]): boolean {
-    if (!formulas.length) {
-      return false;
-    }
-
     return formulas.every((formula) => formula.operator === PropositionalOperator.Equiv);
   },
 
   isIEforNPApplicable(formulas: PropositionalFormula[]): boolean {
-    if (formulas.length !== 2) {
-      return false;
-    }
-
     return this.isIEApplicable(formulas[0], formulas[1]);
   },
 
-  isDEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
-    if (items.length !== 3) {
-      return false;
-    }
-
+  isItemsLevelsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
     const isAllOnOneLevel = items.every((item) => item.level === items[0].level);
     const isAllInOneSubProof = items.every((item) => item.assumptionId === items[0].assumptionId);
 
@@ -335,6 +315,83 @@ const validator = {
     } else {
       return items.every((item) => item.level <= currentLevel);
     }
+  },
+
+  isDEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 3) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isCEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (!items.length) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isNIItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 2) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isNEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 1) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isEIItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 2) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isEEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (!items.length) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isIEItemsCompatible(items: NaturalProofsTableItem[], currentLevel: number): boolean {
+    if (items.length !== 2) {
+      return false;
+    }
+
+    return this.isItemsLevelsCompatible(items, currentLevel);
+  },
+
+  isIIItemsCompatible(selectedItems: NaturalProofsTableItem[], lastItem?: NaturalProofsTableItem): boolean {
+    if (!selectedItems.length || selectedItems.length > 2 || selectedItems[0].level === 0) {
+      return false;
+    }
+
+    if (selectedItems.length === 1 && lastItem?.id === selectedItems[0].id) {
+      return true;
+    }
+
+    if (
+      selectedItems.length === 2 &&
+      selectedItems[0].formulaBase === NPFormulaBase.Assumption &&
+      lastItem?.id === selectedItems[1].id &&
+      selectedItems[0].assumptionId === selectedItems[1].assumptionId
+    ) {
+      return true;
+    }
+
+    return false;
   },
 };
 

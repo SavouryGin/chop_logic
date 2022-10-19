@@ -1,0 +1,5 @@
+@import 'styles/mixins/page-styles.scss';
+
+.propositions-direct-proofs {
+  @include propositions-proofs-editor-styles();
+}

@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import Table from 'components/table';
-import constants from 'presets/propositions';
+import constants from 'pages/propositions/constants';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { fillerText } from 'texts/propositions';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';

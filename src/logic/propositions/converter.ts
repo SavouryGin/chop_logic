@@ -6,7 +6,7 @@ import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalOperator } from 'enums';
 import { errorsTexts } from 'texts';
-import { preparedSymbols } from 'presets/propositions';
+import { preparedSymbols } from 'pages/propositions/constants';
 
 const converter = {
   convertStringToExpression(input: string): PropositionalExpression {

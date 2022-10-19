@@ -11,6 +11,7 @@ const config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index-bundle.js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -28,6 +29,8 @@ const config = {
       logic: path.resolve(__dirname, './src/logic'),
       texts: path.resolve(__dirname, './src/texts'),
       presets: path.resolve(__dirname, './src/presets'),
+      app: path.resolve(__dirname, './src/app'),
+      router: path.resolve(__dirname, './src/router'),
       __mocks__: path.resolve(__dirname, './src/__mocks__'),
     },
   },
