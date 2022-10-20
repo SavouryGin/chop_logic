@@ -12,9 +12,9 @@ const Syllogisms = React.lazy(() => import('pages/syllogisms'));
 
 export const routesMap: RoutesMapItem[] = [
   {
-    id: Page.PropositionsIntro,
-    key: `page-${Page.PropositionsIntro}`,
-    url: paths[Page.PropositionsIntro],
+    id: Page.Propositions,
+    key: `page-${Page.Propositions}`,
+    url: paths[Page.Propositions],
     element: PropositionsIntroduction,
     title: { en: 'Propositions', ru: 'Высказывания' },
     icon: Icon.Propositions,
@@ -26,6 +26,7 @@ export const routesMap: RoutesMapItem[] = [
     element: PropositionsDirect,
     title: { en: 'Direct Proofs', ru: 'Прямые доказательства' },
     icon: Icon.File,
+    parentPageId: Page.Propositions,
   },
   {
     id: Page.PropositionsNaturalProofs,
@@ -34,6 +35,7 @@ export const routesMap: RoutesMapItem[] = [
     element: PropositionsNatural,
     title: { en: 'Natural Proofs', ru: 'Структурные доказательства' },
     icon: Icon.Files,
+    parentPageId: Page.Propositions,
   },
   {
     id: Page.Predicates,

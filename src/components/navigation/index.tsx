@@ -13,7 +13,9 @@ const Navigation = (props: CommonProps) => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
 
-  const links = routesMap.map((item) => {
+  const topLinksMap = routesMap.filter((item) => !item.parentPageId);
+
+  const topLinks = topLinksMap.map((item) => {
     return (
       <li key={item.key}>
         <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
@@ -24,7 +26,7 @@ const Navigation = (props: CommonProps) => {
   return (
     <nav className={navigationClassNames}>
       <h2 className='navigation__header'>{uiElementTexts.navHeader[language]}</h2>
-      <ul className='navigation__list'>{links}</ul>
+      <ul className='navigation__list'>{topLinks}</ul>
     </nav>
   );
 };
