@@ -9,12 +9,28 @@ export function getNavigationLinksList(routesMap: RoutesMapItem[], language: Lan
   console.log(groupedLinks);
 
   return topLinksMap.map((item) => {
-    return (
-      <li key={item.key}>
-        <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
-      </li>
-    );
+    const pageId = item.id.toString();
+
+    if (Object.keys(groupedLinks).includes(pageId)) {
+      console.log(pageId);
+
+      return (
+        <li key={item.key}>
+          <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
+        </li>
+      );
+    } else {
+      return getNavigationListItem(item, language);
+    }
   });
+}
+
+function getNavigationListItem(item: RoutesMapItem, language: Language): JSX.Element {
+  return (
+    <li key={item.key}>
+      <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
+    </li>
+  );
 }
 
 function groupRoutesMapItemsByParentPage(arr: RoutesMapItem[]) {
