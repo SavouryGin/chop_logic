@@ -1,28 +1,28 @@
 import AppLink from 'components/app-link';
 import React from 'react';
 import { Language, RoutesMapItem } from 'types';
+import { Page } from 'enums';
 
-export function getNavigationLinksList(routesMap: RoutesMapItem[], language: Language): JSX.Element[] {
-  const topLinksMap = routesMap.filter((item) => !item.parentPageId);
-
+export function getNavigationLinksList(routesMap: RoutesMapItem[], language: Language): React.ReactElement {
   const groupedLinks = groupRoutesMapItemsByParentPage(routesMap);
-  console.log(groupedLinks);
+  const topLinksMap = groupedLinks[Page.Home.toString()];
 
-  return topLinksMap.map((item) => {
+  const links = topLinksMap.map((item) => {
     const pageId = item.id.toString();
 
     if (Object.keys(groupedLinks).includes(pageId)) {
-      console.log(pageId);
-
       return (
         <li key={item.key}>
           <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
+          <ul className='navigation__nested-list'>{groupedLinks[pageId].map((x) => getNavigationListItem(x, language))}</ul>
         </li>
       );
     } else {
       return getNavigationListItem(item, language);
     }
   });
+
+  return <ul className='navigation__list'>{links}</ul>;
 }
 
 function getNavigationListItem(item: RoutesMapItem, language: Language): JSX.Element {

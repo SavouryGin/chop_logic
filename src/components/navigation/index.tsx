@@ -16,7 +16,7 @@ const Navigation = (props: CommonProps) => {
   return (
     <nav className={navigationClassNames}>
       <h2 className='navigation__header'>{uiElementTexts.navHeader[language]}</h2>
-      <ul className='navigation__list'>{getNavigationLinksList(routesMap, language)}</ul>
+      {getNavigationLinksList(routesMap, language)}
     </nav>
   );
 };
