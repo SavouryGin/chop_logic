@@ -18,6 +18,7 @@ export const routesMap: RoutesMapItem[] = [
     element: PropositionsIntroduction,
     title: { en: 'Propositions', ru: 'Высказывания' },
     icon: Icon.Propositions,
+    parentPageId: Page.Home,
   },
   {
     id: Page.PropositionsDirectProofs,
@@ -44,6 +45,7 @@ export const routesMap: RoutesMapItem[] = [
     element: Predicates,
     title: { en: 'Predicates', ru: 'Предикаты' },
     icon: Icon.Predicates,
+    parentPageId: Page.Home,
   },
   {
     id: Page.TruthTables,
@@ -52,6 +54,7 @@ export const routesMap: RoutesMapItem[] = [
     element: TruthTables,
     title: { en: 'Truth Tables', ru: 'Таблицы' },
     icon: Icon.TruthTables,
+    parentPageId: Page.Home,
   },
   {
     id: Page.Syllogisms,
@@ -60,5 +63,6 @@ export const routesMap: RoutesMapItem[] = [
     element: Syllogisms,
     title: { en: 'Syllogisms', ru: 'Силлогизмы' },
     icon: Icon.Syllogisms,
+    parentPageId: Page.Home,
   },
 ];

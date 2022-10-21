@@ -16,7 +16,7 @@ export type RoutesMapItem = {
   title: LocalText;
   key: string;
   icon: Icon;
-  parentPageId?: Page;
+  parentPageId: Page;
 };
 
 export type PathDictionary = {
