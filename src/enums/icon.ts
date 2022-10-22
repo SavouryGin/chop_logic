@@ -33,4 +33,6 @@ export enum Icon {
   File = 'chop-icon__file-empty',
   Files = 'chop-icon__files-empty',
   Facebook = 'chop-icon__facebook2',
+  CaretUp = 'chop-icon__caret-up',
+  CaretDown = 'chop-icon__caret-down',
 }
