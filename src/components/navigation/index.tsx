@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { getNavigationLinksList } from './helpers';
@@ -21,4 +21,4 @@ const Navigation = (props: CommonProps) => {
   );
 };
 
-export default Navigation;
+export default memo(Navigation);
