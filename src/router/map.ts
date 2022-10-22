@@ -54,7 +54,7 @@ export const routesMap: RoutesMapItem[] = [
     element: TruthTables,
     title: { en: 'Truth Tables', ru: 'Таблицы' },
     icon: Icon.TruthTables,
-    parentPageId: Page.Home,
+    parentPageId: Page.Propositions,
   },
   {
     id: Page.Syllogisms,

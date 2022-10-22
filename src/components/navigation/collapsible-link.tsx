@@ -4,17 +4,14 @@ import ShowMoreButton from 'components/controls/show-more-button';
 import { Language, RoutesMapItem } from 'types';
 import { getNavigationListItem } from './helpers';
 
-const CollapsibleLink = ({
-  item,
-  language,
-  groupedLinks,
-  pageId,
-}: {
+type CollapsibleLinkProps = {
   item: RoutesMapItem;
   language: Language;
   pageId: string;
   groupedLinks: { [x: string]: RoutesMapItem[] };
-}): React.ReactElement => {
+};
+
+const CollapsibleLink = ({ item, language, groupedLinks, pageId }: CollapsibleLinkProps): React.ReactElement => {
   const [isOpened, setIsOpened] = useState(false);
 
   const onShowMore = () => {
