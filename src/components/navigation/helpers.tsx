@@ -1,4 +1,5 @@
 import AppLink from 'components/app-link';
+import CollapsibleLink from './collapsible-link';
 import React from 'react';
 import { Language, RoutesMapItem } from 'types';
 import { Page } from 'enums';
@@ -13,8 +14,7 @@ export function getNavigationLinksList(routesMap: RoutesMapItem[], language: Lan
     if (Object.keys(groupedLinks).includes(pageId)) {
       return (
         <li key={item.key}>
-          <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
-          <ul className='navigation__nested-list'>{groupedLinks[pageId].map((x) => getNavigationListItem(x, language))}</ul>
+          <CollapsibleLink item={item} language={language} groupedLinks={groupedLinks} pageId={pageId} />
         </li>
       );
     } else {
@@ -25,7 +25,7 @@ export function getNavigationLinksList(routesMap: RoutesMapItem[], language: Lan
   return <ul className='navigation__list'>{links}</ul>;
 }
 
-function getNavigationListItem(item: RoutesMapItem, language: Language): JSX.Element {
+export function getNavigationListItem(item: RoutesMapItem, language: Language): JSX.Element {
   return (
     <li key={item.key}>
       <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
