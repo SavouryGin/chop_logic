@@ -12,12 +12,20 @@
     color: $light-strong-accent-color;
   }
 
-  &--dark {
+  &_dark {
     background-color: $dark-background-color;
     color: $dark-font-color;
 
     &:hover {
       color: $dark-strong-accent-color;
     }
+  }
+
+  &:focus-visible {
+    outline: $light-outline;
+  }
+
+  &_dark:focus-visible {
+    outline: $dark-outline;
   }
 }
