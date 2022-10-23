@@ -1,0 +1,26 @@
+import React from 'react';
+import formatClassName from 'helpers/formatters/format-class-name';
+import { CommonProps } from 'types';
+import { Icon } from 'enums';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks';
+import './styles.scss';
+
+type ShowMoreButtonProps = CommonProps & {
+  onClick: () => void;
+  isOpened: boolean;
+  isDisabled?: boolean;
+};
+
+const ShowMoreButton = ({ onClick, isOpened, ...rest }: ShowMoreButtonProps): React.ReactElement => {
+  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const buttonClass = formatClassName([
+    'show-more-button',
+    rest.className,
+    { [Icon.CaretUp]: isOpened, [Icon.CaretDown]: !isOpened, 'show-more-button_dark': isDarkMode },
+  ]);
+
+  return <button onClick={onClick} type='button' id={rest.id} disabled={rest.isDisabled} className={buttonClass}></button>;
+};
+
+export default ShowMoreButton;

@@ -26,6 +26,15 @@
     }
   }
 
+  &__nested-list {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    li {
+      font-size: $tiny-font-size;
+    }
+  }
+
   // Small screen styles
   @media (max-width: $max-small-screen-width) {
     li {
