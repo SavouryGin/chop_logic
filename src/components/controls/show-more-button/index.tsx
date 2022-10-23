@@ -17,7 +17,7 @@ const ShowMoreButton = ({ onClick, isOpened, ...rest }: ShowMoreButtonProps): Re
   const buttonClass = formatClassName([
     'show-more-button',
     rest.className,
-    { [Icon.CaretUp]: isOpened, [Icon.CaretDown]: !isOpened, 'show-more-button--dark': isDarkMode },
+    { [Icon.CaretUp]: isOpened, [Icon.CaretDown]: !isOpened, 'show-more-button_dark': isDarkMode },
   ]);
 
   return <button onClick={onClick} type='button' id={rest.id} disabled={rest.isDisabled} className={buttonClass}></button>;
