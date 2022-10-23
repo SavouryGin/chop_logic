@@ -1,7 +1,7 @@
 export enum Page {
   Home,
   NotFound,
-  PropositionsIntro,
+  Propositions,
   PropositionsDirectProofs,
   PropositionsNaturalProofs,
   Predicates,

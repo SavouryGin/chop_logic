@@ -1,0 +1,31 @@
+@import 'styles/variables/colors.scss';
+
+.show-more-button {
+  border: none;
+  cursor: pointer;
+  background-color: $light-background-color;
+  color: $light-font-color;
+  text-align: center;
+  vertical-align: top;
+
+  &:hover {
+    color: $light-strong-accent-color;
+  }
+
+  &_dark {
+    background-color: $dark-background-color;
+    color: $dark-font-color;
+
+    &:hover {
+      color: $dark-strong-accent-color;
+    }
+  }
+
+  &:focus-visible {
+    outline: $light-outline;
+  }
+
+  &_dark:focus-visible {
+    outline: $dark-outline;
+  }
+}
