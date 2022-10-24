@@ -5,7 +5,6 @@ import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
-import { closeNaturalProofsPopup } from 'pages/propositions/helpers';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector, usePropositionalFormulaPreview } from 'hooks';
@@ -33,7 +32,7 @@ const OrIntroductionForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(actions.createDisjunction(formValue.orValue));
-    closeNaturalProofsPopup(dispatch, 'isOrIntroductionFormOpened');
+    dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: false }));
   };
 
   return (

@@ -9,9 +9,8 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const Navigation = (props: CommonProps) => {
-  const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
+  const navigationClassNames = formatClassName(['navigation', props.className]);
 
   return (
     <nav className={navigationClassNames}>

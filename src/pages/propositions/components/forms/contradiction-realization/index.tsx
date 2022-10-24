@@ -6,7 +6,6 @@ import constants from 'pages/propositions/constants';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
-import { closeDirectProofsPopup } from 'pages/propositions/helpers';
 import { formsTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';
@@ -32,7 +31,7 @@ const ContradictionRealizationForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(actions.createContradictionRealization({ ...values }));
-    closeDirectProofsPopup(dispatch, 'isContradictionRealizationOpened');
+    dispatch(actions.setUpFlag({ flag: 'isContradictionRealizationOpened', value: false }));
   };
 
   const takeValues = (input: FormValues) => setValues(input as typeof constants.contradictionRealization);
