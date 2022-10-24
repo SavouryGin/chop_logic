@@ -20,12 +20,7 @@ const AppSettings = ({ className }: CommonProps) => {
   const settingsClassNames = formatClassName(['settings', className]);
 
   const closePopup = () => {
-    dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
-    // wait for closing CSS animation
-    setTimeout(() => {
-      dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false }));
-      dispatch(settingsActions.toggleFlag('isModalWindowClosingAnimationActive'));
-    }, 500);
+    dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false }));
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

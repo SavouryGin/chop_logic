@@ -11,12 +11,6 @@ const getIsDarkMode = createSelector(getSettingsFlags, (data: SettingsFlags): bo
 const getIsFullScreen = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isFullScreen);
 const getIsSettingOpened = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isSettingOpen);
 const getIsSoundsEnabled = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isSoundsEnabled);
-const getIsMenuAnimationActive = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isMenuAnimationActive);
-const getIsSidebarAnimationActive = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isSidebarAnimationActive);
-const getIsModalWindowClosingAnimationActive = createSelector(
-  getSettingsFlags,
-  (data: SettingsFlags): boolean => data.isModalWindowClosingAnimationActive,
-);
 
 export const settingsSelectors = {
   getSettingsFlags,
@@ -27,7 +21,4 @@ export const settingsSelectors = {
   getIsFullScreen,
   getIsSettingOpened,
   getIsSoundsEnabled,
-  getIsMenuAnimationActive,
-  getIsSidebarAnimationActive,
-  getIsModalWindowClosingAnimationActive,
 };

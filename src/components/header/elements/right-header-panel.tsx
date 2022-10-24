@@ -18,16 +18,7 @@ const RightHeaderPanel = () => {
 
   // Handlers
   const onClickSidebarButton = () => {
-    if (isSidebarOpened) {
-      dispatch(settingsActions.toggleFlag('isSidebarAnimationActive'));
-      // wait for closing animation
-      setTimeout(() => {
-        dispatch(settingsActions.toggleFlag('isSidebarOpen'));
-        dispatch(settingsActions.toggleFlag('isSidebarAnimationActive'));
-      }, 500);
-    } else {
-      dispatch(settingsActions.toggleFlag('isSidebarOpen'));
-    }
+    dispatch(settingsActions.toggleFlag('isSidebarOpen'));
   };
 
   const onClickSettingButton = () => {
