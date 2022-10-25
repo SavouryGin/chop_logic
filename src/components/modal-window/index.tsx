@@ -1,4 +1,4 @@
-import ModalWindowContent from './elements/modal-window-contents';
+import ModalLayout from './elements/modal-layout';
 import Portal from 'components/portal';
 import React from 'react';
 import formatClassName from 'helpers/formatters/format-class-name';
@@ -12,6 +12,7 @@ import './styles.scss';
 const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps) => {
   const isMounted = useMount(isOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isClosing = isMounted && !isOpened;
 
   if (!isMounted) {
     return null;
@@ -22,22 +23,20 @@ const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps
     'modal-window__content',
     { 'modal-window__content_dark': isDarkMode, 'modal-window__content_for-firefox': browser === Browser.Firefox },
   ]);
-  const backgroundClassNames = formatClassName(['modal-background', { 'modal-background_dark': isDarkMode }]);
-  const windowClassNames = formatClassName(['modal-window', className, { 'modal-window_dark': isDarkMode }]);
-
-  const onClickClose = () => {
-    onClose();
-  };
+  const backgroundClassNames = formatClassName([
+    'modal-background',
+    { 'modal-background_dark': isDarkMode, 'modal-background_closing': isClosing },
+  ]);
+  const windowClassNames = formatClassName([
+    'modal-window',
+    className,
+    { 'modal-window_dark': isDarkMode, 'modal-window_closing': isClosing },
+  ]);
 
   return (
     <Portal>
       <div className={backgroundClassNames}>
-        <ModalWindowContent
-          windowClassNames={windowClassNames}
-          contentClassNames={contentClassNames}
-          onClickClose={onClickClose}
-          {...rest}
-        />
+        <ModalLayout windowClassName={windowClassNames} contentClassName={contentClassNames} onClose={onClose} {...rest} />
       </div>
     </Portal>
   );
