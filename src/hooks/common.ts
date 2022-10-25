@@ -29,7 +29,7 @@ export const useHover = <T>(): [MutableRefObject<T>, boolean] => {
   return [ref, value];
 };
 
-export const useMount = (isOpened: boolean): boolean => {
+export const useMount = (isOpened: boolean, delay: number = 300): boolean => {
   const [isMounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const useMount = (isOpened: boolean): boolean => {
     } else if (!isOpened && isMounted) {
       setTimeout(() => {
         setMounted(false);
-      }, 300);
+      }, delay);
     }
   }, [isOpened]);
 

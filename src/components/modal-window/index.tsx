@@ -1,6 +1,6 @@
 import ModalWindowContent from './elements/modal-window-contents';
+import Portal from 'components/portal';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import formatClassName from 'helpers/formatters/format-class-name';
 import { Browser } from 'enums';
 import { ModalWindowProps } from 'types';
@@ -11,14 +11,13 @@ import './styles.scss';
 
 const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps) => {
   const isMounted = useMount(isOpened);
+  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+
   if (!isMounted) {
     return null;
   }
 
-  const targetElement = document.getElementById('modal');
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const browser = detectBrowser(navigator.userAgent);
-
   const contentClassNames = formatClassName([
     'modal-window__content',
     { 'modal-window__content_dark': isDarkMode, 'modal-window__content_for-firefox': browser === Browser.Firefox },
@@ -30,13 +29,18 @@ const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps
     onClose();
   };
 
-  const portal = (
-    <div className={backgroundClassNames}>
-      <ModalWindowContent windowClassNames={windowClassNames} contentClassNames={contentClassNames} onClickClose={onClickClose} {...rest} />
-    </div>
+  return (
+    <Portal>
+      <div className={backgroundClassNames}>
+        <ModalWindowContent
+          windowClassNames={windowClassNames}
+          contentClassNames={contentClassNames}
+          onClickClose={onClickClose}
+          {...rest}
+        />
+      </div>
+    </Portal>
   );
-
-  return !isOpened || !targetElement ? null : ReactDOM.createPortal(portal, targetElement);
 };
 
 export default ModalWindow;
