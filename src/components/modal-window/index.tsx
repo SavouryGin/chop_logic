@@ -6,10 +6,15 @@ import { Browser } from 'enums';
 import { ModalWindowProps } from 'types';
 import { detectBrowser } from 'helpers/checkers';
 import { settingsSelectors } from 'store/settings/selectors';
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';
 
 const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps) => {
+  const isMounted = useMount(isOpened);
+  if (!isMounted) {
+    return null;
+  }
+
   const targetElement = document.getElementById('modal');
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const browser = detectBrowser(navigator.userAgent);
