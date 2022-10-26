@@ -5,12 +5,18 @@ import { getNavigationLinksList } from './helpers';
 import { routesMap } from 'router/map';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';
 
-const Navigation = (props: CommonProps) => {
+const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }): React.ReactElement | null => {
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const navigationClassNames = formatClassName(['navigation', props.className]);
+  const isMounted = useMount(isOpened);
+  const isClosing = isMounted && !isOpened;
+  if (!isMounted) {
+    return null;
+  }
+
+  const navigationClassNames = formatClassName(['navigation', className, { navigation_closing: isClosing }]);
 
   return (
     <nav className={navigationClassNames}>

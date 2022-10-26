@@ -24,8 +24,8 @@ const Layout = () => {
 
   return (
     <div className={layoutClassNames} data-testid='layout'>
-      {isNavigationOpen && <Navigation className={navigationClassNames} />}
-      {isSidebarOpen && <Sidebar className={sidebarClassNames} />}
+      <Navigation className={navigationClassNames} isOpened={isNavigationOpen} />
+      <Sidebar className={sidebarClassNames} isOpened={isSidebarOpen} />
       <Header className={headerClassNames} />
       <main className={mainClassNames}>
         <Outlet />
