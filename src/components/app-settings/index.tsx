@@ -1,7 +1,7 @@
 import AppSettingsInputs from './elements';
 import Form from 'components/controls/form';
 import React, { useState } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { AppSettingInitialValues, CommonProps, FormValues } from 'types';
 import { ButtonID } from 'enums';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
@@ -17,7 +17,7 @@ const AppSettings = ({ className }: CommonProps) => {
     language: useAppSelector(selectors.getLanguage),
   };
   const [formValues, setFormValues] = useState(settingsInitialValues);
-  const settingsClassNames = formatClassName(['settings', className]);
+  const settingsClassNames = formatClass(['settings', className]);
 
   const closePopup = () => {
     dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false }));

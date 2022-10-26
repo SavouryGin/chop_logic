@@ -1,6 +1,6 @@
 import React from 'react';
 import TabList from 'components/tab-list';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { Icon } from 'enums';
 import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -13,7 +13,7 @@ const PropositionsDirectProofs = () => {
 
   return (
     <article className='propositions-direct-proofs'>
-      <h2 className={formatClassName(['propositions-direct-proofs__title', Icon.Propositions])}>{titles.page[language]}</h2>
+      <h2 className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}>{titles.page[language]}</h2>
       <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' />
     </article>
   );

@@ -8,7 +8,7 @@ import ModalWindow from 'components/modal-window';
 import PremiseForm from 'pages/propositions/components/forms/premise';
 import React from 'react';
 import ReplacerForm from 'pages/propositions/components/forms/replacer';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -28,7 +28,7 @@ const DirectProofsEditor = () => {
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
   const dependencies = useAppSelector(selectors.getDependentItems);
 
-  const editorClass = formatClassName(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
+  const editorClass = formatClass(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
 
   const closePremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: false }));

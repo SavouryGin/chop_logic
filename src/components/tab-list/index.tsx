@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Tab from './elements/tab';
 import TabContent from './elements/tab-content';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { TabListProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
@@ -9,11 +9,7 @@ import './styles.scss';
 
 const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal' }: TabListProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const tabsClassNames = formatClassName([
-    'tab-list',
-    className,
-    { 'tab-list_dark': isDarkMode, 'tab-list_vertical': mode === 'vertical' },
-  ]);
+  const tabsClassNames = formatClass(['tab-list', className, { 'tab-list_dark': isDarkMode, 'tab-list_vertical': mode === 'vertical' }]);
   const tabIds = tabs.map((item) => item.tabId);
   const defaultId = defaultTabId && tabIds.includes(defaultTabId) ? defaultTabId : tabIds[0];
   const [activeTab, setActiveTab] = useState(defaultId);

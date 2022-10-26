@@ -1,6 +1,6 @@
 import Label from '../label';
 import React, { memo, useContext, useState } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { FormContext } from 'components/controls/form';
 import { TextInputProps } from 'types';
 import { inputTexts } from 'texts';
@@ -29,7 +29,7 @@ const TextInput = ({
   const language = useAppSelector(settingsSelectors.getLanguage);
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
-  const inputClassNames = formatClassName([
+  const inputClassNames = formatClass([
     className,
     'text-input',
     {
@@ -39,7 +39,7 @@ const TextInput = ({
       'text-input_disabled': !!isDisabled,
     },
   ]);
-  const fieldClassNames = formatClassName(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
+  const fieldClassNames = formatClass(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
   const calculatedId = id || `text_input_id_${inputId}`;
   const labelText = label || inputTexts[inputId].label[language];
   const placeholderText = placeholder || inputTexts[inputId]?.placeholder?.[language];
