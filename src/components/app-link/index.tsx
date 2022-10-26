@@ -1,5 +1,5 @@
 import React from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { AppLinkProps } from 'types';
 import { Link, NavLink } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -10,7 +10,7 @@ import './styles.scss';
 const AppLink = ({ path, text, isNavigation, icon, ...rest }: AppLinkProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const classNames = formatClassName(['app-link', rest.className, { 'app-link_dark': isDarkMode }]);
+  const classNames = formatClass(['app-link', rest.className, { 'app-link_dark': isDarkMode }]);
 
   const onLinkHover = () => {
     isSoundsEnabled && soundPlayer.snap.play();

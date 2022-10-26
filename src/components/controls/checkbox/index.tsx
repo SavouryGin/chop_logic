@@ -1,6 +1,6 @@
 import Label from '../label';
 import React, { memo, useContext, useEffect, useState } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { CheckboxProps } from 'types';
 import { FormContext } from 'components/controls/form';
 import { Guid } from 'guid-typescript';
@@ -33,9 +33,9 @@ const Checkbox = ({
   const { onChangeInput } = formContext;
   const calculatedId = inputId ? `checkbox_id_${inputId}` : id || Guid.create().toString();
   const labelText = inputId ? inputTexts[inputId].label[language] : label;
-  const checkboxClassNames = formatClassName(['checkbox-input', className, { 'checkbox-input_disabled': !!isDisabled }]);
-  const inputClassNames = formatClassName(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
-  const labelClassNames = formatClassName([
+  const checkboxClassNames = formatClass(['checkbox-input', className, { 'checkbox-input_disabled': !!isDisabled }]);
+  const inputClassNames = formatClass(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
+  const labelClassNames = formatClass([
     'checkbox-input__label',
     { [Icon.Check]: isChecked, [Icon.Uncheck]: !isChecked, 'checkbox-input__label_dark': isDarkMode },
   ]);

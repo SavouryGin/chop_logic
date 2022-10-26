@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { getNavigationLinksList } from './helpers';
 import { routesMap } from 'router/map';
@@ -16,7 +16,7 @@ const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }
     return null;
   }
 
-  const navigationClassNames = formatClassName(['navigation', className, { navigation_closing: isClosing }]);
+  const navigationClassNames = formatClass(['navigation', className, { navigation_closing: isClosing }]);
 
   return (
     <nav className={navigationClassNames}>

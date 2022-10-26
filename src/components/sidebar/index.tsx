@@ -1,5 +1,5 @@
 import React from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector, useMount } from 'hooks';
@@ -13,7 +13,7 @@ const Sidebar = ({ className, isOpened }: CommonProps & { isOpened: boolean }): 
     return null;
   }
 
-  const sidebarClassNames = formatClassName(['sidebar', className, { sidebar_dark: isDarkMode, sidebar_closing: isClosing }]);
+  const sidebarClassNames = formatClass(['sidebar', className, { sidebar_dark: isDarkMode, sidebar_closing: isClosing }]);
 
   return <aside className={sidebarClassNames}>Sidebar Sidebar Sidebar</aside>;
 };

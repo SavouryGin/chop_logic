@@ -1,7 +1,7 @@
 import ModalLayout from './elements/modal-layout';
 import Portal from 'components/portal';
 import React from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { Browser } from 'enums';
 import { ModalWindowProps } from 'types';
 import { detectBrowser } from 'helpers/checkers';
@@ -19,19 +19,15 @@ const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps
   }
 
   const browser = detectBrowser(navigator.userAgent);
-  const contentClassNames = formatClassName([
+  const contentClassNames = formatClass([
     'modal-window__content',
     { 'modal-window__content_dark': isDarkMode, 'modal-window__content_for-firefox': browser === Browser.Firefox },
   ]);
-  const backgroundClassNames = formatClassName([
+  const backgroundClassNames = formatClass([
     'modal-background',
     { 'modal-background_dark': isDarkMode, 'modal-background_closing': isClosing },
   ]);
-  const windowClassNames = formatClassName([
-    'modal-window',
-    className,
-    { 'modal-window_dark': isDarkMode, 'modal-window_closing': isClosing },
-  ]);
+  const windowClassNames = formatClass(['modal-window', className, { 'modal-window_dark': isDarkMode, 'modal-window_closing': isClosing }]);
 
   return (
     <Portal>

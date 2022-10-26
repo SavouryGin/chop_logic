@@ -1,6 +1,6 @@
 import Label from '../label';
 import React, { useContext, useState } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { FormContext } from 'components/controls/form';
 import { Guid } from 'guid-typescript';
 import { SelectProps } from 'types';
@@ -32,8 +32,8 @@ function Select({
   const { onChangeInput } = formContext;
   const calculatedId = id || `select_id_${inputId}`;
   const labelText = label || inputTexts[inputId].label[language];
-  const wrapperClassNames = formatClassName(['select', className, { select_disabled: !!isDisabled, select_dark: isDarkMode }]);
-  const selectClassNames = formatClassName(['select__field', { select__field_dark: isDarkMode }]);
+  const wrapperClassNames = formatClass(['select', className, { select_disabled: !!isDisabled, select_dark: isDarkMode }]);
+  const selectClassNames = formatClass(['select__field', { select__field_dark: isDarkMode }]);
 
   const optionList = options.map((item) => {
     const key = Guid.create().toString();

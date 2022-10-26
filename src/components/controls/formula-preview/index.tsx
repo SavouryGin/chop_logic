@@ -1,7 +1,7 @@
 import Formula from 'components/controls/formula';
 import Label from 'components/controls/label';
 import React, { memo } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { FormulaPreviewProps } from 'types';
 import { InputID } from 'enums';
 import { inputTexts } from 'texts';
@@ -13,8 +13,8 @@ const FormulaPreview = ({ preview, className }: FormulaPreviewProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const language = useAppSelector(settingsSelectors.getLanguage);
 
-  const classNames = formatClassName(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
-  const errorClassNames = formatClassName(['formula-preview__error', { 'formula-preview__error_dark': isDarkMode }]);
+  const classNames = formatClass(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
+  const errorClassNames = formatClass(['formula-preview__error', { 'formula-preview__error_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
 
   return (
