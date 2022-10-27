@@ -1,8 +1,9 @@
 import { TextContainer } from 'types';
 
 export const titles: TextContainer = {
-  direct: { en: 'Direct Proofs Editor', ru: 'Редактор прямых доказательств' },
-  natural: { en: 'Natural Proofs Editor', ru: 'Редактор структурных доказательств' },
+  direct: { en: 'Direct Proofs', ru: 'Аксиоматические доказательства' },
+  natural: { en: 'Natural Proofs', ru: 'Структурные доказательства' },
+  editor: { en: 'Editor', ru: 'Редактор' },
   axioms: { en: 'Axiom Schemes', ru: 'Схемы аксиом' },
   definitions: { en: 'Definitions', ru: 'Определения' },
   heuristics: { en: 'Heuristics', ru: 'Эвристики' },

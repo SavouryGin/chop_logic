@@ -13,7 +13,9 @@ const PropositionsNaturalProofs = () => {
 
   return (
     <article className='propositions-natural-proofs'>
-      <h2 className={formatClass(['propositions-natural-proofs__title', Icon.Propositions])}>{titles.page[language]}</h2>
+      <h2
+        className={formatClass(['propositions-natural-proofs__title', Icon.Propositions])}
+      >{`${titles.page[language]} > ${titles.natural[language]}`}</h2>
       <TabList tabs={propositionsNaturalProofsTabs} className='propositions-natural-proofs__tabs' />
     </article>
   );
