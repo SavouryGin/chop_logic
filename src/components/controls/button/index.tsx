@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { ButtonProps } from 'types';
 import { buttonTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -13,10 +13,10 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, .
   const buttonTitle = rest.title || buttonTexts[buttonId].title[language];
   const buttonText = rest.text || buttonTexts[buttonId].innerText?.[language];
 
-  const shadowClassNames = formatClassName(['button__shadow', { button__shadow_dark: isDarkMode }]);
-  const edgeClassNames = formatClassName(['button__edge', { button__edge_dark: isDarkMode }]);
-  const frontClassNames = formatClassName(['button__front', icon, { button__front_dark: isDarkMode }]);
-  const buttonClassNames = formatClassName([
+  const shadowClassNames = formatClass(['button__shadow', { button__shadow_dark: isDarkMode }]);
+  const edgeClassNames = formatClass(['button__edge', { button__edge_dark: isDarkMode }]);
+  const frontClassNames = formatClass(['button__front', icon, { button__front_dark: isDarkMode }]);
+  const buttonClassNames = formatClass([
     'button',
     rest.className,
     { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large', button_disabled: !!isDisabled },

@@ -1,17 +1,22 @@
 import React, { memo } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { getNavigationLinksList } from './helpers';
 import { routesMap } from 'router/map';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';
 
-const Navigation = (props: CommonProps) => {
-  const isClosingAnimationActive = useAppSelector(settingsSelectors.getIsMenuAnimationActive);
+const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }): React.ReactElement | null => {
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const navigationClassNames = formatClassName(['navigation', props.className, { navigation_closing: isClosingAnimationActive }]);
+  const isMounted = useMount(isOpened);
+  const isClosing = isMounted && !isOpened;
+  if (!isMounted) {
+    return null;
+  }
+
+  const navigationClassNames = formatClass(['navigation', className, { navigation_closing: isClosing }]);
 
   return (
     <nav className={navigationClassNames}>

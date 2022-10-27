@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import TableBody from './elements/table-body';
 import TableHead from './elements/table-head';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { TableProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
@@ -10,9 +10,9 @@ import './styles.scss';
 const Table = ({ columns, data, hasCheckboxColumn, passSelectedIds, className }: TableProps) => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  const tableClassNames = formatClassName(['table', className, { table_dark: isDarkMode }]);
-  const headClassNames = formatClassName(['table__head', { table__head_dark: isDarkMode }]);
-  const bodyClassNames = formatClassName(['table__body', { table__body_dark: isDarkMode }]);
+  const tableClassNames = formatClass(['table', className, { table_dark: isDarkMode }]);
+  const headClassNames = formatClass(['table__head', { table__head_dark: isDarkMode }]);
+  const bodyClassNames = formatClass(['table__body', { table__body_dark: isDarkMode }]);
 
   useEffect(() => {
     if (passSelectedIds) {

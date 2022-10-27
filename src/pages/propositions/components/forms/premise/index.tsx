@@ -4,7 +4,6 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { closeDirectProofsPopup, closeNaturalProofsPopup } from 'pages/propositions/helpers';
 import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
 import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
@@ -31,17 +30,17 @@ const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }) =>
     e.preventDefault();
     if (mode === 'direct') {
       dispatch(propositionsDPActions.addPremise(formValue.premise));
-      closeDirectProofsPopup(dispatch, 'isPremiseOpened');
+      dispatch(propositionsDPActions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
     }
 
     if (mode === 'natural') {
       dispatch(propositionsNPActions.addPremise(formValue.premise));
-      closeNaturalProofsPopup(dispatch, 'isPremiseOpened');
+      dispatch(propositionsNPActions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
     }
 
     if (mode === 'assumption') {
       dispatch(propositionsNPActions.addAssumption(formValue.premise));
-      closeNaturalProofsPopup(dispatch, 'isAssumptionOpened');
+      dispatch(propositionsNPActions.setUpFlag({ flag: 'isAssumptionOpened', value: false }));
     }
   };
 

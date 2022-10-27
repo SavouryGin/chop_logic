@@ -1,5 +1,5 @@
 import React from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { Icon } from 'enums';
 import { externalLinks } from 'presets/settings';
@@ -14,8 +14,8 @@ const Footer = ({ className }: CommonProps) => {
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);
 
-  const footerClassNames = formatClassName(['footer', className]);
-  const linkClassNames = formatClassName(['footer__links', { footer__links_dark: isDarkMode }]);
+  const footerClassNames = formatClass(['footer', className]);
+  const linkClassNames = formatClass(['footer__links', { footer__links_dark: isDarkMode }]);
 
   const onLinkHover = () => {
     isSoundsEnabled && soundPlayer.snap.play();

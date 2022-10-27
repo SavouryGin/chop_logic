@@ -8,6 +8,7 @@ import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 const testProps = {
   className: 'test-class-name',
+  isOpened: true,
 };
 
 const mockedReducer = combineReducers({

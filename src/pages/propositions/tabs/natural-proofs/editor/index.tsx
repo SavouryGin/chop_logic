@@ -5,7 +5,7 @@ import NaturalProofsEditorToolbar from 'pages/propositions/components/toolbars/n
 import OrIntroductionForm from 'pages/propositions/components/forms/or-introduction';
 import PremiseForm from 'pages/propositions/components/forms/premise';
 import React, { memo } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -23,7 +23,7 @@ const NaturalProofsEditor = (): React.ReactElement => {
   const isOrIntroductionFormOpened = useAppSelector(selectors.getIsOrIntroductionFormOpened);
   const dependencies = useAppSelector(selectors.getDependentItems);
 
-  const editorClass = formatClassName(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
+  const editorClass = formatClass(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
 
   const closePremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
