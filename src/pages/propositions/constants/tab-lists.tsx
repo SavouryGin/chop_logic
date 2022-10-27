@@ -12,7 +12,7 @@ import { titles } from 'texts';
 export const propositionsDirectProofsTabs: TabItem[] = [
   {
     tabContent: <DirectProofsEditor />,
-    tabTitle: titles.direct,
+    tabTitle: titles.editor,
     tabId: 'direct-proofs-editor',
   },
   {
@@ -30,7 +30,7 @@ export const propositionsDirectProofsTabs: TabItem[] = [
 export const propositionsNaturalProofsTabs: TabItem[] = [
   {
     tabContent: <NaturalProofsEditor />,
-    tabTitle: titles.natural,
+    tabTitle: titles.editor,
     tabId: 'natural-proofs-editor',
   },
   {

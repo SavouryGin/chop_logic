@@ -13,7 +13,9 @@ const PropositionsDirectProofs = () => {
 
   return (
     <article className='propositions-direct-proofs'>
-      <h2 className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}>{titles.page[language]}</h2>
+      <h2
+        className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}
+      >{`${titles.page[language]} > ${titles.direct[language]}`}</h2>
       <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' />
     </article>
   );
