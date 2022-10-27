@@ -1,6 +1,6 @@
 import React from 'react';
 import TabList from 'components/tab-list';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { Icon } from 'enums';
 import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -13,7 +13,9 @@ const PropositionsNaturalProofs = () => {
 
   return (
     <article className='propositions-natural-proofs'>
-      <h2 className={formatClassName(['propositions-natural-proofs__title', Icon.Propositions])}>{titles.page[language]}</h2>
+      <h2
+        className={formatClass(['propositions-natural-proofs__title', Icon.Propositions])}
+      >{`${titles.page[language]} > ${titles.natural[language]}`}</h2>
       <TabList tabs={propositionsNaturalProofsTabs} className='propositions-natural-proofs__tabs' />
     </article>
   );

@@ -1,6 +1,6 @@
 import { ClassNames } from 'types';
 
-function formatClassName(input: (string | ClassNames | undefined | null)[]): string {
+function formatClass(input: (string | ClassNames | undefined | null)[]): string {
   const names = input
     .map((item) => {
       if (typeof item === 'string') {
@@ -22,4 +22,4 @@ function formatClassName(input: (string | ClassNames | undefined | null)[]): str
   return names.join(' ');
 }
 
-export default formatClassName;
+export default formatClass;

@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { CommonSymbolHexCode } from 'enums';
 import { FormulaProps } from 'types';
 import { getPreformattedSymbol } from './helpers';
@@ -9,8 +9,8 @@ import './styles.scss';
 
 function Formula({ content, className, level }: FormulaProps): React.ReactElement {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const classNames = formatClassName(['formula', className, { formula_dark: isDarkMode }]);
-  const indentationClass = formatClassName(['formula__indentation', { formula__indentation_dark: isDarkMode }]);
+  const classNames = formatClass(['formula', className, { formula_dark: isDarkMode }]);
+  const indentationClass = formatClass(['formula__indentation', { formula__indentation_dark: isDarkMode }]);
 
   const formula = useMemo(
     () => <pre className={classNames}>{content.map((item, index) => getPreformattedSymbol(item, index))}</pre>,

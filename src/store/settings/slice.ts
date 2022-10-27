@@ -11,9 +11,6 @@ export const settingsInitialState: SettingsInitialState = {
     isFullScreen: false,
     isSettingOpen: false,
     isSoundsEnabled: false,
-    isMenuAnimationActive: false,
-    isSidebarAnimationActive: false,
-    isModalWindowClosingAnimationActive: false,
   },
 };
 

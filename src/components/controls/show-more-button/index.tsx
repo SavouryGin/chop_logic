@@ -1,5 +1,5 @@
 import React from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -14,7 +14,7 @@ type ShowMoreButtonProps = CommonProps & {
 
 const ShowMoreButton = ({ onClick, isOpened, ...rest }: ShowMoreButtonProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const buttonClass = formatClassName([
+  const buttonClass = formatClass([
     'show-more-button',
     rest.className,
     { [Icon.CaretUp]: isOpened, [Icon.CaretDown]: !isOpened, 'show-more-button_dark': isDarkMode },

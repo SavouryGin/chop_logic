@@ -1,6 +1,6 @@
 import Button from 'components/controls/button';
 import React, { useEffect, useState } from 'react';
-import formatClassName from 'helpers/formatters/format-class-name';
+import formatClass from 'helpers/formatters/format-class-name';
 import { FormContextProps, FormInput, FormProps } from 'types';
 import { Icon } from 'enums';
 import { soundPlayer } from 'helpers/sounds';
@@ -8,7 +8,7 @@ import { soundPlayer } from 'helpers/sounds';
 export const FormContext = React.createContext({} as FormContextProps);
 
 const Form = ({ className, onSubmit, inputs, initialValues, passValues, submitButtonId, ...rest }: FormProps) => {
-  const formClassNames = formatClassName(['form', className]);
+  const formClassNames = formatClass(['form', className]);
   const [formValues, setFormValues] = useState(initialValues);
 
   const onChangeInput = (e: React.ChangeEvent<FormInput>) => {
