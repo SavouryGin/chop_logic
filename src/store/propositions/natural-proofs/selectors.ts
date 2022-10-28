@@ -14,6 +14,8 @@ const getSelectedIds = (state: RootState): string[] => state.propositionsNP.sele
 
 const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isPremiseOpened);
 
+const getIsShortcutOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isShortcutOpened);
+
 const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isAssumptionOpened);
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
@@ -88,6 +90,7 @@ export const propositionsNPSelectors = {
   getSelectedIds,
   getDependentItems,
   getIsPremiseOpened,
+  getIsShortcutOpened,
   getIsAssumptionOpened,
   getIsReplacerFormOpened,
   getIsConfirmDeletePopupOpened,
