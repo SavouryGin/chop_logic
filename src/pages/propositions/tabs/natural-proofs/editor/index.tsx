@@ -5,6 +5,7 @@ import NaturalProofsEditorToolbar from 'pages/propositions/components/toolbars/n
 import OrIntroductionForm from 'pages/propositions/components/forms/or-introduction';
 import PremiseForm from 'pages/propositions/components/forms/premise';
 import React, { memo } from 'react';
+import ShortcutNPForm from 'pages/propositions/components/forms/shortcut';
 import formatClass from 'helpers/formatters/format-class-name';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
@@ -21,6 +22,7 @@ const NaturalProofsEditor = (): React.ReactElement => {
   const isAssumptionOpened = useAppSelector(selectors.getIsAssumptionOpened);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
   const isOrIntroductionFormOpened = useAppSelector(selectors.getIsOrIntroductionFormOpened);
+  const isShortcutOpened = useAppSelector(selectors.getIsShortcutOpened);
   const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClass(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
@@ -44,6 +46,10 @@ const NaturalProofsEditor = (): React.ReactElement => {
 
   const closeOrIntroduction = () => {
     dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: false }));
+  };
+
+  const closeShortcut = () => {
+    dispatch(actions.setUpFlag({ flag: 'isShortcutOpened', value: false }));
   };
 
   return (
@@ -73,6 +79,12 @@ const NaturalProofsEditor = (): React.ReactElement => {
         onClose={closeOrIntroduction}
         title={uiElementTexts.orIntroduction[language]}
         content={<OrIntroductionForm />}
+      />
+      <ModalWindow
+        isOpened={isShortcutOpened}
+        onClose={closeShortcut}
+        title={uiElementTexts.shortcut[language]}
+        content={<ShortcutNPForm />}
       />
     </div>
   );
