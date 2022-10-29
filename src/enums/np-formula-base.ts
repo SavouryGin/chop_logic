@@ -1,6 +1,7 @@
 export enum NPFormulaBase {
   Premise = 'Premise',
   Assumption = 'Assumption',
+  Shortcut = 'Shortcut',
   DI = 'Disjunction Introduction',
   DE = 'Disjunction Elimination',
   II = 'Implication Introduction',
