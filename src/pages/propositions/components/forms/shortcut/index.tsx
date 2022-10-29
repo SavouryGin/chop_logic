@@ -20,7 +20,7 @@ const ShortcutForm = () => {
     <>
       <TextInput name='shortcut' inputId={InputID.Shortcut} className='shortcut-form__input' isRequired />
       <FormulaPreview preview={preview} />
-      <TextInput name='comment' inputId={InputID.Comment} className='shortcut-form__input' isRequired />
+      <TextInput name='comment' inputId={InputID.Comment} className='shortcut-form__input' isRequired maxLength={50} />
     </>
   );
 
