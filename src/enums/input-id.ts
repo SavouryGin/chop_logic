@@ -10,4 +10,6 @@ export enum InputID {
   Preview,
   NewVariable,
   OldVariable,
+  Shortcut,
+  Comment,
 }
