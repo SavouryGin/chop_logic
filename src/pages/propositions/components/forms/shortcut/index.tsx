@@ -4,7 +4,7 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
@@ -28,7 +28,8 @@ const ShortcutForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(propositionsNPActions.setUpFlag({ flag: 'isShortcutOpened', value: false }));
+    dispatch(actions.addShortcut({ rawInput: formValue.shortcut, comment: formValue.comment }));
+    dispatch(actions.setUpFlag({ flag: 'isShortcutOpened', value: false }));
   };
 
   return (
