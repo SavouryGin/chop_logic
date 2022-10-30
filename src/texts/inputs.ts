@@ -35,4 +35,10 @@ export const inputTexts: InputText = {
   [InputID.NewVariable]: {
     label: { en: 'New Variable:', ru: 'Новая переменная:' },
   },
+  [InputID.Shortcut]: {
+    label: { en: 'Shortcut:', ru: 'Краткий вывод:' },
+  },
+  [InputID.Comment]: {
+    label: { en: 'Comment:', ru: 'Комментарий:' },
+  },
 };

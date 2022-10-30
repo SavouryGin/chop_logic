@@ -11,6 +11,7 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isAssumptionOpened: false,
     isConfirmDeletePopupOpened: false,
     isOrIntroductionFormOpened: false,
+    isShortcutOpened: false,
   },
   tableData: [],
   selectedIds: [],
@@ -52,6 +53,30 @@ export const propositionsNP = createSlice({
         formula,
         comment: { en: 'Premise', ru: 'Посылка' },
         formulaBase: NPFormulaBase.Premise,
+        assumptionId: null,
+      };
+      state.tableData = [...state.tableData, newItem];
+    },
+
+    addShortcut: (state, action: PayloadAction<{ rawInput: string; comment: string }>) => {
+      const { rawInput, comment } = action.payload;
+      const itemsCount = state.tableData.length;
+      const expression = converter.convertStringToExpression(rawInput);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+      const step = itemsCount + 1;
+      const level = itemsCount > 0 ? state.tableData[itemsCount - 1].level : 0;
+      const id = Guid.create().toString();
+      const newItem: NaturalProofsTableItem = {
+        level,
+        id,
+        step,
+        rawInput,
+        expression,
+        friendlyExpression,
+        formula,
+        comment: { en: comment, ru: comment },
+        formulaBase: NPFormulaBase.Shortcut,
         assumptionId: null,
       };
       state.tableData = [...state.tableData, newItem];

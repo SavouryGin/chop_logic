@@ -36,8 +36,6 @@ const NaturalProofsEditorToolbar = () => {
   const isEquivEliminationDisabled = !useIsEquivalenceEliminationPossible(selectedIds);
   const isImpliesEliminationDisabled = !useIsImpliesEliminationForNPPossible(selectedIds);
   const isImpliesIntroductionDisabled = !useIsImpliesIntroductionPossible(selectedIds);
-  // TODO: replace with the real rules
-  const isShortcutDisabled = true;
 
   const openPremise = () => {
     dispatch(actions.setUpFlag({ flag: 'isPremiseOpened', value: true }));
@@ -91,6 +89,10 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.createImplication());
   };
 
+  const openShortcut = () => {
+    dispatch(actions.setUpFlag({ flag: 'isShortcutOpened', value: true }));
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
@@ -133,7 +135,7 @@ const NaturalProofsEditorToolbar = () => {
       />
       <Button buttonId={ButtonID.Assumption} sound={soundPlayer.keyboard} size='large' onClick={openAssumption} />
       <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' onClick={deleteSteps} isDisabled={isDeleteDisabled} />
-      <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' isDisabled={isShortcutDisabled} />
+      <Button buttonId={ButtonID.Shortcut} sound={soundPlayer.keyboard} size='large' onClick={openShortcut} />
       <Button
         buttonId={ButtonID.NotElimination}
         sound={soundPlayer.keyboard}
