@@ -42,7 +42,7 @@ describe('Propositions Forms component:', () => {
   });
 
   it('ReplacerForm matches the snapshot', () => {
-    const { asFragment } = renderWithRedux(<ReplacerForm />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<ReplacerForm mode='direct' />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 

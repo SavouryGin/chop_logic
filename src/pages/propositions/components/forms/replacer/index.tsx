@@ -3,11 +3,11 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
 import { useAppDispatch, useIsDPReplacePossible } from 'hooks';
 import './styles.scss';
 
-const ReplacerForm = () => {
+const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
   const dispatch = useAppDispatch();
   const replacerInitialValue = { newVariable: '', oldVariable: '' };
   const [formValues, setFormValues] = useState(replacerInitialValue);
@@ -25,8 +25,11 @@ const ReplacerForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(actions.replacePropositionalVariable(formValues));
-    dispatch(actions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+
+    if (mode === 'direct') {
+      dispatch(propositionsDPActions.replacePropositionalVariable(formValues));
+      dispatch(propositionsDPActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+    }
   };
 
   return (
