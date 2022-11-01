@@ -175,7 +175,7 @@ export const propositionsDPSlice = createSlice({
 
     replacePropositionalVariable: (state, action: PayloadAction<{ newVariable: string; oldVariable: string }>) => {
       const { newVariable, oldVariable } = action.payload;
-      state.tableData = replacer.replacePropositionalVariableInTableItems(state.tableData, newVariable, oldVariable);
+      state.tableData = replacer.replacePropositionalVariableInDPTableItems(state.tableData, newVariable, oldVariable);
     },
 
     setError: (state, action: PayloadAction<string | null>) => {

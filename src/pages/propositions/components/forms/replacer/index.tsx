@@ -4,6 +4,7 @@ import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
 import { useAppDispatch, useIsDPReplacePossible } from 'hooks';
 import './styles.scss';
 
@@ -29,6 +30,11 @@ const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
     if (mode === 'direct') {
       dispatch(propositionsDPActions.replacePropositionalVariable(formValues));
       dispatch(propositionsDPActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+    }
+
+    if (mode === 'natural') {
+      dispatch(propositionsNPActions.replacePropositionalVariable(formValues));
+      dispatch(propositionsNPActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
     }
   };
 
