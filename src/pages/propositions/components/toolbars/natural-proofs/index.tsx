@@ -93,11 +93,21 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.setUpFlag({ flag: 'isShortcutOpened', value: true }));
   };
 
+  const openReplacer = () => {
+    dispatch(actions.setUpFlag({ flag: 'isReplacerFormOpened', value: true }));
+  };
+
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
       <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
-      <Button buttonId={ButtonID.Replace} sound={soundPlayer.keyboard} size='large' isDisabled={isReplacerDisabled} />
+      <Button
+        buttonId={ButtonID.Replace}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={openReplacer}
+        isDisabled={isReplacerDisabled}
+      />
       <Button
         buttonId={ButtonID.NotIntroduction}
         sound={soundPlayer.keyboard}

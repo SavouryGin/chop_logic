@@ -1,4 +1,5 @@
 import converter from 'logic/propositions/converter';
+import replacer from 'logic/propositions/replacer';
 import { Guid } from 'guid-typescript';
 import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
@@ -104,6 +105,11 @@ export const propositionsNP = createSlice({
         assumptionId: Guid.create().toString(),
       };
       state.tableData = [...state.tableData, newItem];
+    },
+
+    replacePropositionalVariable: (state, action: PayloadAction<{ newVariable: string; oldVariable: string }>) => {
+      const { newVariable, oldVariable } = action.payload;
+      state.tableData = replacer.replacePropositionalVariableInNPTableItems(state.tableData, newVariable, oldVariable);
     },
 
     deleteSteps: (state, _action: PayloadAction<{ isConfirmed: boolean }>) => {
