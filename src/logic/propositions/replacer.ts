@@ -1,17 +1,40 @@
 import converter from './converter';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
+import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const replacer = {
-  replacePropositionalVariableInTableItems(
+  replacePropositionalVariableInDPTableItems(
     data: DirectProofsTableItem[],
     newVariable: string,
     oldVariable: string,
   ): DirectProofsTableItem[] {
-    return data.map((item) => this.replacePropositionalVariableInItem(item, newVariable, oldVariable));
+    return data.map((item) => this.replacePropositionalVariableInDPItem(item, newVariable, oldVariable));
   },
 
-  replacePropositionalVariableInItem(item: DirectProofsTableItem, newVariable: string, oldVariable: string): DirectProofsTableItem {
+  replacePropositionalVariableInNPTableItems(
+    data: NaturalProofsTableItem[],
+    newVariable: string,
+    oldVariable: string,
+  ): NaturalProofsTableItem[] {
+    return data.map((item) => this.replacePropositionalVariableInNPItem(item, newVariable, oldVariable));
+  },
+
+  replacePropositionalVariableInNPItem(item: NaturalProofsTableItem, newVariable: string, oldVariable: string): NaturalProofsTableItem {
+    const newExpression = this.replaceVariableInPropositionalExpression(item.expression, newVariable, oldVariable);
+    const newFormula = converter.convertExpressionToFormula(newExpression);
+    const newFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);
+
+    return {
+      ...item,
+      rawInput: this.replaceVariableInRawInput(item.rawInput, newVariable, oldVariable),
+      expression: newExpression,
+      formula: newFormula,
+      friendlyExpression: newFriendlyExpression,
+    };
+  },
+
+  replacePropositionalVariableInDPItem(item: DirectProofsTableItem, newVariable: string, oldVariable: string): DirectProofsTableItem {
     const newExpression = this.replaceVariableInPropositionalExpression(item.expression, newVariable, oldVariable);
     const newFormula = converter.convertExpressionToFormula(newExpression);
     const newFriendlyExpression = converter.convertFormulaToUserFriendlyExpression(newFormula);

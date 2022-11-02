@@ -3,15 +3,16 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
-import { useAppDispatch, useIsDPReplacePossible } from 'hooks';
+import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
+import { useAppDispatch, useIsReplacePossible } from 'hooks';
 import './styles.scss';
 
-const ReplacerForm = () => {
+const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
   const dispatch = useAppDispatch();
   const replacerInitialValue = { newVariable: '', oldVariable: '' };
   const [formValues, setFormValues] = useState(replacerInitialValue);
-  const isReplacePossible = useIsDPReplacePossible(formValues.oldVariable);
+  const isReplacePossible = useIsReplacePossible(formValues.oldVariable, mode);
   const isReplaceDisabled = !isReplacePossible || formValues.newVariable.length !== 1;
 
   const formContent = (
@@ -25,8 +26,16 @@ const ReplacerForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(actions.replacePropositionalVariable(formValues));
-    dispatch(actions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+
+    if (mode === 'direct') {
+      dispatch(propositionsDPActions.replacePropositionalVariable(formValues));
+      dispatch(propositionsDPActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+    }
+
+    if (mode === 'natural') {
+      dispatch(propositionsNPActions.replacePropositionalVariable(formValues));
+      dispatch(propositionsNPActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+    }
   };
 
   return (
