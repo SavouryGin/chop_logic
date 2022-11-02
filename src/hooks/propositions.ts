@@ -131,9 +131,11 @@ export const useIsPremisePossible = (): boolean => {
   return isEnabled;
 };
 
-export const useIsDPReplacePossible = (variable: string): boolean => {
+export const useIsReplacePossible = (variable: string, mode: 'direct' | 'natural'): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const data = useAppSelector(propositionsDPSelectors.getTableData);
+  const directData = useAppSelector(propositionsDPSelectors.getTableData);
+  const naturalData = useAppSelector(propositionsNPSelectors.getTableData);
+  const data = mode === 'direct' ? directData : naturalData;
 
   useEffect(() => {
     if (!variable.trim().length || !data.length) {

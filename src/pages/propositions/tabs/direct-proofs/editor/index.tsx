@@ -91,7 +91,7 @@ const DirectProofsEditor = () => {
         isOpened={isReplacerFormOpened}
         onClose={closeReplacer}
         title={uiElementTexts.replacerForm[language]}
-        content={<ReplacerForm />}
+        content={<ReplacerForm mode='direct' />}
       />
       <ModalWindow
         isOpened={isConfirmDeletePopupOpened}

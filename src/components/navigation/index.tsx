@@ -10,13 +10,14 @@ import './styles.scss';
 
 const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }): React.ReactElement | null => {
   const language = useAppSelector(settingsSelectors.getLanguage);
+  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isMounted = useMount(isOpened);
   const isClosing = isMounted && !isOpened;
   if (!isMounted) {
     return null;
   }
 
-  const navigationClassNames = formatClass(['navigation', className, { navigation_closing: isClosing }]);
+  const navigationClassNames = formatClass(['navigation', className, { navigation_dark: isDarkMode, navigation_closing: isClosing }]);
 
   return (
     <nav className={navigationClassNames}>

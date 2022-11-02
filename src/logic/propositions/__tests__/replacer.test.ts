@@ -3,7 +3,7 @@ import replacer from '../replacer';
 
 describe('Propositions replacer tests', () => {
   it('correctly replace a variable in the table item', () => {
-    expect(replacer.replacePropositionalVariableInTableItems(mocks.testTableItem, 'Z', 'P')).toEqual(
+    expect(replacer.replacePropositionalVariableInDPTableItems(mocks.testTableItem, 'Z', 'P')).toEqual(
       mocks.testTableItemWithReplacedVariable,
     );
   });
