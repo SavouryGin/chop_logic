@@ -1,3 +1,4 @@
+import NotFoundPage from '../index';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { Icon } from 'enums';
@@ -5,17 +6,15 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-import NotFoundPage from '../index';
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
-
 describe('NotFoundPage component:', () => {
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+  });
+
+  const mockedState = {
+    settings: settingsInitialState,
+  };
+
   beforeEach(() => {
     renderWithRedux(<NotFoundPage />, mockedReducer, mockedState);
   });
