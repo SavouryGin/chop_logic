@@ -6,21 +6,20 @@ import { routesMap } from 'router/map';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-const testProps = {
-  className: 'test-class-name',
-  isOpened: true,
-};
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
-
 describe('Navigation component:', () => {
   const pagesCount = routesMap.length;
+  const testProps = {
+    className: 'test-class-name',
+    isOpened: true,
+  };
+
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+  });
+
+  const mockedState = {
+    settings: settingsInitialState,
+  };
 
   beforeEach(() => {
     renderWithRedux(<Navigation {...testProps} />, mockedReducer, mockedState);
