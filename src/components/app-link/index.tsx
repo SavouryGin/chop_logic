@@ -29,7 +29,7 @@ const AppLink = ({ path, text, isNavigation, icon, ...rest }: AppLinkProps) => {
   );
 
   return (
-    <span data-testid='app-link' className={classNames} onMouseOver={onLinkHover}>
+    <span data-testid={rest.id || 'app-link'} className={classNames} onMouseOver={onLinkHover}>
       {isNavigation ? navLink : link}
     </span>
   );

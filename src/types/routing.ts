@@ -1,12 +1,11 @@
-import { ClassNameProp, LocalText } from './general';
+import { CommonProps, LocalText } from './general';
 import { Icon, Page } from 'enums';
 
-export type AppLinkProps = {
+export type AppLinkProps = CommonProps & {
   path: string;
   text?: string;
   icon?: Icon;
   isNavigation?: boolean;
-  className?: ClassNameProp;
 };
 
 export type RoutesMapItem = {

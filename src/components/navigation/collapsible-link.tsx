@@ -22,8 +22,8 @@ const CollapsibleLink = ({ item, language, groupedLinks, pageId }: CollapsibleLi
 
   return (
     <>
-      <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
-      <ShowMoreButton onClick={onShowMore} isOpened={isOpened} />
+      <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} id={`link-to_${item.id.toString()}`} />
+      <ShowMoreButton onClick={onShowMore} isOpened={isOpened} id={`show-more-for_${item.id.toString()}`} />
       {isOpened && nestedLinks}
     </>
   );
