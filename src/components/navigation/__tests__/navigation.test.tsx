@@ -82,4 +82,9 @@ describe('Navigation component:', () => {
       expect(links[i]).toHaveClass(routesMap[i].icon);
     }
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Navigation {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

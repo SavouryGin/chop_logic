@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="navigation test-class-name"
+  >
+    <h2
+      class="navigation__header"
+    >
+      Navigation
+    </h2>
+    <ul
+      class="navigation__list"
+    >
+      <li>
+        <span
+          class="app-link"
+          data-testid="link-to_2"
+        >
+          <a
+            class="chop-icon__cube"
+            href="/propositions"
+          >
+            Propositions
+          </a>
+        </span>
+        <button
+          class="show-more-button chop-icon__caret-down"
+          data-testid="show-more-for_2"
+          id="show-more-for_2"
+          type="button"
+        />
+      </li>
+      <li>
+        <span
+          class="app-link"
+          data-testid="link-to_5"
+        >
+          <a
+            class="chop-icon__cubes"
+            href="/predicates"
+          >
+            Predicates
+          </a>
+        </span>
+      </li>
+      <li>
+        <span
+          class="app-link"
+          data-testid="link-to_7"
+        >
+          <a
+            class="chop-icon__dice"
+            href="/syllogisms"
+          >
+            Syllogisms
+          </a>
+        </span>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;

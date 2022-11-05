@@ -95,4 +95,9 @@ describe('Tablist component:', () => {
       expect(tab).toHaveClass('tab-list__tab');
     }
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<TabList {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

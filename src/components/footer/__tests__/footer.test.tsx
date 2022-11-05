@@ -70,4 +70,9 @@ describe('Footer component:', () => {
     expect(links[3]).toHaveAttribute('title', 'Facebook');
     expect(links[4]).toHaveAttribute('title', 'GitHub');
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Footer {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
