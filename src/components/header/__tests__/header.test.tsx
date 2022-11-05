@@ -67,4 +67,9 @@ describe('Header component:', () => {
     expect(fullScreenBtn).toHaveClass(Icon.Shrink);
     expect(toolsBtn).toHaveClass(Icon.Right);
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Header />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

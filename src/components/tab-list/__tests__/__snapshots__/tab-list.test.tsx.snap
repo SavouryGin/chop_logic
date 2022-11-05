@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tablist component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="tab-list"
+  >
+    <div
+      class="tab-list__tabs"
+      role="tablist"
+    >
+      <h3
+        aria-selected="true"
+        class="tab-list__tab tab-list__tab_active"
+        data-testid="tab-1"
+        id="tab-1"
+        role="tab"
+      >
+        Title 1
+      </h3>
+      <h3
+        aria-selected="false"
+        class="tab-list__tab"
+        data-testid="tab-2"
+        id="tab-2"
+        role="tab"
+      >
+        Title 2
+      </h3>
+      <h3
+        aria-selected="false"
+        class="tab-list__tab"
+        data-testid="tab-3"
+        id="tab-3"
+        role="tab"
+      >
+        Title 3
+      </h3>
+      <h3
+        aria-selected="false"
+        class="tab-list__tab"
+        data-testid="tab-4"
+        id="tab-4"
+        role="tab"
+      >
+        Title 4
+      </h3>
+    </div>
+    <section
+      aria-labelledby="tab-1"
+      class="tab-list__content"
+      role="tabpanel"
+    >
+      Tab content 1
+    </section>
+  </div>
+</DocumentFragment>
+`;
