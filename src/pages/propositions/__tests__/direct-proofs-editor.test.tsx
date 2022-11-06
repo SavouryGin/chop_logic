@@ -8,17 +8,17 @@ import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-  propositionsDP: propositionsDPSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-  propositionsDP: propositionsDPInitialState,
-};
-
 describe('PropositionsDirectProofs tab:', () => {
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+    propositionsDP: propositionsDPSlice.reducer,
+  });
+
+  const mockedState = {
+    settings: settingsInitialState,
+    propositionsDP: propositionsDPInitialState,
+  };
+
   beforeEach(() => {
     renderWithRedux(<PropositionsDirectProofs />, mockedReducer, mockedState);
   });
