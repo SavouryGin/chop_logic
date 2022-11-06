@@ -8,7 +8,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-describe('PropositionsDirectProofs tab:', () => {
+describe('Direct Proofs Editor tests:', () => {
   const mockedReducer = combineReducers({
     settings: settingsSlice.reducer,
     propositionsDP: propositionsDPSlice.reducer,
