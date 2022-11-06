@@ -1,4 +1,4 @@
-import Propositions from 'pages/propositions/sub-pages/direct-proofs';
+import PropositionsDirectProofs from 'pages/propositions/sub-pages/direct-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import userEvent from '@testing-library/user-event';
@@ -18,14 +18,9 @@ const mockedState = {
   propositionsDP: propositionsDPInitialState,
 };
 
-describe('DirectProofsEditor tab:', () => {
-  const modalContainer = document.createElement('div');
-  modalContainer.setAttribute('id', 'modal');
-
+describe('PropositionsDirectProofs tab:', () => {
   beforeEach(() => {
-    renderWithRedux(<Propositions />, mockedReducer, mockedState, {
-      container: document.body.appendChild(modalContainer),
-    });
+    renderWithRedux(<PropositionsDirectProofs />, mockedReducer, mockedState);
   });
 
   it('displays 8 control buttons', () => {
