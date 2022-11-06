@@ -22,7 +22,13 @@ const DirectProofsEditorTable = () => {
 
   return (
     <div className='direct-proofs-editor__table'>
-      <Table columns={constants.directProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
+      <Table
+        columns={constants.directProofsEditorTableColumns}
+        data={tableData}
+        hasCheckboxColumn
+        passSelectedIds={takeSelectedIds}
+        id='propositions-dp-editor-table'
+      />
       {tableData.length === 0 && noStepsFiller}
     </div>
   );

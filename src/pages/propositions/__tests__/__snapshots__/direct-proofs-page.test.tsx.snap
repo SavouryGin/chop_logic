@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Direct Proofs page tests: should match the snapshot 1`] = `
+<DocumentFragment>
+  <article
+    class="propositions-direct-proofs"
+  >
+    <h2
+      class="propositions-direct-proofs__title chop-icon__cube"
+    >
+      Propositions &gt; Direct Proofs
+    </h2>
+    <div
+      class="tab-list propositions-direct-proofs__tabs"
+    >
+      <div
+        class="tab-list__tabs"
+        role="tablist"
+      >
+        <h3
+          aria-selected="true"
+          class="tab-list__tab tab-list__tab_active"
+          data-testid="direct-proofs-editor"
+          id="direct-proofs-editor"
+          role="tab"
+        >
+          Editor
+        </h3>
+        <h3
+          aria-selected="false"
+          class="tab-list__tab"
+          data-testid="direct-proofs-definitions"
+          id="direct-proofs-definitions"
+          role="tab"
+        >
+          Definitions
+        </h3>
+        <h3
+          aria-selected="false"
+          class="tab-list__tab"
+          data-testid="axiom-schemes-for-direct-proofs"
+          id="axiom-schemes-for-direct-proofs"
+          role="tab"
+        >
+          Axiom Schemes
+        </h3>
+      </div>
+      <section
+        aria-labelledby="direct-proofs-editor"
+        class="tab-list__content"
+        role="tabpanel"
+      >
+        <div
+          class="direct-proofs-editor"
+        >
+          <div
+            class="direct-proofs-editor__table"
+          >
+            <table
+              class="table"
+            >
+              <thead
+                class="table__head"
+              >
+                <tr
+                  class="table__row"
+                >
+                  <th
+                    class="table__cell"
+                  >
+                    <div
+                      class="checkbox-input table__checkbox checkbox-input_disabled"
+                    >
+                      <input
+                        class="checkbox-input__default"
+                        disabled=""
+                        id="select_all_in_propositions-dp-editor-table"
+                        name="select_all_in_propositions-dp-editor-table"
+                        type="checkbox"
+                      />
+                      <label
+                        class="label checkbox-input__label chop-icon__checkbox-unchecked"
+                        data-testid="label-test-id"
+                        for="select_all_in_propositions-dp-editor-table"
+                      >
+                        <span
+                          class="label__text"
+                        />
+                      </label>
+                    </div>
+                  </th>
+                  <th
+                    class="table__cell table__cell_heading"
+                  >
+                    #
+                  </th>
+                  <th
+                    class="table__cell table__cell_heading"
+                  >
+                    Formula
+                  </th>
+                  <th
+                    class="table__cell table__cell_heading"
+                  >
+                    Comment
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="table__body"
+              />
+            </table>
+            <div
+              class="direct-proofs-editor__filler"
+            >
+              Enter a premise or axiom to start the proof
+            </div>
+          </div>
+          <div
+            class="direct-proofs-editor__toolbar"
+          >
+            <button
+              class="button button_large"
+              id="button_id_8"
+              title="Enter premise"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_8"
+              >
+                Premise
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_9"
+              title="Reiterate proof step"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_9"
+              >
+                Reiteration
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_10"
+              title="Replace symbol"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_10"
+              >
+                Replace
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_11"
+              title="Delete proof step"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_11"
+              >
+                Delete
+              </span>
+            </button>
+            <button
+              class="button button_large"
+              id="button_id_12"
+              title="Implication Creation"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_12"
+              >
+                IC
+              </span>
+            </button>
+            <button
+              class="button button_large"
+              id="button_id_13"
+              title="Implication Distribution"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_13"
+              >
+                ID
+              </span>
+            </button>
+            <button
+              class="button button_large"
+              id="button_id_14"
+              title="Contradiction Realization"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_14"
+              >
+                CR
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_15"
+              title="Implication Elimination"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_15"
+              >
+                IE
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+</DocumentFragment>
+`;
