@@ -131,7 +131,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
             <button
               class="button button_large"
               id="button_id_8"
-              title="Enter premise"
+              title="Enter a premise"
               type="button"
             >
               <span
@@ -151,7 +151,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
               class="button button_large button_disabled"
               disabled=""
               id="button_id_9"
-              title="Reiterate proof step"
+              title="Reiterate proof step(s)"
               type="button"
             >
               <span
@@ -171,7 +171,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
               class="button button_large button_disabled"
               disabled=""
               id="button_id_10"
-              title="Replace symbol"
+              title="Replace a symbol"
               type="button"
             >
               <span
@@ -290,7 +290,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
             <button
               class="button button_large"
               id="button_id_16"
-              title="Assumption"
+              title="Enter an assumption"
               type="button"
             >
               <span
@@ -310,7 +310,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
               class="button button_large button_disabled"
               disabled=""
               id="button_id_11"
-              title="Delete proof step"
+              title="Delete the proof step(s)"
               type="button"
             >
               <span
@@ -329,7 +329,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
             <button
               class="button button_large"
               id="button_id_27"
-              title="Shortcut"
+              title="Create a shortcut"
               type="button"
             >
               <span

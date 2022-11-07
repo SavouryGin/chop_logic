@@ -115,7 +115,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
     <button
       class="button button_large"
       id="button_id_8"
-      title="Enter premise"
+      title="Enter a premise"
       type="button"
     >
       <span
@@ -135,7 +135,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
       class="button button_large button_disabled"
       disabled=""
       id="button_id_9"
-      title="Reiterate proof step"
+      title="Reiterate proof step(s)"
       type="button"
     >
       <span
@@ -155,7 +155,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
       class="button button_large button_disabled"
       disabled=""
       id="button_id_10"
-      title="Replace symbol"
+      title="Replace a symbol"
       type="button"
     >
       <span
@@ -175,7 +175,7 @@ exports[`Propositions Forms component: DirectProofsEditorToolbar matches the sna
       class="button button_large button_disabled"
       disabled=""
       id="button_id_11"
-      title="Delete proof step"
+      title="Delete the proof step(s)"
       type="button"
     >
       <span

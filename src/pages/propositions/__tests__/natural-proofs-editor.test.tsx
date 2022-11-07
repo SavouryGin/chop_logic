@@ -27,30 +27,38 @@ describe('Natural Proofs Editor tests:', () => {
     expect(screen.getAllByRole('button')).toHaveLength(16);
   });
 
-  //   it('displays the proof table', () => {
-  //     expect(screen.getByRole('table')).toBeInTheDocument();
-  //     const headerRow = screen.getByRole('row');
-  //     expect(headerRow).toHaveTextContent('#');
-  //     expect(headerRow).toHaveTextContent('Formula');
-  //     expect(headerRow).toHaveTextContent('Comment');
-  //     expect(screen.getByText(fillerText.en)).toBeInTheDocument();
-  //   });
+  it('displays the proof table', () => {
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    const headerRow = screen.getByRole('row');
+    expect(headerRow).toHaveTextContent('#');
+    expect(headerRow).toHaveTextContent('Formula');
+    expect(headerRow).toHaveTextContent('Comment');
+    expect(screen.getByText(fillerNaturalText.en)).toBeInTheDocument();
+  });
 
-  //   it('4 buttons are enabled and 4 are disabled by default', () => {
-  //     expect(screen.getByTitle('Enter premise')).toBeEnabled();
-  //     expect(screen.getByTitle('Implication Creation')).toBeEnabled();
-  //     expect(screen.getByTitle('Implication Distribution')).toBeEnabled();
-  //     expect(screen.getByTitle('Contradiction Realization')).toBeEnabled();
+  it('3 buttons are enabled and 4 are disabled by default', () => {
+    expect(screen.getByTitle('Enter a premise')).toBeEnabled();
+    expect(screen.getByTitle('Enter an assumption')).toBeEnabled();
+    expect(screen.getByTitle('Create a shortcut')).toBeEnabled();
 
-  //     expect(screen.getByTitle('Reiterate proof step')).toBeDisabled();
-  //     expect(screen.getByTitle('Implication Elimination')).toBeDisabled();
-  //     expect(screen.getByTitle('Delete proof step')).toBeDisabled();
-  //     expect(screen.getByTitle('Replace symbol')).toBeDisabled();
-  //   });
+    expect(screen.getByTitle('Reiterate proof step(s)')).toBeDisabled();
+    expect(screen.getByTitle('Delete the proof step(s)')).toBeDisabled();
+    expect(screen.getByTitle('Replace a symbol')).toBeDisabled();
+    expect(screen.getByTitle('Negation Introduction')).toBeDisabled();
+    expect(screen.getByTitle('Negation Elimination')).toBeDisabled();
+    expect(screen.getByTitle('Conjunction Introduction')).toBeDisabled();
+    expect(screen.getByTitle('Conjunction Elimination')).toBeDisabled();
+    expect(screen.getByTitle('Disjunction Introduction')).toBeDisabled();
+    expect(screen.getByTitle('Disjunction Elimination')).toBeDisabled();
+    expect(screen.getByTitle('Implication Introduction')).toBeDisabled();
+    expect(screen.getByTitle('Implication Elimination')).toBeDisabled();
+    expect(screen.getByTitle('Equivalence Introduction')).toBeDisabled();
+    expect(screen.getByTitle('Equivalence Elimination')).toBeDisabled();
+  });
 
   it('on click Enter premise button the popup is appeared', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    fireEvent.click(screen.getByTitle('Enter premise'));
+    fireEvent.click(screen.getByTitle('Enter a premise'));
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
     expect(screen.queryByRole('form')).toBeInTheDocument();
   });
@@ -61,7 +69,7 @@ describe('Natural Proofs Editor tests:', () => {
     expect(screen.getByText(fillerNaturalText.en)).toBeInTheDocument();
 
     // Open the form
-    fireEvent.click(screen.getByTitle('Enter premise'));
+    fireEvent.click(screen.getByTitle('Enter a premise'));
     const testInput = 'Q';
 
     // Find the controls
@@ -86,5 +94,38 @@ describe('Natural Proofs Editor tests:', () => {
     expect(secondRow).toHaveTextContent(testInput);
     expect(secondRow).toHaveTextContent('1');
     expect(secondRow).toHaveTextContent('Premise');
+  });
+
+  it('user can add an assumption to the proof table through the form', async () => {
+    // Check initial table values
+    expect(screen.getAllByRole('row')).toHaveLength(1);
+    expect(screen.getByText(fillerNaturalText.en)).toBeInTheDocument();
+
+    // Open the form
+    fireEvent.click(screen.getByTitle('Enter an assumption'));
+    const testInput = 'R';
+
+    // Find the controls
+    const premiseInput = screen.getByRole('textbox');
+    const applyBtn = screen.getByTitle('Apply');
+    expect(premiseInput).toHaveAttribute('name', 'premise');
+    expect(applyBtn).toBeDisabled();
+
+    // Enter a value
+    await userEvent.type(premiseInput, testInput);
+    expect(premiseInput).toHaveValue(testInput);
+    expect(applyBtn).toBeEnabled();
+
+    // Click apply & close the popup
+    await userEvent.click(applyBtn);
+
+    // Check that a new formula was added
+    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('cell')).toHaveLength(4);
+    expect(screen.getAllByRole('row')).toHaveLength(2);
+    const secondRow = screen.getAllByRole('row')[1];
+    expect(secondRow).toHaveTextContent(testInput);
+    expect(secondRow).toHaveTextContent('1');
+    expect(secondRow).toHaveTextContent('Assumption');
   });
 });
