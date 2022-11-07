@@ -72,4 +72,27 @@ describe('Header component:', () => {
     const { asFragment } = renderWithRedux(<Header />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  it('the settings buttons opens a popup', () => {
+    const settingsBtn = screen.getByTestId(`button_id_${ButtonID.Settings}`);
+    fireEvent.click(settingsBtn);
+    expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    expect(screen.queryByRole('form')).toBeInTheDocument();
+
+    const cancelBtn = screen.queryByTitle('Cancel');
+    if (cancelBtn) {
+      fireEvent.click(cancelBtn);
+      expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    }
+  });
+
+  it('the settings have correct inputs', () => {
+    const settingsBtn = screen.getByTestId(`button_id_${ButtonID.Settings}`);
+    fireEvent.click(settingsBtn);
+    expect(screen.queryByRole('combobox')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Language')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Dark Mode')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Sounds')).toBeInTheDocument();
+    expect(screen.queryByTitle('Apply')).toBeInTheDocument();
+  });
 });
