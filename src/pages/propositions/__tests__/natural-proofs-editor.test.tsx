@@ -103,17 +103,17 @@ describe('Natural Proofs Editor tests:', () => {
 
     // Open the form
     fireEvent.click(screen.getByTitle('Enter an assumption'));
-    const testInput = 'R';
+    const text = 'R';
 
     // Find the controls
-    const premiseInput = screen.getByRole('textbox');
+    const input = screen.getByRole('textbox');
     const applyBtn = screen.getByTitle('Apply');
-    expect(premiseInput).toHaveAttribute('name', 'premise');
+    expect(input).toHaveAttribute('name', 'premise');
     expect(applyBtn).toBeDisabled();
 
     // Enter a value
-    await userEvent.type(premiseInput, testInput);
-    expect(premiseInput).toHaveValue(testInput);
+    await userEvent.type(input, text);
+    expect(input).toHaveValue(text);
     expect(applyBtn).toBeEnabled();
 
     // Click apply & close the popup
@@ -124,7 +124,7 @@ describe('Natural Proofs Editor tests:', () => {
     expect(screen.getAllByRole('cell')).toHaveLength(4);
     expect(screen.getAllByRole('row')).toHaveLength(2);
     const secondRow = screen.getAllByRole('row')[1];
-    expect(secondRow).toHaveTextContent(testInput);
+    expect(secondRow).toHaveTextContent(text);
     expect(secondRow).toHaveTextContent('1');
     expect(secondRow).toHaveTextContent('Assumption');
   });
