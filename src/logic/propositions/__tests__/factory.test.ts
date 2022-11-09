@@ -1,5 +1,5 @@
 import factory from '../factory';
-import mocks from '__mocks__/data/propositions';
+import mocks from '__mocks__/data/propositions/formulas-items';
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 

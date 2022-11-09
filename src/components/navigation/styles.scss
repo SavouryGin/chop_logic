@@ -31,8 +31,14 @@
     text-align: center;
     padding: 0;
     border: $light-border;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.6rem auto 0 auto;
     li {
       font-size: $tiny-font-size;
+      padding: 0.6rem;
     }
   }
 

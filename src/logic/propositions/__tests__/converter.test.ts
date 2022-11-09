@@ -1,5 +1,5 @@
 import converter from '../converter';
-import mocks from '__mocks__/data/propositions';
+import mocks from '__mocks__/data/propositions/formulas-items';
 import { PropositionalError } from 'errors/propositional-error';
 
 describe('Propositions converter tests', () => {
