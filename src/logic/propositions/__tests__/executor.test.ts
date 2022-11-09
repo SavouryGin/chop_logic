@@ -1,5 +1,5 @@
 import executor from '../executor';
-import mocks from '__mocks__/data/propositions';
+import mocks from '__mocks__/data/propositions/formulas-items';
 import { PropositionalError } from 'errors/propositional-error';
 
 describe('Propositions executor tests:', () => {

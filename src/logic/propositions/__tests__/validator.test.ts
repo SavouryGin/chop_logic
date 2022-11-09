@@ -1,4 +1,4 @@
-import mocks from '__mocks__/data/propositions';
+import mocks from '__mocks__/data/propositions/formulas-items';
 import validator from '../validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalOperator } from 'enums';
