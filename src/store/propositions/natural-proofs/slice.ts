@@ -20,8 +20,8 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
   error: null,
 };
 
-export const propositionsNP = createSlice({
-  name: 'propositionsNP',
+export const propositionsNPSlice = createSlice({
+  name: 'Prop-NP',
   initialState: propositionsNPInitialState,
   reducers: {
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsNaturalProofsFlag; value: boolean }>) => {
@@ -166,4 +166,4 @@ export const propositionsNP = createSlice({
   },
 });
 
-export const propositionsNPActions = { ...propositionsNP.actions };
+export const propositionsNPActions = { ...propositionsNPSlice.actions };
