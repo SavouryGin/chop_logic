@@ -22,7 +22,7 @@ export const propositionsDPInitialState: PropositionsDirectProofsInitialState = 
 };
 
 export const propositionsDPSlice = createSlice({
-  name: 'propositionsDP',
+  name: 'Prop-DP',
   initialState: propositionsDPInitialState,
   reducers: {
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsDirectProofsFlag; value: boolean }>) => {
