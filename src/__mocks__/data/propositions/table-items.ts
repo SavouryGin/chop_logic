@@ -1,6 +1,8 @@
 import { NPFormulaBase, PropositionalOperator } from 'enums';
+import { PropositionalError } from 'errors/propositional-error';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
+import { errorsTexts } from 'texts';
 
 const dpTableDataIE: DirectProofsTableItem[] = [
   {
@@ -1135,9 +1137,12 @@ const npTableDataIEandII: NaturalProofsTableItem[] = [
   },
 ];
 
+const error = new PropositionalError(`Cannot convert this expression to a formula.`, errorsTexts.semanticError);
+
 const propositionsTableItems = {
   dpTableDataIE,
   npTableDataIEandII,
+  error,
 };
 
 export default propositionsTableItems;
