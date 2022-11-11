@@ -5,6 +5,8 @@ import { propositionsDPSelectors as selectors } from 'store/propositions/direct-
 import { testSaga } from 'redux-saga-test-plan';
 
 describe('DP deleteDirectProofStepsSaga tests', () => {
+  const testSelectedIds = [mocks.dpTableDataIE[1].id];
+
   it('deleteDirectProofStepsWatcher() should call the saga on action', () => {
     testSaga(deleteDirectProofStepsWatcher).next().takeEvery(actions.deleteSteps, deleteDirectProofStepsSaga).next().isDone();
   });
@@ -27,7 +29,7 @@ describe('DP deleteDirectProofStepsSaga tests', () => {
     testSaga(deleteDirectProofStepsSaga, { payload: { isConfirmed: true } })
       .next()
       .select(selectors.getSelectedIds)
-      .next(['d3d4aa2e-1e09-c2ff-43a0-f9cddd5f86e7'])
+      .next(testSelectedIds)
       .select(selectors.getTableData)
       .next(mocks.dpTableDataIE)
       .put(actions.setTableData([mocks.dpTableDataIE[0]]))
@@ -43,7 +45,7 @@ describe('DP deleteDirectProofStepsSaga tests', () => {
     testSaga(deleteDirectProofStepsSaga, { payload: { isConfirmed: false } })
       .next()
       .select(selectors.getSelectedIds)
-      .next(['d3d4aa2e-1e09-c2ff-43a0-f9cddd5f86e7'])
+      .next(testSelectedIds)
       .select(selectors.getTableData)
       .next(mocks.dpTableDataIE)
       .put(actions.setDependentItems([mocks.dpTableDataIE[2]]))
@@ -57,7 +59,7 @@ describe('DP deleteDirectProofStepsSaga tests', () => {
     testSaga(deleteDirectProofStepsSaga, { payload: { isConfirmed: false } })
       .next()
       .select(selectors.getSelectedIds)
-      .next(['d3d4aa2e-1e09-c2ff-43a0-f9cddd5f86e7'])
+      .next(testSelectedIds)
       .select(selectors.getTableData)
       .next(mocks.dpTableDataIE)
       .throw(mocks.error)
