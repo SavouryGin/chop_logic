@@ -34,14 +34,14 @@ describe('propositionsDPSlice tests:', () => {
     expect(slice.reducer(testState, actions.reiterateStep())).toEqual({ ...state, tableData: [mocks.dpTableDataIE[0], expectedStep] });
   });
 
-  it('should handle a premise being added to the store', () => {
+  it('should handle a createImplication action', () => {
     expect(slice.reducer(state, actions.createImplication({ firstVariable: 'p|q', secondVariable: 'r' }))).toEqual({
       ...state,
       tableData: [{ ...mocks.dpTableDataIE[1], id: expect.any(String), step: 1 }],
     });
   });
 
-  it('should handle an implication elimination', () => {
+  it('should handle an eliminateImplication actions', () => {
     const testItems = [mocks.dpTableDataIE[0], mocks.dpTableDataIE[1]];
     const testState = {
       ...state,
