@@ -107,6 +107,26 @@ export const propositionsNPSlice = createSlice({
       state.tableData = [...state.tableData, newItem];
     },
 
+    reiterateStep: (state) => {
+      const selectedStep = state.tableData.find((item) => item.id === state.selectedIds[0]);
+      if (!selectedStep) {
+        return state;
+      }
+      const index = state.tableData.length + 1;
+      const lastItemLevel = state.tableData[state.tableData.length - 1].level;
+      const newStep = {
+        ...selectedStep,
+        id: Guid.create().toString(),
+        step: index,
+        comment: { en: `Reiter. ${selectedStep.step}`, ru: `Повтор ${selectedStep.step}` },
+        dependentOn: selectedStep.dependentOn?.length ? [...selectedStep.dependentOn, selectedStep.id] : [selectedStep.id],
+        level: lastItemLevel,
+      };
+
+      state.selectedIds = [];
+      state.tableData = [...state.tableData, newStep];
+    },
+
     replacePropositionalVariable: (state, action: PayloadAction<{ newVariable: string; oldVariable: string }>) => {
       const { newVariable, oldVariable } = action.payload;
       state.tableData = replacer.replacePropositionalVariableInNPTableItems(state.tableData, newVariable, oldVariable);

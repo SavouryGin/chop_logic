@@ -28,12 +28,18 @@ describe('propositionsNPSlice tests:', () => {
     });
   });
 
-  //   it('should be able to reiterate step', () => {
-  //     const testState = { ...state, tableData: [mocks.dpTableDataIE[0]], selectedIds: [mocks.dpTableDataIE[0].id] };
-  //     const expectedStep = { ...mocks.dpTableDataIE[0], id: expect.any(String), step: 2, comment: { en: `Reiter. 1`, ru: `Повтор 1` } };
+  it('should be able to reiterate step', () => {
+    const testState = { ...state, tableData: [mocks.npTableDataIEandII[0]], selectedIds: [mocks.npTableDataIEandII[0].id] };
+    const expectedStep = {
+      ...mocks.npTableDataIEandII[0],
+      id: expect.any(String),
+      step: 2,
+      comment: { en: `Reiter. 1`, ru: `Повтор 1` },
+      dependentOn: [mocks.npTableDataIEandII[0].id],
+    };
 
-  //     expect(slice.reducer(testState, actions.reiterateStep())).toEqual({ ...state, tableData: [mocks.dpTableDataIE[0], expectedStep] });
-  //   });
+    expect(slice.reducer(testState, actions.reiterateStep())).toEqual({ ...state, tableData: [mocks.npTableDataIEandII[0], expectedStep] });
+  });
 
   it('should handle a shortcut being added to the store', () => {
     expect(slice.reducer(state, actions.addShortcut({ rawInput: 'p&r', comment: 'test comment' }))).toEqual({

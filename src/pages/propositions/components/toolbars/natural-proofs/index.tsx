@@ -49,6 +49,10 @@ const NaturalProofsEditorToolbar = () => {
     dispatch(actions.deleteSteps({ isConfirmed: false }));
   };
 
+  const reiterateStep = () => {
+    dispatch(actions.reiterateStep());
+  };
+
   const openOrIntroduction = () => {
     dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: true }));
   };
@@ -100,7 +104,13 @@ const NaturalProofsEditorToolbar = () => {
   return (
     <div className='natural-proofs-editor__toolbar'>
       <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} isDisabled={isPremiseDisabled} />
-      <Button buttonId={ButtonID.Reiteration} sound={soundPlayer.keyboard} size='large' isDisabled={isReiterationDisabled} />
+      <Button
+        buttonId={ButtonID.Reiteration}
+        sound={soundPlayer.keyboard}
+        size='large'
+        onClick={reiterateStep}
+        isDisabled={isReiterationDisabled}
+      />
       <Button
         buttonId={ButtonID.Replace}
         sound={soundPlayer.keyboard}
