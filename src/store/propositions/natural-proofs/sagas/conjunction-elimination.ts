@@ -16,7 +16,6 @@ export function* conjunctionEliminationSaga(): SagaIterator {
     const dataLength: number = yield select(selectors.getTableDataLength);
     const level: number = yield select(selectors.getLastTableItemLevel);
     const assumptionId: string | null = yield select(selectors.getLastItemAssumptionId);
-
     const newItems = executor.performCE({ level, dataLength, selectedItems, assumptionId });
 
     yield put(actions.setTableData([...tableData, ...newItems]));
