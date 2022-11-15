@@ -3143,7 +3143,7 @@ const testTableItemWithReplacedVariable: DirectProofsTableItem[] = [
   },
 ];
 
-const propositions = {
+const propositionsFormulasItems = {
   secondSubFormula,
   firstSubFormula,
   propositionalFormula,
@@ -3179,4 +3179,4 @@ const propositions = {
   testTableItemWithReplacedVariable,
 };
 
-export default propositions;
+export default propositionsFormulasItems;

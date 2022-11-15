@@ -43,4 +43,5 @@ export type TableHeadProps = {
   hasCheckboxColumn: boolean;
   data: TableDataItem[];
   className?: string;
+  id?: string;
 } & TableIdsProps;

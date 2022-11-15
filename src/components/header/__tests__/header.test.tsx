@@ -1,11 +1,10 @@
+import Header from '../index';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { ButtonID, Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-
-import Header from '../index';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,
@@ -67,5 +66,33 @@ describe('Header component:', () => {
     expect(settingsBtn).toHaveClass(Icon.Settings);
     expect(fullScreenBtn).toHaveClass(Icon.Shrink);
     expect(toolsBtn).toHaveClass(Icon.Right);
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Header />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('the settings buttons opens a popup', () => {
+    const settingsBtn = screen.getByTestId(`button_id_${ButtonID.Settings}`);
+    fireEvent.click(settingsBtn);
+    expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    expect(screen.queryByRole('form')).toBeInTheDocument();
+
+    const cancelBtn = screen.queryByTitle('Cancel');
+    if (cancelBtn) {
+      fireEvent.click(cancelBtn);
+      expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    }
+  });
+
+  it('the settings have correct inputs', () => {
+    const settingsBtn = screen.getByTestId(`button_id_${ButtonID.Settings}`);
+    fireEvent.click(settingsBtn);
+    expect(screen.queryByRole('combobox')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Language')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Dark Mode')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Sounds')).toBeInTheDocument();
+    expect(screen.queryByTitle('Apply')).toBeInTheDocument();
   });
 });

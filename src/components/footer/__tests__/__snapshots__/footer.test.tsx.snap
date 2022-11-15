@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <footer
+    class="footer test-class"
+  >
+    <span
+      class="footer__copyright"
+    >
+      © Dmitrii Suroviagin, 2022
+    </span>
+    <span
+      class="footer__links"
+    >
+      <a
+        class="chop-icon__mail4"
+        href="mailto:Dmitrii.Suroviagin@gmail.com"
+        rel="noreferrer"
+        target="_blank"
+        title="Mail"
+      />
+      <a
+        class="chop-icon__telegram"
+        href="https://telegram.me/savoury_gin"
+        rel="noreferrer"
+        target="_blank"
+        title="Telegram"
+      />
+      <a
+        class="chop-icon__linkedin-square"
+        href="https://www.linkedin.com/in/dmitrii-suroviagin/"
+        rel="noreferrer"
+        target="_blank"
+        title="LinkedIn"
+      />
+      <a
+        class="chop-icon__facebook2"
+        href="https://www.facebook.com/dmitrii.suroviagin"
+        rel="noreferrer"
+        target="_blank"
+        title="Facebook"
+      />
+      <a
+        class="chop-icon__github"
+        href="https://github.com/SavouryGin"
+        rel="noreferrer"
+        target="_blank"
+        title="GitHub"
+      />
+    </span>
+  </footer>
+</DocumentFragment>
+`;

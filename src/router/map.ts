@@ -39,15 +39,6 @@ export const routesMap: RoutesMapItem[] = [
     parentPageId: Page.Propositions,
   },
   {
-    id: Page.Predicates,
-    key: `page-${Page.Predicates}`,
-    url: paths[Page.Predicates],
-    element: Predicates,
-    title: { en: 'Predicates', ru: 'Предикаты' },
-    icon: Icon.Predicates,
-    parentPageId: Page.Home,
-  },
-  {
     id: Page.TruthTables,
     key: `page-${Page.TruthTables}`,
     url: paths[Page.TruthTables],
@@ -55,6 +46,15 @@ export const routesMap: RoutesMapItem[] = [
     title: { en: 'Truth Tables', ru: 'Таблицы истинности' },
     icon: Icon.TruthTables,
     parentPageId: Page.Propositions,
+  },
+  {
+    id: Page.Predicates,
+    key: `page-${Page.Predicates}`,
+    url: paths[Page.Predicates],
+    element: Predicates,
+    title: { en: 'Predicates', ru: 'Предикаты' },
+    icon: Icon.Predicates,
+    parentPageId: Page.Home,
   },
   {
     id: Page.Syllogisms,

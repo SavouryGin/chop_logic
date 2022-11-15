@@ -1,0 +1,454 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Natural Proofs page tests: should match the snapshot 1`] = `
+<DocumentFragment>
+  <article
+    class="propositions-natural-proofs"
+  >
+    <h2
+      class="propositions-natural-proofs__title chop-icon__cube"
+    >
+      Propositions &gt; Natural Proofs
+    </h2>
+    <div
+      class="tab-list propositions-natural-proofs__tabs"
+    >
+      <div
+        class="tab-list__tabs"
+        role="tablist"
+      >
+        <h3
+          aria-selected="true"
+          class="tab-list__tab tab-list__tab_active"
+          data-testid="natural-proofs-editor"
+          id="natural-proofs-editor"
+          role="tab"
+        >
+          Editor
+        </h3>
+        <h3
+          aria-selected="false"
+          class="tab-list__tab"
+          data-testid="natural-proofs-definitions"
+          id="natural-proofs-definitions"
+          role="tab"
+        >
+          Definitions
+        </h3>
+        <h3
+          aria-selected="false"
+          class="tab-list__tab"
+          data-testid="rules-of-inference"
+          id="rules-of-inference"
+          role="tab"
+        >
+          Rules
+        </h3>
+        <h3
+          aria-selected="false"
+          class="tab-list__tab"
+          data-testid="heuristics-of-propositions"
+          id="heuristics-of-propositions"
+          role="tab"
+        >
+          Heuristics
+        </h3>
+      </div>
+      <section
+        aria-labelledby="natural-proofs-editor"
+        class="tab-list__content"
+        role="tabpanel"
+      >
+        <div
+          class="natural-proofs-editor"
+        >
+          <div
+            class="natural-proofs-editor__table"
+          >
+            <table
+              class="table"
+            >
+              <thead
+                class="table__head"
+              >
+                <tr
+                  class="table__row"
+                >
+                  <th
+                    class="table__cell"
+                  >
+                    <div
+                      class="checkbox-input table__checkbox checkbox-input_disabled"
+                    >
+                      <input
+                        class="checkbox-input__default"
+                        disabled=""
+                        id="select_all_in_propositions-np-editor-table"
+                        name="select_all_in_propositions-np-editor-table"
+                        type="checkbox"
+                      />
+                      <label
+                        class="label checkbox-input__label chop-icon__checkbox-unchecked"
+                        data-testid="label-test-id"
+                        for="select_all_in_propositions-np-editor-table"
+                      >
+                        <span
+                          class="label__text"
+                        />
+                      </label>
+                    </div>
+                  </th>
+                  <th
+                    class="table__cell table__cell_heading"
+                  >
+                    #
+                  </th>
+                  <th
+                    class="table__cell table__cell_heading"
+                  >
+                    Formula
+                  </th>
+                  <th
+                    class="table__cell table__cell_heading"
+                  >
+                    Comment
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="table__body"
+              />
+            </table>
+            <div
+              class="natural-proofs-editor__filler"
+            >
+              Enter a premise or an assumption to start the proof
+            </div>
+          </div>
+          <div
+            class="natural-proofs-editor__toolbar"
+          >
+            <button
+              class="button button_large"
+              id="button_id_8"
+              title="Enter a premise"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_8"
+              >
+                Premise
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_9"
+              title="Reiterate proof step(s)"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_9"
+              >
+                Reiteration
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_10"
+              title="Replace a symbol"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_10"
+              >
+                Replace
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_17"
+              title="Negation Introduction"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_17"
+              >
+                ¬ I
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_19"
+              title="Conjunction Introduction"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_19"
+              >
+                ∧ I
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_21"
+              title="Disjunction Introduction"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_21"
+              >
+                ∨ I
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_23"
+              title="Implication Introduction"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_23"
+              >
+                ⇒ I
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_25"
+              title="Equivalence Introduction"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_25"
+              >
+                ⇔ I
+              </span>
+            </button>
+            <button
+              class="button button_large"
+              id="button_id_16"
+              title="Enter an assumption"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_16"
+              >
+                Assumption
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_11"
+              title="Delete the proof step(s)"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_11"
+              >
+                Delete
+              </span>
+            </button>
+            <button
+              class="button button_large"
+              id="button_id_27"
+              title="Create a shortcut"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_27"
+              >
+                Shortcut
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_18"
+              title="Negation Elimination"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_18"
+              >
+                ¬ E
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_20"
+              title="Conjunction Elimination"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_20"
+              >
+                ∧ E
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_22"
+              title="Disjunction Elimination"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_22"
+              >
+                ∨ E
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_24"
+              title="Implication Elimination"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_24"
+              >
+                ⇒ E
+              </span>
+            </button>
+            <button
+              class="button button_large button_disabled"
+              disabled=""
+              id="button_id_26"
+              title="Equivalence Elimination"
+              type="button"
+            >
+              <span
+                class="button__shadow"
+              />
+              <span
+                class="button__edge"
+              />
+              <span
+                class="button__front"
+                data-testid="button_id_26"
+              >
+                ⇔ E
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+</DocumentFragment>
+`;

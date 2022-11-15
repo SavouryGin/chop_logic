@@ -1,5 +1,6 @@
 import executor from '../executor';
-import mocks from '__mocks__/data/propositions';
+import mocks from '__mocks__/data/propositions/formulas-items';
+import tMocks from '__mocks__/data/propositions/table-items';
 import { PropositionalError } from 'errors/propositional-error';
 
 describe('Propositions executor tests:', () => {
@@ -20,5 +21,48 @@ describe('Propositions executor tests:', () => {
     expect(() => {
       executor.performIE(mocks.propositionalFormula, mocks.secondSubFormula);
     }).toThrow(PropositionalError);
+  });
+
+  it('performCI() creates correct conjunctions', () => {
+    const data = {
+      level: 0,
+      dataLength: 1,
+      selectedItems: [tMocks.npTableCIandCE[0]],
+      assumptionId: null,
+    };
+    expect(executor.performCI({ ...data })).toEqual([{ ...tMocks.npTableCIandCE[1], id: expect.any(String) }]);
+  });
+
+  it('performCE() creates correct conjunctions', () => {
+    const data = {
+      level: 0,
+      dataLength: 2,
+      selectedItems: [tMocks.npTableCIandCE[1]],
+      assumptionId: null,
+    };
+    expect(executor.performCE({ ...data })).toEqual([
+      { ...tMocks.npTableCIandCE[2], id: expect.any(String) },
+      { ...tMocks.npTableCIandCE[3], id: expect.any(String) },
+    ]);
+  });
+
+  it('performIEforNP() creates a correct modus ponens', () => {
+    const data = {
+      level: 1,
+      dataLength: 2,
+      selectedItems: [tMocks.npTableDataIEandII[0], tMocks.npTableDataIEandII[1]],
+      assumptionId: tMocks.npTableDataIEandII[1].assumptionId,
+    };
+    expect(executor.performIEforNP({ ...data })).toEqual({ ...tMocks.npTableDataIEandII[2], id: expect.any(String) });
+  });
+
+  it('performII() should exit the sub-proof correctly', () => {
+    const data = {
+      level: 1,
+      dataLength: 3,
+      selectedItems: [tMocks.npTableDataIEandII[1], tMocks.npTableDataIEandII[2]],
+      assumptionId: null,
+    };
+    expect(executor.performII({ ...data })).toEqual({ ...tMocks.npTableDataIEandII[3], id: expect.any(String) });
   });
 });

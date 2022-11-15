@@ -1,4 +1,4 @@
-import mocks from '__mocks__/data/propositions';
+import mocks from '__mocks__/data/propositions/formulas-items';
 import parser from '../parser';
 import { PropositionalError } from 'errors/propositional-error';
 

@@ -1,4 +1,4 @@
-import Propositions from 'pages/propositions/sub-pages/direct-proofs';
+import PropositionsDirectProofs from 'pages/propositions/sub-pages/direct-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import userEvent from '@testing-library/user-event';
@@ -8,24 +8,19 @@ import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-  propositionsDP: propositionsDPSlice.reducer,
-});
+describe('Direct Proofs Editor tests:', () => {
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+    propositionsDP: propositionsDPSlice.reducer,
+  });
 
-const mockedState = {
-  settings: settingsInitialState,
-  propositionsDP: propositionsDPInitialState,
-};
-
-describe('DirectProofsEditor tab:', () => {
-  const modalContainer = document.createElement('div');
-  modalContainer.setAttribute('id', 'modal');
+  const mockedState = {
+    settings: settingsInitialState,
+    propositionsDP: propositionsDPInitialState,
+  };
 
   beforeEach(() => {
-    renderWithRedux(<Propositions />, mockedReducer, mockedState, {
-      container: document.body.appendChild(modalContainer),
-    });
+    renderWithRedux(<PropositionsDirectProofs />, mockedReducer, mockedState);
   });
 
   it('displays 8 control buttons', () => {
@@ -42,20 +37,20 @@ describe('DirectProofsEditor tab:', () => {
   });
 
   it('4 buttons are enabled and 4 are disabled by default', () => {
-    expect(screen.getByTitle('Enter premise')).toBeEnabled();
+    expect(screen.getByTitle('Enter a premise')).toBeEnabled();
     expect(screen.getByTitle('Implication Creation')).toBeEnabled();
     expect(screen.getByTitle('Implication Distribution')).toBeEnabled();
     expect(screen.getByTitle('Contradiction Realization')).toBeEnabled();
 
-    expect(screen.getByTitle('Reiterate proof step')).toBeDisabled();
+    expect(screen.getByTitle('Reiterate proof step(s)')).toBeDisabled();
     expect(screen.getByTitle('Implication Elimination')).toBeDisabled();
-    expect(screen.getByTitle('Delete proof step')).toBeDisabled();
-    expect(screen.getByTitle('Replace symbol')).toBeDisabled();
+    expect(screen.getByTitle('Delete the proof step(s)')).toBeDisabled();
+    expect(screen.getByTitle('Replace a symbol')).toBeDisabled();
   });
 
   it('on click Enter premise button the popup is appeared', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    fireEvent.click(screen.getByTitle('Enter premise'));
+    fireEvent.click(screen.getByTitle('Enter a premise'));
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
     expect(screen.queryByRole('form')).toBeInTheDocument();
   });
@@ -87,7 +82,7 @@ describe('DirectProofsEditor tab:', () => {
     expect(screen.getByText(fillerText.en)).toBeInTheDocument();
 
     // Open the form
-    fireEvent.click(screen.getByTitle('Enter premise'));
+    fireEvent.click(screen.getByTitle('Enter a premise'));
     const testInput = 'Q';
 
     // Find the controls

@@ -22,7 +22,13 @@ const NaturalProofsEditorTable = () => {
 
   return (
     <div className='natural-proofs-editor__table'>
-      <Table columns={constants.naturalProofsEditorTableColumns} data={tableData} hasCheckboxColumn passSelectedIds={takeSelectedIds} />
+      <Table
+        columns={constants.naturalProofsEditorTableColumns}
+        data={tableData}
+        hasCheckboxColumn
+        passSelectedIds={takeSelectedIds}
+        id='propositions-np-editor-table'
+      />
       {tableData.length === 0 && noStepsFiller}
     </div>
   );
