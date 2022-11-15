@@ -1,4 +1,4 @@
-import mocks from '__mocks__/data/propositions';
+import mocks from '__mocks__/data/propositions/formulas-items';
 import replacer from '../replacer';
 
 describe('Propositions replacer tests', () => {

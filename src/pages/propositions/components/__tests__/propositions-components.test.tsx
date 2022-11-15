@@ -1,26 +1,29 @@
-import ContradictionRealizationForm from '../forms/contradiction-realization';
-import DirectProofsEditorToolbar from '../toolbars/direct-proofs';
-import ImplicationCreationForm from '../forms/implication-creation';
-import ImplicationDistributionForm from '../forms/implication-distribution';
-import PremiseForm from '../forms/premise';
+import ContradictionRealizationForm from 'pages/propositions/components/forms/contradiction-realization';
+import DirectProofsEditorToolbar from 'pages/propositions/components/toolbars/direct-proofs';
+import ImplicationCreationForm from 'pages/propositions/components/forms/implication-creation';
+import ImplicationDistributionForm from 'pages/propositions/components/forms/implication-distribution';
+import PremiseForm from 'pages/propositions/components/forms/premise';
 import React from 'react';
-import ReplacerForm from '../forms/replacer';
+import ReplacerForm from 'pages/propositions/components/forms/replacer';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPInitialState } from 'store/propositions/natural-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-  propositionsDP: propositionsDPSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-  propositionsDP: propositionsDPInitialState,
-};
-
 describe('Propositions Forms component:', () => {
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+    propositionsDP: propositionsDPSlice.reducer,
+    propositionsNP: propositionsDPSlice.reducer,
+  });
+
+  const mockedState = {
+    settings: settingsInitialState,
+    propositionsDP: propositionsDPInitialState,
+    propositionsNP: propositionsNPInitialState,
+  };
+
   it('ContradictionRealizationForm matches the snapshot', () => {
     const { asFragment } = renderWithRedux(<ContradictionRealizationForm />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();

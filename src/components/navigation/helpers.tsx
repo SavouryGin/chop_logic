@@ -28,7 +28,7 @@ export function getNavigationLinksList(routesMap: RoutesMapItem[], language: Lan
 export function getNavigationListItem(item: RoutesMapItem, language: Language): JSX.Element {
   return (
     <li key={item.key}>
-      <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} />
+      <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} id={`link-to_${item.id.toString()}`} />
     </li>
   );
 }

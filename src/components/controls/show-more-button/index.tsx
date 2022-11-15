@@ -20,7 +20,16 @@ const ShowMoreButton = ({ onClick, isOpened, ...rest }: ShowMoreButtonProps): Re
     { [Icon.CaretUp]: isOpened, [Icon.CaretDown]: !isOpened, 'show-more-button_dark': isDarkMode },
   ]);
 
-  return <button onClick={onClick} type='button' id={rest.id} disabled={rest.isDisabled} className={buttonClass}></button>;
+  return (
+    <button
+      onClick={onClick}
+      type='button'
+      id={rest.id}
+      data-testid={rest.id || 'show-more-button'}
+      disabled={rest.isDisabled}
+      className={buttonClass}
+    ></button>
+  );
 };
 
 export default ShowMoreButton;

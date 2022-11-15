@@ -1,4 +1,4 @@
-import Propositions from 'pages/propositions/sub-pages/direct-proofs';
+import PropositionsDirectProofs from 'pages/propositions/sub-pages/direct-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
@@ -8,24 +8,24 @@ import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 import { titles } from 'texts/propositions';
 
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-  propositionsDP: propositionsDPSlice.reducer,
-});
+describe('Direct Proofs page tests:', () => {
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+    propositionsDP: propositionsDPSlice.reducer,
+  });
 
-const mockedState = {
-  settings: settingsInitialState,
-  propositionsDP: propositionsDPInitialState,
-};
+  const mockedState = {
+    settings: settingsInitialState,
+    propositionsDP: propositionsDPInitialState,
+  };
 
-describe('Propositions page:', () => {
   beforeEach(() => {
-    renderWithRedux(<Propositions />, mockedReducer, mockedState);
+    renderWithRedux(<PropositionsDirectProofs />, mockedReducer, mockedState);
   });
 
   it('renders the article element', () => {
     expect(screen.getByRole('article')).toBeInTheDocument();
-    expect(screen.getByRole('article')).toHaveClass('propositions');
+    expect(screen.getByRole('article')).toHaveClass('propositions-direct-proofs');
   });
 
   it('displays the heading', () => {
@@ -41,5 +41,10 @@ describe('Propositions page:', () => {
     for (const item of propositionsDirectProofsTabs) {
       expect(screen.getByTestId(item.tabId)).toHaveTextContent(item.tabTitle.en);
     }
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<PropositionsDirectProofs />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

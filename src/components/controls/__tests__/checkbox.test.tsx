@@ -1,3 +1,4 @@
+import Checkbox from 'components/controls/checkbox';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import userEvent from '@testing-library/user-event';
@@ -7,22 +8,20 @@ import { inputTexts } from 'texts';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
-import Checkbox from 'components/controls/checkbox';
-
-const testProps = {
-  name: 'test checkbox',
-  inputId: InputID.isDarkModeCheckbox,
-};
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
-
 describe('Checkbox component:', () => {
+  const testProps = {
+    name: 'test checkbox',
+    inputId: InputID.isDarkModeCheckbox,
+  };
+
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+  });
+
+  const mockedState = {
+    settings: settingsInitialState,
+  };
+
   it('renders the checkbox input with default props', () => {
     renderWithRedux(<Checkbox {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('checkbox');

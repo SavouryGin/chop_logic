@@ -28,19 +28,19 @@ export const buttonTexts: ButtonText = {
     innerText: { en: 'Apply', ru: 'Применить' },
   },
   [ButtonID.Premise]: {
-    title: { en: 'Enter premise', ru: 'Ввести посылку' },
+    title: { en: 'Enter a premise', ru: 'Ввести посылку' },
     innerText: { en: 'Premise', ru: 'Посылка' },
   },
   [ButtonID.Reiteration]: {
-    title: { en: 'Reiterate proof step', ru: 'Повторить шаг доказательства' },
+    title: { en: 'Reiterate proof step(s)', ru: 'Повторить шаг доказательства' },
     innerText: { en: 'Reiteration', ru: 'Повтор' },
   },
   [ButtonID.Replace]: {
-    title: { en: 'Replace symbol', ru: 'Заменить символ' },
+    title: { en: 'Replace a symbol', ru: 'Заменить символ' },
     innerText: { en: 'Replace', ru: 'Заменить' },
   },
   [ButtonID.Delete]: {
-    title: { en: 'Delete proof step', ru: 'Удалить шаг доказательства' },
+    title: { en: 'Delete the proof step(s)', ru: 'Удалить шаг доказательства' },
     innerText: { en: 'Delete', ru: 'Удалить' },
   },
   [ButtonID.ImplicationCreation]: {
@@ -60,7 +60,7 @@ export const buttonTexts: ButtonText = {
     innerText: { en: 'IE', ru: 'УИ' },
   },
   [ButtonID.Assumption]: {
-    title: { en: 'Assumption', ru: 'Гипотеза' },
+    title: { en: 'Enter an assumption', ru: 'Ввести гипотезу' },
     innerText: { en: 'Assumption', ru: 'Гипотеза' },
   },
   [ButtonID.NotIntroduction]: {
@@ -104,7 +104,7 @@ export const buttonTexts: ButtonText = {
     innerText: { en: `${LogicalSymbolHexCode.Equivalence} E`, ru: `У ${LogicalSymbolHexCode.Equivalence}` },
   },
   [ButtonID.Shortcut]: {
-    title: { en: 'Shortcut', ru: 'Краткий вывод' },
+    title: { en: 'Create a shortcut', ru: 'Добавить краткий вывод' },
     innerText: { en: 'Shortcut', ru: 'Кр. вывод' },
   },
 };
