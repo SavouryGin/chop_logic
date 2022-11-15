@@ -1685,12 +1685,453 @@ const npTableCIandCE: NaturalProofsTableItem[] = [
   },
 ];
 
+const npTableNIandNE: NaturalProofsTableItem[] = [
+  {
+    level: 0,
+    id: '6111ca42-4df3-e6ff-36c5-16b2dae09caa',
+    step: 1,
+    rawInput: '~p=>q',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 2,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 3,
+      },
+      {
+        input: 'p',
+        representation: 'P',
+        type: 'variable',
+        position: 4,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 6,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 7,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 8,
+      },
+      {
+        input: 'q',
+        representation: 'Q',
+        type: 'variable',
+        position: 9,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 10,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 11,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 0,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 1,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 2,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 3,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Not,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'P',
+            },
+          ],
+        },
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+      ],
+    },
+    comment: {
+      en: 'Premise',
+      ru: 'Посылка',
+    },
+    formulaBase: NPFormulaBase.Premise,
+    assumptionId: null,
+  },
+  {
+    level: 1,
+    id: '938937f7-b5dc-f033-4205-446ff3f031f5',
+    step: 2,
+    rawInput: '~p=>~q',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 2,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 3,
+      },
+      {
+        input: 'p',
+        representation: 'P',
+        type: 'variable',
+        position: 4,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 6,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 7,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 8,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 9,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 10,
+      },
+      {
+        input: 'q',
+        representation: 'Q',
+        type: 'variable',
+        position: 11,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 12,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 13,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 14,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 0,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 1,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 2,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 3,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 4,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Not,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'P',
+            },
+          ],
+        },
+        {
+          operator: PropositionalOperator.Not,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Q',
+            },
+          ],
+        },
+      ],
+    },
+    comment: {
+      en: 'Assumption',
+      ru: 'Гипотеза',
+    },
+    formulaBase: NPFormulaBase.Assumption,
+    assumptionId: '8ddbe1eb-d2e6-2591-5cc5-f097911b567b',
+  },
+  {
+    level: 1,
+    assumptionId: '8ddbe1eb-d2e6-2591-5cc5-f097911b567b',
+    step: 3,
+    id: 'abbdb879-ab50-3074-8d2f-e57e9dd99baa',
+    rawInput: '~p=>q, ~p=>~q',
+    formulaBase: NPFormulaBase.NE,
+    dependentOn: ['6111ca42-4df3-e6ff-36c5-16b2dae09caa', '938937f7-b5dc-f033-4205-446ff3f031f5'],
+    comment: {
+      en: 'NI: 1, 2',
+      ru: 'ВО: 1, 2',
+    },
+    formula: {
+      operator: PropositionalOperator.Not,
+      values: [
+        {
+          operator: PropositionalOperator.Not,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'P',
+            },
+          ],
+        },
+      ],
+    },
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 2,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 3,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 4,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 5,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 6,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 8,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 0,
+      },
+      {
+        input: '~',
+        representation: '¬',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 2,
+      },
+    ],
+  },
+  {
+    level: 1,
+    assumptionId: '8ddbe1eb-d2e6-2591-5cc5-f097911b567b',
+    step: 4,
+    id: 'c5a6200e-ec08-a47f-7167-27a608649048',
+    rawInput: '~p=>q, ~p=>~q',
+    formulaBase: NPFormulaBase.NI,
+    dependentOn: ['abbdb879-ab50-3074-8d2f-e57e9dd99baa'],
+    comment: {
+      en: 'NE: 3',
+      ru: 'УО: 3',
+    },
+    formula: {
+      operator: PropositionalOperator.Var,
+      values: 'P',
+    },
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 1,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 2,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 0,
+      },
+    ],
+  },
+];
+
 const error = new PropositionalError(`Cannot convert this expression to a formula.`, errorsTexts.semanticError);
 
 const propositionsTableItems = {
   dpTableDataIE,
   npTableDataIEandII,
   npTableCIandCE,
+  npTableNIandNE,
   error,
 };
 
