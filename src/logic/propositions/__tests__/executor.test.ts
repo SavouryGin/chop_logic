@@ -99,4 +99,14 @@ describe('Propositions executor tests:', () => {
     };
     expect(executor.performNI({ ...data })).toEqual({ ...tMocks.npTableNIandNE[2], id: expect.any(String) });
   });
+
+  it('performNE() eliminates two negations correctly', () => {
+    const data = {
+      level: 1,
+      dataLength: 3,
+      selectedItems: [tMocks.npTableNIandNE[2]],
+      assumptionId: tMocks.npTableNIandNE[2].assumptionId,
+    };
+    expect(executor.performNE({ ...data })).toEqual({ ...tMocks.npTableNIandNE[3], id: expect.any(String) });
+  });
 });
