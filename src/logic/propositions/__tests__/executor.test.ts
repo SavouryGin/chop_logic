@@ -65,4 +65,18 @@ describe('Propositions executor tests:', () => {
     };
     expect(executor.performII({ ...data })).toEqual({ ...tMocks.npTableDataIEandII[3], id: expect.any(String) });
   });
+
+  it('performDI() create correct negations', () => {
+    const data = {
+      level: 0,
+      dataLength: 1,
+      selectedItems: [tMocks.npTableDI[0]],
+      assumptionId: null,
+      rawInput: 'f',
+    };
+    expect(executor.performDI({ ...data })).toEqual([
+      { ...tMocks.npTableDI[1], id: expect.any(String) },
+      { ...tMocks.npTableDI[2], id: expect.any(String) },
+    ]);
+  });
 });

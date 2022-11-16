@@ -19,8 +19,6 @@ const mockedState = {
 
 describe('ModalWindow component:', () => {
   const mockClose = jest.fn();
-  const modalContainer = document.createElement('div');
-  modalContainer.setAttribute('id', 'modal');
 
   const testProps = {
     isOpened: true,
@@ -31,9 +29,7 @@ describe('ModalWindow component:', () => {
   };
 
   beforeEach(() => {
-    renderWithRedux(<ModalWindow {...testProps} />, mockedReducer, mockedState, {
-      container: document.body.appendChild(modalContainer),
-    });
+    renderWithRedux(<ModalWindow {...testProps} />, mockedReducer, mockedState);
   });
 
   it('creates the dialog element', () => {
@@ -48,7 +44,7 @@ describe('ModalWindow component:', () => {
     expect(header).toHaveClass('modal-window__header');
   });
 
-  it('contains two buttons by default', () => {
+  it('contains one button by default', () => {
     expect(screen.getAllByRole('button')).toHaveLength(1);
   });
 
