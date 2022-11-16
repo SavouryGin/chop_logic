@@ -66,7 +66,7 @@ describe('Propositions executor tests:', () => {
     expect(executor.performII({ ...data })).toEqual({ ...tMocks.npTableDataIEandII[3], id: expect.any(String) });
   });
 
-  it('performDI() create correct disjunctions', () => {
+  it('performDI() creates correct disjunctions', () => {
     const data = {
       level: 0,
       dataLength: 1,
@@ -88,5 +88,15 @@ describe('Propositions executor tests:', () => {
       assumptionId: tMocks.npTableDE[2].assumptionId,
     };
     expect(executor.performDE({ ...data })).toEqual({ ...tMocks.npTableDE[3], id: expect.any(String) });
+  });
+
+  it('performNI() creates a correct negation', () => {
+    const data = {
+      level: 1,
+      dataLength: 2,
+      selectedItems: [tMocks.npTableNIandNE[0], tMocks.npTableNIandNE[1]],
+      assumptionId: tMocks.npTableNIandNE[1].assumptionId,
+    };
+    expect(executor.performNI({ ...data })).toEqual({ ...tMocks.npTableNIandNE[2], id: expect.any(String) });
   });
 });

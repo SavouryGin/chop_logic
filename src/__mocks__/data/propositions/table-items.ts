@@ -1981,7 +1981,7 @@ const npTableNIandNE: NaturalProofsTableItem[] = [
     step: 3,
     id: 'abbdb879-ab50-3074-8d2f-e57e9dd99baa',
     rawInput: '~p=>q, ~p=>~q',
-    formulaBase: NPFormulaBase.NE,
+    formulaBase: NPFormulaBase.NI,
     dependentOn: ['6111ca42-4df3-e6ff-36c5-16b2dae09caa', '938937f7-b5dc-f033-4205-446ff3f031f5'],
     comment: {
       en: 'NI: 1, 2',
@@ -2084,7 +2084,7 @@ const npTableNIandNE: NaturalProofsTableItem[] = [
     step: 4,
     id: 'c5a6200e-ec08-a47f-7167-27a608649048',
     rawInput: '~p=>q, ~p=>~q',
-    formulaBase: NPFormulaBase.NI,
+    formulaBase: NPFormulaBase.NE,
     dependentOn: ['abbdb879-ab50-3074-8d2f-e57e9dd99baa'],
     comment: {
       en: 'NE: 3',
