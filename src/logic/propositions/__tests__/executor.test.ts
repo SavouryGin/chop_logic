@@ -109,4 +109,30 @@ describe('Propositions executor tests:', () => {
     };
     expect(executor.performNE({ ...data })).toEqual({ ...tMocks.npTableNIandNE[3], id: expect.any(String) });
   });
+
+  it('performEE() eliminates the equivalence correctly', () => {
+    const data = {
+      level: 1,
+      dataLength: 4,
+      selectedItems: [tMocks.npTableEIandEE[3]],
+      assumptionId: tMocks.npTableEIandEE[3].assumptionId,
+    };
+    expect(executor.performEE({ ...data })).toEqual([
+      { ...tMocks.npTableEIandEE[4], id: expect.any(String) },
+      { ...tMocks.npTableEIandEE[5], id: expect.any(String) },
+    ]);
+  });
+
+  it('performEE() should throw an error if the input is incorrect', () => {
+    const data = {
+      level: 0,
+      dataLength: 1,
+      selectedItems: [tMocks.npTableEIandEE[0]],
+      assumptionId: tMocks.npTableEIandEE[0].assumptionId,
+    };
+
+    expect(() => {
+      executor.performEE({ ...data });
+    }).toThrow(PropositionalError);
+  });
 });
