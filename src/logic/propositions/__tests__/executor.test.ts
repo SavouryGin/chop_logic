@@ -135,4 +135,30 @@ describe('Propositions executor tests:', () => {
       executor.performEE({ ...data });
     }).toThrow(PropositionalError);
   });
+
+  it('performEI() creates correct equivalences', () => {
+    const data = {
+      level: 1,
+      dataLength: 2,
+      selectedItems: [tMocks.npTableEIandEE[0], tMocks.npTableEIandEE[1]],
+      assumptionId: tMocks.npTableEIandEE[1].assumptionId,
+    };
+    expect(executor.performEI({ ...data })).toEqual([
+      { ...tMocks.npTableEIandEE[2], id: expect.any(String) },
+      { ...tMocks.npTableEIandEE[3], id: expect.any(String) },
+    ]);
+  });
+
+  it('performEI() should throw an error if the input is incorrect', () => {
+    const data = {
+      level: 0,
+      dataLength: 2,
+      selectedItems: [tMocks.npTableEIandEE[0], tMocks.npTableEIandEE[3]],
+      assumptionId: tMocks.npTableEIandEE[3].assumptionId,
+    };
+
+    expect(() => {
+      executor.performEI({ ...data });
+    }).toThrow(PropositionalError);
+  });
 });
