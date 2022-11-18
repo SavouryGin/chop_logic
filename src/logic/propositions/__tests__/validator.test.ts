@@ -1,9 +1,17 @@
 import mocks from '__mocks__/data/propositions/formulas-items';
+import tMocks from '__mocks__/data/propositions/table-items';
 import validator from '../validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalOperator } from 'enums';
 
 describe('Propositions validator tests', () => {
+  it('isPropositionalExpression() test', () => {
+    expect(validator.isPropositionalExpression(tMocks.dpTableDataIE[0].expression)).toBeTruthy();
+    expect(validator.isPropositionalExpression([])).toBeTruthy();
+    expect(validator.isPropositionalExpression(tMocks.dpTableDataIE[0].formula)).toBeFalsy();
+    expect(validator.isPropositionalExpression(123)).toBeFalsy();
+  });
+
   it('isIncorrectMainSymbol() test', () => {
     expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[0])).toBeFalsy();
     expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[1])).toBeFalsy();
