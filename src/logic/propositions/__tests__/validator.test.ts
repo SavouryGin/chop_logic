@@ -128,4 +128,10 @@ describe('Propositions validator tests', () => {
     expect(validator.isDEApplicable(tMocks.npTableDE[0].formula, tMocks.npTableDE[1].formula, tMocks.npTableDE[2].formula)).toBeTruthy();
     expect(validator.isDEApplicable(tMocks.npTableDE[0].formula, tMocks.npTableDE[1].formula, tMocks.npTableDE[3].formula)).toBeFalsy();
   });
+
+  it('isCEApplicable() test', () => {
+    expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula])).toBeTruthy();
+    expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableDataIEandII[0].formula])).toBeTruthy();
+    expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableCIandCE[2].formula])).toBeFalsy();
+  });
 });
