@@ -123,4 +123,9 @@ describe('Propositions validator tests', () => {
     expect(validator.isIEApplicable(mocks.propositionalFormula, mocks.secondSubFormula)).toBeFalsy();
     expect(validator.isIEApplicable(mocks.propositionalFormula, mocks.propositionalFormula)).toBeFalsy();
   });
+
+  it('isDEApplicable() test', () => {
+    expect(validator.isDEApplicable(tMocks.npTableDE[0].formula, tMocks.npTableDE[1].formula, tMocks.npTableDE[2].formula)).toBeTruthy();
+    expect(validator.isDEApplicable(tMocks.npTableDE[0].formula, tMocks.npTableDE[1].formula, tMocks.npTableDE[3].formula)).toBeFalsy();
+  });
 });
