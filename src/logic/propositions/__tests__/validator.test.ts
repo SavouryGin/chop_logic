@@ -134,4 +134,10 @@ describe('Propositions validator tests', () => {
     expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableDataIEandII[0].formula])).toBeTruthy();
     expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableCIandCE[2].formula])).toBeFalsy();
   });
+
+  it('isNIApplicable() test', () => {
+    expect(validator.isNIApplicable([tMocks.npTableNIandNE[1].formula, tMocks.npTableNIandNE[0].formula])).toBeTruthy();
+    expect(validator.isNIApplicable([tMocks.npTableNIandNE[1].formula, tMocks.npTableNIandNE[2].formula])).toBeFalsy();
+    expect(validator.isNIApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableNIandNE[2].formula])).toBeFalsy();
+  });
 });
