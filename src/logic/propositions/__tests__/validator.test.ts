@@ -140,4 +140,10 @@ describe('Propositions validator tests', () => {
     expect(validator.isNIApplicable([tMocks.npTableNIandNE[1].formula, tMocks.npTableNIandNE[2].formula])).toBeFalsy();
     expect(validator.isNIApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableNIandNE[2].formula])).toBeFalsy();
   });
+
+  it('isNEApplicable() test', () => {
+    expect(validator.isNEApplicable([tMocks.npTableNIandNE[2].formula])).toBeTruthy();
+    expect(validator.isNEApplicable([tMocks.npTableNIandNE[1].formula])).toBeFalsy();
+    expect(validator.isNEApplicable([tMocks.npTableCIandCE[1].formula])).toBeFalsy();
+  });
 });
