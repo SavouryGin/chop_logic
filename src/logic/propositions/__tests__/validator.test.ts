@@ -146,4 +146,15 @@ describe('Propositions validator tests', () => {
     expect(validator.isNEApplicable([tMocks.npTableNIandNE[1].formula])).toBeFalsy();
     expect(validator.isNEApplicable([tMocks.npTableCIandCE[1].formula])).toBeFalsy();
   });
+
+  it('isEIApplicable() test', () => {
+    expect(validator.isEIApplicable([tMocks.npTableEIandEE[0].formula, tMocks.npTableEIandEE[1].formula])).toBeTruthy();
+    expect(validator.isEIApplicable([tMocks.npTableEIandEE[1].formula, tMocks.dpTableDataIE[0].formula])).toBeFalsy();
+  });
+
+  it('isEEApplicable() test', () => {
+    expect(validator.isEEApplicable([tMocks.npTableEIandEE[2].formula, tMocks.npTableEIandEE[3].formula])).toBeTruthy();
+    expect(validator.isEEApplicable([tMocks.npTableEIandEE[2].formula])).toBeTruthy();
+    expect(validator.isEEApplicable([tMocks.npTableEIandEE[0].formula, tMocks.npTableEIandEE[1].formula])).toBeFalsy();
+  });
 });
