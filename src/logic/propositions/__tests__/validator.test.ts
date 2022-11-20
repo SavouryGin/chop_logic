@@ -163,4 +163,15 @@ describe('Propositions validator tests', () => {
     expect(validator.isDEItemsCompatible([tMocks.npTableDE[0], tMocks.npTableDE[1], tMocks.npTableDE[2]], 1)).toBeFalsy();
     expect(validator.isDEItemsCompatible(tMocks.npTableDE, 1)).toBeFalsy();
   });
+
+  it('isIIItemsCompatible() test', () => {
+    expect(
+      validator.isIIItemsCompatible([tMocks.npTableDataIEandII[0], tMocks.npTableDataIEandII[1], tMocks.npTableDataIEandII[2]]),
+    ).toBeFalsy();
+
+    expect(validator.isIIItemsCompatible([tMocks.npTableDataIEandII[2]], tMocks.npTableDataIEandII[2])).toBeTruthy();
+    expect(
+      validator.isIIItemsCompatible([tMocks.npTableDataIEandII[1], tMocks.npTableDataIEandII[2]], tMocks.npTableDataIEandII[2]),
+    ).toBeTruthy();
+  });
 });
