@@ -1,9 +1,17 @@
 import mocks from '__mocks__/data/propositions/formulas-items';
+import tMocks from '__mocks__/data/propositions/table-items';
 import validator from '../validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalOperator } from 'enums';
 
 describe('Propositions validator tests', () => {
+  it('isPropositionalExpression() test', () => {
+    expect(validator.isPropositionalExpression(tMocks.dpTableDataIE[0].expression)).toBeTruthy();
+    expect(validator.isPropositionalExpression([])).toBeTruthy();
+    expect(validator.isPropositionalExpression(tMocks.dpTableDataIE[0].formula)).toBeFalsy();
+    expect(validator.isPropositionalExpression(123)).toBeFalsy();
+  });
+
   it('isIncorrectMainSymbol() test', () => {
     expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[0])).toBeFalsy();
     expect(validator.isIncorrectMainSymbol(mocks.propositionalSymbols[1])).toBeFalsy();
@@ -114,5 +122,56 @@ describe('Propositions validator tests', () => {
     expect(validator.isIEApplicable(mocks.firstSubFormula, mocks.propositionalFormula)).toBeTruthy();
     expect(validator.isIEApplicable(mocks.propositionalFormula, mocks.secondSubFormula)).toBeFalsy();
     expect(validator.isIEApplicable(mocks.propositionalFormula, mocks.propositionalFormula)).toBeFalsy();
+  });
+
+  it('isDEApplicable() test', () => {
+    expect(validator.isDEApplicable(tMocks.npTableDE[0].formula, tMocks.npTableDE[1].formula, tMocks.npTableDE[2].formula)).toBeTruthy();
+    expect(validator.isDEApplicable(tMocks.npTableDE[0].formula, tMocks.npTableDE[1].formula, tMocks.npTableDE[3].formula)).toBeFalsy();
+  });
+
+  it('isCEApplicable() test', () => {
+    expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula])).toBeTruthy();
+    expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableDataIEandII[0].formula])).toBeTruthy();
+    expect(validator.isCEApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableCIandCE[2].formula])).toBeFalsy();
+  });
+
+  it('isNIApplicable() test', () => {
+    expect(validator.isNIApplicable([tMocks.npTableNIandNE[1].formula, tMocks.npTableNIandNE[0].formula])).toBeTruthy();
+    expect(validator.isNIApplicable([tMocks.npTableNIandNE[1].formula, tMocks.npTableNIandNE[2].formula])).toBeFalsy();
+    expect(validator.isNIApplicable([tMocks.npTableCIandCE[1].formula, tMocks.npTableNIandNE[2].formula])).toBeFalsy();
+  });
+
+  it('isNEApplicable() test', () => {
+    expect(validator.isNEApplicable([tMocks.npTableNIandNE[2].formula])).toBeTruthy();
+    expect(validator.isNEApplicable([tMocks.npTableNIandNE[1].formula])).toBeFalsy();
+    expect(validator.isNEApplicable([tMocks.npTableCIandCE[1].formula])).toBeFalsy();
+  });
+
+  it('isEIApplicable() test', () => {
+    expect(validator.isEIApplicable([tMocks.npTableEIandEE[0].formula, tMocks.npTableEIandEE[1].formula])).toBeTruthy();
+    expect(validator.isEIApplicable([tMocks.npTableEIandEE[1].formula, tMocks.dpTableDataIE[0].formula])).toBeFalsy();
+  });
+
+  it('isEEApplicable() test', () => {
+    expect(validator.isEEApplicable([tMocks.npTableEIandEE[2].formula, tMocks.npTableEIandEE[3].formula])).toBeTruthy();
+    expect(validator.isEEApplicable([tMocks.npTableEIandEE[2].formula])).toBeTruthy();
+    expect(validator.isEEApplicable([tMocks.npTableEIandEE[0].formula, tMocks.npTableEIandEE[1].formula])).toBeFalsy();
+  });
+
+  it('isDEItemsCompatible() test', () => {
+    expect(validator.isDEItemsCompatible([tMocks.npTableDE[0], tMocks.npTableDE[1], tMocks.npTableDE[2]], 2)).toBeTruthy();
+    expect(validator.isDEItemsCompatible([tMocks.npTableDE[0], tMocks.npTableDE[1], tMocks.npTableDE[2]], 1)).toBeFalsy();
+    expect(validator.isDEItemsCompatible(tMocks.npTableDE, 1)).toBeFalsy();
+  });
+
+  it('isIIItemsCompatible() test', () => {
+    expect(
+      validator.isIIItemsCompatible([tMocks.npTableDataIEandII[0], tMocks.npTableDataIEandII[1], tMocks.npTableDataIEandII[2]]),
+    ).toBeFalsy();
+
+    expect(validator.isIIItemsCompatible([tMocks.npTableDataIEandII[2]], tMocks.npTableDataIEandII[2])).toBeTruthy();
+    expect(
+      validator.isIIItemsCompatible([tMocks.npTableDataIEandII[1], tMocks.npTableDataIEandII[2]], tMocks.npTableDataIEandII[2]),
+    ).toBeTruthy();
   });
 });
