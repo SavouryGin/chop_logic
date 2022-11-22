@@ -10,18 +10,27 @@ import './styles.scss';
 const Sidebar = ({ className, isOpened }: CommonProps & { isOpened: boolean }): React.ReactElement | null => {
   const isMounted = useMount(isOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isClosing = isMounted && !isOpened;
   if (!isMounted) {
     return null;
   }
 
+  const isClosing = isMounted && !isOpened;
   const sidebarClassNames = formatClass(['sidebar', className, { sidebar_dark: isDarkMode, sidebar_closing: isClosing }]);
 
   return (
     <aside className={sidebarClassNames}>
-      <ul>
+      <ul className='sidebar__list'>
         <li>
-          <Button buttonId={ButtonID.SaveXML} icon={Icon.SaveXML} />
+          <Button buttonId={ButtonID.SavePDF} icon={Icon.SavePDF} />
+          <span className='sidebar__button-span'>Save</span>
+        </li>
+        <li>
+          <Button buttonId={ButtonID.ExportXML} icon={Icon.ExportXML} />
+          <span className='sidebar__button-span'>Export</span>
+        </li>
+        <li>
+          <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} />
+          <span className='sidebar__button-span'>Import</span>
         </li>
       </ul>
     </aside>

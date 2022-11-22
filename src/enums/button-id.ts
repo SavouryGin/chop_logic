@@ -27,5 +27,7 @@ export enum ButtonID {
   EquivIntroduction,
   EquivElimination,
   Shortcut,
-  SaveXML,
+  SavePDF,
+  ExportXML,
+  ImportXML,
 }

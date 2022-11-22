@@ -35,5 +35,7 @@ export enum Icon {
   Facebook = 'chop-icon__facebook2',
   CaretUp = 'chop-icon__caret-up',
   CaretDown = 'chop-icon__caret-down',
-  SaveXML = 'chop-icon__download',
+  SavePDF = 'chop-icon__file-pdf',
+  ExportXML = 'chop-icon__download',
+  ImportXML = 'chop-icon__upload',
 }
