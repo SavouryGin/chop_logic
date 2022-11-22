@@ -107,4 +107,7 @@ export const buttonTexts: ButtonText = {
     title: { en: 'Create a shortcut', ru: 'Добавить краткий вывод' },
     innerText: { en: 'Shortcut', ru: 'Кр. вывод' },
   },
+  [ButtonID.SaveXML]: {
+    title: { en: 'Download proof in XML', ru: 'Скачать доказательство в XML' },
+  },
 };

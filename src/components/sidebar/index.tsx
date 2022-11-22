@@ -1,5 +1,7 @@
+import Button from 'components/controls/button';
 import React from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
+import { ButtonID, Icon } from 'enums';
 import { CommonProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector, useMount } from 'hooks';
@@ -15,7 +17,15 @@ const Sidebar = ({ className, isOpened }: CommonProps & { isOpened: boolean }): 
 
   const sidebarClassNames = formatClass(['sidebar', className, { sidebar_dark: isDarkMode, sidebar_closing: isClosing }]);
 
-  return <aside className={sidebarClassNames}>Sidebar Sidebar Sidebar</aside>;
+  return (
+    <aside className={sidebarClassNames}>
+      <ul>
+        <li>
+          <Button buttonId={ButtonID.SaveXML} icon={Icon.SaveXML} />
+        </li>
+      </ul>
+    </aside>
+  );
 };
 
 export default Sidebar;
