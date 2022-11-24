@@ -7,14 +7,17 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
     return null;
   }
 
+  const isPDFSaveDisabled = true;
+  const isExportToXMLDisabled = false;
+
   return (
     <>
       <li>
-        <Button buttonId={ButtonID.SavePDF} icon={Icon.SavePDF} />
+        <Button buttonId={ButtonID.SavePDF} icon={Icon.SavePDF} isDisabled={isPDFSaveDisabled} />
         <span className='sidebar__button-span'>Save</span>
       </li>
       <li>
-        <Button buttonId={ButtonID.ExportXML} icon={Icon.ExportXML} />
+        <Button buttonId={ButtonID.ExportXML} icon={Icon.ExportXML} isDisabled={isExportToXMLDisabled} />
         <span className='sidebar__button-span'>Export</span>
       </li>
       <li>
