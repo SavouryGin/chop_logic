@@ -1,17 +1,20 @@
 import Button from 'components/controls/button';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
-import { useAppDispatch } from 'hooks';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
-const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
+const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
   const dispatch = useAppDispatch();
+  const tableDataLength = useAppSelector(selectors.getTableDataLength);
+
   if (!isVisible) {
     return null;
   }
 
-  const isPDFSaveDisabled = true;
-  const isExportToXMLDisabled = false;
+  const isSaveToPDFDisabled = true;
+  const isExportToXMLDisabled = !tableDataLength;
 
   const onClickExportToXML = () => {
     dispatch(actions.exportToXML());
@@ -20,7 +23,7 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   return (
     <>
       <li>
-        <Button buttonId={ButtonID.SavePDF} icon={Icon.SavePDF} isDisabled={isPDFSaveDisabled} />
+        <Button buttonId={ButtonID.SavePDF} icon={Icon.SavePDF} isDisabled={isSaveToPDFDisabled} />
         <span className='sidebar__button-span'>Save</span>
       </li>
       <li>
@@ -35,4 +38,4 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   );
 };
 
-export default PropositionsDPSidebarButtons;
+export default PropositionsNPSidebarButtons;
