@@ -1,5 +1,5 @@
-import PropositionsDPSidebarButtons from './elements/propositions-dp-buttons';
-import PropositionsNPSidebarButtons from './elements/propositions-np-buttons';
+import PropositionsDPSidebarButtons from 'pages/propositions/sidebar-buttons/direct-proofs';
+import PropositionsNPSidebarButtons from 'pages/propositions/sidebar-buttons/natural-proofs';
 import React from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
