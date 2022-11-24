@@ -183,6 +183,10 @@ export const propositionsNPSlice = createSlice({
     createImplication: (state) => {
       return state;
     },
+
+    exportToXML: (state) => {
+      return state;
+    },
   },
 });
 
