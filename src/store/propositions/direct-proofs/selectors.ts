@@ -36,6 +36,8 @@ const getIsConfirmDeletePopupOpened = createSelector(
   (data: PropositionsDirectProofsFlags): boolean => data.isConfirmDeletePopupOpened,
 );
 
+const getIsNameInputPopupVisible = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isNameInputPopupVisible);
+
 const getSelectedFormulas = (state: RootState): PropositionalFormula[] => {
   const selectedIds = state.propositionsDP.selectedIds;
   const selectedItems = state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
@@ -63,4 +65,5 @@ export const propositionsDPSelectors = {
   getIsContradictionRealizationOpened,
   getIsReplacerFormOpened,
   getIsConfirmDeletePopupOpened,
+  getIsNameInputPopupVisible,
 };

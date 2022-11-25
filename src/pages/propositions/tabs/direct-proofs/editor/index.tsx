@@ -2,6 +2,7 @@ import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/popups/c
 import ContradictionRealizationForm from 'pages/propositions/components/forms/contradiction-realization';
 import DirectProofsEditorTable from 'pages/propositions/components/tables/direct-proofs';
 import DirectProofsEditorToolbar from 'pages/propositions/components/toolbars/direct-proofs';
+import FileNameForm from 'pages/propositions/components/forms/file-name';
 import ImplicationCreationForm from 'pages/propositions/components/forms/implication-creation';
 import ImplicationDistributionForm from 'pages/propositions/components/forms/implication-distribution';
 import ModalWindow from 'components/modal-window';
@@ -16,7 +17,7 @@ import { uiElementTexts } from 'texts/ui-elements';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
-const DirectProofsEditor = () => {
+const DirectProofsEditor = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
   const isImplicationCreationOpened = useAppSelector(selectors.getIsImplicationCreationOpened);
@@ -26,6 +27,7 @@ const DirectProofsEditor = () => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
+  const isNameInputVisible = useAppSelector(selectors.getIsNameInputPopupVisible);
   const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClass(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
@@ -57,6 +59,10 @@ const DirectProofsEditor = () => {
   const confirmDeleteSteps = () => {
     dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
     dispatch(actions.deleteSteps({ isConfirmed: true }));
+  };
+
+  const closeFileNameForm = () => {
+    dispatch(actions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
   };
 
   return (
@@ -98,6 +104,12 @@ const DirectProofsEditor = () => {
         onClose={closeDeleteSteps}
         title={uiElementTexts.confirmation[language]}
         content={<ConfirmDeleteProofStepsPopup onConfirm={confirmDeleteSteps} dependencies={dependencies} />}
+      />
+      <ModalWindow
+        isOpened={isNameInputVisible}
+        onClose={closeFileNameForm}
+        title={uiElementTexts.nameInput[language]}
+        content={<FileNameForm mode='direct' />}
       />
     </div>
   );

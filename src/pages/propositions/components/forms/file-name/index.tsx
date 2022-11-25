@@ -13,12 +13,9 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
   const fileNameInitialValue = { fileName: '' };
   const [formValue, setFormValue] = useState(fileNameInitialValue);
 
-  const isFormInvalid = !formValue.fileName.trim();
-  const formContent = (
-    <>
-      <TextInput name='comment' inputId={InputID.Comment} className='file-name-form__input' isRequired maxLength={100} />
-    </>
-  );
+  // const isFormInvalid = !formValue.fileName.length;
+  // console.log('isFormInvalid', isFormInvalid);
+  const formContent = <TextInput name='comment' inputId={InputID.Comment} className='file-name-form__input' isRequired maxLength={100} />;
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof fileNameInitialValue);
 
@@ -26,6 +23,7 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
     e.preventDefault();
     if (mode === 'direct') {
       dispatch(propositionsDPActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+      dispatch(propositionsDPActions.exportToXML(formValue.fileName));
     }
 
     if (mode === 'natural') {
@@ -41,7 +39,7 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
         inputs={formContent}
         submitButtonId={ButtonID.Apply}
         passValues={takeValues}
-        isSubmitDisabled={isFormInvalid}
+        isSubmitDisabled={false}
       />
     </div>
   );
