@@ -9,6 +9,7 @@ export function* exportDPToXMLWatcher(): Generator {
 export function* exportDPToXMLSaga(): SagaIterator {
   try {
     console.log('Export Saga');
+    yield put(actions.setUpFlag({ flag: 'isNameInputPopupVisible', value: true }));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Export to XML error';
     yield put(actions.setError(errorMessage));
