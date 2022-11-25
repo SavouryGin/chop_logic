@@ -1,5 +1,6 @@
 import mocks from '__mocks__/data/propositions/table-items';
-import { propositionsDPActions as actions, propositionsDPSlice as slice, propositionsDPInitialState as state } from '../slice';
+import { propositionsDPActions as actions, propositionsDPSlice as slice } from '../slice';
+import { propositionsDPInitialState as state } from '../initial-state';
 
 describe('propositionsDPSlice tests:', () => {
   it('should return the initial state', () => {

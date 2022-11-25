@@ -13,6 +13,7 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isConfirmDeletePopupOpened: false,
     isOrIntroductionFormOpened: false,
     isShortcutOpened: false,
+    isNameInputPopupVisible: false,
   },
   tableData: [],
   selectedIds: [],
