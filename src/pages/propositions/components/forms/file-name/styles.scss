@@ -1,0 +1,5 @@
+@import 'styles/mixins/form-styles.scss';
+
+.file-name-form {
+  @include propositionsFormStyles();
+}

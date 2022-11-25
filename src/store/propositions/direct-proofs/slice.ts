@@ -2,25 +2,10 @@ import converter from 'logic/propositions/converter';
 import executor from 'logic/propositions/executor';
 import replacer from 'logic/propositions/replacer';
 import validator from 'logic/propositions/validator';
-import { DirectProofsTableItem, PropositionsDirectProofsFlag, PropositionsDirectProofsInitialState } from './interfaces';
+import { DirectProofsTableItem, PropositionsDirectProofsFlag } from './interfaces';
 import { Guid } from 'guid-typescript';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
-export const propositionsDPInitialState: PropositionsDirectProofsInitialState = {
-  flags: {
-    isPremiseOpened: false,
-    isImplicationCreationOpened: false,
-    isImplicationDistributionOpened: false,
-    isContradictionRealizationOpened: false,
-    isReplacerFormOpened: false,
-    isConfirmDeletePopupOpened: false,
-    isNameInputPopupVisible: false,
-  },
-  tableData: [],
-  selectedIds: [],
-  dependentItems: [],
-  error: null,
-};
+import { propositionsDPInitialState } from './initial-state';
 
 export const propositionsDPSlice = createSlice({
   name: 'Prop-DP',

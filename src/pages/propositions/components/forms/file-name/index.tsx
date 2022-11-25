@@ -4,10 +4,11 @@ import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
 import { useAppDispatch } from 'hooks';
 import './styles.scss';
 
-const FileNameForm = () => {
+const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
   const dispatch = useAppDispatch();
   const fileNameInitialValue = { fileName: '' };
   const [formValue, setFormValue] = useState(fileNameInitialValue);
@@ -15,7 +16,7 @@ const FileNameForm = () => {
   const isFormInvalid = !formValue.fileName.trim();
   const formContent = (
     <>
-      <TextInput name='comment' inputId={InputID.Comment} className='file-name-form__input' isRequired maxLength={50} />
+      <TextInput name='comment' inputId={InputID.Comment} className='file-name-form__input' isRequired maxLength={100} />
     </>
   );
 
@@ -23,7 +24,13 @@ const FileNameForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(propositionsDPActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+    if (mode === 'direct') {
+      dispatch(propositionsDPActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+    }
+
+    if (mode === 'natural') {
+      dispatch(propositionsNPActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+    }
   };
 
   return (
