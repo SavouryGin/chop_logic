@@ -2,7 +2,8 @@ import PropositionsNaturalProofs from 'pages/propositions/sub-pages/natural-proo
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsNPInitialState, propositionsNPSlice } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
+import { propositionsNPSlice } from 'store/propositions/natural-proofs/slice';
 import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';

@@ -2,24 +2,9 @@ import converter from 'logic/propositions/converter';
 import replacer from 'logic/propositions/replacer';
 import { Guid } from 'guid-typescript';
 import { NPFormulaBase } from 'enums';
-import { NaturalProofsTableItem, PropositionsNaturalProofsFlag, PropositionsNaturalProofsInitialState } from './interfaces';
+import { NaturalProofsTableItem, PropositionsNaturalProofsFlag } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
-export const propositionsNPInitialState: PropositionsNaturalProofsInitialState = {
-  flags: {
-    isPremiseOpened: false,
-    isReplacerFormOpened: false,
-    isAssumptionOpened: false,
-    isConfirmDeletePopupOpened: false,
-    isOrIntroductionFormOpened: false,
-    isShortcutOpened: false,
-    isNameInputPopupVisible: false,
-  },
-  tableData: [],
-  selectedIds: [],
-  dependentItems: [],
-  error: null,
-};
+import { propositionsNPInitialState } from './initial-state';
 
 export const propositionsNPSlice = createSlice({
   name: 'Prop-NP',

@@ -1,6 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import { NPFormulaBase } from 'enums';
-import { propositionsNPActions as actions, propositionsNPSlice as slice, propositionsNPInitialState as state } from '../slice';
+import { propositionsNPActions as actions, propositionsNPSlice as slice } from '../slice';
+import { propositionsNPInitialState as state } from '../initial-state';
 
 describe('propositionsNPSlice tests:', () => {
   it('should return the initial state', () => {
