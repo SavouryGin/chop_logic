@@ -9,7 +9,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const FormulaPreview = ({ preview, className }: FormulaPreviewProps) => {
+const FormulaPreview = ({ preview, className }: FormulaPreviewProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const language = useAppSelector(settingsSelectors.getLanguage);
 

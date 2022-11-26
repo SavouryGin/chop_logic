@@ -7,7 +7,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal' }: TabListProps) => {
+const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal' }: TabListProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const tabsClassNames = formatClass(['tab-list', className, { 'tab-list_dark': isDarkMode, 'tab-list_vertical': mode === 'vertical' }]);
   const tabIds = tabs.map((item) => item.tabId);

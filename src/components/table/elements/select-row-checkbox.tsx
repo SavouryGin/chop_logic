@@ -2,7 +2,7 @@ import Checkbox from 'components/controls/checkbox';
 import React from 'react';
 import { SelectRowCheckboxProps } from 'types';
 
-const SelectRowCheckbox = ({ rowId, selectedIds, setSelectedIds }: SelectRowCheckboxProps) => {
+const SelectRowCheckbox = ({ rowId, selectedIds, setSelectedIds }: SelectRowCheckboxProps): React.ReactElement => {
   const onChangeRowCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked, id } = e.target;
     if (checked) {

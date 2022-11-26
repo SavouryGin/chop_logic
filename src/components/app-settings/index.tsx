@@ -9,7 +9,7 @@ import { settingsActions } from 'store/settings/slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
-const AppSettings = ({ className }: CommonProps) => {
+const AppSettings = ({ className }: CommonProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const settingsInitialValues: AppSettingInitialValues = {
     isDarkMode: useAppSelector(selectors.getIsDarkMode),

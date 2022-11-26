@@ -23,7 +23,7 @@ const Checkbox = ({
   inputId,
   id,
   ...rest
-}: CheckboxProps) => {
+}: CheckboxProps): React.ReactElement => {
   const formContext = useContext(FormContext);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);

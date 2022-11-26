@@ -3,7 +3,7 @@ import React from 'react';
 import { Page } from 'enums';
 import { paths } from 'router/paths';
 
-const AppHeading = () => {
+const AppHeading = (): React.ReactElement => {
   return (
     <h1 className='header__heading'>
       <AppLink path={paths[Page.Home]} text='Chop Logic' isNavigation />

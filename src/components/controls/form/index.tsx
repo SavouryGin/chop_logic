@@ -7,7 +7,7 @@ import { soundPlayer } from 'helpers/sounds';
 
 export const FormContext = React.createContext({} as FormContextProps);
 
-const Form = ({ className, onSubmit, inputs, initialValues, passValues, submitButtonId, ...rest }: FormProps) => {
+const Form = ({ className, onSubmit, inputs, initialValues, passValues, submitButtonId, ...rest }: FormProps): React.ReactElement => {
   const formClassNames = formatClass(['form', className]);
   const [formValues, setFormValues] = useState(initialValues);
 

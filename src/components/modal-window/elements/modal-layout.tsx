@@ -13,7 +13,7 @@ type ModalLayoutProps = {
   content?: React.ReactElement;
 };
 
-const ModalLayout = ({ windowClassName, contentClassName, title, id, onClose, content }: ModalLayoutProps) => {
+const ModalLayout = ({ windowClassName, contentClassName, title, id, onClose, content }: ModalLayoutProps): React.ReactElement => {
   return (
     <FocusLock>
       <div className={windowClassName} role='dialog' aria-modal='true' id={id}>

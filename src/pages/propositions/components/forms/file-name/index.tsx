@@ -16,7 +16,7 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
 
   const isFormInvalid = useMemo(() => {
     return !formValue.fileName.match(regularExpressions.fileName);
-  }, [formValue]);
+  }, [formValue.fileName]);
 
   const formContent = <TextInput name='fileName' inputId={InputID.FileName} className='file-name-form__input' isRequired maxLength={100} />;
 
