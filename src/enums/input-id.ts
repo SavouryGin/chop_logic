@@ -12,4 +12,5 @@ export enum InputID {
   OldVariable,
   Shortcut,
   Comment,
+  FileName,
 }

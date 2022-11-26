@@ -1,6 +1,7 @@
 import Form from 'components/controls/form';
-import React, { memo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
+import regularExpressions from 'helpers/regular-expressions';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
@@ -13,9 +14,11 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
   const fileNameInitialValue = { fileName: '' };
   const [formValue, setFormValue] = useState(fileNameInitialValue);
 
-  // const isFormInvalid = !formValue.fileName.length;
-  // console.log('isFormInvalid', isFormInvalid);
-  const formContent = <TextInput name='comment' inputId={InputID.Comment} className='file-name-form__input' isRequired maxLength={100} />;
+  const isFormInvalid = useMemo(() => {
+    return !formValue.fileName.match(regularExpressions.fileName);
+  }, [formValue]);
+
+  const formContent = <TextInput name='fileName' inputId={InputID.FileName} className='file-name-form__input' isRequired maxLength={100} />;
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof fileNameInitialValue);
 
@@ -39,7 +42,7 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
         inputs={formContent}
         submitButtonId={ButtonID.Apply}
         passValues={takeValues}
-        isSubmitDisabled={false}
+        isSubmitDisabled={isFormInvalid}
       />
     </div>
   );
