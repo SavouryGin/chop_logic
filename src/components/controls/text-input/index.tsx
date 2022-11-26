@@ -23,7 +23,7 @@ const TextInput = ({
   placeholder,
   defaultValue,
   ...rest
-}: TextInputProps) => {
+}: TextInputProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);

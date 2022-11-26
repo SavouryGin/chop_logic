@@ -2,7 +2,7 @@ import Checkbox from 'components/controls/checkbox';
 import React, { useMemo } from 'react';
 import { SelectAllCheckboxProps } from 'types';
 
-const SelectAllCheckbox = ({ selectedIds, setSelectedIds, allRowIds, tableId }: SelectAllCheckboxProps) => {
+const SelectAllCheckbox = ({ selectedIds, setSelectedIds, allRowIds, tableId }: SelectAllCheckboxProps): React.ReactElement => {
   const id = useMemo(() => `select_all_in_${tableId}`, [tableId]);
 
   const onChangeSelectAllCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {

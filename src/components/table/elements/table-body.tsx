@@ -7,7 +7,7 @@ import { getDataCellsValues } from '../helpers';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
-const TableBody = ({ data, columns, hasCheckboxColumn, selectedIds, setSelectedIds, className }: TableBodyProps) => {
+const TableBody = ({ data, columns, hasCheckboxColumn, selectedIds, setSelectedIds, className }: TableBodyProps): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   const rows = data.map((item) => {

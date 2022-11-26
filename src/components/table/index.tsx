@@ -7,7 +7,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const Table = ({ columns, data, hasCheckboxColumn, passSelectedIds, className, id }: TableProps) => {
+const Table = ({ columns, data, hasCheckboxColumn, passSelectedIds, className, id }: TableProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const tableClassNames = formatClass(['table', className, { table_dark: isDarkMode }]);
