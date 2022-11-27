@@ -1,6 +1,6 @@
 import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
-import { createAndSaveXMLFile } from 'helpers/files/create-and-save-file';
+import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
 import { put, takeEvery } from 'redux-saga/effects';
 
 export function* exportDPToXMLWatcher(): Generator {
