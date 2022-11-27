@@ -1,5 +1,6 @@
 import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { createAndSaveXMLFile } from 'helpers/files/create-and-save-file';
 import { put, takeEvery } from 'redux-saga/effects';
 
 export function* exportDPToXMLWatcher(): Generator {
@@ -8,7 +9,6 @@ export function* exportDPToXMLWatcher(): Generator {
 
 export function* exportDPToXMLSaga(action: { payload: string | undefined }): SagaIterator {
   try {
-    console.log('Export Saga');
     const fileName = action.payload;
 
     if (!fileName) {
@@ -17,7 +17,8 @@ export function* exportDPToXMLSaga(action: { payload: string | undefined }): Sag
       return;
     }
 
-    console.log('File name', fileName);
+    const mockData = `<note>Hello</note>`;
+    createAndSaveXMLFile(mockData, fileName);
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Export to XML error';
     yield put(actions.setError(errorMessage));

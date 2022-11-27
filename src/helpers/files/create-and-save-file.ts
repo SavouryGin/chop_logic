@@ -1,6 +1,5 @@
-// Function to download data to a file
-export function createAndSaveFile(data: string, filename: string, type = 'text/xml') {
-  const file = new Blob([data], { type: type });
+export function createAndSaveXMLFile(data: string, filename: string) {
+  const file = new Blob([data], { type: 'text/xml' });
   const nav = window.navigator as any;
 
   if (nav.msSaveOrOpenBlob) {
