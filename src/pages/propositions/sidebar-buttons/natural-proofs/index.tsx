@@ -13,7 +13,7 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
     return null;
   }
 
-  const isSaveToPDFDisabled = true;
+  // const isSaveToPDFDisabled = true;
   const isExportToXMLDisabled = !tableDataLength;
 
   const onClickExportToXML = () => {
@@ -22,10 +22,10 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
 
   return (
     <>
-      <li>
+      {/* <li>
         <Button buttonId={ButtonID.SavePDF} icon={Icon.SavePDF} isDisabled={isSaveToPDFDisabled} />
         <span className='sidebar__button-span'>Save</span>
-      </li>
+      </li> */}
       <li>
         <Button buttonId={ButtonID.ExportXML} icon={Icon.ExportXML} isDisabled={isExportToXMLDisabled} onClick={onClickExportToXML} />
         <span className='sidebar__button-span'>Export</span>
