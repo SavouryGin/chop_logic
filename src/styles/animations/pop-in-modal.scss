@@ -1,32 +1,32 @@
 @mixin pop-in-modal {
-  animation: pop-in-modal ease 600ms;
-  -webkit-animation: pop-in-modal ease 600ms;
-  -moz-animation: pop-in-modal ease 600ms;
+  animation: pop-in-modal ease 200ms;
+  -webkit-animation: pop-in-modal ease 200ms;
+  -moz-animation: pop-in-modal ease 200ms;
 }
 
 @keyframes pop-in-modal {
   from {
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+    transform: translateY(-100%);
   }
   to {
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    transform: translateY(0%);
   }
 }
 
 @-moz-keyframes pop-in-modal {
   from {
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+    transform: translateY(-100%);
   }
   to {
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    transform: translateY(0%);
   }
 }
 
 @-webkit-keyframes pop-in-modal {
   from {
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+    transform: translateY(-100%);
   }
   to {
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    transform: translateY(0%);
   }
 }

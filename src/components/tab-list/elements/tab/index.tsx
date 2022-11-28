@@ -5,7 +5,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 
-const Tab = ({ title, onSelect, tabId, isActive }: TabProps) => {
+const Tab = ({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement => {
   const classNames = formatClass(['tab-list__tab', { 'tab-list__tab_active': isActive }]);
   const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);

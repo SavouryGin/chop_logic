@@ -6,7 +6,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-const LeftHeaderPanel = () => {
+const LeftHeaderPanel = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);

@@ -5,7 +5,15 @@ import { TableHeadProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
-const TableHead = ({ columns, hasCheckboxColumn, selectedIds, setSelectedIds, data, className, id }: TableHeadProps) => {
+const TableHead = ({
+  columns,
+  hasCheckboxColumn,
+  selectedIds,
+  setSelectedIds,
+  data,
+  className,
+  id,
+}: TableHeadProps): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const allRowIds = data.map((item) => item.id);
   const tableId = id || Guid.create().toString();

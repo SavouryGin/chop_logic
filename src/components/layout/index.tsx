@@ -9,7 +9,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const Layout = () => {
+const Layout = (): React.ReactElement => {
   // Store flags
   const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
   const isSidebarOpen = useAppSelector(settingsSelectors.getIsSidebarOpened);

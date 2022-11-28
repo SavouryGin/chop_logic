@@ -9,7 +9,7 @@ type AppSettingsInputsProps = {
   initialValues: AppSettingInitialValues;
 };
 
-const AppSettingsInputs = ({ initialValues }: AppSettingsInputsProps) => {
+const AppSettingsInputs = ({ initialValues }: AppSettingsInputsProps): React.ReactElement => {
   const defaultLanguage = useMemo(() => {
     return languageOptions.find((item) => item.value === initialValues.language);
   }, [initialValues.language]);

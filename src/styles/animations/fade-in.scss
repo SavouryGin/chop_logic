@@ -1,7 +1,7 @@
 @mixin fade-in() {
-  animation: fadeIn ease 600ms;
-  -webkit-animation: fadeIn ease 600ms;
-  -moz-animation: fadeIn ease 600ms;
+  animation: fadeIn ease 400ms;
+  -webkit-animation: fadeIn ease 400ms;
+  -moz-animation: fadeIn ease 400ms;
 }
 
 @keyframes fadeIn {

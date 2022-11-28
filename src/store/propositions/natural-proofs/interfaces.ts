@@ -16,6 +16,7 @@ export interface PropositionsNaturalProofsFlags {
   isConfirmDeletePopupOpened: boolean;
   isOrIntroductionFormOpened: boolean;
   isShortcutOpened: boolean;
+  isNameInputPopupVisible: boolean;
 }
 
 export type PropositionsNaturalProofsFlag = keyof PropositionsNaturalProofsFlags;

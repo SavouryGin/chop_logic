@@ -41,4 +41,7 @@ export const inputTexts: InputText = {
   [InputID.Comment]: {
     label: { en: 'Comment:', ru: 'Комментарий:' },
   },
+  [InputID.FileName]: {
+    label: { en: 'File name:', ru: 'Имя файла:' },
+  },
 };
