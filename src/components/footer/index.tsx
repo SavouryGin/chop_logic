@@ -9,7 +9,7 @@ import { uiElementTexts } from 'texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const Footer = ({ className }: CommonProps) => {
+const Footer = ({ className }: CommonProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
   const language = useAppSelector(settingsSelectors.getLanguage);

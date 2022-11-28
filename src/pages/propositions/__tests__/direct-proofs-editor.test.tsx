@@ -5,7 +5,8 @@ import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fillerText } from 'texts/propositions';
 import { fireEvent, screen } from '@testing-library/react';
-import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
+import { propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 describe('Direct Proofs Editor tests:', () => {

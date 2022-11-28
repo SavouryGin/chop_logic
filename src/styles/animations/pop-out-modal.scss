@@ -1,32 +1,32 @@
 @mixin pop-out-modal {
-  animation: pop-out-modal ease 600ms forwards;
-  -webkit-animation: pop-out-modal ease 600ms forwards;
-  -moz-animation: pop-out-modal ease 600ms forwards;
+  animation: pop-out-modal ease 400ms forwards;
+  -webkit-animation: pop-out-modal ease 400ms forwards;
+  -moz-animation: pop-out-modal ease 400ms forwards;
 }
 
 @keyframes pop-out-modal {
   from {
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    transform: translateY(0%);
   }
   to {
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+    transform: translateY(-100%);
   }
 }
 
 @-moz-keyframes pop-out-modal {
   from {
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    transform: translateY(0%);
   }
   to {
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+    transform: translateY(-100%);
   }
 }
 
 @-webkit-keyframes pop-out-modal {
   from {
-    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    transform: translateY(0%);
   }
   to {
-    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+    transform: translateY(-100%);
   }
 }

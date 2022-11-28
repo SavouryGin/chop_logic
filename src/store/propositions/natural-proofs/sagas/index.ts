@@ -6,6 +6,7 @@ import { disjunctionEliminationWatcher } from './disjunction-elimination';
 import { disjunctionIntroductionWatcher } from './disjunction-introduction';
 import { equivalenceEliminationWatcher } from './equivalence-elimination';
 import { equivalenceIntroductionWatcher } from './equivalence-introduction';
+import { exportNPToXMLWatcher } from './export-to-xml';
 import { implicationEliminationWatcher } from './implication-elimination';
 import { implicationIntroductionWatcher } from './implication-introduction';
 import { negationEliminationWatcher } from './negation-elimination';
@@ -24,6 +25,7 @@ function* propositionsNPSagas(): Generator {
     equivalenceEliminationWatcher(),
     implicationEliminationWatcher(),
     implicationIntroductionWatcher(),
+    exportNPToXMLWatcher(),
   ]);
 }
 

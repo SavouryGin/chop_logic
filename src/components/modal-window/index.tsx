@@ -9,7 +9,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';
 
-const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps) => {
+const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps): React.ReactElement | null => {
   const isMounted = useMount(isOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isClosing = isMounted && !isOpened;

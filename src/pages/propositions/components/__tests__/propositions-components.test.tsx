@@ -7,8 +7,9 @@ import React from 'react';
 import ReplacerForm from 'pages/propositions/components/forms/replacer';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsDPInitialState, propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
-import { propositionsNPInitialState } from 'store/propositions/natural-proofs/slice';
+import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
+import { propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 describe('Propositions Forms component:', () => {

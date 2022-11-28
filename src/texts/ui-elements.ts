@@ -22,4 +22,8 @@ export const uiElementTexts: { [key in string]: LocalText } = {
     en: 'Enter the formula you wish to conjoin to the checked items',
     ru: 'Введите формулу, которую вы хотите соединить конъюнкцией с выбранными элементами',
   },
+  nameInput: {
+    en: 'Enter file name',
+    ru: 'Введите имя файла',
+  },
 };

@@ -5,14 +5,22 @@ import { ButtonID } from 'enums';
 import { buttonTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
+import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
+import { propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
+import { propositionsNPSlice } from 'store/propositions/natural-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,
+  propositionsDP: propositionsDPSlice.reducer,
+  propositionsNP: propositionsNPSlice.reducer,
 });
 
 const mockedState = {
   settings: settingsInitialState,
+  propositionsDP: propositionsDPInitialState,
+  propositionsNP: propositionsNPInitialState,
 };
 
 describe('Layout component:', () => {
