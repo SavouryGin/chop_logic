@@ -21,7 +21,7 @@ export function* exportDPToXMLSaga(action: { payload: string | undefined }): Sag
     }
 
     const tableData: DirectProofsTableItem[] = yield select(selectors.getTableData);
-    const fileData = converterXML.convertDPtoXML(tableData);
+    const fileData = converterXML.dpToXML(tableData);
     createAndSaveXMLFile(fileData, fileName);
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Export to XML error';
