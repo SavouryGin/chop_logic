@@ -11,14 +11,24 @@ import './styles.scss';
 
 const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
   const dispatch = useAppDispatch();
-  const fileNameInitialValue = { fileName: '' };
+  const initialName = mode === 'direct' ? 'MyDirectProof' : 'MyNaturalProof';
+  const fileNameInitialValue = { fileName: initialName };
   const [formValue, setFormValue] = useState(fileNameInitialValue);
 
   const isFormInvalid = useMemo(() => {
     return !formValue.fileName.match(regularExpressions.fileName);
   }, [formValue.fileName]);
 
-  const formContent = <TextInput name='fileName' inputId={InputID.FileName} className='file-name-form__input' isRequired maxLength={100} />;
+  const formContent = (
+    <TextInput
+      name='fileName'
+      inputId={InputID.FileName}
+      className='file-name-form__input'
+      isRequired
+      maxLength={100}
+      defaultValue={initialName}
+    />
+  );
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof fileNameInitialValue);
 
