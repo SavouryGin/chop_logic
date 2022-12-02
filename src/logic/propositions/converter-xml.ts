@@ -1,4 +1,5 @@
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
+import { Language, LocalText } from 'types';
 
 const converterXML = {
   dpToXML(tableData: DirectProofsTableItem[]): string {
@@ -15,7 +16,6 @@ const converterXML = {
     const expression = JSON.stringify(item.expression);
     const friendlyExpression = JSON.stringify(item.friendlyExpression);
     const formula = JSON.stringify(item.formula);
-    const comment = JSON.stringify(item.comment);
     const dependentOn = JSON.stringify(item.dependentOn);
 
     const xml = `
@@ -23,7 +23,7 @@ const converterXML = {
     ${this.idToXML(item.id)}
     ${this.stepToXML(item.step)}
     ${this.rawInputToXML(item.rawInput)}
-    ${comment}
+    ${this.commentToXML(item.comment)}
     ${dependentOn}
     ${formula}
     ${expression}
@@ -45,6 +45,21 @@ const converterXML = {
 
   rawInputToXML(rawInput: string): string {
     return `<rawInput>${rawInput}</rawInput>`;
+  },
+
+  commentToXML(comment: string | LocalText): string {
+    if (typeof comment === 'string') {
+      return `<comment>${comment}</comment>`;
+    } else {
+      const pairs = [];
+
+      for (const lang in comment) {
+        const pair = `<${lang}>${comment[lang as Language]}</${lang}>`;
+        pairs.push(pair);
+      }
+
+      return `<comment>${pairs.join('')}</comment>`;
+    }
   },
 };
 
