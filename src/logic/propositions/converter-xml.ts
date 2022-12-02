@@ -2,15 +2,13 @@ import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfac
 
 const converterXML = {
   dpToXML(tableData: DirectProofsTableItem[]): string {
-    console.log(tableData);
-
-    return `<propositionsDirectProof>\n${this.dpArrayToXML(tableData)}\n</propositionsDirectProof>`;
+    return `<propositionsDirectProof>${this.dpArrayToXML(tableData)}\n</propositionsDirectProof>`;
   },
 
   dpArrayToXML(data: DirectProofsTableItem[]): string {
     const itemsArray = data.map((item) => this.dpItemToXML(item));
 
-    return itemsArray.join('\n');
+    return itemsArray.join('');
   },
 
   dpItemToXML(item: DirectProofsTableItem): string {
@@ -21,7 +19,7 @@ const converterXML = {
     const dependentOn = JSON.stringify(item.dependentOn);
 
     const xml = `
-    <tableItem>
+  <tableItem>
     ${this.idToXML(item.id)}
     ${this.stepToXML(item.step)}
     ${this.rawInputToXML(item.rawInput)}
@@ -30,12 +28,11 @@ const converterXML = {
     ${formula}
     ${expression}
     ${friendlyExpression}
-    </tableItem>
-    `;
+  </tableItem>`;
 
     console.log(xml);
 
-    return 'mockItem';
+    return xml;
   },
 
   idToXML(id: string): string {
