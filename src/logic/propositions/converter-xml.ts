@@ -17,17 +17,14 @@ const converterXML = {
     const expression = JSON.stringify(item.expression);
     const friendlyExpression = JSON.stringify(item.friendlyExpression);
     const formula = JSON.stringify(item.formula);
-    const id = JSON.stringify(item.id);
-    const step = JSON.stringify(item.step);
-    const rawInput = JSON.stringify(item.rawInput);
     const comment = JSON.stringify(item.comment);
     const dependentOn = JSON.stringify(item.dependentOn);
 
     const xml = `
     <tableItem>
-    ${id}
-    ${step}
-    ${rawInput}
+    ${this.idToXML(item.id)}
+    ${this.stepToXML(item.step)}
+    ${this.rawInputToXML(item.rawInput)}
     ${comment}
     ${dependentOn}
     ${formula}
@@ -39,6 +36,18 @@ const converterXML = {
     console.log(xml);
 
     return 'mockItem';
+  },
+
+  idToXML(id: string): string {
+    return `<id>${id}</id>`;
+  },
+
+  stepToXML(step: number): string {
+    return `<step>${step}</step>`;
+  },
+
+  rawInputToXML(rawInput: string): string {
+    return `<rawInput>${rawInput}</rawInput>`;
   },
 };
 
