@@ -16,7 +16,6 @@ const converterXML = {
     const expression = JSON.stringify(item.expression);
     const friendlyExpression = JSON.stringify(item.friendlyExpression);
     const formula = JSON.stringify(item.formula);
-    const dependentOn = JSON.stringify(item.dependentOn);
 
     const xml = `
   <tableItem>
@@ -24,7 +23,7 @@ const converterXML = {
     ${this.stepToXML(item.step)}
     ${this.rawInputToXML(item.rawInput)}
     ${this.commentToXML(item.comment)}
-    ${dependentOn}
+    ${this.dependentOnToXML(item.dependentOn)}
     ${formula}
     ${expression}
     ${friendlyExpression}
@@ -59,6 +58,16 @@ const converterXML = {
       }
 
       return `<comment>${pairs.join('')}</comment>`;
+    }
+  },
+
+  dependentOnToXML(dependentOn: string[] | undefined): string {
+    if (!dependentOn) {
+      return `<dependentOn></dependentOn>`;
+    } else {
+      const ids = dependentOn.map((id) => `<id>${id}</id>`);
+
+      return `<dependentOn>${ids.join('')}</dependentOn>`;
     }
   },
 };
