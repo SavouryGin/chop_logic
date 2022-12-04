@@ -1,5 +1,6 @@
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { Language, LocalText, PropositionalFormula } from 'types';
+import { PropositionalOperator } from 'enums';
 
 const converterXML = {
   dpToXML(tableData: DirectProofsTableItem[]): string {
@@ -71,11 +72,25 @@ const converterXML = {
   },
 
   formulaToXML(formula: PropositionalFormula): string {
-    console.log(formula);
+    if (Array.isArray(formula.values) && formula.operator !== PropositionalOperator.Var) {
+      const nestedFormulas = formula.values.map((value) => this.formulaToXML(value)).join('\n');
 
-    return `<propositionalFormula>
-      ${JSON.stringify(formula)}
+      return `<propositionalFormula>
+      ${this.operatorToXML(formula.operator)}
+      <values>
+        ${nestedFormulas}
+      </values>
     </propositionalFormula>`;
+    } else {
+      return `<propositionalFormula>
+      ${this.operatorToXML(formula.operator)}
+      <values>${formula.values.toString()}</values>
+    </propositionalFormula>`;
+    }
+  },
+
+  operatorToXML(operator: PropositionalOperator): string {
+    return `<operator>${operator.toString()}</operator>`;
   },
 };
 
