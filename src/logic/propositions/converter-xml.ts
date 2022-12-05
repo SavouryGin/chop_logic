@@ -14,12 +14,11 @@ const converterXML = {
   },
 
   dpItemToXML(item: DirectProofsTableItem): string {
-    const expression = JSON.stringify(item.expression);
-    const friendlyExpression = JSON.stringify(item.friendlyExpression);
-
     const xml = `<tableItem>${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(item.rawInput)}${this.commentToXML(
       item.comment,
-    )}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${expression}${friendlyExpression}</tableItem>`;
+    )}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
+      item.expression,
+    )}${this.expressionToXML(item.friendlyExpression)}</tableItem>`;
 
     console.log(xml);
 
@@ -80,9 +79,9 @@ const converterXML = {
   },
 
   expressionToXML(expression: PropositionalExpression): string {
-    console.log(expression);
+    const symbols = expression.map((symbol) => this.symbolToXML(symbol));
 
-    return `<propositionalExpression></propositionalExpression>`;
+    return `<propositionalExpression>${symbols.join('')}</propositionalExpression>`;
   },
 
   symbolToXML(symbol: PropositionalSymbol): string {
