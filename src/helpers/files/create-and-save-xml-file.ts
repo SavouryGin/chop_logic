@@ -7,7 +7,6 @@ export function createAndSaveXMLFile(data: string, filename: string) {
     nav.msSaveOrOpenBlob(file, filename);
   } else {
     // Others
-    console.log('Save', nav);
     const a = document.createElement('a');
     const url = URL.createObjectURL(file);
 

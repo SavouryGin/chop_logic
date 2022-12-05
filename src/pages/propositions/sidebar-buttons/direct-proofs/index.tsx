@@ -28,12 +28,16 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
         <span className='sidebar__button-span'>Save</span>
       </li> */}
       <li>
-        <Button buttonId={ButtonID.ExportXML} icon={Icon.ExportXML} isDisabled={isExportToXMLDisabled} onClick={onClickExportToXML} />
-        <span className='sidebar__button-span'>Export</span>
+        <Button
+          buttonId={ButtonID.ExportXML}
+          icon={Icon.ExportXML}
+          isDisabled={isExportToXMLDisabled}
+          onClick={onClickExportToXML}
+          size='large'
+        />
       </li>
       <li>
-        <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} />
-        <span className='sidebar__button-span'>Import</span>
+        <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} size='large' />
       </li>
     </>
   );

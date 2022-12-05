@@ -58,19 +58,19 @@ const RightHeaderPanel = (): React.ReactElement => {
 
   return (
     <div className='header__right-panel'>
-      <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} />
-      <Button
-        buttonId={ButtonID.FullScreen}
-        onClick={onClickFullScreenButton}
-        icon={isFullScreen ? Icon.Shrink : Icon.Enlarge}
-        sound={soundPlayer.keyboard}
-      />
       <Button
         buttonId={ButtonID.Tools}
         onClick={onClickSidebarButton}
         icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
         sound={soundPlayer.keyboard}
       />
+      <Button
+        buttonId={ButtonID.FullScreen}
+        onClick={onClickFullScreenButton}
+        icon={isFullScreen ? Icon.Shrink : Icon.Enlarge}
+        sound={soundPlayer.keyboard}
+      />
+      <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} />
       <ModalWindow
         isOpened={isSettingOpened}
         onClose={onClickSettingButton}
