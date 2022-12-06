@@ -1,5 +1,6 @@
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { Language, LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
+import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalOperator } from 'enums';
 
 const converterXML = {
@@ -23,6 +24,10 @@ const converterXML = {
     console.log(xml);
 
     return xml;
+  },
+
+  npToXML(tableData: NaturalProofsTableItem[]): string {
+    return `<propositionsDirectProof>${this.dpArrayToXML(tableData)}</propositionsDirectProof>`;
   },
 
   idToXML(id: string): string {
