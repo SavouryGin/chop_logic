@@ -4,8 +4,10 @@ import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 
 const converterXML = {
+  xmlDeclaration: `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>`,
+
   dpToXML(tableData: DirectProofsTableItem[]): string {
-    return `<propositionsDirectProof>${this.dpArrayToXML(tableData)}</propositionsDirectProof>`;
+    return `${this.xmlDeclaration}\n<propositionsDirectProof>${this.dpArrayToXML(tableData)}</propositionsDirectProof>`;
   },
 
   dpArrayToXML(data: DirectProofsTableItem[]): string {
@@ -25,7 +27,7 @@ const converterXML = {
   },
 
   npToXML(tableData: NaturalProofsTableItem[]): string {
-    return `<propositionsNaturalProof>${this.dpArrayToXML(tableData)}</propositionsNaturalProof>`;
+    return `${this.xmlDeclaration}\n<propositionsNaturalProof>${this.dpArrayToXML(tableData)}</propositionsNaturalProof>`;
   },
 
   npArrayToXML(data: NaturalProofsTableItem[]): string {
@@ -35,18 +37,13 @@ const converterXML = {
   },
 
   npItemToXML(item: NaturalProofsTableItem): string {
-    const xml = `<tableItem>
-    ${this.idToXML(item.id)}
-    ${this.stepToXML(item.step)}
-    ${this.rawInputToXML(item.rawInput)}
-    ${this.commentToXML(item.comment)}
-    ${this.dependentOnToXML(item.dependentOn)}
-    ${this.formulaToXML(item.formula)}${this.expressionToXML(item.expression)}
-    ${this.expressionToXML(item.friendlyExpression)}
-    ${this.levelToXML(item.level)}
-    ${this.formulaBaseToXML(item.formulaBase)}
-    ${this.assumptionIdToXML(item.assumptionId)}
-    </tableItem>`;
+    const xml = `<tableItem>${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(item.rawInput)}${this.commentToXML(
+      item.comment,
+    )}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
+      item.expression,
+    )}${this.expressionToXML(item.friendlyExpression)}${this.levelToXML(item.level)}${this.formulaBaseToXML(
+      item.formulaBase,
+    )}${this.assumptionIdToXML(item.assumptionId)}</tableItem>`;
 
     return xml;
   },
