@@ -13,6 +13,7 @@ export function* exportNPToXMLWatcher(): Generator {
 export function* exportNPToXMLSaga(action: { payload: string | undefined }): SagaIterator {
   try {
     const fileName = action.payload;
+    console.log('SAGA');
 
     if (!fileName) {
       yield put(actions.setUpFlag({ flag: 'isNameInputPopupVisible', value: true }));
