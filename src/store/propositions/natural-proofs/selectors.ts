@@ -20,6 +20,11 @@ const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNatura
 
 const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
+const getIsNameInputPopupVisible = createSelector(
+  getFlags,
+  (data: PropositionsNaturalProofsFlags): boolean => data.isNameInputPopupVisible,
+);
+
 const getIsOrIntroductionFormOpened = createSelector(
   getFlags,
   (data: PropositionsNaturalProofsFlags): boolean => data.isOrIntroductionFormOpened,
@@ -102,4 +107,5 @@ export const propositionsNPSelectors = {
   getAllSubProofsItems,
   getLastItemAssumptionId,
   getPreviousLevelAssumptionId,
+  getIsNameInputPopupVisible,
 };

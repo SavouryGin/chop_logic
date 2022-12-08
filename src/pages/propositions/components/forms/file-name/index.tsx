@@ -41,6 +41,7 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
 
     if (mode === 'natural') {
       dispatch(propositionsNPActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+      dispatch(propositionsNPActions.exportToXML(formValue.fileName));
     }
   };
 
