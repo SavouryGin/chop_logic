@@ -170,7 +170,7 @@ export const propositionsNPSlice = createSlice({
       return state;
     },
 
-    exportToXML: (state) => {
+    exportToXML: (state, _action: PayloadAction<string | undefined>) => {
       return state;
     },
   },
