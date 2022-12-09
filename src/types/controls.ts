@@ -61,6 +61,17 @@ export type TextInputProps = CommonProps &
     value?: string;
   };
 
+export type FileInputProps = CommonProps & {
+  name: string;
+  inputId: InputID;
+  label?: string;
+  placeholder?: string;
+  isDisabled?: boolean;
+  isRequired?: boolean;
+  isReadOnly?: boolean;
+  isInvalid?: boolean;
+};
+
 export type InputHandlersProps = {
   onChange?: () => void;
   onBlur?: () => void;
