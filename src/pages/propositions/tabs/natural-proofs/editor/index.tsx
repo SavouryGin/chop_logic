@@ -1,4 +1,4 @@
-import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/popups/confirm-delete';
+import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/confirm-delete';
 import FileNameForm from 'pages/propositions/components/forms/file-name';
 import ModalWindow from 'components/modal-window';
 import NaturalProofsEditorTable from 'pages/propositions/components/tables/natural-proofs';

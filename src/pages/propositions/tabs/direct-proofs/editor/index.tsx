@@ -1,4 +1,4 @@
-import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/popups/confirm-delete';
+import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/confirm-delete';
 import ContradictionRealizationForm from 'pages/propositions/components/forms/contradiction-realization';
 import DirectProofsEditorTable from 'pages/propositions/components/tables/direct-proofs';
 import DirectProofsEditorToolbar from 'pages/propositions/components/toolbars/direct-proofs';
