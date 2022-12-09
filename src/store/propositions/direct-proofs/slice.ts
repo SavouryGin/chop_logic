@@ -171,6 +171,10 @@ export const propositionsDPSlice = createSlice({
     exportToXML: (state, _action: PayloadAction<string | undefined>) => {
       return state;
     },
+
+    importFromXML: (state) => {
+      return state;
+    },
   },
 });
 
