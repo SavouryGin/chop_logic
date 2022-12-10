@@ -5,7 +5,7 @@ import { FileInputProps } from 'types';
 import { inputTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-import './styles';
+import './styles.scss';
 
 const FileInput = ({
   inputId,
