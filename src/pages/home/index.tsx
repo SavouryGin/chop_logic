@@ -9,7 +9,9 @@ const Home = () => {
     <article className='home'>
       Home page
       <br></br>
-      <FileInput name='file-input' inputId={InputID.FileInput} />
+      <br></br>
+      <br></br>
+      <FileInput name='file-input' inputId={InputID.FileInput} isRequired={true} isInvalid={true} />
     </article>
   );
 };

@@ -10,7 +10,6 @@ import './styles.scss';
 const FileInput = ({
   inputId,
   isDisabled,
-  isReadOnly,
   isRequired,
   isInvalid,
   className,
@@ -38,14 +37,7 @@ const FileInput = ({
   return (
     <div className={inputClassNames}>
       <Label text={labelText} id={calculatedId} isRequired={isRequired} isDarkMode={isDarkMode} />
-      <input
-        type='file'
-        id={calculatedId}
-        placeholder={placeholderText}
-        className={fieldClassNames}
-        disabled={isDisabled}
-        readOnly={isReadOnly}
-      />
+      <input type='file' id={calculatedId} placeholder={placeholderText} className={fieldClassNames} disabled={isDisabled} />
     </div>
   );
 };
