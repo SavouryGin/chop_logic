@@ -68,7 +68,6 @@ export type FileInputProps = CommonProps & {
   placeholder?: string;
   isDisabled?: boolean;
   isRequired?: boolean;
-  isReadOnly?: boolean;
   isInvalid?: boolean;
 };
 
