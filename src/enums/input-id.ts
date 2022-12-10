@@ -13,4 +13,5 @@ export enum InputID {
   Shortcut,
   Comment,
   FileName,
+  FileInput,
 }
