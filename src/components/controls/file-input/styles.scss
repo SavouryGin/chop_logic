@@ -19,6 +19,12 @@
     @include input-text-styles();
     @include input-colors(light);
 
+    cursor: pointer;
+
+    &::-webkit-file-upload-button {
+      display: none;
+    }
+
     &_dark {
       @include input-colors(dark);
     }

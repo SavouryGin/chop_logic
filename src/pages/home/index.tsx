@@ -11,7 +11,7 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
-      <FileInput name='file-input' inputId={InputID.FileInput} isRequired={true} isInvalid={true} />
+      <FileInput name='file-input' inputId={InputID.FileInput} isRequired={true} />
     </article>
   );
 };
