@@ -1,5 +1,6 @@
 import { ButtonID, Icon, InputID } from 'enums';
 import { CommonProps, LocalText } from './general';
+import { FileAcceptType } from 'enums/file-accept-type';
 
 export type ButtonProps = CommonProps & {
   buttonId: ButtonID;
@@ -69,6 +70,7 @@ export type FileInputProps = CommonProps & {
   isDisabled?: boolean;
   isRequired?: boolean;
   isInvalid?: boolean;
+  accept?: FileAcceptType;
 };
 
 export type InputHandlersProps = {

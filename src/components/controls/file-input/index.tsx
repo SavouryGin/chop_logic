@@ -16,6 +16,7 @@ const FileInput = ({
   id,
   label,
   placeholder,
+  accept,
 }: FileInputProps): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
@@ -37,7 +38,14 @@ const FileInput = ({
   return (
     <div className={inputClassNames}>
       <Label text={labelText} id={calculatedId} isRequired={isRequired} isDarkMode={isDarkMode} />
-      <input type='file' id={calculatedId} placeholder={placeholderText} className={fieldClassNames} disabled={isDisabled} />
+      <input
+        type='file'
+        id={calculatedId}
+        placeholder={placeholderText}
+        className={fieldClassNames}
+        disabled={isDisabled}
+        accept={accept}
+      />
     </div>
   );
 };
