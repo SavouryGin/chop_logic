@@ -29,6 +29,12 @@ const TextInput = ({
   const language = useAppSelector(settingsSelectors.getLanguage);
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
+  const fieldClassNames = formatClass(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
+  const calculatedId = id || `text_input_id_${inputId}`;
+  const labelText = label || inputTexts[inputId].label[language];
+  const placeholderText = placeholder || inputTexts[inputId]?.placeholder?.[language];
+  const inputDefaultValue = defaultValue || inputTexts[inputId]?.defaultTextValue?.[language];
+  const [inputValue, setInputValue] = useState(inputDefaultValue || '');
   const inputClassNames = formatClass([
     className,
     'text-input',
@@ -39,12 +45,6 @@ const TextInput = ({
       'text-input_disabled': !!isDisabled,
     },
   ]);
-  const fieldClassNames = formatClass(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
-  const calculatedId = id || `text_input_id_${inputId}`;
-  const labelText = label || inputTexts[inputId].label[language];
-  const placeholderText = placeholder || inputTexts[inputId]?.placeholder?.[language];
-  const inputDefaultValue = defaultValue || inputTexts[inputId]?.defaultTextValue?.[language];
-  const [inputValue, setInputValue] = useState(inputDefaultValue || '');
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || '';
