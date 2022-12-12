@@ -71,6 +71,7 @@ export type FileInputProps = CommonProps & {
   isRequired?: boolean;
   isInvalid?: boolean;
   accept?: FileAcceptType;
+  passFile?: (file: File) => void;
 };
 
 export type InputHandlersProps = {

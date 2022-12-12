@@ -1,8 +1,7 @@
 import Label from '../label';
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { FileInputProps } from 'types';
-import { FormContext } from '../form';
 import { inputTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
@@ -18,15 +17,15 @@ const FileInput = ({
   label,
   placeholder,
   accept,
+  passFile,
 }: FileInputProps): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const fieldClassNames = formatClass(['file-input__field', { 'file-input__field_dark': isDarkMode }]);
   const calculatedId = id || `text_input_id_${inputId}`;
   const labelText = label || inputTexts[inputId].label[language];
-  const formContext = useContext(FormContext);
-  const { onChangeInput } = formContext;
   const placeholderText = placeholder || inputTexts[inputId]?.placeholder?.[language];
+  const [userFile, setUserFile] = useState<File | null>(null);
   const inputClassNames = formatClass([
     className,
     'file-input',
@@ -38,19 +37,18 @@ const FileInput = ({
     },
   ]);
 
-  const [userFile, setUserFile] = useState<File | null>(null);
-
   const handleFile = (e: any) => {
     const [file] = e.target.files;
     if (file && file.name) {
       setUserFile(file);
     }
-
-    if (file && file.name && onChangeInput) {
-      onChangeInput(e);
-    }
   };
-  console.log(userFile);
+
+  useEffect(() => {
+    if (passFile && userFile) {
+      passFile(userFile);
+    }
+  }, [userFile]);
 
   return (
     <div className={inputClassNames}>
