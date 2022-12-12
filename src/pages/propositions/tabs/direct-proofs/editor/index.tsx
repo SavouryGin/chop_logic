@@ -5,6 +5,7 @@ import DirectProofsEditorToolbar from 'pages/propositions/components/toolbars/di
 import FileNameForm from 'pages/propositions/components/forms/file-name';
 import ImplicationCreationForm from 'pages/propositions/components/forms/implication-creation';
 import ImplicationDistributionForm from 'pages/propositions/components/forms/implication-distribution';
+import InputFileForm from 'pages/propositions/components/forms/input-file';
 import ModalWindow from 'components/modal-window';
 import PremiseForm from 'pages/propositions/components/forms/premise';
 import React from 'react';
@@ -28,6 +29,7 @@ const DirectProofsEditor = (): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
   const isNameInputVisible = useAppSelector(selectors.getIsNameInputPopupVisible);
+  const isUserFileFormVisible = useAppSelector(selectors.getIsUserFileFormVisible);
   const dependencies = useAppSelector(selectors.getDependentItems);
 
   const editorClass = formatClass(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
@@ -63,6 +65,10 @@ const DirectProofsEditor = (): React.ReactElement => {
 
   const closeFileNameForm = () => {
     dispatch(actions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+  };
+
+  const closeFileInputForm = () => {
+    dispatch(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   };
 
   return (
@@ -110,6 +116,12 @@ const DirectProofsEditor = (): React.ReactElement => {
         onClose={closeFileNameForm}
         title={uiElementTexts.nameInput[language]}
         content={<FileNameForm mode='direct' />}
+      />
+      <ModalWindow
+        isOpened={isUserFileFormVisible}
+        onClose={closeFileInputForm}
+        title={uiElementTexts.fileInput[language]}
+        content={<InputFileForm mode='direct' />}
       />
     </div>
   );
