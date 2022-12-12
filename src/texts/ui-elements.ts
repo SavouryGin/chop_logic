@@ -26,4 +26,8 @@ export const uiElementTexts: { [key in string]: LocalText } = {
     en: 'Enter file name',
     ru: 'Введите имя файла',
   },
+  fileInput: {
+    en: 'Upload your file',
+    ru: 'Загрузите свой файл',
+  },
 };
