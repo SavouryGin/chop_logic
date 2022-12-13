@@ -13,8 +13,14 @@ const InputFileForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactEle
 
   const onSubmit = () => {
     console.log('File', userFile);
-    if (mode === 'direct') {
+    if (mode === 'direct' && userFile) {
       console.log('Direct');
+      const reader = new FileReader();
+      reader.readAsText(userFile);
+
+      reader.onload = () => {
+        console.log(reader.result);
+      };
     }
 
     if (mode === 'natural') {
