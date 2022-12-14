@@ -1,5 +1,6 @@
 import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/confirm-delete';
 import FileNameForm from 'pages/propositions/components/forms/file-name';
+import InputFileForm from 'pages/propositions/components/forms/input-file';
 import ModalWindow from 'components/modal-window';
 import NaturalProofsEditorTable from 'pages/propositions/components/tables/natural-proofs';
 import NaturalProofsEditorToolbar from 'pages/propositions/components/toolbars/natural-proofs';
@@ -28,6 +29,7 @@ const NaturalProofsEditor = (): React.ReactElement => {
   const isReplacerOpened = useAppSelector(selectors.getIsReplacerFormOpened);
   const dependencies = useAppSelector(selectors.getDependentItems);
   const isNameInputVisible = useAppSelector(selectors.getIsNameInputPopupVisible);
+  const isUserFileFormVisible = useAppSelector(selectors.getIsUserFileFormVisible);
 
   const editorClass = formatClass(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
 
@@ -62,6 +64,10 @@ const NaturalProofsEditor = (): React.ReactElement => {
 
   const closeFileNameForm = () => {
     dispatch(actions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+  };
+
+  const closeFileInputForm = () => {
+    dispatch(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   };
 
   return (
@@ -109,6 +115,12 @@ const NaturalProofsEditor = (): React.ReactElement => {
         onClose={closeFileNameForm}
         title={uiElementTexts.nameInput[language]}
         content={<FileNameForm mode='natural' />}
+      />
+      <ModalWindow
+        isOpened={isUserFileFormVisible}
+        onClose={closeFileInputForm}
+        title={uiElementTexts.fileInput[language]}
+        content={<InputFileForm mode='natural' />}
       />
     </div>
   );

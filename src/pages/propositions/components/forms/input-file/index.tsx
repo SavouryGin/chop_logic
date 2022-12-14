@@ -4,6 +4,7 @@ import React, { memo, useState } from 'react';
 import { ButtonID, Icon, InputID } from 'enums';
 import { FileAcceptType } from 'enums/file-accept-type';
 import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch } from 'hooks';
 import './styles.scss';
@@ -19,8 +20,8 @@ const InputFileForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactEle
       dispatch(propositionsDPActions.importFromXML({ file: userFile }));
     }
 
-    if (mode === 'natural') {
-      console.log('Natural');
+    if (mode === 'natural' && userFile) {
+      dispatch(propositionsNPActions.importFromXML({ file: userFile }));
     }
   };
 
