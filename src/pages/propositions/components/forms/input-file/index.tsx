@@ -3,24 +3,20 @@ import FileInput from 'components/controls/file-input';
 import React, { memo, useState } from 'react';
 import { ButtonID, Icon, InputID } from 'enums';
 import { FileAcceptType } from 'enums/file-accept-type';
+import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
 import { soundPlayer } from 'helpers/sounds';
+import { useAppDispatch } from 'hooks';
 import './styles.scss';
 
 const InputFileForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElement => {
   const [userFile, setUserFile] = useState<File>();
+  const dispatch = useAppDispatch();
 
   const takeFile = (value: File) => setUserFile(value);
 
   const onSubmit = () => {
-    console.log('File', userFile);
     if (mode === 'direct' && userFile) {
-      console.log('Direct');
-      const reader = new FileReader();
-      reader.readAsText(userFile);
-
-      reader.onload = () => {
-        console.log(reader.result);
-      };
+      dispatch(propositionsDPActions.importFromXML({ file: userFile }));
     }
 
     if (mode === 'natural') {
