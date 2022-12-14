@@ -172,7 +172,7 @@ export const propositionsDPSlice = createSlice({
       return state;
     },
 
-    importFromXML: (state) => {
+    importFromXML: (state, _action: PayloadAction<{ file: File }>) => {
       return state;
     },
   },
