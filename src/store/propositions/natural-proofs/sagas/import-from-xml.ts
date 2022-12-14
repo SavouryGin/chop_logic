@@ -1,15 +1,15 @@
 import { SagaIterator } from 'redux-saga';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { readUserTextFile } from 'helpers/files/read-user-text-file';
 
-export function* importDPFromXMLWatcher(): Generator {
-  yield takeEvery(actions.importFromXML, importDPFromXMLSaga);
+export function* importNPFromXMLWatcher(): Generator {
+  yield takeEvery(actions.importFromXML, importNPFromXMLSaga);
 }
 
-export function* importDPFromXMLSaga(action: { payload: { file: File } }): SagaIterator {
+export function* importNPFromXMLSaga(action: { payload: { file: File } }): SagaIterator {
   try {
-    console.log('IMPORT DP Saga');
+    console.log('IMPORT NP Saga');
     const { file } = action.payload;
 
     const text = yield call(readUserTextFile, file);
