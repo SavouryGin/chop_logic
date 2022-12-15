@@ -9,6 +9,7 @@ export const propositionsDPInitialState: PropositionsDirectProofsInitialState = 
     isReplacerFormOpened: false,
     isConfirmDeletePopupOpened: false,
     isNameInputPopupVisible: false,
+    isUserFileFormVisible: false,
   },
   tableData: [],
   selectedIds: [],
