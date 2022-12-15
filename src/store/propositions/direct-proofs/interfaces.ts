@@ -16,6 +16,7 @@ export interface PropositionsDirectProofsFlags {
   isReplacerFormOpened: boolean;
   isConfirmDeletePopupOpened: boolean;
   isNameInputPopupVisible: boolean;
+  isUserFileFormVisible: boolean;
 }
 
 export type PropositionsDirectProofsFlag = keyof PropositionsDirectProofsFlags;

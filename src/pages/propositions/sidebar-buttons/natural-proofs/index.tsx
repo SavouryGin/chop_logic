@@ -20,6 +20,10 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
     dispatch(actions.exportToXML());
   };
 
+  const openFileInputForm = () => {
+    dispatch(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: true }));
+  };
+
   return (
     <>
       {/* <li>
@@ -36,7 +40,7 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
         />
       </li>
       <li>
-        <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} size='large' />
+        <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} size='large' onClick={openFileInputForm} />
       </li>
     </>
   );

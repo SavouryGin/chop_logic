@@ -44,4 +44,7 @@ export const inputTexts: InputText = {
   [InputID.FileName]: {
     label: { en: 'File name:', ru: 'Имя файла:' },
   },
+  [InputID.FileInput]: {
+    label: { en: 'File:', ru: 'Файл:' },
+  },
 };
