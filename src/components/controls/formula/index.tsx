@@ -2,7 +2,7 @@ import React, { memo, useMemo } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { CommonSymbolHexCode } from 'enums';
 import { FormulaProps } from 'types';
-import { getPreformattedSymbol } from './helpers';
+import { getPreformattedSymbol } from 'helpers/formatters/get-preformatted-symbol';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

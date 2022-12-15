@@ -5,11 +5,7 @@ import { AppSettingInitialValues } from 'types';
 import { InputID } from 'enums';
 import { languageOptions } from 'presets/settings';
 
-type AppSettingsInputsProps = {
-  initialValues: AppSettingInitialValues;
-};
-
-const AppSettingsInputs = ({ initialValues }: AppSettingsInputsProps): React.ReactElement => {
+const AppSettingsInputs = ({ initialValues }: { initialValues: AppSettingInitialValues }): React.ReactElement => {
   const defaultLanguage = useMemo(() => {
     return languageOptions.find((item) => item.value === initialValues.language);
   }, [initialValues.language]);
