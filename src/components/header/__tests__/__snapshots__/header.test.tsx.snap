@@ -81,8 +81,8 @@ exports[`Header component: should match the snapshot 1`] = `
     >
       <button
         class="button"
-        id="button_id_4"
-        title="Settings"
+        id="button_id_6"
+        title="Tools"
         type="button"
       >
         <span
@@ -92,8 +92,8 @@ exports[`Header component: should match the snapshot 1`] = `
           class="button__edge"
         />
         <span
-          class="button__front chop-icon__cog"
-          data-testid="button_id_4"
+          class="button__front chop-icon__magic-wand"
+          data-testid="button_id_6"
         />
       </button>
       <button
@@ -115,8 +115,8 @@ exports[`Header component: should match the snapshot 1`] = `
       </button>
       <button
         class="button"
-        id="button_id_6"
-        title="Tools"
+        id="button_id_4"
+        title="Settings"
         type="button"
       >
         <span
@@ -126,8 +126,8 @@ exports[`Header component: should match the snapshot 1`] = `
           class="button__edge"
         />
         <span
-          class="button__front chop-icon__magic-wand"
-          data-testid="button_id_6"
+          class="button__front chop-icon__cog"
+          data-testid="button_id_4"
         />
       </button>
     </div>
