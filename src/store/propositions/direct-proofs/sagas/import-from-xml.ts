@@ -8,15 +8,16 @@ export function* importDPFromXMLWatcher(): Generator {
 }
 
 export function* importDPFromXMLSaga(action: { payload: { file: File } }): SagaIterator {
+  yield put(actions.setUpFlag({ flag: 'isLoading', value: true }));
   try {
-    console.log('IMPORT DP Saga');
     const { file } = action.payload;
-
     const text = yield call(readUserTextFile, file);
 
     console.log('Text', text);
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Import from XML file error';
     yield put(actions.setError(errorMessage));
+  } finally {
+    yield put(actions.setUpFlag({ flag: 'isLoading', value: false }));
   }
 }

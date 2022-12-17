@@ -10,6 +10,7 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isShortcutOpened: false,
     isNameInputPopupVisible: false,
     isUserFileFormVisible: false,
+    isLoading: false,
   },
   tableData: [],
   selectedIds: [],
