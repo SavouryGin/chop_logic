@@ -1,11 +1,12 @@
 import React from 'react';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-type SpinnerProps = {
-  color?: string;
-};
+const Spinner = (): React.ReactElement => {
+  const isDark = useAppSelector(settingsSelectors.getIsDarkMode);
+  const color = isDark ? '#97d8b2' : '#f96e67';
 
-const Spinner = ({ color = '#7f58af' }: SpinnerProps): React.ReactElement => {
   return (
     <div className='spinner'>
       <div className='spinner__center' style={{ background: color }}></div>
