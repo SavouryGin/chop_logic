@@ -1,29 +1,29 @@
-import { CommonProps } from 'types';
+import React from 'react';
 import './styles.scss';
 
-type SpinnerProps = CommonProps & {
+type SpinnerProps = {
   color?: string;
 };
 
-const Spinner = ({ color = '#7f58af', className }: SpinnerProps) => {
+const Spinner = ({ color = '#7f58af' }: SpinnerProps): React.ReactElement => {
   return (
-    <div className={classNames(styles['lds-orbitals'], className)} style={{ ...style }}>
-      <div className={classNames(styles['center'])} style={{ background: color }}></div>
-      <div className={classNames(styles['inner-spin'])}>
-        <div className={classNames(styles['inner-arc'], styles['inner-arc_start-a'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['inner-arc'], styles['inner-arc_end-a'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['inner-arc'], styles['inner-arc_start-b'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['inner-arc'], styles['inner-arc_end-b'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['inner-moon-a'])} style={{ background: color }}></div>
-        <div className={classNames(styles['inner-moon-b'])} style={{ background: color }}></div>
+    <div className='spinner'>
+      <div className='spinner__center' style={{ background: color }}></div>
+      <div className='spinner__inner-spin'>
+        <div className='spinner__inner-arc spinner__inner-arc_start-a' style={{ borderColor: color }}></div>
+        <div className='spinner__inner-arc spinner__inner-arc_end-a' style={{ borderColor: color }}></div>
+        <div className='spinner__inner-arc spinner__inner-arc_start-b' style={{ borderColor: color }}></div>
+        <div className='spinner__inner-arc spinner__inner-arc_end-b' style={{ borderColor: color }}></div>
+        <div className='spinner__inner-moon-a' style={{ background: color }}></div>
+        <div className='spinner__inner-moon-b' style={{ background: color }}></div>
       </div>
-      <div className={classNames(styles['outer-spin'])}>
-        <div className={classNames(styles['outer-arc'], styles['outer-arc_start-a'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['outer-arc'], styles['outer-arc_end-a'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['outer-arc'], styles['outer-arc_start-b'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['outer-arc'], styles['outer-arc_end-b'])} style={{ borderColor: color }}></div>
-        <div className={classNames(styles['outer-moon-a'])} style={{ background: color }}></div>
-        <div className={classNames(styles['outer-moon-b'])} style={{ background: color }}></div>
+      <div className='spinner__outer-spin'>
+        <div className='spinner__outer-arc spinner__outer-arc_start-a' style={{ borderColor: color }}></div>
+        <div className='spinner__outer-arc spinner__outer-arc_end-a' style={{ borderColor: color }}></div>
+        <div className='spinner__outer-arc spinner__outer-arc_start-b' style={{ borderColor: color }}></div>
+        <div className='spinner__outer-arc spinner__outer-arc_end-b' style={{ borderColor: color }}></div>
+        <div className='spinner__outer-moon-a' style={{ background: color }}></div>
+        <div className='spinner__outer-moon-b' style={{ background: color }}></div>
       </div>
     </div>
   );
