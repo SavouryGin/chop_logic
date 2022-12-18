@@ -14,6 +14,7 @@ export function* importDPFromXMLSaga(action: { payload: { file: File } }): SagaI
     const text = yield call(readUserTextFile, file);
 
     console.log('Text', text);
+    yield put(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Import from XML file error';
     yield put(actions.setError(errorMessage));

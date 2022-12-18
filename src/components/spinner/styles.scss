@@ -1,8 +1,28 @@
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/z-indexes.scss';
+
 .spinner {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: $spinner-z-index;
+    top: 0;
+    left: 0;
+    background-color: $light-background-color;
+
+    &_dark {
+      background-color: $dark-background-color;
+    }
+  }
 
   & * {
     --center: translate(-50%, -50%);

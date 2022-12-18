@@ -1,0 +1,6 @@
+@import 'styles/mixins/form-styles.scss';
+
+.input-file-form {
+  @include propositionsFormStyles();
+  position: relative;
+}
