@@ -90,6 +90,8 @@ const getPreviousLevelAssumptionId = createSelector(getTableData, (data: Natural
 
 const getIsUserFileFormVisible = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isUserFileFormVisible);
 
+const getIsLoading = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isLoading);
+
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
@@ -111,4 +113,5 @@ export const propositionsNPSelectors = {
   getPreviousLevelAssumptionId,
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
+  getIsLoading,
 };
