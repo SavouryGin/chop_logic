@@ -53,6 +53,8 @@ const getSelectedTableItems = (state: RootState): DirectProofsTableItem[] => {
   return state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
 };
 
+const getIsLoading = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isLoading);
+
 export const propositionsDPSelectors = {
   getFlags,
   getTableData,
@@ -69,4 +71,5 @@ export const propositionsDPSelectors = {
   getIsConfirmDeletePopupOpened,
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
+  getIsLoading,
 };
