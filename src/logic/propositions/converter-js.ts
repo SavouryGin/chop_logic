@@ -1,10 +1,16 @@
+import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 
 const converterJS = {
   xmlToDPTableData(input: string): DirectProofsTableItem[] {
-    console.log('XML input', input);
+    const withoutDeclaration = this.removeDeclaration(input);
+    console.log('XML input', withoutDeclaration);
 
     return [];
+  },
+
+  removeDeclaration(input: string): string {
+    return input.replace(regExes.xmlDeclaration, '');
   },
 };
 
