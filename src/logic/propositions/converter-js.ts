@@ -3,7 +3,7 @@ import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfac
 
 const converterJS = {
   xmlToDPTableData(input: string): DirectProofsTableItem[] {
-    const withoutDeclaration = this.removeDeclaration(input);
+    const withoutDeclaration = this.removeDeclaration(input).trim();
     console.log('XML input', withoutDeclaration);
 
     return [];
