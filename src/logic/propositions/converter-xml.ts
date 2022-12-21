@@ -2,12 +2,13 @@ import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfac
 import { Language, LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
+import { XMLTag } from 'enums/xml-tags';
 
 const converterXML = {
   xmlDeclaration: `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>`,
 
   dpToXML(tableData: DirectProofsTableItem[]): string {
-    return `${this.xmlDeclaration}\n<propositionsDirectProof>${this.dpArrayToXML(tableData)}</propositionsDirectProof>`;
+    return `${this.xmlDeclaration}\n${XMLTag.DPOpen}${this.dpArrayToXML(tableData)}${XMLTag.DPClose}`;
   },
 
   dpArrayToXML(data: DirectProofsTableItem[]): string {
@@ -17,17 +18,17 @@ const converterXML = {
   },
 
   dpItemToXML(item: DirectProofsTableItem): string {
-    const xml = `<tableItem>${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(item.rawInput)}${this.commentToXML(
-      item.comment,
-    )}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
+    const xml = `${XMLTag.TItemOpen}${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(
+      item.rawInput,
+    )}${this.commentToXML(item.comment)}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
       item.expression,
-    )}${this.expressionToXML(item.friendlyExpression)}</tableItem>`;
+    )}${this.expressionToXML(item.friendlyExpression)}${XMLTag.TItemClose}`;
 
     return xml;
   },
 
   npToXML(tableData: NaturalProofsTableItem[]): string {
-    return `${this.xmlDeclaration}\n<propositionsNaturalProof>${this.dpArrayToXML(tableData)}</propositionsNaturalProof>`;
+    return `${this.xmlDeclaration}\n${XMLTag.NPOpen}${this.dpArrayToXML(tableData)}${XMLTag.NPClose}`;
   },
 
   npArrayToXML(data: NaturalProofsTableItem[]): string {
@@ -37,19 +38,19 @@ const converterXML = {
   },
 
   npItemToXML(item: NaturalProofsTableItem): string {
-    const xml = `<tableItem>${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(item.rawInput)}${this.commentToXML(
-      item.comment,
-    )}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
+    const xml = `${XMLTag.TItemOpen}${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(
+      item.rawInput,
+    )}${this.commentToXML(item.comment)}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
       item.expression,
     )}${this.expressionToXML(item.friendlyExpression)}${this.levelToXML(item.level)}${this.formulaBaseToXML(
       item.formulaBase,
-    )}${this.assumptionIdToXML(item.assumptionId)}</tableItem>`;
+    )}${this.assumptionIdToXML(item.assumptionId)}${XMLTag.TItemClose}`;
 
     return xml;
   },
 
   idToXML(id: string): string {
-    return `<id>${id}</id>`;
+    return `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`;
   },
 
   stepToXML(step: number): string {
