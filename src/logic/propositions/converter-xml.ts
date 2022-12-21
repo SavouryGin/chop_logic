@@ -5,10 +5,8 @@ import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interf
 import { XMLTag } from 'enums/xml-tags';
 
 const converterXML = {
-  xmlDeclaration: `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>`,
-
   dpToXML(tableData: DirectProofsTableItem[]): string {
-    return `${this.xmlDeclaration}\n${XMLTag.DPOpen}${this.dpArrayToXML(tableData)}${XMLTag.DPClose}`;
+    return `${XMLTag.Declaration}\n${XMLTag.DPOpen}${this.dpArrayToXML(tableData)}${XMLTag.DPClose}`;
   },
 
   dpArrayToXML(data: DirectProofsTableItem[]): string {
@@ -28,7 +26,7 @@ const converterXML = {
   },
 
   npToXML(tableData: NaturalProofsTableItem[]): string {
-    return `${this.xmlDeclaration}\n${XMLTag.NPOpen}${this.dpArrayToXML(tableData)}${XMLTag.NPClose}`;
+    return `${XMLTag.Declaration}\n${XMLTag.NPOpen}${this.dpArrayToXML(tableData)}${XMLTag.NPClose}`;
   },
 
   npArrayToXML(data: NaturalProofsTableItem[]): string {
@@ -54,28 +52,28 @@ const converterXML = {
   },
 
   stepToXML(step: number): string {
-    return `<step>${step}</step>`;
+    return `${XMLTag.StepOpen}${step}${XMLTag.StepClose}`;
   },
 
   levelToXML(level: number): string {
-    return `<level>${level}</level>`;
+    return `${XMLTag.LevelOpen}${level}${XMLTag.LevelClose}`;
   },
 
   formulaBaseToXML(base: NPFormulaBase): string {
-    return `<formulaBase>${base}</formulaBase>`;
+    return `${XMLTag.FBaseOpen}${base}${XMLTag.FBaseClose}`;
   },
 
   assumptionIdToXML(id: string | null): string {
-    return `<assumptionId>${id ? id : ''}</assumptionId>`;
+    return `${XMLTag.AIDOpen}${id ? id : ''}${XMLTag.AIDClose}`;
   },
 
   rawInputToXML(rawInput: string): string {
-    return `<rawInput>${rawInput}</rawInput>`;
+    return `${XMLTag.RInputOpen}${rawInput}${XMLTag.RInputClose}`;
   },
 
   commentToXML(comment: string | LocalText): string {
     if (typeof comment === 'string') {
-      return `<comment>${comment}</comment>`;
+      return `${XMLTag.CommentOpen}${comment}${XMLTag.CommentClose}`;
     } else {
       const pairs = [];
 
@@ -84,17 +82,17 @@ const converterXML = {
         pairs.push(pair);
       }
 
-      return `<comment>${pairs.join('')}</comment>`;
+      return `${XMLTag.CommentOpen}${pairs.join('')}${XMLTag.CommentClose}`;
     }
   },
 
   dependentOnToXML(dependentOn: string[] | undefined): string {
     if (!dependentOn) {
-      return `<dependentOn></dependentOn>`;
+      return `${XMLTag.DepOpen}${XMLTag.DepClose}`;
     } else {
-      const ids = dependentOn.map((id) => `<id>${id}</id>`);
+      const ids = dependentOn.map((id) => `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`);
 
-      return `<dependentOn>${ids.join('')}</dependentOn>`;
+      return `${XMLTag.DepOpen}${ids.join('')}${XMLTag.DepClose}`;
     }
   },
 
@@ -102,28 +100,32 @@ const converterXML = {
     if (Array.isArray(formula.values) && formula.operator !== PropositionalOperator.Var) {
       const nestedFormulas = formula.values.map((value) => this.formulaToXML(value)).join('');
 
-      return `<propositionalFormula>${this.operatorToXML(formula.operator)}<values>${nestedFormulas}</values></propositionalFormula>`;
+      return `${XMLTag.PFormulaOpen}${this.operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${nestedFormulas}${XMLTag.ValuesClose}${
+        XMLTag.PFormulaClose
+      }`;
     } else {
-      return `<propositionalFormula>${this.operatorToXML(
-        formula.operator,
-      )}<values>${formula.values.toString()}</values></propositionalFormula>`;
+      return `${XMLTag.PFormulaOpen}${this.operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${formula.values.toString()}${
+        XMLTag.ValuesClose
+      }${XMLTag.PFormulaClose}`;
     }
   },
 
   operatorToXML(operator: PropositionalOperator): string {
-    return `<operator>${operator.toString()}</operator>`;
+    return `${XMLTag.OperatorOpen}${operator.toString()}${XMLTag.OperatorClose}`;
   },
 
   expressionToXML(expression: PropositionalExpression): string {
     const symbols = expression.map((symbol) => this.symbolToXML(symbol));
 
-    return `<propositionalExpression>${symbols.join('')}</propositionalExpression>`;
+    return `${XMLTag.PExpressionOpen}${symbols.join('')}${XMLTag.PExpressionClose}`;
   },
 
   symbolToXML(symbol: PropositionalSymbol): string {
-    return `<propositionalSymbol><input>${symbol.input}</input><type>${symbol.type}</type><position>${
-      symbol.position
-    }</position><representation>${symbol.representation || ''}</representation></propositionalSymbol>`;
+    return `${XMLTag.PSymbolOpen}${XMLTag.InputOpen}${symbol.input}${XMLTag.InputClose}${XMLTag.TypeOpen}${symbol.type}${XMLTag.TypeClose}${
+      XMLTag.PositionOpen
+    }${symbol.position}${XMLTag.PositionClose}${XMLTag.RepresentOpen}${symbol.representation || ''}${XMLTag.RepresentClose}${
+      XMLTag.PSymbolClose
+    }`;
   },
 };
 
