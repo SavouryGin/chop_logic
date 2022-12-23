@@ -1,6 +1,7 @@
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalSymbol } from 'types';
 import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
 
@@ -8,6 +9,10 @@ const converterJS = {
   xmlToDPTableData(input: string): DirectProofsTableItem[] {
     const withoutDeclaration = this.removeDeclaration(input).trim();
     console.log('XML input', withoutDeclaration);
+
+    this.getPropositionalSymbol(
+      '<propositionalSymbol><input>p</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol>',
+    );
 
     return [];
   },
@@ -54,6 +59,28 @@ const converterJS = {
     }
 
     return value;
+  },
+
+  getPropositionalSymbol(input: string): PropositionalSymbol {
+    const inputRegex = new RegExp(XMLTag.InputOpen + '.*' + XMLTag.InputClose, 'i');
+    const reprRegex = new RegExp(XMLTag.RepresentOpen + '.*' + XMLTag.RepresentClose, 'i');
+    const typeRegex = new RegExp(XMLTag.TypeOpen + '.*' + XMLTag.TypeClose, 'i');
+    const positionRegex = new RegExp(XMLTag.PositionOpen + '.*' + XMLTag.PositionClose, 'i');
+
+    const values = input.replace(XMLTag.PSymbolOpen, '').replace(XMLTag.PSymbolClose, '');
+    const inputString = values.match(inputRegex);
+    const reprString = values.match(reprRegex);
+    const typeString = values.match(typeRegex);
+    const positionString = values.match(positionRegex);
+
+    console.log(inputString, reprString, typeString, positionString);
+
+    return {
+      input: '',
+      representation: '',
+      type: 'operator',
+      position: 0,
+    };
   },
 };
 
