@@ -9,6 +9,8 @@ export type PropositionalSymbol = {
   representation?: string;
 };
 
+export type PropositionalSymbolType = 'variable' | 'operator' | 'parentheses';
+
 export type PropositionalExpression = PropositionalSymbol[];
 
 // NB: Recursive Type

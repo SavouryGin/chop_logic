@@ -1,7 +1,7 @@
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalSymbol } from 'types';
+import { PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
 
@@ -62,24 +62,18 @@ const converterJS = {
   },
 
   getPropositionalSymbol(input: string): PropositionalSymbol {
-    const inputRegex = new RegExp(XMLTag.InputOpen + '.*' + XMLTag.InputClose, 'i');
-    const reprRegex = new RegExp(XMLTag.RepresentOpen + '.*' + XMLTag.RepresentClose, 'i');
-    const typeRegex = new RegExp(XMLTag.TypeOpen + '.*' + XMLTag.TypeClose, 'i');
-    const positionRegex = new RegExp(XMLTag.PositionOpen + '.*' + XMLTag.PositionClose, 'i');
-
     const values = input.replace(XMLTag.PSymbolOpen, '').replace(XMLTag.PSymbolClose, '');
-    const inputString = values.match(inputRegex);
-    const reprString = values.match(reprRegex);
-    const typeString = values.match(typeRegex);
-    const positionString = values.match(positionRegex);
 
-    console.log(inputString, reprString, typeString, positionString);
+    const inputMatch = values.match(new RegExp(XMLTag.InputOpen + '.*' + XMLTag.InputClose, 'i'))![0];
+    const representationMatch = values.match(new RegExp(XMLTag.RepresentOpen + '.*' + XMLTag.RepresentClose, 'i'))![0];
+    const typeMatch = values.match(new RegExp(XMLTag.TypeOpen + '.*' + XMLTag.TypeClose, 'i'))![0];
+    const positionMatch = values.match(new RegExp(XMLTag.PositionOpen + '.*' + XMLTag.PositionClose, 'i'))![0];
 
     return {
-      input: '',
-      representation: '',
-      type: 'operator',
-      position: 0,
+      input: this.getExpressionInput(inputMatch),
+      representation: this.getExpressionRepresentation(representationMatch),
+      type: this.getExpressionType(typeMatch) as PropositionalSymbolType,
+      position: this.getExpressionPosition(positionMatch),
     };
   },
 };
