@@ -1,7 +1,7 @@
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalSymbol, PropositionalSymbolType } from 'types';
+import { PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
 
@@ -10,8 +10,8 @@ const converterJS = {
     const withoutDeclaration = this.removeDeclaration(input).trim();
     console.log('XML input', withoutDeclaration);
 
-    this.getPropositionalSymbol(
-      '<propositionalSymbol><input>p</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol>',
+    this.getPropositionalExpression(
+      '<propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression>',
     );
 
     return [];
@@ -75,6 +75,19 @@ const converterJS = {
       type: this.getExpressionType(typeMatch) as PropositionalSymbolType,
       position: this.getExpressionPosition(positionMatch),
     };
+  },
+
+  getPropositionalExpression(input: string): PropositionalExpression {
+    const value = input.replace(XMLTag.PExpressionOpen, '').replace(XMLTag.PExpressionClose, '');
+    console.log(value);
+
+    // const symbolsMatch = value.match(new RegExp(XMLTag.PSymbolOpen + '.[a-zA-Z0-9/(/)]' + XMLTag.PSymbolClose, 'i'));
+
+    const symbols = value.split(new RegExp('(?=' + XMLTag.PSymbolOpen + ')', 'g'));
+
+    console.log(symbols);
+
+    return [];
   },
 };
 
