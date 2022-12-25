@@ -79,15 +79,20 @@ const converterJS = {
 
   getPropositionalExpression(input: string): PropositionalExpression {
     const value = input.replace(XMLTag.PExpressionOpen, '').replace(XMLTag.PExpressionClose, '');
-    console.log(value);
+    const symbolsStrings = value.split(new RegExp('(?=' + XMLTag.PSymbolOpen + ')', 'g'));
+    const result: PropositionalExpression = [];
 
-    // const symbolsMatch = value.match(new RegExp(XMLTag.PSymbolOpen + '.[a-zA-Z0-9/(/)]' + XMLTag.PSymbolClose, 'i'));
+    for (const item of symbolsStrings) {
+      try {
+        const symbol = this.getPropositionalSymbol(item);
+        result.push(symbol);
+      } catch (error: unknown) {
+        console.error(error);
+        throw new PropositionalError(`Cannot convert the propositional symbol from "${item}"`, errorsTexts.semanticError);
+      }
+    }
 
-    const symbols = value.split(new RegExp('(?=' + XMLTag.PSymbolOpen + ')', 'g'));
-
-    console.log(symbols);
-
-    return [];
+    return result;
   },
 };
 
