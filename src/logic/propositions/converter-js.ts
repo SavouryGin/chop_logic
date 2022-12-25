@@ -1,18 +1,17 @@
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
+import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
+import { languageStringOptions } from 'presets/settings';
 
 const converterJS = {
   xmlToDPTableData(input: string): DirectProofsTableItem[] {
     const withoutDeclaration = this.removeDeclaration(input).trim();
     console.log('XML input', withoutDeclaration);
 
-    this.getPropositionalExpression(
-      '<propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression>',
-    );
+    this.getComment('<comment><en>Premise</en><ru>Посылка</ru></comment>');
 
     return [];
   },
@@ -93,6 +92,20 @@ const converterJS = {
     }
 
     return result;
+  },
+
+  getComment(input: string): LocalText | string {
+    const value = input.replace(XMLTag.CommentOpen, '').replace(XMLTag.CommentClose, '');
+    console.log(value);
+
+    // Check if value is a simple string;
+    for (const item of languageStringOptions) {
+      if (value.indexOf(item) === -1) {
+        return value;
+      }
+    }
+
+    return '';
   },
 };
 
