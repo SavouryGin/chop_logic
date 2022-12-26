@@ -2,6 +2,7 @@ import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalOperator } from 'enums';
 import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
 import { languageStringOptions } from 'presets/settings';
@@ -112,6 +113,12 @@ const converterJS = {
     }
 
     return localTextResult as LocalText;
+  },
+
+  getOperator(input: string): PropositionalOperator {
+    const value = input.replace(XMLTag.OperatorOpen, '').replace(XMLTag.OperatorClose, '');
+
+    return value as PropositionalOperator;
   },
 };
 
