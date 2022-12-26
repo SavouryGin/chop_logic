@@ -96,16 +96,22 @@ const converterJS = {
 
   getComment(input: string): LocalText | string {
     const value = input.replace(XMLTag.CommentOpen, '').replace(XMLTag.CommentClose, '');
-    console.log(value);
+    const localTextResult: any = {};
 
-    // Check if value is a simple string;
-    for (const item of languageStringOptions) {
-      if (value.indexOf(item) === -1) {
+    for (const lang of languageStringOptions) {
+      // Check if value is a simple string
+      if (value.indexOf(lang) === -1) {
         return value;
+      } else {
+        // Extract the local comment text
+        const localComment = value.match(new RegExp(`<${lang}>` + '.*' + `</${lang}>`, 'i'))![0];
+        const text = localComment.replace(`<${lang}>`, '').replace(`</${lang}>`, '');
+
+        localTextResult[lang] = text;
       }
     }
 
-    return '';
+    return localTextResult as LocalText;
   },
 };
 
