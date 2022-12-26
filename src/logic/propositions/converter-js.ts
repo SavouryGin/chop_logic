@@ -120,6 +120,12 @@ const converterJS = {
 
     return value as PropositionalOperator;
   },
+
+  getFormulaVariable(input: string): string {
+    const value = input.replace(XMLTag.ValuesOpen, '').replace(XMLTag.ValuesClose, '');
+
+    return value;
+  },
 };
 
 export default Object.freeze(converterJS);
