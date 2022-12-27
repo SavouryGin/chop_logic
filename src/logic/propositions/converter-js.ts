@@ -99,32 +99,32 @@ const converterJS = {
   },
 
   getPropositionalFormula(input: string): PropositionalFormula {
-    const rawString = input.replace(XMLTag.PFormulaOpen, '').replace(XMLTag.PFormulaClose, '');
+    const rawString = input.replace(XMLTag.PFormulaOpen, '').replace(new RegExp(XMLTag.PFormulaClose + '$'), '');
+    console.log('rawString', rawString);
 
-    const operatorMatch = rawString.match(new RegExp(XMLTag.OperatorOpen + '.*' + XMLTag.OperatorClose, 'i'))![0];
-    const valuesMatch = rawString.match(new RegExp(XMLTag.ValuesOpen + '.*' + XMLTag.ValuesClose, 'i'))![0];
+    const operatorMatch = rawString.match(new RegExp(XMLTag.OperatorOpen + '[A-Z]' + XMLTag.OperatorClose, 'g'));
+    const valuesMatch = rawString.match(new RegExp(XMLTag.ValuesOpen + '.*' + XMLTag.ValuesClose, 'i'));
 
-    const operator = this.getOperator(operatorMatch);
+    console.log('operatorMatch', operatorMatch);
+    console.log('valuesMatch', valuesMatch);
+    // const operator = this.getOperator(operatorMatch);
 
-    console.log(operatorMatch);
-    console.log(valuesMatch);
+    // if (operator === PropositionalOperator.Var) {
+    //   const variable = this.getFormulaVariable(valuesMatch);
 
-    if (operator === PropositionalOperator.Var) {
-      const variable = this.getFormulaVariable(valuesMatch);
+    //   return {
+    //     operator,
+    //     values: variable,
+    //   };
+    // }
 
-      return {
-        operator,
-        values: variable,
-      };
-    }
+    // const subFormulas = this.getFormulaValues(valuesMatch);
 
-    const formulasArray = this.splitFormulasArray(valuesMatch);
-
-    console.log('formulasArray', formulasArray);
+    // console.log('subFormulas', subFormulas);
 
     return {
-      operator,
-      values: formulasArray.map((item) => this.getPropositionalFormula(item)),
+      operator: 'VAR' as PropositionalOperator,
+      values: '999',
     };
   },
 
@@ -160,10 +160,13 @@ const converterJS = {
     return value;
   },
 
-  splitFormulasArray(input: string): string[] {
-    const formulasArray = input.replace(XMLTag.ValuesOpen, '').replace(XMLTag.ValuesClose, '');
+  getFormulaValues(input: string): string[] {
+    const values = input.replace(XMLTag.ValuesOpen, '').replace(new RegExp(XMLTag.ValuesClose + '$'), '');
+    console.log('getFormulaValues', values);
 
-    return formulasArray.split(new RegExp('(?=' + XMLTag.PFormulaOpen + ')', 'g'));
+    const splittedValues = values.split(new RegExp('(?=' + XMLTag.PFormulaOpen + ')', 'g'));
+
+    return splittedValues;
   },
 };
 
