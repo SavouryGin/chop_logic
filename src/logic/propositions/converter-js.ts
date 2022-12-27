@@ -1,6 +1,6 @@
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
-import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
+import { LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalOperator } from 'enums';
 import { XMLTag } from 'enums/xml-tags';
@@ -12,7 +12,10 @@ const converterJS = {
     const withoutDeclaration = this.removeDeclaration(input).trim();
     console.log('XML input', withoutDeclaration);
 
-    this.getComment('<comment><en>Premise</en><ru>Посылка</ru></comment>');
+    const result = this.getPropositionalFormula(
+      '<propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>D</values></propositionalFormula><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>S</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>A</values></propositionalFormula></values></propositionalFormula></values></propositionalFormula><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>D</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>S</values></propositionalFormula></values></propositionalFormula><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>D</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>A</values></propositionalFormula></values></propositionalFormula></values></propositionalFormula></values></propositionalFormula>',
+    );
+    console.log('Result', result);
 
     return [];
   },
@@ -95,6 +98,36 @@ const converterJS = {
     return result;
   },
 
+  getPropositionalFormula(input: string): PropositionalFormula {
+    const rawString = input.replace(XMLTag.PFormulaOpen, '').replace(XMLTag.PFormulaClose, '');
+
+    const operatorMatch = rawString.match(new RegExp(XMLTag.OperatorOpen + '.*' + XMLTag.OperatorClose, 'i'))![0];
+    const valuesMatch = rawString.match(new RegExp(XMLTag.ValuesOpen + '.*' + XMLTag.ValuesClose, 'i'))![0];
+
+    const operator = this.getOperator(operatorMatch);
+
+    console.log(operatorMatch);
+    console.log(valuesMatch);
+
+    if (operator === PropositionalOperator.Var) {
+      const variable = this.getFormulaVariable(valuesMatch);
+
+      return {
+        operator,
+        values: variable,
+      };
+    }
+
+    const formulasArray = this.splitFormulasArray(valuesMatch);
+
+    console.log('formulasArray', formulasArray);
+
+    return {
+      operator,
+      values: formulasArray.map((item) => this.getPropositionalFormula(item)),
+    };
+  },
+
   getComment(input: string): LocalText | string {
     const value = input.replace(XMLTag.CommentOpen, '').replace(XMLTag.CommentClose, '');
     const localTextResult: any = {};
@@ -125,6 +158,12 @@ const converterJS = {
     const value = input.replace(XMLTag.ValuesOpen, '').replace(XMLTag.ValuesClose, '');
 
     return value;
+  },
+
+  splitFormulasArray(input: string): string[] {
+    const formulasArray = input.replace(XMLTag.ValuesOpen, '').replace(XMLTag.ValuesClose, '');
+
+    return formulasArray.split(new RegExp('(?=' + XMLTag.PFormulaOpen + ')', 'g'));
   },
 };
 
