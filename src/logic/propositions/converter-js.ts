@@ -1,3 +1,4 @@
+import converter from './converter';
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
@@ -12,14 +13,53 @@ const converterJS = {
     const withoutDeclaration = this.removeDeclaration(input).trim();
     console.log('XML input', withoutDeclaration);
 
+    const item = this.getDPTableItem(
+      '<tableItem><id>9565237b-f652-4ed2-2ac4-5b14b6acb84d</id><step>1</step><rawInput>p</rawInput><comment><en>Premise</en><ru>Посылка</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>P</input><type>variable</type><position>0</position><representation>P</representation></propositionalSymbol></propositionalExpression></tableItem>',
+    );
+
+    console.log('item', item);
+
     return [];
+  },
+
+  getDPTableItem(input: string): DirectProofsTableItem {
+    const value = input.replace(XMLTag.TItemOpen, '').replace(XMLTag.TItemClose, '');
+
+    try {
+      const idMatch = value.match(new RegExp(XMLTag.IdOpen + '.*' + XMLTag.IdClose, 'i'))![0];
+      const stepMatch = value.match(new RegExp(XMLTag.StepOpen + '.*' + XMLTag.StepClose, 'i'))![0];
+      const rawInputMatch = value.match(new RegExp(XMLTag.RInputOpen + '.*' + XMLTag.RInputClose, 'i'))![0];
+      const expressionMatch = value.match(new RegExp(XMLTag.PExpressionOpen + '.*' + XMLTag.PExpressionClose, 'i'))![0];
+      const commentMatch = value.match(new RegExp(XMLTag.CommentOpen + '.*' + XMLTag.CommentClose, 'i'))![0];
+
+      const id = this.getId(idMatch);
+      const step = this.getStep(stepMatch);
+      const rawInput = this.getRawInput(rawInputMatch);
+      const expression = this.getPropositionalExpression(expressionMatch);
+      const comment = this.getComment(commentMatch);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+
+      return {
+        id,
+        step,
+        rawInput,
+        expression,
+        comment,
+        formula,
+        friendlyExpression,
+      };
+    } catch (error: unknown) {
+      console.error(error);
+      throw new PropositionalError('Cannot convert the table item from XML.', errorsTexts.semanticError);
+    }
   },
 
   removeDeclaration(input: string): string {
     return input.replace(regExes.xmlDeclaration, '');
   },
 
-  getStepValue(input: string): number {
+  getStep(input: string): number {
     const value = +input.replace(XMLTag.StepOpen, '').replace(XMLTag.StepClose, '');
 
     if (isNaN(value)) {
@@ -78,6 +118,7 @@ const converterJS = {
   getPropositionalExpression(input: string): PropositionalExpression {
     const value = input.replace(XMLTag.PExpressionOpen, '').replace(XMLTag.PExpressionClose, '');
     const symbolsStrings = value.split(new RegExp('(?=' + XMLTag.PSymbolOpen + ')', 'g'));
+    console.log('symbolsStrings', symbolsStrings);
     const result: PropositionalExpression = [];
 
     for (const item of symbolsStrings) {
