@@ -2,12 +2,11 @@ import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfac
 import { Language, LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
+import { XMLTag } from 'enums/xml-tags';
 
 const converterXML = {
-  xmlDeclaration: `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>`,
-
   dpToXML(tableData: DirectProofsTableItem[]): string {
-    return `${this.xmlDeclaration}\n<propositionsDirectProof>${this.dpArrayToXML(tableData)}</propositionsDirectProof>`;
+    return `${XMLTag.Declaration}\n${XMLTag.DPOpen}${this.dpArrayToXML(tableData)}${XMLTag.DPClose}`;
   },
 
   dpArrayToXML(data: DirectProofsTableItem[]): string {
@@ -17,17 +16,17 @@ const converterXML = {
   },
 
   dpItemToXML(item: DirectProofsTableItem): string {
-    const xml = `<tableItem>${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(item.rawInput)}${this.commentToXML(
-      item.comment,
-    )}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
+    const xml = `${XMLTag.TItemOpen}${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(
+      item.rawInput,
+    )}${this.commentToXML(item.comment)}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
       item.expression,
-    )}${this.expressionToXML(item.friendlyExpression)}</tableItem>`;
+    )}${this.expressionToXML(item.friendlyExpression)}${XMLTag.TItemClose}`;
 
     return xml;
   },
 
   npToXML(tableData: NaturalProofsTableItem[]): string {
-    return `${this.xmlDeclaration}\n<propositionsNaturalProof>${this.dpArrayToXML(tableData)}</propositionsNaturalProof>`;
+    return `${XMLTag.Declaration}\n${XMLTag.NPOpen}${this.dpArrayToXML(tableData)}${XMLTag.NPClose}`;
   },
 
   npArrayToXML(data: NaturalProofsTableItem[]): string {
@@ -37,44 +36,44 @@ const converterXML = {
   },
 
   npItemToXML(item: NaturalProofsTableItem): string {
-    const xml = `<tableItem>${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(item.rawInput)}${this.commentToXML(
-      item.comment,
-    )}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
+    const xml = `${XMLTag.TItemOpen}${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(
+      item.rawInput,
+    )}${this.commentToXML(item.comment)}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
       item.expression,
     )}${this.expressionToXML(item.friendlyExpression)}${this.levelToXML(item.level)}${this.formulaBaseToXML(
       item.formulaBase,
-    )}${this.assumptionIdToXML(item.assumptionId)}</tableItem>`;
+    )}${this.assumptionIdToXML(item.assumptionId)}${XMLTag.TItemClose}`;
 
     return xml;
   },
 
   idToXML(id: string): string {
-    return `<id>${id}</id>`;
+    return `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`;
   },
 
   stepToXML(step: number): string {
-    return `<step>${step}</step>`;
+    return `${XMLTag.StepOpen}${step}${XMLTag.StepClose}`;
   },
 
   levelToXML(level: number): string {
-    return `<level>${level}</level>`;
+    return `${XMLTag.LevelOpen}${level}${XMLTag.LevelClose}`;
   },
 
   formulaBaseToXML(base: NPFormulaBase): string {
-    return `<formulaBase>${base}</formulaBase>`;
+    return `${XMLTag.FBaseOpen}${base}${XMLTag.FBaseClose}`;
   },
 
   assumptionIdToXML(id: string | null): string {
-    return `<assumptionId>${id ? id : ''}</assumptionId>`;
+    return `${XMLTag.AIDOpen}${id ? id : ''}${XMLTag.AIDClose}`;
   },
 
   rawInputToXML(rawInput: string): string {
-    return `<rawInput>${rawInput}</rawInput>`;
+    return `${XMLTag.RInputOpen}${rawInput}${XMLTag.RInputClose}`;
   },
 
   commentToXML(comment: string | LocalText): string {
     if (typeof comment === 'string') {
-      return `<comment>${comment}</comment>`;
+      return `${XMLTag.CommentOpen}${comment}${XMLTag.CommentClose}`;
     } else {
       const pairs = [];
 
@@ -83,17 +82,17 @@ const converterXML = {
         pairs.push(pair);
       }
 
-      return `<comment>${pairs.join('')}</comment>`;
+      return `${XMLTag.CommentOpen}${pairs.join('')}${XMLTag.CommentClose}`;
     }
   },
 
   dependentOnToXML(dependentOn: string[] | undefined): string {
     if (!dependentOn) {
-      return `<dependentOn></dependentOn>`;
+      return `${XMLTag.DepOpen}${XMLTag.DepClose}`;
     } else {
-      const ids = dependentOn.map((id) => `<id>${id}</id>`);
+      const ids = dependentOn.map((id) => `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`);
 
-      return `<dependentOn>${ids.join('')}</dependentOn>`;
+      return `${XMLTag.DepOpen}${ids.join('')}${XMLTag.DepClose}`;
     }
   },
 
@@ -101,28 +100,32 @@ const converterXML = {
     if (Array.isArray(formula.values) && formula.operator !== PropositionalOperator.Var) {
       const nestedFormulas = formula.values.map((value) => this.formulaToXML(value)).join('');
 
-      return `<propositionalFormula>${this.operatorToXML(formula.operator)}<values>${nestedFormulas}</values></propositionalFormula>`;
+      return `${XMLTag.PFormulaOpen}${this.operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${nestedFormulas}${XMLTag.ValuesClose}${
+        XMLTag.PFormulaClose
+      }`;
     } else {
-      return `<propositionalFormula>${this.operatorToXML(
-        formula.operator,
-      )}<values>${formula.values.toString()}</values></propositionalFormula>`;
+      return `${XMLTag.PFormulaOpen}${this.operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${formula.values.toString()}${
+        XMLTag.ValuesClose
+      }${XMLTag.PFormulaClose}`;
     }
   },
 
   operatorToXML(operator: PropositionalOperator): string {
-    return `<operator>${operator.toString()}</operator>`;
+    return `${XMLTag.OperatorOpen}${operator.toString()}${XMLTag.OperatorClose}`;
   },
 
   expressionToXML(expression: PropositionalExpression): string {
     const symbols = expression.map((symbol) => this.symbolToXML(symbol));
 
-    return `<propositionalExpression>${symbols.join('')}</propositionalExpression>`;
+    return `${XMLTag.PExpressionOpen}${symbols.join('')}${XMLTag.PExpressionClose}`;
   },
 
   symbolToXML(symbol: PropositionalSymbol): string {
-    return `<propositionalSymbol><input>${symbol.input}</input><type>${symbol.type}</type><position>${
-      symbol.position
-    }</position><representation>${symbol.representation || ''}</representation></propositionalSymbol>`;
+    return `${XMLTag.PSymbolOpen}${XMLTag.InputOpen}${symbol.input}${XMLTag.InputClose}${XMLTag.TypeOpen}${symbol.type}${XMLTag.TypeClose}${
+      XMLTag.PositionOpen
+    }${symbol.position}${XMLTag.PositionClose}${XMLTag.RepresentOpen}${symbol.representation || ''}${XMLTag.RepresentClose}${
+      XMLTag.PSymbolClose
+    }`;
   },
 };
 
