@@ -3,7 +3,6 @@ import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { PropositionalError } from 'errors/propositional-error';
-import { PropositionalOperator } from 'enums';
 import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
 import { languageStringOptions } from 'presets/settings';
@@ -11,18 +10,14 @@ import { languageStringOptions } from 'presets/settings';
 const converterJS = {
   xmlToDPTableData(input: string): DirectProofsTableItem[] {
     const withoutDeclaration = this.removeDeclaration(input).trim();
-    console.log('XML input', withoutDeclaration);
+    const withoutDPTag = withoutDeclaration.replace(XMLTag.DPOpen, '').replace(XMLTag.DPClose, '');
 
-    const item = this.getDPTableItem(
-      '<tableItem><id>9565237b-f652-4ed2-2ac4-5b14b6acb84d</id><step>1</step><rawInput>p</rawInput><comment><en>Premise</en><ru>Посылка</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>P</input><type>variable</type><position>0</position><representation>P</representation></propositionalSymbol></propositionalExpression></tableItem>',
-    );
+    const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
 
-    console.log('item', item);
-
-    return [];
+    return tableItems.map((item) => this.parseDPTableItem(item));
   },
 
-  getDPTableItem(input: string): DirectProofsTableItem {
+  parseDPTableItem(input: string): DirectProofsTableItem {
     const value = input.replace(XMLTag.TItemOpen, '').replace(XMLTag.TItemClose, '');
 
     try {
@@ -32,11 +27,11 @@ const converterJS = {
       const expressionMatch = value.match(new RegExp(XMLTag.PExpressionOpen + '.*' + XMLTag.PExpressionClose, 'i'))![0];
       const commentMatch = value.match(new RegExp(XMLTag.CommentOpen + '.*' + XMLTag.CommentClose, 'i'))![0];
 
-      const id = this.getId(idMatch);
-      const step = this.getStep(stepMatch);
-      const rawInput = this.getRawInput(rawInputMatch);
-      const expression = this.getPropositionalExpression(expressionMatch);
-      const comment = this.getComment(commentMatch);
+      const id = this.parseId(idMatch);
+      const step = this.parseStep(stepMatch);
+      const rawInput = this.parseRawInput(rawInputMatch);
+      const expression = this.parsePropositionalExpression(expressionMatch);
+      const comment = this.parseComment(commentMatch);
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
 
@@ -59,7 +54,7 @@ const converterJS = {
     return input.replace(regExes.xmlDeclaration, '');
   },
 
-  getStep(input: string): number {
+  parseStep(input: string): number {
     const value = +input.replace(XMLTag.StepOpen, '').replace(XMLTag.StepClose, '');
 
     if (isNaN(value)) {
@@ -69,27 +64,27 @@ const converterJS = {
     return value;
   },
 
-  getRawInput(input: string): string {
+  parseRawInput(input: string): string {
     return input.replace(XMLTag.RInputOpen, '').replace(XMLTag.RInputClose, '');
   },
 
-  getId(input: string): string {
+  parseId(input: string): string {
     return input.replace(XMLTag.IdOpen, '').replace(XMLTag.IdClose, '');
   },
 
-  getExpressionInput(input: string): string {
+  parseExpressionInput(input: string): string {
     return input.replace(XMLTag.InputOpen, '').replace(XMLTag.InputClose, '');
   },
 
-  getExpressionRepresentation(input: string): string {
+  parseExpressionRepresentation(input: string): string {
     return input.replace(XMLTag.RepresentOpen, '').replace(XMLTag.RepresentClose, '');
   },
 
-  getExpressionType(input: string): string {
+  parseExpressionType(input: string): string {
     return input.replace(XMLTag.TypeOpen, '').replace(XMLTag.TypeClose, '');
   },
 
-  getExpressionPosition(input: string): number {
+  parseExpressionPosition(input: string): number {
     const value = +input.replace(XMLTag.PositionOpen, '').replace(XMLTag.PositionClose, '');
 
     if (isNaN(value)) {
@@ -99,7 +94,7 @@ const converterJS = {
     return value;
   },
 
-  getPropositionalSymbol(input: string): PropositionalSymbol {
+  parsePropositionalSymbol(input: string): PropositionalSymbol {
     const values = input.replace(XMLTag.PSymbolOpen, '').replace(XMLTag.PSymbolClose, '');
 
     const inputMatch = values.match(new RegExp(XMLTag.InputOpen + '.*' + XMLTag.InputClose, 'i'))![0];
@@ -108,22 +103,21 @@ const converterJS = {
     const positionMatch = values.match(new RegExp(XMLTag.PositionOpen + '.*' + XMLTag.PositionClose, 'i'))![0];
 
     return {
-      input: this.getExpressionInput(inputMatch),
-      representation: this.getExpressionRepresentation(representationMatch),
-      type: this.getExpressionType(typeMatch) as PropositionalSymbolType,
-      position: this.getExpressionPosition(positionMatch),
+      input: this.parseExpressionInput(inputMatch),
+      representation: this.parseExpressionRepresentation(representationMatch),
+      type: this.parseExpressionType(typeMatch) as PropositionalSymbolType,
+      position: this.parseExpressionPosition(positionMatch),
     };
   },
 
-  getPropositionalExpression(input: string): PropositionalExpression {
+  parsePropositionalExpression(input: string): PropositionalExpression {
     const value = input.replace(XMLTag.PExpressionOpen, '').replace(XMLTag.PExpressionClose, '');
     const symbolsStrings = value.split(new RegExp('(?=' + XMLTag.PSymbolOpen + ')', 'g'));
-    console.log('symbolsStrings', symbolsStrings);
     const result: PropositionalExpression = [];
 
     for (const item of symbolsStrings) {
       try {
-        const symbol = this.getPropositionalSymbol(item);
+        const symbol = this.parsePropositionalSymbol(item);
         result.push(symbol);
       } catch (error: unknown) {
         console.error(error);
@@ -134,7 +128,7 @@ const converterJS = {
     return result;
   },
 
-  getComment(input: string): LocalText | string {
+  parseComment(input: string): LocalText | string {
     const value = input.replace(XMLTag.CommentOpen, '').replace(XMLTag.CommentClose, '');
     const localTextResult: any = {};
 
@@ -152,18 +146,6 @@ const converterJS = {
     }
 
     return localTextResult as LocalText;
-  },
-
-  getOperator(input: string): PropositionalOperator {
-    const value = input.replace(XMLTag.OperatorOpen, '').replace(XMLTag.OperatorClose, '');
-
-    return value as PropositionalOperator;
-  },
-
-  getFormulaVariable(input: string): string {
-    const value = input.replace(XMLTag.ValuesOpen, '').replace(XMLTag.ValuesClose, '');
-
-    return value;
   },
 };
 
