@@ -5,6 +5,8 @@ export const languageOptions: SelectEntity[] = [
   { option: { en: 'Russian', ru: 'Русский' }, value: 'ru' },
 ];
 
+export const languageStringOptions = ['en', 'ru'];
+
 export const externalLinks: { [key in string]: string } = {
   telegram: 'https://telegram.me/savoury_gin',
   gitHub: 'https://github.com/SavouryGin',
