@@ -79,7 +79,6 @@ export const updateNPTableComments = (tableData: NaturalProofsTableItem[]): Natu
   return tableData.map((item) => {
     let newComment = item.comment;
 
-    // TODO: update dependent comments
     switch (item.formulaBase) {
       case NPFormulaBase.DI: {
         newComment = commentsUpdater.updateDIcomment({ item, tableData, defaultComment: item.comment });
