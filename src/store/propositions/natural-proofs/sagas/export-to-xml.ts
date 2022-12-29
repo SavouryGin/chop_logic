@@ -13,7 +13,6 @@ export function* exportNPToXMLWatcher(): Generator {
 export function* exportNPToXMLSaga(action: { payload: string | undefined }): SagaIterator {
   try {
     const fileName = action.payload;
-    console.log('SAGA');
 
     if (!fileName) {
       yield put(actions.setUpFlag({ flag: 'isNameInputPopupVisible', value: true }));
@@ -23,6 +22,8 @@ export function* exportNPToXMLSaga(action: { payload: string | undefined }): Sag
 
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const fileData = converterXML.npToXML(tableData);
+    console.log(tableData);
+    console.log(fileData);
 
     createAndSaveXMLFile(fileData, fileName);
   } catch (error: unknown) {
