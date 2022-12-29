@@ -6,4 +6,9 @@ describe('Propositions xml converter tests', () => {
     const fileData = converterXML.dpToXML(tMocks.dpTableDataIE);
     expect(fileData).toEqual(tMocks.dpIEtoXML);
   });
+
+  it('npToXML() method returns a correct array of np table items', () => {
+    const fileData = converterXML.npToXML(tMocks.npTableDataIEandII);
+    expect(fileData).toEqual(tMocks.npIEandIItoXML);
+  });
 });
