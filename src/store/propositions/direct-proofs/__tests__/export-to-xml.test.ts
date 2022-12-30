@@ -1,4 +1,3 @@
-import mocks from '__mocks__/data/propositions/table-items';
 import tMocks from '__mocks__/data/propositions/table-items';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
@@ -31,13 +30,13 @@ describe('DP exportDPToXMLSaga tests', () => {
       .isDone();
   });
 
-  it('deleteDirectProofStepsSaga() should catch the error', () => {
+  it('exportDPToXMLSaga() should catch the error', () => {
     testSaga(exportDPToXMLSaga, { payload: testFileName })
       .next()
       .select(selectors.getTableData)
       .next(tMocks.dpTableDataIE)
-      .throw(mocks.error)
-      .put(actions.setError(mocks.error.message))
+      .throw(tMocks.error)
+      .put(actions.setError(tMocks.error.message))
       .next()
       .isDone();
   });
