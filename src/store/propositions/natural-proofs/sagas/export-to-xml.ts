@@ -2,8 +2,8 @@ import converterXML from 'logic/propositions/converter-xml';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
-import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
 export function* exportNPToXMLWatcher(): Generator {
@@ -22,10 +22,8 @@ export function* exportNPToXMLSaga(action: { payload: string | undefined }): Sag
 
     const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const fileData = converterXML.npToXML(tableData);
-    console.log(tableData);
-    console.log(fileData);
 
-    createAndSaveXMLFile(fileData, fileName);
+    yield call(createAndSaveXMLFile, fileData, fileName);
   } catch (error: unknown) {
     const errorMessage = (error as any)?.message || 'Export to XML error';
     yield put(actions.setError(errorMessage));
