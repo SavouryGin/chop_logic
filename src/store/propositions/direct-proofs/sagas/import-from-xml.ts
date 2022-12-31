@@ -13,7 +13,7 @@ export function* importDPFromXMLSaga(action: { payload: { file: File } }): SagaI
   try {
     const { file } = action.payload;
     const text: string = yield call(readUserTextFile, file);
-    const tableData = converterJS.xmlToDPTableData(text);
+    const tableData = yield call(converterJS.xmlToDPTableData, text);
 
     yield put(actions.setTableData(tableData));
 
