@@ -26,7 +26,7 @@ const converterXML = {
   },
 
   npToXML(tableData: NaturalProofsTableItem[]): string {
-    return `${XMLTag.Declaration}\n${XMLTag.NPOpen}${this.dpArrayToXML(tableData)}${XMLTag.NPClose}`;
+    return `${XMLTag.Declaration}\n${XMLTag.NPOpen}${this.npArrayToXML(tableData)}${XMLTag.NPClose}`;
   },
 
   npArrayToXML(data: NaturalProofsTableItem[]): string {
@@ -64,7 +64,7 @@ const converterXML = {
   },
 
   assumptionIdToXML(id: string | null): string {
-    return `${XMLTag.AIDOpen}${id ? id : ''}${XMLTag.AIDClose}`;
+    return `${XMLTag.AIDOpen}${id ? id : 'null'}${XMLTag.AIDClose}`;
   },
 
   rawInputToXML(rawInput: string): string {

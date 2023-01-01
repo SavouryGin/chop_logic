@@ -81,6 +81,16 @@ const converterJS = {
     return value;
   },
 
+  parseAssumptionId(input: string): string | null {
+    const value = input.replace(XMLTag.AIDOpen, '').replace(XMLTag.AIDClose, '');
+
+    if (value === 'null') {
+      return null;
+    } else {
+      return value;
+    }
+  },
+
   parseRawInput(input: string): string {
     return input.replace(XMLTag.RInputOpen, '').replace(XMLTag.RInputClose, '');
   },
