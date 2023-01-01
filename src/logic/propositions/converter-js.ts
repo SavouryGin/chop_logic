@@ -71,6 +71,16 @@ const converterJS = {
     return value;
   },
 
+  parseLevel(input: string): number {
+    const value = +input.replace(XMLTag.LevelOpen, '').replace(XMLTag.LevelClose, '');
+
+    if (isNaN(value)) {
+      throw new PropositionalError('Cannot convert the step value from XML tag.', errorsTexts.semanticError);
+    }
+
+    return value;
+  },
+
   parseRawInput(input: string): string {
     return input.replace(XMLTag.RInputOpen, '').replace(XMLTag.RInputClose, '');
   },
