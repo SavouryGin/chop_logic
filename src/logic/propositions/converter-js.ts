@@ -2,6 +2,7 @@ import converter from './converter';
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
+import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
@@ -15,6 +16,12 @@ const converterJS = {
     const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
 
     return tableItems.map((item) => this.parseDPTableItem(item));
+  },
+
+  xmlToNPTableData(input: string): NaturalProofsTableItem[] {
+    console.log(input);
+
+    return [];
   },
 
   parseDPTableItem(input: string): DirectProofsTableItem {
