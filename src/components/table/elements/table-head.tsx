@@ -1,6 +1,5 @@
 import React from 'react';
 import SelectAllCheckbox from './select-all-checkbox';
-import { Guid } from 'guid-typescript';
 import { TableHeadProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
@@ -16,7 +15,7 @@ const TableHead = ({
 }: TableHeadProps): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const allRowIds = data.map((item) => item.id);
-  const tableId = id || Guid.create().toString();
+  const tableId = id || crypto.randomUUID();
 
   const headerCells = columns.map((column, index) => {
     const title = column.title ? column.title[language] : '';

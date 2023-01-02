@@ -3,7 +3,6 @@ import executor from 'logic/propositions/executor';
 import replacer from 'logic/propositions/replacer';
 import validator from 'logic/propositions/validator';
 import { DirectProofsTableItem, PropositionsDirectProofsFlag } from './interfaces';
-import { Guid } from 'guid-typescript';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { propositionsDPInitialState } from './initial-state';
 
@@ -34,7 +33,7 @@ export const propositionsDPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = Guid.create().toString();
+      const id = crypto.randomUUID();
       const newItem: DirectProofsTableItem = {
         id,
         step,
@@ -59,7 +58,7 @@ export const propositionsDPSlice = createSlice({
       const index = state.tableData.length + 1;
       const newStep = {
         ...selectedStep,
-        id: Guid.create().toString(),
+        id: crypto.randomUUID(),
         step: index,
         comment: { en: `Reiter. ${selectedStep.step}`, ru: `Повтор ${selectedStep.step}` },
       };
@@ -76,7 +75,7 @@ export const propositionsDPSlice = createSlice({
       const step = state.tableData.length + 1;
       const newItem: DirectProofsTableItem = {
         step,
-        id: Guid.create().toString(),
+        id: crypto.randomUUID(),
         rawInput: `${firstVariable}, ${secondVariable}`,
         expression,
         friendlyExpression,
@@ -98,7 +97,7 @@ export const propositionsDPSlice = createSlice({
       const step = state.tableData.length + 1;
       const newItem: DirectProofsTableItem = {
         step,
-        id: Guid.create().toString(),
+        id: crypto.randomUUID(),
         rawInput: `${firstVariable}, ${secondVariable}, ${thirdVariable}`,
         expression,
         friendlyExpression,
@@ -117,7 +116,7 @@ export const propositionsDPSlice = createSlice({
       const step = state.tableData.length + 1;
       const newItem: DirectProofsTableItem = {
         step,
-        id: Guid.create().toString(),
+        id: crypto.randomUUID(),
         rawInput: `${firstVariable}, ${secondVariable}`,
         expression,
         friendlyExpression,
@@ -149,7 +148,7 @@ export const propositionsDPSlice = createSlice({
         expression,
         friendlyExpression,
         formula,
-        id: Guid.create().toString(),
+        id: crypto.randomUUID(),
         rawInput: `${items[0].rawInput}, ${items[1].rawInput}`,
         comment: { en: `IE: ${items[0].step}, ${items[1].step}`, ru: `УИ: ${items[0].step}, ${items[1].step}` },
         dependentOn: [items[0].id, items[1].id],
