@@ -3,7 +3,6 @@ import React, { memo, useContext, useEffect, useState } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { CheckboxProps } from 'types';
 import { FormContext } from 'components/controls/form';
-import { Guid } from 'guid-typescript';
 import { Icon } from 'enums';
 import { inputTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -31,7 +30,7 @@ const Checkbox = ({
   const [isChecked, setIsChecked] = useState(!!defaultValue || false);
 
   const { onChangeInput } = formContext;
-  const calculatedId = inputId ? `checkbox_id_${inputId}` : id || Guid.create().toString();
+  const calculatedId = inputId ? `checkbox_id_${inputId}` : id || crypto.randomUUID();
   const labelText = inputId ? inputTexts[inputId].label[language] : label;
   const checkboxClassNames = formatClass(['checkbox-input', className, { 'checkbox-input_disabled': !!isDisabled }]);
   const inputClassNames = formatClass(['checkbox-input__default', { 'checkbox-input__default_dark': isDarkMode }]);
