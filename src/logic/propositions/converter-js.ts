@@ -2,6 +2,7 @@ import converter from './converter';
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
+import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { XMLTag } from 'enums/xml-tags';
@@ -57,6 +58,48 @@ const converterJS = {
     }
   },
 
+  parseNPTableItem(input: string): NaturalProofsTableItem {
+    const value = input.replace(XMLTag.TItemOpen, '').replace(XMLTag.TItemClose, '');
+
+    try {
+      const idMatch = value.match(new RegExp(XMLTag.IdOpen + '.*' + XMLTag.IdClose, 'i'))![0];
+      const stepMatch = value.match(new RegExp(XMLTag.StepOpen + '.*' + XMLTag.StepClose, 'i'))![0];
+      const rawInputMatch = value.match(new RegExp(XMLTag.RInputOpen + '.*' + XMLTag.RInputClose, 'i'))![0];
+      const expressionMatch = value.match(new RegExp(XMLTag.PExpressionOpen + '.*' + XMLTag.PExpressionClose, 'i'))![0];
+      const commentMatch = value.match(new RegExp(XMLTag.CommentOpen + '.*' + XMLTag.CommentClose, 'i'))![0];
+      const levelMatch = value.match(new RegExp(XMLTag.LevelOpen + '.*' + XMLTag.LevelClose, 'i'))![0];
+      const formulaBaseMatch = value.match(new RegExp(XMLTag.FBaseOpen + '.*' + XMLTag.FBaseClose, 'i'))![0];
+      const assumptionIdMatch = value.match(new RegExp(XMLTag.AIDOpen + '.*' + XMLTag.AIDClose, 'i'))![0];
+
+      const id = this.parseId(idMatch);
+      const step = this.parseStep(stepMatch);
+      const rawInput = this.parseRawInput(rawInputMatch);
+      const expression = this.parsePropositionalExpression(expressionMatch);
+      const comment = this.parseComment(commentMatch);
+      const level = this.parseLevel(levelMatch);
+      const formulaBase = this.parseFormulaBase(formulaBaseMatch);
+      const assumptionId = this.parseAssumptionId(assumptionIdMatch);
+      const formula = converter.convertExpressionToFormula(expression);
+      const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
+
+      return {
+        id,
+        step,
+        rawInput,
+        expression,
+        comment,
+        formula,
+        friendlyExpression,
+        level,
+        formulaBase,
+        assumptionId,
+      };
+    } catch (error: unknown) {
+      console.error(error);
+      throw new PropositionalError('Cannot convert the table item from XML.', errorsTexts.semanticError);
+    }
+  },
+
   removeDeclaration(input: string): string {
     return input.replace(regExes.xmlDeclaration, '');
   },
@@ -79,6 +122,12 @@ const converterJS = {
     }
 
     return value;
+  },
+
+  parseFormulaBase(input: string): NPFormulaBase {
+    const value = input.replace(XMLTag.FBaseOpen, '').replace(XMLTag.FBaseClose, '');
+
+    return value as NPFormulaBase;
   },
 
   parseAssumptionId(input: string): string | null {
