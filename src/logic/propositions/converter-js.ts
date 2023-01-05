@@ -218,15 +218,17 @@ const xmlToDPTableData = (input: string): DirectProofsTableItem[] => {
 };
 
 const xmlToNPTableData = (input: string): NaturalProofsTableItem[] => {
-  console.log(input);
+  const withoutDeclaration = removeDeclaration(input).trim();
+  const withoutDPTag = withoutDeclaration.replace(XMLTag.DPOpen, '').replace(XMLTag.DPClose, '');
 
-  return [];
+  const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
+
+  return tableItems.map((item) => parseNPTableItem(item));
 };
 
 const converterJS = {
   xmlToDPTableData,
   xmlToNPTableData,
-  parseNPTableItem,
 };
 
 export default Object.freeze(converterJS);
