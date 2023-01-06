@@ -213,6 +213,7 @@ const xmlToDPTableData = (input: string): DirectProofsTableItem[] => {
   const withoutDPTag = withoutDeclaration.replace(XMLTag.DPOpen, '').replace(XMLTag.DPClose, '');
 
   const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
+  console.log('tableItems', tableItems);
 
   return tableItems.map((item) => parseDPTableItem(item));
 };
