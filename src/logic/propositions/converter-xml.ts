@@ -4,129 +4,130 @@ import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { XMLTag } from 'enums/xml-tags';
 
-const converterXML = {
-  dpToXML(tableData: DirectProofsTableItem[]): string {
-    return `${XMLTag.Declaration}\n${XMLTag.DPOpen}${this.dpArrayToXML(tableData)}${XMLTag.DPClose}`;
-  },
+const idToXML = (id: string): string => {
+  return `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`;
+};
 
-  dpArrayToXML(data: DirectProofsTableItem[]): string {
-    const itemsArray = data.map((item) => this.dpItemToXML(item));
+const stepToXML = (step: number): string => {
+  return `${XMLTag.StepOpen}${step}${XMLTag.StepClose}`;
+};
 
-    return itemsArray.join('');
-  },
+const levelToXML = (level: number): string => {
+  return `${XMLTag.LevelOpen}${level}${XMLTag.LevelClose}`;
+};
 
-  dpItemToXML(item: DirectProofsTableItem): string {
-    const xml = `${XMLTag.TItemOpen}${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(
-      item.rawInput,
-    )}${this.commentToXML(item.comment)}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
-      item.expression,
-    )}${this.expressionToXML(item.friendlyExpression)}${XMLTag.TItemClose}`;
+const formulaBaseToXML = (base: NPFormulaBase): string => {
+  return `${XMLTag.FBaseOpen}${base}${XMLTag.FBaseClose}`;
+};
 
-    return xml;
-  },
+const assumptionIdToXML = (id: string | null): string => {
+  return `${XMLTag.AIDOpen}${id ? id : 'null'}${XMLTag.AIDClose}`;
+};
 
-  npToXML(tableData: NaturalProofsTableItem[]): string {
-    return `${XMLTag.Declaration}\n${XMLTag.NPOpen}${this.dpArrayToXML(tableData)}${XMLTag.NPClose}`;
-  },
+const rawInputToXML = (rawInput: string): string => {
+  return `${XMLTag.RInputOpen}${rawInput}${XMLTag.RInputClose}`;
+};
 
-  npArrayToXML(data: NaturalProofsTableItem[]): string {
-    const itemsArray = data.map((item) => this.npItemToXML(item));
+const commentToXML = (comment: string | LocalText): string => {
+  if (typeof comment === 'string') {
+    return `${XMLTag.CommentOpen}${comment}${XMLTag.CommentClose}`;
+  } else {
+    const pairs = [];
 
-    return itemsArray.join('');
-  },
-
-  npItemToXML(item: NaturalProofsTableItem): string {
-    const xml = `${XMLTag.TItemOpen}${this.idToXML(item.id)}${this.stepToXML(item.step)}${this.rawInputToXML(
-      item.rawInput,
-    )}${this.commentToXML(item.comment)}${this.dependentOnToXML(item.dependentOn)}${this.formulaToXML(item.formula)}${this.expressionToXML(
-      item.expression,
-    )}${this.expressionToXML(item.friendlyExpression)}${this.levelToXML(item.level)}${this.formulaBaseToXML(
-      item.formulaBase,
-    )}${this.assumptionIdToXML(item.assumptionId)}${XMLTag.TItemClose}`;
-
-    return xml;
-  },
-
-  idToXML(id: string): string {
-    return `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`;
-  },
-
-  stepToXML(step: number): string {
-    return `${XMLTag.StepOpen}${step}${XMLTag.StepClose}`;
-  },
-
-  levelToXML(level: number): string {
-    return `${XMLTag.LevelOpen}${level}${XMLTag.LevelClose}`;
-  },
-
-  formulaBaseToXML(base: NPFormulaBase): string {
-    return `${XMLTag.FBaseOpen}${base}${XMLTag.FBaseClose}`;
-  },
-
-  assumptionIdToXML(id: string | null): string {
-    return `${XMLTag.AIDOpen}${id ? id : ''}${XMLTag.AIDClose}`;
-  },
-
-  rawInputToXML(rawInput: string): string {
-    return `${XMLTag.RInputOpen}${rawInput}${XMLTag.RInputClose}`;
-  },
-
-  commentToXML(comment: string | LocalText): string {
-    if (typeof comment === 'string') {
-      return `${XMLTag.CommentOpen}${comment}${XMLTag.CommentClose}`;
-    } else {
-      const pairs = [];
-
-      for (const lang in comment) {
-        const pair = `<${lang}>${comment[lang as Language]}</${lang}>`;
-        pairs.push(pair);
-      }
-
-      return `${XMLTag.CommentOpen}${pairs.join('')}${XMLTag.CommentClose}`;
+    for (const lang in comment) {
+      const pair = `<${lang}>${comment[lang as Language]}</${lang}>`;
+      pairs.push(pair);
     }
-  },
 
-  dependentOnToXML(dependentOn: string[] | undefined): string {
-    if (!dependentOn) {
-      return `${XMLTag.DepOpen}${XMLTag.DepClose}`;
-    } else {
-      const ids = dependentOn.map((id) => `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`);
+    return `${XMLTag.CommentOpen}${pairs.join('')}${XMLTag.CommentClose}`;
+  }
+};
 
-      return `${XMLTag.DepOpen}${ids.join('')}${XMLTag.DepClose}`;
-    }
-  },
+const dependentOnToXML = (dependentOn: string[] | undefined): string => {
+  if (!dependentOn) {
+    return `${XMLTag.DepOpen}${XMLTag.DepClose}`;
+  } else {
+    const ids = dependentOn.map((id) => `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`);
 
-  formulaToXML(formula: PropositionalFormula): string {
-    if (Array.isArray(formula.values) && formula.operator !== PropositionalOperator.Var) {
-      const nestedFormulas = formula.values.map((value) => this.formulaToXML(value)).join('');
+    return `${XMLTag.DepOpen}${ids.join('')}${XMLTag.DepClose}`;
+  }
+};
 
-      return `${XMLTag.PFormulaOpen}${this.operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${nestedFormulas}${XMLTag.ValuesClose}${
-        XMLTag.PFormulaClose
-      }`;
-    } else {
-      return `${XMLTag.PFormulaOpen}${this.operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${formula.values.toString()}${
-        XMLTag.ValuesClose
-      }${XMLTag.PFormulaClose}`;
-    }
-  },
+const formulaToXML = (formula: PropositionalFormula): string => {
+  if (Array.isArray(formula.values) && formula.operator !== PropositionalOperator.Var) {
+    const nestedFormulas = formula.values.map((value) => formulaToXML(value)).join('');
 
-  operatorToXML(operator: PropositionalOperator): string {
-    return `${XMLTag.OperatorOpen}${operator.toString()}${XMLTag.OperatorClose}`;
-  },
-
-  expressionToXML(expression: PropositionalExpression): string {
-    const symbols = expression.map((symbol) => this.symbolToXML(symbol));
-
-    return `${XMLTag.PExpressionOpen}${symbols.join('')}${XMLTag.PExpressionClose}`;
-  },
-
-  symbolToXML(symbol: PropositionalSymbol): string {
-    return `${XMLTag.PSymbolOpen}${XMLTag.InputOpen}${symbol.input}${XMLTag.InputClose}${XMLTag.TypeOpen}${symbol.type}${XMLTag.TypeClose}${
-      XMLTag.PositionOpen
-    }${symbol.position}${XMLTag.PositionClose}${XMLTag.RepresentOpen}${symbol.representation || ''}${XMLTag.RepresentClose}${
-      XMLTag.PSymbolClose
+    return `${XMLTag.PFormulaOpen}${operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${nestedFormulas}${XMLTag.ValuesClose}${
+      XMLTag.PFormulaClose
     }`;
-  },
+  } else {
+    return `${XMLTag.PFormulaOpen}${operatorToXML(formula.operator)}${XMLTag.ValuesOpen}${formula.values.toString()}${XMLTag.ValuesClose}${
+      XMLTag.PFormulaClose
+    }`;
+  }
+};
+
+const operatorToXML = (operator: PropositionalOperator): string => {
+  return `${XMLTag.OperatorOpen}${operator.toString()}${XMLTag.OperatorClose}`;
+};
+
+const expressionToXML = (expression: PropositionalExpression): string => {
+  const symbols = expression.map((symbol) => symbolToXML(symbol));
+
+  return `${XMLTag.PExpressionOpen}${symbols.join('')}${XMLTag.PExpressionClose}`;
+};
+
+const symbolToXML = (symbol: PropositionalSymbol): string => {
+  return `${XMLTag.PSymbolOpen}${XMLTag.InputOpen}${symbol.input}${XMLTag.InputClose}${XMLTag.TypeOpen}${symbol.type}${XMLTag.TypeClose}${
+    XMLTag.PositionOpen
+  }${symbol.position}${XMLTag.PositionClose}${XMLTag.RepresentOpen}${symbol.representation || ''}${XMLTag.RepresentClose}${
+    XMLTag.PSymbolClose
+  }`;
+};
+
+const dpArrayToXML = (data: DirectProofsTableItem[]): string => {
+  const itemsArray = data.map((item) => dpItemToXML(item));
+
+  return itemsArray.join('');
+};
+
+const dpItemToXML = (item: DirectProofsTableItem): string => {
+  const xml = `${XMLTag.TItemOpen}${idToXML(item.id)}${stepToXML(item.step)}${rawInputToXML(item.rawInput)}${commentToXML(
+    item.comment,
+  )}${dependentOnToXML(item.dependentOn)}${formulaToXML(item.formula)}${expressionToXML(item.expression)}${expressionToXML(
+    item.friendlyExpression,
+  )}${XMLTag.TItemClose}`;
+
+  return xml;
+};
+
+const npArrayToXML = (data: NaturalProofsTableItem[]): string => {
+  const itemsArray = data.map((item) => npItemToXML(item));
+
+  return itemsArray.join('');
+};
+
+const npItemToXML = (item: NaturalProofsTableItem): string => {
+  const xml = `${XMLTag.TItemOpen}${idToXML(item.id)}${stepToXML(item.step)}${rawInputToXML(item.rawInput)}${commentToXML(
+    item.comment,
+  )}${dependentOnToXML(item.dependentOn)}${formulaToXML(item.formula)}${expressionToXML(item.expression)}${expressionToXML(
+    item.friendlyExpression,
+  )}${levelToXML(item.level)}${formulaBaseToXML(item.formulaBase)}${assumptionIdToXML(item.assumptionId)}${XMLTag.TItemClose}`;
+
+  return xml;
+};
+
+const npToXML = (tableData: NaturalProofsTableItem[]): string => {
+  return `${XMLTag.Declaration}\n${XMLTag.NPOpen}${npArrayToXML(tableData)}${XMLTag.NPClose}`;
+};
+
+const dpToXML = (tableData: DirectProofsTableItem[]): string => {
+  return `${XMLTag.Declaration}\n${XMLTag.DPOpen}${dpArrayToXML(tableData)}${XMLTag.DPClose}`;
+};
+
+const converterXML = {
+  npToXML,
+  dpToXML,
 };
 
 export default Object.freeze(converterXML);

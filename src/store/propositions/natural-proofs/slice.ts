@@ -1,6 +1,5 @@
 import converter from 'logic/propositions/converter';
 import replacer from 'logic/propositions/replacer';
-import { Guid } from 'guid-typescript';
 import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlag } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
@@ -29,7 +28,7 @@ export const propositionsNPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = state.tableData.length + 1;
-      const id = Guid.create().toString();
+      const id = crypto.randomUUID();
       const newItem: NaturalProofsTableItem = {
         level: 0,
         id,
@@ -53,7 +52,7 @@ export const propositionsNPSlice = createSlice({
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = itemsCount + 1;
       const level = itemsCount > 0 ? state.tableData[itemsCount - 1].level : 0;
-      const id = Guid.create().toString();
+      const id = crypto.randomUUID();
       const newItem: NaturalProofsTableItem = {
         level,
         id,
@@ -76,7 +75,7 @@ export const propositionsNPSlice = createSlice({
       const formula = converter.convertExpressionToFormula(expression);
       const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
       const step = itemsCount + 1;
-      const id = Guid.create().toString();
+      const id = crypto.randomUUID();
       const level = itemsCount > 0 ? state.tableData[itemsCount - 1].level + 1 : 1;
       const newItem: NaturalProofsTableItem = {
         level,
@@ -88,7 +87,7 @@ export const propositionsNPSlice = createSlice({
         formula,
         comment: { en: 'Assumption', ru: 'Гипотеза' },
         formulaBase: NPFormulaBase.Assumption,
-        assumptionId: Guid.create().toString(),
+        assumptionId: crypto.randomUUID(),
       };
       state.tableData = [...state.tableData, newItem];
     },
@@ -102,7 +101,7 @@ export const propositionsNPSlice = createSlice({
       const lastItemLevel = state.tableData[state.tableData.length - 1].level;
       const newStep = {
         ...selectedStep,
-        id: Guid.create().toString(),
+        id: crypto.randomUUID(),
         step: index,
         comment: { en: `Reiter. ${selectedStep.step}`, ru: `Повтор ${selectedStep.step}` },
         dependentOn: selectedStep.dependentOn?.length ? [...selectedStep.dependentOn, selectedStep.id] : [selectedStep.id],

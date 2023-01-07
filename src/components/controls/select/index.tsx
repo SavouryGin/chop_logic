@@ -2,7 +2,6 @@ import Label from '../label';
 import React, { useContext, useState } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { FormContext } from 'components/controls/form';
-import { Guid } from 'guid-typescript';
 import { SelectProps } from 'types';
 import { inputTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -36,7 +35,7 @@ function Select({
   const selectClassNames = formatClass(['select__field', { select__field_dark: isDarkMode }]);
 
   const optionList = options.map((item) => {
-    const key = Guid.create().toString();
+    const key = crypto.randomUUID();
 
     return (
       <option value={item.value} key={key}>
