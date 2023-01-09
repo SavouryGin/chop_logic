@@ -1,4 +1,4 @@
-import converterJS from 'logic/propositions/converter-js';
+import parser from 'logic/propositions/parser-xml-to-js';
 import tMocks from '__mocks__/data/propositions/table-items';
 import { FileAcceptType } from 'enums/file-accept-type';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
@@ -20,7 +20,7 @@ describe('DP importDPFromXMLSaga tests', () => {
       .next()
       .call(readUserTextFile, testFile)
       .next(tMocks.dpIEtoXML)
-      .call(converterJS.xmlToDPTableData, tMocks.dpIEtoXML)
+      .call(parser.xmlToDPTableData, tMocks.dpIEtoXML)
       .next(tMocks.dpTableDataIE)
       .put(actions.setTableData(tMocks.dpTableDataIE))
       .next()
