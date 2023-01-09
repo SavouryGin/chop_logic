@@ -9,9 +9,7 @@ import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
 import { languageStringOptions } from 'presets/settings';
 
-const removeDeclaration = (input: string): string => {
-  return input.replace(regExes.xmlDeclaration, '');
-};
+const removeDeclaration = (input: string): string => input.replace(regExes.xmlDeclaration, '');
 
 const parseStep = (input: string): number => {
   const value = +input.replace(XMLTag.StepOpen, '').replace(XMLTag.StepClose, '');
@@ -33,11 +31,8 @@ const parseLevel = (input: string): number => {
   return value;
 };
 
-const parseFormulaBase = (input: string): NPFormulaBase => {
-  const value = input.replace(XMLTag.FBaseOpen, '').replace(XMLTag.FBaseClose, '');
-
-  return value as NPFormulaBase;
-};
+const parseFormulaBase = (input: string): NPFormulaBase =>
+  input.replace(XMLTag.FBaseOpen, '').replace(XMLTag.FBaseClose, '') as NPFormulaBase;
 
 const parseAssumptionId = (input: string): string | null => {
   const value = input.replace(XMLTag.AIDOpen, '').replace(XMLTag.AIDClose, '');
@@ -49,25 +44,15 @@ const parseAssumptionId = (input: string): string | null => {
   }
 };
 
-const parseRawInput = (input: string): string => {
-  return input.replace(XMLTag.RInputOpen, '').replace(XMLTag.RInputClose, '');
-};
+const parseRawInput = (input: string): string => input.replace(XMLTag.RInputOpen, '').replace(XMLTag.RInputClose, '');
 
-const parseId = (input: string): string => {
-  return input.replace(XMLTag.IdOpen, '').replace(XMLTag.IdClose, '');
-};
+const parseId = (input: string): string => input.replace(XMLTag.IdOpen, '').replace(XMLTag.IdClose, '');
 
-const parseExpressionInput = (input: string): string => {
-  return input.replace(XMLTag.InputOpen, '').replace(XMLTag.InputClose, '');
-};
+const parseExpressionInput = (input: string): string => input.replace(XMLTag.InputOpen, '').replace(XMLTag.InputClose, '');
 
-const parseExpressionRepresentation = (input: string): string => {
-  return input.replace(XMLTag.RepresentOpen, '').replace(XMLTag.RepresentClose, '');
-};
+const parseExpressionRepresentation = (input: string): string => input.replace(XMLTag.RepresentOpen, '').replace(XMLTag.RepresentClose, '');
 
-const parseExpressionType = (input: string): string => {
-  return input.replace(XMLTag.TypeOpen, '').replace(XMLTag.TypeClose, '');
-};
+const parseExpressionType = (input: string): string => input.replace(XMLTag.TypeOpen, '').replace(XMLTag.TypeClose, '');
 
 const parseExpressionPosition = (input: string): number => {
   const value = +input.replace(XMLTag.PositionOpen, '').replace(XMLTag.PositionClose, '');
@@ -227,9 +212,9 @@ const xmlToNPTableData = (input: string): NaturalProofsTableItem[] => {
   return tableItems.map((item) => parseNPTableItem(item));
 };
 
-const converterJS = {
+const parserXMLtoJS = {
   xmlToDPTableData,
   xmlToNPTableData,
 };
 
-export default Object.freeze(converterJS);
+export default Object.freeze(parserXMLtoJS);
