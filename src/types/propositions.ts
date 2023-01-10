@@ -24,7 +24,7 @@ export type ProofTableItem = {
   step: number;
   rawInput: string;
   comment: LocalText | string;
-  dependentOn?: string[];
+  dependentOn: string[] | null;
 };
 
 export interface ConfirmDeleteProofStepsPopupProps<

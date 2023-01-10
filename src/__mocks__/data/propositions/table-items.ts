@@ -102,11 +102,13 @@ const dpTableDataIE: DirectProofsTableItem[] = [
       en: 'Premise',
       ru: 'Посылка',
     },
+    dependentOn: null,
   },
   {
     step: 2,
     id: '6e7c7249-ba8c-7007-28a5-4550903bc36b',
     rawInput: 'p|q, r',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -584,6 +586,7 @@ const npTableDataIEandII: NaturalProofsTableItem[] = [
     id: '2ce24bb1-0be0-c5f5-b167-c2262758e327',
     step: 1,
     rawInput: 'p&r',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -684,6 +687,7 @@ const npTableDataIEandII: NaturalProofsTableItem[] = [
     level: 1,
     id: 'd02b2fc7-befd-0c83-1e1e-ea5c49e736df',
     step: 2,
+    dependentOn: null,
     rawInput: 'p&r=>q',
     expression: [
       {
@@ -1143,6 +1147,7 @@ const npTableCIandCE: NaturalProofsTableItem[] = [
     id: '0c991093-b846-7887-e9da-2c753cf71b8e',
     step: 1,
     rawInput: 'f=>s',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -1690,6 +1695,7 @@ const npTableNIandNE: NaturalProofsTableItem[] = [
     level: 0,
     id: '6111ca42-4df3-e6ff-36c5-16b2dae09caa',
     step: 1,
+    dependentOn: null,
     rawInput: '~p=>q',
     expression: [
       {
@@ -1820,6 +1826,7 @@ const npTableNIandNE: NaturalProofsTableItem[] = [
     level: 1,
     id: '938937f7-b5dc-f033-4205-446ff3f031f5',
     step: 2,
+    dependentOn: null,
     rawInput: '~p=>~q',
     expression: [
       {
@@ -2131,6 +2138,7 @@ const npTableDI: NaturalProofsTableItem[] = [
     id: 'd5cbb748-a8a8-070d-cd6a-0de5bd885f85',
     step: 1,
     rawInput: 'g=>s',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2577,6 +2585,7 @@ const npTableDE: NaturalProofsTableItem[] = [
     id: '2c88a0eb-e63b-74c5-820b-b9509d676abf',
     step: 1,
     rawInput: 'F|~G',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2707,6 +2716,7 @@ const npTableDE: NaturalProofsTableItem[] = [
     id: '29edca18-683a-e934-3e36-d3a88a8fddea',
     step: 2,
     rawInput: 'F=>H',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2808,6 +2818,7 @@ const npTableDE: NaturalProofsTableItem[] = [
     id: '886ecb16-d438-54f2-1f56-ce0a86e70376',
     step: 3,
     rawInput: '~G=>H',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2986,6 +2997,7 @@ const npTableEIandEE: NaturalProofsTableItem[] = [
     id: '8225e578-c111-a59a-b938-29d35e033ca5',
     step: 1,
     rawInput: 'p=>~r',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -3114,6 +3126,7 @@ const npTableEIandEE: NaturalProofsTableItem[] = [
   {
     level: 1,
     id: 'dfb5359a-408c-0e5d-b0c4-9040132829f1',
+    dependentOn: null,
     step: 2,
     rawInput: '~r=>p',
     expression: [

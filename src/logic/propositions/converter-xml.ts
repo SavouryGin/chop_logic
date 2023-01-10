@@ -33,7 +33,7 @@ const commentToXML = (comment: string | LocalText): string => {
   }
 };
 
-const dependentOnToXML = (dependentOn: string[] | undefined): string => {
+const dependentOnToXML = (dependentOn: string[] | null): string => {
   if (!dependentOn) {
     return `${XMLTag.DepOpen}${XMLTag.DepClose}`;
   } else {
