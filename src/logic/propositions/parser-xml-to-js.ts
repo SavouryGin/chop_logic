@@ -144,6 +144,7 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
       comment,
       formula,
       friendlyExpression,
+      dependentOn: null,
     };
   } catch (error: unknown) {
     console.error(error);
@@ -186,6 +187,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
       level,
       formulaBase,
       assumptionId,
+      dependentOn: null,
     };
   } catch (error: unknown) {
     console.error(error);
