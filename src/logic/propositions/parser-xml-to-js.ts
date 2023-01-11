@@ -118,6 +118,23 @@ const parseComment = (input: string): LocalText | string => {
   return localTextResult as LocalText;
 };
 
+const parseDependentOn = (input: string): string[] | null => {
+  const value = input.replace(XMLTag.DepOpen, '').replace(XMLTag.DepClose, '');
+  const idMatches = value.match(new RegExp(XMLTag.IdOpen + '.*' + XMLTag.IdClose, 'i'));
+
+  if (value === '' || !idMatches || !idMatches.length) {
+    return null;
+  }
+
+  const result: string[] = [];
+
+  idMatches.forEach((match) => {
+    result.push(parseId(match));
+  });
+
+  return result;
+};
+
 const parseDPTableItem = (input: string): DirectProofsTableItem => {
   const value = input.replace(XMLTag.TItemOpen, '').replace(XMLTag.TItemClose, '');
 
@@ -127,12 +144,14 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
     const rawInputMatch = value.match(new RegExp(XMLTag.RInputOpen + '.*' + XMLTag.RInputClose, 'i'))![0];
     const expressionMatch = value.match(new RegExp(XMLTag.PExpressionOpen + '.*' + XMLTag.PExpressionClose, 'i'))![0];
     const commentMatch = value.match(new RegExp(XMLTag.CommentOpen + '.*' + XMLTag.CommentClose, 'i'))![0];
+    const dependentOnMatch = value.match(new RegExp(XMLTag.DepOpen + '.*' + XMLTag.DepClose, 'i'))![0];
 
     const id = parseId(idMatch);
     const step = parseStep(stepMatch);
     const rawInput = parseRawInput(rawInputMatch);
     const expression = parsePropositionalExpression(expressionMatch);
     const comment = parseComment(commentMatch);
+    const dependentOn = parseDependentOn(dependentOnMatch);
     const formula = converter.convertExpressionToFormula(expression);
     const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
 
@@ -144,7 +163,7 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
       comment,
       formula,
       friendlyExpression,
-      dependentOn: null,
+      dependentOn,
     };
   } catch (error: unknown) {
     console.error(error);
@@ -164,6 +183,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
     const levelMatch = value.match(new RegExp(XMLTag.LevelOpen + '.*' + XMLTag.LevelClose, 'i'))![0];
     const formulaBaseMatch = value.match(new RegExp(XMLTag.FBaseOpen + '.*' + XMLTag.FBaseClose, 'i'))![0];
     const assumptionIdMatch = value.match(new RegExp(XMLTag.AIDOpen + '.*' + XMLTag.AIDClose, 'i'))![0];
+    const dependentOnMatch = value.match(new RegExp(XMLTag.DepOpen + '.*' + XMLTag.DepClose, 'i'))![0];
 
     const id = parseId(idMatch);
     const step = parseStep(stepMatch);
@@ -171,6 +191,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
     const expression = parsePropositionalExpression(expressionMatch);
     const comment = parseComment(commentMatch);
     const level = parseLevel(levelMatch);
+    const dependentOn = parseDependentOn(dependentOnMatch);
     const formulaBase = parseFormulaBase(formulaBaseMatch);
     const assumptionId = parseAssumptionId(assumptionIdMatch);
     const formula = converter.convertExpressionToFormula(expression);
@@ -187,7 +208,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
       level,
       formulaBase,
       assumptionId,
-      dependentOn: null,
+      dependentOn,
     };
   } catch (error: unknown) {
     console.error(error);
