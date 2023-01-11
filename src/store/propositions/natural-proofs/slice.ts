@@ -40,6 +40,7 @@ export const propositionsNPSlice = createSlice({
         comment: { en: 'Premise', ru: 'Посылка' },
         formulaBase: NPFormulaBase.Premise,
         assumptionId: null,
+        dependentOn: null,
       };
       state.tableData = [...state.tableData, newItem];
     },
@@ -64,6 +65,7 @@ export const propositionsNPSlice = createSlice({
         comment: { en: comment, ru: comment },
         formulaBase: NPFormulaBase.Shortcut,
         assumptionId: null,
+        dependentOn: null,
       };
       state.tableData = [...state.tableData, newItem];
     },
@@ -88,6 +90,7 @@ export const propositionsNPSlice = createSlice({
         comment: { en: 'Assumption', ru: 'Гипотеза' },
         formulaBase: NPFormulaBase.Assumption,
         assumptionId: crypto.randomUUID(),
+        dependentOn: null,
       };
       state.tableData = [...state.tableData, newItem];
     },
