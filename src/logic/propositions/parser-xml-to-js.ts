@@ -48,6 +48,8 @@ const parseRawInput = (input: string): string => input.replace(XMLTag.RInputOpen
 
 const parseId = (input: string): string => input.replace(XMLTag.IdOpen, '').replace(XMLTag.IdClose, '');
 
+const parseDependentId = (input: string): string => input.replace(XMLTag.DIDOpen, '').replace(XMLTag.DIDClose, '');
+
 const parseExpressionInput = (input: string): string => input.replace(XMLTag.InputOpen, '').replace(XMLTag.InputClose, '');
 
 const parseExpressionRepresentation = (input: string): string => input.replace(XMLTag.RepresentOpen, '').replace(XMLTag.RepresentClose, '');
@@ -120,7 +122,8 @@ const parseComment = (input: string): LocalText | string => {
 
 const parseDependentOn = (input: string): string[] | null => {
   const value = input.replace(XMLTag.DepOpen, '').replace(XMLTag.DepClose, '');
-  const idMatches = value.match(new RegExp(XMLTag.IdOpen + '.*' + XMLTag.IdClose, 'i'));
+  // TODO: Fix ids split
+  const idMatches = value.match(new RegExp(XMLTag.DIDOpen + '.*' + XMLTag.DIDClose, 'i'));
 
   if (value === '' || !idMatches || !idMatches.length) {
     return null;
@@ -129,8 +132,11 @@ const parseDependentOn = (input: string): string[] | null => {
   const result: string[] = [];
 
   idMatches.forEach((match) => {
-    result.push(parseId(match));
+    result.push(parseDependentId(match));
   });
+
+  console.log('idMatches', idMatches);
+  console.log('result', result);
 
   return result;
 };

@@ -37,7 +37,7 @@ const dependentOnToXML = (dependentOn: string[] | null): string => {
   if (!dependentOn) {
     return `${XMLTag.DepOpen}${XMLTag.DepClose}`;
   } else {
-    const ids = dependentOn.map((id) => `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`);
+    const ids = dependentOn.map((id) => `${XMLTag.DIDOpen}${id}${XMLTag.DIDClose}`);
 
     return `${XMLTag.DepOpen}${ids.join('')}${XMLTag.DepClose}`;
   }
