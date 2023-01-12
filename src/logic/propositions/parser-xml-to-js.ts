@@ -146,6 +146,13 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
     const commentMatch = value.match(new RegExp(XMLTag.CommentOpen + '.*' + XMLTag.CommentClose, 'i'))![0];
     const dependentOnMatch = value.match(new RegExp(XMLTag.DepOpen + '.*' + XMLTag.DepClose, 'i'))![0];
 
+    console.log(idMatch);
+    console.log(stepMatch);
+    console.log(rawInputMatch);
+    console.log(expressionMatch);
+    console.log(commentMatch);
+    console.log(dependentOnMatch);
+
     const id = parseId(idMatch);
     const step = parseStep(stepMatch);
     const rawInput = parseRawInput(rawInputMatch);

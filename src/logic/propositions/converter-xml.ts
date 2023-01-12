@@ -70,23 +70,37 @@ const expressionToXML = (expression: PropositionalExpression): string => {
   return `${XMLTag.PExpressionOpen}${symbols.join('')}${XMLTag.PExpressionClose}`;
 };
 
-const dpArrayToXML = (data: DirectProofsTableItem[]): string => data.map((item) => dpItemToXML(item)).join('');
+const dpArrayToXML = (data: DirectProofsTableItem[]): string =>
+  data
+    .map((item) => {
+      console.log('Item', item);
+      console.log('XML', dpItemToXML(item));
 
-const npArrayToXML = (data: NaturalProofsTableItem[]): string => data.map((item) => npItemToXML(item)).join('');
+      return dpItemToXML(item);
+    })
+    .join('');
+
+const npArrayToXML = (data: NaturalProofsTableItem[]): string =>
+  data
+    .map((item) => {
+      console.log('Item', item);
+      console.log('XML', npItemToXML(item));
+
+      return npItemToXML(item);
+    })
+    .join('');
 
 const dpItemToXML = (item: DirectProofsTableItem): string =>
   `${XMLTag.TItemOpen}${idToXML(item.id)}${stepToXML(item.step)}${rawInputToXML(item.rawInput)}${commentToXML(
     item.comment,
-  )}${dependentOnToXML(item.dependentOn)}${formulaToXML(item.formula)}${expressionToXML(item.expression)}${expressionToXML(
-    item.friendlyExpression,
-  )}${XMLTag.TItemClose}`;
+  )}${dependentOnToXML(item.dependentOn)}${formulaToXML(item.formula)}${expressionToXML(item.expression)}${XMLTag.TItemClose}`;
 
 const npItemToXML = (item: NaturalProofsTableItem): string =>
   `${XMLTag.TItemOpen}${idToXML(item.id)}${stepToXML(item.step)}${rawInputToXML(item.rawInput)}${commentToXML(
     item.comment,
-  )}${dependentOnToXML(item.dependentOn)}${formulaToXML(item.formula)}${expressionToXML(item.expression)}${expressionToXML(
-    item.friendlyExpression,
-  )}${levelToXML(item.level)}${formulaBaseToXML(item.formulaBase)}${assumptionIdToXML(item.assumptionId)}${XMLTag.TItemClose}`;
+  )}${dependentOnToXML(item.dependentOn)}${formulaToXML(item.formula)}${expressionToXML(item.expression)}${levelToXML(
+    item.level,
+  )}${formulaBaseToXML(item.formulaBase)}${assumptionIdToXML(item.assumptionId)}${XMLTag.TItemClose}`;
 
 const npToXML = (tableData: NaturalProofsTableItem[]): string =>
   `${XMLTag.Declaration}\n${XMLTag.NPOpen}${npArrayToXML(tableData)}${XMLTag.NPClose}`;
