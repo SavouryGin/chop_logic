@@ -135,9 +135,6 @@ const parseDependentOn = (input: string): string[] | null => {
     result.push(parseDependentId(match));
   });
 
-  console.log('idMatches', idMatches);
-  console.log('result', result);
-
   return result;
 };
 
@@ -151,13 +148,6 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
     const expressionMatch = value.match(new RegExp(XMLTag.PExpressionOpen + '.*' + XMLTag.PExpressionClose, 'i'))![0];
     const commentMatch = value.match(new RegExp(XMLTag.CommentOpen + '.*' + XMLTag.CommentClose, 'i'))![0];
     const dependentOnMatch = value.match(new RegExp(XMLTag.DepOpen + '.*' + XMLTag.DepClose, 'i'))![0];
-
-    console.log(idMatch);
-    console.log(stepMatch);
-    console.log(rawInputMatch);
-    console.log(expressionMatch);
-    console.log(commentMatch);
-    console.log(dependentOnMatch);
 
     const id = parseId(idMatch);
     const step = parseStep(stepMatch);
@@ -232,9 +222,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
 const xmlToDPTableData = (input: string): DirectProofsTableItem[] => {
   const withoutDeclaration = removeDeclaration(input).trim();
   const withoutDPTag = withoutDeclaration.replace(XMLTag.DPOpen, '').replace(XMLTag.DPClose, '');
-
   const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
-  console.log('tableItems', tableItems);
 
   return tableItems.map((item) => parseDPTableItem(item));
 };
