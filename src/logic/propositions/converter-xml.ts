@@ -70,25 +70,9 @@ const expressionToXML = (expression: PropositionalExpression): string => {
   return `${XMLTag.PExpressionOpen}${symbols.join('')}${XMLTag.PExpressionClose}`;
 };
 
-const dpArrayToXML = (data: DirectProofsTableItem[]): string =>
-  data
-    .map((item) => {
-      console.log('Item', item);
-      console.log('XML', dpItemToXML(item));
+const dpArrayToXML = (data: DirectProofsTableItem[]): string => data.map((item) => dpItemToXML(item)).join('');
 
-      return dpItemToXML(item);
-    })
-    .join('');
-
-const npArrayToXML = (data: NaturalProofsTableItem[]): string =>
-  data
-    .map((item) => {
-      console.log('Item', item);
-      console.log('XML', npItemToXML(item));
-
-      return npItemToXML(item);
-    })
-    .join('');
+const npArrayToXML = (data: NaturalProofsTableItem[]): string => data.map((item) => npItemToXML(item)).join('');
 
 const dpItemToXML = (item: DirectProofsTableItem): string =>
   `${XMLTag.TItemOpen}${idToXML(item.id)}${stepToXML(item.step)}${rawInputToXML(item.rawInput)}${commentToXML(
