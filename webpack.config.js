@@ -63,13 +63,15 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './public/index.html',
       filename: 'index.html',
+      favicon: './public/favicon.ico',
+      manifest: './public/manifest.json',
       inject: 'body',
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: path.resolve(__dirname, './src/assets/icons/favicon.ico') },
+        { from: path.resolve(__dirname, './public/favicon.ico') },
         {
           from: path.resolve(__dirname, './src/assets/sounds'),
           to: path.resolve(__dirname, './dist/assets/sounds'),

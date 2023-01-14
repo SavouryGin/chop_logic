@@ -1,4 +1,4 @@
-import converterJS from 'logic/propositions/converter-js';
+import parser from 'logic/propositions/parser-xml-to-js';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { call, put, takeEvery } from 'redux-saga/effects';
@@ -12,7 +12,7 @@ export function* importNPFromXMLSaga(action: { payload: { file: File } }): SagaI
   try {
     const { file } = action.payload;
     const text = yield call(readUserTextFile, file);
-    const tableData = yield call(converterJS.xmlToNPTableData, text);
+    const tableData = yield call(parser.xmlToNPTableData, text);
 
     yield put(actions.setTableData(tableData));
     yield put(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));

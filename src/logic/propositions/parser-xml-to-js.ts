@@ -9,9 +9,7 @@ import { XMLTag } from 'enums/xml-tags';
 import { errorsTexts } from 'texts';
 import { languageStringOptions } from 'presets/settings';
 
-const removeDeclaration = (input: string): string => {
-  return input.replace(regExes.xmlDeclaration, '');
-};
+const removeDeclaration = (input: string): string => input.replace(regExes.xmlDeclaration, '');
 
 const parseStep = (input: string): number => {
   const value = +input.replace(XMLTag.StepOpen, '').replace(XMLTag.StepClose, '');
@@ -33,11 +31,8 @@ const parseLevel = (input: string): number => {
   return value;
 };
 
-const parseFormulaBase = (input: string): NPFormulaBase => {
-  const value = input.replace(XMLTag.FBaseOpen, '').replace(XMLTag.FBaseClose, '');
-
-  return value as NPFormulaBase;
-};
+const parseFormulaBase = (input: string): NPFormulaBase =>
+  input.replace(XMLTag.FBaseOpen, '').replace(XMLTag.FBaseClose, '') as NPFormulaBase;
 
 const parseAssumptionId = (input: string): string | null => {
   const value = input.replace(XMLTag.AIDOpen, '').replace(XMLTag.AIDClose, '');
@@ -49,25 +44,17 @@ const parseAssumptionId = (input: string): string | null => {
   }
 };
 
-const parseRawInput = (input: string): string => {
-  return input.replace(XMLTag.RInputOpen, '').replace(XMLTag.RInputClose, '');
-};
+const parseRawInput = (input: string): string => input.replace(XMLTag.RInputOpen, '').replace(XMLTag.RInputClose, '');
 
-const parseId = (input: string): string => {
-  return input.replace(XMLTag.IdOpen, '').replace(XMLTag.IdClose, '');
-};
+const parseId = (input: string): string => input.replace(XMLTag.IdOpen, '').replace(XMLTag.IdClose, '');
 
-const parseExpressionInput = (input: string): string => {
-  return input.replace(XMLTag.InputOpen, '').replace(XMLTag.InputClose, '');
-};
+const parseDependentId = (input: string): string => input.replace(XMLTag.DIDOpen, '').replace(XMLTag.DIDClose, '');
 
-const parseExpressionRepresentation = (input: string): string => {
-  return input.replace(XMLTag.RepresentOpen, '').replace(XMLTag.RepresentClose, '');
-};
+const parseExpressionInput = (input: string): string => input.replace(XMLTag.InputOpen, '').replace(XMLTag.InputClose, '');
 
-const parseExpressionType = (input: string): string => {
-  return input.replace(XMLTag.TypeOpen, '').replace(XMLTag.TypeClose, '');
-};
+const parseExpressionRepresentation = (input: string): string => input.replace(XMLTag.RepresentOpen, '').replace(XMLTag.RepresentClose, '');
+
+const parseExpressionType = (input: string): string => input.replace(XMLTag.TypeOpen, '').replace(XMLTag.TypeClose, '');
 
 const parseExpressionPosition = (input: string): number => {
   const value = +input.replace(XMLTag.PositionOpen, '').replace(XMLTag.PositionClose, '');
@@ -133,6 +120,24 @@ const parseComment = (input: string): LocalText | string => {
   return localTextResult as LocalText;
 };
 
+const parseDependentOn = (input: string): string[] | null => {
+  const value = input.replace(XMLTag.DepOpen, '').replace(XMLTag.DepClose, '');
+  // TODO: Fix ids split
+  const idMatches = value.match(new RegExp(XMLTag.DIDOpen + '.*' + XMLTag.DIDClose, 'i'));
+
+  if (value === '' || !idMatches || !idMatches.length) {
+    return null;
+  }
+
+  const result: string[] = [];
+
+  idMatches.forEach((match) => {
+    result.push(parseDependentId(match));
+  });
+
+  return result;
+};
+
 const parseDPTableItem = (input: string): DirectProofsTableItem => {
   const value = input.replace(XMLTag.TItemOpen, '').replace(XMLTag.TItemClose, '');
 
@@ -142,12 +147,14 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
     const rawInputMatch = value.match(new RegExp(XMLTag.RInputOpen + '.*' + XMLTag.RInputClose, 'i'))![0];
     const expressionMatch = value.match(new RegExp(XMLTag.PExpressionOpen + '.*' + XMLTag.PExpressionClose, 'i'))![0];
     const commentMatch = value.match(new RegExp(XMLTag.CommentOpen + '.*' + XMLTag.CommentClose, 'i'))![0];
+    const dependentOnMatch = value.match(new RegExp(XMLTag.DepOpen + '.*' + XMLTag.DepClose, 'i'))![0];
 
     const id = parseId(idMatch);
     const step = parseStep(stepMatch);
     const rawInput = parseRawInput(rawInputMatch);
     const expression = parsePropositionalExpression(expressionMatch);
     const comment = parseComment(commentMatch);
+    const dependentOn = parseDependentOn(dependentOnMatch);
     const formula = converter.convertExpressionToFormula(expression);
     const friendlyExpression = converter.convertFormulaToUserFriendlyExpression(formula);
 
@@ -159,6 +166,7 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
       comment,
       formula,
       friendlyExpression,
+      dependentOn,
     };
   } catch (error: unknown) {
     console.error(error);
@@ -178,6 +186,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
     const levelMatch = value.match(new RegExp(XMLTag.LevelOpen + '.*' + XMLTag.LevelClose, 'i'))![0];
     const formulaBaseMatch = value.match(new RegExp(XMLTag.FBaseOpen + '.*' + XMLTag.FBaseClose, 'i'))![0];
     const assumptionIdMatch = value.match(new RegExp(XMLTag.AIDOpen + '.*' + XMLTag.AIDClose, 'i'))![0];
+    const dependentOnMatch = value.match(new RegExp(XMLTag.DepOpen + '.*' + XMLTag.DepClose, 'i'))![0];
 
     const id = parseId(idMatch);
     const step = parseStep(stepMatch);
@@ -185,6 +194,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
     const expression = parsePropositionalExpression(expressionMatch);
     const comment = parseComment(commentMatch);
     const level = parseLevel(levelMatch);
+    const dependentOn = parseDependentOn(dependentOnMatch);
     const formulaBase = parseFormulaBase(formulaBaseMatch);
     const assumptionId = parseAssumptionId(assumptionIdMatch);
     const formula = converter.convertExpressionToFormula(expression);
@@ -201,6 +211,7 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
       level,
       formulaBase,
       assumptionId,
+      dependentOn,
     };
   } catch (error: unknown) {
     console.error(error);
@@ -211,25 +222,22 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
 const xmlToDPTableData = (input: string): DirectProofsTableItem[] => {
   const withoutDeclaration = removeDeclaration(input).trim();
   const withoutDPTag = withoutDeclaration.replace(XMLTag.DPOpen, '').replace(XMLTag.DPClose, '');
-
   const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
-  console.log('tableItems', tableItems);
 
   return tableItems.map((item) => parseDPTableItem(item));
 };
 
 const xmlToNPTableData = (input: string): NaturalProofsTableItem[] => {
   const withoutDeclaration = removeDeclaration(input).trim();
-  const withoutDPTag = withoutDeclaration.replace(XMLTag.DPOpen, '').replace(XMLTag.DPClose, '');
-
-  const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
+  const withoutNPTag = withoutDeclaration.replace(XMLTag.NPOpen, '').replace(XMLTag.NPClose, '');
+  const tableItems = withoutNPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
 
   return tableItems.map((item) => parseNPTableItem(item));
 };
 
-const converterJS = {
+const parserXMLtoJS = {
   xmlToDPTableData,
   xmlToNPTableData,
 };
 
-export default Object.freeze(converterJS);
+export default Object.freeze(parserXMLtoJS);

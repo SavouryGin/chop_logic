@@ -16,8 +16,8 @@ describe('NP exportNPToXMLSaga tests', () => {
     testSaga(exportNPToXMLSaga, { payload: testFileName })
       .next()
       .select(selectors.getTableData)
-      .next(tMocks.npTableDataIEandII)
-      .call(createAndSaveXMLFile, tMocks.npIEandIItoXML, testFileName)
+      .next(tMocks.randomNaturalProof)
+      .call(createAndSaveXMLFile, tMocks.randomNaturalProofXML, testFileName)
       .next()
       .isDone();
   });

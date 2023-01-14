@@ -42,6 +42,7 @@ export const propositionsDPSlice = createSlice({
         friendlyExpression,
         formula,
         comment: { en: 'Premise', ru: 'Посылка' },
+        dependentOn: null,
       };
       state.tableData = [...state.tableData, newItem];
     },
@@ -81,6 +82,7 @@ export const propositionsDPSlice = createSlice({
         friendlyExpression,
         formula,
         comment: { en: 'IC', ru: 'ВИ' },
+        dependentOn: null,
       };
       state.selectedIds = [];
       state.tableData = [...state.tableData, newItem];
@@ -103,6 +105,7 @@ export const propositionsDPSlice = createSlice({
         friendlyExpression,
         formula,
         comment: { en: 'ID', ru: 'ДИ' },
+        dependentOn: null,
       };
       state.selectedIds = [];
       state.tableData = [...state.tableData, newItem];
@@ -122,6 +125,7 @@ export const propositionsDPSlice = createSlice({
         friendlyExpression,
         formula,
         comment: { en: 'CR', ru: 'СП' },
+        dependentOn: null,
       };
       state.selectedIds = [];
       state.tableData = [...state.tableData, newItem];

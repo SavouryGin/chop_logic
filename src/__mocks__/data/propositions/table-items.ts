@@ -6,7 +6,7 @@ import { errorsTexts } from 'texts';
 
 const dpTableDataIE: DirectProofsTableItem[] = [
   {
-    id: '46ee5155-6d49-15fe-bb27-0a69129216f8',
+    id: '39e9be5c-b18b-4341-a309-71c32e78ab6a',
     step: 1,
     rawInput: 'p|q',
     expression: [
@@ -102,11 +102,13 @@ const dpTableDataIE: DirectProofsTableItem[] = [
       en: 'Premise',
       ru: 'Посылка',
     },
+    dependentOn: null,
   },
   {
     step: 2,
-    id: '6e7c7249-ba8c-7007-28a5-4550903bc36b',
+    id: '5c69e980-5e88-431f-9ca2-061b4c870aa0',
     rawInput: 'p|q, r',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -568,13 +570,13 @@ const dpTableDataIE: DirectProofsTableItem[] = [
         },
       ],
     },
-    id: '37990773-8e55-2dd9-50f9-bd5d63d7a392',
+    id: '465fbcd5-6bac-4c61-883d-2f4f0207582f',
     rawInput: 'p|q, p|q, r',
     comment: {
       en: 'IE: 1, 2',
       ru: 'УИ: 1, 2',
     },
-    dependentOn: ['46ee5155-6d49-15fe-bb27-0a69129216f8', '6e7c7249-ba8c-7007-28a5-4550903bc36b'],
+    dependentOn: ['39e9be5c-b18b-4341-a309-71c32e78ab6a', '5c69e980-5e88-431f-9ca2-061b4c870aa0'],
   },
 ];
 
@@ -584,6 +586,7 @@ const npTableDataIEandII: NaturalProofsTableItem[] = [
     id: '2ce24bb1-0be0-c5f5-b167-c2262758e327',
     step: 1,
     rawInput: 'p&r',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -684,6 +687,7 @@ const npTableDataIEandII: NaturalProofsTableItem[] = [
     level: 1,
     id: 'd02b2fc7-befd-0c83-1e1e-ea5c49e736df',
     step: 2,
+    dependentOn: null,
     rawInput: 'p&r=>q',
     expression: [
       {
@@ -1143,6 +1147,7 @@ const npTableCIandCE: NaturalProofsTableItem[] = [
     id: '0c991093-b846-7887-e9da-2c753cf71b8e',
     step: 1,
     rawInput: 'f=>s',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -1690,6 +1695,7 @@ const npTableNIandNE: NaturalProofsTableItem[] = [
     level: 0,
     id: '6111ca42-4df3-e6ff-36c5-16b2dae09caa',
     step: 1,
+    dependentOn: null,
     rawInput: '~p=>q',
     expression: [
       {
@@ -1820,6 +1826,7 @@ const npTableNIandNE: NaturalProofsTableItem[] = [
     level: 1,
     id: '938937f7-b5dc-f033-4205-446ff3f031f5',
     step: 2,
+    dependentOn: null,
     rawInput: '~p=>~q',
     expression: [
       {
@@ -2131,6 +2138,7 @@ const npTableDI: NaturalProofsTableItem[] = [
     id: 'd5cbb748-a8a8-070d-cd6a-0de5bd885f85',
     step: 1,
     rawInput: 'g=>s',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2577,6 +2585,7 @@ const npTableDE: NaturalProofsTableItem[] = [
     id: '2c88a0eb-e63b-74c5-820b-b9509d676abf',
     step: 1,
     rawInput: 'F|~G',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2707,6 +2716,7 @@ const npTableDE: NaturalProofsTableItem[] = [
     id: '29edca18-683a-e934-3e36-d3a88a8fddea',
     step: 2,
     rawInput: 'F=>H',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2808,6 +2818,7 @@ const npTableDE: NaturalProofsTableItem[] = [
     id: '886ecb16-d438-54f2-1f56-ce0a86e70376',
     step: 3,
     rawInput: '~G=>H',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2986,6 +2997,7 @@ const npTableEIandEE: NaturalProofsTableItem[] = [
     id: '8225e578-c111-a59a-b938-29d35e033ca5',
     step: 1,
     rawInput: 'p=>~r',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -3114,6 +3126,7 @@ const npTableEIandEE: NaturalProofsTableItem[] = [
   {
     level: 1,
     id: 'dfb5359a-408c-0e5d-b0c4-9040132829f1',
+    dependentOn: null,
     step: 2,
     rawInput: '~r=>p',
     expression: [
@@ -3767,11 +3780,728 @@ const npTableEIandEE: NaturalProofsTableItem[] = [
   },
 ];
 
-const dpIEtoXML =
-  '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>\n<propositionsDirectProof><tableItem><id>46ee5155-6d49-15fe-bb27-0a69129216f8</id><step>1</step><rawInput>p|q</rawInput><comment><en>Premise</en><ru>Посылка</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>2</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>4</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>6</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>7</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>P</input><type>variable</type><position>0</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>1</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>2</position><representation>Q</representation></propositionalSymbol></propositionalExpression></tableItem><tableItem><id>6e7c7249-ba8c-7007-28a5-4550903bc36b</id><step>2</step><rawInput>p|q, r</rawInput><comment><en>IC</en><ru>ВИ</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula></values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>2</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>3</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>4</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>5</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>6</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>7</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>9</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>10</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>11</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>12</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>r</input><type>variable</type><position>13</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>15</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>16</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>17</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>18</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>19</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>20</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>21</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>22</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>23</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>24</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>25</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>26</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>2</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>3</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>4</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>5</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>6</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>7</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>8</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>9</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>10</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>11</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>12</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>13</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol></propositionalExpression></tableItem><tableItem><id>37990773-8e55-2dd9-50f9-bd5d63d7a392</id><step>3</step><rawInput>p|q, p|q, r</rawInput><comment><en>IE: 1, 2</en><ru>УИ: 1, 2</ru></comment><dependentOn><id>46ee5155-6d49-15fe-bb27-0a69129216f8</id><id>6e7c7249-ba8c-7007-28a5-4550903bc36b</id></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>2</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>4</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>6</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>7</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>9</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>10</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>11</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>12</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>13</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>R</input><type>variable</type><position>0</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>1</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>2</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>3</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>4</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>5</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>6</position><representation>)</representation></propositionalSymbol></propositionalExpression></tableItem></propositionsDirectProof>';
+const randomNaturalProof: NaturalProofsTableItem[] = [
+  {
+    level: 0,
+    id: 'fb10efb7-a2f6-4be3-9127-d18beff66a15',
+    step: 1,
+    rawInput: 'p=>q',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: 'p',
+        representation: 'P',
+        type: 'variable',
+        position: 2,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 3,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 4,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: 'q',
+        representation: 'Q',
+        type: 'variable',
+        position: 6,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 8,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 0,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 2,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'P',
+        },
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+      ],
+    },
+    comment: {
+      en: 'Premise',
+      ru: 'Посылка',
+    },
+    formulaBase: NPFormulaBase.Premise,
+    assumptionId: null,
+    dependentOn: null,
+  },
+  {
+    level: 0,
+    id: '8de8805e-50f0-43a8-9bdd-a2bd56f11453',
+    step: 2,
+    rawInput: 'r=>(p|q)',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: 'r',
+        representation: 'R',
+        type: 'variable',
+        position: 2,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 3,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 4,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 6,
+      },
+      {
+        input: 'p',
+        representation: 'P',
+        type: 'variable',
+        position: 7,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 8,
+      },
+      {
+        input: '|',
+        representation: '∨',
+        type: 'operator',
+        position: 9,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 10,
+      },
+      {
+        input: 'q',
+        representation: 'Q',
+        type: 'variable',
+        position: 11,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 12,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 13,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 14,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'R',
+        representation: 'R',
+        type: 'variable',
+        position: 0,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 2,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 3,
+      },
+      {
+        input: '|',
+        representation: '∨',
+        type: 'operator',
+        position: 4,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 5,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 6,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'R',
+        },
+        {
+          operator: PropositionalOperator.Or,
+          values: [
+            {
+              operator: PropositionalOperator.Var,
+              values: 'P',
+            },
+            {
+              operator: PropositionalOperator.Var,
+              values: 'Q',
+            },
+          ],
+        },
+      ],
+    },
+    comment: {
+      en: 'Premise',
+      ru: 'Посылка',
+    },
+    formulaBase: NPFormulaBase.Premise,
+    assumptionId: null,
+    dependentOn: null,
+  },
+  {
+    level: 1,
+    id: '95f42585-8fc6-47d3-8017-a26b39e0c55e',
+    step: 3,
+    rawInput: 'r',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: 'r',
+        representation: 'R',
+        type: 'variable',
+        position: 1,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 2,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'R',
+        representation: 'R',
+        type: 'variable',
+        position: 0,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Var,
+      values: 'R',
+    },
+    comment: {
+      en: 'Assumption',
+      ru: 'Гипотеза',
+    },
+    formulaBase: NPFormulaBase.Assumption,
+    assumptionId: '963b6b09-c135-4a4d-ab4f-bbbf879d496a',
+    dependentOn: null,
+  },
+  {
+    level: 1,
+    step: 4,
+    assumptionId: '963b6b09-c135-4a4d-ab4f-bbbf879d496a',
+    id: 'e12a3e10-2a14-4912-b32b-f84b9af2276f',
+    rawInput: 'r=>(p|q), r',
+    formulaBase: NPFormulaBase.IE,
+    dependentOn: ['8de8805e-50f0-43a8-9bdd-a2bd56f11453', '95f42585-8fc6-47d3-8017-a26b39e0c55e'],
+    comment: {
+      en: 'IE: 2, 3',
+      ru: 'УИ: 2, 3',
+    },
+    formula: {
+      operator: PropositionalOperator.Or,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'P',
+        },
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+      ],
+    },
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 2,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 3,
+      },
+      {
+        input: '|',
+        representation: '∨',
+        type: 'operator',
+        position: 4,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 6,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 8,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'P',
+        representation: 'P',
+        type: 'variable',
+        position: 0,
+      },
+      {
+        input: '|',
+        representation: '∨',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 2,
+      },
+    ],
+  },
+  {
+    level: 2,
+    id: 'd53ce6e0-1073-4e72-8036-493f60f2974c',
+    step: 5,
+    rawInput: 'q',
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: 'q',
+        representation: 'Q',
+        type: 'variable',
+        position: 1,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 2,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 0,
+      },
+    ],
+    formula: {
+      operator: PropositionalOperator.Var,
+      values: 'Q',
+    },
+    comment: {
+      en: 'Assumption',
+      ru: 'Гипотеза',
+    },
+    formulaBase: NPFormulaBase.Assumption,
+    assumptionId: 'a4814487-28a3-4c4e-9074-e33c3ce79f7d',
+    dependentOn: null,
+  },
+  {
+    level: 1,
+    step: 6,
+    assumptionId: '963b6b09-c135-4a4d-ab4f-bbbf879d496a',
+    id: '16935ffc-9afd-45dd-8c08-33c7316b113e',
+    rawInput: 'q, q',
+    formulaBase: NPFormulaBase.II,
+    dependentOn: ['d53ce6e0-1073-4e72-8036-493f60f2974c'],
+    comment: {
+      en: 'II: 5',
+      ru: 'ВИ: 5',
+    },
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+      ],
+    },
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 2,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 3,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 4,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 6,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 8,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 0,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 2,
+      },
+    ],
+  },
+  {
+    level: 1,
+    assumptionId: '963b6b09-c135-4a4d-ab4f-bbbf879d496a',
+    step: 7,
+    id: 'c244c3ef-4cb4-4f14-b927-d4e4b3810ba4',
+    rawInput: 'p=>q, r=>(p|q), r, q, q',
+    formulaBase: NPFormulaBase.DE,
+    dependentOn: ['fb10efb7-a2f6-4be3-9127-d18beff66a15', 'e12a3e10-2a14-4912-b32b-f84b9af2276f', '16935ffc-9afd-45dd-8c08-33c7316b113e'],
+    comment: {
+      en: 'DE: 1, 4, 6',
+      ru: 'УД: 1, 4, 6',
+    },
+    formula: {
+      operator: PropositionalOperator.Var,
+      values: 'Q',
+    },
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 1,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 2,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 0,
+      },
+    ],
+  },
+  {
+    level: 0,
+    step: 8,
+    assumptionId: null,
+    id: 'da32c3b7-a5e2-48c0-865c-26b99f7f5618',
+    rawInput: 'r, p=>q, r=>(p|q), r, q, q',
+    formulaBase: NPFormulaBase.II,
+    dependentOn: ['95f42585-8fc6-47d3-8017-a26b39e0c55e', 'c244c3ef-4cb4-4f14-b927-d4e4b3810ba4'],
+    comment: {
+      en: 'II: 3, 7',
+      ru: 'ВИ: 3, 7',
+    },
+    formula: {
+      operator: PropositionalOperator.Implies,
+      values: [
+        {
+          operator: PropositionalOperator.Var,
+          values: 'R',
+        },
+        {
+          operator: PropositionalOperator.Var,
+          values: 'Q',
+        },
+      ],
+    },
+    expression: [
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 0,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 1,
+      },
+      {
+        input: 'R',
+        representation: 'R',
+        type: 'variable',
+        position: 2,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 3,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 4,
+      },
+      {
+        input: '(',
+        representation: '(',
+        type: 'parentheses',
+        position: 5,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 6,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 7,
+      },
+      {
+        input: ')',
+        representation: ')',
+        type: 'parentheses',
+        position: 8,
+      },
+    ],
+    friendlyExpression: [
+      {
+        input: 'R',
+        representation: 'R',
+        type: 'variable',
+        position: 0,
+      },
+      {
+        input: '=>',
+        representation: '⇒',
+        type: 'operator',
+        position: 1,
+      },
+      {
+        input: 'Q',
+        representation: 'Q',
+        type: 'variable',
+        position: 2,
+      },
+    ],
+  },
+];
 
-const npIEandIItoXML =
-  '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>\n<propositionsNaturalProof><tableItem><id>2ce24bb1-0be0-c5f5-b167-c2262758e327</id><step>1</step><rawInput>p&r</rawInput><comment><en>Premise</en><ru>Посылка</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>AND</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>2</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>&</input><type>operator</type><position>4</position><representation>∧</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>r</input><type>variable</type><position>6</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>7</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>P</input><type>variable</type><position>0</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>&</input><type>operator</type><position>1</position><representation>∧</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>2</position><representation>R</representation></propositionalSymbol></propositionalExpression><level>0</level><formulaBase>Premise</formulaBase><assumptionId>null</assumptionId></tableItem><tableItem><id>d02b2fc7-befd-0c83-1e1e-ea5c49e736df</id><step>2</step><rawInput>p&r=>q</rawInput><comment><en>Assumption</en><ru>Гипотеза</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>AND</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula></values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>2</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>3</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>4</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>&</input><type>operator</type><position>5</position><representation>∧</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>6</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>r</input><type>variable</type><position>7</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>9</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>10</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>11</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>12</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>13</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>1</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>&</input><type>operator</type><position>2</position><representation>∧</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>3</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>4</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>5</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>6</position><representation>Q</representation></propositionalSymbol></propositionalExpression><level>1</level><formulaBase>Assumption</formulaBase><assumptionId>9b3207af-c392-790d-154a-ef683a56d748</assumptionId></tableItem><tableItem><id>95f81e22-d097-25ec-d721-ba28dd968359</id><step>3</step><rawInput>p&r, p&r=>q</rawInput><comment><en>IE: 1, 2</en><ru>УИ: 1, 2</ru></comment><dependentOn><id>2ce24bb1-0be0-c5f5-b167-c2262758e327</id><id>d02b2fc7-befd-0c83-1e1e-ea5c49e736df</id></dependentOn><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>1</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>Q</input><type>variable</type><position>0</position><representation>Q</representation></propositionalSymbol></propositionalExpression><level>1</level><formulaBase>Implication Elimination</formulaBase><assumptionId>9b3207af-c392-790d-154a-ef683a56d748</assumptionId></tableItem><tableItem><id>f92597c6-7a1f-d8cf-6de1-3039ae303159</id><step>4</step><rawInput>p&r=>q, p&r, p&r=>q</rawInput><comment><en>II: 2, 3</en><ru>ВИ: 2, 3</ru></comment><dependentOn><id>d02b2fc7-befd-0c83-1e1e-ea5c49e736df</id><id>95f81e22-d097-25ec-d721-ba28dd968359</id></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>AND</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula></values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>2</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>3</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>4</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>5</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>&</input><type>operator</type><position>6</position><representation>∧</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>7</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>8</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>9</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>10</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>11</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>12</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>13</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>15</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>16</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>17</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>18</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>19</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>20</position><representation>)</representation></propositionalSymbol></propositionalExpression><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>2</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>&</input><type>operator</type><position>3</position><representation>∧</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>4</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>5</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>6</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>7</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>9</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>10</position><representation>Q</representation></propositionalSymbol></propositionalExpression><level>0</level><formulaBase>Implication Introduction</formulaBase><assumptionId>null</assumptionId></tableItem></propositionsNaturalProof>';
+const dpIEtoXML =
+  '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>\n<propositionsDirectProof><tableItem><id>39e9be5c-b18b-4341-a309-71c32e78ab6a</id><step>1</step><rawInput>p|q</rawInput><comment><en>Premise</en><ru>Посылка</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>2</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>4</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>6</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>7</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol></propositionalExpression></tableItem><tableItem><id>5c69e980-5e88-431f-9ca2-061b4c870aa0</id><step>2</step><rawInput>p|q, r</rawInput><comment><en>IC</en><ru>ВИ</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula></values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>2</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>3</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>4</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>5</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>6</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>7</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>9</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>10</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>11</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>12</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>r</input><type>variable</type><position>13</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>15</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>16</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>17</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>18</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>19</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>20</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>21</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>22</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>23</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>24</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>25</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>26</position><representation>)</representation></propositionalSymbol></propositionalExpression></tableItem><tableItem><id>465fbcd5-6bac-4c61-883d-2f4f0207582f</id><step>3</step><rawInput>p|q, p|q, r</rawInput><comment><en>IE: 1, 2</en><ru>УИ: 1, 2</ru></comment><dependentOn><dependentId>39e9be5c-b18b-4341-a309-71c32e78ab6a</dependentId><dependentId>5c69e980-5e88-431f-9ca2-061b4c870aa0</dependentId></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>2</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>4</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>6</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>7</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>9</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>10</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>11</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>12</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>13</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol></propositionalExpression></tableItem></propositionsDirectProof>';
+
+const randomNaturalProofXML =
+  '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>\n<propositionsNaturalProof><tableItem><id>fb10efb7-a2f6-4be3-9127-d18beff66a15</id><step>1</step><rawInput>p=>q</rawInput><comment><en>Premise</en><ru>Посылка</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>2</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>4</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>6</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>7</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>0</level><formulaBase>Premise</formulaBase><assumptionId>null</assumptionId></tableItem><tableItem><id>8de8805e-50f0-43a8-9bdd-a2bd56f11453</id><step>2</step><rawInput>r=>(p|q)</rawInput><comment><en>Premise</en><ru>Посылка</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>r</input><type>variable</type><position>2</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>4</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>6</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>p</input><type>variable</type><position>7</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>9</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>10</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>11</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>12</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>13</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>14</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>0</level><formulaBase>Premise</formulaBase><assumptionId>null</assumptionId></tableItem><tableItem><id>95f42585-8fc6-47d3-8017-a26b39e0c55e</id><step>3</step><rawInput>r</rawInput><comment><en>Assumption</en><ru>Гипотеза</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>r</input><type>variable</type><position>1</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>1</level><formulaBase>Assumption</formulaBase><assumptionId>963b6b09-c135-4a4d-ab4f-bbbf879d496a</assumptionId></tableItem><tableItem><id>e12a3e10-2a14-4912-b32b-f84b9af2276f</id><step>4</step><rawInput>r=>(p|q), r</rawInput><comment><en>IE: 2, 3</en><ru>УИ: 2, 3</ru></comment><dependentOn><dependentId>8de8805e-50f0-43a8-9bdd-a2bd56f11453</dependentId><dependentId>95f42585-8fc6-47d3-8017-a26b39e0c55e</dependentId></dependentOn><propositionalFormula><operator>OR</operator><values><propositionalFormula><operator>VAR</operator><values>P</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>P</input><type>variable</type><position>2</position><representation>P</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>|</input><type>operator</type><position>4</position><representation>∨</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>6</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>7</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>1</level><formulaBase>Implication Elimination</formulaBase><assumptionId>963b6b09-c135-4a4d-ab4f-bbbf879d496a</assumptionId></tableItem><tableItem><id>d53ce6e0-1073-4e72-8036-493f60f2974c</id><step>5</step><rawInput>q</rawInput><comment><en>Assumption</en><ru>Гипотеза</ru></comment><dependentOn></dependentOn><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>q</input><type>variable</type><position>1</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>2</level><formulaBase>Assumption</formulaBase><assumptionId>a4814487-28a3-4c4e-9074-e33c3ce79f7d</assumptionId></tableItem><tableItem><id>16935ffc-9afd-45dd-8c08-33c7316b113e</id><step>6</step><rawInput>q, q</rawInput><comment><en>II: 5</en><ru>ВИ: 5</ru></comment><dependentOn><dependentId>d53ce6e0-1073-4e72-8036-493f60f2974c</dependentId></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>2</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>4</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>6</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>7</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>1</level><formulaBase>Implication Introduction</formulaBase><assumptionId>963b6b09-c135-4a4d-ab4f-bbbf879d496a</assumptionId></tableItem><tableItem><id>c244c3ef-4cb4-4f14-b927-d4e4b3810ba4</id><step>7</step><rawInput>p=>q, r=>(p|q), r, q, q</rawInput><comment><en>DE: 1, 4, 6</en><ru>УД: 1, 4, 6</ru></comment><dependentOn><dependentId>fb10efb7-a2f6-4be3-9127-d18beff66a15</dependentId><dependentId>e12a3e10-2a14-4912-b32b-f84b9af2276f</dependentId><dependentId>16935ffc-9afd-45dd-8c08-33c7316b113e</dependentId></dependentOn><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>1</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>2</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>1</level><formulaBase>Disjunction Elimination</formulaBase><assumptionId>963b6b09-c135-4a4d-ab4f-bbbf879d496a</assumptionId></tableItem><tableItem><id>da32c3b7-a5e2-48c0-865c-26b99f7f5618</id><step>8</step><rawInput>r, p=>q, r=>(p|q), r, q, q</rawInput><comment><en>II: 3, 7</en><ru>ВИ: 3, 7</ru></comment><dependentOn><dependentId>95f42585-8fc6-47d3-8017-a26b39e0c55e</dependentId><dependentId>c244c3ef-4cb4-4f14-b927-d4e4b3810ba4</dependentId></dependentOn><propositionalFormula><operator>IMPLIES</operator><values><propositionalFormula><operator>VAR</operator><values>R</values></propositionalFormula><propositionalFormula><operator>VAR</operator><values>Q</values></propositionalFormula></values></propositionalFormula><propositionalExpression><propositionalSymbol><input>(</input><type>parentheses</type><position>0</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>1</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>R</input><type>variable</type><position>2</position><representation>R</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>3</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>=></input><type>operator</type><position>4</position><representation>⇒</representation></propositionalSymbol><propositionalSymbol><input>(</input><type>parentheses</type><position>5</position><representation>(</representation></propositionalSymbol><propositionalSymbol><input>Q</input><type>variable</type><position>6</position><representation>Q</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>7</position><representation>)</representation></propositionalSymbol><propositionalSymbol><input>)</input><type>parentheses</type><position>8</position><representation>)</representation></propositionalSymbol></propositionalExpression><level>0</level><formulaBase>Implication Introduction</formulaBase><assumptionId>null</assumptionId></tableItem></propositionsNaturalProof>';
 
 const error = new PropositionalError(`Cannot convert this expression to a formula.`, errorsTexts.semanticError);
 
@@ -3784,7 +4514,8 @@ const propositionsTableItems = {
   npTableDE,
   npTableEIandEE,
   dpIEtoXML,
-  npIEandIItoXML,
+  randomNaturalProof,
+  randomNaturalProofXML,
   error,
 };
 
