@@ -2358,6 +2358,7 @@ const testTableItem: DirectProofsTableItem[] = [
     step: 1,
     id: 'proof-step-1',
     rawInput: 'P, Q',
+    dependentOn: null,
     expression: [
       {
         input: '(',
@@ -2753,6 +2754,7 @@ const testTableItemWithReplacedVariable: DirectProofsTableItem[] = [
     step: 1,
     id: 'proof-step-1',
     rawInput: 'Z, Q',
+    dependentOn: null,
     expression: [
       {
         input: '(',

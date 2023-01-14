@@ -8,7 +8,7 @@ describe('Propositions xml converter tests', () => {
   });
 
   it('npToXML() method returns a correct array of np table items', () => {
-    const fileData = converterXML.npToXML(tMocks.npTableDataIEandII);
-    expect(fileData).toEqual(tMocks.npIEandIItoXML);
+    const fileData = converterXML.npToXML(tMocks.randomNaturalProof);
+    expect(fileData).toEqual(tMocks.randomNaturalProofXML);
   });
 });

@@ -16,6 +16,8 @@ export enum XMLTag {
   FBaseClose = '</formulaBase>',
   AIDOpen = '<assumptionId>',
   AIDClose = '</assumptionId>',
+  DIDOpen = '<dependentId>',
+  DIDClose = '</dependentId>',
   RInputOpen = '<rawInput>',
   RInputClose = '</rawInput>',
   CommentOpen = '<comment>',
