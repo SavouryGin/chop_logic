@@ -229,9 +229,8 @@ const xmlToDPTableData = (input: string): DirectProofsTableItem[] => {
 
 const xmlToNPTableData = (input: string): NaturalProofsTableItem[] => {
   const withoutDeclaration = removeDeclaration(input).trim();
-  const withoutDPTag = withoutDeclaration.replace(XMLTag.DPOpen, '').replace(XMLTag.DPClose, '');
-
-  const tableItems = withoutDPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
+  const withoutNPTag = withoutDeclaration.replace(XMLTag.NPOpen, '').replace(XMLTag.NPClose, '');
+  const tableItems = withoutNPTag.split(new RegExp('(?=' + XMLTag.TItemOpen + ')', 'g'));
 
   return tableItems.map((item) => parseNPTableItem(item));
 };
