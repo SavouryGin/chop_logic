@@ -30,4 +30,8 @@ export const uiElementTexts: { [key in string]: LocalText } = {
     en: 'Upload your file',
     ru: 'Загрузите свой файл',
   },
+  errorPopup: {
+    ru: 'Что-то пошло не так!',
+    en: 'Something went wrong!',
+  },
 };
