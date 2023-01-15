@@ -1,7 +1,36 @@
+@import 'styles/variables/z-indexes.scss';
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
+@import 'styles/mixins/theme-colors.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
+
 .error-popup {
+  position: fixed;
+  bottom: $footer-height * 2;
+  right: 0;
+  z-index: $modal-z-index;
+  padding: $big-padding;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  background-color: $light-weak-accent-color;
+  box-shadow: $light-box-shadow;
+  min-width: $min-error-popup-width;
+  @include scrollbar-styles(light);
+
+  &__close {
+    position: absolute;
+    top: -0.75rem;
+    right: 1rem;
+  }
+
   &__header {
+    @include header-styles();
+    border-bottom: $light-weak-border;
   }
 
   &__text {
+    @include base-text-styles();
+    padding-top: $default-padding;
   }
 }
