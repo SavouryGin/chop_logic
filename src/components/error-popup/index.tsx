@@ -2,13 +2,14 @@ import Button from 'components/controls/button';
 import Portal from 'components/portal';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
+import { CommonProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-type ErrorPopupProps = {
+type ErrorPopupProps = CommonProps & {
   error: string | null;
   onClose: () => void;
 };
@@ -26,7 +27,14 @@ const ErrorPopup = ({ error, onClose }: ErrorPopupProps): React.ReactElement | n
   return (
     <Portal>
       <div className='error-popup'>
-        <Button buttonId={ButtonID.Cancel} onClick={onClose} icon={Icon.Cancel} sound={soundPlayer.slideClick} size='small' />
+        <Button
+          buttonId={ButtonID.Cancel}
+          onClick={onClose}
+          icon={Icon.Cancel}
+          sound={soundPlayer.slideClick}
+          size='small'
+          className={'error-popup__close'}
+        />
         {errorHeader}
         {errorText}
       </div>
