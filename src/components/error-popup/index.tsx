@@ -27,9 +27,7 @@ const ErrorPopup = ({ error, onClose, className }: ErrorPopupProps): React.React
 
   const isClosing = isMounted && !isVisible;
   const errorClass = formatClass(['error-popup', className, { 'error-popup_dark': isDarkMode, 'error-popup_closing': isClosing }]);
-
   const errorHeader = <header className='error-popup__header'>{uiElementTexts.errorPopup[language]}</header>;
-
   const errorText = <p className='error-popup__text'>{error}</p>;
 
   return (
@@ -41,7 +39,7 @@ const ErrorPopup = ({ error, onClose, className }: ErrorPopupProps): React.React
           icon={Icon.Cancel}
           sound={soundPlayer.slideClick}
           size='small'
-          className={'error-popup__close-button'}
+          className='error-popup__close-button'
         />
         {errorHeader}
         {errorText}
