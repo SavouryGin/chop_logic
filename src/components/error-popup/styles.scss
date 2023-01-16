@@ -40,4 +40,18 @@
     @include base-text-styles();
     padding-top: $default-padding;
   }
+
+  &_dark {
+    background-color: $dark-weak-accent-color;
+    box-shadow: $dark-box-shadow;
+
+    .error-popup__text {
+      color: $dark-font-color;
+    }
+
+    .error-popup__header {
+      color: $dark-font-color;
+      border-bottom: $dark-weak-border;
+    }
+  }
 }
