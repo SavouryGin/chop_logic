@@ -1,11 +1,13 @@
 import ErrorPopup from 'components/error-popup';
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.scss';
 
 const Home = (): React.ReactElement => {
+  const [error, setError] = useState<string | null>('error text');
+
   return (
     <article className='home'>
-      <ErrorPopup error='Error text' onClose={() => console.log('close')} />
+      <ErrorPopup error={error} onClose={() => setError(null)} />
     </article>
   );
 };

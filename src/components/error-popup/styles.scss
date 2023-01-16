@@ -4,6 +4,8 @@
 @import 'styles/mixins/text-styles.scss';
 @import 'styles/mixins/theme-colors.scss';
 @import 'styles/mixins/scrollbar-styles.scss';
+@import 'styles/animations/slide-in-right.scss';
+@import 'styles/animations/slide-out-right.scss';
 
 .error-popup {
   position: fixed;
@@ -17,8 +19,13 @@
   box-shadow: $light-box-shadow;
   min-width: $min-error-popup-width;
   @include scrollbar-styles(light);
+  @include slide-in-right();
 
-  &__close {
+  &_closing {
+    @include slide-out-right();
+  }
+
+  &__close-button {
     position: absolute;
     top: -0.75rem;
     right: 1rem;
