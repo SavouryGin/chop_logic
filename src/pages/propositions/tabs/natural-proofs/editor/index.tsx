@@ -1,4 +1,5 @@
 import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/confirm-delete';
+import ErrorPopup from 'components/error-popup';
 import FileNameForm from 'pages/propositions/components/forms/file-name';
 import InputFileForm from 'pages/propositions/components/forms/input-file';
 import ModalWindow from 'components/modal-window';
@@ -30,6 +31,7 @@ const NaturalProofsEditor = (): React.ReactElement => {
   const dependencies = useAppSelector(selectors.getDependentItems);
   const isNameInputVisible = useAppSelector(selectors.getIsNameInputPopupVisible);
   const isUserFileFormVisible = useAppSelector(selectors.getIsUserFileFormVisible);
+  const error = useAppSelector(selectors.getError);
 
   const editorClass = formatClass(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
 
@@ -70,10 +72,15 @@ const NaturalProofsEditor = (): React.ReactElement => {
     dispatch(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   };
 
+  const resetError = () => {
+    dispatch(actions.resetError());
+  };
+
   return (
     <div className={editorClass}>
       <NaturalProofsEditorTable />
       <NaturalProofsEditorToolbar />
+      <ErrorPopup error={error} onClose={resetError} />
       <ModalWindow
         isOpened={isPremiseOpened}
         onClose={closePremise}
