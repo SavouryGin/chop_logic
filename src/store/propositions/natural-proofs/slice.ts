@@ -18,6 +18,10 @@ export const propositionsNPSlice = createSlice({
       state.selectedIds = action.payload;
     },
 
+    resetError: (state, _action: PayloadAction) => {
+      state.error = null;
+    },
+
     setTableData: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
       state.tableData = action.payload;
     },
