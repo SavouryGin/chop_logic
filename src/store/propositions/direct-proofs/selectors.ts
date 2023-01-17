@@ -6,6 +6,8 @@ const getFlags = (state: RootState): PropositionsDirectProofsFlags => state.prop
 
 const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isPremiseOpened);
 
+const getError = (state: RootState): string | null => state.propositionsDP.error;
+
 const getTableData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.tableData;
 
 const getDependentItems = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.dependentItems;
@@ -63,6 +65,7 @@ export const propositionsDPSelectors = {
   getSelectedFormulas,
   getSelectedTableItems,
   getTableDataLength,
+  getError,
   getIsPremiseOpened,
   getIsImplicationCreationOpened,
   getIsImplicationDistributionOpened,

@@ -92,6 +92,8 @@ const getIsUserFileFormVisible = createSelector(getFlags, (data: PropositionsNat
 
 const getIsLoading = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isLoading);
 
+const getError = (state: RootState): string | null => state.propositionsDP.error;
+
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
@@ -114,4 +116,5 @@ export const propositionsNPSelectors = {
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
   getIsLoading,
+  getError,
 };
