@@ -1,5 +1,6 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { errorsTexts } from 'texts';
 import { implicationEliminationSaga, implicationEliminationWatcher } from '../sagas/implication-elimination';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
@@ -21,7 +22,7 @@ describe('NP implicationEliminationSaga tests', () => {
       .select(selectors.getLastTableItemLevel)
       .next(0)
       .throw(mocks.error)
-      .put(actions.setError(mocks.error.message))
+      .put(actions.setError(errorsTexts.generalError))
       .next()
       .isDone();
   });

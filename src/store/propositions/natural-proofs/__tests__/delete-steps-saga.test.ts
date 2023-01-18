@@ -1,6 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { deleteNaturalProofStepsWatcher, deleteNaturalProofsStepsSaga } from '../sagas/delete-steps';
+import { errorsTexts } from 'texts';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
 
@@ -63,7 +64,7 @@ describe('NP deleteNaturalProofsStepsSaga tests', () => {
       .select(selectors.getTableData)
       .next(mocks.npTableDataIEandII)
       .throw(mocks.error)
-      .put(actions.setError(mocks.error.message))
+      .put(actions.setError(errorsTexts.generalError))
       .next()
       .isDone();
   });

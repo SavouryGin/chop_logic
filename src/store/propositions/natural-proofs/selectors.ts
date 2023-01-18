@@ -1,5 +1,5 @@
+import { LocalText, PropositionalFormula, RootState } from 'types';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from './interfaces';
-import { PropositionalFormula, RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
@@ -92,7 +92,7 @@ const getIsUserFileFormVisible = createSelector(getFlags, (data: PropositionsNat
 
 const getIsLoading = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isLoading);
 
-const getError = (state: RootState): string | null => state.propositionsDP.error;
+const getError = (state: RootState): LocalText | null => state.propositionsDP.error;
 
 export const propositionsNPSelectors = {
   getFlags,

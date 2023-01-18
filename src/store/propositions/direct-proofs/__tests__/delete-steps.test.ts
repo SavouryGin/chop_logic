@@ -1,6 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { deleteDirectProofStepsSaga, deleteDirectProofStepsWatcher } from '../sagas/delete-steps';
+import { errorsTexts } from 'texts';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
 
@@ -63,7 +64,7 @@ describe('DP deleteDirectProofStepsSaga tests', () => {
       .select(selectors.getTableData)
       .next(mocks.dpTableDataIE)
       .throw(mocks.error)
-      .put(actions.setError(mocks.error.message))
+      .put(actions.setError(errorsTexts.generalError))
       .next()
       .isDone();
   });
