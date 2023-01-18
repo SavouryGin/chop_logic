@@ -1,6 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { conjunctionEliminationSaga, conjunctionEliminationWatcher } from '../sagas/conjunction-elimination';
+import { errorsTexts } from 'texts';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
 
@@ -23,7 +24,7 @@ describe('NP conjunctionEliminationSaga tests', () => {
       .select(selectors.getLastItemAssumptionId)
       .next(null)
       .throw(mocks.error)
-      .put(actions.setError(mocks.error.message))
+      .put(actions.setError(errorsTexts.generalError))
       .next()
       .isDone();
   });

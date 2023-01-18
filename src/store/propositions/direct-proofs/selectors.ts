@@ -1,12 +1,12 @@
 import { DirectProofsTableItem, PropositionsDirectProofsFlags } from './interfaces';
-import { PropositionalFormula, RootState } from 'types';
+import { LocalText, PropositionalFormula, RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getFlags = (state: RootState): PropositionsDirectProofsFlags => state.propositionsDP.flags;
 
 const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isPremiseOpened);
 
-const getError = (state: RootState): string | null => state.propositionsDP.error;
+const getError = (state: RootState): LocalText | null => state.propositionsDP.error;
 
 const getTableData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.tableData;
 

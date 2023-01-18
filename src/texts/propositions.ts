@@ -53,7 +53,11 @@ export const errorsTexts: TextContainer = {
     ru: 'Введённое выражение нельзя преобразовать в пропозициональную формулу.',
   },
   generalError: {
-    en: 'Something went wrong.',
-    ru: 'Что-то пошло не так.',
+    en: 'An unknown error has occurred.',
+    ru: 'Произошла неизвестная ошибка.',
+  },
+  importError: {
+    en: 'This file cannot be converted into a logic proof. Check the contents of the file.',
+    ru: 'Это файл нельзя преобразовать в логическое доказательство. Проверьте содержание файла.',
   },
 };
