@@ -3,6 +3,7 @@ import executor from 'logic/propositions/executor';
 import replacer from 'logic/propositions/replacer';
 import validator from 'logic/propositions/validator';
 import { DirectProofsTableItem, PropositionsDirectProofsFlag } from './interfaces';
+import { LocalText } from 'types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { propositionsDPInitialState } from './initial-state';
 
@@ -171,7 +172,7 @@ export const propositionsDPSlice = createSlice({
       state.tableData = replacer.replacePropositionalVariableInDPTableItems(state.tableData, newVariable, oldVariable);
     },
 
-    setError: (state, action: PayloadAction<string | null>) => {
+    setError: (state, action: PayloadAction<LocalText | null>) => {
       state.error = action.payload;
     },
 

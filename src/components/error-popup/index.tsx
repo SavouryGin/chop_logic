@@ -3,7 +3,7 @@ import Portal from 'components/portal';
 import React from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { ButtonID, Icon } from 'enums';
-import { CommonProps } from 'types';
+import { CommonProps, LocalText } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'texts';
@@ -11,13 +11,13 @@ import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';
 
 type ErrorPopupProps = CommonProps & {
-  error: string | null;
+  error: LocalText | null;
   onClose: () => void;
 };
 
 const ErrorPopup = ({ error, onClose, className }: ErrorPopupProps): React.ReactElement | null => {
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const isVisible = !!error && !!error.length;
+  const isVisible = !!error;
   const isMounted = useMount(isVisible);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
 
@@ -28,7 +28,7 @@ const ErrorPopup = ({ error, onClose, className }: ErrorPopupProps): React.React
   const isClosing = isMounted && !isVisible;
   const errorClass = formatClass(['error-popup', className, { 'error-popup_dark': isDarkMode, 'error-popup_closing': isClosing }]);
   const errorHeader = <header className='error-popup__header'>{uiElementTexts.errorPopup[language]}</header>;
-  const errorText = <p className='error-popup__text'>{error}</p>;
+  const errorText = <p className='error-popup__text'>{error ? error[language] : 'Unknown error'}</p>;
 
   return (
     <Portal>
