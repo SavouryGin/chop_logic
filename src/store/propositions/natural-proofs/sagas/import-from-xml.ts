@@ -19,7 +19,6 @@ export function* importNPFromXMLSaga(action: { payload: { file: File } }): SagaI
     yield put(actions.setTableData(tableData));
     yield put(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   } catch (error: unknown) {
-    console.error(error);
     yield put(actions.setError(errorsTexts.importError));
   } finally {
     yield put(actions.setUpFlag({ flag: 'isLoading', value: false }));

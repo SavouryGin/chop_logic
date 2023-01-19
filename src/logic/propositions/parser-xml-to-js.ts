@@ -92,7 +92,6 @@ const parsePropositionalExpression = (input: string): PropositionalExpression =>
       const symbol = parsePropositionalSymbol(item);
       result.push(symbol);
     } catch (error: unknown) {
-      console.error(error);
       throw new PropositionalError(`Cannot convert the propositional symbol from "${item}"`, errorsTexts.semanticError);
     }
   }
@@ -169,7 +168,6 @@ const parseDPTableItem = (input: string): DirectProofsTableItem => {
       dependentOn,
     };
   } catch (error: unknown) {
-    console.error(error);
     throw new PropositionalError('Cannot convert the table item from XML.', errorsTexts.semanticError);
   }
 };
@@ -214,7 +212,6 @@ const parseNPTableItem = (input: string): NaturalProofsTableItem => {
       dependentOn,
     };
   } catch (error: unknown) {
-    console.error(error);
     throw new PropositionalError('Cannot convert the table item from XML.', errorsTexts.semanticError);
   }
 };

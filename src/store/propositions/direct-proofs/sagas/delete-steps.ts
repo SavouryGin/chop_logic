@@ -37,7 +37,6 @@ export function* deleteDirectProofStepsSaga(action: { payload: { isConfirmed: bo
       yield put(actions.setSelectedIds([]));
     }
   } catch (error: unknown) {
-    console.log(error);
     yield put(actions.setError(errorsTexts.generalError));
   }
 }

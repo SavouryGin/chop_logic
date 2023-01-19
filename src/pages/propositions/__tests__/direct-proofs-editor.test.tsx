@@ -7,17 +7,21 @@ import { fillerText } from 'texts/propositions';
 import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
+import { propositionsNPSlice } from 'store/propositions/natural-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 describe('Direct Proofs Editor tests:', () => {
   const mockedReducer = combineReducers({
     settings: settingsSlice.reducer,
     propositionsDP: propositionsDPSlice.reducer,
+    propositionsNP: propositionsNPSlice.reducer,
   });
 
   const mockedState = {
     settings: settingsInitialState,
     propositionsDP: propositionsDPInitialState,
+    propositionsNP: propositionsNPInitialState,
   };
 
   beforeEach(() => {
