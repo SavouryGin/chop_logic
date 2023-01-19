@@ -2,6 +2,7 @@ import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/co
 import ContradictionRealizationForm from 'pages/propositions/components/forms/contradiction-realization';
 import DirectProofsEditorTable from 'pages/propositions/components/tables/direct-proofs';
 import DirectProofsEditorToolbar from 'pages/propositions/components/toolbars/direct-proofs';
+import ErrorPopup from 'components/error-popup';
 import FileNameForm from 'pages/propositions/components/forms/file-name';
 import ImplicationCreationForm from 'pages/propositions/components/forms/implication-creation';
 import ImplicationDistributionForm from 'pages/propositions/components/forms/implication-distribution';
@@ -31,6 +32,7 @@ const DirectProofsEditor = (): React.ReactElement => {
   const isNameInputVisible = useAppSelector(selectors.getIsNameInputPopupVisible);
   const isUserFileFormVisible = useAppSelector(selectors.getIsUserFileFormVisible);
   const dependencies = useAppSelector(selectors.getDependentItems);
+  const error = useAppSelector(selectors.getError);
 
   const editorClass = formatClass(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
 
@@ -71,10 +73,15 @@ const DirectProofsEditor = (): React.ReactElement => {
     dispatch(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   };
 
+  const resetError = () => {
+    dispatch(actions.resetError());
+  };
+
   return (
     <div className={editorClass}>
       <DirectProofsEditorTable />
       <DirectProofsEditorToolbar />
+      <ErrorPopup error={error} onClose={resetError} />
       <ModalWindow
         isOpened={isPremiseOpened}
         onClose={closePremise}

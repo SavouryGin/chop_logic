@@ -1,6 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { equivalenceEliminationSaga, equivalenceEliminationWatcher } from '../sagas/equivalence-elimination';
+import { errorsTexts } from 'texts';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
 
@@ -21,7 +22,7 @@ describe('NP equivalenceEliminationSaga tests', () => {
       .select(selectors.getLastTableItemLevel)
       .next(0)
       .throw(mocks.error)
-      .put(actions.setError(mocks.error.message))
+      .put(actions.setError(errorsTexts.generalError))
       .next()
       .isDone();
   });

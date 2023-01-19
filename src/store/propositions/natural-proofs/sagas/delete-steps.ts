@@ -1,6 +1,7 @@
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { errorsTexts } from 'texts';
 import { findDependentNPItemsToDelete, removeSelectedItemsFromTable, updateNPTableComments } from 'store/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
@@ -36,7 +37,6 @@ export function* deleteNaturalProofsStepsSaga(action: { payload: { isConfirmed: 
       yield put(actions.setSelectedIds([]));
     }
   } catch (error: unknown) {
-    const errorMessage = (error as any)?.message || 'Delete action error';
-    yield put(actions.setError(errorMessage));
+    yield put(actions.setError(errorsTexts.generalError));
   }
 }

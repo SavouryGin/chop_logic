@@ -2,6 +2,7 @@ import parser from 'logic/propositions/parser-xml-to-js';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { errorsTexts } from 'texts';
 import { readUserTextFile } from 'helpers/files/read-user-text-file';
 
 export function* importNPFromXMLWatcher(): Generator {
@@ -9,6 +10,7 @@ export function* importNPFromXMLWatcher(): Generator {
 }
 
 export function* importNPFromXMLSaga(action: { payload: { file: File } }): SagaIterator {
+  yield put(actions.setUpFlag({ flag: 'isLoading', value: true }));
   try {
     const { file } = action.payload;
     const text = yield call(readUserTextFile, file);
@@ -17,7 +19,8 @@ export function* importNPFromXMLSaga(action: { payload: { file: File } }): SagaI
     yield put(actions.setTableData(tableData));
     yield put(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   } catch (error: unknown) {
-    const errorMessage = (error as any)?.message || 'Import from XML file error';
-    yield put(actions.setError(errorMessage));
+    yield put(actions.setError(errorsTexts.importError));
+  } finally {
+    yield put(actions.setUpFlag({ flag: 'isLoading', value: false }));
   }
 }

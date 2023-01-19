@@ -2,6 +2,7 @@ import executor from 'logic/propositions/executor';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { errorsTexts } from 'texts';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
@@ -22,7 +23,6 @@ export function* conjunctionIntroductionSaga(): SagaIterator {
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
-    const errorMessage = (error as any)?.message || 'Conjunction introduction error';
-    yield put(actions.setError(errorMessage));
+    yield put(actions.setError(errorsTexts.generalError));
   }
 }

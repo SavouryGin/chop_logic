@@ -1,3 +1,4 @@
+import { LocalText } from 'types';
 import { ProofTableItem, PropositionalExpression, PropositionalFormula } from 'types/propositions';
 
 export interface PropositionsDirectProofsInitialState {
@@ -5,7 +6,7 @@ export interface PropositionsDirectProofsInitialState {
   tableData: DirectProofsTableItem[];
   selectedIds: string[];
   dependentItems: DirectProofsTableItem[];
-  error: string | null;
+  error: LocalText | null;
 }
 
 export interface PropositionsDirectProofsFlags {
