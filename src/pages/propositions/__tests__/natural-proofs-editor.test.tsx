@@ -5,6 +5,8 @@ import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fillerNaturalText, fillerText } from 'texts/propositions';
 import { fireEvent, screen } from '@testing-library/react';
+import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
+import { propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
 import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
 import { propositionsNPSlice } from 'store/propositions/natural-proofs/slice';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
@@ -13,11 +15,13 @@ describe('Natural Proofs Editor tests:', () => {
   const mockedReducer = combineReducers({
     settings: settingsSlice.reducer,
     propositionsNP: propositionsNPSlice.reducer,
+    propositionsDP: propositionsDPSlice.reducer,
   });
 
   const mockedState = {
     settings: settingsInitialState,
     propositionsNP: propositionsNPInitialState,
+    propositionsDP: propositionsDPInitialState,
   };
 
   beforeEach(() => {

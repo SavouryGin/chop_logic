@@ -1,12 +1,12 @@
+import { LocalText, ProofTableItem, PropositionalExpression, PropositionalFormula } from 'types';
 import { NPFormulaBase } from 'enums';
-import { ProofTableItem, PropositionalExpression, PropositionalFormula } from 'types';
 
 export interface PropositionsNaturalProofsInitialState {
   flags: PropositionsNaturalProofsFlags;
   tableData: NaturalProofsTableItem[];
   selectedIds: string[];
   dependentItems: NaturalProofsTableItem[];
-  error: string | null;
+  error: LocalText | null;
 }
 
 export interface PropositionsNaturalProofsFlags {

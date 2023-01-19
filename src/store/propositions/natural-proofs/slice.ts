@@ -1,5 +1,6 @@
 import converter from 'logic/propositions/converter';
 import replacer from 'logic/propositions/replacer';
+import { LocalText } from 'types';
 import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlag } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
@@ -16,6 +17,10 @@ export const propositionsNPSlice = createSlice({
 
     setSelectedIds: (state, action: PayloadAction<string[]>) => {
       state.selectedIds = action.payload;
+    },
+
+    resetError: (state, _action: PayloadAction) => {
+      state.error = null;
     },
 
     setTableData: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
@@ -128,7 +133,7 @@ export const propositionsNPSlice = createSlice({
       state.dependentItems = action.payload;
     },
 
-    setError: (state, action: PayloadAction<string | null>) => {
+    setError: (state, action: PayloadAction<LocalText | null>) => {
       state.error = action.payload;
     },
 

@@ -4,6 +4,7 @@ import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
+import { errorsTexts } from 'texts';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 
 export function* exportDPToXMLWatcher(): Generator {
@@ -25,7 +26,6 @@ export function* exportDPToXMLSaga(action: { payload: string | undefined }): Sag
 
     yield call(createAndSaveXMLFile, fileData, fileName);
   } catch (error: unknown) {
-    const errorMessage = (error as any)?.message || 'Export to XML error';
-    yield put(actions.setError(errorMessage));
+    yield put(actions.setError(errorsTexts.generalError));
   }
 }

@@ -1,6 +1,7 @@
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { errorsTexts } from 'texts';
 import { findDependentDPItemsToDelete, removeSelectedItemsFromTable, updateDPTableComments } from 'store/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
@@ -36,7 +37,6 @@ export function* deleteDirectProofStepsSaga(action: { payload: { isConfirmed: bo
       yield put(actions.setSelectedIds([]));
     }
   } catch (error: unknown) {
-    const errorMessage = (error as any)?.message || 'Delete action error';
-    yield put(actions.setError(errorMessage));
+    yield put(actions.setError(errorsTexts.generalError));
   }
 }
