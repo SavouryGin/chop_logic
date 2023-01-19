@@ -23,7 +23,6 @@ export function* negationEliminationSaga(): SagaIterator {
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
-    console.error(error);
     yield put(actions.setError(errorsTexts.generalError));
   }
 }

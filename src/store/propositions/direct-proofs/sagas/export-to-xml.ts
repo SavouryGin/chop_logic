@@ -26,7 +26,6 @@ export function* exportDPToXMLSaga(action: { payload: string | undefined }): Sag
 
     yield call(createAndSaveXMLFile, fileData, fileName);
   } catch (error: unknown) {
-    console.log(error);
     yield put(actions.setError(errorsTexts.generalError));
   }
 }

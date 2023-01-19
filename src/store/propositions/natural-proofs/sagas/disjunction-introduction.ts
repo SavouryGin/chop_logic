@@ -24,7 +24,6 @@ export function* disjunctionIntroductionSaga(action: { payload: string }): SagaI
     yield put(actions.setTableData([...tableData, ...newItems]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
-    console.error(error);
     yield put(actions.setError(errorsTexts.generalError));
   }
 }

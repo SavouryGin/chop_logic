@@ -26,7 +26,6 @@ export function* exportNPToXMLSaga(action: { payload: string | undefined }): Sag
 
     yield call(createAndSaveXMLFile, fileData, fileName);
   } catch (error: unknown) {
-    console.error(error);
     yield put(actions.setError(errorsTexts.generalError));
   }
 }

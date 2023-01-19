@@ -37,7 +37,6 @@ export function* deleteNaturalProofsStepsSaga(action: { payload: { isConfirmed: 
       yield put(actions.setSelectedIds([]));
     }
   } catch (error: unknown) {
-    console.error(error);
     yield put(actions.setError(errorsTexts.generalError));
   }
 }
