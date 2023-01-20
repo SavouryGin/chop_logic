@@ -30,4 +30,6 @@ export enum ButtonID {
   SavePDF,
   ExportXML,
   ImportXML,
+  CopyProof,
+  PasteProof,
 }
