@@ -52,10 +52,10 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
         <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} size='large' onClick={openFileInputForm} />
       </li>
       <li>
-        <Button buttonId={ButtonID.CopyProof} icon={Icon.ImportXML} size='large' onClick={onCopySteps} />
+        <Button buttonId={ButtonID.CopyProof} icon={Icon.Copy} size='large' onClick={onCopySteps} />
       </li>
       <li>
-        <Button buttonId={ButtonID.PasteProof} icon={Icon.ImportXML} size='large' onClick={onPasteSteps} />
+        <Button buttonId={ButtonID.PasteProof} icon={Icon.Paste} size='large' onClick={onPasteSteps} />
       </li>
     </>
   );
