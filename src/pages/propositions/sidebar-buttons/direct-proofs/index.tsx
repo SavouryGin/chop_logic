@@ -25,6 +25,14 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
     dispatch(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: true }));
   };
 
+  const onCopySteps = () => {
+    console.log('Copy');
+  };
+
+  const onPasteSteps = () => {
+    console.log('Paste');
+  };
+
   return (
     <>
       {/* <li>
@@ -42,6 +50,12 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
       </li>
       <li>
         <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} size='large' onClick={openFileInputForm} />
+      </li>
+      <li>
+        <Button buttonId={ButtonID.CopyProof} icon={Icon.ImportXML} size='large' onClick={onCopySteps} />
+      </li>
+      <li>
+        <Button buttonId={ButtonID.PasteProof} icon={Icon.ImportXML} size='large' onClick={onPasteSteps} />
       </li>
     </>
   );
