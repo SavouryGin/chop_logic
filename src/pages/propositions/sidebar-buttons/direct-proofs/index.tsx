@@ -14,7 +14,6 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
     return null;
   }
 
-  // const isPDFSaveDisabled = true;
   const isExportToXMLDisabled = !tableDataLength;
 
   const onClickExportToXML = () => {
@@ -26,19 +25,15 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onCopySteps = () => {
-    console.log('Copy');
+    dispatch(actions.copySubProof());
   };
 
   const onPasteSteps = () => {
-    console.log('Paste');
+    dispatch(actions.pasteSubProof);
   };
 
   return (
     <>
-      {/* <li>
-        <Button buttonId={ButtonID.SavePDF} icon={Icon.SavePDF} isDisabled={isPDFSaveDisabled} />
-        <span className='sidebar__button-span'>Save</span>
-      </li> */}
       <li>
         <Button
           buttonId={ButtonID.ExportXML}
