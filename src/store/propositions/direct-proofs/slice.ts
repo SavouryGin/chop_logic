@@ -183,6 +183,14 @@ export const propositionsDPSlice = createSlice({
     importFromXML: (state, _action: PayloadAction<{ file: File }>) => {
       return state;
     },
+
+    copySubProof: (state, _action: PayloadAction) => {
+      return state;
+    },
+
+    pasteSubProof: (state, _action: PayloadAction) => {
+      return state;
+    },
   },
 });
 
