@@ -16,4 +16,5 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
   selectedIds: [],
   dependentItems: [],
   error: null,
+  clipboardData: [],
 };

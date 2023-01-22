@@ -57,6 +57,8 @@ const getSelectedTableItems = (state: RootState): DirectProofsTableItem[] => {
 
 const getIsLoading = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isLoading);
 
+const getClipboardData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.clipboardData;
+
 export const propositionsDPSelectors = {
   getFlags,
   getTableData,
@@ -75,4 +77,5 @@ export const propositionsDPSelectors = {
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
   getIsLoading,
+  getClipboardData,
 };
