@@ -94,6 +94,8 @@ const getIsLoading = createSelector(getFlags, (data: PropositionsNaturalProofsFl
 
 const getError = (state: RootState): LocalText | null => state.propositionsDP.error;
 
+const getClipboardData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.clipboardData;
+
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
@@ -117,4 +119,5 @@ export const propositionsNPSelectors = {
   getIsUserFileFormVisible,
   getIsLoading,
   getError,
+  getClipboardData,
 };

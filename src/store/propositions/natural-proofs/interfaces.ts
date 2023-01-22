@@ -7,6 +7,7 @@ export interface PropositionsNaturalProofsInitialState {
   selectedIds: string[];
   dependentItems: NaturalProofsTableItem[];
   error: LocalText | null;
+  clipboardData: NaturalProofsTableItem[];
 }
 
 export interface PropositionsNaturalProofsFlags {
