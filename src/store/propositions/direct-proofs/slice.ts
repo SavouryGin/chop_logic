@@ -184,8 +184,8 @@ export const propositionsDPSlice = createSlice({
       return state;
     },
 
-    copySubProof: (state, _action: PayloadAction) => {
-      return state;
+    copySubProof: (state, action: PayloadAction<{ items: DirectProofsTableItem[] }>) => {
+      state.clipboardData = action.payload.items;
     },
 
     pasteSubProof: (state, _action: PayloadAction) => {
