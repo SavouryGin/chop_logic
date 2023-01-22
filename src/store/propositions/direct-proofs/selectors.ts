@@ -67,6 +67,7 @@ export const propositionsDPSelectors = {
   getSelectedFormulas,
   getSelectedTableItems,
   getTableDataLength,
+  getClipboardData,
   getError,
   getIsPremiseOpened,
   getIsImplicationCreationOpened,
@@ -77,5 +78,4 @@ export const propositionsDPSelectors = {
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
   getIsLoading,
-  getClipboardData,
 };
