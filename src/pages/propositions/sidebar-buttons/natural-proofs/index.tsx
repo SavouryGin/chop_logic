@@ -8,12 +8,16 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
   const dispatch = useAppDispatch();
   const tableDataLength = useAppSelector(selectors.getTableDataLength);
+  const selectedItems = useAppSelector(selectors.getSelectedTableItems);
+  const clipboardItems = useAppSelector(selectors.getClipboardData);
 
   if (!isVisible) {
     return null;
   }
 
   const isExportToXMLDisabled = !tableDataLength;
+  const isCopyDisabled = !selectedItems.length;
+  const isPasteDisabled = !clipboardItems.length;
 
   const onClickExportToXML = () => {
     dispatch(actions.exportToXML());
@@ -46,10 +50,10 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
         <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} size='large' onClick={openFileInputForm} />
       </li>
       <li>
-        <Button buttonId={ButtonID.CopyProof} icon={Icon.Copy} size='large' onClick={onCopySteps} />
+        <Button buttonId={ButtonID.CopyProof} icon={Icon.Copy} size='large' onClick={onCopySteps} isDisabled={isCopyDisabled} />
       </li>
       <li>
-        <Button buttonId={ButtonID.PasteProof} icon={Icon.Paste} size='large' onClick={onPasteSteps} />
+        <Button buttonId={ButtonID.PasteProof} icon={Icon.Paste} size='large' onClick={onPasteSteps} isDisabled={isPasteDisabled} />
       </li>
     </>
   );

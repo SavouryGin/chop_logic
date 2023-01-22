@@ -102,6 +102,8 @@ export const propositionsNPSelectors = {
   getTableDataLength,
   getSelectedIds,
   getDependentItems,
+  getError,
+  getClipboardData,
   getIsPremiseOpened,
   getIsShortcutOpened,
   getIsAssumptionOpened,
@@ -118,6 +120,4 @@ export const propositionsNPSelectors = {
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
   getIsLoading,
-  getError,
-  getClipboardData,
 };
