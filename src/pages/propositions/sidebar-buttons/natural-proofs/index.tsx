@@ -28,11 +28,11 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onCopySteps = () => {
-    dispatch(actions.copySubProof());
+    dispatch(actions.copySubProof({ items: selectedItems }));
   };
 
   const onPasteSteps = () => {
-    dispatch(actions.pasteSubProof);
+    dispatch(actions.pasteSubProof());
   };
 
   return (

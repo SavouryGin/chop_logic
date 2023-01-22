@@ -185,8 +185,8 @@ export const propositionsNPSlice = createSlice({
       return state;
     },
 
-    copySubProof: (state, _action: PayloadAction) => {
-      return state;
+    copySubProof: (state, action: PayloadAction<{ items: NaturalProofsTableItem[] }>) => {
+      state.clipboardData = action.payload.items;
     },
 
     pasteSubProof: (state, _action: PayloadAction) => {
