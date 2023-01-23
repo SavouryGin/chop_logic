@@ -188,6 +188,12 @@ export const propositionsDPSlice = createSlice({
       state.clipboardData = action.payload.items;
     },
 
+    cutSubProof: (state, action: PayloadAction<{ items: DirectProofsTableItem[] }>) => {
+      state.clipboardData = action.payload.items;
+      state.tableData = { ...state.tableData.filter((item) => !state.selectedIds.includes(item.id)) };
+      state.selectedIds = [];
+    },
+
     pasteSubProof: (state, _action: PayloadAction) => {
       return state;
     },
