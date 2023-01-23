@@ -126,4 +126,8 @@ export const buttonTexts: ButtonText = {
     title: { en: 'Paste the copied proof steps', ru: 'Вставить выделенные шаги доказательства' },
     innerText: { en: 'Paste', ru: 'Вставить' },
   },
+  [ButtonID.CutProof]: {
+    title: { en: 'Cut the copied proof steps', ru: 'Вырезать выделенные шаги доказательства' },
+    innerText: { en: 'Cut', ru: 'Вырезать' },
+  },
 };

@@ -32,4 +32,5 @@ export enum ButtonID {
   ImportXML,
   CopyProof,
   PasteProof,
+  CutProof,
 }
