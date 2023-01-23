@@ -18,6 +18,7 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   const isExportToXMLDisabled = !tableDataLength;
   const isCopyDisabled = !selectedItems.length;
   const isPasteDisabled = !clipboardItems.length;
+  const isCutDisabled = !selectedItems.length;
 
   const onClickExportToXML = () => {
     dispatch(actions.exportToXML());
@@ -33,6 +34,10 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
 
   const onPasteSteps = () => {
     dispatch(actions.pasteSubProof());
+  };
+
+  const onCutSteps = () => {
+    dispatch(actions.cutSubProof({ items: selectedItems }));
   };
 
   return (
@@ -51,6 +56,9 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
       </li>
       <li>
         <Button buttonId={ButtonID.CopyProof} icon={Icon.Copy} size='large' onClick={onCopySteps} isDisabled={isCopyDisabled} />
+      </li>
+      <li>
+        <Button buttonId={ButtonID.CutProof} icon={Icon.Cut} size='large' onClick={onCutSteps} isDisabled={isCutDisabled} />
       </li>
       <li>
         <Button buttonId={ButtonID.PasteProof} icon={Icon.Paste} size='large' onClick={onPasteSteps} isDisabled={isPasteDisabled} />
