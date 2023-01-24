@@ -185,7 +185,10 @@ export const propositionsDPSlice = createSlice({
     },
 
     copySubProof: (state, _action: PayloadAction) => {
-      return state;
+      const { selectedIds, tableData } = state;
+      const selectedItems = tableData.filter((item) => selectedIds.includes(item.id));
+
+      state.clipboardData = selectedItems;
     },
 
     cutSubProof: (state, _action: PayloadAction) => {
