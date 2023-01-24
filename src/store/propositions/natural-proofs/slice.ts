@@ -185,14 +185,12 @@ export const propositionsNPSlice = createSlice({
       return state;
     },
 
-    copySubProof: (state, action: PayloadAction<{ items: NaturalProofsTableItem[] }>) => {
-      state.clipboardData = action.payload.items;
+    copySubProof: (state, _action: PayloadAction) => {
+      return state;
     },
 
-    cutSubProof: (state, action: PayloadAction<{ items: NaturalProofsTableItem[] }>) => {
-      state.clipboardData = action.payload.items;
-      state.tableData = { ...state.tableData.filter((item) => !state.selectedIds.includes(item.id)) };
-      state.selectedIds = [];
+    cutSubProof: (state, _action: PayloadAction) => {
+      return state;
     },
 
     pasteSubProof: (state, _action: PayloadAction) => {

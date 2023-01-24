@@ -9,17 +9,17 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
   const dispatch = useAppDispatch();
   const tableDataLength = useAppSelector(selectors.getTableDataLength);
-  const selectedItems = useAppSelector(selectors.getSelectedTableItems);
-  const clipboardItems = useAppSelector(selectors.getClipboardData);
+  const selectedIds = useAppSelector(selectors.getSelectedIds);
+  const clipboardData = useAppSelector(selectors.getClipboardData);
 
   if (!isVisible) {
     return null;
   }
 
   const isExportToXMLDisabled = !tableDataLength;
-  const isCopyDisabled = !selectedItems.length;
-  const isPasteDisabled = !clipboardItems.length;
-  const isCutDisabled = !selectedItems.length;
+  const isCopyDisabled = !selectedIds.length;
+  const isPasteDisabled = !clipboardData.length;
+  const isCutDisabled = !selectedIds.length;
 
   const onClickExportToXML = () => {
     dispatch(actions.exportToXML());
@@ -30,7 +30,7 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onCopySteps = () => {
-    dispatch(actions.copySubProof({ items: selectedItems }));
+    dispatch(actions.copySubProof());
   };
 
   const onPasteSteps = () => {
@@ -38,7 +38,7 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onCutSteps = () => {
-    dispatch(actions.cutSubProof({ items: selectedItems }));
+    dispatch(actions.cutSubProof());
   };
 
   return (
