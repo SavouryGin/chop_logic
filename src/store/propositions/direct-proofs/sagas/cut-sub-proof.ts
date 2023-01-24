@@ -8,9 +8,8 @@ export function* cutSubProofDPWatcher(): Generator {
 }
 
 export function* cutSubProofDPSaga(): SagaIterator {
-  yield put(actions.setUpFlag({ flag: 'isLoading', value: true }));
   try {
-    console.log('cut saga');
+    console.log('cutSubProofDPSaga');
   } catch (error: unknown) {
     yield put(actions.setError(errorsTexts.generalError));
   }

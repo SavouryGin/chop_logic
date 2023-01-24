@@ -3,11 +3,11 @@ import { propositionsDPActions as actions } from 'store/propositions/direct-proo
 import { errorsTexts } from 'texts';
 import { put, takeEvery } from 'redux-saga/effects';
 
-export function* pasteSubProofDPWatcher(): Generator {
-  yield takeEvery(actions.pasteSubProof, pasteSubProofDPSaga);
+export function* pasteSubProofNPWatcher(): Generator {
+  yield takeEvery(actions.pasteSubProof, pasteSubProofNPSaga);
 }
 
-export function* pasteSubProofDPSaga(): SagaIterator {
+export function* pasteSubProofNPSaga(): SagaIterator {
   try {
     console.log('pasteSubProofDPSaga');
   } catch (error: unknown) {
