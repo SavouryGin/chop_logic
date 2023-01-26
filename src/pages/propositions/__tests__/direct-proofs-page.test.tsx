@@ -6,7 +6,7 @@ import { propositionsDPInitialState } from 'store/propositions/direct-proofs/ini
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 import { titles } from 'texts/propositions';
 
 describe('Direct Proofs page tests:', () => {

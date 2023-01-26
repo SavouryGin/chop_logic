@@ -4,7 +4,7 @@ import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('NotFoundPage component:', () => {
   const mockedReducer = combineReducers({

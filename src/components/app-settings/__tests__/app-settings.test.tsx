@@ -5,7 +5,7 @@ import { buttonTexts, inputTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { languageOptions } from 'presets/settings';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 import AppSettings from '../index';
 

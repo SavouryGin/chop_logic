@@ -8,7 +8,7 @@ import { propositionsNPInitialState } from 'store/propositions/natural-proofs/in
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
 import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 import { titles } from 'texts/propositions';
 
 describe('Natural Proofs page tests:', () => {

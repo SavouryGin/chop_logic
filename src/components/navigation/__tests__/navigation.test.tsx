@@ -5,7 +5,7 @@ import { Page } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { routesMap } from 'router/map';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Navigation component:', () => {
   const testProps = {

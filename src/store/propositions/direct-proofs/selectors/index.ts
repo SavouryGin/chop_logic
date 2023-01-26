@@ -1,4 +1,4 @@
-import { DirectProofsTableItem, PropositionsDirectProofsFlags } from './interfaces';
+import { DirectProofsTableItem, PropositionsDirectProofsFlags } from '../interfaces';
 import { LocalText, PropositionalFormula, RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 

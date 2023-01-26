@@ -6,7 +6,7 @@ import { ButtonID } from 'enums';
 import { buttonTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen, waitFor } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 import { testText } from '__mocks__/data/texts';
 
 const mockedReducer = combineReducers({

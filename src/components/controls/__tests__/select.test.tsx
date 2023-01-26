@@ -5,7 +5,7 @@ import { InputID } from 'enums';
 import { SelectEntity } from 'types';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 import Select from 'components/controls/select';
 

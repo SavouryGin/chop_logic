@@ -1,5 +1,5 @@
 import propositionsTableItems from '__mocks__/data/propositions/table-items';
-import { findDependentDPItemsToDelete, findDependentNPItemsToDelete } from 'store/propositions/helpers';
+import { findDependentDPItemsToDelete, findDependentNPItemsToDelete } from 'logic/propositions/helpers';
 
 describe('Propositions store helpers tests', () => {
   it('findDependentDPItemsToDelete() test', () => {
