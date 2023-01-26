@@ -3,7 +3,6 @@ import React from 'react';
 import { ButtonID, Icon } from 'enums';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
-
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
