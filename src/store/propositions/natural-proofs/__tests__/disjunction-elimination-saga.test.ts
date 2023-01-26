@@ -1,5 +1,5 @@
 import mocks from '__mocks__/data/propositions/table-items';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { disjunctionEliminationSaga, disjunctionEliminationWatcher } from '../sagas/disjunction-elimination';
 import { errorsTexts } from 'texts';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';

@@ -1,7 +1,7 @@
 import Button from 'components/controls/button';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 

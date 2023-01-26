@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'pages/propositions/constants';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { fillerText } from 'texts/propositions';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';

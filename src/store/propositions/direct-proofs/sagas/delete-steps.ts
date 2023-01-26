@@ -1,6 +1,6 @@
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { errorsTexts } from 'texts';
 import { findDependentDPItemsToDelete, removeSelectedItemsFromTable, updateDPTableComments } from 'store/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';

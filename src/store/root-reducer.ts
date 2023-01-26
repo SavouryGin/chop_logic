@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsDPSlice } from './propositions/direct-proofs/slice';
-import { propositionsNPSlice } from './propositions/natural-proofs/slice';
+import { propositionsDPSlice } from './propositions/direct-proofs';
+import { propositionsNPSlice } from './propositions/natural-proofs';
 import { settingsSlice } from './settings/slice';
 
 const rootReducer = combineReducers({
