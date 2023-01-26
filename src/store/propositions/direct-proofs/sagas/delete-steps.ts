@@ -2,7 +2,7 @@ import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfac
 import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { errorsTexts } from 'texts';
-import { findDependentDPItemsToDelete, removeSelectedItemsFromTable, updateDPTableComments } from 'store/propositions/helpers';
+import { findDependentDPItemsToDelete, removeSelectedItemsFromTable, updateDPTableComments } from 'logic/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 

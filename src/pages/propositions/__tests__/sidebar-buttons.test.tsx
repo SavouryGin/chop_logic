@@ -7,7 +7,7 @@ import { propositionsDPInitialState } from 'store/propositions/direct-proofs/ini
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 const mockedReducer = combineReducers({
   settings: settingsSlice.reducer,

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { InputID } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 import TextInput from 'components/controls/text-input';
 

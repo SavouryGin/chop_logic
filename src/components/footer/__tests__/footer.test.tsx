@@ -5,7 +5,7 @@ import { Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { externalLinks } from 'presets/settings';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Footer component:', () => {
   const testProps = {

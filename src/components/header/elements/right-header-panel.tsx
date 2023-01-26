@@ -3,7 +3,7 @@ import Button from 'components/controls/button';
 import ModalWindow from 'components/modal-window';
 import React, { useCallback, useEffect } from 'react';
 import { ButtonID, Icon } from 'enums';
-import { settingsActions } from 'store/settings/slice';
+import { settingsActions } from 'store/settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'texts';

@@ -1,5 +1,5 @@
 import { LocalText, PropositionalFormula, RootState } from 'types';
-import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from './interfaces';
+import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from '../interfaces';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
