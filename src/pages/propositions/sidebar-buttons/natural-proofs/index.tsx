@@ -1,7 +1,7 @@
 import Button from 'components/controls/button';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 

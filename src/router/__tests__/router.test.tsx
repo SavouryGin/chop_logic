@@ -6,7 +6,7 @@ import { buttonTexts } from 'texts';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
-import { propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings/slice';
 
 describe('AppRouter test:', () => {

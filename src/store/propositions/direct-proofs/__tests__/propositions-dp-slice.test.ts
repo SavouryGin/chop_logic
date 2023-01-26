@@ -1,5 +1,5 @@
 import mocks from '__mocks__/data/propositions/table-items';
-import { propositionsDPActions as actions, propositionsDPSlice as slice } from '../slice';
+import { propositionsDPActions as actions, propositionsDPSlice as slice } from '..';
 import { errorsTexts } from 'texts';
 import { propositionsDPInitialState as state } from '../initial-state';
 
