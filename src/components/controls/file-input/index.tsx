@@ -55,6 +55,7 @@ const FileInput = ({
       <Label text={labelText} id={calculatedId} isRequired={isRequired} isDarkMode={isDarkMode} />
       <input
         type='file'
+        role='button'
         id={calculatedId}
         placeholder={placeholderText}
         className={fieldClassNames}
