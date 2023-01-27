@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner tests: should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="spinner__wrapper"
+  >
+    <div
+      class="spinner"
+    >
+      <div
+        class="spinner__center"
+        style="background: rgb(249, 110, 103);"
+      />
+      <div
+        class="spinner__inner-spin"
+      >
+        <div
+          class="spinner__inner-arc spinner__inner-arc_start-a"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__inner-arc spinner__inner-arc_end-a"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__inner-arc spinner__inner-arc_start-b"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__inner-arc spinner__inner-arc_end-b"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__inner-moon-a"
+          style="background: rgb(249, 110, 103);"
+        />
+        <div
+          class="spinner__inner-moon-b"
+          style="background: rgb(249, 110, 103);"
+        />
+      </div>
+      <div
+        class="spinner__outer-spin"
+      >
+        <div
+          class="spinner__outer-arc spinner__outer-arc_start-a"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__outer-arc spinner__outer-arc_end-a"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__outer-arc spinner__outer-arc_start-b"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__outer-arc spinner__outer-arc_end-b"
+          style="border-color: #f96e67;"
+        />
+        <div
+          class="spinner__outer-moon-a"
+          style="background: rgb(249, 110, 103);"
+        />
+        <div
+          class="spinner__outer-moon-b"
+          style="background: rgb(249, 110, 103);"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
