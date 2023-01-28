@@ -85,4 +85,9 @@ describe('Checkbox component:', () => {
     await userEvent.tab();
     expect(mockFocus).toHaveBeenCalledTimes(1);
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Checkbox {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

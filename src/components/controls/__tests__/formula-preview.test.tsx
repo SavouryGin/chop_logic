@@ -4,7 +4,6 @@ import propositionsFormulasItems from '__mocks__/data/propositions/formulas-item
 import propositionsTableItems from '__mocks__/data/propositions/table-items';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('FormulaPreview component:', () => {
@@ -17,7 +16,6 @@ describe('FormulaPreview component:', () => {
   };
 
   it('should render the formula preview', () => {
-    screen.debug();
     const { asFragment } = renderWithRedux(
       <FormulaPreview preview={propositionsFormulasItems.propositionalExpression} />,
       mockedReducer,
@@ -27,7 +25,6 @@ describe('FormulaPreview component:', () => {
   });
 
   it('should render the error message', () => {
-    screen.debug();
     const { asFragment } = renderWithRedux(<FormulaPreview preview={propositionsTableItems.error} />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
