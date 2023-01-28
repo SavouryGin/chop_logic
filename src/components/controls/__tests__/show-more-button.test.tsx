@@ -36,17 +36,21 @@ describe('ShowMoreButton component:', () => {
   });
 
   it('fires the onClick handler', async () => {
-    const onClick = jest.fn();
-    renderWithRedux(<ShowMoreButton {...testProps} onClick={onClick} />, mockedReducer, mockedState);
+    renderWithRedux(<ShowMoreButton {...testProps} />, mockedReducer, mockedState);
     const btn = screen.getByRole('button');
     await userEvent.click(btn);
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(testProps.onClick).toHaveBeenCalledTimes(1);
     await userEvent.dblClick(btn);
-    expect(onClick).toHaveBeenCalledTimes(3);
+    expect(testProps.onClick).toHaveBeenCalledTimes(3);
   });
 
   it('could be disabled', () => {
     renderWithRedux(<ShowMoreButton {...testProps} isDisabled={true} />, mockedReducer, mockedState);
     expect(screen.getByRole('button')).toBeDisabled();
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<ShowMoreButton {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

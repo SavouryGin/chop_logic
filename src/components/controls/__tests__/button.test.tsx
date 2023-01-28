@@ -67,4 +67,9 @@ describe('Button component:', () => {
     renderWithRedux(<Button {...testProps} text='Test' />, mockedReducer, mockedState);
     expect(screen.getByText('Test')).toHaveClass(testProps.icon);
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Button {...testProps} text='Test' />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
