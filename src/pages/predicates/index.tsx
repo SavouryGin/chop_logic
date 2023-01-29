@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Predicates = () => {
+const Predicates = (): React.ReactElement => {
   return <div className='predicates'>Predicates</div>;
 };
 

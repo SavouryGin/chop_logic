@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FallbackPage = () => {
+const FallbackPage = (): React.ReactElement => {
   return <div className='fallback-page'>Loading...</div>;
 };
 
