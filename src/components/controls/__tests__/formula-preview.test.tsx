@@ -7,13 +7,8 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('FormulaPreview component:', () => {
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   it('should render the formula preview', () => {
     const { asFragment } = renderWithRedux(

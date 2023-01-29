@@ -6,15 +6,10 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
-
 describe('Header component:', () => {
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   beforeEach(() => {
     renderWithRedux(<Header />, mockedReducer, mockedState);
   });

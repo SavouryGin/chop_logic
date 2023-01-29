@@ -1,4 +1,5 @@
 import React from 'react';
+import Select from 'components/controls/select';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import userEvent from '@testing-library/user-event';
 import { InputID } from 'enums';
@@ -7,30 +8,23 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
-import Select from 'components/controls/select';
-
-const testSelectOptions: SelectEntity[] = [
-  { option: { en: 'One', ru: 'Один' }, value: 1, add: 123 },
-  { option: { en: 'Two', ru: 'Два' }, value: 2, asdf: 'asdf' },
-  { option: { en: 'Three', ru: 'Три' }, value: 3, asdf: {} },
-];
-
-const testProps = {
-  name: 'test input',
-  label: 'test label',
-  inputId: InputID.LanguageSelect,
-  options: testSelectOptions,
-};
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
-
 describe('Select component:', () => {
+  const testSelectOptions: SelectEntity[] = [
+    { option: { en: 'One', ru: 'Один' }, value: 1, add: 123 },
+    { option: { en: 'Two', ru: 'Два' }, value: 2, asdf: 'asdf' },
+    { option: { en: 'Three', ru: 'Три' }, value: 3, asdf: {} },
+  ];
+
+  const testProps = {
+    name: 'test input',
+    label: 'test label',
+    inputId: InputID.LanguageSelect,
+    options: testSelectOptions,
+  };
+
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   it('renders the select element with default props', () => {
     renderWithRedux(<Select {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('combobox');

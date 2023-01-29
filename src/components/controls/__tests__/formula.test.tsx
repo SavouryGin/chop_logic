@@ -11,13 +11,8 @@ describe('Formula component:', () => {
     level: 1,
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   it('should match the snapshot', () => {
     const { asFragment } = renderWithRedux(<Formula {...testProps} />, mockedReducer, mockedState);

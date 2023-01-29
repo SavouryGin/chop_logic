@@ -13,13 +13,8 @@ describe('Navigation component:', () => {
     isOpened: true,
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   beforeEach(() => {
     renderWithRedux(<Navigation {...testProps} />, mockedReducer, mockedState);

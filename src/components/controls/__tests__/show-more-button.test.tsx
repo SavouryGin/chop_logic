@@ -12,13 +12,8 @@ describe('ShowMoreButton component:', () => {
     isOpened: true,
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   it('renders the button element with the default type', () => {
     renderWithRedux(<ShowMoreButton {...testProps} />, mockedReducer, mockedState);

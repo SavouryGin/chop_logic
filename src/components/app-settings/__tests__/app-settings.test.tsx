@@ -1,3 +1,4 @@
+import AppSettings from '../index';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { ButtonID, InputID } from 'enums';
@@ -7,17 +8,10 @@ import { fireEvent, screen } from '@testing-library/react';
 import { languageOptions } from 'presets/settings';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
-import AppSettings from '../index';
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
-
 describe('AppSettings tests:', () => {
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   beforeEach(() => {
     renderWithRedux(<AppSettings className={'test-class'} />, mockedReducer, mockedState);
   });

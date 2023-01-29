@@ -11,19 +11,19 @@ import { propositionsNPInitialState } from 'store/propositions/natural-proofs/in
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-  propositionsDP: propositionsDPSlice.reducer,
-  propositionsNP: propositionsNPSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-  propositionsDP: propositionsDPInitialState,
-  propositionsNP: propositionsNPInitialState,
-};
-
 describe('Layout component:', () => {
+  const mockedReducer = combineReducers({
+    settings: settingsSlice.reducer,
+    propositionsDP: propositionsDPSlice.reducer,
+    propositionsNP: propositionsNPSlice.reducer,
+  });
+
+  const mockedState = {
+    settings: settingsInitialState,
+    propositionsDP: propositionsDPInitialState,
+    propositionsNP: propositionsNPInitialState,
+  };
+
   beforeEach(() => {
     renderWithRedux(<Layout />, mockedReducer, mockedState);
   });
