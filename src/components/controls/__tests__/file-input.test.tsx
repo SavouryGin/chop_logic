@@ -17,13 +17,8 @@ describe('FileInput component:', () => {
     accept: FileAcceptType.Text,
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   it('renders the input element with default props', () => {
     renderWithRedux(<FileInput {...testProps} />, mockedReducer, mockedState);

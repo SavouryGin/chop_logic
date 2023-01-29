@@ -12,13 +12,8 @@ describe('ErrorPopup component:', () => {
     onClose: jest.fn(),
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   beforeEach(() => {
     renderWithRedux(<ErrorPopup {...testProps} />, mockedReducer, mockedState);

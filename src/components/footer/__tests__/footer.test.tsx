@@ -13,13 +13,8 @@ describe('Footer component:', () => {
     isDarkMode: false,
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   beforeEach(() => {
     renderWithRedux(<Footer {...testProps} />, mockedReducer, mockedState);
