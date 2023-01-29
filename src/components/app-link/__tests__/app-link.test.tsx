@@ -42,4 +42,9 @@ describe('AppLink component:', () => {
   it('contains all necessary class names', () => {
     expect(screen.getByTestId('app-link')).toHaveClass('app-link', testProps.className);
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<AppLink {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
