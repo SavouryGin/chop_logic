@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppSettings tests: should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="settings test-class"
+    data-testid="settings"
+  >
+    <form
+      action="/"
+      aria-label="form"
+      class="form"
+    >
+      <div
+        class="select"
+      >
+        <select
+          class="select__field"
+          id="select_id_1"
+          name="language"
+        >
+          <option
+            value="en"
+          >
+            English
+          </option>
+          <option
+            value="ru"
+          >
+            Russian
+          </option>
+        </select>
+        <label
+          class="label select__label"
+          data-testid="label-test-id"
+          for="select_id_1"
+        >
+          <span
+            class="label__text"
+          >
+            Language
+          </span>
+        </label>
+      </div>
+      <div
+        class="checkbox-input"
+      >
+        <input
+          class="checkbox-input__default"
+          id="checkbox_id_2"
+          name="isDarkMode"
+          type="checkbox"
+        />
+        <label
+          class="label checkbox-input__label chop-icon__checkbox-unchecked"
+          data-testid="label-test-id"
+          for="checkbox_id_2"
+        >
+          <span
+            class="label__text"
+          >
+            Dark Mode
+          </span>
+        </label>
+      </div>
+      <div
+        class="checkbox-input"
+      >
+        <input
+          class="checkbox-input__default"
+          id="checkbox_id_3"
+          name="isSoundsEnabled"
+          type="checkbox"
+        />
+        <label
+          class="label checkbox-input__label chop-icon__checkbox-unchecked"
+          data-testid="label-test-id"
+          for="checkbox_id_3"
+        >
+          <span
+            class="label__text"
+          >
+            Sounds
+          </span>
+        </label>
+      </div>
+      <button
+        class="button button_large"
+        id="button_id_7"
+        title="Apply"
+        type="submit"
+      >
+        <span
+          class="button__shadow"
+        />
+        <span
+          class="button__edge"
+        />
+        <span
+          class="button__front chop-icon__check"
+          data-testid="button_id_7"
+        >
+          Apply
+        </span>
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

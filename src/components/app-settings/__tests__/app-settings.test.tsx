@@ -55,4 +55,9 @@ describe('AppSettings tests:', () => {
     expect(applyBtn).toHaveProperty('type', 'submit');
     expect(applyBtn).toHaveTextContent('Apply');
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<AppSettings className={'test-class'} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

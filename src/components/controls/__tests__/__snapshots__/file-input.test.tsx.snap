@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileInput component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="file-input"
+  >
+    <label
+      class="label"
+      data-testid="label-test-id"
+      for="text_input_id_0"
+    >
+      <span
+        class="label__text"
+      >
+        test label
+      </span>
+    </label>
+    <input
+      accept="text/plain"
+      class="file-input__field"
+      id="text_input_id_0"
+      role="button"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
