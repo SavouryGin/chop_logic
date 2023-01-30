@@ -52,4 +52,9 @@ describe('FileInput component:', () => {
     await userEvent.tab();
     expect(input).toHaveFocus();
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<FileInput {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

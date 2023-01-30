@@ -95,4 +95,9 @@ describe('Select component:', () => {
     await userEvent.tab();
     expect(mockFocus).toHaveBeenCalledTimes(1);
   });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Select {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
