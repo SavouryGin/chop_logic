@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar tests: should match the snapshot 1`] = `
+<DocumentFragment>
+  <aside
+    class="sidebar"
+  >
+    <ul
+      class="sidebar__list"
+    >
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_29"
+          title="Export proof in XML"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__download"
+            data-testid="button_id_29"
+          >
+            Export XML
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large"
+          id="button_id_30"
+          title="Import proof from XML"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__upload"
+            data-testid="button_id_30"
+          >
+            Import XML
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_31"
+          title="Copy the selected proof steps"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__copy"
+            data-testid="button_id_31"
+          >
+            Copy
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_33"
+          title="Cut the copied proof steps"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__scissors"
+            data-testid="button_id_33"
+          >
+            Cut
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_32"
+          title="Paste the copied proof steps"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__paste"
+            data-testid="button_id_32"
+          >
+            Paste
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_29"
+          title="Export proof in XML"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__download"
+            data-testid="button_id_29"
+          >
+            Export XML
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large"
+          id="button_id_30"
+          title="Import proof from XML"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__upload"
+            data-testid="button_id_30"
+          >
+            Import XML
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_31"
+          title="Copy the selected proof steps"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__copy"
+            data-testid="button_id_31"
+          >
+            Copy
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_33"
+          title="Cut the copied proof steps"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__scissors"
+            data-testid="button_id_33"
+          >
+            Cut
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="button button_large button_disabled"
+          disabled=""
+          id="button_id_32"
+          title="Paste the copied proof steps"
+          type="button"
+        >
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__paste"
+            data-testid="button_id_32"
+          >
+            Paste
+          </span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+</DocumentFragment>
+`;
