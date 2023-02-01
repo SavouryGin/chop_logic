@@ -27,6 +27,10 @@ export const propositionsNPSlice = createSlice({
       state.tableData = action.payload;
     },
 
+    setClipboardData: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
+      state.clipboardData = action.payload;
+    },
+
     addPremise: (state, action: PayloadAction<string>) => {
       const rawInput = action.payload;
       const expression = converter.convertStringToExpression(rawInput);
