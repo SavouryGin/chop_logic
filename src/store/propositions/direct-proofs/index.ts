@@ -28,6 +28,10 @@ export const propositionsDPSlice = createSlice({
       state.tableData = action.payload;
     },
 
+    setClipboardData: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
+      state.clipboardData = action.payload;
+    },
+
     setDependentItems: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
       state.dependentItems = action.payload;
     },
