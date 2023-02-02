@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { errorsTexts } from 'texts';
 import { put, takeEvery } from 'redux-saga/effects';
 
