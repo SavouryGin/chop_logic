@@ -11,9 +11,12 @@ export function* pasteSubProofDPWatcher(): Generator {
 
 export function* pasteSubProofDPSaga(): SagaIterator {
   try {
-    console.log('pasteSubProofDPSaga');
+    const tableItems: DirectProofsTableItem[] = yield select(selectors.getTableData);
     const clipboardData: DirectProofsTableItem[] = yield select(selectors.getClipboardData);
-    console.log('clipboardData', clipboardData);
+    const mergedData = [...tableItems, ...clipboardData].map((item, index) => ({ ...item, step: index + 1 }));
+
+    yield put(actions.setTableData(mergedData));
+    yield put(actions.setClipboardData([]));
   } catch (error: unknown) {
     yield put(actions.setError(errorsTexts.generalError));
   }
