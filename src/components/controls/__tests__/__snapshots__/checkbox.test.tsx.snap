@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox-input"
+  >
+    <input
+      class="checkbox-input__default"
+      id="checkbox_id_2"
+      name="test checkbox"
+      type="checkbox"
+    />
+    <label
+      class="label checkbox-input__label chop-icon__checkbox-unchecked"
+      data-testid="label-test-id"
+      for="checkbox_id_2"
+    >
+      <span
+        class="label__text"
+      >
+        Dark Mode
+      </span>
+    </label>
+  </div>
+</DocumentFragment>
+`;

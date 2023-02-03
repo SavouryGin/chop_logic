@@ -1,6 +1,6 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import { NPFormulaBase } from 'enums';
-import { propositionsNPActions as actions, propositionsNPSlice as slice } from '../slice';
+import { propositionsNPActions as actions, propositionsNPSlice as slice } from '..';
 import { errorsTexts } from 'texts';
 import { propositionsNPInitialState as state } from '../initial-state';
 

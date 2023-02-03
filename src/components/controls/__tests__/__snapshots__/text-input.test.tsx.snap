@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text input component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="text-input"
+  >
+    <label
+      class="label"
+      data-testid="label-test-id"
+      for="text_input_id_0"
+    >
+      <span
+        class="label__text"
+      >
+        test label
+      </span>
+    </label>
+    <input
+      autocomplete="off"
+      class="text-input__field"
+      id="text_input_id_0"
+      name="test input"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;

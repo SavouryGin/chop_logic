@@ -3,7 +3,7 @@ import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { TabListProps } from 'types';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 import { testTabs } from '__mocks__/data/tablist';
 
 import TabList from 'components/tab-list';

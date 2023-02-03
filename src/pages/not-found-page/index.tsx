@@ -4,7 +4,7 @@ import { Icon, Page } from 'enums';
 import { paths } from 'router/paths';
 import './styles.scss';
 
-const NotFoundPage = () => {
+const NotFoundPage = (): React.ReactElement => {
   return (
     <div className='not-found-page' data-testid='not-found-page'>
       <h2 className='not-found-page__header'>404 Page not found</h2>

@@ -10,11 +10,15 @@ import { useAppSelector, useMount } from 'hooks';
 import { useMatch } from 'react-router';
 import './styles.scss';
 
-const Sidebar = ({ className, isOpened }: CommonProps & { isOpened: boolean }): React.ReactElement | null => {
+const Sidebar = ({
+  className,
+  isOpened,
+  isAllButtonsVisible,
+}: CommonProps & { isOpened: boolean; isAllButtonsVisible?: boolean }): React.ReactElement | null => {
   const isMounted = useMount(isOpened);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isNPButtonsVisible = !!useMatch(paths[Page.PropositionsNaturalProofs]);
-  const isDPButtonsVisible = !!useMatch(paths[Page.PropositionsDirectProofs]);
+  const isNPButtonsVisible = !!useMatch(paths[Page.PropositionsNaturalProofs]) || !!isAllButtonsVisible;
+  const isDPButtonsVisible = !!useMatch(paths[Page.PropositionsDirectProofs]) || !!isAllButtonsVisible;
 
   if (!isMounted) {
     return null;

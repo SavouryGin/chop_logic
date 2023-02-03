@@ -8,7 +8,7 @@ import { titles } from 'texts/propositions';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const PropositionsNaturalProofs = () => {
+const PropositionsNaturalProofs = (): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   return (

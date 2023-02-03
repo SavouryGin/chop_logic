@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppLink component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class="app-link test-class-name"
+    data-testid="app-link"
+  >
+    <a
+      class="chop-icon__check"
+      href="/test"
+    >
+      Test text
+    </a>
+  </span>
+</DocumentFragment>
+`;

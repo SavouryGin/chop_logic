@@ -27,6 +27,10 @@ export const propositionsNPSlice = createSlice({
       state.tableData = action.payload;
     },
 
+    setClipboardData: (state, action: PayloadAction<NaturalProofsTableItem[]>) => {
+      state.clipboardData = action.payload;
+    },
+
     addPremise: (state, action: PayloadAction<string>) => {
       const rawInput = action.payload;
       const expression = converter.convertStringToExpression(rawInput);
@@ -182,6 +186,21 @@ export const propositionsNPSlice = createSlice({
     },
 
     importFromXML: (state, _action: PayloadAction<{ file: File }>) => {
+      return state;
+    },
+
+    copySubProof: (state, _action: PayloadAction) => {
+      const { selectedIds, tableData } = state;
+      const selectedItems = tableData.filter((item) => selectedIds.includes(item.id));
+
+      state.clipboardData = selectedItems.map((item) => ({ ...item, id: crypto.randomUUID() }));
+    },
+
+    cutSubProof: (state, _action: PayloadAction) => {
+      return state;
+    },
+
+    pasteSubProof: (state, _action: PayloadAction) => {
       return state;
     },
   },

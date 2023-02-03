@@ -7,6 +7,7 @@ export interface PropositionsDirectProofsInitialState {
   selectedIds: string[];
   dependentItems: DirectProofsTableItem[];
   error: LocalText | null;
+  clipboardData: DirectProofsTableItem[];
 }
 
 export interface PropositionsDirectProofsFlags {

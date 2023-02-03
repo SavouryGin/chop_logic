@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Syllogisms = () => {
+const Syllogisms = (): React.ReactElement => {
   return <div className='syllogisms'>Syllogisms</div>;
 };
 

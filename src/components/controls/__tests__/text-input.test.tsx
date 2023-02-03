@@ -1,28 +1,22 @@
 import React from 'react';
+import TextInput from 'components/controls/text-input';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import userEvent from '@testing-library/user-event';
 import { InputID } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-
-import TextInput from 'components/controls/text-input';
-
-const testProps = {
-  name: 'test input',
-  label: 'test label',
-  inputId: InputID.DefaultInput,
-};
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Text input component:', () => {
+  const testProps = {
+    name: 'test input',
+    label: 'test label',
+    inputId: InputID.DefaultInput,
+  };
+
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   it('renders the textbox element with default props', () => {
     renderWithRedux(<TextInput {...testProps} />, mockedReducer, mockedState);
     const input = screen.getByRole('textbox');
@@ -95,5 +89,10 @@ describe('Text input component:', () => {
     renderWithRedux(<TextInput {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
     await userEvent.tab();
     expect(mockFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<TextInput {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

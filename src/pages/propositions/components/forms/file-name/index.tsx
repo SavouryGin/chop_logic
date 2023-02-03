@@ -4,8 +4,8 @@ import TextInput from 'components/controls/text-input';
 import regularExpressions from 'helpers/regular-expressions';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
-import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
+import { propositionsDPActions } from 'store/propositions/direct-proofs';
+import { propositionsNPActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch } from 'hooks';
 import './styles.scss';
 

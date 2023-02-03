@@ -6,22 +6,17 @@ import { ButtonID, Icon } from 'enums';
 import { buttonTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-
-const testProps = {
-  icon: Icon.Default,
-  buttonId: ButtonID.Cancel,
-};
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Button component:', () => {
+  const testProps = {
+    icon: Icon.Default,
+    buttonId: ButtonID.Cancel,
+  };
+
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   it('renders the button element with the default type', () => {
     renderWithRedux(<Button {...testProps} />, mockedReducer, mockedState);
     expect(screen.getByRole('button')).toBeInTheDocument();
@@ -66,5 +61,10 @@ describe('Button component:', () => {
   it('the text container has the icon class name', () => {
     renderWithRedux(<Button {...testProps} text='Test' />, mockedReducer, mockedState);
     expect(screen.getByText('Test')).toHaveClass(testProps.icon);
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Button {...testProps} text='Test' />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

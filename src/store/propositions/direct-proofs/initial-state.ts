@@ -16,4 +16,5 @@ export const propositionsDPInitialState: PropositionsDirectProofsInitialState = 
   selectedIds: [],
   dependentItems: [],
   error: null,
+  clipboardData: [],
 };
