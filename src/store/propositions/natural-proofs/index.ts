@@ -193,7 +193,7 @@ export const propositionsNPSlice = createSlice({
       const { selectedIds, tableData } = state;
       const selectedItems = tableData.filter((item) => selectedIds.includes(item.id));
 
-      state.clipboardData = selectedItems;
+      state.clipboardData = selectedItems.map((item) => ({ ...item, id: crypto.randomUUID() }));
     },
 
     cutSubProof: (state, _action: PayloadAction) => {
