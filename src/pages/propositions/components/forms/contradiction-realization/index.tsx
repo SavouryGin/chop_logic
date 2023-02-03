@@ -5,7 +5,7 @@ import TextInput from 'components/controls/text-input';
 import constants from 'pages/propositions/constants';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { formsTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';

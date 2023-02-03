@@ -1,7 +1,7 @@
 import executor from 'logic/propositions/executor';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { errorsTexts } from 'texts';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';

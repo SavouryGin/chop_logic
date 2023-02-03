@@ -1,5 +1,5 @@
 import { Language, RootState } from 'types';
-import { SettingsFlags } from './interfaces';
+import { SettingsFlags } from '../interfaces';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getSettingsFlags = (state: RootState): SettingsFlags => state.settings.flags;

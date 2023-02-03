@@ -1,5 +1,5 @@
 import { LocalText, PropositionalFormula, RootState } from 'types';
-import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from './interfaces';
+import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from '../interfaces';
 import { createSelector } from '@reduxjs/toolkit';
 
 const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
@@ -94,12 +94,16 @@ const getIsLoading = createSelector(getFlags, (data: PropositionsNaturalProofsFl
 
 const getError = (state: RootState): LocalText | null => state.propositionsDP.error;
 
+const getClipboardData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.clipboardData;
+
 export const propositionsNPSelectors = {
   getFlags,
   getTableData,
   getTableDataLength,
   getSelectedIds,
   getDependentItems,
+  getError,
+  getClipboardData,
   getIsPremiseOpened,
   getIsShortcutOpened,
   getIsAssumptionOpened,
@@ -116,5 +120,4 @@ export const propositionsNPSelectors = {
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
   getIsLoading,
-  getError,
 };

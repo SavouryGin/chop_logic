@@ -38,4 +38,7 @@ export enum Icon {
   SavePDF = 'chop-icon__file-pdf',
   ExportXML = 'chop-icon__download',
   ImportXML = 'chop-icon__upload',
+  Copy = 'chop-icon__copy',
+  Paste = 'chop-icon__paste',
+  Cut = 'chop-icon__scissors',
 }

@@ -118,4 +118,16 @@ export const buttonTexts: ButtonText = {
     title: { en: 'Import proof from XML', ru: 'Импортировать доказательство из XML' },
     innerText: { en: 'Import XML', ru: 'Импорт XML' },
   },
+  [ButtonID.CopyProof]: {
+    title: { en: 'Copy the selected proof steps', ru: 'Копировать выделенные шаги доказательства' },
+    innerText: { en: 'Copy', ru: 'Копировать' },
+  },
+  [ButtonID.PasteProof]: {
+    title: { en: 'Paste the copied proof steps', ru: 'Вставить выделенные шаги доказательства' },
+    innerText: { en: 'Paste', ru: 'Вставить' },
+  },
+  [ButtonID.CutProof]: {
+    title: { en: 'Cut the copied proof steps', ru: 'Вырезать выделенные шаги доказательства' },
+    innerText: { en: 'Cut', ru: 'Вырезать' },
+  },
 };

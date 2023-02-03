@@ -1,4 +1,4 @@
-import { DirectProofsTableItem, PropositionsDirectProofsFlags } from './interfaces';
+import { DirectProofsTableItem, PropositionsDirectProofsFlags } from '../interfaces';
 import { LocalText, PropositionalFormula, RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
@@ -57,6 +57,8 @@ const getSelectedTableItems = (state: RootState): DirectProofsTableItem[] => {
 
 const getIsLoading = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isLoading);
 
+const getClipboardData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.clipboardData;
+
 export const propositionsDPSelectors = {
   getFlags,
   getTableData,
@@ -65,6 +67,7 @@ export const propositionsDPSelectors = {
   getSelectedFormulas,
   getSelectedTableItems,
   getTableDataLength,
+  getClipboardData,
   getError,
   getIsPremiseOpened,
   getIsImplicationCreationOpened,

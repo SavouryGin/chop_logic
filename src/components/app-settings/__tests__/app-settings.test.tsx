@@ -1,3 +1,4 @@
+import AppSettings from '../index';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { ButtonID, InputID } from 'enums';
@@ -5,19 +6,12 @@ import { buttonTexts, inputTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { languageOptions } from 'presets/settings';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-
-import AppSettings from '../index';
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('AppSettings tests:', () => {
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   beforeEach(() => {
     renderWithRedux(<AppSettings className={'test-class'} />, mockedReducer, mockedState);
   });
@@ -60,5 +54,10 @@ describe('AppSettings tests:', () => {
     const applyBtn = screen.getByTitle(buttonTexts[ButtonID.Apply].title.en);
     expect(applyBtn).toHaveProperty('type', 'submit');
     expect(applyBtn).toHaveTextContent('Apply');
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<AppSettings className={'test-class'} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

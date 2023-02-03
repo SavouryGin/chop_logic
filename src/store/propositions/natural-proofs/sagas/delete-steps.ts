@@ -1,8 +1,8 @@
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { errorsTexts } from 'texts';
-import { findDependentNPItemsToDelete, removeSelectedItemsFromTable, updateNPTableComments } from 'store/propositions/helpers';
+import { findDependentNPItemsToDelete, removeSelectedItemsFromTable, updateNPTableComments } from 'logic/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 

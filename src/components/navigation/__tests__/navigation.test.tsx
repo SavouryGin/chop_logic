@@ -5,7 +5,7 @@ import { Page } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { routesMap } from 'router/map';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Navigation component:', () => {
   const testProps = {
@@ -13,13 +13,8 @@ describe('Navigation component:', () => {
     isOpened: true,
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   beforeEach(() => {
     renderWithRedux(<Navigation {...testProps} />, mockedReducer, mockedState);

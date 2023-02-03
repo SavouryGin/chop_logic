@@ -4,17 +4,12 @@ import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { ButtonID, Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Header component:', () => {
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   beforeEach(() => {
     renderWithRedux(<Header />, mockedReducer, mockedState);
   });

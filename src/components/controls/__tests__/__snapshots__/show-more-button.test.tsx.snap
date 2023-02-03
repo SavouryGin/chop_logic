@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowMoreButton component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="show-more-button chop-icon__caret-up"
+    data-testid="show-more-button"
+    type="button"
+  />
+</DocumentFragment>
+`;

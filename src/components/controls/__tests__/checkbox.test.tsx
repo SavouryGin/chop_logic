@@ -6,7 +6,7 @@ import { InputID } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { inputTexts } from 'texts';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Checkbox component:', () => {
   const testProps = {
@@ -14,13 +14,8 @@ describe('Checkbox component:', () => {
     inputId: InputID.isDarkModeCheckbox,
   };
 
-  const mockedReducer = combineReducers({
-    settings: settingsSlice.reducer,
-  });
-
-  const mockedState = {
-    settings: settingsInitialState,
-  };
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
 
   it('renders the checkbox input with default props', () => {
     renderWithRedux(<Checkbox {...testProps} />, mockedReducer, mockedState);
@@ -84,5 +79,10 @@ describe('Checkbox component:', () => {
     renderWithRedux(<Checkbox {...testProps} onFocus={mockFocus} />, mockedReducer, mockedState);
     await userEvent.tab();
     expect(mockFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<Checkbox {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -1,29 +1,23 @@
+import AppLink from '../index';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
-
-import AppLink from '../index';
-
-const testProps = {
-  path: '/test',
-  text: 'Test text',
-  icon: Icon.Default,
-  isNavigation: false,
-  className: 'test-class-name',
-};
-
-const mockedReducer = combineReducers({
-  settings: settingsSlice.reducer,
-});
-
-const mockedState = {
-  settings: settingsInitialState,
-};
+import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('AppLink component:', () => {
+  const testProps = {
+    path: '/test',
+    text: 'Test text',
+    icon: Icon.Default,
+    isNavigation: false,
+    className: 'test-class-name',
+  };
+
+  const mockedReducer = combineReducers({ settings: settingsSlice.reducer });
+  const mockedState = { settings: settingsInitialState };
+
   beforeEach(() => {
     renderWithRedux(<AppLink {...testProps} />, mockedReducer, mockedState);
   });
@@ -47,5 +41,10 @@ describe('AppLink component:', () => {
 
   it('contains all necessary class names', () => {
     expect(screen.getByTestId('app-link')).toHaveClass('app-link', testProps.className);
+  });
+
+  it('should match the snapshot', () => {
+    const { asFragment } = renderWithRedux(<AppLink {...testProps} />, mockedReducer, mockedState);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'pages/propositions/constants';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { fillerNaturalText } from 'texts';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';

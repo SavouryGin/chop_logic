@@ -3,12 +3,12 @@ import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
-import { propositionsDPSlice } from 'store/propositions/direct-proofs/slice';
+import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
-import { propositionsNPSlice } from 'store/propositions/natural-proofs/slice';
+import { propositionsNPSlice } from 'store/propositions/natural-proofs';
 import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
-import { settingsInitialState, settingsSlice } from 'store/settings/slice';
+import { settingsInitialState, settingsSlice } from 'store/settings';
 import { titles } from 'texts/propositions';
 
 describe('Natural Proofs page tests:', () => {

@@ -1,4 +1,4 @@
-import { settingsActions as actions, settingsSlice as slice, settingsInitialState as state } from '../slice';
+import { settingsActions as actions, settingsSlice as slice, settingsInitialState as state } from '..';
 
 describe('settingsSlice tests:', () => {
   it('should return the initial state', () => {

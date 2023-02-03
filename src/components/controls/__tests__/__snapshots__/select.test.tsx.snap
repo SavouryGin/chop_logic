@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select component: should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="select"
+  >
+    <select
+      class="select__field"
+      id="select_id_1"
+      name="test input"
+    >
+      <option
+        value="1"
+      >
+        One
+      </option>
+      <option
+        value="2"
+      >
+        Two
+      </option>
+      <option
+        value="3"
+      >
+        Three
+      </option>
+    </select>
+    <label
+      class="label select__label"
+      data-testid="label-test-id"
+      for="select_id_1"
+    >
+      <span
+        class="label__text"
+      >
+        test label
+      </span>
+    </label>
+  </div>
+</DocumentFragment>
+`;

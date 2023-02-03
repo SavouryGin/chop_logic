@@ -3,8 +3,8 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions } from 'store/propositions/direct-proofs/slice';
-import { propositionsNPActions } from 'store/propositions/natural-proofs/slice';
+import { propositionsDPActions } from 'store/propositions/direct-proofs';
+import { propositionsNPActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch, useIsReplacePossible } from 'hooks';
 import './styles.scss';
 
