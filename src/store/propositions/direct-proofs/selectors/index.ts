@@ -38,6 +38,8 @@ const getIsConfirmDeletePopupOpened = createSelector(
   (data: PropositionsDirectProofsFlags): boolean => data.isConfirmDeletePopupOpened,
 );
 
+const getIsConfirmCutPopupOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isConfirmCutPopupOpened);
+
 const getIsUserFileFormVisible = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isUserFileFormVisible);
 
 const getIsNameInputPopupVisible = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isNameInputPopupVisible);
@@ -78,4 +80,5 @@ export const propositionsDPSelectors = {
   getIsNameInputPopupVisible,
   getIsUserFileFormVisible,
   getIsLoading,
+  getIsConfirmCutPopupOpened,
 };

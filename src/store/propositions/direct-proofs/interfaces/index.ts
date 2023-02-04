@@ -17,6 +17,7 @@ export interface PropositionsDirectProofsFlags {
   isContradictionRealizationOpened: boolean;
   isReplacerFormOpened: boolean;
   isConfirmDeletePopupOpened: boolean;
+  isConfirmCutPopupOpened: boolean;
   isNameInputPopupVisible: boolean;
   isUserFileFormVisible: boolean;
   isLoading: boolean;
