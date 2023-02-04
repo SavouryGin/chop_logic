@@ -1,7 +1,7 @@
-import { DirectProofsTableItem } from '../../store/propositions/direct-proofs/interfaces';
+import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, NPCommentData } from 'types';
 import { NPFormulaBase } from 'enums';
-import { NaturalProofsTableItem } from '../../store/propositions/natural-proofs/interfaces';
+import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 
 export const findDependentDPItemsToDelete = (selectedIds: string[], tableData: DirectProofsTableItem[]): DirectProofsTableItem[] => {
   const selectedItems: DirectProofsTableItem[] = tableData.filter((item) => selectedIds.includes(item.id));

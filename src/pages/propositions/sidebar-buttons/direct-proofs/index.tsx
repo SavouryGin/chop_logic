@@ -37,7 +37,7 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onCutSteps = () => {
-    dispatch(actions.cutSubProof());
+    dispatch(actions.cutSubProof({ isConfirmed: false }));
   };
 
   return (
