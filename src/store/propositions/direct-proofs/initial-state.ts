@@ -8,6 +8,7 @@ export const propositionsDPInitialState: PropositionsDirectProofsInitialState = 
     isContradictionRealizationOpened: false,
     isReplacerFormOpened: false,
     isConfirmDeletePopupOpened: false,
+    isConfirmCutPopupOpened: false,
     isNameInputPopupVisible: false,
     isUserFileFormVisible: false,
     isLoading: false,
