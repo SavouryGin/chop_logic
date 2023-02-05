@@ -35,7 +35,7 @@ const getIsConfirmDeletePopupOpened = createSelector(
   (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmDeletePopupOpened,
 );
 
-const getIsConfirmDeleteCutOpened = createSelector(
+const getIsConfirmCutPopupOpened = createSelector(
   getFlags,
   (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmCutPopupOpened,
 );
@@ -115,7 +115,7 @@ export const propositionsNPSelectors = {
   getIsReplacerFormOpened,
   getIsConfirmDeletePopupOpened,
   getIsOrIntroductionFormOpened,
-  getIsConfirmDeleteCutOpened,
+  getIsConfirmCutPopupOpened,
   getSelectedTableItems,
   getLastTableItemLevel,
   getSelectedFormulas,
