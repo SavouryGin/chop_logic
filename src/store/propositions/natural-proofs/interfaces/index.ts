@@ -15,6 +15,7 @@ export interface PropositionsNaturalProofsFlags {
   isReplacerFormOpened: boolean;
   isAssumptionOpened: boolean;
   isConfirmDeletePopupOpened: boolean;
+  isConfirmCutPopupOpened: boolean;
   isOrIntroductionFormOpened: boolean;
   isShortcutOpened: boolean;
   isNameInputPopupVisible: boolean;
