@@ -36,7 +36,7 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onCopySteps = () => {
-    dispatch(actions.copySubProof());
+    dispatch(actions.copySteps());
   };
 
   const onPasteSteps = () => {
