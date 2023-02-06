@@ -5,11 +5,11 @@ import { errorsTexts } from 'texts';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
-export function* pasteSubProofNPWatcher(): Generator {
-  yield takeEvery(actions.pasteSubProof, pasteSubProofNPSaga);
+export function* pasteStepsNPWatcher(): Generator {
+  yield takeEvery(actions.pasteSteps, pasteStepsNPSaga);
 }
 
-export function* pasteSubProofNPSaga(): SagaIterator {
+export function* pasteStepsNPSaga(): SagaIterator {
   try {
     const tableItems: NaturalProofsTableItem[] = yield select(selectors.getTableData);
     const clipboardData: NaturalProofsTableItem[] = yield select(selectors.getClipboardData);

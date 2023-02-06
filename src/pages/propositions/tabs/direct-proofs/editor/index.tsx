@@ -58,6 +58,7 @@ const DirectProofsEditor = (): React.ReactElement => {
 
   const closeDeleteSteps = () => {
     dispatch(actions.setUpFlag({ flag: 'isConfirmDeletePopupOpened', value: false }));
+    dispatch(actions.setDependentItems([]));
   };
 
   const confirmDeleteSteps = () => {

@@ -112,11 +112,11 @@ export const buttonTexts: ButtonText = {
   },
   [ButtonID.ExportXML]: {
     title: { en: 'Export proof in XML', ru: 'Скачать доказательство в XML' },
-    innerText: { en: 'Export XML', ru: 'Экспорт XML' },
+    innerText: { en: 'Export to XML', ru: 'Экспорт в XML' },
   },
   [ButtonID.ImportXML]: {
     title: { en: 'Import proof from XML', ru: 'Импортировать доказательство из XML' },
-    innerText: { en: 'Import XML', ru: 'Импорт XML' },
+    innerText: { en: 'Import from XML', ru: 'Импорт из XML' },
   },
   [ButtonID.CopyProof]: {
     title: { en: 'Copy the selected proof steps', ru: 'Копировать выделенные шаги доказательства' },

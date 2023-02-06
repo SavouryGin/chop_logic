@@ -11,6 +11,7 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isNameInputPopupVisible: false,
     isUserFileFormVisible: false,
     isLoading: false,
+    isConfirmCutPopupOpened: false,
   },
   tableData: [],
   selectedIds: [],

@@ -1,15 +1,22 @@
 import Button from 'components/controls/button';
+import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/confirm-delete';
+import ModalWindow from 'components/modal-window';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { settingsSelectors } from 'store/settings/selectors';
+import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
   const dispatch = useAppDispatch();
+  const language = useAppSelector(settingsSelectors.getLanguage);
   const tableDataLength = useAppSelector(selectors.getTableDataLength);
   const selectedIds = useAppSelector(selectors.getSelectedIds);
   const clipboardData = useAppSelector(selectors.getClipboardData);
+  const dependencies = useAppSelector(selectors.getDependentItems);
+  const isConfirmCutPopupOpened = useAppSelector(selectors.getIsConfirmCutPopupOpened);
 
   if (!isVisible) {
     return null;
@@ -29,15 +36,25 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onCopySteps = () => {
-    dispatch(actions.copySubProof());
+    dispatch(actions.copySteps());
   };
 
   const onPasteSteps = () => {
-    dispatch(actions.pasteSubProof());
+    dispatch(actions.pasteSteps());
   };
 
   const onCutSteps = () => {
-    dispatch(actions.cutSubProof());
+    dispatch(actions.cutSteps({ isConfirmed: false }));
+  };
+
+  const closeCutSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmCutPopupOpened', value: false }));
+    dispatch(actions.setDependentItems([]));
+  };
+
+  const confirmCutSteps = () => {
+    dispatch(actions.setUpFlag({ flag: 'isConfirmCutPopupOpened', value: false }));
+    dispatch(actions.cutSteps({ isConfirmed: true }));
   };
 
   return (
@@ -63,6 +80,12 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
       <li>
         <Button buttonId={ButtonID.PasteProof} icon={Icon.Paste} size='large' onClick={onPasteSteps} isDisabled={isPasteDisabled} />
       </li>
+      <ModalWindow
+        isOpened={isConfirmCutPopupOpened}
+        onClose={closeCutSteps}
+        title={uiElementTexts.confirmation[language]}
+        content={<ConfirmDeleteProofStepsPopup onConfirm={confirmCutSteps} dependencies={dependencies} />}
+      />
     </>
   );
 };
