@@ -189,7 +189,7 @@ export const propositionsNPSlice = createSlice({
       return state;
     },
 
-    copySubProof: (state, _action: PayloadAction) => {
+    copySteps: (state, _action: PayloadAction) => {
       const { selectedIds, tableData } = state;
       const selectedItems = tableData.filter((item) => selectedIds.includes(item.id));
 
