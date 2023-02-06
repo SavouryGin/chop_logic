@@ -20,7 +20,7 @@ exports[`PropositionsDPSidebarButtons tests: should match the snapshot 1`] = `
         class="button__front chop-icon__download"
         data-testid="button_id_29"
       >
-        Export XML
+        Export to XML
       </span>
     </button>
   </li>
@@ -41,7 +41,7 @@ exports[`PropositionsDPSidebarButtons tests: should match the snapshot 1`] = `
         class="button__front chop-icon__upload"
         data-testid="button_id_30"
       >
-        Import XML
+        Import from XML
       </span>
     </button>
   </li>
@@ -134,7 +134,7 @@ exports[`PropositionsNPSidebarButtons tests: should match the snapshot 1`] = `
         class="button__front chop-icon__download"
         data-testid="button_id_29"
       >
-        Export XML
+        Export to XML
       </span>
     </button>
   </li>
@@ -155,7 +155,7 @@ exports[`PropositionsNPSidebarButtons tests: should match the snapshot 1`] = `
         class="button__front chop-icon__upload"
         data-testid="button_id_30"
       >
-        Import XML
+        Import from XML
       </span>
     </button>
   </li>
