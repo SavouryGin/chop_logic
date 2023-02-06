@@ -5,11 +5,11 @@ import { errorsTexts } from 'texts';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 
-export function* pasteSubProofDPWatcher(): Generator {
-  yield takeEvery(actions.pasteSubProof, pasteSubProofDPSaga);
+export function* pasteStepsDPWatcher(): Generator {
+  yield takeEvery(actions.pasteSteps, pasteStepsDPSaga);
 }
 
-export function* pasteSubProofDPSaga(): SagaIterator {
+export function* pasteStepsDPSaga(): SagaIterator {
   try {
     const tableItems: DirectProofsTableItem[] = yield select(selectors.getTableData);
     const clipboardData: DirectProofsTableItem[] = yield select(selectors.getClipboardData);

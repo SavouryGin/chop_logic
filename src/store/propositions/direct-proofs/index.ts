@@ -188,18 +188,18 @@ export const propositionsDPSlice = createSlice({
       return state;
     },
 
-    copySubProof: (state, _action: PayloadAction) => {
+    copySteps: (state, _action: PayloadAction) => {
       const { selectedIds, tableData } = state;
       const selectedItems = tableData.filter((item) => selectedIds.includes(item.id));
 
       state.clipboardData = selectedItems.map((item) => ({ ...item, id: crypto.randomUUID() }));
     },
 
-    cutSubProof: (state, _action: PayloadAction) => {
+    cutSteps: (state, _action: PayloadAction<{ isConfirmed: boolean }>) => {
       return state;
     },
 
-    pasteSubProof: (state, _action: PayloadAction) => {
+    pasteSteps: (state, _action: PayloadAction) => {
       return state;
     },
   },
