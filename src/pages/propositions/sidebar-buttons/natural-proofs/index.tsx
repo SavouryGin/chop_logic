@@ -40,11 +40,11 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   };
 
   const onPasteSteps = () => {
-    dispatch(actions.pasteSubProof());
+    dispatch(actions.pasteSteps());
   };
 
   const onCutSteps = () => {
-    dispatch(actions.cutSubProof({ isConfirmed: false }));
+    dispatch(actions.cutSteps({ isConfirmed: false }));
   };
 
   const closeCutSteps = () => {
@@ -54,7 +54,7 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
 
   const confirmCutSteps = () => {
     dispatch(actions.setUpFlag({ flag: 'isConfirmCutPopupOpened', value: false }));
-    dispatch(actions.cutSubProof({ isConfirmed: true }));
+    dispatch(actions.cutSteps({ isConfirmed: true }));
   };
 
   return (
