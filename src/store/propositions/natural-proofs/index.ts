@@ -196,11 +196,11 @@ export const propositionsNPSlice = createSlice({
       state.clipboardData = selectedItems.map((item) => ({ ...item, id: crypto.randomUUID() }));
     },
 
-    cutSubProof: (state, _action: PayloadAction<{ isConfirmed: boolean }>) => {
+    cutSteps: (state, _action: PayloadAction<{ isConfirmed: boolean }>) => {
       return state;
     },
 
-    pasteSubProof: (state, _action: PayloadAction) => {
+    pasteSteps: (state, _action: PayloadAction) => {
       return state;
     },
   },

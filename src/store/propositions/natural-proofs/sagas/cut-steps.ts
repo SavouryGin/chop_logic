@@ -1,21 +1,21 @@
-import { DirectProofsTableItem } from '../interfaces';
+import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { errorsTexts } from 'texts';
-import { findDependentDPItemsToDelete, removeSelectedItemsFromTable, updateDPTableComments } from 'logic/propositions/helpers';
+import { findDependentNPItemsToDelete, removeSelectedItemsFromTable, updateNPTableComments } from 'logic/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';
-import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
-export function* cutSubProofDPWatcher(): Generator {
-  yield takeEvery(actions.cutSubProof, cutSubProofDPSaga);
+export function* cutStepsNPWatcher(): Generator {
+  yield takeEvery(actions.cutSteps, cutStepsNPSaga);
 }
 
-export function* cutSubProofDPSaga(action: { payload: { isConfirmed: boolean } }): SagaIterator {
+export function* cutStepsNPSaga(action: { payload: { isConfirmed: boolean } }): SagaIterator {
   try {
     const selectedIds: string[] = yield select(selectors.getSelectedIds);
     const isConfirmed = action.payload.isConfirmed;
-    const tableItems: DirectProofsTableItem[] = yield select(selectors.getTableData);
-    const dependentItems = findDependentDPItemsToDelete(selectedIds, tableItems);
+    const tableItems: NaturalProofsTableItem[] = yield select(selectors.getTableData);
+    const dependentItems = findDependentNPItemsToDelete(selectedIds, tableItems);
     const isConfirmationNeeded = dependentItems.length && selectedIds.length !== tableItems.length;
     const itemsToCut = tableItems.filter((item) => selectedIds.includes(item.id));
 
@@ -25,7 +25,7 @@ export function* cutSubProofDPSaga(action: { payload: { isConfirmed: boolean } }
         const idsToDelete = [...dependentIds, ...selectedIds];
 
         // Update table data
-        yield put(actions.setTableData(updateDPTableComments(removeSelectedItemsFromTable(tableItems, idsToDelete))));
+        yield put(actions.setTableData(updateNPTableComments(removeSelectedItemsFromTable(tableItems, idsToDelete))));
 
         // Save removed items to the clipboard
         yield put(actions.setClipboardData(itemsToCut));
@@ -41,7 +41,7 @@ export function* cutSubProofDPSaga(action: { payload: { isConfirmed: boolean } }
       }
     } else {
       // Update table data
-      yield put(actions.setTableData(updateDPTableComments(removeSelectedItemsFromTable(tableItems, selectedIds))));
+      yield put(actions.setTableData(updateNPTableComments(removeSelectedItemsFromTable(tableItems, selectedIds))));
 
       // Save removed items to the clipboard
       yield put(actions.setClipboardData(itemsToCut));
