@@ -1,13 +1,13 @@
 import PropositionsDirectProofs from 'pages/propositions/sub-pages/direct-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import texts from 'texts/propositions/elements';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
-import { titles } from 'texts/propositions';
 
 describe('Direct Proofs page tests:', () => {
   const mockedReducer = combineReducers({
@@ -31,7 +31,7 @@ describe('Direct Proofs page tests:', () => {
 
   it('displays the heading', () => {
     expect(screen.getByRole('heading')).toBeInTheDocument();
-    expect(screen.getByRole('heading')).toHaveTextContent(titles.page.en);
+    expect(screen.getByRole('heading')).toHaveTextContent(texts.page.en);
   });
 
   it('renders the correct number of tabs', () => {
