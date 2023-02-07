@@ -1,11 +1,11 @@
 import converter from './converter';
+import errorsTexts from 'texts/propositions/elements';
 import factory from './factory';
 import validator from './validator';
 import { NPExecutorData, PropositionalFormula } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
-import { errorsTexts } from 'texts/propositions';
 import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
 
 const executor = {

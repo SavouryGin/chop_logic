@@ -1,8 +1,8 @@
 import React, { memo, useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'pages/propositions/constants';
+import texts from 'texts/propositions/elements';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { fillerText } from 'texts/propositions';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -18,7 +18,7 @@ const DirectProofsEditorTable = () => {
     dispatch(actions.setSelectedIds(selectedIds));
   }, [selectedIds]);
 
-  const noStepsFiller = <div className='direct-proofs-editor__filler'>{fillerText[language]}</div>;
+  const noStepsFiller = <div className='direct-proofs-editor__filler'>{texts.fillerText[language]}</div>;
 
   return (
     <div className='direct-proofs-editor__table'>
