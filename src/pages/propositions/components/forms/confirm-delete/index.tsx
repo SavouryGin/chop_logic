@@ -13,7 +13,7 @@ import './styles.scss';
 const ConfirmDeleteProofStepsPopup = ({
   onConfirm,
   dependencies,
-}: ConfirmDeleteProofStepsPopupProps<DirectProofsTableItem | NaturalProofsTableItem>) => {
+}: ConfirmDeleteProofStepsPopupProps<DirectProofsTableItem | NaturalProofsTableItem>): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.getLanguage);
 
   const formulas = dependencies.map((item) => {

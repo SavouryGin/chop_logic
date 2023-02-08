@@ -10,7 +10,7 @@ import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
-const OrIntroductionForm = () => {
+const OrIntroductionForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const orIntroInitialValue = { orValue: '' };
   const [formValue, setFormValue] = useState(orIntroInitialValue);

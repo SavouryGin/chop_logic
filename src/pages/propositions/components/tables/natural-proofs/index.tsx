@@ -7,7 +7,7 @@ import { propositionsNPSelectors as selectors } from 'store/propositions/natural
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-const NaturalProofsEditorTable = () => {
+const NaturalProofsEditorTable = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.getLanguage);
   const tableData = useAppSelector(selectors.getTableData);

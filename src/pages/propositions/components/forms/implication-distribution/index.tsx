@@ -11,7 +11,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationDistributionPreview } from 'hooks';
 import './styles.scss';
 
-const ImplicationDistributionForm = () => {
+const ImplicationDistributionForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationDistributionInitialValues);
   const language = useAppSelector(settingsSelectors.getLanguage);

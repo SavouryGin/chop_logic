@@ -9,7 +9,7 @@ import { propositionsNPActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch } from 'hooks';
 import './styles.scss';
 
-const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
+const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const initialName = mode === 'direct' ? 'MyDirectProof' : 'MyNaturalProof';
   const fileNameInitialValue = { fileName: initialName };

@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-const DirectProofsPropositionDefinitions = () => {
+const DirectProofsPropositionDefinitions = (): React.ReactElement => {
   return <div>Definitions</div>;
 };
 
