@@ -1,7 +1,7 @@
+import propositionsTexts from 'texts/propositions/elements';
 import { DirectProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { errorsTexts } from 'texts';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 
@@ -18,6 +18,6 @@ export function* pasteStepsDPSaga(): SagaIterator {
     yield put(actions.setTableData(mergedData));
     yield put(actions.setClipboardData([]));
   } catch (error: unknown) {
-    yield put(actions.setError(errorsTexts.generalError));
+    yield put(actions.setError(propositionsTexts.generalError));
   }
 }

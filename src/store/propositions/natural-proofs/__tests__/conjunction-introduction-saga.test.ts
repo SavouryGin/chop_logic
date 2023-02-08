@@ -1,7 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { conjunctionIntroductionSaga, conjunctionIntroductionWatcher } from '../sagas/conjunction-introduction';
-import { errorsTexts } from 'texts';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
 
@@ -24,7 +24,7 @@ describe('NP conjunctionIntroductionSaga tests', () => {
       .select(selectors.getLastItemAssumptionId)
       .next(null)
       .throw(mocks.error)
-      .put(actions.setError(errorsTexts.generalError))
+      .put(actions.setError(propositionsElementsTexts.generalError))
       .next()
       .isDone();
   });

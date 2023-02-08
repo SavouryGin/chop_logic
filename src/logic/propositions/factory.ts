@@ -1,9 +1,9 @@
 import constants, { preparedSymbols } from 'pages/propositions/constants';
+import errorsTexts from 'texts/propositions/elements';
 import regularExpressions from 'helpers/regular-expressions';
 import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalFormula, PropositionalSymbol } from 'types';
-import { errorsTexts } from 'texts';
 
 const factory = {
   createOperator(symbol: PropositionalSymbol): PropositionalOperator {

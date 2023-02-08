@@ -1,7 +1,7 @@
+import errorsTexts from 'texts/propositions/elements';
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
-import { errorsTexts } from 'texts';
 
 const searcher = {
   findMatchingCloseParenthesis(expression: PropositionalExpression, openParenthesis: PropositionalSymbol): PropositionalSymbol | undefined {

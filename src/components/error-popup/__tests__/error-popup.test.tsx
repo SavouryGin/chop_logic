@@ -1,14 +1,15 @@
 import ErrorPopup from 'components/error-popup';
 import React from 'react';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
-import { errorsTexts, uiElementTexts } from 'texts';
 import { fireEvent, screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
+import { uiElementTexts } from 'texts';
 
 describe('ErrorPopup component:', () => {
   const testProps = {
-    error: errorsTexts.generalError,
+    error: propositionsElementsTexts.generalError,
     onClose: jest.fn(),
   };
 
@@ -24,7 +25,7 @@ describe('ErrorPopup component:', () => {
   });
 
   it('should display the error message', () => {
-    expect(screen.getByText(errorsTexts.generalError.en));
+    expect(screen.getByText(propositionsElementsTexts.generalError.en));
   });
 
   it('should react on click close', () => {
