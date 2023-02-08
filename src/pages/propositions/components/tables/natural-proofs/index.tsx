@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'pages/propositions/constants';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
-import { fillerNaturalText } from 'texts';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -18,7 +18,7 @@ const NaturalProofsEditorTable = () => {
     dispatch(actions.setSelectedIds(selectedIds));
   }, [selectedIds]);
 
-  const noStepsFiller = <div className='natural-proofs-editor__filler'>{fillerNaturalText[language]}</div>;
+  const noStepsFiller = <div className='natural-proofs-editor__filler'>{propositionsElementsTexts.fillerNaturalText[language]}</div>;
 
   return (
     <div className='natural-proofs-editor__table'>

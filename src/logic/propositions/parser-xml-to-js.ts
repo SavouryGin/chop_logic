@@ -1,4 +1,5 @@
 import converter from './converter';
+import errorsTexts from 'texts/propositions/elements';
 import regExes from 'helpers/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
@@ -6,7 +7,6 @@ import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { XMLTag } from 'enums/xml-tags';
-import { errorsTexts } from 'texts';
 import { languageStringOptions } from 'presets/settings';
 
 const removeDeclaration = (input: string): string => input.replace(regExes.xmlDeclaration, '');
