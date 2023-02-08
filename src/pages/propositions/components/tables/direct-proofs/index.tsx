@@ -7,7 +7,7 @@ import { propositionsDPSelectors as selectors } from 'store/propositions/direct-
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-const DirectProofsEditorTable = () => {
+const DirectProofsEditorTable = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const tableData = useAppSelector(selectors.getTableData);
   const language = useAppSelector(settingsSelectors.getLanguage);

@@ -8,7 +8,7 @@ import { propositionsNPActions as actions } from 'store/propositions/natural-pro
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
-const ShortcutForm = () => {
+const ShortcutForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const shortcutInitialValue = { shortcut: '', comment: '' };
   const [formValue, setFormValue] = useState(shortcutInitialValue);

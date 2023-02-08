@@ -6,7 +6,7 @@ import { propositionsDPSelectors as selectors } from 'store/propositions/direct-
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector, useIsImplicationEliminationPossible } from 'hooks';
 
-const DirectProofsEditorToolbar = () => {
+const DirectProofsEditorToolbar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const selectedIds = useAppSelector(selectors.getSelectedIds);
   const tableDataLength = useAppSelector(selectors.getTableDataLength);

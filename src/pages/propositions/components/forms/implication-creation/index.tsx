@@ -11,7 +11,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationCreationPreview } from 'hooks';
 import './styles.scss';
 
-const ImplicationCreationForm = () => {
+const ImplicationCreationForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationCreationInitialValues);
   const language = useAppSelector(settingsSelectors.getLanguage);

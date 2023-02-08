@@ -11,7 +11,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';
 import './styles.scss';
 
-const ContradictionRealizationForm = () => {
+const ContradictionRealizationForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.contradictionRealization);
   const language = useAppSelector(settingsSelectors.getLanguage);

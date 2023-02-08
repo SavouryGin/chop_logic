@@ -8,7 +8,7 @@ import { Page } from 'enums';
 import { paths } from 'router/paths';
 import { routesMap } from 'router/map';
 
-const AppRouter = () => {
+const AppRouter = (): React.ReactElement => {
   const pages = useMemo(() => {
     return routesMap.map((item) => <Route key={item.key} path={item.url} element={<RouterElement component={item.element} />} />);
   }, [routesMap.length]);
