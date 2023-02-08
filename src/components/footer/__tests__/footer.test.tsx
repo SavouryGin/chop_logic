@@ -3,7 +3,7 @@ import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
-import { externalLinks } from 'presets/settings';
+import { externalLinks } from 'settings';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 

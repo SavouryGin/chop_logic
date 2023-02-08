@@ -7,7 +7,7 @@ import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { XMLTag } from 'enums/xml-tags';
-import { languageStringOptions } from 'presets/settings';
+import { languageStringOptions } from 'settings';
 
 const removeDeclaration = (input: string): string => input.replace(regExes.xmlDeclaration, '');
 

@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import Select from 'components/controls/select';
 import { AppSettingInitialValues } from 'types';
 import { InputID } from 'enums';
-import { languageOptions } from 'presets/settings';
+import { languageOptions } from 'settings';
 
 const AppSettingsInputs = ({ initialValues }: { initialValues: AppSettingInitialValues }): React.ReactElement => {
   const defaultLanguage = useMemo(() => {
