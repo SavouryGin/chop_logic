@@ -1,8 +1,8 @@
 import parser from 'logic/propositions/parser-xml-to-js';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import tMocks from '__mocks__/data/propositions/table-items';
 import { FileAcceptType } from 'enums/file-accept-type';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { errorsTexts } from 'texts';
 import { importDPFromXMLSaga, importDPFromXMLWatcher } from '../sagas/import-from-xml';
 import { readUserTextFile } from 'helpers/files/read-user-text-file';
 import { testSaga } from 'redux-saga-test-plan';
@@ -38,7 +38,7 @@ describe('DP importDPFromXMLSaga tests', () => {
       .put(actions.setUpFlag({ flag: 'isLoading', value: true }))
       .next()
       .throw(tMocks.error)
-      .put(actions.setError(errorsTexts.importError))
+      .put(actions.setError(propositionsElementsTexts.importError))
       .next()
       .put(actions.setUpFlag({ flag: 'isLoading', value: false }))
       .next()

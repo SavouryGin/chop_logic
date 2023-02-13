@@ -5,7 +5,7 @@ import { ButtonID, InputID } from 'enums';
 import { buttonTexts, inputTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { languageOptions } from 'presets/settings';
+import { languageOptions } from 'settings';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('AppSettings tests:', () => {

@@ -1,8 +1,8 @@
 import executor from 'logic/propositions/executor';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
-import { errorsTexts } from 'texts';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
@@ -23,6 +23,6 @@ export function* implicationEliminationSaga(): SagaIterator {
     yield put(actions.setTableData([...tableData, newItem]));
     yield put(actions.setSelectedIds([]));
   } catch (error: unknown) {
-    yield put(actions.setError(errorsTexts.generalError));
+    yield put(actions.setError(propositionsElementsTexts.generalError));
   }
 }

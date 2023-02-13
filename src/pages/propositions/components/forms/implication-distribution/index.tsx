@@ -3,15 +3,15 @@ import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'pages/propositions/constants';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { formsTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationDistributionPreview } from 'hooks';
 import './styles.scss';
 
-const ImplicationDistributionForm = () => {
+const ImplicationDistributionForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationDistributionInitialValues);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -39,7 +39,7 @@ const ImplicationDistributionForm = () => {
 
   return (
     <div className='implication-distribution-form'>
-      <p>{formsTexts.enterValues[language]}</p>
+      <p>{propositionsElementsTexts.enterValues[language]}</p>
       <p className='implication-distribution-form__formula'>{constants.implicationDistributionFormula}</p>
       <Form
         onSubmit={onSubmit}

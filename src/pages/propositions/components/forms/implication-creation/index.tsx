@@ -3,15 +3,15 @@ import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'pages/propositions/constants';
+import texts from 'texts/propositions/elements';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { formsTexts } from 'texts/propositions';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationCreationPreview } from 'hooks';
 import './styles.scss';
 
-const ImplicationCreationForm = () => {
+const ImplicationCreationForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationCreationInitialValues);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -38,7 +38,7 @@ const ImplicationCreationForm = () => {
 
   return (
     <div className='implication-creation-form'>
-      <p>{formsTexts.enterValues[language]}</p>
+      <p>{texts.enterValues[language]}</p>
       <p className='implication-creation-form__formula'>{constants.implicationCreationFormula}</p>
       <Form
         onSubmit={onSubmit}

@@ -9,7 +9,7 @@ import { propositionsNPActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
-const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }) => {
+const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const premiseInitialValue = { premise: '' };
   const [formValue, setFormValue] = useState(premiseInitialValue);

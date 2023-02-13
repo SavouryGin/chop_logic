@@ -1,9 +1,9 @@
 import PropositionsDirectProofs from 'pages/propositions/sub-pages/direct-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import texts from 'texts/propositions/elements';
 import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
-import { fillerText } from 'texts/propositions';
 import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
@@ -38,7 +38,7 @@ describe('Direct Proofs Editor tests:', () => {
     expect(headerRow).toHaveTextContent('#');
     expect(headerRow).toHaveTextContent('Formula');
     expect(headerRow).toHaveTextContent('Comment');
-    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerText.en)).toBeInTheDocument();
   });
 
   it('4 buttons are enabled and 4 are disabled by default', () => {
@@ -84,7 +84,7 @@ describe('Direct Proofs Editor tests:', () => {
   it('user can add a premise to the proof table through the form', async () => {
     // Check initial table values
     expect(screen.getAllByRole('row')).toHaveLength(1);
-    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerText.en)).toBeInTheDocument();
 
     // Open the form
     fireEvent.click(screen.getByTitle('Enter a premise'));
@@ -105,7 +105,7 @@ describe('Direct Proofs Editor tests:', () => {
     await userEvent.click(applyBtn);
 
     // Check that a new formula was added
-    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.queryByText(texts.fillerText.en)).not.toBeInTheDocument();
     expect(screen.getAllByRole('cell')).toHaveLength(4);
     expect(screen.getAllByRole('row')).toHaveLength(2);
     const secondRow = screen.getAllByRole('row')[1];
@@ -117,7 +117,7 @@ describe('Direct Proofs Editor tests:', () => {
   it('user can add a IC to the proof table through the form', async () => {
     // Check initial table values
     expect(screen.getAllByRole('row')).toHaveLength(1);
-    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerText.en)).toBeInTheDocument();
 
     // Open the form
     fireEvent.click(screen.getByTitle('Implication Creation'));
@@ -142,7 +142,7 @@ describe('Direct Proofs Editor tests:', () => {
     await userEvent.click(applyBtn);
 
     // Check that a new formula was added
-    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.queryByText(texts.fillerText.en)).not.toBeInTheDocument();
     expect(screen.getAllByRole('cell')).toHaveLength(4);
     expect(screen.getAllByRole('row')).toHaveLength(2);
     const secondRow = screen.getAllByRole('row')[1];
@@ -153,7 +153,7 @@ describe('Direct Proofs Editor tests:', () => {
   it('user can add a ID to the proof table through the form', async () => {
     // Check initial table values
     expect(screen.getAllByRole('row')).toHaveLength(1);
-    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerText.en)).toBeInTheDocument();
 
     // Open the form
     fireEvent.click(screen.getByTitle('Implication Distribution'));
@@ -182,7 +182,7 @@ describe('Direct Proofs Editor tests:', () => {
     await userEvent.click(applyBtn);
 
     // Check that a new formula was added
-    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.queryByText(texts.fillerText.en)).not.toBeInTheDocument();
     expect(screen.getAllByRole('cell')).toHaveLength(4);
     expect(screen.getAllByRole('row')).toHaveLength(2);
     const secondRow = screen.getAllByRole('row')[1];
@@ -193,7 +193,7 @@ describe('Direct Proofs Editor tests:', () => {
   it('user can add a CR to the proof table through the form', async () => {
     // Check initial table values
     expect(screen.getAllByRole('row')).toHaveLength(1);
-    expect(screen.getByText(fillerText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerText.en)).toBeInTheDocument();
 
     // Open the form
     fireEvent.click(screen.getByTitle('Contradiction Realization'));
@@ -218,7 +218,7 @@ describe('Direct Proofs Editor tests:', () => {
     await userEvent.click(applyBtn);
 
     // Check that a new formula was added
-    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.queryByText(texts.fillerText.en)).not.toBeInTheDocument();
     expect(screen.getAllByRole('cell')).toHaveLength(4);
     expect(screen.getAllByRole('row')).toHaveLength(2);
     const secondRow = screen.getAllByRole('row')[1];

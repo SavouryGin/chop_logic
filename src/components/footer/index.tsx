@@ -2,7 +2,7 @@ import React from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { Icon } from 'enums';
-import { externalLinks } from 'presets/settings';
+import { externalLinks } from 'settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { uiElementTexts } from 'texts';
