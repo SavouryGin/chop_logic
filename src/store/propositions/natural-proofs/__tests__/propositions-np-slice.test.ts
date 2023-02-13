@@ -1,7 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import { NPFormulaBase } from 'enums';
 import { propositionsNPActions as actions, propositionsNPSlice as slice } from '..';
-import { errorsTexts } from 'texts';
 import { propositionsNPInitialState as state } from '../initial-state';
 
 describe('propositionsNPSlice tests:', () => {
@@ -20,7 +20,10 @@ describe('propositionsNPSlice tests:', () => {
   });
 
   it('should handle an error being added to the store', () => {
-    expect(slice.reducer(state, actions.setError(errorsTexts.generalError))).toEqual({ ...state, error: errorsTexts.generalError });
+    expect(slice.reducer(state, actions.setError(propositionsElementsTexts.generalError))).toEqual({
+      ...state,
+      error: propositionsElementsTexts.generalError,
+    });
   });
 
   it('should handle a premise being added to the store', () => {

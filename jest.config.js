@@ -14,11 +14,11 @@ module.exports = {
     '^errors(.*)$': '<rootDir>/src/errors$1',
     '^logic(.*)$': '<rootDir>/src/logic$1',
     '^texts(.*)$': '<rootDir>/src/texts$1',
-    '^presets(.*)$': '<rootDir>/src/presets$1',
+    '^settings(.*)$': '<rootDir>/src/settings$1',
     '^router(.*)$': '<rootDir>/src/router$1',
     '^app(.*)$': '<rootDir>/src/app$1',
     '^__mocks__(.*)$': '<rootDir>/src/__mocks__$1',
     '\\.(css|scss)$': '<rootDir>/src/__mocks__/style-mock.js',
   },
-  setupFilesAfterEnv: ['<rootDir>/src/helpers/test-utils/setup-tests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/settings/setup-tests.ts'],
 };

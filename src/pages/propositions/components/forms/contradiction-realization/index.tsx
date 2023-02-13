@@ -3,15 +3,15 @@ import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'pages/propositions/constants';
+import propositionsTexts from 'texts/propositions/elements';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { formsTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';
 import './styles.scss';
 
-const ContradictionRealizationForm = () => {
+const ContradictionRealizationForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.contradictionRealization);
   const language = useAppSelector(settingsSelectors.getLanguage);
@@ -38,7 +38,7 @@ const ContradictionRealizationForm = () => {
 
   return (
     <div className='contradiction-realization-form'>
-      <p>{formsTexts.enterValues[language]}</p>
+      <p>{propositionsTexts.enterValues[language]}</p>
       <p className='contradiction-realization-form__formula'>{constants.contradictionRealizationFormula}</p>
       <Form
         onSubmit={onSubmit}

@@ -1,9 +1,9 @@
+import propositionsElementsTexts from 'texts/propositions/elements';
 import searcher from './searcher';
 import { LogicalSymbolRawInput, NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
-import { errorsTexts } from 'texts';
 import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
 
 const validator = {
@@ -87,7 +87,7 @@ const validator = {
     if (openIndexes.length !== closeIndexes.length) {
       throw new PropositionalError(
         'The number of open parenthesis does not match with the number of close parenthesis.',
-        errorsTexts.parenthesisError,
+        propositionsElementsTexts.parenthesisError,
       );
     }
   },

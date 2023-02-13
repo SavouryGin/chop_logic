@@ -1,8 +1,8 @@
 import parser from 'logic/propositions/parser-xml-to-js';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { errorsTexts } from 'texts';
 import { readUserTextFile } from 'helpers/files/read-user-text-file';
 
 export function* importDPFromXMLWatcher(): Generator {
@@ -20,7 +20,7 @@ export function* importDPFromXMLSaga(action: { payload: { file: File } }): SagaI
 
     yield put(actions.setUpFlag({ flag: 'isUserFileFormVisible', value: false }));
   } catch (error: unknown) {
-    yield put(actions.setError(errorsTexts.importError));
+    yield put(actions.setError(propositionsElementsTexts.importError));
   } finally {
     yield put(actions.setUpFlag({ flag: 'isLoading', value: false }));
   }

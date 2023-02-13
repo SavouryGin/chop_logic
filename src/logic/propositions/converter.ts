@@ -1,11 +1,11 @@
 import factory from './factory';
 import parenthesizer from './parenthesizer';
 import parser from './parser';
+import propositionsElementsTexts from 'texts/propositions/elements';
 import validator from './validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalOperator } from 'enums';
-import { errorsTexts } from 'texts';
 import { preparedSymbols } from 'pages/propositions/constants';
 
 const convertToICExpression = (firstVariable: string, secondVariable: string): PropositionalExpression => {
@@ -203,7 +203,7 @@ const convertStringToExpression = (input: string): PropositionalExpression => {
 const convertExpressionToFormula = (expression: PropositionalExpression): PropositionalFormula => {
   const mainSymbol = parser.findMainOperator(expression);
   if (validator.isIncorrectMainSymbol(mainSymbol)) {
-    throw new PropositionalError(`Cannot convert this expression to a formula.`, errorsTexts.semanticError);
+    throw new PropositionalError(`Cannot convert this expression to a formula.`, propositionsElementsTexts.semanticError);
   }
   const operator = factory.createOperator(mainSymbol);
 

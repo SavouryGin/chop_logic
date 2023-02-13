@@ -1,9 +1,9 @@
 import PropositionsNaturalProofs from 'pages/propositions/sub-pages/natural-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import texts from 'texts/propositions/elements';
 import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
-import { fillerNaturalText, fillerText } from 'texts/propositions';
 import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
@@ -38,7 +38,7 @@ describe('Natural Proofs Editor tests:', () => {
     expect(headerRow).toHaveTextContent('#');
     expect(headerRow).toHaveTextContent('Formula');
     expect(headerRow).toHaveTextContent('Comment');
-    expect(screen.getByText(fillerNaturalText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerNaturalText.en)).toBeInTheDocument();
   });
 
   it('3 buttons are enabled and 4 are disabled by default', () => {
@@ -71,7 +71,7 @@ describe('Natural Proofs Editor tests:', () => {
   it('user can add a premise to the proof table through the form', async () => {
     // Check initial table values
     expect(screen.getAllByRole('row')).toHaveLength(1);
-    expect(screen.getByText(fillerNaturalText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerNaturalText.en)).toBeInTheDocument();
 
     // Open the form
     fireEvent.click(screen.getByTitle('Enter a premise'));
@@ -92,7 +92,7 @@ describe('Natural Proofs Editor tests:', () => {
     await userEvent.click(applyBtn);
 
     // Check that a new formula was added
-    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.queryByText(texts.fillerText.en)).not.toBeInTheDocument();
     expect(screen.getAllByRole('cell')).toHaveLength(4);
     expect(screen.getAllByRole('row')).toHaveLength(2);
     const secondRow = screen.getAllByRole('row')[1];
@@ -104,7 +104,7 @@ describe('Natural Proofs Editor tests:', () => {
   it('user can add an assumption to the proof table through the form', async () => {
     // Check initial table values
     expect(screen.getAllByRole('row')).toHaveLength(1);
-    expect(screen.getByText(fillerNaturalText.en)).toBeInTheDocument();
+    expect(screen.getByText(texts.fillerNaturalText.en)).toBeInTheDocument();
 
     // Open the form
     fireEvent.click(screen.getByTitle('Enter an assumption'));
@@ -125,7 +125,7 @@ describe('Natural Proofs Editor tests:', () => {
     await userEvent.click(applyBtn);
 
     // Check that a new formula was added
-    expect(screen.queryByText(fillerText.en)).not.toBeInTheDocument();
+    expect(screen.queryByText(texts.fillerText.en)).not.toBeInTheDocument();
     expect(screen.getAllByRole('cell')).toHaveLength(4);
     expect(screen.getAllByRole('row')).toHaveLength(2);
     const secondRow = screen.getAllByRole('row')[1];

@@ -8,7 +8,7 @@ import { propositionsNPActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch, useIsReplacePossible } from 'hooks';
 import './styles.scss';
 
-const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }) => {
+const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const replacerInitialValue = { newVariable: '', oldVariable: '' };
   const [formValues, setFormValues] = useState(replacerInitialValue);

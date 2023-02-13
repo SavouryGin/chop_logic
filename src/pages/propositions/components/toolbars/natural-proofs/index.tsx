@@ -18,7 +18,7 @@ import {
   useIsPremisePossible,
 } from 'hooks';
 
-const NaturalProofsEditorToolbar = () => {
+const NaturalProofsEditorToolbar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isPremiseDisabled = !useIsPremisePossible();
   const selectedIds = useAppSelector(selectors.getSelectedIds);

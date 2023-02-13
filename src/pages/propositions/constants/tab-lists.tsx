@@ -6,23 +6,23 @@ import NaturalProofsEditor from 'pages/propositions/tabs/natural-proofs/editor';
 import NaturalProofsPropositionDefinitions from 'pages/propositions/tabs/natural-proofs/definitions';
 import React from 'react';
 import RulesOfInference from 'pages/propositions/tabs/natural-proofs/rules';
+import texts from 'texts/propositions/elements';
 import { TabItem } from 'types';
-import { titles } from 'texts';
 
 export const propositionsDirectProofsTabs: TabItem[] = [
   {
     tabContent: <DirectProofsEditor />,
-    tabTitle: titles.editor,
+    tabTitle: texts.editor,
     tabId: 'direct-proofs-editor',
   },
   {
     tabContent: <DirectProofsPropositionDefinitions />,
-    tabTitle: titles.definitions,
+    tabTitle: texts.definitions,
     tabId: 'direct-proofs-definitions',
   },
   {
     tabContent: <AxiomSchemesForDirectPropositionProofs />,
-    tabTitle: titles.axioms,
+    tabTitle: texts.axioms,
     tabId: 'axiom-schemes-for-direct-proofs',
   },
 ];
@@ -30,22 +30,22 @@ export const propositionsDirectProofsTabs: TabItem[] = [
 export const propositionsNaturalProofsTabs: TabItem[] = [
   {
     tabContent: <NaturalProofsEditor />,
-    tabTitle: titles.editor,
+    tabTitle: texts.editor,
     tabId: 'natural-proofs-editor',
   },
   {
     tabContent: <NaturalProofsPropositionDefinitions />,
-    tabTitle: titles.definitions,
+    tabTitle: texts.definitions,
     tabId: 'natural-proofs-definitions',
   },
   {
     tabContent: <RulesOfInference />,
-    tabTitle: titles.rules,
+    tabTitle: texts.rules,
     tabId: 'rules-of-inference',
   },
   {
     tabContent: <HeuristicsOfPropositions />,
-    tabTitle: titles.heuristics,
+    tabTitle: texts.heuristics,
     tabId: 'heuristics-of-propositions',
   },
 ];

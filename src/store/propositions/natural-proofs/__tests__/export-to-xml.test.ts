@@ -1,7 +1,7 @@
+import propositionsElementsTexts from 'texts/propositions/elements';
 import tMocks from '__mocks__/data/propositions/table-items';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
-import { errorsTexts } from 'texts';
 import { exportNPToXMLSaga, exportNPToXMLWatcher } from '../sagas/export-to-xml';
 import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
@@ -37,7 +37,7 @@ describe('NP exportNPToXMLSaga tests', () => {
       .select(selectors.getTableData)
       .next(tMocks.dpTableDataIE)
       .throw(tMocks.error)
-      .put(actions.setError(errorsTexts.generalError))
+      .put(actions.setError(propositionsElementsTexts.generalError))
       .next()
       .isDone();
   });
