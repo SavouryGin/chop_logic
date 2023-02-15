@@ -28,7 +28,7 @@ const DPDefinitionsRu = (): React.ReactElement => {
     </div>
   );
 
-  const proofDefinitions = (
+  const proofDefinition = (
     <div>
       <dfn>Выводом</dfn> формулы <Latex>{latex.G}</Latex> из множества формул <Latex>{latex.Delta}</Latex> называется такая конечная
       последовательность формул <Latex>{latex.F1Fn}</Latex>, в которой каждая формула <Latex>{latex.Fi}</Latex> является либо
@@ -53,8 +53,8 @@ const DPDefinitionsRu = (): React.ReactElement => {
   return (
     <section className='dp-definitions-ru'>
       {formalTheoryDefinition}
-      <br></br>
-      {proofDefinitions}
+      <hr></hr>
+      {proofDefinition}
     </section>
   );
 };
