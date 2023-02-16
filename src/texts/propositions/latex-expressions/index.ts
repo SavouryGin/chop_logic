@@ -12,9 +12,9 @@ const latexExpressions = {
   DeltaToG: `$$\\Delta \\vdash G.$$`,
   DeltaToNothing: `$$\\Delta~=~\\varnothing$$`,
   toG: `$$\\vdash G$$`,
-  IC: `$$F \\rightarrow (G \\rightarrow F)$$`,
-  ID: `$$(F \\rightarrow (G \\rightarrow H)) \\rightarrow ((F \\rightarrow G) \\rightarrow (F \\rightarrow H))$$`,
-  CR: `$$(\\neg G \\rightarrow \\neg F) \\rightarrow ((\\neg G \\rightarrow F) \\rightarrow G)$$`,
+  IC: `$$\\Phi \\rightarrow (\\Psi \\rightarrow \\Phi)$$`,
+  ID: `$$(\\Phi \\rightarrow (\\Psi \\rightarrow \\Chi)) \\rightarrow ((\\Phi \\rightarrow \\Psi) \\rightarrow (\\Phi \\rightarrow \\Chi))$$`,
+  CR: `$$(\\neg \\Psi \\rightarrow \\neg \\Phi) \\rightarrow ((\\neg \\Psi \\rightarrow \\Phi) \\rightarrow \\Psi)$$`,
 };
 
 export default Object.freeze(latexExpressions);
