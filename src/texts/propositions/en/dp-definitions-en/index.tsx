@@ -6,24 +6,23 @@ import './styles.scss';
 const DPDefinitionsEn = (): React.ReactElement => {
   const formalTheoryDefinition = (
     <div>
-      <dfn>Формальная (аксиоматическая) теория</dfn> <Latex>{latex.T}</Latex> считается определенной, если соблюдены следующие требования:
+      A <dfn>formal (axiomatic) theory</dfn> <Latex>{latex.T}</Latex> is considered defined if the following requirements are met:
       <ol>
         <li>
-          задано некоторое счетное множество символов теории <Latex>{latex.T}</Latex>, в качестве которых могут быть выбраны произвольные
-          объекты (не обязательно лингвистические). Конечные последовательности символов называются <em>выражениями</em>{' '}
-          <Latex>{latex.T}</Latex>;
+          some countable set of symbols of the theory <Latex>{latex.T}</Latex> is given, as which any objects (not necessarily linguistic)
+          can be chosen. Finite sequences of symbols are called <em>expressions</em> of the <Latex>{latex.T}</Latex>;
         </li>
         <li>
-          задано счетное подмножество выражений, именуемых <em>формулами</em> теории <Latex>{latex.T}</Latex>. Если имеется возможность
-          выяснить, является ли данная формула аксиомой, то теория <Latex>{latex.T}</Latex> называется <em>аксиоматической теорией</em>;
+          a countable subset of expressions called <em>formulas</em> of the theory <Latex>{latex.T}</Latex> is given. If it is possible to
+          find out whether a given formula is an axiom, then the theory <Latex>{latex.T}</Latex> is called an <em>axiomatic theory</em>;
         </li>
         <li>
-          задано множество <Latex>{latex.R1Rn}</Latex> отношений между формулами, которые называются <em>правилами вывода</em>. Причем для
-          каждого <Latex>{latex.Ri}</Latex> существует целое положительное число <Latex>{latex.k}</Latex> такое, что для каждого множества,
-          состоящего из <Latex>{latex.k}</Latex> формул, и для каждой формулы <Latex>{latex.F}</Latex> эффективно решается вопрос о том,
-          состоят ли данные <Latex>{latex.k}</Latex> формул в отношении <Latex>{latex.Ri}</Latex> с формулой <Latex>{latex.F}</Latex> или
-          нет. Если состоят, то <Latex>{latex.F}</Latex> называется непосредственным следствием из <Latex>{latex.k}</Latex> формул по
-          правилу <Latex>{latex.Ri}</Latex>.
+          the set <Latex>{latex.R1Rn}</Latex> of relations between formulas, which are called <em>derivation rules</em>, is given. And for
+          each <Latex>{latex.Ri}</Latex> there exists a positive integer <Latex>{latex.k}</Latex> such that for each set consisting of{' '}
+          <Latex>{latex.k}</Latex> formulas and for each formula <Latex>{latex.F}</Latex> the question whether or not the given{' '}
+          <Latex>{latex.k}</Latex> formulas are in relation <Latex>{latex.Ri}</Latex> with formula <Latex>{latex.F}</Latex> is effectively
+          solved. If they are, then <Latex>{latex.F}</Latex> is called the direct consequence of <Latex>{latex.k}</Latex> formulas with
+          respect to <Latex>{latex.Ri}</Latex>.
         </li>
       </ol>
     </div>
