@@ -6,7 +6,7 @@ const DPDefinitionsRu = (): React.ReactElement => {
   const formalTheoryDefinition = (
     <div>
       <dfn>Формальная (аксиоматическая) теория</dfn> <Latex>{latex.T}</Latex> считается определенной, если соблюдены следующие требования:
-      <ul>
+      <ol>
         <li>
           задано некоторое счетное множество символов теории <Latex>{latex.T}</Latex>, в качестве которых могут быть выбраны произвольные
           объекты (не обязательно лингвистические). Конечные последовательности символов называются <em>выражениями</em>{' '}
@@ -24,37 +24,58 @@ const DPDefinitionsRu = (): React.ReactElement => {
           нет. Если состоят, то <Latex>{latex.F}</Latex> называется непосредственным следствием из <Latex>{latex.k}</Latex> формул по
           правилу <Latex>{latex.Ri}</Latex>.
         </li>
-      </ul>
+      </ol>
     </div>
   );
 
-  const proofDefinitions = (
+  const proofDefinition = (
     <div>
       <dfn>Выводом</dfn> формулы <Latex>{latex.G}</Latex> из множества формул <Latex>{latex.Delta}</Latex> называется такая конечная
       последовательность формул <Latex>{latex.F1Fn}</Latex>, в которой каждая формула <Latex>{latex.Fi}</Latex> является либо
-      <ol>
-        <li>формулой из множества, либо</li>
+      <ol style={{ listStyleType: 'lower-alpha' }}>
+        <li>
+          формулой из множества <Latex>{latex.Delta}</Latex>, либо
+        </li>
         <li>аксиомой формальной теории, либо</li>
         <li>получена из предыдущих формул последовательности по правилу вывода;</li>
       </ol>
-      при этом последняя формула <Latex>{latex.Fn}</Latex> совпадает с <Latex>{latex.G}</Latex>. Отношение выводимости обозначается
-      следующим образом: <Latex>{latex.DeltaToG}</Latex>
-      Эта запись читается как &quot;формула <Latex>{latex.G}</Latex> выводима из множества формул <Latex>{latex.Delta}</Latex>&quot; или
-      &quot;
-      <Latex>{latex.Delta}</Latex> выводит <Latex>{latex.G}</Latex>&quot;.<br></br> Элементы <Latex>{latex.Delta}</Latex> называются{' '}
-      <em>посылками</em>. Если <Latex>{latex.DeltaToNothing}</Latex>, то есть не содержит ни одной посылки, то говорят, что{' '}
-      <Latex>{latex.G}</Latex> выводима из аксиом, или <Latex>{latex.G}</Latex> доказуема в данной формальной теории. Саму
-      последовательность <Latex>{latex.F1Fn}</Latex> называют <em>доказательством</em> формулы <Latex>{latex.G}</Latex>. Запись{' '}
-      <Latex>{latex.toG}</Latex>
-      означает: &quot;<Latex>{latex.G}</Latex> доказана&quot; или &quot;<Latex>{latex.G}</Latex> - теорема&quot;.
+      при этом последняя формула <Latex>{latex.Fn}</Latex> совпадает с <Latex>{latex.G}</Latex>.<br></br>
+      Отношение выводимости обозначается следующим образом:
+      <div>
+        <Latex>{latex.DeltaToG}</Latex>
+      </div>
+      Эта запись читается как{' '}
+      <em>
+        формула <Latex>{latex.G}</Latex> выводима из множества формул <Latex>{latex.Delta}</Latex>
+      </em>{' '}
+      или{' '}
+      <em>
+        <Latex>{latex.Delta}</Latex> выводит <Latex>{latex.G}</Latex>.
+      </em>
+      <br></br>
+      Элементы <Latex>{latex.Delta}</Latex> называются <em>посылками</em>. Если <Latex>{latex.DeltaToNothing}</Latex>, то есть не содержит
+      ни одной посылки, то говорят, что <Latex>{latex.G}</Latex> выводима из аксиом, или <Latex>{latex.G}</Latex> доказуема в данной
+      формальной теории. Саму последовательность <Latex>{latex.F1Fn}</Latex> называют <em>доказательством</em> формулы{' '}
+      <Latex>{latex.G}</Latex>. Запись
+      <div>
+        <Latex>{latex.toG}</Latex>
+      </div>
+      означает:{' '}
+      <em>
+        <Latex>{latex.G}</Latex> доказана
+      </em>{' '}
+      или{' '}
+      <em>
+        <Latex>{latex.G}</Latex> - теорема.
+      </em>
     </div>
   );
 
   return (
     <section className='dp-definitions-ru'>
       {formalTheoryDefinition}
-      <br></br>
-      {proofDefinitions}
+      <hr></hr>
+      {proofDefinition}
     </section>
   );
 };
