@@ -72,7 +72,7 @@ const DPDefinitionsRu = (): React.ReactElement => {
   );
 
   return (
-    <section className='dp-definitions-ru'>
+    <section>
       {formalTheoryDefinition}
       <hr></hr>
       {proofDefinition}

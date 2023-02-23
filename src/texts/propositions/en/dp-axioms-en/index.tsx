@@ -1,11 +1,10 @@
 import Latex from 'react-latex';
 import React from 'react';
 import latex from 'texts/propositions/latex-expressions';
-import './styles.scss';
 
 const DPAxiomsEn = (): React.ReactElement => {
   return (
-    <section className='dp-axioms-en'>
+    <section>
       <ol>
         <li>
           <strong>Implication Creation:</strong>

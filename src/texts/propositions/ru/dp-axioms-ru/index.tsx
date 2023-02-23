@@ -1,11 +1,10 @@
 import Latex from 'react-latex';
 import React from 'react';
 import latex from 'texts/propositions/latex-expressions';
-import './styles.scss';
 
 const DPAxiomsRu = (): React.ReactElement => {
   return (
-    <section className='dp-axioms-ru'>
+    <section>
       <ol>
         <li>
           <strong>Введение импликации:</strong>
