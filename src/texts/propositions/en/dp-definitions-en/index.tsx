@@ -1,7 +1,6 @@
 import Latex from 'react-latex';
 import React from 'react';
 import latex from 'texts/propositions/latex-expressions';
-import './styles.scss';
 
 const DPDefinitionsEn = (): React.ReactElement => {
   const formalTheoryDefinition = (
@@ -71,7 +70,7 @@ const DPDefinitionsEn = (): React.ReactElement => {
   );
 
   return (
-    <section className='dp-definitions-ru'>
+    <section>
       {formalTheoryDefinition}
       <hr></hr>
       {proofDefinition}
