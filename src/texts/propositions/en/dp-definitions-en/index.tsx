@@ -1,8 +1,10 @@
 import Latex from 'react-latex';
 import React from 'react';
+import formatClass from 'helpers/formatters/format-class-name';
 import latex from 'texts/propositions/latex-expressions';
+import { CommonProps } from 'types';
 
-const DPDefinitionsEn = (): React.ReactElement => {
+const DPDefinitionsEn = (props: CommonProps): React.ReactElement => {
   const formalTheoryDefinition = (
     <div>
       A <dfn>formal (axiomatic) theory</dfn> <Latex>{latex.T}</Latex> is considered defined if the following requirements are met:
@@ -70,7 +72,7 @@ const DPDefinitionsEn = (): React.ReactElement => {
   );
 
   return (
-    <section>
+    <section className={formatClass([props.className])}>
       {formalTheoryDefinition}
       <hr></hr>
       {proofDefinition}

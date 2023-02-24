@@ -10,10 +10,10 @@ const DirectProofsPropositionDefinitions = (): React.ReactElement => {
 
   switch (language) {
     case 'ru': {
-      return <DPDefinitionsRu />;
+      return <DPDefinitionsRu className='direct-proofs-editor' />;
     }
     default: {
-      return <DPDefinitionsEn />;
+      return <DPDefinitionsEn className='direct-proofs-editor' />;
     }
   }
 };
