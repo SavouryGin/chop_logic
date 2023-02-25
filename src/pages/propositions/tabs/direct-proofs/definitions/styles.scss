@@ -12,9 +12,17 @@
     border: $light-border;
   }
 
+  &_definition-block {
+    padding: 0 $big-padding;
+  }
+
   &__dark {
     hr {
       border: $dark-border;
     }
+  }
+
+  &__centered {
+    text-align: center;
   }
 }

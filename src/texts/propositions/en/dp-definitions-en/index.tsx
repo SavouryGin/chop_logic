@@ -6,7 +6,7 @@ import { CommonProps } from 'types';
 
 const DPDefinitionsEn = (props: CommonProps): React.ReactElement => {
   const formalTheoryDefinition = (
-    <div>
+    <div className={formatClass([{ [`${props.className}_definition-block`]: !!props.className }])}>
       A <dfn>formal (axiomatic) theory</dfn> <Latex>{latex.T}</Latex> is considered defined if the following requirements are met:
       <ol>
         <li>
@@ -30,7 +30,7 @@ const DPDefinitionsEn = (props: CommonProps): React.ReactElement => {
   );
 
   const proofDefinition = (
-    <div>
+    <div className={formatClass([{ [`${props.className}_definition-block`]: !!props.className }])}>
       The <dfn>derivation</dfn> of formula <Latex>{latex.G}</Latex> from set <Latex>{latex.Delta}</Latex> is such finite sequence of
       formulas <Latex>{latex.F1Fn}</Latex> in which each formula <Latex>{latex.Fi}</Latex> is either
       <ol style={{ listStyleType: 'lower-alpha' }}>
@@ -42,7 +42,7 @@ const DPDefinitionsEn = (props: CommonProps): React.ReactElement => {
       </ol>
       in this case, the last formula <Latex>{latex.Fn}</Latex> coincides with <Latex>{latex.G}</Latex>.<br></br>
       The derivability relation is denoted as follows:
-      <div>
+      <div className={formatClass([{ [`${props.className}__centered`]: !!props.className }])}>
         <Latex>{latex.DeltaToG}</Latex>
       </div>
       This entry reads as{' '}
@@ -57,7 +57,7 @@ const DPDefinitionsEn = (props: CommonProps): React.ReactElement => {
       The elements of <Latex>{latex.Delta}</Latex> are called <em>premises</em>. If <Latex>{latex.DeltaToNothing}</Latex>, i.e. does not
       contain any premise, then <Latex>{latex.G}</Latex> is derivable from axioms, or <Latex>{latex.G}</Latex> is provable in this formal
       theory. The sequence <Latex>{latex.F1Fn}</Latex> itself is called a <em>proof</em> of formula <Latex>{latex.G}</Latex>. The entry
-      <div>
+      <div className={formatClass([{ [`${props.className}__centered`]: !!props.className }])}>
         <Latex>{latex.toG}</Latex>
       </div>
       means:{' '}
@@ -72,11 +72,11 @@ const DPDefinitionsEn = (props: CommonProps): React.ReactElement => {
   );
 
   return (
-    <section className={formatClass([props.className])}>
+    <div className={formatClass([props.className])}>
       {formalTheoryDefinition}
       <hr></hr>
       {proofDefinition}
-    </section>
+    </div>
   );
 };
 
