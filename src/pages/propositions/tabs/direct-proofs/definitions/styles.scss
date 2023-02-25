@@ -1,0 +1,20 @@
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/sizes.scss';
+
+.direct-proofs-definitions {
+  dfn {
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  hr {
+    margin: $big-margin 0;
+    border: $light-border;
+  }
+
+  &__dark {
+    hr {
+      border: $dark-border;
+    }
+  }
+}
