@@ -1,5 +1,6 @@
 @import 'styles/variables/colors.scss';
 @import 'styles/variables/sizes.scss';
+@import 'styles/fonts.scss';
 
 .direct-proofs-definitions {
   dfn {
@@ -10,6 +11,10 @@
   hr {
     margin: $big-margin 0;
     border: $light-border;
+  }
+
+  ol {
+    list-style-type: lower-alpha;
   }
 
   &_definition-block {
@@ -24,5 +29,10 @@
 
   &__centered {
     text-align: center;
+  }
+
+  .katex {
+    font-family: $Regular;
+    line-height: normal;
   }
 }
