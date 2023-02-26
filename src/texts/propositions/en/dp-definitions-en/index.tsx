@@ -33,7 +33,7 @@ const DPDefinitionsEn = (props: CommonProps): React.ReactElement => {
     <div className={formatClass([{ [`${props.className}_definition-block`]: !!props.className }])}>
       The <dfn>derivation</dfn> of formula <Latex>{latex.G}</Latex> from set <Latex>{latex.Delta}</Latex> is such finite sequence of
       formulas <Latex>{latex.F1Fn}</Latex> in which each formula <Latex>{latex.Fi}</Latex> is either
-      <ol style={{ listStyleType: 'lower-alpha' }}>
+      <ol>
         <li>
           a formula from set <Latex>{latex.Delta}</Latex>
         </li>
