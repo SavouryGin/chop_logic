@@ -1,10 +1,12 @@
 import Latex from 'react-latex';
 import React from 'react';
+import formatClass from 'helpers/formatters/format-class-name';
 import latex from 'texts/propositions/latex-expressions';
+import { CommonProps } from 'types';
 
-const DPDefinitionsRu = (): React.ReactElement => {
+const DPDefinitionsRu = (props: CommonProps): React.ReactElement => {
   const formalTheoryDefinition = (
-    <div>
+    <div className={formatClass([{ [`${props.className}_definition-block`]: !!props.className }])}>
       <dfn>Формальная (аксиоматическая) теория</dfn> <Latex>{latex.T}</Latex> считается определенной, если соблюдены следующие требования:
       <ol>
         <li>
@@ -29,7 +31,7 @@ const DPDefinitionsRu = (): React.ReactElement => {
   );
 
   const proofDefinition = (
-    <div>
+    <div className={formatClass([{ [`${props.className}_definition-block`]: !!props.className }])}>
       <dfn>Выводом</dfn> формулы <Latex>{latex.G}</Latex> из множества формул <Latex>{latex.Delta}</Latex> называется такая конечная
       последовательность формул <Latex>{latex.F1Fn}</Latex>, в которой каждая формула <Latex>{latex.Fi}</Latex> является либо
       <ol style={{ listStyleType: 'lower-alpha' }}>
@@ -41,7 +43,7 @@ const DPDefinitionsRu = (): React.ReactElement => {
       </ol>
       при этом последняя формула <Latex>{latex.Fn}</Latex> совпадает с <Latex>{latex.G}</Latex>.<br></br>
       Отношение выводимости обозначается следующим образом:
-      <div>
+      <div className={formatClass([{ [`${props.className}__centered`]: !!props.className }])}>
         <Latex>{latex.DeltaToG}</Latex>
       </div>
       Эта запись читается как{' '}
@@ -57,7 +59,7 @@ const DPDefinitionsRu = (): React.ReactElement => {
       ни одной посылки, то говорят, что <Latex>{latex.G}</Latex> выводима из аксиом, или <Latex>{latex.G}</Latex> доказуема в данной
       формальной теории. Саму последовательность <Latex>{latex.F1Fn}</Latex> называют <em>доказательством</em> формулы{' '}
       <Latex>{latex.G}</Latex>. Запись
-      <div>
+      <div className={formatClass([{ [`${props.className}__centered`]: !!props.className }])}>
         <Latex>{latex.toG}</Latex>
       </div>
       означает:{' '}
@@ -72,11 +74,11 @@ const DPDefinitionsRu = (): React.ReactElement => {
   );
 
   return (
-    <section className='dp-definitions-ru'>
+    <div className={formatClass([props.className])}>
       {formalTheoryDefinition}
       <hr></hr>
       {proofDefinition}
-    </section>
+    </div>
   );
 };
 
