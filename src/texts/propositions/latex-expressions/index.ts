@@ -23,6 +23,20 @@ const latexExpressions = {
   FtoH: `$$F \\rightarrow H$$`,
   GtoH: `$$G \\rightarrow H$$`,
   H: `$$H$$`,
+  dashF: `$$\\vdash F$$`,
+  dashG: `$$\\vdash G$$`,
+  dashFandG: `$$\\vdash F \\land G$$`,
+  dashForG: `$$\\vdash F \\lor G$$`,
+  dashFtoH: `$$\\vdash F \\rightarrow H$$`,
+  dashGtoH: `$$\\vdash G \\rightarrow H$$`,
+  dashH: `$$\\vdash H$$`,
+  FdashG: `$$F \\vdash G$$`,
+  dashFtoG: `$$\\vdash F \\rightarrow G$$`,
+  dashGtoF: `$$\\vdash G \\rightarrow F$$`,
+  dashFequivG: `$$\\vdash F \\leftrightarrow G$$`,
+  dashFtoNotG: `$$\\vdash F \\rightarrow \\neg G$$`,
+  dashNotF: `$$\\vdash \\neg F$$`,
+  dashNotNotF: `$$\\vdash \\neg \\neg F$$`,
 };
 
 export default Object.freeze(latexExpressions);
