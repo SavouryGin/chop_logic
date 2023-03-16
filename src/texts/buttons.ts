@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { ButtonID, LogicalSymbolHexCode } from 'enums';
-=======
 import { ButtonID } from 'enums';
->>>>>>> ts-97_fill-the-definitions-tab-for-np
 import { ButtonText } from 'types';
 
 export const buttonTexts: ButtonText = {
