@@ -6,7 +6,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const DirectProofsPropositionDefinitions = (): React.ReactElement => {
+const DirectProofsPropositionDefinitions = (): React.ReactElement | null => {
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
   const className = formatClass(['direct-proofs-definitions', { 'direct-proofs-definitions__dark': isDarkMode }]);
@@ -15,9 +15,11 @@ const DirectProofsPropositionDefinitions = (): React.ReactElement => {
     case 'ru': {
       return <DPDefinitionsRu className={className} />;
     }
-    default: {
+    case 'en': {
       return <DPDefinitionsEn className={className} />;
     }
+    default:
+      return null;
   }
 };
 
