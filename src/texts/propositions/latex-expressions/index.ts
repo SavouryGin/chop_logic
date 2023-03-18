@@ -9,7 +9,7 @@ const latexExpressions = {
   F1FnMinus1: `$$\\{F_{1}, F_{2}, ..., F_{n-1}\\}$$`,
   FnToG: `$$F_{n} \\rightarrow G$$`,
   F1FnMinus1FnDashG: `$$F_{1}, F_{2}, ..., F_{n-1}, F_{n} \\vdash G$$`,
-  F1FnMinus1FnToG: `$$F_{1}, F_{2}, ..., F_{n-1} \vdash F_{n} \\rightarrow G$$`,
+  F1FnMinus1FnDashToG: `$$F_{1}, F_{2}, ..., F_{n-1} \\vdash F_{n} \\rightarrow G$$`,
   G: `$$G$$`,
   Delta: `$$\\Delta$$`,
   Gamma: `$$\\Gamma$$`,
