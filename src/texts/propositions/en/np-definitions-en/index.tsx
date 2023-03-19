@@ -27,7 +27,26 @@ const NPDefinitionsEn = ({ className }: CommonProps): React.ReactElement => {
     </div>
   );
 
-  return <section>{derivationProperties}</section>;
+  const deductionTheorem = (
+    <div className={definitionClass}>
+      <dfn>The deduction theorem</dfn>. If, in some formal theory, formula <Latex>{latex.G}</Latex> is deductible from the set{' '}
+      <Latex>{latex.F1FnMinus1Fn}</Latex>, then formula <Latex>{latex.FnToG}</Latex> is deductible from the set{' '}
+      <Latex>{latex.F1FnMinus1}</Latex>. The brief notation:
+      <div>
+        If <Latex>{latex.F1FnMinus1FnDashG}</Latex>, then <Latex>{latex.F1FnMinus1FnDashToG}</Latex>.
+      </div>
+      In particular, if <Latex>{latex.FdashG}</Latex>, then <Latex>{latex.dashFtoG}</Latex>.
+    </div>
+  );
+
+  return (
+    <section>
+      {derivationProperties}
+      <hr></hr>
+      {deductionTheorem}
+      <hr></hr>
+    </section>
+  );
 };
 
 export default NPDefinitionsEn;
