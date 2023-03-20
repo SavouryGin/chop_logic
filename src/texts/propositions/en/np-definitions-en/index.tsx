@@ -39,12 +39,29 @@ const NPDefinitionsEn = ({ className }: CommonProps): React.ReactElement => {
     </div>
   );
 
+  const npTheory = (
+    <div className={definitionClass}>
+      The natural deduction calculus differs from the axiomatic calculus, because has no formulas considered as axioms, and it has more
+      rules of derivation which compensate the absence of axioms. All the necessary premises for applying derivation rules can be set inside
+      the proof as hypotheses. By introducing a hypothesis, you open a sub-proof, that is, a nested branch of logical proof.<br></br>The
+      same rules apply to the nested proof as to the main proof. You can get out of a sub-proof to the main proof by implementing the{' '}
+      <abbr title='Implication Introduction'>II</abbr> derivation rule. This rule is a special case of the deduction theorem: if, having
+      made the assumption <Latex>{latex.F}</Latex>, we were able to deduce <Latex>{latex.G}</Latex> from it, then we have proved{' '}
+      <Latex>{latex.FtoG}</Latex>.<br></br>Within a sub-proof, you can make another hypothesis and thus open a sub-sub-proof. Inside it
+      another sub-proof, etc. There can be as many levels of nesting as you like. Nevertheless, at the end you have to get out of all the
+      nested proofs into the main branch of reasoning.<br></br>
+      Because proofs in the natural calculus, unlike linear proofs of axiomatic theories, have levels of nesting, they are called{' '}
+      <em>structural proofs</em>.
+    </div>
+  );
+
   return (
     <section>
       {derivationProperties}
       <hr></hr>
       {deductionTheorem}
       <hr></hr>
+      {npTheory}
     </section>
   );
 };
