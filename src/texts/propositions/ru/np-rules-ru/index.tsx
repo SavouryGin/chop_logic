@@ -9,8 +9,12 @@ const NPRulesRu = (props: CommonProps): React.ReactElement => {
     <table className={formatClass([props.className])}>
       <thead>
         <tr>
-          <th>Правила введения связок</th>
-          <th>Правила удаления связок</th>
+          <th>
+            <h3>Правила введения связок</h3>
+          </th>
+          <th>
+            <h3>Правила удаления связок</h3>
+          </th>
         </tr>
       </thead>
       <tbody>
