@@ -20,4 +20,14 @@
     font-family: $Regular;
     line-height: normal;
   }
+
+  &__dark {
+    th h3 {
+      text-shadow: $dark-text-shadow;
+    }
+
+    td {
+      border: $dark-weak-border;
+    }
+  }
 }
