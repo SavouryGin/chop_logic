@@ -1,6 +1,8 @@
 @import 'styles/variables/z-indexes.scss';
 @import 'styles/variables/sizes.scss';
 @import 'styles/mixins/text-styles.scss';
+@import 'styles/variables/colors.scss';
+@import 'styles/fonts.scss';
 
 @mixin toolbar-styles($rows, $columns) {
   position: absolute;
@@ -74,5 +76,43 @@
     .tab-list__content {
       height: 92%;
     }
+  }
+}
+
+@mixin text-definitions-styles() {
+  dfn {
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  hr {
+    margin: $big-margin 0;
+    border: $light-border;
+  }
+
+  ol {
+    list-style-type: lower-alpha;
+  }
+
+  &_definition-block {
+    padding: 0 $big-padding;
+  }
+
+  &__dark {
+    hr {
+      border: $dark-border;
+    }
+  }
+
+  &__centered {
+    margin: $default-margin auto;
+    padding: $default-padding;
+    width: fit-content;
+    border: $light-weak-border;
+  }
+
+  .katex {
+    font-family: $Regular;
+    line-height: normal;
   }
 }
