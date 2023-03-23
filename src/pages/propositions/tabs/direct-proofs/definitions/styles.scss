@@ -28,7 +28,10 @@
   }
 
   &__centered {
-    text-align: center;
+    margin: $default-margin auto;
+    padding: $default-padding;
+    width: fit-content;
+    border: $light-weak-border;
   }
 
   .katex {

@@ -5,7 +5,9 @@ import latex from 'texts/propositions/latex-expressions';
 import { CommonProps } from 'types';
 
 const NPDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
+  const wrapperClass = formatClass([className]);
   const definitionClass = formatClass([{ [`${className}_definition-block`]: !!className }]);
+  const centeredClass = formatClass([{ [`${className}__centered`]: !!className }]);
 
   const derivationProperties = (
     <div className={definitionClass}>
@@ -33,7 +35,7 @@ const NPDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
       <dfn>Теорема о дедукции</dfn>. Если в некоторой формальной теории из множества формул <Latex>{latex.F1FnMinus1Fn}</Latex> выводима
       формула <Latex>{latex.G}</Latex>, то из множества <Latex>{latex.F1FnMinus1}</Latex> выводима формула <Latex>{latex.FnToG}</Latex>.
       Краткая запись:
-      <div>
+      <div className={centeredClass}>
         Если <Latex>{latex.F1FnMinus1FnDashG}</Latex>, то <Latex>{latex.F1FnMinus1FnDashToG}</Latex>.
       </div>
       В частности, если <Latex>{latex.FdashG}</Latex>, то <Latex>{latex.dashFtoG}</Latex>.
@@ -57,7 +59,7 @@ const NPDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
   );
 
   return (
-    <div className={formatClass([className])}>
+    <div className={wrapperClass}>
       {derivationProperties}
       <hr></hr>
       {deductionTheorem}

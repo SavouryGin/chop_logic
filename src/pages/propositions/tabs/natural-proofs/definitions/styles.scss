@@ -1,0 +1,41 @@
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/sizes.scss';
+@import 'styles/fonts.scss';
+
+.natural-proofs-definitions {
+  dfn {
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  hr {
+    margin: $big-margin 0;
+    border: $light-border;
+  }
+
+  ol {
+    list-style-type: lower-alpha;
+  }
+
+  &_definition-block {
+    padding: 0 $big-padding;
+  }
+
+  &__dark {
+    hr {
+      border: $dark-border;
+    }
+  }
+
+  &__centered {
+    margin: $default-margin auto;
+    padding: $default-padding;
+    width: fit-content;
+    border: $light-weak-border;
+  }
+
+  .katex {
+    font-family: $Regular;
+    line-height: normal;
+  }
+}

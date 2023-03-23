@@ -4,9 +4,13 @@ import formatClass from 'helpers/formatters/format-class-name';
 import latex from 'texts/propositions/latex-expressions';
 import { CommonProps } from 'types';
 
-const DPDefinitionsRu = (props: CommonProps): React.ReactElement => {
+const DPDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
+  const wrapperClass = formatClass([className]);
+  const definitionClass = formatClass([{ [`${className}_definition-block`]: !!className }]);
+  const centeredClass = formatClass([{ [`${className}__centered`]: !!className }]);
+
   const formalTheoryDefinition = (
-    <div className={formatClass([{ [`${props.className}_definition-block`]: !!props.className }])}>
+    <div className={definitionClass}>
       <dfn>Формальная (аксиоматическая) теория</dfn> <Latex>{latex.T}</Latex> считается определенной, если соблюдены следующие требования:
       <ol>
         <li>
@@ -31,7 +35,7 @@ const DPDefinitionsRu = (props: CommonProps): React.ReactElement => {
   );
 
   const proofDefinition = (
-    <div className={formatClass([{ [`${props.className}_definition-block`]: !!props.className }])}>
+    <div className={definitionClass}>
       <dfn>Выводом</dfn> формулы <Latex>{latex.G}</Latex> из множества формул <Latex>{latex.Delta}</Latex> называется такая конечная
       последовательность формул <Latex>{latex.F1Fn}</Latex>, в которой каждая формула <Latex>{latex.Fi}</Latex> является либо
       <ol style={{ listStyleType: 'lower-alpha' }}>
@@ -43,7 +47,7 @@ const DPDefinitionsRu = (props: CommonProps): React.ReactElement => {
       </ol>
       при этом последняя формула <Latex>{latex.Fn}</Latex> совпадает с <Latex>{latex.G}</Latex>.<br></br>
       Отношение выводимости обозначается следующим образом:
-      <div className={formatClass([{ [`${props.className}__centered`]: !!props.className }])}>
+      <div className={centeredClass}>
         <Latex>{latex.DeltaToG}</Latex>
       </div>
       Эта запись читается как{' '}
@@ -59,7 +63,7 @@ const DPDefinitionsRu = (props: CommonProps): React.ReactElement => {
       ни одной посылки, то говорят, что <Latex>{latex.G}</Latex> выводима из аксиом, или <Latex>{latex.G}</Latex> доказуема в данной
       формальной теории. Саму последовательность <Latex>{latex.F1Fn}</Latex> называют <em>доказательством</em> формулы{' '}
       <Latex>{latex.G}</Latex>. Запись
-      <div className={formatClass([{ [`${props.className}__centered`]: !!props.className }])}>
+      <div className={centeredClass}>
         <Latex>{latex.toG}</Latex>
       </div>
       означает:{' '}
@@ -74,7 +78,7 @@ const DPDefinitionsRu = (props: CommonProps): React.ReactElement => {
   );
 
   return (
-    <div className={formatClass([props.className])}>
+    <div className={wrapperClass}>
       {formalTheoryDefinition}
       <hr></hr>
       {proofDefinition}
