@@ -1,2 +1,16 @@
+@import 'styles/variables/sizes.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
+@import 'styles/fonts.scss';
+@import 'styles/mixins/page-styles.scss';
+
 .natural-proofs-heuristics {
+  list-style-type: upper-roman;
+  li {
+    margin-bottom: $default-margin;
+
+    .katex {
+      font-family: $Regular;
+      line-height: normal;
+    }
+  }
 }
