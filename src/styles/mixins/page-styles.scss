@@ -115,5 +115,9 @@
     hr {
       border: $dark-border;
     }
+
+    .katex {
+      text-shadow: $dark-text-shadow;
+    }
   }
 }

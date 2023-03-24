@@ -14,13 +14,23 @@
     color: $light-strong-accent-color;
   }
 
+  .katex {
+    font-family: $Regular;
+    line-height: normal;
+    text-shadow: $light-text-shadow;
+  }
+
   li {
     margin-bottom: $default-margin;
+  }
+
+  &__dark {
+    abbr {
+      color: $dark-strong-accent-color;
+    }
 
     .katex {
-      font-family: $Regular;
-      line-height: normal;
-      text-shadow: $light-text-shadow;
+      text-shadow: $dark-text-shadow;
     }
   }
 }
