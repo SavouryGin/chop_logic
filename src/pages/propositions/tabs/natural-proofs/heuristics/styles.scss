@@ -5,12 +5,22 @@
 
 .natural-proofs-heuristics {
   list-style-type: upper-roman;
+
+  abbr {
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    color: $light-strong-accent-color;
+  }
+
   li {
     margin-bottom: $default-margin;
 
     .katex {
       font-family: $Regular;
       line-height: normal;
+      text-shadow: $light-text-shadow;
     }
   }
 }

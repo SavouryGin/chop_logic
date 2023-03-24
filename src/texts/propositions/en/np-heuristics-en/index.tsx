@@ -19,9 +19,9 @@ const NPHeuristicsEn = (props: CommonProps): React.ReactElement => {
         rule on the first and last formulas of the sub-proof to get <Latex>{latex.FtoG}</Latex>.
       </li>
       <li>
-        If the goal is to prove a formula like <Latex>{latex.FandG}</Latex>, you should first derive the formula
-        <Latex>{latex.F}</Latex> and then the formula <Latex>{latex.G}</Latex>. If the derivation of both formulas succeeds, you need to
-        apply the <abbr title='Conjunction Introduction'>CI</abbr> rule on them to get <Latex>{latex.FandG}</Latex>.
+        If the goal is to prove a formula like <Latex>{latex.FandG}</Latex>, you should first derive the formula <Latex>{latex.F}</Latex>{' '}
+        and then the formula <Latex>{latex.G}</Latex>. If the derivation of both formulas succeeds, you need to apply the{' '}
+        <abbr title='Conjunction Introduction'>CI</abbr> rule on them to get <Latex>{latex.FandG}</Latex>.
       </li>
       <li>
         If the goal is to prove the formula like <Latex>{latex.ForG}</Latex>, then at least one of the formulas

@@ -98,12 +98,6 @@
     padding: 0 $big-padding;
   }
 
-  &__dark {
-    hr {
-      border: $dark-border;
-    }
-  }
-
   &__centered {
     margin: $default-margin auto;
     padding: $default-padding;
@@ -114,5 +108,12 @@
   .katex {
     font-family: $Regular;
     line-height: normal;
+    text-shadow: $light-text-shadow;
+  }
+
+  &__dark {
+    hr {
+      border: $dark-border;
+    }
   }
 }
