@@ -5,7 +5,9 @@ import latex from 'texts/propositions/latex-expressions';
 import { CommonProps } from 'types';
 
 const NPDefinitionsEn = ({ className }: CommonProps): React.ReactElement => {
+  const wrapperClass = formatClass([className]);
   const definitionClass = formatClass([{ [`${className}_definition-block`]: !!className }]);
+  const centeredClass = formatClass([{ [`${className}__centered`]: !!className }]);
 
   const derivationProperties = (
     <div className={definitionClass}>
@@ -32,7 +34,7 @@ const NPDefinitionsEn = ({ className }: CommonProps): React.ReactElement => {
       <dfn>The deduction theorem</dfn>. If, in some formal theory, formula <Latex>{latex.G}</Latex> is deductible from the set{' '}
       <Latex>{latex.F1FnMinus1Fn}</Latex>, then formula <Latex>{latex.FnToG}</Latex> is deductible from the set{' '}
       <Latex>{latex.F1FnMinus1}</Latex>. The brief notation:
-      <div>
+      <div className={centeredClass}>
         If <Latex>{latex.F1FnMinus1FnDashG}</Latex>, then <Latex>{latex.F1FnMinus1FnDashToG}</Latex>.
       </div>
       In particular, if <Latex>{latex.FdashG}</Latex>, then <Latex>{latex.dashFtoG}</Latex>.
@@ -56,13 +58,13 @@ const NPDefinitionsEn = ({ className }: CommonProps): React.ReactElement => {
   );
 
   return (
-    <section>
+    <div className={wrapperClass}>
       {derivationProperties}
       <hr></hr>
       {deductionTheorem}
       <hr></hr>
       {npTheory}
-    </section>
+    </div>
   );
 };
 

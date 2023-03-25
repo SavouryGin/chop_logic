@@ -1,2 +1,36 @@
+@import 'styles/variables/sizes.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
+@import 'styles/fonts.scss';
+@import 'styles/mixins/page-styles.scss';
+
 .natural-proofs-heuristics {
+  list-style-type: upper-roman;
+
+  abbr {
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    color: $light-strong-accent-color;
+  }
+
+  .katex {
+    font-family: $Regular;
+    line-height: normal;
+    text-shadow: $light-text-shadow;
+  }
+
+  li {
+    margin-bottom: $default-margin;
+  }
+
+  &__dark {
+    abbr {
+      color: $dark-strong-accent-color;
+    }
+
+    .katex {
+      text-shadow: $dark-text-shadow;
+    }
+  }
 }

@@ -1,2 +1,38 @@
+@import 'styles/variables/sizes.scss';
+@import 'styles/variables/colors.scss';
+@import 'styles/fonts.scss';
+
 .natural-proofs-rules {
+  margin: 0 auto;
+  border-collapse: collapse;
+
+  th h3 {
+    text-shadow: $light-text-shadow;
+  }
+
+  td {
+    text-align: center;
+    border: $light-weak-border;
+    padding: $default-padding;
+  }
+
+  .katex {
+    font-family: $Regular;
+    line-height: normal;
+    text-shadow: $light-text-shadow;
+  }
+
+  &__dark {
+    th h3 {
+      text-shadow: $dark-text-shadow;
+    }
+
+    td {
+      border: $dark-weak-border;
+    }
+
+    .katex {
+      text-shadow: $dark-text-shadow;
+    }
+  }
 }

@@ -1,0 +1,5 @@
+@import 'styles/mixins/page-styles.scss';
+
+.natural-proofs-definitions {
+  @include text-definitions-styles();
+}
