@@ -204,7 +204,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_17"
               >
-                ¬ I
+                NI
               </span>
             </button>
             <button
@@ -224,7 +224,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_19"
               >
-                ∧ I
+                CI
               </span>
             </button>
             <button
@@ -244,7 +244,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_21"
               >
-                ∨ I
+                DI
               </span>
             </button>
             <button
@@ -264,7 +264,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_23"
               >
-                ⇒ I
+                II
               </span>
             </button>
             <button
@@ -284,7 +284,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_25"
               >
-                ⇔ I
+                EI
               </span>
             </button>
             <button
@@ -362,7 +362,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_18"
               >
-                ¬ E
+                NE
               </span>
             </button>
             <button
@@ -382,7 +382,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_20"
               >
-                ∧ E
+                CE
               </span>
             </button>
             <button
@@ -402,7 +402,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_22"
               >
-                ∨ E
+                DE
               </span>
             </button>
             <button
@@ -422,7 +422,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_24"
               >
-                ⇒ E
+                IE
               </span>
             </button>
             <button
@@ -442,7 +442,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
                 class="button__front"
                 data-testid="button_id_26"
               >
-                ⇔ E
+                EE
               </span>
             </button>
           </div>

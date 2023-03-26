@@ -26,7 +26,7 @@ exports[`Sidebar tests: should match the snapshot 1`] = `
             class="button__front chop-icon__download"
             data-testid="button_id_29"
           >
-            Export to XML
+            Export
           </span>
         </button>
       </li>
@@ -47,7 +47,7 @@ exports[`Sidebar tests: should match the snapshot 1`] = `
             class="button__front chop-icon__upload"
             data-testid="button_id_30"
           >
-            Import from XML
+            Import
           </span>
         </button>
       </li>
@@ -135,7 +135,7 @@ exports[`Sidebar tests: should match the snapshot 1`] = `
             class="button__front chop-icon__download"
             data-testid="button_id_29"
           >
-            Export to XML
+            Export
           </span>
         </button>
       </li>
@@ -156,7 +156,7 @@ exports[`Sidebar tests: should match the snapshot 1`] = `
             class="button__front chop-icon__upload"
             data-testid="button_id_30"
           >
-            Import from XML
+            Import
           </span>
         </button>
       </li>
