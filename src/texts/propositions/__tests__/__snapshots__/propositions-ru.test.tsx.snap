@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Propositions EN text components: DPAxiomsEn should match the snapshot 1`] = `
+exports[`Propositions RU text components: DPAxiomsRu should match the snapshot 1`] = `
 <DocumentFragment>
   <section>
     <ol>
       <li>
         <strong>
-          Implication Creation:
+          Введение импликации:
         </strong>
         <br />
         <span>
@@ -146,7 +146,7 @@ exports[`Propositions EN text components: DPAxiomsEn should match the snapshot 1
       </li>
       <li>
         <strong>
-          Implication Distribution:
+          Дистрибуция импликации:
         </strong>
         <br />
         <span>
@@ -510,7 +510,7 @@ exports[`Propositions EN text components: DPAxiomsEn should match the snapshot 1
       </li>
       <li>
         <strong>
-          Contradiction Realization:
+          Создание противоречия:
         </strong>
         <br />
         <span>
@@ -791,7 +791,7 @@ exports[`Propositions EN text components: DPAxiomsEn should match the snapshot 1
 </DocumentFragment>
 `;
 
-exports[`Propositions EN text components: DPDefinitionsEn should match the snapshot 1`] = `
+exports[`Propositions RU text components: DPDefinitionsRu should match the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="test-class-name"
@@ -799,9 +799,8 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
     <div
       class="test-class-name_definition-block"
     >
-      A 
       <dfn>
-        formal (axiomatic) theory
+        Формальная (аксиоматическая) теория
       </dfn>
        
       <span>
@@ -854,10 +853,10 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       is considered defined if the following requirements are met:
+       считается определенной, если соблюдены следующие требования:
       <ol>
         <li>
-          some countable set of symbols of the theory 
+          задано некоторое счетное множество символов теории 
           <span>
             <span>
               <span
@@ -908,11 +907,11 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           is given, as which any objects (not necessarily linguistic) can be chosen. Finite sequences of symbols are called 
+          , в качестве которых могут быть выбраны произвольные объекты (не обязательно лингвистические). Конечные последовательности символов называются 
           <em>
-            expressions
+            выражениями
           </em>
-           of the 
+           
           <span>
             <span>
               <span
@@ -966,11 +965,11 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           ;
         </li>
         <li>
-          a countable subset of expressions called 
+          задано счетное подмножество выражений, именуемых 
           <em>
-            formulas
+            формулами
           </em>
-           of the theory 
+           теории 
           <span>
             <span>
               <span
@@ -1021,7 +1020,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           is given. If it is possible to find out whether a given formula is an axiom, then the theory 
+          . Если имеется возможность выяснить, является ли данная формула аксиомой, то теория 
           <span>
             <span>
               <span
@@ -1072,14 +1071,14 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           is called an 
+           называется 
           <em>
-            axiomatic theory
+            аксиоматической теорией
           </em>
           ;
         </li>
         <li>
-          the set 
+          задано множество 
           <span>
             <span>
               <span
@@ -1421,11 +1420,11 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           of relations between formulas, which are called 
+           отношений между формулами, которые называются 
           <em>
-            derivation rules
+            правилами вывода
           </em>
-          , is given. And for each 
+          . Причем для каждого 
           <span>
             <span>
               <span
@@ -1533,7 +1532,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           there exists a positive integer 
+           существует целое положительное число 
           <span>
             <span>
               <span
@@ -1579,7 +1578,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           such that for each set consisting of 
+           такое, что для каждого множества, состоящего из 
           <span>
             <span>
               <span
@@ -1625,7 +1624,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           formulas and for each formula 
+           формул, и для каждой формулы 
           <span>
             <span>
               <span
@@ -1671,7 +1670,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           the question whether or not the given 
+           эффективно решается вопрос о том, состоят ли данные 
           <span>
             <span>
               <span
@@ -1717,7 +1716,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           formulas are in relation 
+           формул в отношении 
           <span>
             <span>
               <span
@@ -1825,7 +1824,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           with formula 
+           с формулой 
           <span>
             <span>
               <span
@@ -1871,7 +1870,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           is effectively solved. If they are, then 
+           или нет. Если состоят, то 
           <span>
             <span>
               <span
@@ -1917,7 +1916,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           is called the direct consequence of 
+           называется непосредственным следствием из 
           <span>
             <span>
               <span
@@ -1963,7 +1962,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           formulas with respect to 
+           формул по правилу 
           <span>
             <span>
               <span
@@ -2079,11 +2078,10 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
     <div
       class="test-class-name_definition-block"
     >
-      The 
       <dfn>
-        derivation
+        Выводом
       </dfn>
-       of formula 
+       формулы 
       <span>
         <span>
           <span
@@ -2128,7 +2126,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       from set 
+       из множества формул 
       <span>
         <span>
           <span
@@ -2175,7 +2173,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       is such finite sequence of formulas 
+       называется такая конечная последовательность формул 
       <span>
         <span>
           <span
@@ -2497,7 +2495,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       in which each formula 
+      , в которой каждая формула 
       <span>
         <span>
           <span
@@ -2605,10 +2603,12 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       is either
-      <ol>
+       является либо
+      <ol
+        style="list-style-type: lower-alpha;"
+      >
         <li>
-          a formula from set 
+          формулой из множества 
           <span>
             <span>
               <span
@@ -2655,15 +2655,16 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
+          , либо
         </li>
         <li>
-          or an axiom of formal theory,
+          аксиомой формальной теории, либо
         </li>
         <li>
-          or is derived from previous formulas of the sequence by the derivation rule;
+          получена из предыдущих формул последовательности по правилу вывода;
         </li>
       </ol>
-      in this case, the last formula 
+      при этом последняя формула 
       <span>
         <span>
           <span
@@ -2771,7 +2772,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       coincides with 
+       совпадает с 
       <span>
         <span>
           <span
@@ -2818,7 +2819,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
       </span>
       .
       <br />
-      The derivability relation is denoted as follows:
+      Отношение выводимости обозначается следующим образом:
       <div
         class="test-class-name__centered"
       >
@@ -2911,9 +2912,9 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </div>
-      This entry reads as 
+      Эта запись читается как 
       <em>
-        the formula 
+        формула 
         <span>
           <span>
             <span
@@ -2958,7 +2959,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
             </span>
           </span>
         </span>
-         is derivable from the set of formulas 
+         выводима из множества формул 
         <span>
           <span>
             <span
@@ -3006,7 +3007,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </em>
-       or 
+       или 
       <em>
         <span>
           <span>
@@ -3054,7 +3055,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
             </span>
           </span>
         </span>
-         derives 
+         выводит 
         <span>
           <span>
             <span
@@ -3102,7 +3103,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
         .
       </em>
       <br />
-      The elements of 
+      Элементы 
       <span>
         <span>
           <span
@@ -3149,11 +3150,11 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       are called 
+       называются 
       <em>
-        premises
+        посылками
       </em>
-      . If 
+      . Если 
       <span>
         <span>
           <span
@@ -3242,7 +3243,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-      , i.e. does not contain any premise, then 
+      , то есть не содержит ни одной посылки, то говорят, что 
       <span>
         <span>
           <span
@@ -3287,7 +3288,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       is derivable from axioms, or 
+       выводима из аксиом, или 
       <span>
         <span>
           <span
@@ -3332,7 +3333,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       is provable in this formal theory. The sequence 
+       доказуема в данной формальной теории. Саму последовательность 
       <span>
         <span>
           <span
@@ -3654,11 +3655,11 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       itself is called a 
+       называют 
       <em>
-        proof
+        доказательством
       </em>
-       of formula 
+       формулы 
       <span>
         <span>
           <span
@@ -3703,7 +3704,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-      . The entry
+      . Запись
       <div
         class="test-class-name__centered"
       >
@@ -3772,7 +3773,7 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
           </span>
         </span>
       </div>
-      means: 
+      означает: 
       <em>
         <span>
           <span>
@@ -3818,9 +3819,9 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
             </span>
           </span>
         </span>
-         is proved
+         доказана
       </em>
-       or 
+       или 
       <em>
         <span>
           <span>
@@ -3866,14 +3867,14 @@ exports[`Propositions EN text components: DPDefinitionsEn should match the snaps
             </span>
           </span>
         </span>
-         is a theorem.
+         - теорема.
       </em>
     </div>
   </div>
 </DocumentFragment>
 `;
 
-exports[`Propositions EN text components: NPDefinitionsEn should match the snapshot 1`] = `
+exports[`Propositions RU text components: DPDefinitionsRu should match the snapshot 2`] = `
 <DocumentFragment>
   <div
     class="test-class-name"
@@ -3882,9 +3883,9 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
       class="test-class-name_definition-block"
     >
       <dfn>
-        Properties of the derivability relation
+        Свойства отношения выводимости
       </dfn>
-      . Let 
+      . Пусть 
       <span>
         <span>
           <span
@@ -3931,7 +3932,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       and 
+       и 
       <span>
         <span>
           <span
@@ -3978,7 +3979,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       be some subsets of the set of formulas of formal theory, 
+       — некоторые подмножества множества формул формальной теории, а 
       <span>
         <span>
           <span
@@ -4024,7 +4025,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       and 
+       и 
       <span>
         <span>
           <span
@@ -4069,10 +4070,10 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       be some formulas of that theory. Then:
+       — некоторые формулы этой теории. Тогда:
       <ol>
         <li>
-          if 
+          если 
           <span>
             <span>
               <span
@@ -4152,7 +4153,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           and 
+           и 
           <span>
             <span>
               <span
@@ -4233,7 +4234,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-          , then 
+          , то 
           <span>
             <span>
               <span
@@ -4395,7 +4396,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           if and only if 
+           тогда и только тогда, когда в 
           <span>
             <span>
               <span
@@ -4442,7 +4443,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           contains such finite subset 
+           найдется такое конечное подмножество 
           <span>
             <span>
               <span
@@ -4489,7 +4490,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           that 
+          , что 
           <span>
             <span>
               <span
@@ -4572,7 +4573,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           ;
         </li>
         <li>
-          if for any formula 
+          если для любой формулы 
           <span>
             <span>
               <span
@@ -4617,7 +4618,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           of the set 
+           из множества 
           <span>
             <span>
               <span
@@ -4664,7 +4665,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           it is true that 
+           справедливо, что 
           <span>
             <span>
               <span
@@ -4743,7 +4744,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-           and 
+           и 
           <span>
             <span>
               <span
@@ -4823,7 +4824,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               </span>
             </span>
           </span>
-          , then 
+          , то 
           <span>
             <span>
               <span
@@ -4912,54 +4913,9 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
       class="test-class-name_definition-block"
     >
       <dfn>
-        The deduction theorem
+        Теорема о дедукции
       </dfn>
-      . If, in some formal theory, formula 
-      <span>
-        <span>
-          <span
-            class="katex"
-          >
-            <span
-              class="katex-mathml"
-            >
-              <math>
-                <semantics>
-                  <mrow>
-                    <mi>
-                      G
-                    </mi>
-                  </mrow>
-                  <annotation
-                    encoding="application/x-tex"
-                  >
-                    G
-                  </annotation>
-                </semantics>
-              </math>
-            </span>
-            <span
-              aria-hidden="true"
-              class="katex-html"
-            >
-              <span
-                class="base"
-              >
-                <span
-                  class="strut"
-                  style="height:0.68333em;vertical-align:0em;"
-                />
-                <span
-                  class="mord mathdefault"
-                >
-                  G
-                </span>
-              </span>
-            </span>
-          </span>
-        </span>
-      </span>
-       is deductible from the set 
+      . Если в некоторой формальной теории из множества формул 
       <span>
         <span>
           <span
@@ -5404,7 +5360,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-      , then formula 
+       выводима формула 
       <span>
         <span>
           <span
@@ -5416,17 +5372,6 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               <math>
                 <semantics>
                   <mrow>
-                    <msub>
-                      <mi>
-                        F
-                      </mi>
-                      <mi>
-                        n
-                      </mi>
-                    </msub>
-                    <mo>
-                      →
-                    </mo>
                     <mi>
                       G
                     </mi>
@@ -5434,7 +5379,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
                   <annotation
                     encoding="application/x-tex"
                   >
-                    F_{n} \\rightarrow G
+                    G
                   </annotation>
                 </semantics>
               </math>
@@ -5443,90 +5388,6 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
               aria-hidden="true"
               class="katex-html"
             >
-              <span
-                class="base"
-              >
-                <span
-                  class="strut"
-                  style="height:0.83333em;vertical-align:-0.15em;"
-                />
-                <span
-                  class="mord"
-                >
-                  <span
-                    class="mord mathdefault"
-                    style="margin-right:0.13889em;"
-                  >
-                    F
-                  </span>
-                  <span
-                    class="msupsub"
-                  >
-                    <span
-                      class="vlist-t vlist-t2"
-                    >
-                      <span
-                        class="vlist-r"
-                      >
-                        <span
-                          class="vlist"
-                          style="height:0.151392em;"
-                        >
-                          <span
-                            style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"
-                          >
-                            <span
-                              class="pstrut"
-                              style="height:2.7em;"
-                            />
-                            <span
-                              class="sizing reset-size6 size3 mtight"
-                            >
-                              <span
-                                class="mord mtight"
-                              >
-                                <span
-                                  class="mord mathdefault mtight"
-                                >
-                                  n
-                                </span>
-                              </span>
-                            </span>
-                          </span>
-                        </span>
-                        <span
-                          class="vlist-s"
-                        >
-                          ​
-                        </span>
-                      </span>
-                      <span
-                        class="vlist-r"
-                      >
-                        <span
-                          class="vlist"
-                          style="height:0.15em;"
-                        >
-                          <span />
-                        </span>
-                      </span>
-                    </span>
-                  </span>
-                </span>
-                <span
-                  class="mspace"
-                  style="margin-right:0.2777777777777778em;"
-                />
-                <span
-                  class="mrel"
-                >
-                  →
-                </span>
-                <span
-                  class="mspace"
-                  style="margin-right:0.2777777777777778em;"
-                />
-              </span>
               <span
                 class="base"
               >
@@ -5544,7 +5405,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       is deductible from the set 
+      , то из множества 
       <span>
         <span>
           <span
@@ -5904,11 +5765,151 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-      . The brief notation:
+       выводима формула 
+      <span>
+        <span>
+          <span
+            class="katex"
+          >
+            <span
+              class="katex-mathml"
+            >
+              <math>
+                <semantics>
+                  <mrow>
+                    <msub>
+                      <mi>
+                        F
+                      </mi>
+                      <mi>
+                        n
+                      </mi>
+                    </msub>
+                    <mo>
+                      →
+                    </mo>
+                    <mi>
+                      G
+                    </mi>
+                  </mrow>
+                  <annotation
+                    encoding="application/x-tex"
+                  >
+                    F_{n} \\rightarrow G
+                  </annotation>
+                </semantics>
+              </math>
+            </span>
+            <span
+              aria-hidden="true"
+              class="katex-html"
+            >
+              <span
+                class="base"
+              >
+                <span
+                  class="strut"
+                  style="height:0.83333em;vertical-align:-0.15em;"
+                />
+                <span
+                  class="mord"
+                >
+                  <span
+                    class="mord mathdefault"
+                    style="margin-right:0.13889em;"
+                  >
+                    F
+                  </span>
+                  <span
+                    class="msupsub"
+                  >
+                    <span
+                      class="vlist-t vlist-t2"
+                    >
+                      <span
+                        class="vlist-r"
+                      >
+                        <span
+                          class="vlist"
+                          style="height:0.151392em;"
+                        >
+                          <span
+                            style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"
+                          >
+                            <span
+                              class="pstrut"
+                              style="height:2.7em;"
+                            />
+                            <span
+                              class="sizing reset-size6 size3 mtight"
+                            >
+                              <span
+                                class="mord mtight"
+                              >
+                                <span
+                                  class="mord mathdefault mtight"
+                                >
+                                  n
+                                </span>
+                              </span>
+                            </span>
+                          </span>
+                        </span>
+                        <span
+                          class="vlist-s"
+                        >
+                          ​
+                        </span>
+                      </span>
+                      <span
+                        class="vlist-r"
+                      >
+                        <span
+                          class="vlist"
+                          style="height:0.15em;"
+                        >
+                          <span />
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="mspace"
+                  style="margin-right:0.2777777777777778em;"
+                />
+                <span
+                  class="mrel"
+                >
+                  →
+                </span>
+                <span
+                  class="mspace"
+                  style="margin-right:0.2777777777777778em;"
+                />
+              </span>
+              <span
+                class="base"
+              >
+                <span
+                  class="strut"
+                  style="height:0.68333em;vertical-align:0em;"
+                />
+                <span
+                  class="mord mathdefault"
+                >
+                  G
+                </span>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
+      . Краткая запись:
       <div
         class="test-class-name__centered"
       >
-        If 
+        Если 
         <span>
           <span>
             <span
@@ -6365,7 +6366,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
             </span>
           </span>
         </span>
-        , then 
+        , то 
         <span>
           <span>
             <span
@@ -6834,7 +6835,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
         </span>
         .
       </div>
-      In particular, if 
+      В частности, если 
       <span>
         <span>
           <span
@@ -6912,7 +6913,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-      , then 
+      , то 
       <span>
         <span>
           <span
@@ -7016,15 +7017,15 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
     <div
       class="test-class-name_definition-block"
     >
-      The natural deduction calculus differs from the axiomatic calculus, because has no formulas considered as axioms, and it has more rules of derivation which compensate the absence of axioms. All the necessary premises for applying derivation rules can be set inside the proof as hypotheses. By introducing a hypothesis, you open a sub-proof, that is, a nested branch of logical proof.
+      Исчисление высказываний натурального вывода отличается от аксиоматического исчисления тем, что в нем нет формул, считающихся аксиомами, и в нём больше правил вывода, компенсирующих отсутствие аксиом. В натуральном исчислении все необходимые посылки для применения правил вывода можно задать внутри доказательства в качестве гипотез. Вводя гипотезу, мы открываем под-доказательство, то есть вложенную ветку логического вывода.
       <br />
-      The same rules apply to the nested proof as to the main proof. You can get out of a sub-proof to the main proof by implementing the 
+      Для вложенного доказательства действуют те же самые правила, что и для основного. Выйти из под-доказательства в основное можно с помощью особого правила вывода 
       <abbr
-        title="Implication Introduction"
+        title="Введение импликации"
       >
-        II
+        ВИ
       </abbr>
-       derivation rule. This rule is a special case of the deduction theorem: if, having made the assumption 
+      . Это правило представляет собой частный случай теоремы о дедукции: если, сделав предположение 
       <span>
         <span>
           <span
@@ -7070,7 +7071,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-      , we were able to deduce 
+      , мы смогли вывести из него 
       <span>
         <span>
           <span
@@ -7115,7 +7116,7 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
           </span>
         </span>
       </span>
-       from it, then we have proved 
+      , то мы доказали 
       <span>
         <span>
           <span
@@ -7195,11 +7196,11 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
       </span>
       .
       <br />
-      Within a sub-proof, you can make another hypothesis and thus open a sub-sub-proof. Inside it another sub-proof, etc. There can be as many levels of nesting as you like. Nevertheless, at the end you have to get out of all the nested proofs into the main branch of reasoning.
+      Внутри под-доказательства можно сделать еще одну гипотезу и открыть таким образом под-под-доказательство. Внутри него — еще одно рассуждение и т.д. Уровней вложенности может быть сколько угодно. Тем не менее в конце мы должны выйти изо всех вложенных доказательств в основную ветку рассуждения.
       <br />
-      Because proofs in the natural calculus, unlike linear proofs of axiomatic theories, have levels of nesting, they are called 
+      Поскольку доказательства в натуральном исчислении, в отличие от линейных доказательств аксиоматических теорий, имеют уровни вложенности, их называют 
       <em>
-        structural proofs
+        структурными доказательствами
       </em>
       .
     </div>
@@ -7207,13 +7208,13 @@ exports[`Propositions EN text components: NPDefinitionsEn should match the snaps
 </DocumentFragment>
 `;
 
-exports[`Propositions EN text components: NPHeuristicsEn should match the snapshot 1`] = `
+exports[`Propositions RU text components: NPHeuristicsRu should match the snapshot 1`] = `
 <DocumentFragment>
   <ol
     class="test-class-name"
   >
     <li>
-      If the goal is to prove a formula like 
+      Если цель — доказать формулу вида 
       <span>
         <span>
           <span
@@ -7291,7 +7292,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      , you should enter the assumption 
+      , следует ввести гипотезу 
       <span>
         <span>
           <span
@@ -7337,7 +7338,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       and in the the sub-proof try to derive 
+       и в открывшемся под-доказательстве попытаться вывести 
       <span>
         <span>
           <span
@@ -7382,14 +7383,14 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      . Then you have to use the 
+      . Затем нужно использовать правило 
       <abbr
-        title="Implication
- Introduction"
+        title="Введение
+ импликации"
       >
-        II
+        ВИ
       </abbr>
-       rule on the first and last formulas of the sub-proof to get 
+       на первой и последней формулах под-доказательства, чтобы получить 
       <span>
         <span>
           <span
@@ -7470,7 +7471,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       .
     </li>
     <li>
-      If the goal is to prove a formula like 
+      Если цель — доказать формулу вида 
       <span>
         <span>
           <span
@@ -7548,7 +7549,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      , you should first derive the formula 
+      , то сначала нужно вывести формулу 
       <span>
         <span>
           <span
@@ -7594,7 +7595,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       and then the formula 
+      , а затем — формулу 
       <span>
         <span>
           <span
@@ -7639,13 +7640,13 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      . If the derivation of both formulas succeeds, you need to apply the 
+      . Если вывод обеих формул удался, нужно применить на них правило 
       <abbr
-        title="Conjunction Introduction"
+        title="Введение конъюнкции"
       >
-        CI
+        ВК
       </abbr>
-       rule on them to get 
+      , чтобы получить 
       <span>
         <span>
           <span
@@ -7726,7 +7727,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       .
     </li>
     <li>
-      If the goal is to prove the formula like 
+      Если цель — доказать формулу 
       <span>
         <span>
           <span
@@ -7804,7 +7805,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      , then at least one of the formulas
+      , то необходимо вывести хотя бы одну из формул 
       <span>
         <span>
           <span
@@ -7850,7 +7851,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       or 
+       или 
       <span>
         <span>
           <span
@@ -7895,16 +7896,16 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       must be derived. Once the derivation of one of the formulas is obtained, you can get a disjunction of that formula with any other formula by the 
+      . Как только получен вывод одной из формул, можно получить дизъюнкцию данной формулы с любой другой формулой по правилу 
       <abbr
-        title="Disjunction Introduction"
+        title="Введение дизъюнкции"
       >
-        DI
+        ВД
       </abbr>
-       rule.
+      .
     </li>
     <li>
-      If the goal is to prove a formula like 
+      Если цель — доказать формулу вида 
       <span>
         <span>
           <span
@@ -7960,7 +7961,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      , you should introduce the assumtion 
+      , следует ввести гипотезу 
       <span>
         <span>
           <span
@@ -8006,7 +8007,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       and derive a contradiction in the sub-proof, i.e., two formulas: 
+       и вывести в под-доказательстве противоречие, то есть две формулы: 
       <span>
         <span>
           <span
@@ -8172,13 +8173,13 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      . Once the contradiction is obtained, the 
+      . Как только противоречие получено, правило 
       <abbr
-        title="Negation Introduction"
+        title="Введение отрицания"
       >
-        NI
+        ВО
       </abbr>
-       rule will give you the desired 
+       даст нам искомую 
       <span>
         <span>
           <span
@@ -8237,7 +8238,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       .
     </li>
     <li>
-      If a premise is given as 
+      Если дана посылка в виде 
       <span>
         <span>
           <span
@@ -8315,7 +8316,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       and the goal is to prove 
+       и цель — доказать 
       <span>
         <span>
           <span
@@ -8360,7 +8361,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      , you must first derive 
+      , нужно сначала вывести 
       <span>
         <span>
           <span
@@ -8406,7 +8407,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      . If the derivation succeeds, the formula 
+      . Если вывод удался, то формулу 
       <span>
         <span>
           <span
@@ -8451,16 +8452,17 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       can be obtained by the 
+       можно получить по правилу 
       <abbr
-        title="Implication Elimination"
+        title="Удаление
+ импликации"
       >
-        IE
+        УИ
       </abbr>
-       rule.
+      .
     </li>
     <li>
-      If a premise is given as 
+      Если дана посылка в виде 
       <span>
         <span>
           <span
@@ -8538,7 +8540,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       and the goal is to derive 
+       и цель — вывести 
       <span>
         <span>
           <span
@@ -8584,7 +8586,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      , then you should first prove 
+      , то следует сначала доказать, что 
       <span>
         <span>
           <span
@@ -8663,7 +8665,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-       and then 
+      , а затем — 
       <span>
         <span>
           <span
@@ -8741,13 +8743,13 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
           </span>
         </span>
       </span>
-      . On these two formulas and the original disjunctive premise, use the 
+      . На этих двух формулах и исходной дизъюнктивной посылке следует использовать правило 
       <abbr
-        title="Disjunction Elimination"
+        title="Удаление дизъюнкции"
       >
-        DE
+        УД
       </abbr>
-       rule to get 
+      , чтобы получить 
       <span>
         <span>
           <span
@@ -8799,7 +8801,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
 </DocumentFragment>
 `;
 
-exports[`Propositions EN text components: NPHeuristicsEn should match the snapshot 2`] = `
+exports[`Propositions RU text components: NPHeuristicsRu should match the snapshot 2`] = `
 <DocumentFragment>
   <table
     class="test-class-name"
@@ -8808,12 +8810,12 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       <tr>
         <th>
           <h3>
-            Introduction rules
+            Правила введения связок
           </h3>
         </th>
         <th>
           <h3>
-            Elimination rules
+            Правила удаления связок
           </h3>
         </th>
       </tr>
@@ -8822,10 +8824,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       <tr>
         <td>
           <h3>
-            Conjunction Introduction (CI)
+            Введение конъюнкции (ВК)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -8891,7 +8893,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-             and 
+             и 
             <span>
               <span>
                 <span
@@ -8956,7 +8958,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -9058,10 +9060,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
         </td>
         <td>
           <h3>
-            Conjunction Elimination (CE)
+            Удаление конъюнкции (УК)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -9159,7 +9161,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -9225,7 +9227,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-             and 
+             и 
             <span>
               <span>
                 <span
@@ -9296,10 +9298,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       <tr>
         <td>
           <h3>
-            Disjunction Introduction (DI)
+            Введение дизъюнкции (ВД)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -9430,7 +9432,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -9532,10 +9534,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
         </td>
         <td>
           <h3>
-            Disjunction Elimination (DE)
+            Удаление дизъюнкции (УД)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -9732,7 +9734,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-             and 
+             и 
             <span>
               <span>
                 <span
@@ -9830,7 +9832,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -9902,10 +9904,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       <tr>
         <td>
           <h3>
-            Implication Introduction (II)
+            Введение импликации (ВИ)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -9983,7 +9985,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -10085,10 +10087,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
         </td>
         <td>
           <h3>
-            Implication Elimination (IE)
+            Удаление импликации (УИ)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -10154,7 +10156,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-             and 
+             и 
             <span>
               <span>
                 <span
@@ -10252,7 +10254,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -10323,10 +10325,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       <tr>
         <td>
           <h3>
-            Equivalence Introduction (EI)
+            Введение эквивалентности (ВЭ)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -10424,7 +10426,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-             and 
+             и 
             <span>
               <span>
                 <span
@@ -10522,7 +10524,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -10624,10 +10626,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
         </td>
         <td>
           <h3>
-            Equivalence Elimination (EE)
+            Удаление эквивалентности (УЭ)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -10725,7 +10727,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -10823,7 +10825,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-             and 
+             и 
             <span>
               <span>
                 <span
@@ -10927,10 +10929,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
       <tr>
         <td>
           <h3>
-            Negation Introduction (NI)
+            Введение отрицания (ВО)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -11028,7 +11030,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-             and 
+             и 
             <span>
               <span>
                 <span
@@ -11136,7 +11138,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span
@@ -11216,10 +11218,10 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
         </td>
         <td>
           <h3>
-            Negation Elimination (NE)
+            Удаление отрицания (УО)
           </h3>
           <span>
-            If 
+            Если 
             <span>
               <span>
                 <span
@@ -11305,7 +11307,7 @@ exports[`Propositions EN text components: NPHeuristicsEn should match the snapsh
                 </span>
               </span>
             </span>
-            , then 
+            , то 
             <span>
               <span>
                 <span

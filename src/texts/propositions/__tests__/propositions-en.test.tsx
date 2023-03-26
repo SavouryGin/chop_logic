@@ -17,7 +17,7 @@ describe('Propositions EN text components:', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('DPDefinitionsEn should match the snapshot', () => {
+  it('NPDefinitionsEn should match the snapshot', () => {
     const { asFragment } = render(<NPDefinitionsEn className={'test-class-name'} />);
     expect(asFragment()).toMatchSnapshot();
   });
