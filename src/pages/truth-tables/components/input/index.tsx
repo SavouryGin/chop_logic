@@ -5,8 +5,9 @@ import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { usePropositionalFormulaPreview } from 'hooks';
+import './styles.scss';
 
-const TruthTablesInput = (): React.ReactElement => {
+const TruthTableInput = (): React.ReactElement => {
   // const dispatch = useAppDispatch();
   const tableInput = { input: '' };
   const [formValue, setFormValue] = useState(tableInput);
@@ -16,7 +17,7 @@ const TruthTablesInput = (): React.ReactElement => {
   const isFormInvalid = hasError || !formValue.input;
   const formContent = (
     <>
-      <TextInput name='input' inputId={InputID.Premise} isRequired />
+      <TextInput name='input' inputId={InputID.Premise} className='truth-table-input__input' isRequired />
       <FormulaPreview preview={preview} />
     </>
   );
@@ -29,7 +30,7 @@ const TruthTablesInput = (): React.ReactElement => {
   };
 
   return (
-    <div className='truth-tables-input'>
+    <div className='truth-table-input'>
       <Form
         onSubmit={onSubmit}
         initialValues={tableInput}
@@ -42,4 +43,4 @@ const TruthTablesInput = (): React.ReactElement => {
   );
 };
 
-export default TruthTablesInput;
+export default TruthTableInput;

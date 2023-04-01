@@ -1,11 +1,11 @@
 import React from 'react';
-import TruthTablesInput from './components/input';
+import TruthTableInput from './components/input';
 import TruthTablesTable from './components/table';
 
 const TruthTables = (): React.ReactElement => {
   return (
     <div className='truth-tables'>
-      <TruthTablesInput />
+      <TruthTableInput />
       <TruthTablesTable />
     </div>
   );
