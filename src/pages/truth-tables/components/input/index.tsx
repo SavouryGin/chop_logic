@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { usePropositionalFormulaPreview } from 'hooks';
+import { truthTablesActions as actions } from 'store/propositions/truth-tables';
+import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
 const TruthTableInput = (): React.ReactElement => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const tableInput = { input: '' };
   const [formValue, setFormValue] = useState(tableInput);
 
@@ -26,7 +27,7 @@ const TruthTableInput = (): React.ReactElement => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formValue);
+    dispatch(actions.generateTruthTable(formValue));
   };
 
   return (

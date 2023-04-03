@@ -15,6 +15,10 @@ export const truthTablesSlice = createSlice({
     setError: (state, action: PayloadAction<LocalText | null>) => {
       state.error = action.payload;
     },
+
+    generateTruthTable: (state, _action: PayloadAction<{ input: string }>) => {
+      return state;
+    },
   },
 });
 
