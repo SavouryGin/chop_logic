@@ -16,7 +16,7 @@ describe('DP exportDPToXMLSaga tests', () => {
   it('exportDPToXMLSaga() should create an xml file', () => {
     testSaga(exportDPToXMLSaga, { payload: testFileName })
       .next()
-      .select(selectors.getTableData)
+      .select(selectors.tableData)
       .next(tMocks.dpTableDataIE)
       .call(createAndSaveXMLFile, tMocks.dpIEtoXML, testFileName)
       .next()
@@ -34,7 +34,7 @@ describe('DP exportDPToXMLSaga tests', () => {
   it('exportDPToXMLSaga() should catch the error', () => {
     testSaga(exportDPToXMLSaga, { payload: testFileName })
       .next()
-      .select(selectors.getTableData)
+      .select(selectors.tableData)
       .next(tMocks.dpTableDataIE)
       .throw(tMocks.error)
       .put(actions.setError(propositionsElementsTexts.generalError))

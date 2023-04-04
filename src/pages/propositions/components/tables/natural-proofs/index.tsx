@@ -10,8 +10,8 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 const NaturalProofsEditorTable = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const tableData = useAppSelector(selectors.getTableData);
-  const [selectedIds, setSelectedIds] = useState<string[]>(useAppSelector(selectors.getSelectedIds));
+  const tableData = useAppSelector(selectors.tableData);
+  const [selectedIds, setSelectedIds] = useState<string[]>(useAppSelector(selectors.selectedIds));
   const takeSelectedIds = (ids: string[]) => setSelectedIds(ids);
 
   useEffect(() => {

@@ -13,8 +13,8 @@ export function* deleteNaturalProofStepsWatcher(): Generator {
 export function* deleteNaturalProofsStepsSaga(action: { payload: { isConfirmed: boolean } }): SagaIterator {
   try {
     const isConfirmed = action.payload.isConfirmed;
-    const selectedIds: string[] = yield select(selectors.getSelectedIds);
-    const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
+    const selectedIds: string[] = yield select(selectors.selectedIds);
+    const tableData: NaturalProofsTableItem[] = yield select(selectors.tableData);
     const dependentItems = findDependentNPItemsToDelete(selectedIds, tableData);
     const isConfirmationNeeded = dependentItems.length && selectedIds.length !== tableData.length;
 

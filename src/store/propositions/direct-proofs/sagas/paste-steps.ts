@@ -11,8 +11,8 @@ export function* pasteStepsDPWatcher(): Generator {
 
 export function* pasteStepsDPSaga(): SagaIterator {
   try {
-    const tableItems: DirectProofsTableItem[] = yield select(selectors.getTableData);
-    const clipboardData: DirectProofsTableItem[] = yield select(selectors.getClipboardData);
+    const tableItems: DirectProofsTableItem[] = yield select(selectors.tableData);
+    const clipboardData: DirectProofsTableItem[] = yield select(selectors.clipboardData);
     const mergedData = [...tableItems, ...clipboardData].map((item, index) => ({ ...item, step: index + 1 }));
 
     yield put(actions.setTableData(mergedData));

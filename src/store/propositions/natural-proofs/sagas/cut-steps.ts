@@ -12,9 +12,9 @@ export function* cutStepsNPWatcher(): Generator {
 
 export function* cutStepsNPSaga(action: { payload: { isConfirmed: boolean } }): SagaIterator {
   try {
-    const selectedIds: string[] = yield select(selectors.getSelectedIds);
+    const selectedIds: string[] = yield select(selectors.selectedIds);
     const isConfirmed = action.payload.isConfirmed;
-    const tableItems: NaturalProofsTableItem[] = yield select(selectors.getTableData);
+    const tableItems: NaturalProofsTableItem[] = yield select(selectors.tableData);
     const dependentItems = findDependentNPItemsToDelete(selectedIds, tableItems);
     const isConfirmationNeeded = dependentItems.length && selectedIds.length !== tableItems.length;
     const itemsToCut = tableItems.filter((item) => selectedIds.includes(item.id));

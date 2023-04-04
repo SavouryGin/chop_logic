@@ -101,7 +101,7 @@ export const useImplicationDistributionPreview = (
 
 export const useIsImplicationEliminationPossible = (selectedIds: string[]): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const formulas = useAppSelector(propositionsDPSelectors.getSelectedFormulas);
+  const formulas = useAppSelector(propositionsDPSelectors.selectedFormulas);
 
   useEffect(() => {
     if (formulas.length !== 2) {
@@ -116,7 +116,7 @@ export const useIsImplicationEliminationPossible = (selectedIds: string[]): bool
 
 export const useIsPremisePossible = (): boolean => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const data = useAppSelector(propositionsNPSelectors.getTableData);
+  const data = useAppSelector(propositionsNPSelectors.tableData);
 
   useEffect(() => {
     if (!data.length) {
@@ -133,8 +133,8 @@ export const useIsPremisePossible = (): boolean => {
 
 export const useIsReplacePossible = (variable: string, mode: 'direct' | 'natural'): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const directData = useAppSelector(propositionsDPSelectors.getTableData);
-  const naturalData = useAppSelector(propositionsNPSelectors.getTableData);
+  const directData = useAppSelector(propositionsDPSelectors.tableData);
+  const naturalData = useAppSelector(propositionsNPSelectors.tableData);
   const data = mode === 'direct' ? directData : naturalData;
 
   useEffect(() => {
@@ -161,9 +161,9 @@ export const useIsReplacePossible = (variable: string, mode: 'direct' | 'natural
 
 export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
+  const formulas = useAppSelector(propositionsNPSelectors.selectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.lastTableItemLevel);
 
   useEffect(() => {
     // if F | G, F => H, G => H then H
@@ -176,9 +176,9 @@ export const useIsOrEliminationPossible = (selectedIds: string[]): boolean => {
 
 export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
+  const formulas = useAppSelector(propositionsNPSelectors.selectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.lastTableItemLevel);
 
   useEffect(() => {
     const isValid = validator.isCEItemsCompatible(items, currentLevel) && validator.isCEApplicable(formulas);
@@ -190,9 +190,9 @@ export const useIsAndEliminationPossible = (selectedIds: string[]): boolean => {
 
 export const useIsNotIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
+  const formulas = useAppSelector(propositionsNPSelectors.selectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.lastTableItemLevel);
 
   useEffect(() => {
     const isValid = validator.isNIItemsCompatible(items, currentLevel) && validator.isNIApplicable(formulas);
@@ -204,9 +204,9 @@ export const useIsNotIntroductionPossible = (selectedIds: string[]): boolean => 
 
 export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
+  const formulas = useAppSelector(propositionsNPSelectors.selectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.lastTableItemLevel);
 
   useEffect(() => {
     const isValid = validator.isNEItemsCompatible(items, currentLevel) && validator.isNEApplicable(formulas);
@@ -218,9 +218,9 @@ export const useIsNotEliminationPossible = (selectedIds: string[]): boolean => {
 
 export const useIsEquivalenceIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
+  const formulas = useAppSelector(propositionsNPSelectors.selectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.lastTableItemLevel);
 
   useEffect(() => {
     const isValid = validator.isEIItemsCompatible(items, currentLevel) && validator.isEIApplicable(formulas);
@@ -232,9 +232,9 @@ export const useIsEquivalenceIntroductionPossible = (selectedIds: string[]): boo
 
 export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
+  const formulas = useAppSelector(propositionsNPSelectors.selectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.lastTableItemLevel);
 
   useEffect(() => {
     const isValid = validator.isEEItemsCompatible(items, currentLevel) && validator.isEEApplicable(formulas);
@@ -246,9 +246,9 @@ export const useIsEquivalenceEliminationPossible = (selectedIds: string[]): bool
 
 export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const formulas = useAppSelector(propositionsNPSelectors.getSelectedFormulas);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const currentLevel = useAppSelector(propositionsNPSelectors.getLastTableItemLevel);
+  const formulas = useAppSelector(propositionsNPSelectors.selectedFormulas);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const currentLevel = useAppSelector(propositionsNPSelectors.lastTableItemLevel);
 
   useEffect(() => {
     const isValid = validator.isIEItemsCompatible(items, currentLevel) && validator.isIEforNPApplicable(formulas);
@@ -260,8 +260,8 @@ export const useIsImpliesEliminationForNPPossible = (selectedIds: string[]): boo
 
 export const useIsImpliesIntroductionPossible = (selectedIds: string[]): boolean => {
   const [isPossible, setIsPossible] = useState(false);
-  const items = useAppSelector(propositionsNPSelectors.getSelectedTableItems);
-  const lastItem = useAppSelector(propositionsNPSelectors.getLastTableItem);
+  const items = useAppSelector(propositionsNPSelectors.selectedTableItems);
+  const lastItem = useAppSelector(propositionsNPSelectors.lastTableItem);
 
   useEffect(() => {
     const isValid = validator.isIIItemsCompatible(items, lastItem);

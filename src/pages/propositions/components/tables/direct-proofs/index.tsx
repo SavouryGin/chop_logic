@@ -9,9 +9,9 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 const DirectProofsEditorTable = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const tableData = useAppSelector(selectors.getTableData);
+  const tableData = useAppSelector(selectors.tableData);
   const language = useAppSelector(settingsSelectors.getLanguage);
-  const [selectedIds, setSelectedIds] = useState<string[]>(useAppSelector(selectors.getSelectedIds));
+  const [selectedIds, setSelectedIds] = useState<string[]>(useAppSelector(selectors.selectedIds));
   const takeSelectedIds = (ids: string[]) => setSelectedIds(ids);
 
   useEffect(() => {

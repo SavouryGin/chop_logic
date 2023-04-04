@@ -15,8 +15,8 @@ import './styles.scss';
 const InputFileForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElement => {
   const [userFile, setUserFile] = useState<File>();
   const dispatch = useAppDispatch();
-  const isLoadingNP = useAppSelector(propositionsNPSelectors.getIsLoading);
-  const isLoadingDP = useAppSelector(propositionsDPSelectors.getIsLoading);
+  const isLoadingNP = useAppSelector(propositionsNPSelectors.isLoading);
+  const isLoadingDP = useAppSelector(propositionsDPSelectors.isLoading);
   const isLoading = isLoadingNP || isLoadingDP;
 
   const takeFile = (value: File) => setUserFile(value);

@@ -2,83 +2,80 @@ import { DirectProofsTableItem, PropositionsDirectProofsFlags } from '../interfa
 import { LocalText, PropositionalFormula, RootState } from 'types';
 import { createSelector } from '@reduxjs/toolkit';
 
-const getFlags = (state: RootState): PropositionsDirectProofsFlags => state.propositionsDP.flags;
+const flags = (state: RootState): PropositionsDirectProofsFlags => state.propositionsDP.flags;
 
-const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isPremiseOpened);
+const isPremiseOpened = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isPremiseOpened);
 
-const getError = (state: RootState): LocalText | null => state.propositionsDP.error;
+const error = (state: RootState): LocalText | null => state.propositionsDP.error;
 
-const getTableData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.tableData;
+const tableData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.tableData;
 
-const getDependentItems = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.dependentItems;
+const dependentItems = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.dependentItems;
 
-const getTableDataLength = (state: RootState): number => state.propositionsDP.tableData.length;
+const tableDataLength = (state: RootState): number => state.propositionsDP.tableData.length;
 
-const getSelectedIds = (state: RootState): string[] => state.propositionsDP.selectedIds;
+const selectedIds = (state: RootState): string[] => state.propositionsDP.selectedIds;
 
-const getIsImplicationCreationOpened = createSelector(
-  getFlags,
+const isImplicationCreationOpened = createSelector(
+  flags,
   (data: PropositionsDirectProofsFlags): boolean => data.isImplicationCreationOpened,
 );
 
-const getIsImplicationDistributionOpened = createSelector(
-  getFlags,
+const isImplicationDistributionOpened = createSelector(
+  flags,
   (data: PropositionsDirectProofsFlags): boolean => data.isImplicationDistributionOpened,
 );
 
-const getIsContradictionRealizationOpened = createSelector(
-  getFlags,
+const isContradictionRealizationOpened = createSelector(
+  flags,
   (data: PropositionsDirectProofsFlags): boolean => data.isContradictionRealizationOpened,
 );
 
-const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isReplacerFormOpened);
+const isReplacerFormOpened = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isReplacerFormOpened);
 
-const getIsConfirmDeletePopupOpened = createSelector(
-  getFlags,
-  (data: PropositionsDirectProofsFlags): boolean => data.isConfirmDeletePopupOpened,
-);
+const isConfirmDeletePopupOpened = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isConfirmDeletePopupOpened);
 
-const getIsConfirmCutPopupOpened = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isConfirmCutPopupOpened);
+const isConfirmCutPopupOpened = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isConfirmCutPopupOpened);
 
-const getIsUserFileFormVisible = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isUserFileFormVisible);
+const isUserFileFormVisible = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isUserFileFormVisible);
 
-const getIsNameInputPopupVisible = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isNameInputPopupVisible);
+const isNameInputPopupVisible = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isNameInputPopupVisible);
 
-const getSelectedFormulas = (state: RootState): PropositionalFormula[] => {
+const selectedFormulas = (state: RootState): PropositionalFormula[] => {
   const selectedIds = state.propositionsDP.selectedIds;
   const selectedItems = state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
 
   return selectedItems.map((item) => item.formula);
 };
 
-const getSelectedTableItems = (state: RootState): DirectProofsTableItem[] => {
+const selectedTableItems = (state: RootState): DirectProofsTableItem[] => {
   const selectedIds = state.propositionsDP.selectedIds;
 
   return state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
 };
 
-const getIsLoading = createSelector(getFlags, (data: PropositionsDirectProofsFlags): boolean => data.isLoading);
+const isLoading = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isLoading);
 
-const getClipboardData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.clipboardData;
+const clipboardData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.clipboardData;
 
 export const propositionsDPSelectors = {
-  getFlags,
-  getTableData,
-  getDependentItems,
-  getSelectedIds,
-  getSelectedFormulas,
-  getSelectedTableItems,
-  getTableDataLength,
-  getClipboardData,
-  getError,
-  getIsPremiseOpened,
-  getIsImplicationCreationOpened,
-  getIsImplicationDistributionOpened,
-  getIsContradictionRealizationOpened,
-  getIsReplacerFormOpened,
-  getIsConfirmDeletePopupOpened,
-  getIsNameInputPopupVisible,
-  getIsUserFileFormVisible,
-  getIsLoading,
-  getIsConfirmCutPopupOpened,
+  flags,
+  tableData,
+  dependentItems,
+  selectedIds,
+  selectedFormulas,
+  selectedTableItems,
+  tableDataLength,
+  clipboardData,
+  error,
+  isPremiseOpened,
+  isImplicationCreationOpened,
+  isImplicationDistributionOpened,
+  isContradictionRealizationOpened,
+  isReplacerFormOpened,
+  isConfirmDeletePopupOpened,
+  isNameInputPopupVisible,
+  isUserFileFormVisible,
+  isLoading,
+  isConfirmCutPopupOpened,
 };

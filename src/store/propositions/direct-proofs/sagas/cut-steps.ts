@@ -12,9 +12,9 @@ export function* cutStepsDPWatcher(): Generator {
 
 export function* cutStepsDPSaga(action: { payload: { isConfirmed: boolean } }): SagaIterator {
   try {
-    const selectedIds: string[] = yield select(selectors.getSelectedIds);
+    const selectedIds: string[] = yield select(selectors.selectedIds);
     const isConfirmed = action.payload.isConfirmed;
-    const tableItems: DirectProofsTableItem[] = yield select(selectors.getTableData);
+    const tableItems: DirectProofsTableItem[] = yield select(selectors.tableData);
     const dependentItems = findDependentDPItemsToDelete(selectedIds, tableItems);
     const isConfirmationNeeded = dependentItems.length && selectedIds.length !== tableItems.length;
     const itemsToCut = tableItems.filter((item) => selectedIds.includes(item.id));

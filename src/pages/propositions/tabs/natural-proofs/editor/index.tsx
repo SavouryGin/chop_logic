@@ -22,16 +22,16 @@ const NaturalProofsEditor = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.getLanguage);
   const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
-  const isAssumptionOpened = useAppSelector(selectors.getIsAssumptionOpened);
-  const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
-  const isOrIntroductionFormOpened = useAppSelector(selectors.getIsOrIntroductionFormOpened);
-  const isShortcutOpened = useAppSelector(selectors.getIsShortcutOpened);
-  const isReplacerOpened = useAppSelector(selectors.getIsReplacerFormOpened);
-  const dependencies = useAppSelector(selectors.getDependentItems);
-  const isNameInputVisible = useAppSelector(selectors.getIsNameInputPopupVisible);
-  const isUserFileFormVisible = useAppSelector(selectors.getIsUserFileFormVisible);
-  const error = useAppSelector(selectors.getError);
+  const isPremiseOpened = useAppSelector(selectors.isPremiseOpened);
+  const isAssumptionOpened = useAppSelector(selectors.isAssumptionOpened);
+  const isConfirmDeletePopupOpened = useAppSelector(selectors.isConfirmDeletePopupOpened);
+  const isOrIntroductionFormOpened = useAppSelector(selectors.isOrIntroductionFormOpened);
+  const isShortcutOpened = useAppSelector(selectors.isShortcutOpened);
+  const isReplacerOpened = useAppSelector(selectors.isReplacerFormOpened);
+  const dependencies = useAppSelector(selectors.dependentItems);
+  const isNameInputVisible = useAppSelector(selectors.isNameInputPopupVisible);
+  const isUserFileFormVisible = useAppSelector(selectors.isUserFileFormVisible);
+  const error = useAppSelector(selectors.error);
 
   const editorClass = formatClass(['natural-proofs-editor', { 'natural-proofs-editor_dark': isDarkMode }]);
 

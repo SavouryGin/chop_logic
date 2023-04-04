@@ -12,11 +12,11 @@ export function* disjunctionIntroductionWatcher(): Generator {
 
 export function* disjunctionIntroductionSaga(action: { payload: string }): SagaIterator {
   try {
-    const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getSelectedTableItems);
-    const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
-    const dataLength: number = yield select(selectors.getTableDataLength);
-    const level: number = yield select(selectors.getLastTableItemLevel);
-    const assumptionId: string | null = yield select(selectors.getLastItemAssumptionId);
+    const selectedItems: NaturalProofsTableItem[] = yield select(selectors.selectedTableItems);
+    const tableData: NaturalProofsTableItem[] = yield select(selectors.tableData);
+    const dataLength: number = yield select(selectors.tableDataLength);
+    const level: number = yield select(selectors.lastTableItemLevel);
+    const assumptionId: string | null = yield select(selectors.lastItemAssumptionId);
     const rawInput = action.payload;
 
     const newItems = executor.performDI({ rawInput, level, dataLength, selectedItems, assumptionId });
