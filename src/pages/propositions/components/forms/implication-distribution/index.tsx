@@ -14,7 +14,7 @@ import './styles.scss';
 const ImplicationDistributionForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationDistributionInitialValues);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
   const preview = useImplicationDistributionPreview(values.firstVariable, values.secondVariable, values.thirdVariable);
 
   const hasError = !Array.isArray(preview);

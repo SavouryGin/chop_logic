@@ -10,9 +10,9 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const Footer = ({ className }: CommonProps): React.ReactElement => {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const isSoundsEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.language);
 
   const footerClassNames = formatClass(['footer', className]);
   const linkClassNames = formatClass(['footer__links', { footer__links_dark: isDarkMode }]);

@@ -7,7 +7,7 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const PropositionsIntroduction = (): React.ReactElement => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
 
   return (
     <article className='propositions-introduction'>

@@ -11,7 +11,7 @@ import './styles.scss';
 
 const ModalWindow = ({ isOpened, onClose, className, ...rest }: ModalWindowProps): React.ReactElement | null => {
   const isMounted = useMount(isOpened);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isClosing = isMounted && !isOpened;
 
   if (!isMounted) {

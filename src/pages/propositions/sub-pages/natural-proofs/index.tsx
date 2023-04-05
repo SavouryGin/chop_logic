@@ -9,7 +9,7 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const PropositionsNaturalProofs = (): React.ReactElement => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
 
   return (
     <article className='propositions-natural-proofs'>

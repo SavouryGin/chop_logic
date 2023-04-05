@@ -7,8 +7,8 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const DirectProofsPropositionDefinitions = (): React.ReactElement | null => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const className = formatClass(['natural-proofs-definitions', { 'natural-proofs-definitions__dark': isDarkMode }]);
 
   switch (language) {

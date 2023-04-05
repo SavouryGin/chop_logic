@@ -8,7 +8,7 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 function Formula({ content, className, level }: FormulaProps): React.ReactElement {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const classNames = formatClass(['formula', className, { formula_dark: isDarkMode }]);
   const indentationClass = formatClass(['formula__indentation', { formula__indentation_dark: isDarkMode }]);
 

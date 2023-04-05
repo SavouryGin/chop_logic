@@ -14,7 +14,7 @@ import './styles.scss';
 const ImplicationCreationForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.implicationCreationInitialValues);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
   const preview = useImplicationCreationPreview(values.firstVariable, values.secondVariable);
 
   const hasError = !Array.isArray(preview);

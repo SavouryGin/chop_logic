@@ -8,8 +8,8 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const AppLink = ({ path, text, isNavigation, icon, ...rest }: AppLinkProps): React.ReactElement => {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const isSoundsEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
   const classNames = formatClass(['app-link', rest.className, { 'app-link_dark': isDarkMode }]);
 
   const onLinkHover = () => {

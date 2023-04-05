@@ -26,8 +26,8 @@ const DirectProofsEditor = (): React.ReactElement => {
   const isImplicationDistributionOpened = useAppSelector(selectors.isImplicationDistributionOpened);
   const isContradictionRealizationOpened = useAppSelector(selectors.isContradictionRealizationOpened);
   const isReplacerFormOpened = useAppSelector(selectors.isReplacerFormOpened);
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.isConfirmDeletePopupOpened);
   const isNameInputVisible = useAppSelector(selectors.isNameInputPopupVisible);
   const isUserFileFormVisible = useAppSelector(selectors.isUserFileFormVisible);

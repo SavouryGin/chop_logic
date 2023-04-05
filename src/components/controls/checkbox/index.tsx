@@ -24,9 +24,9 @@ const Checkbox = ({
   ...rest
 }: CheckboxProps): React.ReactElement => {
   const formContext = useContext(FormContext);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const isSoundEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.language);
   const [isChecked, setIsChecked] = useState(!!defaultValue || false);
 
   const { onChangeInput } = formContext;

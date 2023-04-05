@@ -14,7 +14,7 @@ const ConfirmDeleteProofStepsPopup = ({
   onConfirm,
   dependencies,
 }: ConfirmDeleteProofStepsPopupProps<DirectProofsTableItem | NaturalProofsTableItem>): React.ReactElement => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
 
   const formulas = dependencies.map((item) => {
     return (

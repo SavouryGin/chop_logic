@@ -16,7 +16,7 @@ const Sidebar = ({
   isAllButtonsVisible,
 }: CommonProps & { isOpened: boolean; isAllButtonsVisible?: boolean }): React.ReactElement | null => {
   const isMounted = useMount(isOpened);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isNPButtonsVisible = !!useMatch(paths[Page.PropositionsNaturalProofs]) || !!isAllButtonsVisible;
   const isDPButtonsVisible = !!useMatch(paths[Page.PropositionsDirectProofs]) || !!isAllButtonsVisible;
 

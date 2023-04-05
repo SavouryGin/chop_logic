@@ -2,23 +2,23 @@ import { Language, RootState } from 'types';
 import { SettingsFlags } from '../interfaces';
 import { createSelector } from '@reduxjs/toolkit';
 
-const getSettingsFlags = (state: RootState): SettingsFlags => state.settings.flags;
-const getLanguage = (state: RootState): Language => state.settings.language;
+const flags = (state: RootState): SettingsFlags => state.settings.flags;
+const language = (state: RootState): Language => state.settings.language;
 
-const getIsNavigationOpened = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isNavigationOpen);
-const getIsSidebarOpened = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isSidebarOpen);
-const getIsDarkMode = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isDarkMode);
-const getIsFullScreen = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isFullScreen);
-const getIsSettingOpened = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isSettingOpen);
-const getIsSoundsEnabled = createSelector(getSettingsFlags, (data: SettingsFlags): boolean => data.isSoundsEnabled);
+const isNavigationOpened = createSelector(flags, (data: SettingsFlags): boolean => data.isNavigationOpen);
+const isSidebarOpened = createSelector(flags, (data: SettingsFlags): boolean => data.isSidebarOpen);
+const isDarkMode = createSelector(flags, (data: SettingsFlags): boolean => data.isDarkMode);
+const isFullScreen = createSelector(flags, (data: SettingsFlags): boolean => data.isFullScreen);
+const isSettingOpened = createSelector(flags, (data: SettingsFlags): boolean => data.isSettingOpen);
+const isSoundsEnabled = createSelector(flags, (data: SettingsFlags): boolean => data.isSoundsEnabled);
 
 export const settingsSelectors = {
-  getSettingsFlags,
-  getLanguage,
-  getIsNavigationOpened,
-  getIsSidebarOpened,
-  getIsDarkMode,
-  getIsFullScreen,
-  getIsSettingOpened,
-  getIsSoundsEnabled,
+  flags,
+  language,
+  isNavigationOpened,
+  isSidebarOpened,
+  isDarkMode,
+  isFullScreen,
+  isSettingOpened,
+  isSoundsEnabled,
 };

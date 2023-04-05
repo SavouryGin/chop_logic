@@ -14,7 +14,7 @@ import './styles.scss';
 const ContradictionRealizationForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [values, setValues] = useState(constants.contradictionRealization);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
   const preview = useContradictionRealizationPreview(values.firstVariable, values.secondVariable);
 
   const hasError = !Array.isArray(preview);

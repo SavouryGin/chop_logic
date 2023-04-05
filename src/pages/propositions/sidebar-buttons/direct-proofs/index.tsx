@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
   const dispatch = useAppDispatch();
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
   const tableDataLength = useAppSelector(selectors.tableDataLength);
   const selectedIds = useAppSelector(selectors.selectedIds);
   const clipboardData = useAppSelector(selectors.clipboardData);

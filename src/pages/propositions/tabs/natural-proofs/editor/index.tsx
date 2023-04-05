@@ -20,8 +20,8 @@ import './styles.scss';
 
 const NaturalProofsEditor = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isPremiseOpened = useAppSelector(selectors.isPremiseOpened);
   const isAssumptionOpened = useAppSelector(selectors.isAssumptionOpened);
   const isConfirmDeletePopupOpened = useAppSelector(selectors.isConfirmDeletePopupOpened);

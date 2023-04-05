@@ -5,7 +5,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
 const AxiomSchemesForDirectPropositionProofs = (): React.ReactElement | null => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
 
   switch (language) {
     case 'ru': {

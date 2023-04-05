@@ -10,8 +10,8 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const FormulaPreview = ({ preview, className }: FormulaPreviewProps): React.ReactElement => {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const language = useAppSelector(settingsSelectors.language);
 
   const classNames = formatClass(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
   const errorClassNames = formatClass(['formula-preview__error', { 'formula-preview__error_dark': isDarkMode }]);
