@@ -1,5 +1,6 @@
+import converter from './converter';
+import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalFormula, TableColumnProps } from 'types';
-import { PropositionalOperator } from 'enums';
 
 const generateColumnsFromFormula = (formula: PropositionalFormula): TableColumnProps[] => {
   const list: TableColumnProps[] = [];
@@ -14,6 +15,23 @@ const generateColumnsFromFormula = (formula: PropositionalFormula): TableColumnP
   // }
 
   return list;
+};
+
+const createAndColumn = (firstOperand: PropositionalFormula, secondOperand: PropositionalFormula): TableColumnProps => {
+  const firstExpression = converter.convertFormulaToUserFriendlyExpression(firstOperand);
+  const secondExpression = converter.convertFormulaToUserFriendlyExpression(secondOperand);
+  const firstString = converter.convertUserFriendlyExpressionToString(firstExpression);
+  const secondString = converter.convertUserFriendlyExpressionToString(secondExpression);
+
+  const title = `${firstString} ${LogicalSymbolHexCode.Conjunction} ${secondString}`;
+
+  return {
+    field: title,
+    title: {
+      en: title,
+      ru: title,
+    },
+  };
 };
 
 const createVariableColumn = (value: string): TableColumnProps => {

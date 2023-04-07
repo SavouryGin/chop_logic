@@ -243,6 +243,12 @@ const convertFormulaToUserFriendlyExpression = (formula: PropositionalFormula): 
   return parenthesizer.renumberPositions(expression);
 };
 
+const convertUserFriendlyExpressionToString = (expression: PropositionalExpression): string => {
+  const symbolsArray = expression.map((item) => item.representation || item.input);
+
+  return symbolsArray.join(' ');
+};
+
 const converter = {
   convertToICExpression,
   convertToIDExpression,
@@ -254,6 +260,7 @@ const converter = {
   convertFormulaToExpression,
   convertFormulaToUserFriendlyExpression,
   convertStringToUserFriendlyExpression,
+  convertUserFriendlyExpressionToString,
 };
 
 export default Object.freeze(converter);
