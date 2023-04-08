@@ -46,6 +46,13 @@ const truthTableGenerator = {
         list.push(...this.generateColumnsFromFormula(secondOperand));
         break;
       }
+
+      case PropositionalOperator.Not: {
+        const firstOperand = formula.values[0] as PropositionalFormula;
+        list.push(this.createNotColumn(firstOperand));
+        list.push(...this.generateColumnsFromFormula(firstOperand));
+        break;
+      }
     }
 
     return list;
@@ -66,6 +73,20 @@ const truthTableGenerator = {
     const secondString = converter.convertUserFriendlyExpressionToString(secondExpression);
 
     const title = `${firstString} ${operator} ${secondString}`;
+
+    return {
+      field: title,
+      title: {
+        en: title,
+        ru: title,
+      },
+    };
+  },
+
+  createNotColumn: (value: PropositionalFormula): TableColumnProps => {
+    const expression = converter.convertFormulaToUserFriendlyExpression(value);
+    const string = converter.convertUserFriendlyExpressionToString(expression);
+    const title = `${LogicalSymbolHexCode.Negation} ${string}`;
 
     return {
       field: title,
