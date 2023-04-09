@@ -1,18 +1,18 @@
 import { CommonProps, LocalText } from './general';
 
 export type TableProps = CommonProps & {
-  columns: TableColumnProps[];
-  data: TableDataItem[];
+  columns: TableColumn[];
+  data: TableItem[];
   hasCheckboxColumn?: boolean;
   passSelectedIds?: (ids: string[]) => void;
 };
 
-export type TableColumnProps = {
+export type TableColumn = {
   field?: string;
   title?: LocalText;
 };
 
-export type TableDataItem = {
+export type TableItem = {
   id: string;
   [key: string]: unknown;
 };
@@ -32,16 +32,16 @@ export type SelectRowCheckboxProps = {
 } & TableIdsProps;
 
 export type TableBodyProps = {
-  data: TableDataItem[];
-  columns: TableColumnProps[];
+  data: TableItem[];
+  columns: TableColumn[];
   hasCheckboxColumn: boolean;
   className?: string;
 } & TableIdsProps;
 
 export type TableHeadProps = {
-  columns: TableColumnProps[];
+  columns: TableColumn[];
   hasCheckboxColumn: boolean;
-  data: TableDataItem[];
+  data: TableItem[];
   className?: string;
   id?: string;
 } & TableIdsProps;

@@ -1,4 +1,4 @@
-import { LocalText, TableColumnProps } from 'types';
+import { LocalText, TableColumn } from 'types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TRUTH_TABLES_INITIAL_STATE } from './constants';
 import { TruthTablesFlag } from './interfaces';
@@ -20,7 +20,7 @@ export const truthTablesSlice = createSlice({
       return state;
     },
 
-    setTableColumns: (state, action: PayloadAction<TableColumnProps[]>) => {
+    setTableColumns: (state, action: PayloadAction<TableColumn[]>) => {
       state.columns = action.payload;
     },
   },

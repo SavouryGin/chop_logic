@@ -1,10 +1,10 @@
 import converter from './converter';
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
-import { PropositionalFormula, TableColumnProps } from 'types';
+import { PropositionalFormula, TableColumn } from 'types';
 
 const truthTableGenerator = {
-  generateColumnsFromFormula: function (formula: PropositionalFormula): TableColumnProps[] {
-    const list: TableColumnProps[] = [];
+  generateColumnsFromFormula: function (formula: PropositionalFormula): TableColumn[] {
+    const list: TableColumn[] = [];
 
     if (formula.operator === PropositionalOperator.Var) {
       list.push(this.createVariableColumn(formula.values as string));
@@ -66,7 +66,7 @@ const truthTableGenerator = {
     firstOperand: PropositionalFormula;
     secondOperand: PropositionalFormula;
     operator: LogicalSymbolHexCode;
-  }): TableColumnProps => {
+  }): TableColumn => {
     const firstExpression = converter.convertFormulaToUserFriendlyExpression(firstOperand);
     const secondExpression = converter.convertFormulaToUserFriendlyExpression(secondOperand);
     const firstString = converter.convertUserFriendlyExpressionToString(firstExpression);
@@ -83,7 +83,7 @@ const truthTableGenerator = {
     };
   },
 
-  createNotColumn: (value: PropositionalFormula): TableColumnProps => {
+  createNotColumn: (value: PropositionalFormula): TableColumn => {
     const expression = converter.convertFormulaToUserFriendlyExpression(value);
     const string = converter.convertUserFriendlyExpressionToString(expression);
     const title = `${LogicalSymbolHexCode.Negation} ${string}`;
@@ -97,7 +97,7 @@ const truthTableGenerator = {
     };
   },
 
-  createVariableColumn: (value: string): TableColumnProps => {
+  createVariableColumn: (value: string): TableColumn => {
     const titleValue = value.toUpperCase();
 
     return {
