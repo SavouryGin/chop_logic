@@ -1,8 +1,9 @@
-import { LocalText } from 'types';
+import { LocalText, TableColumnProps } from 'types';
 
 export interface TruthTablesInitialState {
   flags: TruthTablesFlags;
   error: LocalText | null;
+  columns: TableColumnProps[];
 }
 
 export interface TruthTablesFlags {
