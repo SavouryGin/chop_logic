@@ -10,4 +10,8 @@ export interface TruthTablesFlags {
   isLoading: boolean;
 }
 
+export interface TruthTableColumn extends TableColumn {
+  depth: number;
+}
+
 export type TruthTablesFlag = keyof TruthTablesFlags;
