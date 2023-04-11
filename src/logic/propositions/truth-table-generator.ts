@@ -115,6 +115,20 @@ const truthTableGenerator = {
       },
     };
   },
+
+  countVariables: function (formula: PropositionalFormula): number {
+    let counter = 0;
+
+    if (formula.operator === PropositionalOperator.Var) {
+      counter++;
+    } else if (Array.isArray(formula.values)) {
+      formula.values.forEach((item) => {
+        counter += this.countVariables(item);
+      });
+    }
+
+    return counter;
+  },
 };
 
 export default truthTableGenerator;
