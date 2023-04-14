@@ -89,7 +89,30 @@ const truthTableGenerator = {
       }
     }
 
-    return list.sort((a, b) => b.depth - a.depth);
+    return this.sortColumns(list);
+  },
+
+  sortColumns(columns: TruthTableColumn[]): TruthTableColumn[] {
+    const sortedByDepth = [...columns].sort((a, b) => b.depth - a.depth);
+    const variableColumns: TruthTableColumn[] = [];
+    const restColumns: TruthTableColumn[] = [];
+
+    sortedByDepth.forEach((column) => {
+      if (column.operator === PropositionalOperator.Var) {
+        variableColumns.push(column);
+      } else {
+        restColumns.push(column);
+      }
+    });
+
+    const variableColumnsByAlpha = [...variableColumns].sort((a, b) => {
+      const firstVar = a?.field?.toUpperCase() || '';
+      const secondVar = b?.field?.toUpperCase() || '';
+
+      return firstVar > secondVar ? 1 : -1;
+    });
+
+    return [...variableColumnsByAlpha, ...restColumns];
   },
 
   createBinaryColumn({
