@@ -89,8 +89,6 @@ const truthTableGenerator = {
       }
     }
 
-    console.log('VARS', this.getVariables(formula));
-
     return this.sortColumns(list);
   },
 
@@ -107,7 +105,9 @@ const truthTableGenerator = {
       }
     });
 
-    const variableColumnsByAlpha = [...variableColumns].sort((a, b) => {
+    const uniqueVarColumns = this.filterUniqueColumns(variableColumns);
+
+    const variableColumnsByAlpha = [...uniqueVarColumns].sort((a, b) => {
       const firstVar = a?.field?.toUpperCase() || '';
       const secondVar = b?.field?.toUpperCase() || '';
 
@@ -115,6 +115,22 @@ const truthTableGenerator = {
     });
 
     return [...variableColumnsByAlpha, ...restColumns];
+  },
+
+  filterUniqueColumns(columns: TruthTableColumn[]): TruthTableColumn[] {
+    const uniqueFields: string[] = [];
+    const result: TruthTableColumn[] = [];
+
+    for (const column of columns) {
+      if (!column?.field || uniqueFields.includes(column.field)) {
+        continue;
+      }
+
+      result.push(column);
+      uniqueFields.push(column.field);
+    }
+
+    return result;
   },
 
   createBinaryColumn({
