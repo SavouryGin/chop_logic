@@ -89,6 +89,8 @@ const truthTableGenerator = {
       }
     }
 
+    console.log('VARS', this.getVariables(formula));
+
     return this.sortColumns(list);
   },
 
@@ -176,18 +178,19 @@ const truthTableGenerator = {
     };
   },
 
-  countVariables(formula: PropositionalFormula): number {
-    let counter = 0;
+  getVariables(formula: PropositionalFormula): string[] {
+    const vars: string[] = [];
 
     if (formula.operator === PropositionalOperator.Var) {
-      counter++;
+      vars.push(formula.values as string);
     } else if (Array.isArray(formula.values)) {
       formula.values.forEach((item) => {
-        counter += this.countVariables(item);
+        vars.push(...this.getVariables(item));
       });
     }
+    const uniqueVars = new Set(vars);
 
-    return counter;
+    return Array.from(uniqueVars).sort();
   },
 };
 

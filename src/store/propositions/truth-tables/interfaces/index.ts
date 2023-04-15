@@ -16,4 +16,8 @@ export interface TruthTableColumn extends TableColumn {
   operator: PropositionalOperator;
 }
 
+export type TruthSet = {
+  [key: string]: boolean;
+};
+
 export type TruthTablesFlag = keyof TruthTablesFlags;
