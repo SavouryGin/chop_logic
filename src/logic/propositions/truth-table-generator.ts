@@ -1,7 +1,7 @@
 import converter from './converter';
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalFormula } from 'types';
-import { TruthTableColumn } from 'store/propositions/truth-tables/interfaces';
+import { TruthSet, TruthTableColumn } from 'store/propositions/truth-tables/interfaces';
 
 const truthTableGenerator = {
   generateColumnsFromFormula(formula: PropositionalFormula, depth = 0): TruthTableColumn[] {
@@ -207,6 +207,26 @@ const truthTableGenerator = {
     const uniqueVars = new Set(vars);
 
     return Array.from(uniqueVars).sort();
+  },
+
+  generateVariableValues(variables: string[]): TruthSet[] {
+    const varsCount = variables.length;
+
+    if (varsCount === 0) {
+      return [];
+    }
+
+    if (varsCount === 1) {
+      return [{ [variables[0]]: false, [variables[0]]: true }];
+    }
+
+    const result: TruthSet[] = [];
+
+    // for (let i = 0; i < 2 ** varsCount; i++) {
+
+    // }
+
+    return result;
   },
 };
 
