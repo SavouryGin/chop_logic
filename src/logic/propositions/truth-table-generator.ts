@@ -89,6 +89,11 @@ const truthTableGenerator = {
       }
     }
 
+    const count = this.getVariables(formula).length;
+    const comb = this.generateTrueFalseCombinations(count);
+    console.log('combinations', comb);
+    console.log('array', this.splitBooleanArrayByVarsCount(count, comb));
+
     return this.sortColumns(list);
   },
 
@@ -225,6 +230,32 @@ const truthTableGenerator = {
     // for (let i = 0; i < 2 ** varsCount; i++) {
 
     // }
+
+    return result;
+  },
+
+  generateTrueFalseCombinations(varsCount: number): boolean[] {
+    const boolArr: boolean[] = [];
+
+    for (let i = 0; i < 1 << varsCount; i++) {
+      //Increasing or decreasing depending on which direction
+      //you want your array to represent the binary number
+      for (let j = varsCount - 1; j >= 0; j--) {
+        const boolSet = Boolean(i & (1 << j));
+        boolArr.push(boolSet);
+      }
+    }
+
+    return boolArr;
+  },
+
+  splitBooleanArrayByVarsCount(varsCount: number, boolArr: boolean[]): boolean[][] {
+    const result: boolean[][] = [];
+
+    for (let i = 0; i < boolArr.length; i += varsCount) {
+      const chunk = boolArr.slice(i, i + varsCount);
+      result.push(chunk);
+    }
 
     return result;
   },
