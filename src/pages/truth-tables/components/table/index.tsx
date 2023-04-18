@@ -5,11 +5,11 @@ import { useAppSelector } from 'hooks';
 
 const TruthTablesTable = (): React.ReactElement => {
   const columns = useAppSelector(truthTablesSelectors.columns);
-  console.log(columns);
+  const data = useAppSelector(truthTablesSelectors.data);
 
   return (
     <div className='truth-tables-table'>
-      <Table columns={columns} data={[]} key={columns.length} id='propositions-truth-table' />
+      <Table columns={columns} data={data} key={columns.length} id='propositions-truth-table' />
     </div>
   );
 };

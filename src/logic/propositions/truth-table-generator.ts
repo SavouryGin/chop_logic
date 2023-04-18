@@ -1,7 +1,7 @@
 import converter from './converter';
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
-import { PropositionalFormula } from 'types';
-import { TruthSet, TruthTableColumn } from 'store/propositions/truth-tables/interfaces';
+import { PropositionalFormula, TableItem } from 'types';
+import { TruthTableColumn } from 'store/propositions/truth-tables/interfaces';
 
 const truthTableGenerator = {
   generateColumnsFromFormula(formula: PropositionalFormula, depth = 0): TruthTableColumn[] {
@@ -89,8 +89,7 @@ const truthTableGenerator = {
       }
     }
 
-    const vars = this.getVariables(formula);
-    console.log('SET', this.generateVariableValues(vars));
+    console.log('SET', this.generateVariableValues(formula));
 
     return this.sortColumns(list);
   },
@@ -212,22 +211,23 @@ const truthTableGenerator = {
     return Array.from(uniqueVars).sort();
   },
 
-  generateVariableValues(variables: string[]): TruthSet[] {
+  generateVariableValues(formula: PropositionalFormula): TableItem[] {
+    const variables = this.getVariables(formula);
     const varsCount = variables.length;
 
     if (varsCount === 0) {
       return [];
     }
 
-    const result: TruthSet[] = [];
+    const result: TableItem[] = [];
     const combinations = this.generateTrueFalseCombinations(varsCount);
     const arrayOfValues = this.splitBooleanArrayByVarsCount(varsCount, combinations);
 
     for (const currentValues of arrayOfValues) {
-      const newSet: TruthSet = {};
+      const newSet: TableItem = { id: crypto.randomUUID() };
 
       for (let j = 0; j < currentValues.length; j++) {
-        newSet[variables[j]] = currentValues[j];
+        newSet[variables[j]] = currentValues[j] ? '1' : '0';
       }
 
       result.push(newSet);
