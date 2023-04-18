@@ -89,10 +89,8 @@ const truthTableGenerator = {
       }
     }
 
-    const count = this.getVariables(formula).length;
-    const comb = this.generateTrueFalseCombinations(count);
-    console.log('combinations', comb);
-    console.log('array', this.splitBooleanArrayByVarsCount(count, comb));
+    const vars = this.getVariables(formula);
+    console.log('SET', this.generateVariableValues(vars));
 
     return this.sortColumns(list);
   },
@@ -221,15 +219,19 @@ const truthTableGenerator = {
       return [];
     }
 
-    if (varsCount === 1) {
-      return [{ [variables[0]]: false, [variables[0]]: true }];
-    }
-
     const result: TruthSet[] = [];
+    const combinations = this.generateTrueFalseCombinations(varsCount);
+    const arrayOfValues = this.splitBooleanArrayByVarsCount(varsCount, combinations);
 
-    // for (let i = 0; i < 2 ** varsCount; i++) {
+    for (const currentValues of arrayOfValues) {
+      const newSet: TruthSet = {};
 
-    // }
+      for (let j = 0; j < currentValues.length; j++) {
+        newSet[variables[j]] = currentValues[j];
+      }
+
+      result.push(newSet);
+    }
 
     return result;
   },
@@ -238,8 +240,6 @@ const truthTableGenerator = {
     const boolArr: boolean[] = [];
 
     for (let i = 0; i < 1 << varsCount; i++) {
-      //Increasing or decreasing depending on which direction
-      //you want your array to represent the binary number
       for (let j = varsCount - 1; j >= 0; j--) {
         const boolSet = Boolean(i & (1 << j));
         boolArr.push(boolSet);
