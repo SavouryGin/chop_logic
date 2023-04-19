@@ -12,6 +12,10 @@ export interface TruthTablesFlags {
   isLoading: boolean;
 }
 
+export type TruthSet = {
+  [key: string]: unknown;
+};
+
 export interface TruthTableColumn extends TableColumn {
   depth: number;
   operator: PropositionalOperator;

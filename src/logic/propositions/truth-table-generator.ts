@@ -1,7 +1,7 @@
 import converter from './converter';
 import { LogicalSymbolHexCode, PropositionalOperator } from 'enums';
 import { PropositionalFormula, TableItem } from 'types';
-import { TruthTableColumn } from 'store/propositions/truth-tables/interfaces';
+import { TruthSet, TruthTableColumn } from 'store/propositions/truth-tables/interfaces';
 
 const truthTableGenerator = {
   generateColumnsFromFormula(formula: PropositionalFormula, depth = 0): TruthTableColumn[] {
@@ -89,9 +89,27 @@ const truthTableGenerator = {
       }
     }
 
-    console.log('SET', this.generateVariableValues(formula));
-
     return this.sortColumns(list);
+  },
+
+  calculateTableData(formula: PropositionalFormula): TableItem[] {
+    const variablesValues = this.generateVariableValues(formula);
+
+    return this.mapTruthSetsToTableItems(variablesValues);
+  },
+
+  mapTruthSetsToTableItems(values: TruthSet[]): TableItem[] {
+    return values.map((item) => {
+      const tableItem: TableItem = {
+        id: crypto.randomUUID(),
+      };
+
+      for (const property in item) {
+        tableItem[property] = item[property] ? '1' : '0';
+      }
+
+      return tableItem;
+    });
   },
 
   sortColumns(columns: TruthTableColumn[]): TruthTableColumn[] {
@@ -211,7 +229,7 @@ const truthTableGenerator = {
     return Array.from(uniqueVars).sort();
   },
 
-  generateVariableValues(formula: PropositionalFormula): TableItem[] {
+  generateVariableValues(formula: PropositionalFormula): TruthSet[] {
     const variables = this.getVariables(formula);
     const varsCount = variables.length;
 
@@ -219,15 +237,15 @@ const truthTableGenerator = {
       return [];
     }
 
-    const result: TableItem[] = [];
+    const result: TruthSet[] = [];
     const combinations = this.generateTrueFalseCombinations(varsCount);
     const arrayOfValues = this.splitBooleanArrayByVarsCount(varsCount, combinations);
 
     for (const currentValues of arrayOfValues) {
-      const newSet: TableItem = { id: crypto.randomUUID() };
+      const newSet: TruthSet = {};
 
       for (let j = 0; j < currentValues.length; j++) {
-        newSet[variables[j]] = currentValues[j] ? '1' : '0';
+        newSet[variables[j]] = currentValues[j];
       }
 
       result.push(newSet);
