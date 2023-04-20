@@ -92,8 +92,10 @@ const truthTableGenerator = {
     return this.sortColumns(list);
   },
 
-  calculateTableData(formula: PropositionalFormula): TableItem[] {
+  calculateTableData({ formula, columns }: { formula: PropositionalFormula; columns: TruthTableColumn[] }): TableItem[] {
     const variablesValues = this.generateVariableValues(formula);
+    console.log('vars', variablesValues);
+    console.log('columns', columns);
 
     return this.mapTruthSetsToTableItems(variablesValues);
   },
@@ -181,6 +183,7 @@ const truthTableGenerator = {
         en: title,
         ru: title,
       },
+      subFormulas: [firstOperand, secondOperand],
     };
   },
 
@@ -197,6 +200,7 @@ const truthTableGenerator = {
         en: title,
         ru: title,
       },
+      subFormulas: [value],
     };
   },
 
@@ -211,6 +215,7 @@ const truthTableGenerator = {
         en: titleValue,
         ru: titleValue,
       },
+      subFormulas: [],
     };
   },
 

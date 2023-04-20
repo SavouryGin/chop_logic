@@ -18,7 +18,7 @@ export function* generateTruthTableSaga(action: { payload: { input: string } }):
 
     console.log('Saga', formula);
     const columns = truthTableGenerator.generateColumnsFromFormula(formula);
-    const data = truthTableGenerator.calculateTableData(formula);
+    const data = truthTableGenerator.calculateTableData({ formula, columns });
     yield put(actions.setTableColumns(columns));
     yield put(actions.setTableData(data));
   } catch (error: unknown) {
