@@ -1,4 +1,4 @@
-import { LocalText, PropositionalFormula, TableColumn, TableItem } from 'types';
+import { LocalText, TableColumn, TableItem } from 'types';
 import { PropositionalOperator } from 'enums';
 
 export interface TruthTablesInitialState {
@@ -19,7 +19,7 @@ export type TruthSet = {
 export interface TruthTableColumn extends TableColumn {
   depth: number;
   operator: PropositionalOperator;
-  subFormulas: PropositionalFormula[];
+  operands: string[];
 }
 
 export type TruthTablesFlag = keyof TruthTablesFlags;

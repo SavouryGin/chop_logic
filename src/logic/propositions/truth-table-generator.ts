@@ -94,10 +94,33 @@ const truthTableGenerator = {
 
   calculateTableData({ formula, columns }: { formula: PropositionalFormula; columns: TruthTableColumn[] }): TableItem[] {
     const variablesValues = this.generateVariableValues(formula);
+    let combinedValues = [...variablesValues];
+    const columnsWithFormulas = columns.filter((column) => column.operator !== PropositionalOperator.Var);
     console.log('vars', variablesValues);
-    console.log('columns', columns);
+    console.log('columns', columnsWithFormulas);
 
-    return this.mapTruthSetsToTableItems(variablesValues);
+    for (const column of columnsWithFormulas) {
+      const newValues: TruthSet[] = [];
+      console.log('COL', column);
+      if (column.operator === PropositionalOperator.Not) {
+        const negationOperand = column.operands[0];
+        const field = column.field || '';
+        // const newSet: TruthSet = {};
+
+        for (const item of combinedValues) {
+          console.log('item[negationOperand]', item[negationOperand]);
+          const currentValue = item[negationOperand] || false;
+          console.log('current val', currentValue);
+          const newSet = { ...item, [field]: !currentValue };
+          console.log('newSet', newSet);
+          newValues.push(newSet);
+        }
+      }
+
+      combinedValues = newValues;
+    }
+
+    return this.mapTruthSetsToTableItems(combinedValues);
   },
 
   mapTruthSetsToTableItems(values: TruthSet[]): TableItem[] {
@@ -170,10 +193,10 @@ const truthTableGenerator = {
   }): TruthTableColumn {
     const firstExpression = converter.convertFormulaToUserFriendlyExpression(firstOperand);
     const secondExpression = converter.convertFormulaToUserFriendlyExpression(secondOperand);
-    const firstString = converter.convertUserFriendlyExpressionToString(firstExpression);
-    const secondString = converter.convertUserFriendlyExpressionToString(secondExpression);
+    const firstStringOperand = converter.convertUserFriendlyExpressionToString(firstExpression);
+    const secondStringOperand = converter.convertUserFriendlyExpressionToString(secondExpression);
 
-    const title = `${firstString} ${symbol} ${secondString}`;
+    const title = `${firstStringOperand} ${symbol} ${secondStringOperand}`;
 
     return {
       field: title,
@@ -183,14 +206,14 @@ const truthTableGenerator = {
         en: title,
         ru: title,
       },
-      subFormulas: [firstOperand, secondOperand],
+      operands: [firstStringOperand, secondStringOperand],
     };
   },
 
   createNegationColumn(value: PropositionalFormula, depth: number): TruthTableColumn {
     const expression = converter.convertFormulaToUserFriendlyExpression(value);
-    const string = converter.convertUserFriendlyExpressionToString(expression);
-    const title = `${LogicalSymbolHexCode.Negation} ${string}`;
+    const stringOperand = converter.convertUserFriendlyExpressionToString(expression);
+    const title = `${LogicalSymbolHexCode.Negation} ${stringOperand}`;
 
     return {
       field: title,
@@ -200,7 +223,7 @@ const truthTableGenerator = {
         en: title,
         ru: title,
       },
-      subFormulas: [value],
+      operands: [stringOperand],
     };
   },
 
@@ -215,7 +238,7 @@ const truthTableGenerator = {
         en: titleValue,
         ru: titleValue,
       },
-      subFormulas: [],
+      operands: [],
     };
   },
 
