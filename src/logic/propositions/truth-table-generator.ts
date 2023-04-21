@@ -94,20 +94,27 @@ const truthTableGenerator = {
 
   calculateTableData({ formula, columns }: { formula: PropositionalFormula; columns: TruthTableColumn[] }): TableItem[] {
     const variablesValues = this.generateVariableValues(formula);
-    let combinedValues = [...variablesValues];
     const columnsWithFormulas = columns.filter((column) => column.operator !== PropositionalOperator.Var);
-    console.log('vars', variablesValues);
-    console.log('columns', columnsWithFormulas);
+    let currentValues = [...variablesValues];
 
     for (const column of columnsWithFormulas) {
-      const newValues: TruthSet[] = [];
       console.log('COL', column);
-      if (column.operator === PropositionalOperator.Not) {
+      currentValues = this.calculateColumnValue(column, currentValues);
+    }
+
+    return this.mapTruthSetsToTableItems(currentValues);
+  },
+
+  calculateColumnValue(column: TruthTableColumn, currentValues: TruthSet[]): TruthSet[] {
+    const newValues: TruthSet[] = [];
+
+    switch (column.operator) {
+      case PropositionalOperator.Not: {
         const negationOperand = column.operands[0];
         const field = column.field || '';
         // const newSet: TruthSet = {};
 
-        for (const item of combinedValues) {
+        for (const item of currentValues) {
           console.log('item[negationOperand]', item[negationOperand]);
           const currentValue = item[negationOperand] || false;
           console.log('current val', currentValue);
@@ -115,12 +122,12 @@ const truthTableGenerator = {
           console.log('newSet', newSet);
           newValues.push(newSet);
         }
-      }
 
-      combinedValues = newValues;
+        break;
+      }
     }
 
-    return this.mapTruthSetsToTableItems(combinedValues);
+    return newValues;
   },
 
   mapTruthSetsToTableItems(values: TruthSet[]): TableItem[] {
