@@ -98,7 +98,6 @@ const truthTableGenerator = {
     let currentValues = [...variablesValues];
 
     for (const column of columnsWithFormulas) {
-      console.log('COL', column);
       currentValues = this.calculateColumnValue(column, currentValues);
     }
 
@@ -107,19 +106,72 @@ const truthTableGenerator = {
 
   calculateColumnValue(column: TruthTableColumn, currentValues: TruthSet[]): TruthSet[] {
     const newValues: TruthSet[] = [];
+    const field = column.field || '';
 
     switch (column.operator) {
       case PropositionalOperator.Not: {
         const negationOperand = column.operands[0];
-        const field = column.field || '';
-        // const newSet: TruthSet = {};
 
         for (const item of currentValues) {
-          console.log('item[negationOperand]', item[negationOperand]);
-          const currentValue = item[negationOperand] || false;
-          console.log('current val', currentValue);
-          const newSet = { ...item, [field]: !currentValue };
-          console.log('newSet', newSet);
+          const currentValue = !!item[negationOperand];
+          const newValue = !currentValue;
+          const newSet = { ...item, [field]: newValue };
+          newValues.push(newSet);
+        }
+
+        break;
+      }
+
+      case PropositionalOperator.And: {
+        const [leftOperand, rightOperand] = column.operands;
+
+        for (const item of currentValues) {
+          const currentLeftValue = !!item[leftOperand];
+          const currentRightValue = !!item[rightOperand];
+          const newValue = currentLeftValue && currentRightValue;
+          const newSet = { ...item, [field]: newValue };
+          newValues.push(newSet);
+        }
+
+        break;
+      }
+
+      case PropositionalOperator.Or: {
+        const [leftOperand, rightOperand] = column.operands;
+
+        for (const item of currentValues) {
+          const currentLeftValue = !!item[leftOperand];
+          const currentRightValue = !!item[rightOperand];
+          const newValue = currentLeftValue || currentRightValue;
+          const newSet = { ...item, [field]: newValue };
+          newValues.push(newSet);
+        }
+
+        break;
+      }
+
+      case PropositionalOperator.Implies: {
+        const [leftOperand, rightOperand] = column.operands;
+
+        for (const item of currentValues) {
+          const currentLeftValue = !!item[leftOperand];
+          const currentRightValue = !!item[rightOperand];
+          const newValue = !currentLeftValue || currentRightValue;
+          const newSet = { ...item, [field]: newValue };
+          newValues.push(newSet);
+        }
+
+        break;
+      }
+
+      case PropositionalOperator.Equiv: {
+        const [leftOperand, rightOperand] = column.operands;
+
+        for (const item of currentValues) {
+          const currentLeftValue = !!item[leftOperand];
+          const currentRightValue = !!item[rightOperand];
+          const newValue = (!currentLeftValue || currentRightValue) && (!currentRightValue || currentLeftValue);
+          const newSet = { ...item, [field]: newValue };
           newValues.push(newSet);
         }
 
