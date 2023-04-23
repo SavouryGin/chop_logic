@@ -21,7 +21,7 @@ export function* exportNPToXMLSaga(action: { payload: string | undefined }): Sag
       return;
     }
 
-    const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
+    const tableData: NaturalProofsTableItem[] = yield select(selectors.tableData);
     const fileData = converterXML.npToXML(tableData);
 
     yield call(createAndSaveXMLFile, fileData, fileName);

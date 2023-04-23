@@ -8,13 +8,13 @@ import { useAppDispatch, useAppSelector, useIsImplicationEliminationPossible } f
 
 const DirectProofsEditorToolbar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const selectedIds = useAppSelector(selectors.getSelectedIds);
-  const tableDataLength = useAppSelector(selectors.getTableDataLength);
+  const selectedIds = useAppSelector(selectors.selectedIds);
+  const tableDataLength = useAppSelector(selectors.tableDataLength);
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useIsImplicationEliminationPossible(selectedIds);
   const isReplacerDisabled = tableDataLength === 0;
-  const selectedItems = useAppSelector(selectors.getSelectedTableItems);
+  const selectedItems = useAppSelector(selectors.selectedTableItems);
 
   const deleteSteps = () => {
     dispatch(actions.deleteSteps({ isConfirmed: false }));

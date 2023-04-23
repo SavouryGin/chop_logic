@@ -14,7 +14,7 @@ const OrIntroductionForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const orIntroInitialValue = { orValue: '' };
   const [formValue, setFormValue] = useState(orIntroInitialValue);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
 
   const preview = usePropositionalFormulaPreview(formValue.orValue);
   const hasError = !Array.isArray(preview);

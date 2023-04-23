@@ -5,7 +5,7 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const Spinner = (): React.ReactElement => {
-  const isDark = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isDark = useAppSelector(settingsSelectors.isDarkMode);
   const color = isDark ? '#97d8b2' : '#f96e67';
   const wrapperClass = formatClass(['spinner__wrapper', { spinner__wrapper_dark: isDark }]);
 

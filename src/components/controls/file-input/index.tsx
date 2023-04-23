@@ -19,8 +19,8 @@ const FileInput = ({
   accept,
   passFile,
 }: FileInputProps): React.ReactElement => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const fieldClassNames = formatClass(['file-input__field', { 'file-input__field_dark': isDarkMode }]);
   const calculatedId = id || `text_input_id_${inputId}`;
   const labelText = label || inputTexts[inputId].label[language];

@@ -11,12 +11,12 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
   const dispatch = useAppDispatch();
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const tableDataLength = useAppSelector(selectors.getTableDataLength);
-  const selectedIds = useAppSelector(selectors.getSelectedIds);
-  const clipboardData = useAppSelector(selectors.getClipboardData);
-  const dependencies = useAppSelector(selectors.getDependentItems);
-  const isConfirmCutPopupOpened = useAppSelector(selectors.getIsConfirmCutPopupOpened);
+  const language = useAppSelector(settingsSelectors.language);
+  const tableDataLength = useAppSelector(selectors.tableDataLength);
+  const selectedIds = useAppSelector(selectors.selectedIds);
+  const clipboardData = useAppSelector(selectors.clipboardData);
+  const dependencies = useAppSelector(selectors.dependentItems);
+  const isConfirmCutPopupOpened = useAppSelector(selectors.isConfirmCutPopupOpened);
 
   if (!isVisible) {
     return null;

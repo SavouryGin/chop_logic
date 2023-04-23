@@ -13,8 +13,8 @@ export function* deleteDirectProofStepsWatcher(): Generator {
 export function* deleteDirectProofStepsSaga(action: { payload: { isConfirmed: boolean } }): SagaIterator {
   try {
     const isConfirmed = action.payload.isConfirmed;
-    const selectedIds: string[] = yield select(selectors.getSelectedIds);
-    const tableData: DirectProofsTableItem[] = yield select(selectors.getTableData);
+    const selectedIds: string[] = yield select(selectors.selectedIds);
+    const tableData: DirectProofsTableItem[] = yield select(selectors.tableData);
     const dependentItems = findDependentDPItemsToDelete(selectedIds, tableData);
     const isConfirmationNeeded = dependentItems.length && selectedIds.length !== tableData.length;
 

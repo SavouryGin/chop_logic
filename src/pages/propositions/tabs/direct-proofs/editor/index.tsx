@@ -21,18 +21,18 @@ import './styles.scss';
 
 const DirectProofsEditor = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const isPremiseOpened = useAppSelector(selectors.getIsPremiseOpened);
-  const isImplicationCreationOpened = useAppSelector(selectors.getIsImplicationCreationOpened);
-  const isImplicationDistributionOpened = useAppSelector(selectors.getIsImplicationDistributionOpened);
-  const isContradictionRealizationOpened = useAppSelector(selectors.getIsContradictionRealizationOpened);
-  const isReplacerFormOpened = useAppSelector(selectors.getIsReplacerFormOpened);
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isConfirmDeletePopupOpened = useAppSelector(selectors.getIsConfirmDeletePopupOpened);
-  const isNameInputVisible = useAppSelector(selectors.getIsNameInputPopupVisible);
-  const isUserFileFormVisible = useAppSelector(selectors.getIsUserFileFormVisible);
-  const dependencies = useAppSelector(selectors.getDependentItems);
-  const error = useAppSelector(selectors.getError);
+  const isPremiseOpened = useAppSelector(selectors.isPremiseOpened);
+  const isImplicationCreationOpened = useAppSelector(selectors.isImplicationCreationOpened);
+  const isImplicationDistributionOpened = useAppSelector(selectors.isImplicationDistributionOpened);
+  const isContradictionRealizationOpened = useAppSelector(selectors.isContradictionRealizationOpened);
+  const isReplacerFormOpened = useAppSelector(selectors.isReplacerFormOpened);
+  const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const isConfirmDeletePopupOpened = useAppSelector(selectors.isConfirmDeletePopupOpened);
+  const isNameInputVisible = useAppSelector(selectors.isNameInputPopupVisible);
+  const isUserFileFormVisible = useAppSelector(selectors.isUserFileFormVisible);
+  const dependencies = useAppSelector(selectors.dependentItems);
+  const error = useAppSelector(selectors.error);
 
   const editorClass = formatClass(['direct-proofs-editor', { 'direct-proofs-editor_dark': isDarkMode }]);
 

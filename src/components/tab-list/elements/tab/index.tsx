@@ -7,8 +7,8 @@ import { useAppSelector } from 'hooks';
 
 const Tab = ({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement => {
   const classNames = formatClass(['tab-list__tab', { 'tab-list__tab_active': isActive }]);
-  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isSoundEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.language);
 
   const onClickTab = (e: React.MouseEvent<HTMLHeadingElement>) => {
     e.stopPropagation();

@@ -13,7 +13,7 @@ type ShowMoreButtonProps = CommonProps & {
 };
 
 const ShowMoreButton = ({ onClick, isOpened, ...rest }: ShowMoreButtonProps): React.ReactElement => {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const buttonClass = formatClass([
     'show-more-button',
     rest.className,

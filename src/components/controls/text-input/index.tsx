@@ -24,9 +24,9 @@ const TextInput = ({
   defaultValue,
   ...rest
 }: TextInputProps): React.ReactElement => {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const isSoundEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.language);
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
   const fieldClassNames = formatClass(['text-input__field', { 'text-input__field_dark': isDarkMode }]);

@@ -8,9 +8,9 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 const LeftHeaderPanel = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const isNavigationOpen = useAppSelector(settingsSelectors.getIsNavigationOpened);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isSoundsEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
+  const isNavigationOpen = useAppSelector(settingsSelectors.isNavigationOpened);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const isSoundsEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
 
   const onClickMenuButton = () => {
     dispatch(settingsActions.toggleFlag('isNavigationOpen'));

@@ -21,8 +21,8 @@ import {
 const NaturalProofsEditorToolbar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isPremiseDisabled = !useIsPremisePossible();
-  const selectedIds = useAppSelector(selectors.getSelectedIds);
-  const tableDataLength = useAppSelector(selectors.getTableDataLength);
+  const selectedIds = useAppSelector(selectors.selectedIds);
+  const tableDataLength = useAppSelector(selectors.tableDataLength);
   const isReplacerDisabled = tableDataLength === 0;
   const isReiterationDisabled = selectedIds.length !== 1;
   const isDeleteDisabled = selectedIds.length === 0;

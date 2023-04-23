@@ -16,10 +16,10 @@ type ErrorPopupProps = CommonProps & {
 };
 
 const ErrorPopup = ({ error, onClose, className }: ErrorPopupProps): React.ReactElement | null => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
   const isVisible = !!error;
   const isMounted = useMount(isVisible);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
 
   if (!isMounted) {
     return null;

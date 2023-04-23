@@ -11,10 +11,10 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 const RightHeaderPanel = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const isSidebarOpened = useAppSelector(settingsSelectors.getIsSidebarOpened);
-  const isFullScreen = useAppSelector(settingsSelectors.getIsFullScreen);
-  const isSettingOpened = useAppSelector(settingsSelectors.getIsSettingOpened);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isSidebarOpened = useAppSelector(settingsSelectors.isSidebarOpened);
+  const isFullScreen = useAppSelector(settingsSelectors.isFullScreen);
+  const isSettingOpened = useAppSelector(settingsSelectors.isSettingOpened);
+  const language = useAppSelector(settingsSelectors.language);
 
   // Handlers
   const onClickSidebarButton = () => {

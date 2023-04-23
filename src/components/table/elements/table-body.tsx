@@ -7,7 +7,7 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 
 const TableBody = ({ data, columns, hasCheckboxColumn, selectedIds, setSelectedIds, className }: TableBodyProps): React.ReactElement => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
 
   const rows = data.map((item) => {
     const values = getDataCellsValues(item, columns, language);

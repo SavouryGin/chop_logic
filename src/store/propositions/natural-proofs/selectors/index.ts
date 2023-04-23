@@ -2,63 +2,57 @@ import { LocalText, PropositionalFormula, RootState } from 'types';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlags } from '../interfaces';
 import { createSelector } from '@reduxjs/toolkit';
 
-const getFlags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
+const flags = (state: RootState): PropositionsNaturalProofsFlags => state.propositionsNP.flags;
 
-const getTableData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.tableData;
+const tableData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.tableData;
 
-const getDependentItems = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.dependentItems;
+const dependentItems = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.dependentItems;
 
-const getTableDataLength = (state: RootState): number => state.propositionsNP.tableData.length;
+const tableDataLength = (state: RootState): number => state.propositionsNP.tableData.length;
 
-const getSelectedIds = (state: RootState): string[] => state.propositionsNP.selectedIds;
+const selectedIds = (state: RootState): string[] => state.propositionsNP.selectedIds;
 
-const getIsPremiseOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isPremiseOpened);
+const isPremiseOpened = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isPremiseOpened);
 
-const getIsShortcutOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isShortcutOpened);
+const isShortcutOpened = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isShortcutOpened);
 
-const getIsAssumptionOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isAssumptionOpened);
+const isAssumptionOpened = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isAssumptionOpened);
 
-const getIsReplacerFormOpened = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
+const isReplacerFormOpened = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isReplacerFormOpened);
 
-const getIsNameInputPopupVisible = createSelector(
-  getFlags,
-  (data: PropositionsNaturalProofsFlags): boolean => data.isNameInputPopupVisible,
-);
+const isNameInputPopupVisible = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isNameInputPopupVisible);
 
-const getIsOrIntroductionFormOpened = createSelector(
-  getFlags,
+const isOrIntroductionFormOpened = createSelector(
+  flags,
   (data: PropositionsNaturalProofsFlags): boolean => data.isOrIntroductionFormOpened,
 );
 
-const getIsConfirmDeletePopupOpened = createSelector(
-  getFlags,
+const isConfirmDeletePopupOpened = createSelector(
+  flags,
   (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmDeletePopupOpened,
 );
 
-const getIsConfirmCutPopupOpened = createSelector(
-  getFlags,
-  (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmCutPopupOpened,
-);
+const isConfirmCutPopupOpened = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isConfirmCutPopupOpened);
 
-const getSelectedTableItems = createSelector(
-  getSelectedIds,
-  getTableData,
+const selectedTableItems = createSelector(
+  selectedIds,
+  tableData,
   (selectedIds: string[], data: NaturalProofsTableItem[]): NaturalProofsTableItem[] => {
     return data.filter((item) => selectedIds.includes(item.id));
   },
 );
 
-const getSelectedFormulas = createSelector(
-  getSelectedIds,
-  getTableData,
+const selectedFormulas = createSelector(
+  selectedIds,
+  tableData,
   (selectedIds: string[], data: NaturalProofsTableItem[]): PropositionalFormula[] => {
     return data.filter((item) => selectedIds.includes(item.id)).map((item) => item.formula);
   },
 );
 
-const getAllSubProofsItems = createSelector(
-  getSelectedTableItems,
-  getTableData,
+const allSubProofsItems = createSelector(
+  selectedTableItems,
+  tableData,
   (selectedItems: NaturalProofsTableItem[], data: NaturalProofsTableItem[]): NaturalProofsTableItem[] => {
     const selectedSubProofId = selectedItems[0].assumptionId;
 
@@ -66,19 +60,19 @@ const getAllSubProofsItems = createSelector(
   },
 );
 
-const getLastTableItemLevel = createSelector(getTableData, (data: NaturalProofsTableItem[]): number => data[data.length - 1]?.level || 0);
+const lastTableItemLevel = createSelector(tableData, (data: NaturalProofsTableItem[]): number => data[data.length - 1]?.level || 0);
 
-const getLastTableItem = createSelector(
-  getTableData,
+const lastTableItem = createSelector(
+  tableData,
   (data: NaturalProofsTableItem[]): NaturalProofsTableItem | undefined => data[data.length - 1],
 );
 
-const getLastItemAssumptionId = createSelector(
-  getTableData,
+const lastItemAssumptionId = createSelector(
+  tableData,
   (data: NaturalProofsTableItem[]): string | null => data[data.length - 1]?.assumptionId,
 );
 
-const getPreviousLevelAssumptionId = createSelector(getTableData, (data: NaturalProofsTableItem[]): string | null => {
+const previousLevelAssumptionId = createSelector(tableData, (data: NaturalProofsTableItem[]): string | null => {
   const lastItemLevel = data[data.length - 1]?.level || 0;
   if (lastItemLevel === 0) {
     return null;
@@ -93,37 +87,37 @@ const getPreviousLevelAssumptionId = createSelector(getTableData, (data: Natural
   return data[0].assumptionId;
 });
 
-const getIsUserFileFormVisible = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isUserFileFormVisible);
+const isUserFileFormVisible = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isUserFileFormVisible);
 
-const getIsLoading = createSelector(getFlags, (data: PropositionsNaturalProofsFlags): boolean => data.isLoading);
+const isLoading = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isLoading);
 
-const getError = (state: RootState): LocalText | null => state.propositionsDP.error;
+const error = (state: RootState): LocalText | null => state.propositionsDP.error;
 
-const getClipboardData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.clipboardData;
+const clipboardData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.clipboardData;
 
 export const propositionsNPSelectors = {
-  getFlags,
-  getTableData,
-  getTableDataLength,
-  getSelectedIds,
-  getDependentItems,
-  getError,
-  getClipboardData,
-  getIsPremiseOpened,
-  getIsShortcutOpened,
-  getIsAssumptionOpened,
-  getIsReplacerFormOpened,
-  getIsConfirmDeletePopupOpened,
-  getIsOrIntroductionFormOpened,
-  getIsConfirmCutPopupOpened,
-  getSelectedTableItems,
-  getLastTableItemLevel,
-  getSelectedFormulas,
-  getLastTableItem,
-  getAllSubProofsItems,
-  getLastItemAssumptionId,
-  getPreviousLevelAssumptionId,
-  getIsNameInputPopupVisible,
-  getIsUserFileFormVisible,
-  getIsLoading,
+  flags,
+  tableData,
+  tableDataLength,
+  selectedIds,
+  dependentItems,
+  error,
+  clipboardData,
+  isPremiseOpened,
+  isShortcutOpened,
+  isAssumptionOpened,
+  isReplacerFormOpened,
+  isConfirmDeletePopupOpened,
+  isOrIntroductionFormOpened,
+  isConfirmCutPopupOpened,
+  selectedTableItems,
+  lastTableItemLevel,
+  selectedFormulas,
+  lastTableItem,
+  allSubProofsItems,
+  lastItemAssumptionId,
+  previousLevelAssumptionId,
+  isNameInputPopupVisible,
+  isUserFileFormVisible,
+  isLoading,
 };

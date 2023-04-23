@@ -7,8 +7,8 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const RulesOfInference = (): React.ReactElement | null => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const className = formatClass(['natural-proofs-rules', { 'natural-proofs-rules__dark': isDarkMode }]);
 
   switch (language) {

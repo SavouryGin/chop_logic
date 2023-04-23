@@ -16,7 +16,7 @@ describe('NP exportNPToXMLSaga tests', () => {
   it('exportNPToXMLSaga() should create an xml file', () => {
     testSaga(exportNPToXMLSaga, { payload: testFileName })
       .next()
-      .select(selectors.getTableData)
+      .select(selectors.tableData)
       .next(tMocks.randomNaturalProof)
       .call(createAndSaveXMLFile, tMocks.randomNaturalProofXML, testFileName)
       .next()
@@ -34,7 +34,7 @@ describe('NP exportNPToXMLSaga tests', () => {
   it('exportNPToXMLSaga() should catch the error', () => {
     testSaga(exportNPToXMLSaga, { payload: testFileName })
       .next()
-      .select(selectors.getTableData)
+      .select(selectors.tableData)
       .next(tMocks.dpTableDataIE)
       .throw(tMocks.error)
       .put(actions.setError(propositionsElementsTexts.generalError))

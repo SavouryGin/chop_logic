@@ -9,8 +9,8 @@ import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';
 
 const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }): React.ReactElement | null => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
+  const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isMounted = useMount(isOpened);
   const isClosing = isMounted && !isOpened;
   if (!isMounted) {

@@ -12,9 +12,9 @@ import './styles.scss';
 const AppSettings = ({ className }: CommonProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const settingsInitialValues: AppSettingInitialValues = {
-    isDarkMode: useAppSelector(selectors.getIsDarkMode),
-    isSoundsEnabled: useAppSelector(selectors.getIsSoundsEnabled),
-    language: useAppSelector(selectors.getLanguage),
+    isDarkMode: useAppSelector(selectors.isDarkMode),
+    isSoundsEnabled: useAppSelector(selectors.isSoundsEnabled),
+    language: useAppSelector(selectors.language),
   };
   const [formValues, setFormValues] = useState(settingsInitialValues);
   const settingsClassNames = formatClass(['settings', className]);

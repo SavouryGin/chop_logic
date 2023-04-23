@@ -7,9 +7,9 @@ import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, ...rest }: ButtonProps): React.ReactElement => {
-  const isDarkMode = useAppSelector(settingsSelectors.getIsDarkMode);
-  const isSoundEnabled = useAppSelector(settingsSelectors.getIsSoundsEnabled);
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const isSoundEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
+  const language = useAppSelector(settingsSelectors.language);
   const buttonTitle = rest.title || buttonTexts[buttonId].title[language];
   const buttonText = rest.text || buttonTexts[buttonId].innerText?.[language];
 

@@ -1,10 +1,10 @@
 import Formula from 'components/controls/formula';
 import React from 'react';
 import validator from 'logic/propositions/validator';
-import { Language, LocalText, PropositionalExpression, TableColumnProps, TableDataItem } from 'types';
+import { Language, LocalText, PropositionalExpression, TableColumn, TableItem } from 'types';
 import { isLocalText } from 'helpers/checkers';
 
-export function getDataCellsValues(tableRow: TableDataItem, columns: TableColumnProps[], language: Language): (string | JSX.Element)[] {
+export function getDataCellsValues(tableRow: TableItem, columns: TableColumn[], language: Language): (string | JSX.Element)[] {
   const stringValues = [];
   for (const column of columns) {
     let value;

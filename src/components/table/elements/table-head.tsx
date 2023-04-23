@@ -13,7 +13,7 @@ const TableHead = ({
   className,
   id,
 }: TableHeadProps): React.ReactElement => {
-  const language = useAppSelector(settingsSelectors.getLanguage);
+  const language = useAppSelector(settingsSelectors.language);
   const allRowIds = data.map((item) => item.id);
   const tableId = id || crypto.randomUUID();
 

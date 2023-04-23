@@ -12,11 +12,11 @@ export function* implicationIntroductionWatcher(): Generator {
 
 export function* implicationIntroductionSaga(): SagaIterator {
   try {
-    const selectedItems: NaturalProofsTableItem[] = yield select(selectors.getAllSubProofsItems);
-    const tableData: NaturalProofsTableItem[] = yield select(selectors.getTableData);
-    const dataLength: number = yield select(selectors.getTableDataLength);
-    const level: number = yield select(selectors.getLastTableItemLevel);
-    const assumptionId: string | null = yield select(selectors.getPreviousLevelAssumptionId);
+    const selectedItems: NaturalProofsTableItem[] = yield select(selectors.allSubProofsItems);
+    const tableData: NaturalProofsTableItem[] = yield select(selectors.tableData);
+    const dataLength: number = yield select(selectors.tableDataLength);
+    const level: number = yield select(selectors.lastTableItemLevel);
+    const assumptionId: string | null = yield select(selectors.previousLevelAssumptionId);
 
     const newItem = executor.performII({ level, dataLength, selectedItems, assumptionId });
 

@@ -11,8 +11,8 @@ export function* pasteStepsNPWatcher(): Generator {
 
 export function* pasteStepsNPSaga(): SagaIterator {
   try {
-    const tableItems: NaturalProofsTableItem[] = yield select(selectors.getTableData);
-    const clipboardData: NaturalProofsTableItem[] = yield select(selectors.getClipboardData);
+    const tableItems: NaturalProofsTableItem[] = yield select(selectors.tableData);
+    const clipboardData: NaturalProofsTableItem[] = yield select(selectors.clipboardData);
     const mergedData = [...tableItems, ...clipboardData].map((item, index) => ({ ...item, step: index + 1 }));
 
     yield put(actions.setTableData(mergedData));
