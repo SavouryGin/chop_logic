@@ -372,4 +372,4 @@ const truthTableGenerator = {
   },
 };
 
-export default truthTableGenerator;
+export default Object.freeze(truthTableGenerator);
