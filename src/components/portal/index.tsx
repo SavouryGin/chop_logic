@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { useEffectOnce } from 'hooks';
 
 const Portal = ({ children }: { children: React.ReactElement }): React.ReactPortal => {
   const [container] = useState(() => document.createElement('div'));
 
-  useEffect(() => {
+  useEffectOnce(() => {
     // Append a new portal at the end of the body element on mount
     document.body.appendChild(container);
 
@@ -12,7 +13,7 @@ const Portal = ({ children }: { children: React.ReactElement }): React.ReactPort
     return () => {
       document.body.removeChild(container);
     };
-  }, []);
+  });
 
   return ReactDOM.createPortal(children, container);
 };
