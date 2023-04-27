@@ -179,4 +179,52 @@ describe('Truth Table Generator tests', () => {
       true,
     ]);
   });
+
+  it('splitBooleanArrayByVarsCount() splits the array correctly', () => {
+    const arr1 = generator.generateTrueFalseCombinations(1);
+    const arr2 = generator.generateTrueFalseCombinations(2);
+    const arr3 = generator.generateTrueFalseCombinations(3);
+    const arr4 = generator.generateTrueFalseCombinations(4);
+
+    const split1 = generator.splitBooleanArrayByVarsCount(1, arr1);
+    const split2 = generator.splitBooleanArrayByVarsCount(2, arr2);
+    const split3 = generator.splitBooleanArrayByVarsCount(3, arr3);
+    const split4 = generator.splitBooleanArrayByVarsCount(4, arr4);
+
+    expect(split1).toEqual([[false], [true]]);
+    expect(split2).toEqual([
+      [false, false],
+      [false, true],
+      [true, false],
+      [true, true],
+    ]);
+    expect(split3).toEqual([
+      [false, false, false],
+      [false, false, true],
+      [false, true, false],
+      [false, true, true],
+      [true, false, false],
+      [true, false, true],
+      [true, true, false],
+      [true, true, true],
+    ]);
+    expect(split4).toEqual([
+      [false, false, false, false],
+      [false, false, false, true],
+      [false, false, true, false],
+      [false, false, true, true],
+      [false, true, false, false],
+      [false, true, false, true],
+      [false, true, true, false],
+      [false, true, true, true],
+      [true, false, false, false],
+      [true, false, false, true],
+      [true, false, true, false],
+      [true, false, true, true],
+      [true, true, false, false],
+      [true, true, false, true],
+      [true, true, true, false],
+      [true, true, true, true],
+    ]);
+  });
 });
