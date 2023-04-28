@@ -227,4 +227,37 @@ describe('Truth Table Generator tests', () => {
       [true, true, true, true],
     ]);
   });
+
+  it('generateVariableValues() create correct truth sets', () => {
+    const set1 = generator.generateVariableValues(mocks.propositionalAtom);
+    const set2 = generator.generateVariableValues(mocks.firstSubFormula);
+    const set3 = generator.generateVariableValues(mocks.secondSubFormula);
+    const set4 = generator.generateVariableValues(mocks.propositionalFormula);
+    const set5 = generator.generateVariableValues(mocks.contradictionRealizationFormula);
+
+    expect(set1).toEqual([{ P: false }, { P: true }]);
+    expect(set2).toEqual([{ P: false }, { P: true }]);
+    expect(set3).toEqual([
+      { P: false, Q: false },
+      { P: false, Q: true },
+      { P: true, Q: false },
+      { P: true, Q: true },
+    ]);
+    expect(set4).toEqual([
+      { P: false, Q: false },
+      { P: false, Q: true },
+      { P: true, Q: false },
+      { P: true, Q: true },
+    ]);
+    expect(set5).toEqual([
+      { P: false, Q: false, R: false },
+      { P: false, Q: false, R: true },
+      { P: false, Q: true, R: false },
+      { P: false, Q: true, R: true },
+      { P: true, Q: false, R: false },
+      { P: true, Q: false, R: true },
+      { P: true, Q: true, R: false },
+      { P: true, Q: true, R: true },
+    ]);
+  });
 });
