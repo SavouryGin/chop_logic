@@ -260,4 +260,18 @@ describe('Truth Table Generator tests', () => {
       { P: true, Q: true, R: true },
     ]);
   });
+
+  it('getVariables() method returns the array of variables from a formula', () => {
+    const set1 = generator.getVariables(mocks.propositionalAtom);
+    const set2 = generator.getVariables(mocks.firstSubFormula);
+    const set3 = generator.getVariables(mocks.secondSubFormula);
+    const set4 = generator.getVariables(mocks.propositionalFormula);
+    const set5 = generator.getVariables(mocks.contradictionRealizationFormula);
+
+    expect(set1).toEqual(['P']);
+    expect(set2).toEqual(['P']);
+    expect(set3).toEqual(['P', 'Q']);
+    expect(set4).toEqual(['P', 'Q']);
+    expect(set5).toEqual(['P', 'Q', 'R']);
+  });
 });
