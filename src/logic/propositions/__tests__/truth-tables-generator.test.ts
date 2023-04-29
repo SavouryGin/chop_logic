@@ -509,4 +509,213 @@ describe('Truth Table Generator tests', () => {
       },
     ]);
   });
+
+  it('calculateTableData() method returns correct truth sets for a formula', () => {
+    const columns1 = generator.generateColumnsFromFormula(mocks.propositionalAtom);
+    const columns2 = generator.generateColumnsFromFormula(mocks.firstSubFormula);
+    const columns3 = generator.generateColumnsFromFormula(mocks.secondSubFormula);
+    const columns4 = generator.generateColumnsFromFormula(mocks.propositionalFormula);
+    const columns5 = generator.generateColumnsFromFormula(mocks.contradictionRealizationFormula);
+
+    const set1 = generator.calculateTableData({ formula: mocks.propositionalAtom, columns: columns1 });
+    const set2 = generator.calculateTableData({ formula: mocks.firstSubFormula, columns: columns2 });
+    const set3 = generator.calculateTableData({ formula: mocks.secondSubFormula, columns: columns3 });
+    const set4 = generator.calculateTableData({ formula: mocks.propositionalFormula, columns: columns4 });
+    const set5 = generator.calculateTableData({ formula: mocks.contradictionRealizationFormula, columns: columns5 });
+
+    expect(set1).toEqual([
+      { id: expect.any(String), P: '0' },
+      { id: expect.any(String), P: '1' },
+    ]);
+    expect(set2).toEqual([
+      { id: expect.any(String), P: '0', '¬ P': '1' },
+      { id: expect.any(String), P: '1', '¬ P': '0' },
+    ]);
+    expect(set3).toEqual([
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '0',
+        'P ∧ Q': '0',
+        '¬ P': '1',
+        'P ∧ Q ⇒ ¬ P': '1',
+      },
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '1',
+        'P ∧ Q': '0',
+        '¬ P': '1',
+        'P ∧ Q ⇒ ¬ P': '1',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '0',
+        'P ∧ Q': '0',
+        '¬ P': '0',
+        'P ∧ Q ⇒ ¬ P': '1',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '1',
+        'P ∧ Q': '1',
+        '¬ P': '0',
+        'P ∧ Q ⇒ ¬ P': '0',
+      },
+    ]);
+    expect(set4).toEqual([
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '0',
+        'P ∧ Q': '0',
+        '¬ P': '1',
+        'P ∧ Q ⇒ ¬ P': '1',
+        '¬ P ⇒ ( P ∧ Q ) ⇒ ¬ P': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '1',
+        'P ∧ Q': '0',
+        '¬ P': '1',
+        'P ∧ Q ⇒ ¬ P': '1',
+        '¬ P ⇒ ( P ∧ Q ) ⇒ ¬ P': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '0',
+        'P ∧ Q': '0',
+        '¬ P': '0',
+        'P ∧ Q ⇒ ¬ P': '1',
+        '¬ P ⇒ ( P ∧ Q ) ⇒ ¬ P': '1',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '1',
+        'P ∧ Q': '1',
+        '¬ P': '0',
+        'P ∧ Q ⇒ ¬ P': '0',
+        '¬ P ⇒ ( P ∧ Q ) ⇒ ¬ P': '1',
+      },
+    ]);
+    expect(set5).toEqual([
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '0',
+        R: '0',
+        'P ⇒ Q': '1',
+        '¬ R': '1',
+        '¬ P ⇒ Q': '0',
+        '¬ ¬ R': '0',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '0',
+        R: '1',
+        'P ⇒ Q': '1',
+        '¬ R': '0',
+        '¬ P ⇒ Q': '0',
+        '¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '1',
+        R: '0',
+        'P ⇒ Q': '1',
+        '¬ R': '1',
+        '¬ P ⇒ Q': '0',
+        '¬ ¬ R': '0',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '0',
+        Q: '1',
+        R: '1',
+        'P ⇒ Q': '1',
+        '¬ R': '0',
+        '¬ P ⇒ Q': '0',
+        '¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '0',
+        R: '0',
+        'P ⇒ Q': '0',
+        '¬ R': '1',
+        '¬ P ⇒ Q': '1',
+        '¬ ¬ R': '0',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '0',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '0',
+        R: '1',
+        'P ⇒ Q': '0',
+        '¬ R': '0',
+        '¬ P ⇒ Q': '1',
+        '¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '0',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '1',
+        R: '0',
+        'P ⇒ Q': '1',
+        '¬ R': '1',
+        '¬ P ⇒ Q': '0',
+        '¬ ¬ R': '0',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+      {
+        id: expect.any(String),
+        P: '1',
+        Q: '1',
+        R: '1',
+        'P ⇒ Q': '1',
+        '¬ R': '0',
+        '¬ P ⇒ Q': '0',
+        '¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q': '1',
+        '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )': '0',
+      },
+    ]);
+  });
 });
