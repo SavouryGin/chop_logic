@@ -75,7 +75,7 @@ describe('Truth Table Generator tests', () => {
     });
   });
 
-  it('generateTrueFalseCombinations() creates correct arrays of values', () => {
+  it('generateTrueFalseCombinations() method creates correct arrays of values', () => {
     const arr1 = generator.generateTrueFalseCombinations(1);
     const arr2 = generator.generateTrueFalseCombinations(2);
     const arr3 = generator.generateTrueFalseCombinations(3);
@@ -180,7 +180,7 @@ describe('Truth Table Generator tests', () => {
     ]);
   });
 
-  it('splitBooleanArrayByVarsCount() splits the array correctly', () => {
+  it('splitBooleanArrayByVarsCount() method splits the array correctly', () => {
     const arr1 = generator.generateTrueFalseCombinations(1);
     const arr2 = generator.generateTrueFalseCombinations(2);
     const arr3 = generator.generateTrueFalseCombinations(3);
@@ -228,7 +228,7 @@ describe('Truth Table Generator tests', () => {
     ]);
   });
 
-  it('generateVariableValues() create correct truth sets', () => {
+  it('generateVariableValues() method create correct truth sets', () => {
     const set1 = generator.generateVariableValues(mocks.propositionalAtom);
     const set2 = generator.generateVariableValues(mocks.firstSubFormula);
     const set3 = generator.generateVariableValues(mocks.secondSubFormula);
@@ -273,5 +273,240 @@ describe('Truth Table Generator tests', () => {
     expect(set3).toEqual(['P', 'Q']);
     expect(set4).toEqual(['P', 'Q']);
     expect(set5).toEqual(['P', 'Q', 'R']);
+  });
+
+  it('generateColumnsFromFormula() method returns a correct column array from a formula', () => {
+    const set1 = generator.generateColumnsFromFormula(mocks.propositionalAtom);
+    const set2 = generator.generateColumnsFromFormula(mocks.firstSubFormula);
+    const set3 = generator.generateColumnsFromFormula(mocks.secondSubFormula);
+    const set4 = generator.generateColumnsFromFormula(mocks.propositionalFormula);
+    const set5 = generator.generateColumnsFromFormula(mocks.contradictionRealizationFormula);
+
+    expect(set1).toEqual([
+      {
+        field: 'P',
+        depth: 0,
+        operator: 'VAR',
+        title: { en: 'P', ru: 'P' },
+        operands: [],
+      },
+    ]);
+    expect(set2).toEqual([
+      {
+        field: 'P',
+        depth: 1,
+        operator: 'VAR',
+        title: { en: 'P', ru: 'P' },
+        operands: [],
+      },
+      {
+        field: '¬ P',
+        depth: 0,
+        operator: 'NOT',
+        title: { en: '¬ P', ru: '¬ P' },
+        operands: ['P'],
+      },
+    ]);
+    expect(set3).toEqual([
+      {
+        field: 'P',
+        depth: 2,
+        operator: 'VAR',
+        title: { en: 'P', ru: 'P' },
+        operands: [],
+      },
+      {
+        field: 'Q',
+        depth: 2,
+        operator: 'VAR',
+        title: { en: 'Q', ru: 'Q' },
+        operands: [],
+      },
+      {
+        field: 'P ∧ Q',
+        depth: 1,
+        operator: 'AND',
+        title: { en: 'P ∧ Q', ru: 'P ∧ Q' },
+        operands: ['P', 'Q'],
+      },
+      {
+        field: '¬ P',
+        depth: 1,
+        operator: 'NOT',
+        title: { en: '¬ P', ru: '¬ P' },
+        operands: ['P'],
+      },
+      {
+        field: 'P ∧ Q ⇒ ¬ P',
+        depth: 0,
+        operator: 'IMPLIES',
+        title: { en: 'P ∧ Q ⇒ ¬ P', ru: 'P ∧ Q ⇒ ¬ P' },
+        operands: ['P ∧ Q', '¬ P'],
+      },
+    ]);
+    expect(set4).toEqual([
+      {
+        field: 'P',
+        depth: 3,
+        operator: 'VAR',
+        title: { en: 'P', ru: 'P' },
+        operands: [],
+      },
+      {
+        field: 'Q',
+        depth: 3,
+        operator: 'VAR',
+        title: { en: 'Q', ru: 'Q' },
+        operands: [],
+      },
+      {
+        field: 'P ∧ Q',
+        depth: 2,
+        operator: 'AND',
+        title: { en: 'P ∧ Q', ru: 'P ∧ Q' },
+        operands: ['P', 'Q'],
+      },
+      {
+        field: '¬ P',
+        depth: 2,
+        operator: 'NOT',
+        title: { en: '¬ P', ru: '¬ P' },
+        operands: ['P'],
+      },
+      {
+        field: '¬ P',
+        depth: 1,
+        operator: 'NOT',
+        title: { en: '¬ P', ru: '¬ P' },
+        operands: ['P'],
+      },
+      {
+        field: 'P ∧ Q ⇒ ¬ P',
+        depth: 1,
+        operator: 'IMPLIES',
+        title: { en: 'P ∧ Q ⇒ ¬ P', ru: 'P ∧ Q ⇒ ¬ P' },
+        operands: ['P ∧ Q', '¬ P'],
+      },
+      {
+        field: '¬ P ⇒ ( P ∧ Q ) ⇒ ¬ P',
+        depth: 0,
+        operator: 'IMPLIES',
+        title: { en: '¬ P ⇒ ( P ∧ Q ) ⇒ ¬ P', ru: '¬ P ⇒ ( P ∧ Q ) ⇒ ¬ P' },
+        operands: ['¬ P', '( P ∧ Q ) ⇒ ¬ P'],
+      },
+    ]);
+    expect(set5).toEqual([
+      {
+        field: 'P',
+        depth: 5,
+        operator: 'VAR',
+        title: { en: 'P', ru: 'P' },
+        operands: [],
+      },
+      {
+        field: 'Q',
+        depth: 5,
+        operator: 'VAR',
+        title: { en: 'Q', ru: 'Q' },
+        operands: [],
+      },
+      {
+        field: 'R',
+        depth: 5,
+        operator: 'VAR',
+        title: { en: 'R', ru: 'R' },
+        operands: [],
+      },
+      {
+        field: 'P ⇒ Q',
+        depth: 4,
+        operator: 'IMPLIES',
+        title: { en: 'P ⇒ Q', ru: 'P ⇒ Q' },
+        operands: ['P', 'Q'],
+      },
+      {
+        field: '¬ R',
+        depth: 4,
+        operator: 'NOT',
+        title: { en: '¬ R', ru: '¬ R' },
+        operands: ['R'],
+      },
+      {
+        field: 'P ⇒ Q',
+        depth: 3,
+        operator: 'IMPLIES',
+        title: { en: 'P ⇒ Q', ru: 'P ⇒ Q' },
+        operands: ['P', 'Q'],
+      },
+      {
+        field: '¬ P ⇒ Q',
+        depth: 3,
+        operator: 'NOT',
+        title: { en: '¬ P ⇒ Q', ru: '¬ P ⇒ Q' },
+        operands: ['P ⇒ Q'],
+      },
+      {
+        field: '¬ ¬ R',
+        depth: 3,
+        operator: 'NOT',
+        title: { en: '¬ ¬ R', ru: '¬ ¬ R' },
+        operands: ['¬ R'],
+      },
+      {
+        field: '¬ P ⇒ Q',
+        depth: 2,
+        operator: 'NOT',
+        title: { en: '¬ P ⇒ Q', ru: '¬ P ⇒ Q' },
+        operands: ['P ⇒ Q'],
+      },
+      {
+        field: '¬ R',
+        depth: 2,
+        operator: 'NOT',
+        title: { en: '¬ R', ru: '¬ R' },
+        operands: ['R'],
+      },
+      {
+        field: '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R',
+        depth: 2,
+        operator: 'IMPLIES',
+        title: { en: '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R', ru: '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R' },
+        operands: ['¬ ( P ⇒ Q )', '¬ ¬ R'],
+      },
+      {
+        field: 'P ⇒ Q',
+        depth: 2,
+        operator: 'IMPLIES',
+        title: { en: 'P ⇒ Q', ru: 'P ⇒ Q' },
+        operands: ['P', 'Q'],
+      },
+      {
+        field: '¬ ( P ⇒ Q ) ⇒ ¬ R',
+        depth: 1,
+        operator: 'IMPLIES',
+        title: { en: '¬ ( P ⇒ Q ) ⇒ ¬ R', ru: '¬ ( P ⇒ Q ) ⇒ ¬ R' },
+        operands: ['¬ ( P ⇒ Q )', '¬ R'],
+      },
+      {
+        field: '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q',
+        depth: 1,
+        operator: 'IMPLIES',
+        title: {
+          en: '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q',
+          ru: '¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ⇒ P ⇒ Q',
+        },
+        operands: ['¬ ( P ⇒ Q ) ⇒ ¬ ¬ R', 'P ⇒ Q'],
+      },
+      {
+        field: '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )',
+        depth: 0,
+        operator: 'IMPLIES',
+        title: {
+          en: '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )',
+          ru: '¬ ( P ⇒ Q ) ⇒ ¬ R ⇒ ( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )',
+        },
+        operands: ['¬ ( P ⇒ Q ) ⇒ ¬ R', '( ¬ ( P ⇒ Q ) ⇒ ¬ ¬ R ) ⇒ ( P ⇒ Q )'],
+      },
+    ]);
   });
 });
