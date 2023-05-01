@@ -9,19 +9,9 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 const LeftHeaderPanel = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isNavigationOpen = useAppSelector(settingsSelectors.isNavigationOpened);
-  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
-  const isSoundsEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
 
   const onClickMenuButton = () => {
     dispatch(settingsActions.toggleFlag('isNavigationOpen'));
-  };
-
-  const onClickModeButton = () => {
-    dispatch(settingsActions.toggleFlag('isDarkMode'));
-  };
-
-  const onClickSoundsButton = () => {
-    dispatch(settingsActions.toggleFlag('isSoundsEnabled'));
   };
 
   return (
@@ -30,18 +20,6 @@ const LeftHeaderPanel = (): React.ReactElement => {
         buttonId={ButtonID.Navigation}
         onClick={onClickMenuButton}
         icon={isNavigationOpen ? Icon.Left : Icon.Menu}
-        sound={soundPlayer.keyboard}
-      />
-      <Button
-        buttonId={ButtonID.ColorTheme}
-        onClick={onClickModeButton}
-        icon={isDarkMode ? Icon.LightMode : Icon.DarkMode}
-        sound={soundPlayer.keyboard}
-      />
-      <Button
-        buttonId={ButtonID.Sounds}
-        onClick={onClickSoundsButton}
-        icon={isSoundsEnabled ? Icon.Sound : Icon.NoSound}
         sound={soundPlayer.keyboard}
       />
     </div>

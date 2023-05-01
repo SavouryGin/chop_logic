@@ -1,10 +1,23 @@
 import React, { memo } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
-import { ButtonProps } from 'types';
+import { ButtonID, Icon } from 'enums';
+import { CommonProps } from 'types';
 import { buttonTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
+
+export type ButtonProps = CommonProps & {
+  buttonId: ButtonID;
+  title?: string;
+  icon?: Icon;
+  text?: string;
+  type?: 'button' | 'submit' | 'reset';
+  size?: 'small' | 'normal' | 'large';
+  onClick?: () => void;
+  sound?: HTMLAudioElement;
+  isDisabled?: boolean;
+};
 
 const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, ...rest }: ButtonProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);

@@ -11,15 +11,16 @@ import { useAppDispatch, useAppSelector, useEffectOnce } from 'hooks';
 
 const RightHeaderPanel = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const isSidebarOpened = useAppSelector(settingsSelectors.isSidebarOpened);
+  // const isSidebarOpened = useAppSelector(settingsSelectors.isSidebarOpened);
   const isFullScreen = useAppSelector(settingsSelectors.isFullScreen);
   const isSettingOpened = useAppSelector(settingsSelectors.isSettingOpened);
   const language = useAppSelector(settingsSelectors.language);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
 
   // Handlers
-  const onClickSidebarButton = () => {
-    dispatch(settingsActions.toggleFlag('isSidebarOpen'));
-  };
+  // const onClickSidebarButton = () => {
+  //   dispatch(settingsActions.toggleFlag('isSidebarOpen'));
+  // };
 
   const onClickSettingButton = () => {
     dispatch(settingsActions.toggleFlag('isSettingOpen'));
@@ -43,6 +44,10 @@ const RightHeaderPanel = (): React.ReactElement => {
     }
   };
 
+  const onClickModeButton = () => {
+    dispatch(settingsActions.toggleFlag('isDarkMode'));
+  };
+
   const escapeHandler = useCallback(() => {
     const isWindowInFullscreen = !!document.fullscreenElement;
     dispatch(settingsActions.setFullScreenFlag(isWindowInFullscreen));
@@ -59,11 +64,17 @@ const RightHeaderPanel = (): React.ReactElement => {
   return (
     <div className='header__right-panel'>
       <Button
+        buttonId={ButtonID.ColorTheme}
+        onClick={onClickModeButton}
+        icon={isDarkMode ? Icon.LightMode : Icon.DarkMode}
+        sound={soundPlayer.keyboard}
+      />
+      {/* <Button
         buttonId={ButtonID.Tools}
         onClick={onClickSidebarButton}
         icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
         sound={soundPlayer.keyboard}
-      />
+      /> */}
       <Button
         buttonId={ButtonID.FullScreen}
         onClick={onClickFullScreenButton}
