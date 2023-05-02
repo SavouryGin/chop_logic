@@ -42,7 +42,7 @@ const Form = ({ className, onSubmit, inputs, initialValues, passValues, submitBu
         type='submit'
         icon={Icon.Default}
         sound={soundPlayer.slideClick}
-        size='large'
+        view='large'
         isDisabled={rest.isSubmitDisabled}
       />
     </form>

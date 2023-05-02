@@ -13,13 +13,13 @@ export type ButtonProps = CommonProps & {
   icon?: Icon;
   text?: string;
   type?: 'button' | 'submit' | 'reset';
-  size?: 'small' | 'normal' | 'large';
+  view?: 'small' | 'normal' | 'large' | 'flat';
   onClick?: () => void;
   sound?: HTMLAudioElement;
   isDisabled?: boolean;
 };
 
-const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, ...rest }: ButtonProps): React.ReactElement => {
+const Button = ({ onClick, icon, sound, view = 'normal', buttonId, isDisabled, ...rest }: ButtonProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
   const language = useAppSelector(settingsSelectors.language);
@@ -32,7 +32,7 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, .
   const buttonClassNames = formatClass([
     'button',
     rest.className,
-    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large', button_disabled: !!isDisabled },
+    { button_dark: isDarkMode, button_small: view === 'small', button_large: view === 'large', button_disabled: !!isDisabled },
   ]);
 
   const onButtonClick = () => {

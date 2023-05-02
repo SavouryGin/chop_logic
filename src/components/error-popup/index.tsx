@@ -38,7 +38,7 @@ const ErrorPopup = ({ error, onClose, className }: ErrorPopupProps): React.React
           onClick={onClose}
           icon={Icon.Cancel}
           sound={soundPlayer.slideClick}
-          size='small'
+          view='small'
           className='error-popup__close-button'
         />
         {errorHeader}

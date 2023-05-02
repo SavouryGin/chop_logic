@@ -19,7 +19,7 @@ const ModalLayout = ({ windowClassName, contentClassName, title, id, onClose, co
       <div className={windowClassName} role='dialog' aria-modal='true' id={id}>
         <header className='modal-window__header' id='modal-window-heading'>
           {title}
-          <Button buttonId={ButtonID.Cancel} onClick={onClose} icon={Icon.Cancel} sound={soundPlayer.slideClick} size='small' />
+          <Button buttonId={ButtonID.Cancel} onClick={onClose} icon={Icon.Cancel} sound={soundPlayer.slideClick} view='small' />
         </header>
         <div className={contentClassName} role='region' aria-labelledby='modal-window-heading'>
           {content}

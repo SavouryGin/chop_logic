@@ -50,30 +50,30 @@ const DirectProofsEditorToolbar = (): React.ReactElement => {
 
   return (
     <div className='direct-proofs-editor__toolbar'>
-      <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} size='large' onClick={openPremise} />
+      <Button buttonId={ButtonID.Premise} sound={soundPlayer.keyboard} view='large' onClick={openPremise} />
       <Button
         buttonId={ButtonID.Reiteration}
         sound={soundPlayer.keyboard}
-        size='large'
+        view='large'
         isDisabled={isReiterationDisabled}
         onClick={reiterateStep}
       />
       <Button
         buttonId={ButtonID.Replace}
         sound={soundPlayer.keyboard}
-        size='large'
+        view='large'
         onClick={openReplacer}
         isDisabled={isReplacerDisabled}
       />
-      <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} size='large' isDisabled={isDeleteDisabled} onClick={deleteSteps} />
-      <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} size='large' onClick={openIC} />
-      <Button buttonId={ButtonID.ImplicationDistribution} sound={soundPlayer.slideClick} size='large' onClick={openID} />
-      <Button buttonId={ButtonID.ContradictionRealization} sound={soundPlayer.slideClick} size='large' onClick={openCR} />
+      <Button buttonId={ButtonID.Delete} sound={soundPlayer.keyboard} view='large' isDisabled={isDeleteDisabled} onClick={deleteSteps} />
+      <Button buttonId={ButtonID.ImplicationCreation} sound={soundPlayer.slideClick} view='large' onClick={openIC} />
+      <Button buttonId={ButtonID.ImplicationDistribution} sound={soundPlayer.slideClick} view='large' onClick={openID} />
+      <Button buttonId={ButtonID.ContradictionRealization} sound={soundPlayer.slideClick} view='large' onClick={openCR} />
       <Button
         buttonId={ButtonID.ImplicationElimination}
         sound={soundPlayer.slideClick}
         isDisabled={!isImplicationEliminationEnabled}
-        size='large'
+        view='large'
         onClick={performIE}
       />
     </div>

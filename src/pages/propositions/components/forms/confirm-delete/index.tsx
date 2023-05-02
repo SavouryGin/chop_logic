@@ -29,7 +29,7 @@ const ConfirmDeleteProofStepsPopup = ({
     <div className='confirm-delete-popup'>
       <div className='confirm-delete-popup__text'>{propositionsElementsTexts.deleteConfirmation[language]}</div>
       {formulas}
-      <Button buttonId={ButtonID.Apply} size='large' className='confirm-delete-popup__button' onClick={onConfirm} />
+      <Button buttonId={ButtonID.Apply} view='large' className='confirm-delete-popup__button' onClick={onConfirm} />
     </div>
   );
 };
