@@ -78,6 +78,7 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
         onClick={onClickMenuButton}
         icon={isNavigationOpen ? Icon.Left : Icon.Menu}
         sound={soundPlayer.keyboard}
+        view='flat'
       />
     </div>
   );

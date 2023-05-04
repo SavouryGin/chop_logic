@@ -117,6 +117,14 @@
     width: 100%;
   }
 
+  // Style for the flat view
+  &_flat {
+    .button__shadow,
+    .button__edge {
+      display: none;
+    }
+  }
+
   // Disabled styles
   &_disabled {
     opacity: 0.7;

@@ -32,7 +32,13 @@ const Button = ({ onClick, icon, sound, view = 'normal', buttonId, isDisabled, .
   const buttonClassNames = formatClass([
     'button',
     rest.className,
-    { button_dark: isDarkMode, button_small: view === 'small', button_large: view === 'large', button_disabled: !!isDisabled },
+    {
+      button_dark: isDarkMode,
+      button_small: view === 'small',
+      button_large: view === 'large',
+      button_flat: view === 'flat',
+      button_disabled: !!isDisabled,
+    },
   ]);
 
   const onButtonClick = () => {
