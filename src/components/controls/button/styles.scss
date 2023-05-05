@@ -123,6 +123,21 @@
     .button__edge {
       display: none;
     }
+
+    .button__front:hover,
+    .button__front:active,
+    .button__front {
+      transform: none;
+      transition: none;
+    }
+
+    .button__front {
+      background: transparent;
+    }
+
+    .button__front_dark {
+      color: $dark-font-color;
+    }
   }
 
   // Disabled styles
