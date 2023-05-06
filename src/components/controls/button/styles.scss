@@ -133,10 +133,22 @@
 
     .button__front {
       background: transparent;
+      border: $light-weak-border;
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $light-foreground-color;
+      }
     }
 
     .button__front_dark {
       color: $dark-font-color;
+      border: $dark-weak-border;
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $dark-foreground-color;
+      }
     }
   }
 
