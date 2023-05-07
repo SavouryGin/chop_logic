@@ -15,6 +15,8 @@ export type ButtonProps = CommonProps & {
   type?: 'button' | 'submit' | 'reset';
   view?: 'small' | 'normal' | 'large' | 'flat';
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   sound?: HTMLAudioElement;
   isDisabled?: boolean;
 };
@@ -58,6 +60,8 @@ const Button = ({ onClick, icon, sound, view = 'normal', buttonId, isDisabled, .
       onClick={!isDisabled ? onButtonClick : undefined}
       id={`button_id_${buttonId}`}
       disabled={isDisabled}
+      onMouseEnter={rest.onMouseEnter}
+      onMouseLeave={rest.onMouseLeave}
     >
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>
