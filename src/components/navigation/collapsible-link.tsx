@@ -18,11 +18,22 @@ const CollapsibleLink = ({ item, language, groupedLinks, pageId }: CollapsibleLi
     setIsOpened(!isOpened);
   };
 
+  const openSubMenu = () => {
+    setIsOpened(true);
+  };
+
   const nestedLinks = <ul className='navigation__nested-list'>{groupedLinks[pageId].map((x) => getNavigationListItem(x, language))}</ul>;
 
   return (
     <>
-      <AppLink path={item.url} text={item.title[language]} isNavigation icon={item.icon} id={`link-to_${item.id.toString()}`} />
+      <AppLink
+        path={item.url}
+        text={item.title[language]}
+        isNavigation
+        icon={item.icon}
+        id={`link-to_${item.id.toString()}`}
+        onHover={openSubMenu}
+      />
       <ShowMoreButton onClick={onShowMore} isOpened={isOpened} id={`show-more-for_${item.id.toString()}`} />
       {isOpened && nestedLinks}
     </>
