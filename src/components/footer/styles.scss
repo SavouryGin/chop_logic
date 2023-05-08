@@ -5,8 +5,8 @@
   font-size: $small-font-size;
   display: grid;
   align-items: center;
-  grid-template-areas: '. footer-copyright footer-links .';
-  grid-template-columns: 2fr 5fr 5fr 2fr;
+  grid-template-areas: 'footer-copyright . footer-links';
+  grid-template-columns: 2fr auto 2fr;
 
   &__copyright {
     grid-area: footer-copyright;

@@ -15,12 +15,12 @@
   display: grid;
   grid-gap: $block-gap;
   height: 100%;
-  grid-template-columns: 2fr 10fr 2fr;
+  grid-template-columns: auto;
   grid-template-rows: $header-height auto $footer-height;
   grid-template-areas:
-    'page-header page-header page-header'
-    'page-navigation page-content page-sidebar'
-    'page-footer page-footer page-footer';
+    'page-header'
+    'page-content'
+    'page-footer';
 
   // Grid areas
   &__header {
@@ -33,21 +33,17 @@
 
   &__main {
     grid-area: page-content;
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
     overflow: auto;
     padding: $big-padding;
   }
 
   &__navigation {
-    grid-area: page-navigation;
     border-bottom-right-radius: $border-radius;
     overflow: auto;
     padding: $big-padding;
   }
 
   &__sidebar {
-    grid-area: page-sidebar;
     border-bottom-left-radius: $border-radius;
     overflow: auto;
     padding: $big-padding;
