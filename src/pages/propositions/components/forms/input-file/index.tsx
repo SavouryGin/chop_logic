@@ -48,7 +48,7 @@ const InputFileForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactEle
         type='submit'
         icon={Icon.Default}
         sound={soundPlayer.slideClick}
-        size='large'
+        view='large'
         onClick={onSubmit}
         isDisabled={!userFile}
       />

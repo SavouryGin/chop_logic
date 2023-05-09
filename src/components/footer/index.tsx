@@ -23,7 +23,7 @@ const Footer = ({ className }: CommonProps): React.ReactElement => {
 
   return (
     <footer className={footerClassNames}>
-      <span className='footer__copyright'>{`© ${uiElementTexts.footer[language]}, 2022`}</span>
+      <span className='footer__copyright'>{`© ${uiElementTexts.footer[language]}, 2023`}</span>
       <span className={linkClassNames}>
         <a href={externalLinks.mail} target='_blank' rel='noreferrer' className={Icon.Mail} onMouseOver={onLinkHover} title='Mail'></a>
         <a

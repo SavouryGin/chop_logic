@@ -1,68 +1,23 @@
-@import 'styles/variables/colors.scss';
 @import 'styles/variables/sizes.scss';
 
 .header {
-  display: grid;
-  grid-gap: $block-gap;
-  grid-template-columns: 2fr 10fr 2fr;
-  grid-template-areas: 'header-left header-center header-right';
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-items: center;
+  padding: 0 $page-padding;
 
   &__left-panel {
-    grid-area: header-left;
-    .button {
-      margin: 0 $default-margin;
-    }
-  }
-
-  &__heading {
-    grid-area: header-center;
+    display: flex;
+    align-items: center;
+    gap: $block-gap;
   }
 
   &__right-panel {
-    grid-area: header-right;
-    .button {
-      margin: 0 $default-margin;
-    }
+    display: flex;
+    gap: $block-gap;
   }
 
-  // Small screen styles
-  @media (max-width: $max-small-screen-width) {
-    grid-template-columns: 3fr 6fr 3fr;
-  }
-
-  // Tablet screen styles
-  @media (max-width: $max-table-width) {
-    grid-template-columns: 1fr 8fr 3fr;
-    grid-template-areas: 'header-left header-center header-right';
-
-    &__left-panel {
-      #button_id_2,
-      #button_id_3 {
-        display: none;
-      }
-    }
-
-    &__heading {
-      justify-self: start;
-    }
-
-    &__right-panel {
-      justify-self: end;
-      #button_id_5 {
-        display: none;
-      }
-    }
-  }
-
-  // Mobile screen styles
-  @media (max-width: $max-mobile-width) {
-    grid-gap: $default-margin;
-    grid-template-columns: 1fr 5fr 6fr;
-
-    &__heading {
-      font-size: $base-font-size;
-    }
+  &__heading {
+    font-size: $header-font-size;
   }
 }

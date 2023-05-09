@@ -1,19 +1,31 @@
 import React from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
-import { AppLinkProps } from 'types';
+import { CommonProps } from 'types';
+import { Icon } from 'enums';
 import { Link, NavLink } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const AppLink = ({ path, text, isNavigation, icon, ...rest }: AppLinkProps): React.ReactElement => {
+type AppLinkProps = CommonProps & {
+  path: string;
+  text?: string;
+  icon?: Icon;
+  isNavigation?: boolean;
+  onHover?: () => void;
+};
+
+const AppLink = ({ path, text, isNavigation, icon, onHover, ...rest }: AppLinkProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isSoundsEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
   const classNames = formatClass(['app-link', rest.className, { 'app-link_dark': isDarkMode }]);
 
   const onLinkHover = () => {
     isSoundsEnabled && soundPlayer.snap.play();
+    if (onHover) {
+      onHover();
+    }
   };
 
   const navLink = (

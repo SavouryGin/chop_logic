@@ -65,20 +65,20 @@ const PropositionsNPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
           icon={Icon.ExportXML}
           isDisabled={isExportToXMLDisabled}
           onClick={onClickExportToXML}
-          size='large'
+          view='large'
         />
       </li>
       <li>
-        <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} size='large' onClick={openFileInputForm} />
+        <Button buttonId={ButtonID.ImportXML} icon={Icon.ImportXML} view='large' onClick={openFileInputForm} />
       </li>
       <li>
-        <Button buttonId={ButtonID.CopyProof} icon={Icon.Copy} size='large' onClick={onCopySteps} isDisabled={isCopyDisabled} />
+        <Button buttonId={ButtonID.CopyProof} icon={Icon.Copy} view='large' onClick={onCopySteps} isDisabled={isCopyDisabled} />
       </li>
       <li>
-        <Button buttonId={ButtonID.CutProof} icon={Icon.Cut} size='large' onClick={onCutSteps} isDisabled={isCutDisabled} />
+        <Button buttonId={ButtonID.CutProof} icon={Icon.Cut} view='large' onClick={onCutSteps} isDisabled={isCutDisabled} />
       </li>
       <li>
-        <Button buttonId={ButtonID.PasteProof} icon={Icon.Paste} size='large' onClick={onPasteSteps} isDisabled={isPasteDisabled} />
+        <Button buttonId={ButtonID.PasteProof} icon={Icon.Paste} view='large' onClick={onPasteSteps} isDisabled={isPasteDisabled} />
       </li>
       <ModalWindow
         isOpened={isConfirmCutPopupOpened}

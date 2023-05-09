@@ -1,12 +1,27 @@
 import React, { memo } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
-import { ButtonProps } from 'types';
+import { ButtonID, Icon } from 'enums';
+import { CommonProps } from 'types';
 import { buttonTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, ...rest }: ButtonProps): React.ReactElement => {
+export type ButtonProps = CommonProps & {
+  buttonId: ButtonID;
+  title?: string;
+  icon?: Icon;
+  text?: string;
+  type?: 'button' | 'submit' | 'reset';
+  view?: 'small' | 'normal' | 'large' | 'flat';
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  sound?: HTMLAudioElement;
+  isDisabled?: boolean;
+};
+
+const Button = ({ onClick, icon, sound, view = 'normal', buttonId, isDisabled, ...rest }: ButtonProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
   const language = useAppSelector(settingsSelectors.language);
@@ -19,7 +34,13 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, .
   const buttonClassNames = formatClass([
     'button',
     rest.className,
-    { button_dark: isDarkMode, button_small: size === 'small', button_large: size === 'large', button_disabled: !!isDisabled },
+    {
+      button_dark: isDarkMode,
+      button_small: view === 'small',
+      button_large: view === 'large',
+      button_flat: view === 'flat',
+      button_disabled: !!isDisabled,
+    },
   ]);
 
   const onButtonClick = () => {
@@ -39,6 +60,8 @@ const Button = ({ onClick, icon, sound, size = 'normal', buttonId, isDisabled, .
       onClick={!isDisabled ? onButtonClick : undefined}
       id={`button_id_${buttonId}`}
       disabled={isDisabled}
+      onMouseEnter={rest.onMouseEnter}
+      onMouseLeave={rest.onMouseLeave}
     >
       <span className={shadowClassNames}></span>
       <span className={edgeClassNames}></span>

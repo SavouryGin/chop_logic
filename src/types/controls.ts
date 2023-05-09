@@ -1,18 +1,6 @@
-import { ButtonID, Icon, InputID } from 'enums';
+import { ButtonID, InputID } from 'enums';
 import { CommonProps, LocalText } from './general';
 import { FileAcceptType } from 'enums/file-accept-type';
-
-export type ButtonProps = CommonProps & {
-  buttonId: ButtonID;
-  title?: string;
-  icon?: Icon;
-  text?: string;
-  type?: 'button' | 'submit' | 'reset';
-  size?: 'small' | 'normal' | 'large';
-  onClick?: () => void;
-  sound?: HTMLAudioElement;
-  isDisabled?: boolean;
-};
 
 export type CheckboxProps = CommonProps &
   InputHandlersProps & {
