@@ -85,13 +85,10 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
         sound={soundPlayer.keyboard}
         view='flat'
       />
+      <h1 className='header__heading'>
+        <AppLink path={paths[Page.Home]} text='Chop Logic' isNavigation />
+      </h1>
     </div>
-  );
-
-  const heading = (
-    <h1 className='header__heading'>
-      <AppLink path={paths[Page.Home]} text='Chop Logic' isNavigation />
-    </h1>
   );
 
   const rightPanel = (
@@ -127,7 +124,6 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
   return (
     <header className={formatClass(['header', className])}>
       {leftPanel}
-      {heading}
       {rightPanel}
     </header>
   );
