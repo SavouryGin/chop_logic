@@ -34,7 +34,7 @@
   &__main {
     grid-area: page-content;
     overflow: auto;
-    padding: $big-padding;
+    padding: $big-padding $page-padding;
   }
 
   &__navigation {
