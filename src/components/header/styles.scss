@@ -1,10 +1,12 @@
 @import 'styles/variables/sizes.scss';
+@import 'styles/variables/z-indexes.scss';
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 $page-padding;
+  z-index: $header-z-index;
 
   &__left-panel {
     display: flex;
