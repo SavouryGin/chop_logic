@@ -12,6 +12,7 @@
   top: $header-height;
   background-color: $light-background-color;
   z-index: $sidebar-z-index;
+  min-width: 18rem;
 
   &_closing {
     @include slide-out-left();

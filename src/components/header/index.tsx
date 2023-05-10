@@ -98,6 +98,7 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
         onClick={onClickModeButton}
         icon={isDarkMode ? Icon.LightMode : Icon.DarkMode}
         sound={soundPlayer.keyboard}
+        view='flat'
       />
       {/* <Button
     buttonId={ButtonID.Tools}
@@ -108,16 +109,11 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
       <Button
         buttonId={ButtonID.FullScreen}
         onClick={onClickFullScreenButton}
+        view='flat'
         icon={isFullScreen ? Icon.Shrink : Icon.Enlarge}
         sound={soundPlayer.keyboard}
       />
-      <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} />
-      <ModalWindow
-        isOpened={isSettingOpened}
-        onClose={onClickSettingButton}
-        title={uiElementTexts.settings[language]}
-        content={<AppSettings />}
-      />
+      <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} view='flat' icon={Icon.Settings} sound={soundPlayer.slideClick} />
     </div>
   );
 
@@ -125,6 +121,12 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
     <header className={formatClass(['header', className])}>
       {leftPanel}
       {rightPanel}
+      <ModalWindow
+        isOpened={isSettingOpened}
+        onClose={onClickSettingButton}
+        title={uiElementTexts.settings[language]}
+        content={<AppSettings />}
+      />
     </header>
   );
 };
