@@ -10,6 +10,12 @@
     gap: $default-margin;
   }
 
+  &__tools {
+    display: flex;
+    gap: $default-margin;
+    margin-left: auto;
+  }
+
   &__tab {
     cursor: pointer;
     position: relative;

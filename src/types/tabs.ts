@@ -1,10 +1,4 @@
-import { CommonProps, LocalText } from './general';
-
-export type TabListProps = CommonProps & {
-  tabs: TabItem[];
-  defaultTabId?: string;
-  mode?: 'vertical' | 'horizontal';
-};
+import { LocalText } from './general';
 
 export type TabItem = {
   tabContent: React.ReactElement;

@@ -17,16 +17,12 @@ import './styles.scss';
 const Header = ({ className }: CommonProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isNavigationOpen = useAppSelector(settingsSelectors.isNavigationOpened);
-  // const isSidebarOpened = useAppSelector(settingsSelectors.isSidebarOpened);
   const isFullScreen = useAppSelector(settingsSelectors.isFullScreen);
   const isSettingOpened = useAppSelector(settingsSelectors.isSettingOpened);
   const language = useAppSelector(settingsSelectors.language);
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
 
   // Handlers
-  // const onClickSidebarButton = () => {
-  //   dispatch(settingsActions.toggleFlag('isSidebarOpen'));
-  // };
 
   const onClickMenuButton = () => {
     dispatch(settingsActions.toggleFlag('isNavigationOpen'));
@@ -100,12 +96,6 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
         sound={soundPlayer.keyboard}
         view='flat'
       />
-      {/* <Button
-    buttonId={ButtonID.Tools}
-    onClick={onClickSidebarButton}
-    icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
-    sound={soundPlayer.keyboard}
-  /> */}
       <Button
         buttonId={ButtonID.FullScreen}
         onClick={onClickFullScreenButton}
