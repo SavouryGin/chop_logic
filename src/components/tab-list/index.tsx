@@ -11,10 +11,10 @@ export type TabListProps = CommonProps & {
   tabs: TabItem[];
   defaultTabId?: string;
   mode?: 'vertical' | 'horizontal';
-  toolsPanel?: React.ReactElement;
+  toolBar?: React.ReactElement;
 };
 
-const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal', toolsPanel }: TabListProps): React.ReactElement => {
+const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal', toolBar }: TabListProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const tabsClassNames = formatClass(['tab-list', className, { 'tab-list_dark': isDarkMode, 'tab-list_vertical': mode === 'vertical' }]);
   const tabIds = tabs.map((item) => item.tabId);
@@ -33,7 +33,7 @@ const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal', toolsPane
     <div className={tabsClassNames}>
       <div className='tab-list__tabs' role='tablist'>
         {titles}
-        {toolsPanel && <div className='tab-list__tools'>{toolsPanel}</div>}
+        {toolBar && <div className='tab-list__tools'>{toolBar}</div>}
       </div>
       {<TabContent content={tabContent} tabId={activeTab} />}
     </div>

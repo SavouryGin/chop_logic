@@ -26,7 +26,7 @@ const PropositionsDirectProofs = (): React.ReactElement => {
   //   view='flat'
   // />
 
-  const tools = (
+  const toolBar = (
     <>
       <h2
         className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}
@@ -43,7 +43,7 @@ const PropositionsDirectProofs = (): React.ReactElement => {
 
   return (
     <article className='propositions-direct-proofs'>
-      <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' toolsPanel={tools} />
+      <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' toolBar={toolBar} />
     </article>
   );
 };
