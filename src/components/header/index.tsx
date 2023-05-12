@@ -28,10 +28,6 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
     dispatch(settingsActions.toggleFlag('isNavigationOpen'));
   };
 
-  const openMenuOnHover = () => {
-    dispatch(settingsActions.setUpFlag({ flag: 'isNavigationOpen', value: true }));
-  };
-
   const onClickSettingButton = () => {
     dispatch(settingsActions.toggleFlag('isSettingOpen'));
   };
@@ -76,7 +72,6 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
       <Button
         buttonId={ButtonID.Navigation}
         onClick={onClickMenuButton}
-        onMouseEnter={openMenuOnHover}
         icon={isNavigationOpen ? Icon.Left : Icon.Menu}
         sound={soundPlayer.keyboard}
         view='flat'

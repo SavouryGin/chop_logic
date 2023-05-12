@@ -27,20 +27,22 @@ const PropositionsDirectProofs = (): React.ReactElement => {
   // />
 
   const tools = (
-    <Button
-      buttonId={ButtonID.Tools}
-      // onClick={onClickSidebarButton}
-      icon={Icon.Sidebar}
-      sound={soundPlayer.keyboard}
-      view='flat'
-    />
+    <>
+      <h2
+        className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}
+      >{`${texts.page[language]} > ${texts.direct[language]}`}</h2>
+      <Button
+        buttonId={ButtonID.Tools}
+        // onClick={onClickSidebarButton}
+        icon={Icon.Sidebar}
+        sound={soundPlayer.keyboard}
+        view='flat'
+      />
+    </>
   );
 
   return (
     <article className='propositions-direct-proofs'>
-      <h2
-        className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}
-      >{`${texts.page[language]} > ${texts.direct[language]}`}</h2>
       <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' toolsPanel={tools} />
     </article>
   );
