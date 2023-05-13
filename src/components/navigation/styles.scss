@@ -10,6 +10,9 @@
   position: absolute;
   left: 0;
   top: $header-height;
+  background-color: $light-background-color;
+  z-index: $sidebar-z-index;
+  min-width: 18rem;
 
   &_closing {
     @include slide-out-left();
@@ -54,6 +57,7 @@
   }
 
   &_dark {
+    background-color: $dark-background-color;
     .navigation__nested-list {
       border: $dark-border;
     }

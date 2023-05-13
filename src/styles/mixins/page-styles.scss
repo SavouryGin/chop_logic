@@ -45,12 +45,11 @@
 @mixin propositions-proofs-editor-styles() {
   height: 100%;
   display: grid;
-  grid-template-rows: 20px auto;
+  grid-template-rows: auto;
 
   &__title {
     font-size: $tiny-font-size;
     padding: 0;
-    margin-bottom: $small-margin;
     text-align: right;
 
     &::before {

@@ -5,9 +5,9 @@ export const paths: PathDictionary = {
   [Page.Home]: '/',
   [Page.NotFound]: '*',
   [Page.Propositions]: 'propositions',
-  [Page.PropositionsDirectProofs]: 'propositions/direct-proofs',
-  [Page.PropositionsNaturalProofs]: 'propositions/natural-proofs',
-  [Page.TruthTables]: 'propositions/truth-tables',
+  [Page.PropositionsDirectProofs]: 'direct-proofs',
+  [Page.PropositionsNaturalProofs]: 'natural-proofs',
+  [Page.TruthTables]: 'truth-tables',
   [Page.Predicates]: 'predicates',
   [Page.Syllogisms]: 'syllogisms',
 };

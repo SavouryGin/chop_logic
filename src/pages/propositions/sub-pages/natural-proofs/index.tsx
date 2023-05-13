@@ -1,22 +1,49 @@
+import Button from 'components/controls/button';
 import React from 'react';
 import TabList from 'components/tab-list';
 import formatClass from 'helpers/formatters/format-class-name';
 import texts from 'texts/propositions/elements';
-import { Icon } from 'enums';
+import { ButtonID, Icon } from 'enums';
 import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
+import { soundPlayer } from 'helpers/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
 const PropositionsNaturalProofs = (): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.language);
+  // const isSidebarOpened = useAppSelector(settingsSelectors.isSidebarOpened);
 
-  return (
-    <article className='propositions-natural-proofs'>
+  //   const onClickSidebarButton = () => {
+  //     dispatch(settingsActions.toggleFlag('isSidebarOpen'));
+  //   };
+
+  //   const tools =         <Button
+  //   buttonId={ButtonID.Tools}
+  //   onClick={onClickSidebarButton}
+  //   icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
+  //   sound={soundPlayer.keyboard}
+  //   view='flat'
+  // />
+
+  const toolBar = (
+    <>
       <h2
         className={formatClass(['propositions-natural-proofs__title', Icon.Propositions])}
       >{`${texts.page[language]} > ${texts.natural[language]}`}</h2>
-      <TabList tabs={propositionsNaturalProofsTabs} className='propositions-natural-proofs__tabs' />
+      <Button
+        buttonId={ButtonID.Tools}
+        // onClick={onClickSidebarButton}
+        icon={Icon.Sidebar}
+        sound={soundPlayer.keyboard}
+        view='flat'
+      />
+    </>
+  );
+
+  return (
+    <article className='propositions-natural-proofs'>
+      <TabList tabs={propositionsNaturalProofsTabs} className='propositions-natural-proofs__tabs' toolBar={toolBar} />
     </article>
   );
 };

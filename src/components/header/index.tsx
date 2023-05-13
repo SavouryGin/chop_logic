@@ -17,23 +17,15 @@ import './styles.scss';
 const Header = ({ className }: CommonProps): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isNavigationOpen = useAppSelector(settingsSelectors.isNavigationOpened);
-  // const isSidebarOpened = useAppSelector(settingsSelectors.isSidebarOpened);
   const isFullScreen = useAppSelector(settingsSelectors.isFullScreen);
   const isSettingOpened = useAppSelector(settingsSelectors.isSettingOpened);
   const language = useAppSelector(settingsSelectors.language);
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
 
   // Handlers
-  // const onClickSidebarButton = () => {
-  //   dispatch(settingsActions.toggleFlag('isSidebarOpen'));
-  // };
 
   const onClickMenuButton = () => {
     dispatch(settingsActions.toggleFlag('isNavigationOpen'));
-  };
-
-  const openMenuOnHover = () => {
-    dispatch(settingsActions.setUpFlag({ flag: 'isNavigationOpen', value: true }));
   };
 
   const onClickSettingButton = () => {
@@ -80,7 +72,6 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
       <Button
         buttonId={ButtonID.Navigation}
         onClick={onClickMenuButton}
-        onMouseEnter={openMenuOnHover}
         icon={isNavigationOpen ? Icon.Left : Icon.Menu}
         sound={soundPlayer.keyboard}
         view='flat'
@@ -98,26 +89,16 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
         onClick={onClickModeButton}
         icon={isDarkMode ? Icon.LightMode : Icon.DarkMode}
         sound={soundPlayer.keyboard}
+        view='flat'
       />
-      {/* <Button
-    buttonId={ButtonID.Tools}
-    onClick={onClickSidebarButton}
-    icon={isSidebarOpened ? Icon.Right : Icon.Sidebar}
-    sound={soundPlayer.keyboard}
-  /> */}
       <Button
         buttonId={ButtonID.FullScreen}
         onClick={onClickFullScreenButton}
+        view='flat'
         icon={isFullScreen ? Icon.Shrink : Icon.Enlarge}
         sound={soundPlayer.keyboard}
       />
-      <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} icon={Icon.Settings} sound={soundPlayer.slideClick} />
-      <ModalWindow
-        isOpened={isSettingOpened}
-        onClose={onClickSettingButton}
-        title={uiElementTexts.settings[language]}
-        content={<AppSettings />}
-      />
+      <Button buttonId={ButtonID.Settings} onClick={onClickSettingButton} view='flat' icon={Icon.Settings} sound={soundPlayer.slideClick} />
     </div>
   );
 
@@ -125,6 +106,12 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
     <header className={formatClass(['header', className])}>
       {leftPanel}
       {rightPanel}
+      <ModalWindow
+        isOpened={isSettingOpened}
+        onClose={onClickSettingButton}
+        title={uiElementTexts.settings[language]}
+        content={<AppSettings />}
+      />
     </header>
   );
 };

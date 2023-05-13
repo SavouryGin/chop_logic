@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import Tab from './elements/tab';
 import TabContent from './elements/tab-content';
 import formatClass from 'helpers/formatters/format-class-name';
-import { TabListProps } from 'types';
+import { CommonProps, TabItem } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 
-const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal' }: TabListProps): React.ReactElement => {
+export type TabListProps = CommonProps & {
+  tabs: TabItem[];
+  defaultTabId?: string;
+  mode?: 'vertical' | 'horizontal';
+  toolBar?: React.ReactElement;
+};
+
+const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal', toolBar }: TabListProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const tabsClassNames = formatClass(['tab-list', className, { 'tab-list_dark': isDarkMode, 'tab-list_vertical': mode === 'vertical' }]);
   const tabIds = tabs.map((item) => item.tabId);
@@ -26,6 +33,7 @@ const TabList = ({ tabs, defaultTabId, className, mode = 'horizontal' }: TabList
     <div className={tabsClassNames}>
       <div className='tab-list__tabs' role='tablist'>
         {titles}
+        {toolBar && <div className='tab-list__tools'>{toolBar}</div>}
       </div>
       {<TabContent content={tabContent} tabId={activeTab} />}
     </div>
