@@ -6,7 +6,6 @@ export const settingsInitialState: SettingsInitialState = {
   language: 'en',
   flags: {
     isNavigationOpen: false,
-    isSidebarOpen: false,
     isDarkMode: false,
     isFullScreen: false,
     isSettingOpen: false,

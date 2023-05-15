@@ -7,7 +7,6 @@ export interface SettingsInitialState {
 
 export interface SettingsFlags {
   isNavigationOpen: boolean;
-  isSidebarOpen: boolean;
   isDarkMode: boolean;
   isFullScreen: boolean;
   isSettingOpen: boolean;
