@@ -1,5 +1,5 @@
-import PropositionsDPSidebarButtons from 'pages/propositions/sidebar-buttons/direct-proofs';
-import PropositionsNPSidebarButtons from 'pages/propositions/sidebar-buttons/natural-proofs';
+import PropositionsDPTools from './buttons/direct-proofs';
+import PropositionsNPTools from './buttons/natural-proofs';
 import React from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
@@ -10,7 +10,7 @@ import { useAppSelector, useMount } from 'hooks';
 import { useMatch } from 'react-router';
 import './styles.scss';
 
-const Sidebar = ({
+const PropositionsToolbar = ({
   className,
   isOpened,
   isAllButtonsVisible,
@@ -29,11 +29,11 @@ const Sidebar = ({
   return (
     <aside className={sidebarClassNames}>
       <ul className='sidebar__list'>
-        <PropositionsDPSidebarButtons isVisible={isDPButtonsVisible} />
-        <PropositionsNPSidebarButtons isVisible={isNPButtonsVisible} />
+        <PropositionsDPTools isVisible={isDPButtonsVisible} />
+        <PropositionsNPTools isVisible={isNPButtonsVisible} />
       </ul>
     </aside>
   );
 };
 
-export default Sidebar;
+export default PropositionsToolbar;
