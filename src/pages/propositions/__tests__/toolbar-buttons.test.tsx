@@ -1,5 +1,5 @@
-import PropositionsDPSidebarButtons from '../sidebar-buttons/direct-proofs';
-import PropositionsNPSidebarButtons from '../sidebar-buttons/natural-proofs';
+import PropositionsDPTools from '../toolbar/buttons/direct-proofs';
+import PropositionsNPTools from '../toolbar/buttons/natural-proofs';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
@@ -21,16 +21,16 @@ const mockedState = {
   propositionsDP: propositionsDPInitialState,
 };
 
-describe('PropositionsDPSidebarButtons tests:', () => {
+describe('PropositionsDPTools tests:', () => {
   it('should match the snapshot', () => {
-    const { asFragment } = renderWithRedux(<PropositionsDPSidebarButtons isVisible={true} />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PropositionsDPTools isVisible={true} />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });
 
-describe('PropositionsNPSidebarButtons tests:', () => {
+describe('PropositionsNPTools tests:', () => {
   it('should match the snapshot', () => {
-    const { asFragment } = renderWithRedux(<PropositionsNPSidebarButtons isVisible={true} />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PropositionsNPTools isVisible={true} />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });

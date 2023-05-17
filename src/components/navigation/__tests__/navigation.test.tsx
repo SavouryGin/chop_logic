@@ -3,8 +3,8 @@ import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { Page } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
-import { fireEvent, screen } from '@testing-library/react';
 import { routesMap } from 'router/map';
+import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Navigation component:', () => {
@@ -45,21 +45,11 @@ describe('Navigation component:', () => {
 
   it('the list contains buttons to open nested links', async () => {
     const pagesCount = routesMap.length;
-    const buttons = screen.getAllByRole('button');
-    buttons.forEach((button) => {
-      fireEvent.click(button);
-    });
-
     const links = await screen.findAllByRole('link');
     expect(links).toHaveLength(pagesCount);
   });
 
   it('each list item displays the page title', async () => {
-    const buttons = screen.getAllByRole('button');
-    buttons.forEach((button) => {
-      fireEvent.click(button);
-    });
-
     const listItems = await screen.findAllByRole('listitem');
     for (let i = 0; i < listItems.length; i++) {
       expect(listItems[i]).toHaveTextContent(routesMap[i].title.en);
@@ -67,11 +57,6 @@ describe('Navigation component:', () => {
   });
 
   it('each link has the page icon', async () => {
-    const buttons = screen.getAllByRole('button');
-    buttons.forEach((button) => {
-      fireEvent.click(button);
-    });
-
     const links = await screen.findAllByRole('link');
     for (let i = 0; i < links.length; i++) {
       expect(links[i]).toHaveClass(routesMap[i].icon);

@@ -28,8 +28,8 @@ describe('Natural Proofs Editor tests:', () => {
     renderWithRedux(<PropositionsNaturalProofs />, mockedReducer, mockedState);
   });
 
-  it('displays 16 control buttons', () => {
-    expect(screen.getAllByRole('button')).toHaveLength(16);
+  it('displays 17 control buttons', () => {
+    expect(screen.getAllByRole('button')).toHaveLength(17);
   });
 
   it('displays the proof table', () => {

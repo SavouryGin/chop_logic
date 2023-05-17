@@ -28,8 +28,8 @@ describe('Direct Proofs Editor tests:', () => {
     renderWithRedux(<PropositionsDirectProofs />, mockedReducer, mockedState);
   });
 
-  it('displays 8 control buttons', () => {
-    expect(screen.getAllByRole('button')).toHaveLength(8);
+  it('displays 9 control buttons', () => {
+    expect(screen.getAllByRole('button')).toHaveLength(9);
   });
 
   it('displays the proof table', () => {

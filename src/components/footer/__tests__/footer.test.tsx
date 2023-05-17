@@ -27,7 +27,7 @@ describe('Footer component:', () => {
   });
 
   it('displays the copyright info', () => {
-    expect(screen.getByText('© Dmitrii Suroviagin, 2022')).toBeInTheDocument();
+    expect(screen.getByText('© Dmitrii Suroviagin, 2023')).toBeInTheDocument();
   });
 
   it('displays 5 links', () => {

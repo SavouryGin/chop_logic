@@ -16,45 +16,39 @@ exports[`Navigation component: should match the snapshot 1`] = `
       <li>
         <span
           class="app-link"
-          data-testid="link-to_2"
+          data-testid="link-to_3"
         >
           <a
-            class="chop-icon__cube"
-            href="/propositions"
+            class="chop-icon__file-empty"
+            href="/direct-proofs"
           >
-            Propositions
-          </a>
-        </span>
-        <button
-          class="show-more-button chop-icon__caret-down"
-          data-testid="show-more-for_2"
-          id="show-more-for_2"
-          type="button"
-        />
-      </li>
-      <li>
-        <span
-          class="app-link"
-          data-testid="link-to_5"
-        >
-          <a
-            class="chop-icon__cubes"
-            href="/predicates"
-          >
-            Predicates
+            Direct Proofs
           </a>
         </span>
       </li>
       <li>
         <span
           class="app-link"
-          data-testid="link-to_7"
+          data-testid="link-to_4"
         >
           <a
-            class="chop-icon__dice"
-            href="/syllogisms"
+            class="chop-icon__files-empty"
+            href="/natural-proofs"
           >
-            Syllogisms
+            Natural Proofs
+          </a>
+        </span>
+      </li>
+      <li>
+        <span
+          class="app-link"
+          data-testid="link-to_6"
+        >
+          <a
+            class="chop-icon__delicious"
+            href="/truth-tables"
+          >
+            Truth Tables
           </a>
         </span>
       </li>

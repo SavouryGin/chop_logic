@@ -22,7 +22,7 @@ describe('Header component:', () => {
 
   it('contains six basic buttons', () => {
     const buttons = screen.getAllByRole('button');
-    expect(buttons).toHaveLength(6);
+    expect(buttons).toHaveLength(4);
     for (const button of buttons) {
       expect(button).toHaveClass('button');
       expect(button).toHaveProperty('type', 'button');
@@ -37,10 +37,8 @@ describe('Header component:', () => {
   it('all the buttons have the correct default icons', () => {
     expect(screen.getByTestId(`button_id_${ButtonID.Navigation}`)).toHaveClass(Icon.Menu);
     expect(screen.getByTestId(`button_id_${ButtonID.ColorTheme}`)).toHaveClass(Icon.DarkMode);
-    expect(screen.getByTestId(`button_id_${ButtonID.Sounds}`)).toHaveClass(Icon.NoSound);
     expect(screen.getByTestId(`button_id_${ButtonID.Settings}`)).toHaveClass(Icon.Settings);
     expect(screen.getByTestId(`button_id_${ButtonID.FullScreen}`)).toHaveClass(Icon.Enlarge);
-    expect(screen.getByTestId(`button_id_${ButtonID.Tools}`)).toHaveClass(Icon.Sidebar);
   });
 
   it('all the buttons are clickable and change icons', () => {
@@ -48,19 +46,16 @@ describe('Header component:', () => {
     const colorBtn = screen.getByTestId(`button_id_${ButtonID.ColorTheme}`);
     const settingsBtn = screen.getByTestId(`button_id_${ButtonID.Settings}`);
     const fullScreenBtn = screen.getByTestId(`button_id_${ButtonID.FullScreen}`);
-    const toolsBtn = screen.getByTestId(`button_id_${ButtonID.Tools}`);
 
     fireEvent.click(navBtn);
     fireEvent.click(colorBtn);
     fireEvent.click(settingsBtn);
     fireEvent.click(fullScreenBtn);
-    fireEvent.click(toolsBtn);
 
     expect(navBtn).toHaveClass(Icon.Left);
     expect(colorBtn).toHaveClass(Icon.LightMode);
     expect(settingsBtn).toHaveClass(Icon.Settings);
     expect(fullScreenBtn).toHaveClass(Icon.Shrink);
-    expect(toolsBtn).toHaveClass(Icon.Right);
   });
 
   it('should match the snapshot', () => {
@@ -87,7 +82,6 @@ describe('Header component:', () => {
     expect(screen.queryByRole('combobox')).toBeInTheDocument();
     expect(screen.queryByLabelText('Language')).toBeInTheDocument();
     expect(screen.queryByLabelText('Dark Mode')).toBeInTheDocument();
-    expect(screen.queryByLabelText('Sounds')).toBeInTheDocument();
     expect(screen.queryByTitle('Apply')).toBeInTheDocument();
   });
 });

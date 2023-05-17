@@ -8,7 +8,7 @@ exports[`Footer component: should match the snapshot 1`] = `
     <span
       class="footer__copyright"
     >
-      © Dmitrii Suroviagin, 2022
+      © Dmitrii Suroviagin, 2023
     </span>
     <span
       class="footer__links"

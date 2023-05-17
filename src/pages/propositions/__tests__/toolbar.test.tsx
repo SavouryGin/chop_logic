@@ -1,5 +1,5 @@
+import PropositionsToolbar from 'pages/propositions/toolbar';
 import React from 'react';
-import Sidebar from 'components/sidebar';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
@@ -8,7 +8,7 @@ import { propositionsNPInitialState } from 'store/propositions/natural-proofs/in
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
-describe('Sidebar tests:', () => {
+describe('PropositionsToolbar tests:', () => {
   const mockedReducer = combineReducers({
     settings: settingsSlice.reducer,
     propositionsDP: propositionsDPSlice.reducer,
@@ -22,7 +22,7 @@ describe('Sidebar tests:', () => {
   };
 
   it('should match the snapshot', () => {
-    const { asFragment } = renderWithRedux(<Sidebar isOpened={true} isAllButtonsVisible={true} />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PropositionsToolbar isOpened={true} isAllButtonsVisible={true} />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });
