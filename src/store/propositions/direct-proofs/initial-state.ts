@@ -1,6 +1,6 @@
 import { PropositionsDirectProofsInitialState } from './interfaces';
 
-export const propositionsDPInitialState: PropositionsDirectProofsInitialState = {
+export const DP_INITIAL_STATE: PropositionsDirectProofsInitialState = {
   flags: {
     isPremiseOpened: false,
     isImplicationCreationOpened: false,
@@ -12,6 +12,7 @@ export const propositionsDPInitialState: PropositionsDirectProofsInitialState = 
     isNameInputPopupVisible: false,
     isUserFileFormVisible: false,
     isLoading: false,
+    isToolbarOpened: false,
   },
   tableData: [],
   selectedIds: [],

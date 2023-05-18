@@ -1,6 +1,6 @@
 import { PropositionsNaturalProofsInitialState } from './interfaces';
 
-export const propositionsNPInitialState: PropositionsNaturalProofsInitialState = {
+export const NP_INITIAL_STATE: PropositionsNaturalProofsInitialState = {
   flags: {
     isPremiseOpened: false,
     isReplacerFormOpened: false,
@@ -12,6 +12,7 @@ export const propositionsNPInitialState: PropositionsNaturalProofsInitialState =
     isUserFileFormVisible: false,
     isLoading: false,
     isConfirmCutPopupOpened: false,
+    isToolbarOpened: false,
   },
   tableData: [],
   selectedIds: [],

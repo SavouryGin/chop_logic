@@ -2,13 +2,13 @@ import converter from 'logic/propositions/converter';
 import replacer from 'logic/propositions/replacer';
 import { LocalText } from 'types';
 import { NPFormulaBase } from 'enums';
+import { NP_INITIAL_STATE } from './initial-state';
 import { NaturalProofsTableItem, PropositionsNaturalProofsFlag } from './interfaces';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { propositionsNPInitialState } from './initial-state';
 
 export const propositionsNPSlice = createSlice({
   name: 'Prop-NP',
-  initialState: propositionsNPInitialState,
+  initialState: NP_INITIAL_STATE,
   reducers: {
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsNaturalProofsFlag; value: boolean }>) => {
       const { flag, value } = action.payload;

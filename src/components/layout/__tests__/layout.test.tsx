@@ -2,12 +2,12 @@ import Layout from '../index';
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import { ButtonID } from 'enums';
+import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
+import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
 import { buttonTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
-import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
@@ -20,8 +20,8 @@ describe('Layout component:', () => {
 
   const mockedState = {
     settings: settingsInitialState,
-    propositionsDP: propositionsDPInitialState,
-    propositionsNP: propositionsNPInitialState,
+    propositionsDP: DP_INITIAL_STATE,
+    propositionsNP: NP_INITIAL_STATE,
   };
 
   beforeEach(() => {

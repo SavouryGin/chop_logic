@@ -22,6 +22,8 @@ const isReplacerFormOpened = createSelector(flags, (data: PropositionsNaturalPro
 
 const isNameInputPopupVisible = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isNameInputPopupVisible);
 
+const isToolbarOpened = createSelector(flags, (data: PropositionsNaturalProofsFlags): boolean => data.isToolbarOpened);
+
 const isOrIntroductionFormOpened = createSelector(
   flags,
   (data: PropositionsNaturalProofsFlags): boolean => data.isOrIntroductionFormOpened,
@@ -120,4 +122,5 @@ export const propositionsNPSelectors = {
   isNameInputPopupVisible,
   isUserFileFormVisible,
   isLoading,
+  isToolbarOpened,
 };

@@ -21,6 +21,7 @@ export interface PropositionsDirectProofsFlags {
   isNameInputPopupVisible: boolean;
   isUserFileFormVisible: boolean;
   isLoading: boolean;
+  isToolbarOpened: boolean;
 }
 
 export type PropositionsDirectProofsFlag = keyof PropositionsDirectProofsFlags;

@@ -3,11 +3,11 @@ import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import texts from 'texts/propositions/elements';
 import userEvent from '@testing-library/user-event';
+import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
+import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
-import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
@@ -20,8 +20,8 @@ describe('Natural Proofs Editor tests:', () => {
 
   const mockedState = {
     settings: settingsInitialState,
-    propositionsNP: propositionsNPInitialState,
-    propositionsDP: propositionsDPInitialState,
+    propositionsNP: NP_INITIAL_STATE,
+    propositionsDP: DP_INITIAL_STATE,
   };
 
   beforeEach(() => {

@@ -2,8 +2,8 @@ import PropositionsDirectProofs from 'pages/propositions/sub-pages/direct-proofs
 import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import texts from 'texts/propositions/elements';
+import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
@@ -17,7 +17,7 @@ describe('Direct Proofs page tests:', () => {
 
   const mockedState = {
     settings: settingsInitialState,
-    propositionsDP: propositionsDPInitialState,
+    propositionsDP: DP_INITIAL_STATE,
   };
 
   beforeEach(() => {

@@ -1,11 +1,11 @@
 import AppRouter from 'router';
 import React from 'react';
 import { ButtonID } from 'enums';
+import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { Provider } from 'react-redux';
 import { buttonTexts } from 'texts';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
@@ -17,7 +17,7 @@ describe('AppRouter test:', () => {
 
   const mockedState = {
     settings: settingsInitialState,
-    propositionsDP: propositionsDPInitialState,
+    propositionsDP: DP_INITIAL_STATE,
   };
 
   const mockedStore = configureStore({ reducer: mockedReducer, preloadedState: mockedState });

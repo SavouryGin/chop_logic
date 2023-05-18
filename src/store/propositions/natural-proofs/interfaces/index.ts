@@ -21,6 +21,7 @@ export interface PropositionsNaturalProofsFlags {
   isNameInputPopupVisible: boolean;
   isUserFileFormVisible: boolean;
   isLoading: boolean;
+  isToolbarOpened: boolean;
 }
 
 export type PropositionsNaturalProofsFlag = keyof PropositionsNaturalProofsFlags;

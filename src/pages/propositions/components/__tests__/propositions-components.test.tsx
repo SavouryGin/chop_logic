@@ -6,10 +6,10 @@ import PremiseForm from 'pages/propositions/components/forms/premise';
 import React from 'react';
 import ReplacerForm from 'pages/propositions/components/forms/replacer';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
+import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
 import { combineReducers } from '@reduxjs/toolkit';
-import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
-import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('Propositions Forms component:', () => {
@@ -21,8 +21,8 @@ describe('Propositions Forms component:', () => {
 
   const mockedState = {
     settings: settingsInitialState,
-    propositionsDP: propositionsDPInitialState,
-    propositionsNP: propositionsNPInitialState,
+    propositionsDP: DP_INITIAL_STATE,
+    propositionsNP: NP_INITIAL_STATE,
   };
 
   it('ContradictionRealizationForm matches the snapshot', () => {
