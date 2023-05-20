@@ -1,5 +1,5 @@
-import PropositionsDPSidebarButtons from 'pages/propositions/sidebar-buttons/direct-proofs';
-import PropositionsNPSidebarButtons from 'pages/propositions/sidebar-buttons/natural-proofs';
+import PropositionsDPTools from './buttons/direct-proofs';
+import PropositionsNPTools from './buttons/natural-proofs';
 import React from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
@@ -10,7 +10,7 @@ import { useAppSelector, useMount } from 'hooks';
 import { useMatch } from 'react-router';
 import './styles.scss';
 
-const Sidebar = ({
+const PropositionsToolbar = ({
   className,
   isOpened,
   isAllButtonsVisible,
@@ -24,16 +24,20 @@ const Sidebar = ({
     return null;
   }
   const isClosing = isMounted && !isOpened;
-  const sidebarClassNames = formatClass(['sidebar', className, { sidebar_dark: isDarkMode, sidebar_closing: isClosing }]);
+  const toolbarClass = formatClass([
+    'propositions-toolbar',
+    className,
+    { 'propositions-toolbar_dark': isDarkMode, 'propositions-toolbar_closing': isClosing },
+  ]);
 
   return (
-    <aside className={sidebarClassNames}>
-      <ul className='sidebar__list'>
-        <PropositionsDPSidebarButtons isVisible={isDPButtonsVisible} />
-        <PropositionsNPSidebarButtons isVisible={isNPButtonsVisible} />
+    <aside className={toolbarClass}>
+      <ul className='propositions-toolbar__list'>
+        <PropositionsDPTools isVisible={isDPButtonsVisible} />
+        <PropositionsNPTools isVisible={isNPButtonsVisible} />
       </ul>
     </aside>
   );
 };
 
-export default Sidebar;
+export default PropositionsToolbar;

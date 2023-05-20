@@ -2,7 +2,6 @@ import Footer from 'components/footer';
 import Header from 'components/header';
 import Navigation from 'components/navigation';
 import React from 'react';
-import Sidebar from 'components/sidebar';
 import formatClass from 'helpers/formatters/format-class-name';
 import { Outlet } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -11,21 +10,18 @@ import './styles.scss';
 
 const Layout = (): React.ReactElement => {
   // Store flags
-  const isNavigationOpen = useAppSelector(settingsSelectors.isNavigationOpened);
-  const isSidebarOpen = useAppSelector(settingsSelectors.isSidebarOpened);
+  const isNavigationOpened = useAppSelector(settingsSelectors.isNavigationOpened);
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   // Class names
   const layoutClassNames = formatClass(['layout', { layout_dark: isDarkMode }]);
   const navigationClassNames = formatClass(['layout__navigation', { layout__navigation_dark: isDarkMode }]);
-  const sidebarClassNames = formatClass(['layout__sidebar', { layout__sidebar_dark: isDarkMode }]);
   const headerClassNames = formatClass(['layout__header', { layout__header_dark: isDarkMode }]);
   const mainClassNames = formatClass(['layout__main', { layout__main_dark: isDarkMode }]);
   const footerClassNames = 'layout__footer';
 
   return (
     <div className={layoutClassNames} data-testid='layout'>
-      <Navigation className={navigationClassNames} isOpened={isNavigationOpen} />
-      <Sidebar className={sidebarClassNames} isOpened={isSidebarOpen} />
+      <Navigation className={navigationClassNames} isOpened={isNavigationOpened} />
       <Header className={headerClassNames} />
       <main className={mainClassNames}>
         <Outlet />

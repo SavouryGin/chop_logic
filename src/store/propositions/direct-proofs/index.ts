@@ -2,14 +2,14 @@ import converter from 'logic/propositions/converter';
 import executor from 'logic/propositions/executor';
 import replacer from 'logic/propositions/replacer';
 import validator from 'logic/propositions/validator';
+import { DP_INITIAL_STATE } from './initial-state';
 import { DirectProofsTableItem, PropositionsDirectProofsFlag } from './interfaces';
 import { LocalText } from 'types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { propositionsDPInitialState } from './initial-state';
 
 export const propositionsDPSlice = createSlice({
   name: 'Prop-DP',
-  initialState: propositionsDPInitialState,
+  initialState: DP_INITIAL_STATE,
   reducers: {
     setUpFlag: (state, action: PayloadAction<{ flag: PropositionsDirectProofsFlag; value: boolean }>) => {
       const { flag, value } = action.payload;

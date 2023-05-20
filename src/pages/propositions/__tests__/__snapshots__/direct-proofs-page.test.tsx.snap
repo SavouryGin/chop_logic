@@ -5,11 +5,6 @@ exports[`Direct Proofs page tests: should match the snapshot 1`] = `
   <article
     class="propositions-direct-proofs"
   >
-    <h2
-      class="propositions-direct-proofs__title chop-icon__cube"
-    >
-      Propositions &gt; Direct Proofs
-    </h2>
     <div
       class="tab-list propositions-direct-proofs__tabs"
     >
@@ -44,6 +39,32 @@ exports[`Direct Proofs page tests: should match the snapshot 1`] = `
         >
           Axiom Schemes
         </h3>
+        <div
+          class="tab-list__tools"
+        >
+          <h2
+            class="propositions-direct-proofs__title chop-icon__cube"
+          >
+            Propositions &gt; Direct Proofs
+          </h2>
+          <button
+            class="button button_flat"
+            id="button_id_6"
+            title="Tools"
+            type="button"
+          >
+            <span
+              class="button__shadow"
+            />
+            <span
+              class="button__edge"
+            />
+            <span
+              class="button__front chop-icon__magic-wand"
+              data-testid="button_id_6"
+            />
+          </button>
+        </div>
       </div>
       <section
         aria-labelledby="direct-proofs-editor"

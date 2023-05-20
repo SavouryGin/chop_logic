@@ -3,11 +3,11 @@ import React from 'react';
 import renderWithRedux from 'helpers/test-utils/render-with-redux';
 import texts from 'texts/propositions/elements';
 import userEvent from '@testing-library/user-event';
+import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
+import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
-import { propositionsNPInitialState } from 'store/propositions/natural-proofs/initial-state';
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
@@ -20,16 +20,16 @@ describe('Direct Proofs Editor tests:', () => {
 
   const mockedState = {
     settings: settingsInitialState,
-    propositionsDP: propositionsDPInitialState,
-    propositionsNP: propositionsNPInitialState,
+    propositionsDP: DP_INITIAL_STATE,
+    propositionsNP: NP_INITIAL_STATE,
   };
 
   beforeEach(() => {
     renderWithRedux(<PropositionsDirectProofs />, mockedReducer, mockedState);
   });
 
-  it('displays 8 control buttons', () => {
-    expect(screen.getAllByRole('button')).toHaveLength(8);
+  it('displays 9 control buttons', () => {
+    expect(screen.getAllByRole('button')).toHaveLength(9);
   });
 
   it('displays the proof table', () => {

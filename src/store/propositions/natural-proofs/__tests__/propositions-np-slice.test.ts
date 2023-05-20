@@ -2,7 +2,7 @@ import mocks from '__mocks__/data/propositions/table-items';
 import propositionsElementsTexts from 'texts/propositions/elements';
 import { NPFormulaBase } from 'enums';
 import { propositionsNPActions as actions, propositionsNPSlice as slice } from '..';
-import { propositionsNPInitialState as state } from '../initial-state';
+import { NP_INITIAL_STATE as state } from '../initial-state';
 
 describe('propositionsNPSlice tests:', () => {
   it('should return the initial state', () => {

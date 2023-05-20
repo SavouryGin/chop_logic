@@ -41,6 +41,8 @@ const isUserFileFormVisible = createSelector(flags, (data: PropositionsDirectPro
 
 const isNameInputPopupVisible = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isNameInputPopupVisible);
 
+const isToolbarOpened = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isToolbarOpened);
+
 const selectedFormulas = (state: RootState): PropositionalFormula[] => {
   const selectedIds = state.propositionsDP.selectedIds;
   const selectedItems = state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
@@ -78,4 +80,5 @@ export const propositionsDPSelectors = {
   isUserFileFormVisible,
   isLoading,
   isConfirmCutPopupOpened,
+  isToolbarOpened,
 };

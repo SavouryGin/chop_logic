@@ -16,20 +16,20 @@ import './styles.scss';
 
 const Header = ({ className }: CommonProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const isNavigationOpen = useAppSelector(settingsSelectors.isNavigationOpened);
+  const isNavigationOpened = useAppSelector(settingsSelectors.isNavigationOpened);
   const isFullScreen = useAppSelector(settingsSelectors.isFullScreen);
-  const isSettingOpened = useAppSelector(settingsSelectors.isSettingOpened);
+  const isSettingsOpened = useAppSelector(settingsSelectors.isSettingsOpened);
   const language = useAppSelector(settingsSelectors.language);
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
 
   // Handlers
 
   const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleFlag('isNavigationOpen'));
+    dispatch(settingsActions.toggleFlag('isNavigationOpened'));
   };
 
   const onClickSettingButton = () => {
-    dispatch(settingsActions.toggleFlag('isSettingOpen'));
+    dispatch(settingsActions.toggleFlag('isSettingsOpened'));
   };
 
   const onClickFullScreenButton = () => {
@@ -72,7 +72,7 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
       <Button
         buttonId={ButtonID.Navigation}
         onClick={onClickMenuButton}
-        icon={isNavigationOpen ? Icon.Left : Icon.Menu}
+        icon={isNavigationOpened ? Icon.Left : Icon.Menu}
         sound={soundPlayer.keyboard}
         view='flat'
       />
@@ -107,7 +107,7 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
       {leftPanel}
       {rightPanel}
       <ModalWindow
-        isOpened={isSettingOpened}
+        isOpened={isSettingsOpened}
         onClose={onClickSettingButton}
         title={uiElementTexts.settings[language]}
         content={<AppSettings />}

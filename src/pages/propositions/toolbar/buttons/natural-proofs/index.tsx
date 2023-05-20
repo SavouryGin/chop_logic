@@ -3,13 +3,13 @@ import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/co
 import ModalWindow from 'components/modal-window';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
+const PropositionsNPTools = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
   const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.language);
   const tableDataLength = useAppSelector(selectors.tableDataLength);
@@ -90,4 +90,4 @@ const PropositionsDPSidebarButtons = ({ isVisible }: { isVisible: boolean }): Re
   );
 };
 
-export default PropositionsDPSidebarButtons;
+export default PropositionsNPTools;

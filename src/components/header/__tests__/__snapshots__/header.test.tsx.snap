@@ -9,7 +9,7 @@ exports[`Header component: should match the snapshot 1`] = `
       class="header__left-panel"
     >
       <button
-        class="button"
+        class="button button_flat"
         id="button_id_1"
         title="Navigation"
         type="button"
@@ -25,8 +25,28 @@ exports[`Header component: should match the snapshot 1`] = `
           data-testid="button_id_1"
         />
       </button>
+      <h1
+        class="header__heading"
+      >
+        <span
+          class="app-link"
+          data-testid="app-link"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+          >
+            Chop Logic
+          </a>
+        </span>
+      </h1>
+    </div>
+    <div
+      class="header__right-panel"
+    >
       <button
-        class="button"
+        class="button button_flat"
         id="button_id_2"
         title="Color Theme"
         type="button"
@@ -43,61 +63,7 @@ exports[`Header component: should match the snapshot 1`] = `
         />
       </button>
       <button
-        class="button"
-        id="button_id_3"
-        title="Sounds"
-        type="button"
-      >
-        <span
-          class="button__shadow"
-        />
-        <span
-          class="button__edge"
-        />
-        <span
-          class="button__front chop-icon__volume-mute2"
-          data-testid="button_id_3"
-        />
-      </button>
-    </div>
-    <h1
-      class="header__heading"
-    >
-      <span
-        class="app-link"
-        data-testid="app-link"
-      >
-        <a
-          aria-current="page"
-          class="active"
-          href="/"
-        >
-          Chop Logic
-        </a>
-      </span>
-    </h1>
-    <div
-      class="header__right-panel"
-    >
-      <button
-        class="button"
-        id="button_id_6"
-        title="Tools"
-        type="button"
-      >
-        <span
-          class="button__shadow"
-        />
-        <span
-          class="button__edge"
-        />
-        <span
-          class="button__front chop-icon__magic-wand"
-          data-testid="button_id_6"
-        />
-      </button>
-      <button
-        class="button"
+        class="button button_flat"
         id="button_id_5"
         title="Full Screen"
         type="button"
@@ -114,7 +80,7 @@ exports[`Header component: should match the snapshot 1`] = `
         />
       </button>
       <button
-        class="button"
+        class="button button_flat"
         id="button_id_4"
         title="Settings"
         type="button"

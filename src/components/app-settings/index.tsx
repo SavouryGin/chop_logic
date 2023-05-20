@@ -20,7 +20,7 @@ const AppSettings = ({ className }: CommonProps): React.ReactElement => {
   const settingsClassNames = formatClass(['settings', className]);
 
   const closePopup = () => {
-    dispatch(settingsActions.setUpFlag({ flag: 'isSettingOpen', value: false }));
+    dispatch(settingsActions.setUpFlag({ flag: 'isSettingsOpened', value: false }));
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

@@ -1,11 +1,11 @@
 import AppRouter from 'router';
 import React from 'react';
-import { ButtonID, Page } from 'enums';
+import { ButtonID } from 'enums';
+import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { Provider } from 'react-redux';
 import { buttonTexts } from 'texts';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { propositionsDPInitialState } from 'store/propositions/direct-proofs/initial-state';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
@@ -17,7 +17,7 @@ describe('AppRouter test:', () => {
 
   const mockedState = {
     settings: settingsInitialState,
-    propositionsDP: propositionsDPInitialState,
+    propositionsDP: DP_INITIAL_STATE,
   };
 
   const mockedStore = configureStore({ reducer: mockedReducer, preloadedState: mockedState });
@@ -44,12 +44,12 @@ describe('AppRouter test:', () => {
     const menuBtn = screen.getByTitle(buttonTexts[ButtonID.Navigation].title.en);
     fireEvent.click(menuBtn);
     const links = screen.getAllByRole('link');
-    const propositionsLink = links.find((item) => item.textContent === 'Propositions');
+    const propositionsLink = links.find((item) => item.textContent === 'Direct Proofs');
     if (propositionsLink) {
       fireEvent.click(propositionsLink);
     }
     await waitFor(() => {
-      expect(screen.queryByRole('article')).toHaveClass('propositions-introduction');
+      expect(screen.queryByRole('article')).toHaveClass('propositions-direct-proofs');
     });
   });
 
@@ -57,12 +57,12 @@ describe('AppRouter test:', () => {
     const menuBtn = screen.getByTitle(buttonTexts[ButtonID.Navigation].title.en);
     fireEvent.click(menuBtn);
     const links = screen.getAllByRole('link');
-    const propositionsLink = links.find((item) => item.textContent === 'Propositions');
+    const propositionsLink = links.find((item) => item.textContent === 'Direct Proofs');
     if (propositionsLink) {
       fireEvent.click(propositionsLink);
     }
     await waitFor(() => {
-      expect(screen.queryByRole('article')).toHaveClass('propositions-introduction');
+      expect(screen.queryByRole('article')).toHaveClass('propositions-direct-proofs');
     });
 
     const homeLink = links.find((item) => item.textContent === 'Chop Logic');
@@ -71,21 +71,6 @@ describe('AppRouter test:', () => {
     }
     await waitFor(() => {
       expect(screen.queryByRole('article')).toHaveClass('home');
-    });
-  });
-
-  it('should allow to go to the direct proofs page', async () => {
-    const menuBtn = screen.getByTitle(buttonTexts[ButtonID.Navigation].title.en);
-    fireEvent.click(menuBtn);
-    const showMoreButton = screen.getByTestId(`show-more-for_${Page.Propositions}`);
-    fireEvent.click(showMoreButton);
-    const links = screen.getAllByRole('link');
-    const proofsLink = links.find((item) => item.textContent === 'Direct Proofs');
-    if (proofsLink) {
-      fireEvent.click(proofsLink);
-    }
-    await waitFor(() => {
-      expect(screen.queryByRole('article')).toHaveClass('propositions-direct-proofs');
     });
   });
 });

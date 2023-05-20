@@ -3,7 +3,7 @@
 @import 'styles/animations/slide-in-right.scss';
 @import 'styles/animations/slide-out-right.scss';
 
-.sidebar {
+.propositions-toolbar {
   @include slide-in-right();
 
   &_closing {
