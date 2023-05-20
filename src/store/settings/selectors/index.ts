@@ -5,10 +5,10 @@ import { createSelector } from '@reduxjs/toolkit';
 const flags = (state: RootState): SettingsFlags => state.settings.flags;
 const language = (state: RootState): Language => state.settings.language;
 
-const isNavigationOpened = createSelector(flags, (data: SettingsFlags): boolean => data.isNavigationOpen);
+const isNavigationOpened = createSelector(flags, (data: SettingsFlags): boolean => data.isNavigationOpened);
 const isDarkMode = createSelector(flags, (data: SettingsFlags): boolean => data.isDarkMode);
 const isFullScreen = createSelector(flags, (data: SettingsFlags): boolean => data.isFullScreen);
-const isSettingOpened = createSelector(flags, (data: SettingsFlags): boolean => data.isSettingOpen);
+const isSettingsOpened = createSelector(flags, (data: SettingsFlags): boolean => data.isSettingsOpened);
 const isSoundsEnabled = createSelector(flags, (data: SettingsFlags): boolean => data.isSoundsEnabled);
 
 export const settingsSelectors = {
@@ -17,6 +17,6 @@ export const settingsSelectors = {
   isNavigationOpened,
   isDarkMode,
   isFullScreen,
-  isSettingOpened,
+  isSettingsOpened,
   isSoundsEnabled,
 };

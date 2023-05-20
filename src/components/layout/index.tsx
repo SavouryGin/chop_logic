@@ -10,7 +10,7 @@ import './styles.scss';
 
 const Layout = (): React.ReactElement => {
   // Store flags
-  const isNavigationOpen = useAppSelector(settingsSelectors.isNavigationOpened);
+  const isNavigationOpened = useAppSelector(settingsSelectors.isNavigationOpened);
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   // Class names
   const layoutClassNames = formatClass(['layout', { layout_dark: isDarkMode }]);
@@ -21,7 +21,7 @@ const Layout = (): React.ReactElement => {
 
   return (
     <div className={layoutClassNames} data-testid='layout'>
-      <Navigation className={navigationClassNames} isOpened={isNavigationOpen} />
+      <Navigation className={navigationClassNames} isOpened={isNavigationOpened} />
       <Header className={headerClassNames} />
       <main className={mainClassNames}>
         <Outlet />

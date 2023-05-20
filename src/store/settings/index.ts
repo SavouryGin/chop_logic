@@ -5,10 +5,10 @@ import { SettingsFlag, SettingsInitialState } from './interfaces';
 export const settingsInitialState: SettingsInitialState = {
   language: 'en',
   flags: {
-    isNavigationOpen: false,
+    isNavigationOpened: false,
     isDarkMode: false,
     isFullScreen: false,
-    isSettingOpen: false,
+    isSettingsOpened: false,
     isSoundsEnabled: false,
   },
 };

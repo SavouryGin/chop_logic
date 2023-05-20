@@ -6,10 +6,10 @@ export interface SettingsInitialState {
 }
 
 export interface SettingsFlags {
-  isNavigationOpen: boolean;
+  isNavigationOpened: boolean;
   isDarkMode: boolean;
   isFullScreen: boolean;
-  isSettingOpen: boolean;
+  isSettingsOpened: boolean;
   isSoundsEnabled: boolean;
 }
 
