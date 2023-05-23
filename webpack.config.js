@@ -59,6 +59,10 @@ const config = {
         test: /\.(wav|mp3)$/,
         use: ['url-loader'],
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
+      },
     ],
   },
   plugins: [
