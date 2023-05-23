@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 const config = {
@@ -60,8 +61,8 @@ const config = {
         use: ['url-loader'],
       },
       {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader',
+        test: /\.(svg)$/i,
+        type: 'asset',
       },
     ],
   },
@@ -82,6 +83,17 @@ const config = {
           toType: 'dir',
         },
       ],
+    }),
+    new ImageMinimizerPlugin({
+      minimizer: {
+        implementation: ImageMinimizerPlugin.svgoMinify,
+        options: {
+          encodeOptions: {
+            multipass: true,
+            plugins: ['preset-default'],
+          },
+        },
+      },
     }),
   ],
 };
