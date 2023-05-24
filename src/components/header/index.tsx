@@ -1,6 +1,7 @@
 import AppLink from 'components/app-link';
 import AppSettings from 'components/app-settings';
 import Button from 'components/controls/button';
+import ChopLogicLogo from 'components/logo';
 import ModalWindow from 'components/modal-window';
 import React, { useCallback } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
@@ -76,6 +77,7 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
         sound={soundPlayer.keyboard}
         view='flat'
       />
+      <ChopLogicLogo />
       <h1 className='header__heading'>
         <AppLink path={paths[Page.Home]} text='Chop Logic' isNavigation />
       </h1>
