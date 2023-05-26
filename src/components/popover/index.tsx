@@ -1,4 +1,7 @@
+import PopoverClose from './close';
+import PopoverContent from './content';
 import PopoverContext from './context';
+import PopoverTrigger from './trigger';
 import React, { useState } from 'react';
 
 export type PopoverPosition = 'bottom-center' | 'bottom-left' | 'bottom-right';
@@ -12,7 +15,7 @@ export const DEFAULT_POPOVER_RECT = {
 
 export type Rect = Pick<DOMRect, 'left' | 'top' | 'height' | 'width'>;
 
-const Popover = ({ children, preferredPosition = 'bottom-center' }: { children: React.ReactNode; preferredPosition: PopoverPosition }) => {
+function Popover({ children, preferredPosition = 'bottom-center' }: { children: React.ReactNode; preferredPosition: PopoverPosition }) {
   const [isShow, setIsShow] = useState(false);
   const [triggerRect, setTriggerRect] = useState(DEFAULT_POPOVER_RECT);
 
@@ -25,6 +28,10 @@ const Popover = ({ children, preferredPosition = 'bottom-center' }: { children: 
   };
 
   return <PopoverContext.Provider value={contextValue}>{children}</PopoverContext.Provider>;
-};
+}
+
+Popover.Trigger = PopoverTrigger;
+Popover.Content = PopoverContent;
+Popover.Close = PopoverClose;
 
 export default Popover;
