@@ -1,15 +1,13 @@
-import ContentInternal from './content-internal';
-import PopoverContext from './context';
 import React, { useContext } from 'react';
+import { PopoverContentInternal } from './content-internal';
+import { PopoverContext } from './context';
 
-const PopoverContent = ({ children }: { children: React.ReactNode }) => {
+export const PopoverContent = ({ children }: { children: React.ReactNode }) => {
   const { isShow } = useContext(PopoverContext);
 
   if (!isShow) {
     return null;
   }
 
-  return <ContentInternal>{children}</ContentInternal>;
+  return <PopoverContentInternal>{children}</PopoverContentInternal>;
 };
-
-export default PopoverContent;

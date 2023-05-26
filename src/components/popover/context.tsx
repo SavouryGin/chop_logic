@@ -1,7 +1,7 @@
 import React from 'react';
 import { DEFAULT_POPOVER_RECT, PopoverPosition, Rect } from 'components/popover';
 
-const PopoverContext = React.createContext<{
+export const PopoverContext = React.createContext<{
   isShow: boolean;
   setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
   preferredPosition: PopoverPosition;
@@ -18,5 +18,3 @@ const PopoverContext = React.createContext<{
     throw new Error('PopoverContext setTriggerRect should be used under provider');
   },
 });
-
-export default PopoverContext;

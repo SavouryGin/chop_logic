@@ -1,8 +1,8 @@
-import PopoverContext from './context';
 import React, { useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
+import { PopoverContext } from './context';
 import { getPopoverCoords, mergeRef, useClickOutside, useFocusTrapping } from './helpers';
 
-const PopoverContentInternal = ({ children }: { children: React.ReactNode }) => {
+export const PopoverContentInternal = ({ children }: { children: React.ReactNode }) => {
   const { triggerRect, preferredPosition, setIsShow } = useContext(PopoverContext);
   const ref = useRef<HTMLDialogElement>(null);
   const [coords, setCoords] = useState({
@@ -47,5 +47,3 @@ const PopoverContentInternal = ({ children }: { children: React.ReactNode }) => 
     </dialog>
   );
 };
-
-export default PopoverContentInternal;

@@ -1,7 +1,7 @@
 import { PopoverPosition, Rect } from 'components/popover';
 import { useCallback, useEffect, useRef } from 'react';
 
-export function getPopoverCoords(triggerRect: Rect, popoverRect: Rect, position: PopoverPosition) {
+export const getPopoverCoords = (triggerRect: Rect, popoverRect: Rect, position: PopoverPosition) => {
   switch (position) {
     case 'bottom-center':
     default: {
@@ -20,12 +20,12 @@ export function getPopoverCoords(triggerRect: Rect, popoverRect: Rect, position:
       };
     }
   }
-}
+};
 
 // TODO: better focusable query
 
 // some hooks
-export function useFocusTrapping() {
+export const useFocusTrapping = () => {
   const focusableQuery = ':is(input, button, [tab-index]';
   // @ts-ignore TODO: fix the typings
   const refTrigger = useRef<HTMLElement>(document.activeElement);
@@ -83,9 +83,9 @@ export function useFocusTrapping() {
   }, []);
 
   return ref;
-}
+};
 
-export function mergeRef(...refs: any[]) {
+export const mergeRef = (...refs: any[]) => {
   return (el: any) => {
     refs.forEach((ref) => {
       if (typeof ref === 'function') {
@@ -95,9 +95,9 @@ export function mergeRef(...refs: any[]) {
       }
     });
   };
-}
+};
 
-export function useClickOutside(callback: () => void) {
+export const useClickOutside = (callback: () => void) => {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const element = ref.current;
@@ -121,4 +121,4 @@ export function useClickOutside(callback: () => void) {
   }, []);
 
   return ref;
-}
+};

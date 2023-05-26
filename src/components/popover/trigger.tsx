@@ -1,7 +1,7 @@
-import PopoverContext from './context';
 import React, { useContext, useRef } from 'react';
+import { PopoverContext } from './context';
 
-const PopoverTrigger = ({ children }: { children: React.ReactElement }) => {
+export const PopoverTrigger = ({ children }: { children: React.ReactElement }) => {
   const { setIsShow, setTriggerRect } = useContext(PopoverContext);
 
   const ref = useRef<HTMLElement>(null);
@@ -24,5 +24,3 @@ const PopoverTrigger = ({ children }: { children: React.ReactElement }) => {
 
   return childrenToTriggerPopover;
 };
-
-export default PopoverTrigger;

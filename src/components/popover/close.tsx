@@ -1,7 +1,7 @@
-import PopoverContext from './context';
 import React, { useContext } from 'react';
+import { PopoverContext } from './context';
 
-const PopoverClose = ({ children }: { children: React.ReactElement }) => {
+export const PopoverClose = ({ children }: { children: React.ReactElement }) => {
   const { setIsShow } = useContext(PopoverContext);
   const onClick = (e: MouseEvent) => {
     setIsShow(false);
@@ -16,5 +16,3 @@ const PopoverClose = ({ children }: { children: React.ReactElement }) => {
 
   return childrenToClosePopover;
 };
-
-export default PopoverClose;
