@@ -1,20 +1,10 @@
 import React from 'react';
-
-type Position = 'bottom-center' | 'bottom-left' | 'bottom-right';
-
-const defaultRect = {
-  left: 0,
-  top: 0,
-  width: 0,
-  height: 0,
-};
-
-type Rect = Pick<DOMRect, 'left' | 'top' | 'height' | 'width'>;
+import { DEFAULT_POPOVER_RECT, PopoverPosition, Rect } from 'components/popover';
 
 const PopoverContext = React.createContext<{
   isShow: boolean;
   setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
-  preferredPosition: Position;
+  preferredPosition: PopoverPosition;
   triggerRect: Rect;
   setTriggerRect: React.Dispatch<React.SetStateAction<Rect>>;
 }>({
@@ -23,7 +13,7 @@ const PopoverContext = React.createContext<{
     throw new Error('PopoverContext setIsShow should be used under provider');
   },
   preferredPosition: 'bottom-center',
-  triggerRect: defaultRect,
+  triggerRect: DEFAULT_POPOVER_RECT,
   setTriggerRect: () => {
     throw new Error('PopoverContext setTriggerRect should be used under provider');
   },
