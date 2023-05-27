@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
 import { PopoverContext } from './context';
-import { getPopoverCoords, mergeRef, useClickOutside, useFocusTrapping } from './helpers';
+import { getPopoverCoords, mergeRef, useClickOutside, useFocusTrapping } from 'components/popover/helpers';
+import './styles.scss';
 
 export const PopoverContentInternal = ({ children }: { children: React.ReactNode }) => {
   const { triggerRect, preferredPosition, setIsShow } = useContext(PopoverContext);
@@ -34,6 +35,7 @@ export const PopoverContentInternal = ({ children }: { children: React.ReactNode
 
   return (
     <dialog
+      className='popover'
       open={true}
       ref={mergedRef}
       style={{

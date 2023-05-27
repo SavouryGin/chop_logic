@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { PopoverClose } from './close';
-import { PopoverContent } from './content';
-import { PopoverContext } from './context';
-import { PopoverTrigger } from './trigger';
+import { PopoverClose } from './elements/close';
+import { PopoverContent } from './elements/content';
+import { PopoverContext } from './elements/context';
+import { PopoverTrigger } from './elements/trigger';
 
 export type PopoverPosition = 'bottom-center' | 'bottom-left' | 'bottom-right';
 
