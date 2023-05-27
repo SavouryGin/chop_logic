@@ -1,10 +1,15 @@
 import React, { useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
+import formatClass from 'helpers/formatters/format-class-name';
 import { PopoverContext } from './context';
 import { getPopoverCoords, mergeRef, useClickOutside, useFocusTrapping } from 'components/popover/helpers';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks/common';
 import './styles.scss';
 
 export const PopoverContentInternal = ({ children }: { children: React.ReactNode }) => {
   const { triggerRect, preferredPosition, setIsShow } = useContext(PopoverContext);
+  const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const popoverClass = formatClass(['popover', { popover_dark: isDarkMode }]);
   const ref = useRef<HTMLDialogElement>(null);
   const [coords, setCoords] = useState({
     left: 0,
@@ -35,7 +40,7 @@ export const PopoverContentInternal = ({ children }: { children: React.ReactNode
 
   return (
     <dialog
-      className='popover'
+      className={popoverClass}
       open={true}
       ref={mergedRef}
       style={{

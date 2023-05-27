@@ -1,0 +1,18 @@
+@import 'styles/variables/z-indexes.scss';
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/sizes.scss';
+@import 'styles/mixins/text-styles.scss';
+@import 'styles/mixins/theme-colors.scss';
+
+.popover {
+  border: none;
+  padding: $big-padding;
+  border-radius: $border-radius;
+  background-color: $light-background-color;
+  box-shadow: $light-box-shadow;
+
+  &_dark {
+    background-color: $dark-background-color;
+    box-shadow: $dark-box-shadow;
+  }
+}
