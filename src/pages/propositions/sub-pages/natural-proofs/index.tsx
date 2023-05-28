@@ -1,5 +1,4 @@
 import Button from 'components/controls/button';
-import PropositionsToolbar from 'pages/propositions/toolbar';
 import React from 'react';
 import TabList from 'components/tab-list';
 import formatClass from 'helpers/formatters/format-class-name';
@@ -34,7 +33,7 @@ const PropositionsNaturalProofs = (): React.ReactElement => {
   return (
     <article className='propositions-natural-proofs'>
       <TabList tabs={propositionsNaturalProofsTabs} className='propositions-natural-proofs__tabs' toolBar={toolBar} />
-      <PropositionsToolbar isOpened={isToolbarOpened} />
+      {/* <PropositionsToolbar isOpened={isToolbarOpened} /> */}
     </article>
   );
 };
