@@ -30,7 +30,7 @@ describe('PropositionsDPTools tests:', () => {
 
 describe('PropositionsNPTools tests:', () => {
   it('should match the snapshot', () => {
-    const { asFragment } = renderWithRedux(<PropositionsNPTools isVisible={true} />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PropositionsNPTools />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });

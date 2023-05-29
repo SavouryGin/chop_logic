@@ -22,7 +22,7 @@ describe('PropositionsToolbar tests:', () => {
   };
 
   it('should match the snapshot', () => {
-    const { asFragment } = renderWithRedux(<PropositionsToolbar isAllButtonsVisible={true} />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PropositionsToolbar mode='direct' />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });

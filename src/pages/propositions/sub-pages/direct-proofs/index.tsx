@@ -21,7 +21,7 @@ const PropositionsDirectProofs = (): React.ReactElement => {
       <h2
         className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}
       >{`${texts.page[language]} > ${texts.direct[language]}`}</h2>
-      <PropositionsToolbar />
+      <PropositionsToolbar mode='direct' />
       {/* <Popover preferredPosition='bottom-center'>
         <Popover.Trigger>
           {/* <Button buttonId={ButtonID.Tools} icon={Icon.Sidebar} sound={soundPlayer.keyboard} view='flat' /> */}
