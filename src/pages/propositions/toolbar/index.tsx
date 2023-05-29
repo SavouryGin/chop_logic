@@ -12,18 +12,20 @@ const PropositionsToolbar = ({ mode }: { mode: 'natural' | 'direct' }): React.Re
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
 
   const toolbarClass = formatClass(['propositions-toolbar', { 'propositions-toolbar_dark': isDarkMode }]);
+  const triggerClass = formatClass(['propositions-toolbar__button', Icon.Sidebar]);
+  const cancelClass = formatClass(['propositions-toolbar__button', Icon.Cancel]);
 
   return (
     <Popover preferredPosition='bottom-center'>
       <Popover.Trigger>
-        <button className={Icon.Sidebar}></button>
+        <button className={triggerClass}></button>
       </Popover.Trigger>
       <Popover.Content>
         <aside className={toolbarClass}>
           <ul className='propositions-toolbar__list'>{mode === 'direct' ? <PropositionsDPTools /> : <PropositionsNPTools />}</ul>
         </aside>
         <Popover.Close>
-          <button className={Icon.Cancel}></button>
+          <button className={cancelClass}></button>
         </Popover.Close>
       </Popover.Content>
     </Popover>

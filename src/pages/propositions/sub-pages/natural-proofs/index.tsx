@@ -17,7 +17,7 @@ const PropositionsNaturalProofs = (): React.ReactElement => {
       <h2
         className={formatClass(['propositions-natural-proofs__title', Icon.Propositions])}
       >{`${texts.page[language]} > ${texts.natural[language]}`}</h2>
-      <PropositionsToolbar mode='direct' />
+      <PropositionsToolbar mode='natural' />
     </>
   );
 

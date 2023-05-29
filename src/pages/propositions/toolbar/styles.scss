@@ -18,8 +18,19 @@
     }
   }
 
-  &__button-span {
+  &__button {
+    display: block;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem 0.6rem 0.4rem 0.6rem;
+    border-radius: $border-radius;
     font-size: $small-font-size;
-    padding-left: 0.6rem;
+    background: transparent;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $light-foreground-color;
+    }
   }
 }
