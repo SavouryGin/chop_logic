@@ -6,8 +6,7 @@ export const PopoverTrigger = ({ children }: { children: React.ReactElement }) =
 
   const ref = useRef<HTMLElement>(null);
 
-  const onClick = (e: MouseEvent) => {
-    console.log(e);
+  const onClick = () => {
     const element = ref.current;
     if (element == null) {
       return;
