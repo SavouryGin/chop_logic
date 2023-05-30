@@ -1,15 +1,7 @@
 @import 'styles/variables/colors.scss';
 @import 'styles/variables/sizes.scss';
-@import 'styles/animations/slide-in-right.scss';
-@import 'styles/animations/slide-out-right.scss';
 
 .propositions-toolbar {
-  @include slide-in-right();
-
-  &_closing {
-    @include slide-out-right();
-  }
-
   &__list {
     list-style: none;
     padding: 0;
