@@ -21,12 +21,12 @@ const PropositionsToolbar = ({ mode }: { mode: 'natural' | 'direct' }): React.Re
         <button className={triggerClass}></button>
       </Popover.Trigger>
       <Popover.Content>
-        <aside className={toolbarClass}>
-          <ul className='propositions-toolbar__list'>{mode === 'direct' ? <PropositionsDPTools /> : <PropositionsNPTools />}</ul>
-        </aside>
         <Popover.Close>
           <button className={cancelClass}></button>
         </Popover.Close>
+        <aside className={toolbarClass}>
+          <ul className='propositions-toolbar__list'>{mode === 'direct' ? <PropositionsDPTools /> : <PropositionsNPTools />}</ul>
+        </aside>
       </Popover.Content>
     </Popover>
   );

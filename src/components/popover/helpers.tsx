@@ -34,6 +34,8 @@ export const useFocusTrapping = () => {
   const onKeyDown = useCallback((e: KeyboardEvent) => {
     const popover = ref.current;
     if (popover == null) {
+      console.log('HERE');
+
       return;
     }
     const focusables = [...popover.querySelectorAll(focusableQuery)];
@@ -62,7 +64,6 @@ export const useFocusTrapping = () => {
     // 1. focus the first focusable
     // @ts-ignore, TODO: fix typing
     focusables[0]?.focus();
-    console.log('mount popover focusing', focusables[0]);
 
     // 2. attach keyboard event listener to trap the focus
     document.addEventListener('keydown', onKeyDown);
@@ -107,7 +108,6 @@ export const useClickOutside = (callback: () => void) => {
 
     const onClick = (e: MouseEvent) => {
       if (!element.contains(e.target as any)) {
-        console.log('clicked outside');
         callback();
       }
     };
