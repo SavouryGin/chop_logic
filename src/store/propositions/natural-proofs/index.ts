@@ -206,4 +206,4 @@ export const propositionsNPSlice = createSlice({
   },
 });
 
-export const propositionsNPActions = { ...propositionsNPSlice.actions };
+export const npActions = { ...propositionsNPSlice.actions };

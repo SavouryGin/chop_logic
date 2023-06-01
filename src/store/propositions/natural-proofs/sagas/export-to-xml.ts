@@ -2,7 +2,7 @@ import converterXML from 'logic/propositions/converter-xml';
 import errorsTexts from 'texts/propositions/elements';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { npActions as actions } from 'store/propositions/natural-proofs';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';

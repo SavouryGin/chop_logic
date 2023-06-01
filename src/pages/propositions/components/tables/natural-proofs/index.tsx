@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'pages/propositions/constants';
 import propositionsElementsTexts from 'texts/propositions/elements';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { npActions as actions } from 'store/propositions/natural-proofs';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';

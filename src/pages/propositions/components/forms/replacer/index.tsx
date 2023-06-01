@@ -3,8 +3,8 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions } from 'store/propositions/direct-proofs';
-import { propositionsNPActions } from 'store/propositions/natural-proofs';
+import { dpActions } from 'store/propositions/direct-proofs';
+import { npActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch, useIsReplacePossible } from 'hooks';
 import './styles.scss';
 
@@ -28,13 +28,13 @@ const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
     e.preventDefault();
 
     if (mode === 'direct') {
-      dispatch(propositionsDPActions.replacePropositionalVariable(formValues));
-      dispatch(propositionsDPActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+      dispatch(dpActions.replacePropositionalVariable(formValues));
+      dispatch(dpActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
     }
 
     if (mode === 'natural') {
-      dispatch(propositionsNPActions.replacePropositionalVariable(formValues));
-      dispatch(propositionsNPActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
+      dispatch(npActions.replacePropositionalVariable(formValues));
+      dispatch(npActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
     }
   };
 

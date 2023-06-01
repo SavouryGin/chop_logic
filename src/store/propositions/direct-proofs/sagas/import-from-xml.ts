@@ -1,7 +1,7 @@
 import parser from 'logic/propositions/parser-xml-to-js';
 import propositionsElementsTexts from 'texts/propositions/elements';
 import { SagaIterator } from 'redux-saga';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
+import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { readUserTextFile } from 'helpers/files/read-user-text-file';
 

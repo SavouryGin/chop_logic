@@ -4,10 +4,10 @@ import React, { memo, useState } from 'react';
 import Spinner from 'components/spinner';
 import { ButtonID, Icon, InputID } from 'enums';
 import { FileAcceptType } from 'enums/file-accept-type';
+import { dpActions } from 'store/propositions/direct-proofs';
 import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
+import { npActions } from 'store/propositions/natural-proofs';
 import { npSelectors } from 'store/propositions/natural-proofs/selectors';
-import { propositionsDPActions } from 'store/propositions/direct-proofs';
-import { propositionsNPActions } from 'store/propositions/natural-proofs';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
@@ -23,11 +23,11 @@ const InputFileForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactEle
 
   const onSubmit = () => {
     if (mode === 'direct' && userFile) {
-      dispatch(propositionsDPActions.importFromXML({ file: userFile }));
+      dispatch(dpActions.importFromXML({ file: userFile }));
     }
 
     if (mode === 'natural' && userFile) {
-      dispatch(propositionsNPActions.importFromXML({ file: userFile }));
+      dispatch(npActions.importFromXML({ file: userFile }));
     }
   };
 

@@ -1,6 +1,6 @@
 import propositionsElementsTexts from 'texts/propositions/elements';
 import tMocks from '__mocks__/data/propositions/table-items';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { npActions as actions } from 'store/propositions/natural-proofs';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
 import { exportNPToXMLSaga, exportNPToXMLWatcher } from '../sagas/export-to-xml';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';

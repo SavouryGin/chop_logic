@@ -4,8 +4,8 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions } from 'store/propositions/direct-proofs';
-import { propositionsNPActions } from 'store/propositions/natural-proofs';
+import { dpActions } from 'store/propositions/direct-proofs';
+import { npActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
@@ -29,18 +29,18 @@ const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }): R
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (mode === 'direct') {
-      dispatch(propositionsDPActions.addPremise(formValue.premise));
-      dispatch(propositionsDPActions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
+      dispatch(dpActions.addPremise(formValue.premise));
+      dispatch(dpActions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
     }
 
     if (mode === 'natural') {
-      dispatch(propositionsNPActions.addPremise(formValue.premise));
-      dispatch(propositionsNPActions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
+      dispatch(npActions.addPremise(formValue.premise));
+      dispatch(npActions.setUpFlag({ flag: 'isPremiseOpened', value: false }));
     }
 
     if (mode === 'assumption') {
-      dispatch(propositionsNPActions.addAssumption(formValue.premise));
-      dispatch(propositionsNPActions.setUpFlag({ flag: 'isAssumptionOpened', value: false }));
+      dispatch(npActions.addAssumption(formValue.premise));
+      dispatch(npActions.setUpFlag({ flag: 'isAssumptionOpened', value: false }));
     }
   };
 

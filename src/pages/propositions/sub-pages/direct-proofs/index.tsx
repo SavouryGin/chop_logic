@@ -5,8 +5,8 @@ import TabList from 'components/tab-list';
 import formatClass from 'helpers/formatters/format-class-name';
 import texts from 'texts/propositions/elements';
 import { ButtonID, Icon } from 'enums';
+import { dpActions } from 'store/propositions/direct-proofs';
 import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
-import { propositionsDPActions } from 'store/propositions/direct-proofs';
 import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -18,7 +18,7 @@ const PropositionsDirectProofs = (): React.ReactElement => {
   const dispatch = useAppDispatch();
 
   const toggleToolbar = () => {
-    dispatch(propositionsDPActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
+    dispatch(dpActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
   };
 
   const toolBar = (

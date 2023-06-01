@@ -1,6 +1,6 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import propositionsElementsTexts from 'texts/propositions/elements';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { npActions as actions } from 'store/propositions/natural-proofs';
 import { deleteNaturalProofStepsWatcher, deleteNaturalProofsStepsSaga } from '../sagas/delete-steps';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';

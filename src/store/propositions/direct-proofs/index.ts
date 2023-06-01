@@ -205,4 +205,4 @@ export const propositionsDPSlice = createSlice({
   },
 });
 
-export const propositionsDPActions = { ...propositionsDPSlice.actions };
+export const dpActions = { ...propositionsDPSlice.actions };

@@ -2,7 +2,7 @@ import converterXML from 'logic/propositions/converter-xml';
 import propositionsTexts from 'texts/propositions/elements';
 import { DirectProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
+import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';

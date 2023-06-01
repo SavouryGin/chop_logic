@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import Table from 'components/table';
 import constants from 'pages/propositions/constants';
 import texts from 'texts/propositions/elements';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
+import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';

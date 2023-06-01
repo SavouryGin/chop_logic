@@ -1,7 +1,7 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import propositionsElementsTexts from 'texts/propositions/elements';
 import { NPFormulaBase } from 'enums';
-import { propositionsNPActions as actions, propositionsNPSlice as slice } from '..';
+import { npActions as actions, propositionsNPSlice as slice } from '..';
 import { NP_INITIAL_STATE as state } from '../initial-state';
 
 describe('propositionsNPSlice tests:', () => {

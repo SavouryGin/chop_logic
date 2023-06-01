@@ -5,8 +5,8 @@ import TabList from 'components/tab-list';
 import formatClass from 'helpers/formatters/format-class-name';
 import texts from 'texts/propositions/elements';
 import { ButtonID, Icon } from 'enums';
+import { npActions } from 'store/propositions/natural-proofs';
 import { npSelectors } from 'store/propositions/natural-proofs/selectors';
-import { propositionsNPActions } from 'store/propositions/natural-proofs';
 import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -18,7 +18,7 @@ const PropositionsNaturalProofs = (): React.ReactElement => {
   const dispatch = useAppDispatch();
 
   const toggleToolbar = () => {
-    dispatch(propositionsNPActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
+    dispatch(npActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
   };
 
   const toolBar = (

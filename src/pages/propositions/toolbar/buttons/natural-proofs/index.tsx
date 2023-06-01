@@ -3,7 +3,7 @@ import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/co
 import ModalWindow from 'components/modal-window';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { npActions as actions } from 'store/propositions/natural-proofs';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';

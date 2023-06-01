@@ -1,7 +1,7 @@
 import propositionsTexts from 'texts/propositions/elements';
 import { DirectProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
+import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { findDependentDPItemsToDelete, removeSelectedItemsFromTable, updateDPTableComments } from 'logic/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
