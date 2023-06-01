@@ -4,7 +4,7 @@ import ModalWindow from 'components/modal-window';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
-import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector } from 'hooks';

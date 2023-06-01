@@ -1,28 +1,9 @@
-@import 'styles/variables/colors.scss';
-@import 'styles/variables/sizes.scss';
-
 .propositions-toolbar {
   &__list {
     list-style: none;
     padding: 0;
     li {
       margin-bottom: 1rem;
-    }
-  }
-
-  &__button {
-    display: block;
-    position: relative;
-    border: none;
-    cursor: pointer;
-    padding: 0.6rem 0.6rem 0.4rem 0.6rem;
-    border-radius: $border-radius;
-    font-size: $small-font-size;
-    background: transparent;
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: $light-foreground-color;
     }
   }
 }

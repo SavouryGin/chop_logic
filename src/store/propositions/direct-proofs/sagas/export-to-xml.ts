@@ -5,7 +5,7 @@ import { SagaIterator } from 'redux-saga';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
-import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 
 export function* exportDPToXMLWatcher(): Generator {
   yield takeEvery(actions.exportToXML, exportDPToXMLSaga);

@@ -13,7 +13,7 @@ import React from 'react';
 import ReplacerForm from 'pages/propositions/components/forms/replacer';
 import formatClass from 'helpers/formatters/format-class-name';
 import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts/ui-elements';
 import { useAppDispatch, useAppSelector } from 'hooks';

@@ -4,7 +4,7 @@ import { SagaIterator } from 'redux-saga';
 import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
 import { findDependentNPItemsToDelete, removeSelectedItemsFromTable, updateNPTableComments } from 'logic/propositions/helpers';
 import { put, select, takeEvery } from 'redux-saga/effects';
-import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
 export function* cutStepsNPWatcher(): Generator {
   yield takeEvery(actions.cutSteps, cutStepsNPSaga);

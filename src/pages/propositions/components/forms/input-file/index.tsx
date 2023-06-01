@@ -4,10 +4,10 @@ import React, { memo, useState } from 'react';
 import Spinner from 'components/spinner';
 import { ButtonID, Icon, InputID } from 'enums';
 import { FileAcceptType } from 'enums/file-accept-type';
+import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
+import { npSelectors } from 'store/propositions/natural-proofs/selectors';
 import { propositionsDPActions } from 'store/propositions/direct-proofs';
-import { propositionsDPSelectors } from 'store/propositions/direct-proofs/selectors';
 import { propositionsNPActions } from 'store/propositions/natural-proofs';
-import { propositionsNPSelectors } from 'store/propositions/natural-proofs/selectors';
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
@@ -15,8 +15,8 @@ import './styles.scss';
 const InputFileForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElement => {
   const [userFile, setUserFile] = useState<File>();
   const dispatch = useAppDispatch();
-  const isLoadingNP = useAppSelector(propositionsNPSelectors.isLoading);
-  const isLoadingDP = useAppSelector(propositionsDPSelectors.isLoading);
+  const isLoadingNP = useAppSelector(npSelectors.isLoading);
+  const isLoadingDP = useAppSelector(dpSelectors.isLoading);
   const isLoading = isLoadingNP || isLoadingDP;
 
   const takeFile = (value: File) => setUserFile(value);

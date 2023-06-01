@@ -97,7 +97,7 @@ const error = (state: RootState): LocalText | null => state.propositionsDP.error
 
 const clipboardData = (state: RootState): NaturalProofsTableItem[] => state.propositionsNP.clipboardData;
 
-export const propositionsNPSelectors = {
+export const npSelectors = {
   flags,
   tableData,
   tableDataLength,
