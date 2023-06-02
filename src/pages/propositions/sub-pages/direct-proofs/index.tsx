@@ -26,8 +26,8 @@ const PropositionsDirectProofs = (): React.ReactElement => {
       <h2
         className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}
       >{`${texts.page[language]} > ${texts.direct[language]}`}</h2>
-      <Button buttonId={ButtonID.Tools} icon={Icon.Sidebar} onClick={toggleToolbar} />
-      {isToolbarOpened && <PropositionsToolbar mode='direct' />}
+      <Button buttonId={ButtonID.Tools} icon={isToolbarOpened ? Icon.Up : Icon.Sidebar} onClick={toggleToolbar} />
+      <PropositionsToolbar mode='direct' isVisible={isToolbarOpened} />
     </>
   );
 

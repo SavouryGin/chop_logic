@@ -26,8 +26,8 @@ const PropositionsNaturalProofs = (): React.ReactElement => {
       <h2
         className={formatClass(['propositions-natural-proofs__title', Icon.Propositions])}
       >{`${texts.page[language]} > ${texts.natural[language]}`}</h2>
-      <Button buttonId={ButtonID.Tools} icon={Icon.Sidebar} onClick={toggleToolbar} />
-      {isToolbarOpened && <PropositionsToolbar mode='natural' />}
+      <Button buttonId={ButtonID.Tools} icon={isToolbarOpened ? Icon.Up : Icon.Sidebar} onClick={toggleToolbar} />
+      <PropositionsToolbar mode='natural' isVisible={isToolbarOpened} />
     </>
   );
 
