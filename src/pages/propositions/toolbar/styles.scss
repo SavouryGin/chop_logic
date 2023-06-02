@@ -2,19 +2,27 @@
 @import 'styles/variables/z-indexes.scss';
 @import 'styles/variables/sizes.scss';
 @import 'styles/mixins/text-styles.scss';
-@import 'styles/animations/slide-in-left.scss';
-@import 'styles/animations/slide-out-left.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
+@import 'styles/animations/slide-in-top.scss';
+@import 'styles/animations/slide-out-right.scss';
 
 .propositions-toolbar {
   position: absolute;
-  right: 0;
-  top: 30%;
+  right: 54px;
+  top: 174px;
   background-color: $light-background-color;
   z-index: $sidebar-z-index;
   min-width: 18rem;
   padding: $big-padding;
   border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
   box-shadow: $light-box-shadow;
+  @include scrollbar-styles(light);
+  @include slide-in-top();
+
+  &_closing {
+    @include slide-out-right();
+  }
 
   &__list {
     list-style: none;

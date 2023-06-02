@@ -1,0 +1,32 @@
+@mixin slide-in-top {
+  animation: slide-in-top ease 200ms;
+  -webkit-animation: slide-in-top ease 200ms;
+  -moz-animation: slide-in-top ease 200ms;
+}
+
+@keyframes slide-in-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@-moz-keyframes slide-in-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes slide-in-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
