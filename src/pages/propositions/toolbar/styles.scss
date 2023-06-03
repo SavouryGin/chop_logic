@@ -3,8 +3,8 @@
 @import 'styles/variables/sizes.scss';
 @import 'styles/mixins/text-styles.scss';
 @import 'styles/mixins/scrollbar-styles.scss';
-@import 'styles/animations/slide-in-top.scss';
-@import 'styles/animations/slide-out-bottom.scss';
+@import 'styles/animations/fade-in.scss';
+@import 'styles/animations/fade-out.scss';
 
 .propositions-toolbar {
   position: absolute;
@@ -12,16 +12,21 @@
   top: 174px;
   background-color: $light-background-color;
   z-index: $sidebar-z-index;
-  min-width: 18rem;
+  min-width: 16rem;
   padding: $big-padding;
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
   box-shadow: $light-box-shadow;
   @include scrollbar-styles(light);
-  @include slide-in-top();
+  @include fade-in();
 
   &_closing {
-    @include slide-out-bottom();
+    @include fade-out();
+  }
+
+  &_dark {
+    background-color: $dark-background-color;
+    box-shadow: $dark-box-shadow;
   }
 
   &__list {
