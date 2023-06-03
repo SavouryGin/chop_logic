@@ -7,10 +7,11 @@ import './styles.scss';
 
 const ChopLogicLogo = (): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
+  const src = isDarkMode ? darkLogo : lightLogo;
 
   return (
     <div className={'chop-logic-logo'}>
-      <img src={isDarkMode ? darkLogo : lightLogo} className='country_logo_img' alt={'Chop Logic Logo'} role='img' />
+      <img src={typeof src === 'string' ? src : undefined} className='country_logo_img' alt={'Chop Logic Logo'} role='img' />
     </div>
   );
 };

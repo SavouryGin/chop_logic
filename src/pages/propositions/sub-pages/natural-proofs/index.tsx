@@ -5,21 +5,20 @@ import TabList from 'components/tab-list';
 import formatClass from 'helpers/formatters/format-class-name';
 import texts from 'texts/propositions/elements';
 import { ButtonID, Icon } from 'enums';
-import { propositionsNPActions } from 'store/propositions/natural-proofs';
-import { propositionsNPSelectors } from 'store/propositions/natural-proofs/selectors';
+import { npActions } from 'store/propositions/natural-proofs';
+import { npSelectors } from 'store/propositions/natural-proofs/selectors';
 import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
 const PropositionsNaturalProofs = (): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.language);
-  const isToolbarOpened = useAppSelector(propositionsNPSelectors.isToolbarOpened);
+  const isToolbarOpened = useAppSelector(npSelectors.isToolbarOpened);
   const dispatch = useAppDispatch();
 
   const toggleToolbar = () => {
-    dispatch(propositionsNPActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
+    dispatch(npActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
   };
 
   const toolBar = (
@@ -27,14 +26,14 @@ const PropositionsNaturalProofs = (): React.ReactElement => {
       <h2
         className={formatClass(['propositions-natural-proofs__title', Icon.Propositions])}
       >{`${texts.page[language]} > ${texts.natural[language]}`}</h2>
-      <Button buttonId={ButtonID.Tools} onClick={toggleToolbar} icon={Icon.Sidebar} sound={soundPlayer.keyboard} view='flat' />
+      <Button buttonId={ButtonID.Tools} icon={isToolbarOpened ? Icon.Up : Icon.Sidebar} onClick={toggleToolbar} />
+      <PropositionsToolbar mode='natural' isVisible={isToolbarOpened} />
     </>
   );
 
   return (
     <article className='propositions-natural-proofs'>
       <TabList tabs={propositionsNaturalProofsTabs} className='propositions-natural-proofs__tabs' toolBar={toolBar} />
-      <PropositionsToolbar isOpened={isToolbarOpened} />
     </article>
   );
 };

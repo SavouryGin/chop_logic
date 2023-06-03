@@ -20,5 +20,9 @@ module.exports = {
     '^__mocks__(.*)$': '<rootDir>/src/__mocks__$1',
     '\\.(css|scss)$': '<rootDir>/src/__mocks__/style-mock.js',
   },
+  transform: {
+    '^.+\\.tsx?$': 'babel-jest',
+    '\\.svg$': '<rootDir>/jest-svg-transformer.js',
+  },
   setupFilesAfterEnv: ['<rootDir>/src/settings/setup-tests.ts'],
 };

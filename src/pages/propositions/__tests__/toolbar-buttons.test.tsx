@@ -23,14 +23,14 @@ const mockedState = {
 
 describe('PropositionsDPTools tests:', () => {
   it('should match the snapshot', () => {
-    const { asFragment } = renderWithRedux(<PropositionsDPTools isVisible={true} />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PropositionsDPTools />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });
 
 describe('PropositionsNPTools tests:', () => {
   it('should match the snapshot', () => {
-    const { asFragment } = renderWithRedux(<PropositionsNPTools isVisible={true} />, mockedReducer, mockedState);
+    const { asFragment } = renderWithRedux(<PropositionsNPTools />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });

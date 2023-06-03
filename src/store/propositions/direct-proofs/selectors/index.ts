@@ -60,7 +60,7 @@ const isLoading = createSelector(flags, (data: PropositionsDirectProofsFlags): b
 
 const clipboardData = (state: RootState): DirectProofsTableItem[] => state.propositionsDP.clipboardData;
 
-export const propositionsDPSelectors = {
+export const dpSelectors = {
   flags,
   tableData,
   dependentItems,

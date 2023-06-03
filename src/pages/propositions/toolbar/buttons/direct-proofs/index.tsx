@@ -3,13 +3,13 @@ import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/co
 import ModalWindow from 'components/modal-window';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
-import { propositionsDPSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
+import { dpActions as actions } from 'store/propositions/direct-proofs';
+import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-const PropositionsDPTools = ({ isVisible }: { isVisible: boolean }): React.ReactElement | null => {
+const PropositionsDPTools = (): React.ReactElement | null => {
   const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.language);
   const tableDataLength = useAppSelector(selectors.tableDataLength);
@@ -17,10 +17,6 @@ const PropositionsDPTools = ({ isVisible }: { isVisible: boolean }): React.React
   const clipboardData = useAppSelector(selectors.clipboardData);
   const dependencies = useAppSelector(selectors.dependentItems);
   const isConfirmCutPopupOpened = useAppSelector(selectors.isConfirmCutPopupOpened);
-
-  if (!isVisible) {
-    return null;
-  }
 
   const isExportToXMLDisabled = !tableDataLength;
   const isCopyDisabled = !selectedIds.length;

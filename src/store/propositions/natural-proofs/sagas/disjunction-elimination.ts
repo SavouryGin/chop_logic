@@ -2,9 +2,9 @@ import errorsTexts from 'texts/propositions/elements';
 import executor from 'logic/propositions/executor';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { npActions as actions } from 'store/propositions/natural-proofs';
 import { put, select, takeEvery } from 'redux-saga/effects';
-import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 
 export function* disjunctionEliminationWatcher(): Generator {
   yield takeEvery(actions.eliminateDisjunction, disjunctionEliminationSaga);

@@ -6,7 +6,7 @@ import constants from 'pages/propositions/constants';
 import propositionsTexts from 'texts/propositions/elements';
 import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
-import { propositionsDPActions as actions } from 'store/propositions/direct-proofs';
+import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useContradictionRealizationPreview } from 'hooks';
 import './styles.scss';

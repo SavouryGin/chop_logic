@@ -1,8 +1,8 @@
 import mocks from '__mocks__/data/propositions/table-items';
 import propositionsElementsTexts from 'texts/propositions/elements';
-import { propositionsNPActions as actions } from 'store/propositions/natural-proofs';
+import { npActions as actions } from 'store/propositions/natural-proofs';
 import { conjunctionEliminationSaga, conjunctionEliminationWatcher } from '../sagas/conjunction-elimination';
-import { propositionsNPSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
+import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';
 
 describe('NP conjunctionEliminationSaga tests', () => {

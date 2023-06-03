@@ -5,21 +5,20 @@ import TabList from 'components/tab-list';
 import formatClass from 'helpers/formatters/format-class-name';
 import texts from 'texts/propositions/elements';
 import { ButtonID, Icon } from 'enums';
-import { propositionsDPActions } from 'store/propositions/direct-proofs';
-import { propositionsDPSelectors } from 'store/propositions/direct-proofs/selectors';
+import { dpActions } from 'store/propositions/direct-proofs';
+import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
 import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
 const PropositionsDirectProofs = (): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.language);
-  const isToolbarOpened = useAppSelector(propositionsDPSelectors.isToolbarOpened);
+  const isToolbarOpened = useAppSelector(dpSelectors.isToolbarOpened);
   const dispatch = useAppDispatch();
 
   const toggleToolbar = () => {
-    dispatch(propositionsDPActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
+    dispatch(dpActions.setUpFlag({ flag: 'isToolbarOpened', value: !isToolbarOpened }));
   };
 
   const toolBar = (
@@ -27,14 +26,14 @@ const PropositionsDirectProofs = (): React.ReactElement => {
       <h2
         className={formatClass(['propositions-direct-proofs__title', Icon.Propositions])}
       >{`${texts.page[language]} > ${texts.direct[language]}`}</h2>
-      <Button buttonId={ButtonID.Tools} onClick={toggleToolbar} icon={Icon.Sidebar} sound={soundPlayer.keyboard} view='flat' />
+      <Button buttonId={ButtonID.Tools} icon={isToolbarOpened ? Icon.Up : Icon.Sidebar} onClick={toggleToolbar} />
+      <PropositionsToolbar mode='direct' isVisible={isToolbarOpened} />
     </>
   );
 
   return (
     <article className='propositions-direct-proofs'>
       <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' toolBar={toolBar} />
-      <PropositionsToolbar isOpened={isToolbarOpened} />
     </article>
   );
 };

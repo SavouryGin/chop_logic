@@ -1,13 +1,32 @@
 @import 'styles/variables/colors.scss';
+@import 'styles/variables/z-indexes.scss';
 @import 'styles/variables/sizes.scss';
-@import 'styles/animations/slide-in-right.scss';
-@import 'styles/animations/slide-out-right.scss';
+@import 'styles/mixins/text-styles.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
+@import 'styles/animations/fade-in.scss';
+@import 'styles/animations/fade-out.scss';
 
 .propositions-toolbar {
-  @include slide-in-right();
+  position: absolute;
+  right: 54px;
+  top: 174px;
+  background-color: $light-background-color;
+  z-index: $sidebar-z-index;
+  min-width: 16rem;
+  padding: $big-padding;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  box-shadow: $light-box-shadow;
+  @include scrollbar-styles(light);
+  @include fade-in();
 
   &_closing {
-    @include slide-out-right();
+    @include fade-out();
+  }
+
+  &_dark {
+    background-color: $dark-background-color;
+    box-shadow: $dark-box-shadow;
   }
 
   &__list {
@@ -16,10 +35,5 @@
     li {
       margin-bottom: 1rem;
     }
-  }
-
-  &__button-span {
-    font-size: $small-font-size;
-    padding-left: 0.6rem;
   }
 }
