@@ -57,7 +57,7 @@ exports[`Natural Proofs page tests: should match the snapshot 1`] = `
             Propositions &gt; Natural Proofs
           </h2>
           <button
-            class="button button_flat"
+            class="button"
             id="button_id_6"
             title="Tools"
             type="button"
