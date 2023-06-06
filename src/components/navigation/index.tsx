@@ -1,11 +1,12 @@
-import React, { memo } from 'react';
+import React, { memo, useRef } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { getNavigationLinksList } from './helpers';
 import { routesMap } from 'router/map';
+import { settingsActions } from 'store/settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
-import { useAppSelector, useMount } from 'hooks';
+import { useAppDispatch, useAppSelector, useClickOutside, useMount } from 'hooks';
 import './styles.scss';
 
 const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }): React.ReactElement | null => {
@@ -13,6 +14,14 @@ const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isMounted = useMount(isOpened);
   const isClosing = isMounted && !isOpened;
+  const dispatch = useAppDispatch();
+  const clickRef = useRef<HTMLElement>(null);
+  const onClickOutside = () => {
+    dispatch(settingsActions.setUpFlag({ flag: 'isNavigationOpened', value: false }));
+  };
+
+  useClickOutside(clickRef, onClickOutside);
+
   if (!isMounted) {
     return null;
   }
@@ -20,7 +29,7 @@ const Navigation = ({ className, isOpened }: CommonProps & { isOpened: boolean }
   const navigationClassNames = formatClass(['navigation', className, { navigation_dark: isDarkMode, navigation_closing: isClosing }]);
 
   return (
-    <nav className={navigationClassNames}>
+    <nav className={navigationClassNames} ref={clickRef}>
       <h2 className='navigation__header'>{uiElementTexts.navHeader[language]}</h2>
       {getNavigationLinksList(routesMap, language)}
     </nav>
