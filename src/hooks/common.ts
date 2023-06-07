@@ -1,6 +1,6 @@
 import { AppDispatch, RootState } from 'types';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef, useState } from 'react';
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
@@ -58,9 +58,9 @@ export const useEffectOnce = (effect: () => void | (() => void)) => {
   }, []);
 };
 
-export const useClickOutside = (ref: any, callback: () => void) => {
-  const handleClick = (e: any) => {
-    if (ref.current && !ref.current.contains(e.target)) {
+export const useClickOutside = (ref: RefObject<HTMLElement>, callback: () => void) => {
+  const handleClick = ({ target }: MouseEvent) => {
+    if (ref.current && !ref.current.contains(target as Node)) {
       callback();
     }
   };
