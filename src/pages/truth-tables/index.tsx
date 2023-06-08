@@ -1,6 +1,6 @@
 import ErrorPopup from 'components/error-popup';
 import React from 'react';
-import TruthTableInput from './components/input';
+import TruthTableForm from './components/form';
 import TruthTablesTable from './components/table';
 import truthTablesSelectors from 'store/propositions/truth-tables/selectors';
 import { truthTablesActions } from 'store/propositions/truth-tables';
@@ -16,7 +16,7 @@ const TruthTables = (): React.ReactElement => {
 
   return (
     <div className='truth-tables'>
-      <TruthTableInput />
+      <TruthTableForm />
       <TruthTablesTable />
       <ErrorPopup onClose={resetError} error={error} />
     </div>

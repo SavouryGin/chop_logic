@@ -1,8 +1,6 @@
 @import 'styles/variables/sizes.scss';
 
-.truth-table-input {
-  padding: $default-padding;
-
+.truth-table-form {
   &__input {
     margin: $big-padding 0;
   }

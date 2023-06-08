@@ -8,7 +8,7 @@ import { truthTablesActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 
-const TruthTableInput = (): React.ReactElement => {
+const TruthTableForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const tableInput = { input: '' };
   const [formValue, setFormValue] = useState(tableInput);
@@ -18,7 +18,7 @@ const TruthTableInput = (): React.ReactElement => {
   const isFormInvalid = hasError || !formValue.input;
   const formContent = (
     <>
-      <TextInput name='input' inputId={InputID.Premise} className='truth-table-input__input' isRequired />
+      <TextInput name='input' inputId={InputID.Premise} className='truth-table-form__input' isRequired />
       <FormulaPreview preview={preview} />
     </>
   );
@@ -31,7 +31,7 @@ const TruthTableInput = (): React.ReactElement => {
   };
 
   return (
-    <div className='truth-table-input'>
+    <div className='truth-table-form'>
       <Form
         onSubmit={onSubmit}
         initialValues={tableInput}
@@ -44,4 +44,4 @@ const TruthTableInput = (): React.ReactElement => {
   );
 };
 
-export default TruthTableInput;
+export default TruthTableForm;
