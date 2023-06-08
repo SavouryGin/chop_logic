@@ -21,25 +21,11 @@ exports[`Footer component: should match the snapshot 1`] = `
         title="Mail"
       />
       <a
-        class="chop-icon__telegram"
-        href="https://telegram.me/savoury_gin"
-        rel="noreferrer"
-        target="_blank"
-        title="Telegram"
-      />
-      <a
         class="chop-icon__linkedin-square"
         href="https://www.linkedin.com/in/dmitrii-suroviagin/"
         rel="noreferrer"
         target="_blank"
         title="LinkedIn"
-      />
-      <a
-        class="chop-icon__facebook2"
-        href="https://www.facebook.com/dmitrii.suroviagin"
-        rel="noreferrer"
-        target="_blank"
-        title="Facebook"
       />
       <a
         class="chop-icon__github"

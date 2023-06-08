@@ -27,28 +27,12 @@ const Footer = ({ className }: CommonProps): React.ReactElement => {
       <span className={linkClassNames}>
         <a href={externalLinks.mail} target='_blank' rel='noreferrer' className={Icon.Mail} onMouseOver={onLinkHover} title='Mail'></a>
         <a
-          href={externalLinks.telegram}
-          target='_blank'
-          rel='noreferrer'
-          className={Icon.Telegram}
-          onMouseOver={onLinkHover}
-          title='Telegram'
-        ></a>
-        <a
           href={externalLinks.linkedIn}
           target='_blank'
           rel='noreferrer'
           className={Icon.LinkedIn}
           onMouseOver={onLinkHover}
           title='LinkedIn'
-        ></a>
-        <a
-          href={externalLinks.facebook}
-          target='_blank'
-          rel='noreferrer'
-          className={Icon.Facebook}
-          onMouseOver={onLinkHover}
-          title='Facebook'
         ></a>
         <a
           href={externalLinks.gitHub}
