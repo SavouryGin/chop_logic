@@ -1,0 +1,8 @@
+@import 'styles/variables/colors.scss';
+@import 'styles/variables/sizes.scss';
+
+.truth-tables {
+  display: flex;
+  flex-direction: column;
+  gap: $big-padding;
+}

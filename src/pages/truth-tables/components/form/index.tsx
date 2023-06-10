@@ -6,7 +6,6 @@ import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
 import { truthTablesActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
-import './styles.scss';
 
 const TruthTableForm = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -31,7 +30,7 @@ const TruthTableForm = (): React.ReactElement => {
   };
 
   return (
-    <div className='truth-table-form'>
+    <div className='truth-tables_form'>
       <Form
         onSubmit={onSubmit}
         initialValues={tableInput}

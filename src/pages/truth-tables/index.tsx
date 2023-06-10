@@ -5,6 +5,7 @@ import TruthTablesTable from './components/table';
 import truthTablesSelectors from 'store/propositions/truth-tables/selectors';
 import { truthTablesActions } from 'store/propositions/truth-tables';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import './styles.scss';
 
 const TruthTables = (): React.ReactElement => {
   const error = useAppSelector(truthTablesSelectors.error);
