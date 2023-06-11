@@ -2,8 +2,8 @@ import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
-import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { InputID } from 'enums';
 import { dpActions } from 'store/propositions/direct-proofs';
 import { npActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
@@ -50,7 +50,6 @@ const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }): R
         onSubmit={onSubmit}
         initialValues={premiseInitialValue}
         inputs={formContent}
-        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
       />

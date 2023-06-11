@@ -2,8 +2,8 @@ import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
 import React, { useState } from 'react';
 import TextInput from 'components/controls/text-input';
-import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { InputID } from 'enums';
 import { truthTablesActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 
@@ -29,12 +29,17 @@ const TruthTableForm = (): React.ReactElement => {
     dispatch(actions.generateTruthTable(formValue));
   };
 
+  const onReset = () => {
+    console.log('reset');
+    dispatch(actions.resetState());
+  };
+
   return (
     <Form
       onSubmit={onSubmit}
+      onReset={onReset}
       initialValues={tableInput}
       inputs={formContent}
-      submitButtonId={ButtonID.Apply}
       passValues={takeValues}
       isSubmitDisabled={isFormInvalid}
       className='truth-tables_form'
