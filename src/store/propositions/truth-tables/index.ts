@@ -27,6 +27,10 @@ export const truthTablesSlice = createSlice({
     setTableData: (state, action: PayloadAction<TableItem[]>) => {
       state.data = action.payload;
     },
+
+    resetState: () => {
+      return TRUTH_TABLES_INITIAL_STATE;
+    },
   },
 });
 
