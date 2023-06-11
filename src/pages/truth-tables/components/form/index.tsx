@@ -30,16 +30,15 @@ const TruthTableForm = (): React.ReactElement => {
   };
 
   return (
-    <div className='truth-tables_form'>
-      <Form
-        onSubmit={onSubmit}
-        initialValues={tableInput}
-        inputs={formContent}
-        submitButtonId={ButtonID.Apply}
-        passValues={takeValues}
-        isSubmitDisabled={isFormInvalid}
-      />
-    </div>
+    <Form
+      onSubmit={onSubmit}
+      initialValues={tableInput}
+      inputs={formContent}
+      submitButtonId={ButtonID.Apply}
+      passValues={takeValues}
+      isSubmitDisabled={isFormInvalid}
+      className='truth-tables_form'
+    />
   );
 };
 

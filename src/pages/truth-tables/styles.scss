@@ -5,4 +5,15 @@
   display: flex;
   flex-direction: column;
   gap: $big-padding;
+
+  &_form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: $big-padding;
+
+    .formula-preview {
+      margin-bottom: 0;
+    }
+  }
 }
