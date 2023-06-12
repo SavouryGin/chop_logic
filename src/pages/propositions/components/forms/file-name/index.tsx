@@ -32,8 +32,7 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof fileNameInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     if (mode === 'direct') {
       dispatch(dpActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
       dispatch(dpActions.exportToXML(formValue.fileName));

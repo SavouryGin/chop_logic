@@ -28,8 +28,7 @@ const ContradictionRealizationForm = (): React.ReactElement => {
     </>
   );
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.createContradictionRealization({ ...values }));
     dispatch(actions.setUpFlag({ flag: 'isContradictionRealizationOpened', value: false }));
   };

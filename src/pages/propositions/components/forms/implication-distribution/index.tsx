@@ -29,8 +29,7 @@ const ImplicationDistributionForm = (): React.ReactElement => {
     </>
   );
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.createImplicationDistribution({ ...values }));
     dispatch(actions.setUpFlag({ flag: 'isImplicationDistributionOpened', value: false }));
   };

@@ -9,19 +9,15 @@
   &_form {
     display: flex;
     gap: $big-padding;
-    align-items: center;
+    flex-direction: column;
 
-    .text-input {
-      flex: 1 1 auto;
-    }
+    .form_buttons {
+      display: flex;
+      gap: $big-padding;
 
-    .formula-preview {
-      margin-bottom: 0;
-      flex: 1 1 auto;
-    }
-
-    .button {
-      flex: 0 0 8rem;
+      .button {
+        flex: 1 1 50%;
+      }
     }
   }
 }

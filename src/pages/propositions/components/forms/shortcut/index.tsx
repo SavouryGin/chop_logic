@@ -26,8 +26,7 @@ const ShortcutForm = (): React.ReactElement => {
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof shortcutInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.addShortcut({ rawInput: formValue.shortcut, comment: formValue.comment }));
     dispatch(actions.setUpFlag({ flag: 'isShortcutOpened', value: false }));
   };

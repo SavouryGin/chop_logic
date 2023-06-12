@@ -24,8 +24,7 @@ const TruthTableForm = (): React.ReactElement => {
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof tableInput);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.generateTruthTable(formValue));
   };
 

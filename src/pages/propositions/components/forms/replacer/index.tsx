@@ -24,9 +24,7 @@ const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
 
   const takeValues = (values: FormValues) => setFormValues(values as typeof replacerInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const onSubmit = () => {
     if (mode === 'direct') {
       dispatch(dpActions.replacePropositionalVariable(formValues));
       dispatch(dpActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));

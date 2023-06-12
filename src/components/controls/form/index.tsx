@@ -10,7 +10,7 @@ export const FormContext = React.createContext({} as FormContextProps);
 type FormValues = { [key: string]: unknown };
 
 export type FormProps = CommonProps & {
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onSubmit: () => void;
   onReset?: () => void;
   inputs: React.ReactElement;
   initialValues: FormValues;
@@ -20,7 +20,8 @@ export type FormProps = CommonProps & {
 };
 
 const Form = ({ className, onSubmit, inputs, initialValues, passValues, onReset, ...rest }: FormProps): React.ReactElement => {
-  const formClassNames = formatClass(['form', className]);
+  const formClass = formatClass(['form', className]);
+  const buttonClass = 'form_buttons';
   const [formValues, setFormValues] = useState(initialValues);
 
   const onChangeInput = (e: React.ChangeEvent<FormInput>) => {
@@ -46,8 +47,13 @@ const Form = ({ className, onSubmit, inputs, initialValues, passValues, onReset,
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
   return (
-    <form className={formClassNames} aria-label='form' action={rest.action || '/'} onSubmit={onSubmit} onReset={handleReset}>
+    <form className={formClass} aria-label='form' action={rest.action || '/'} onSubmit={handleSubmit} onReset={handleReset}>
       <FormContext.Provider
         value={{
           formValues,
@@ -56,24 +62,17 @@ const Form = ({ className, onSubmit, inputs, initialValues, passValues, onReset,
       >
         {inputs}
       </FormContext.Provider>
-      <Button
-        buttonId={ButtonID.Apply}
-        type='submit'
-        icon={Icon.Default}
-        sound={soundPlayer.slideClick}
-        view='large'
-        isDisabled={rest.isSubmitDisabled}
-      />
-      {!!onReset && (
+      <div className={buttonClass}>
         <Button
-          buttonId={ButtonID.Reset}
-          type='reset'
-          icon={Icon.Reset}
+          buttonId={ButtonID.Apply}
+          type='submit'
+          icon={Icon.Default}
           sound={soundPlayer.slideClick}
-          view='flat'
+          view='large'
           isDisabled={rest.isSubmitDisabled}
         />
-      )}
+        {!!onReset && <Button buttonId={ButtonID.Reset} type='reset' icon={Icon.Reset} sound={soundPlayer.slideClick} view='large' />}
+      </div>
     </form>
   );
 };

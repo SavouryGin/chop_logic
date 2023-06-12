@@ -26,8 +26,7 @@ const PremiseForm = ({ mode }: { mode: 'natural' | 'direct' | 'assumption' }): R
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof premiseInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     if (mode === 'direct') {
       dispatch(dpActions.addPremise(formValue.premise));
       dispatch(dpActions.setUpFlag({ flag: 'isPremiseOpened', value: false }));

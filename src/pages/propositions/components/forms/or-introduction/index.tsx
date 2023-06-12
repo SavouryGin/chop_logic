@@ -29,8 +29,7 @@ const OrIntroductionForm = (): React.ReactElement => {
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof orIntroInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.createDisjunction(formValue.orValue));
     dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: false }));
   };

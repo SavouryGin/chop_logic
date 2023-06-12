@@ -22,8 +22,7 @@ const AppSettings = ({ className }: CommonProps): React.ReactElement => {
     dispatch(settingsActions.setUpFlag({ flag: 'isSettingsOpened', value: false }));
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(settingsActions.setUpFlag({ flag: 'isDarkMode', value: formValues.isDarkMode }));
     dispatch(settingsActions.setUpFlag({ flag: 'isSoundsEnabled', value: formValues.isSoundsEnabled }));
     dispatch(settingsActions.setLanguage(formValues.language));

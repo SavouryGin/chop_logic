@@ -28,8 +28,7 @@ const ImplicationCreationForm = (): React.ReactElement => {
     </>
   );
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.createImplication({ ...values }));
     dispatch(actions.setUpFlag({ flag: 'isImplicationCreationOpened', value: false }));
   };
