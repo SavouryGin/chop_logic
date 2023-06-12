@@ -39,8 +39,15 @@ const Form = ({ className, onSubmit, inputs, initialValues, passValues, onReset,
     }
   }, [formValues]);
 
+  const handleReset = () => {
+    setFormValues(initialValues);
+    if (onReset) {
+      onReset();
+    }
+  };
+
   return (
-    <form className={formClassNames} aria-label='form' action={rest.action || '/'} onSubmit={onSubmit} onReset={onReset}>
+    <form className={formClassNames} aria-label='form' action={rest.action || '/'} onSubmit={onSubmit} onReset={handleReset}>
       <FormContext.Provider
         value={{
           formValues,
@@ -59,9 +66,9 @@ const Form = ({ className, onSubmit, inputs, initialValues, passValues, onReset,
       />
       {!!onReset && (
         <Button
-          buttonId={ButtonID.Cancel}
+          buttonId={ButtonID.Reset}
           type='reset'
-          icon={Icon.Cancel}
+          icon={Icon.Reset}
           sound={soundPlayer.slideClick}
           view='flat'
           isDisabled={rest.isSubmitDisabled}
