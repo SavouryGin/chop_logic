@@ -26,7 +26,7 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
   // Handlers
 
   const onClickMenuButton = () => {
-    dispatch(settingsActions.toggleFlag('isNavigationOpened'));
+    dispatch(settingsActions.setUpFlag({ flag: 'isNavigationOpened', value: !isNavigationOpened }));
   };
 
   const onClickSettingButton = () => {

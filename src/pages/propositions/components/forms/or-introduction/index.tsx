@@ -2,8 +2,8 @@ import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
-import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { InputID } from 'enums';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'texts';
@@ -29,8 +29,7 @@ const OrIntroductionForm = (): React.ReactElement => {
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof orIntroInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.createDisjunction(formValue.orValue));
     dispatch(actions.setUpFlag({ flag: 'isOrIntroductionFormOpened', value: false }));
   };
@@ -41,7 +40,6 @@ const OrIntroductionForm = (): React.ReactElement => {
         onSubmit={onSubmit}
         initialValues={orIntroInitialValue}
         inputs={formContent}
-        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
       />

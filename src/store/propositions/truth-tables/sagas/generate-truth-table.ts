@@ -21,6 +21,7 @@ export function* generateTruthTableSaga(action: { payload: { input: string } }):
     yield put(actions.setTableColumns(columns));
     yield put(actions.setTableData(data));
   } catch (error: unknown) {
+    console.log(error);
     yield put(actions.setError(errorsTexts.generalError));
   }
 }

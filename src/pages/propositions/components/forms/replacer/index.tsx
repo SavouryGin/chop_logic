@@ -1,8 +1,8 @@
 import Form from 'components/controls/form';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
-import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { InputID } from 'enums';
 import { dpActions } from 'store/propositions/direct-proofs';
 import { npActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch, useIsReplacePossible } from 'hooks';
@@ -24,9 +24,7 @@ const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
 
   const takeValues = (values: FormValues) => setFormValues(values as typeof replacerInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const onSubmit = () => {
     if (mode === 'direct') {
       dispatch(dpActions.replacePropositionalVariable(formValues));
       dispatch(dpActions.setUpFlag({ flag: 'isReplacerFormOpened', value: false }));
@@ -44,7 +42,6 @@ const ReplacerForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
         onSubmit={onSubmit}
         initialValues={replacerInitialValue}
         inputs={formContent}
-        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isReplaceDisabled}
       />

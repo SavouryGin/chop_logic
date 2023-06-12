@@ -33,4 +33,5 @@ export enum ButtonID {
   CopyProof,
   PasteProof,
   CutProof,
+  Reset,
 }

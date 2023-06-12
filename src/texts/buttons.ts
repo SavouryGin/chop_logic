@@ -130,4 +130,8 @@ export const buttonTexts: ButtonText = {
     title: { en: 'Cut the copied proof steps', ru: 'Вырезать выделенные шаги доказательства' },
     innerText: { en: 'Cut', ru: 'Вырезать' },
   },
+  [ButtonID.Reset]: {
+    title: { en: 'Reset values', ru: 'Очистить значения' },
+    innerText: { en: 'Reset', ru: 'Очистить' },
+  },
 };

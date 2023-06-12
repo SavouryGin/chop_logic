@@ -2,8 +2,8 @@ import Form from 'components/controls/form';
 import React, { memo, useMemo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import regularExpressions from 'helpers/regular-expressions';
-import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { InputID } from 'enums';
 import { dpActions } from 'store/propositions/direct-proofs';
 import { npActions } from 'store/propositions/natural-proofs';
 import { useAppDispatch } from 'hooks';
@@ -32,8 +32,7 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
 
   const takeValues = (values: FormValues) => setFormValue(values as typeof fileNameInitialValue);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     if (mode === 'direct') {
       dispatch(dpActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
       dispatch(dpActions.exportToXML(formValue.fileName));
@@ -51,7 +50,6 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
         onSubmit={onSubmit}
         initialValues={fileNameInitialValue}
         inputs={formContent}
-        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
       />

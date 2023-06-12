@@ -3,7 +3,6 @@ import Form from 'components/controls/form';
 import React, { useState } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
 import { AppSettingInitialValues, CommonProps, FormValues } from 'types';
-import { ButtonID } from 'enums';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -23,8 +22,7 @@ const AppSettings = ({ className }: CommonProps): React.ReactElement => {
     dispatch(settingsActions.setUpFlag({ flag: 'isSettingsOpened', value: false }));
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(settingsActions.setUpFlag({ flag: 'isDarkMode', value: formValues.isDarkMode }));
     dispatch(settingsActions.setUpFlag({ flag: 'isSoundsEnabled', value: formValues.isSoundsEnabled }));
     dispatch(settingsActions.setLanguage(formValues.language));
@@ -40,7 +38,6 @@ const AppSettings = ({ className }: CommonProps): React.ReactElement => {
         initialValues={settingsInitialValues}
         inputs={<AppSettingsInputs initialValues={settingsInitialValues} />}
         passValues={takeValues}
-        submitButtonId={ButtonID.Apply}
       />
     </div>
   );

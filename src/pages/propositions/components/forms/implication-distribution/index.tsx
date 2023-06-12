@@ -4,8 +4,8 @@ import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'pages/propositions/constants';
 import propositionsElementsTexts from 'texts/propositions/elements';
-import { ButtonID, InputID } from 'enums';
 import { FormValues } from 'types';
+import { InputID } from 'enums';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector, useImplicationDistributionPreview } from 'hooks';
@@ -29,8 +29,7 @@ const ImplicationDistributionForm = (): React.ReactElement => {
     </>
   );
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(actions.createImplicationDistribution({ ...values }));
     dispatch(actions.setUpFlag({ flag: 'isImplicationDistributionOpened', value: false }));
   };
@@ -45,7 +44,6 @@ const ImplicationDistributionForm = (): React.ReactElement => {
         onSubmit={onSubmit}
         initialValues={constants.implicationCreationInitialValues}
         inputs={formContent}
-        submitButtonId={ButtonID.Apply}
         passValues={takeValues}
         isSubmitDisabled={isFormInvalid}
       />

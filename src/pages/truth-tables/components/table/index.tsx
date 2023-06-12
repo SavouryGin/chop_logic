@@ -8,7 +8,7 @@ const TruthTablesTable = (): React.ReactElement => {
   const data = useAppSelector(truthTablesSelectors.data);
 
   return (
-    <div className='truth-tables-table'>
+    <div className='truth-tables_table'>
       <Table columns={columns} data={data} key={columns.length} id='propositions-truth-table' />
     </div>
   );
