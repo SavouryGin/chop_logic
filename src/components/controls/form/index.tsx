@@ -17,6 +17,7 @@ export type FormProps = CommonProps & {
   action?: string;
   isSubmitDisabled?: boolean;
   passValues?: (values: FormValues) => void;
+  additionalButtons?: React.ReactElement;
 };
 
 const Form = ({ className, onSubmit, inputs, initialValues, passValues, onReset, ...rest }: FormProps): React.ReactElement => {
@@ -72,6 +73,7 @@ const Form = ({ className, onSubmit, inputs, initialValues, passValues, onReset,
           isDisabled={rest.isSubmitDisabled}
         />
         {!!onReset && <Button buttonId={ButtonID.Reset} type='reset' icon={Icon.Reset} sound={soundPlayer.slideClick} view='large' />}
+        {rest.additionalButtons}
       </div>
     </form>
   );
