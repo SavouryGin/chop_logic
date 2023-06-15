@@ -107,7 +107,7 @@ exports[`Propositions Forms component: ContradictionRealizationForm matches the 
 </DocumentFragment>
 `;
 
-exports[`Propositions Forms component: DirectProofsEditorToolbar matches the snapshot 1`] = `
+exports[`Propositions Forms component: DPEditorButtons matches the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="direct-proofs-editor__toolbar"

@@ -1,7 +1,7 @@
 import ConfirmDeleteProofStepsPopup from 'pages/propositions/components/forms/confirm-delete';
 import ContradictionRealizationForm from 'pages/propositions/components/forms/contradiction-realization';
 import DirectProofsEditorTable from 'pages/propositions/components/tables/direct-proofs';
-import DirectProofsEditorToolbar from 'pages/propositions/components/toolbars/direct-proofs';
+import DPEditorButtons from 'pages/propositions/components/buttons/direct-proofs';
 import ErrorPopup from 'components/error-popup';
 import FileNameForm from 'pages/propositions/components/forms/file-name';
 import ImplicationCreationForm from 'pages/propositions/components/forms/implication-creation';
@@ -81,7 +81,7 @@ const DirectProofsEditor = (): React.ReactElement => {
   return (
     <div className={editorClass}>
       <DirectProofsEditorTable />
-      <DirectProofsEditorToolbar />
+      <DPEditorButtons />
       <ErrorPopup error={error} onClose={resetError} />
       <ModalWindow
         isOpened={isPremiseOpened}

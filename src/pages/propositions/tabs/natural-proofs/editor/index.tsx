@@ -3,8 +3,8 @@ import ErrorPopup from 'components/error-popup';
 import FileNameForm from 'pages/propositions/components/forms/file-name';
 import InputFileForm from 'pages/propositions/components/forms/input-file';
 import ModalWindow from 'components/modal-window';
+import NPEditorButtons from 'pages/propositions/components/buttons/natural-proofs';
 import NaturalProofsEditorTable from 'pages/propositions/components/tables/natural-proofs';
-import NaturalProofsEditorToolbar from 'pages/propositions/components/toolbars/natural-proofs';
 import OrIntroductionForm from 'pages/propositions/components/forms/or-introduction';
 import PremiseForm from 'pages/propositions/components/forms/premise';
 import React, { memo } from 'react';
@@ -79,7 +79,7 @@ const NaturalProofsEditor = (): React.ReactElement => {
   return (
     <div className={editorClass}>
       <NaturalProofsEditorTable />
-      <NaturalProofsEditorToolbar />
+      <NPEditorButtons />
       <ErrorPopup error={error} onClose={resetError} />
       <ModalWindow
         isOpened={isPremiseOpened}
