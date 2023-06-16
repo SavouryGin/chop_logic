@@ -6,7 +6,7 @@ import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selec
 import { soundPlayer } from 'helpers/sounds';
 import { useAppDispatch, useAppSelector, useIsImplicationEliminationPossible } from 'hooks';
 
-const DirectProofsEditorToolbar = (): React.ReactElement => {
+const DPEditorButtons = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const selectedIds = useAppSelector(selectors.selectedIds);
   const tableDataLength = useAppSelector(selectors.tableDataLength);
@@ -80,4 +80,4 @@ const DirectProofsEditorToolbar = (): React.ReactElement => {
   );
 };
 
-export default memo(DirectProofsEditorToolbar);
+export default memo(DPEditorButtons);

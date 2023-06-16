@@ -1,5 +1,5 @@
 import ContradictionRealizationForm from 'pages/propositions/components/forms/contradiction-realization';
-import DirectProofsEditorToolbar from 'pages/propositions/components/toolbars/direct-proofs';
+import DPEditorButtons from 'pages/propositions/components/buttons/direct-proofs';
 import ImplicationCreationForm from 'pages/propositions/components/forms/implication-creation';
 import ImplicationDistributionForm from 'pages/propositions/components/forms/implication-distribution';
 import PremiseForm from 'pages/propositions/components/forms/premise';
@@ -50,8 +50,8 @@ describe('Propositions Forms component:', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('DirectProofsEditorToolbar matches the snapshot', () => {
-    const { asFragment } = renderWithRedux(<DirectProofsEditorToolbar />, mockedReducer, mockedState);
+  it('DPEditorButtons matches the snapshot', () => {
+    const { asFragment } = renderWithRedux(<DPEditorButtons />, mockedReducer, mockedState);
     expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -18,7 +18,7 @@ import {
   useIsPremisePossible,
 } from 'hooks';
 
-const NaturalProofsEditorToolbar = (): React.ReactElement => {
+const NPEditorButtons = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const isPremiseDisabled = !useIsPremisePossible();
   const selectedIds = useAppSelector(selectors.selectedIds);
@@ -195,4 +195,4 @@ const NaturalProofsEditorToolbar = (): React.ReactElement => {
   );
 };
 
-export default NaturalProofsEditorToolbar;
+export default NPEditorButtons;
