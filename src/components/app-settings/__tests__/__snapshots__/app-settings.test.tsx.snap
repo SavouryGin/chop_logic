@@ -84,25 +84,29 @@ exports[`AppSettings tests: should match the snapshot 1`] = `
           </span>
         </label>
       </div>
-      <button
-        class="button button_large"
-        id="button_id_7"
-        title="Apply"
-        type="submit"
+      <div
+        class="form_buttons"
       >
-        <span
-          class="button__shadow"
-        />
-        <span
-          class="button__edge"
-        />
-        <span
-          class="button__front chop-icon__check"
-          data-testid="button_id_7"
+        <button
+          class="button button_large"
+          id="button_id_7"
+          title="Apply"
+          type="submit"
         >
-          Apply
-        </span>
-      </button>
+          <span
+            class="button__shadow"
+          />
+          <span
+            class="button__edge"
+          />
+          <span
+            class="button__front chop-icon__check"
+            data-testid="button_id_7"
+          >
+            Apply
+          </span>
+        </button>
+      </div>
     </form>
   </div>
 </DocumentFragment>
