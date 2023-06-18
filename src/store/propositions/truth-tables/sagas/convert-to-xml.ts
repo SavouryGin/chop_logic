@@ -7,12 +7,13 @@ import { TruthTableColumn } from '../interfaces';
 import { truthTablesActions as actions } from 'store/propositions/truth-tables';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 
-export function* convertTruthTableToXMLWatcher(): Generator {
-  yield takeEvery(actions.convertToXML, convertTruthTableToXMLSaga);
+export function* exportTruthTableToXMLWatcher(): Generator {
+  yield takeEvery(actions.exportXML, exportTruthTableToXMLSaga);
 }
 
-export function* convertTruthTableToXMLSaga(): SagaIterator {
+export function* exportTruthTableToXMLSaga(): SagaIterator {
   try {
+    console.log('SAGA');
     const columns: TruthTableColumn[] = yield select(selectors.columns);
     const data: TableItem[] = yield select(selectors.data);
     yield call(converterXML.truthTableToXML, { columns, data });

@@ -3,7 +3,7 @@ import React from 'react';
 import TruthTableForm from './components/form';
 import TruthTablesTable from './components/table';
 import truthTablesSelectors from 'store/propositions/truth-tables/selectors';
-import { truthTablesActions } from 'store/propositions/truth-tables';
+import { truthTablesActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 
@@ -12,7 +12,7 @@ const TruthTables = (): React.ReactElement => {
   const dispatch = useAppDispatch();
 
   const resetError = () => {
-    dispatch(truthTablesActions.setError(null));
+    dispatch(actions.setError(null));
   };
 
   return (

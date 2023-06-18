@@ -28,7 +28,7 @@ export const truthTablesSlice = createSlice({
       state.data = action.payload;
     },
 
-    convertToXML: (state, _action: PayloadAction) => {
+    exportXML: (state, _action: PayloadAction) => {
       return state;
     },
 
