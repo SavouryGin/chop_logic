@@ -1,5 +1,5 @@
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
-import { Language, LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
+import { Language, LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol, TableColumn, TableItem } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { XMLTag } from 'enums/xml-tags';
@@ -92,9 +92,17 @@ const npToXML = (tableData: NaturalProofsTableItem[]): string =>
 const dpToXML = (tableData: DirectProofsTableItem[]): string =>
   `${XMLTag.Declaration}\n${XMLTag.DPOpen}${dpArrayToXML(tableData)}${XMLTag.DPClose}`;
 
+const truthTableToXML = ({ columns, data }: { columns: TableColumn[]; data: TableItem[] }): string => {
+  console.log(columns);
+  console.log(data);
+
+  return '';
+};
+
 const converterXML = {
   npToXML,
   dpToXML,
+  truthTableToXML,
 };
 
 export default Object.freeze(converterXML);
