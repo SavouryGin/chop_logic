@@ -28,6 +28,10 @@ export const truthTablesSlice = createSlice({
       state.data = action.payload;
     },
 
+    exportXML: (state, _action: PayloadAction) => {
+      return state;
+    },
+
     resetState: () => {
       return TRUTH_TABLES_INITIAL_STATE;
     },
