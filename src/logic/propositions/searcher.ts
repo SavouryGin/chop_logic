@@ -20,8 +20,6 @@ const searcher = {
         return symbol;
       } else if (isNotMatchingCloseParenthesis) {
         nextOpenParenthesisCounter--;
-      } else {
-        continue;
       }
     }
 

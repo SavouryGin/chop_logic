@@ -50,7 +50,7 @@ const TextInput = ({
     const value = e.target.value || '';
     setInputValue(value);
     if (isSoundEnabled) {
-      soundPlayer.snap.play();
+      void soundPlayer.snap.play();
     }
     if (onChangeInput) {
       onChangeInput(e);

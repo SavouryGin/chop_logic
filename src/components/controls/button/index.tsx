@@ -45,7 +45,7 @@ const Button = ({ onClick, icon, sound, view = 'normal', buttonId, isDisabled, .
 
   const onButtonClick = () => {
     if (sound && isSoundEnabled) {
-      sound.play();
+      void sound.play();
     }
     if (onClick) {
       onClick();

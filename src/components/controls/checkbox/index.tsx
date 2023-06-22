@@ -43,7 +43,7 @@ const Checkbox = ({
     const value = e.target.checked;
     setIsChecked(value);
     if (isSoundEnabled) {
-      soundPlayer.seatbelt.play();
+      void soundPlayer.seatbelt.play();
     }
     if (onChangeInput) {
       onChangeInput(e);

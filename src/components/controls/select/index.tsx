@@ -49,7 +49,7 @@ function Select({
     const selected = options.filter((item) => item.value.toString() === selectedOption);
     setSelectedValue(selected[0] || undefined);
     if (isSoundEnabled) {
-      soundPlayer.switch.play();
+      void soundPlayer.switch.play();
     }
     if (onChangeInput) {
       onChangeInput(e);

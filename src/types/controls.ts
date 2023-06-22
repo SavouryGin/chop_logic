@@ -1,3 +1,4 @@
+import React from 'react';
 import { ButtonID, InputID } from 'enums';
 import { CommonProps, LocalText } from './general';
 import { FileAcceptType } from 'enums/file-accept-type';

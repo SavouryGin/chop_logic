@@ -1,3 +1,4 @@
+import React from 'react';
 import { Icon, Page } from 'enums';
 import { LocalText } from './general';
 
