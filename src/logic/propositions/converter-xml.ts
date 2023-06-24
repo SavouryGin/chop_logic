@@ -99,6 +99,11 @@ const truthTableToXML = ({ columns, data }: { columns: TableColumn[]; data: Tabl
   return '';
 };
 
+// TODO: add utils
+export const depthToXML = (depth: number): string => `${XMLTag.DepthOpen}${depth}${XMLTag.DepthClose}`;
+
+export const fieldToXML = (field: string): string => `${XMLTag.FieldOpen}${field}${XMLTag.FieldClose}`;
+
 const converterXML = {
   npToXML,
   dpToXML,
