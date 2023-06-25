@@ -1,11 +1,11 @@
 import ErrorPopup from 'components/error-popup';
 import React from 'react';
-import TruthTableForm from './components/form';
-import TruthTablesTable from './components/table';
+import TruthTableForm from 'pages/propositions/components/forms/truth-table';
+import TruthTablesTable from 'pages/propositions/components/tables/truth-table';
 import truthTablesSelectors from 'store/propositions/truth-tables/selectors';
 import { truthTablesActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import './styles.scss';
+import 'pages/propositions/sub-pages/truth-tables/styles.scss';
 
 const TruthTables = (): React.ReactElement => {
   const error = useAppSelector(truthTablesSelectors.error);

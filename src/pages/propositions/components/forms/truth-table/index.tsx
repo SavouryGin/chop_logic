@@ -2,7 +2,7 @@ import Form from 'components/controls/form';
 import FormulaPreview from 'components/controls/formula-preview';
 import React, { useState } from 'react';
 import TextInput from 'components/controls/text-input';
-import TruthTableFormButtons from '../buttons';
+import TruthTableFormButtons from 'pages/propositions/components/buttons/truth-table';
 import { FormValues } from 'types';
 import { InputID } from 'enums';
 import { truthTablesActions as actions } from 'store/propositions/truth-tables';
