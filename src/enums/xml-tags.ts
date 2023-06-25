@@ -42,6 +42,8 @@ export enum XMLTag {
   PositionClose = '</position>',
   RepresentOpen = '<representation>',
   RepresentClose = '</representation>',
+  TruthTableOpen = '<truthTable>',
+  TruthTableClose = '</truthTable>',
   TTDataOpen = '<truthTableData>',
   TTDataClose = '</truthTableData>',
   TTColumnsOpen = '<truthTableColumns>',

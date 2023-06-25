@@ -5,7 +5,7 @@ import { ButtonID, Icon } from 'enums';
 import { truthTablesActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-const TruthTableFormButtons = (): React.ReactElement => {
+const TruthTableFormButtons = ({ input }: { input: string }): React.ReactElement => {
   const columns = useAppSelector(selectors.columns);
   const data = useAppSelector(selectors.data);
   const isExportDisabled = !columns.length || !data.length;
@@ -13,7 +13,7 @@ const TruthTableFormButtons = (): React.ReactElement => {
   const dispatch = useAppDispatch();
 
   const handleExportXML = () => {
-    dispatch(actions.exportXML());
+    dispatch(actions.exportXML({ input }));
   };
 
   return (
