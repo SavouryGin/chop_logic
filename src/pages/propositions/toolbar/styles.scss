@@ -8,14 +8,13 @@
 
 .propositions-toolbar {
   position: absolute;
-  right: 54px;
-  top: 174px;
+  right: 3.375rem;
+  top: 11.125rem;
   background-color: $light-background-color;
   z-index: $sidebar-z-index;
   min-width: 16rem;
   padding: $big-padding;
-  border-bottom-left-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  border-radius: $border-radius;
   box-shadow: $light-box-shadow;
   @include scrollbar-styles(light);
   @include fade-in();
