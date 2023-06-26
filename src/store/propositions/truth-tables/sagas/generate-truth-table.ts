@@ -20,6 +20,7 @@ export function* generateTruthTableSaga(action: { payload: { input: string } }):
     const data: TableItem[] = yield call(truthTableGenerator.calculateTableData, { formula, columns });
     yield put(actions.setTableColumns(columns));
     yield put(actions.setTableData(data));
+    yield put(actions.setFormula(formula));
   } catch (error: unknown) {
     yield put(actions.setError(errorsTexts.generalError));
   }

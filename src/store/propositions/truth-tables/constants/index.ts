@@ -5,4 +5,5 @@ export const TRUTH_TABLES_INITIAL_STATE: TruthTablesInitialState = {
   error: null,
   columns: [],
   data: [],
+  formula: null,
 };

@@ -42,7 +42,7 @@ const TruthTableForm = (): React.ReactElement => {
       passValues={takeValues}
       isSubmitDisabled={isFormInvalid}
       className='truth-tables_form'
-      additionalButtons={<TruthTableFormButtons input={formValue.input} />}
+      additionalButtons={<TruthTableFormButtons />}
     />
   );
 };

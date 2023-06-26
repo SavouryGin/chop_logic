@@ -1,8 +1,7 @@
-import converter from 'logic/propositions/converter';
 import converterXML from 'logic/propositions/converter-xml';
 import errorsTexts from 'texts/propositions/elements';
 import selectors from '../selectors';
-import { PropositionalExpression, PropositionalFormula, TableItem } from 'types';
+import { PropositionalFormula, TableItem } from 'types';
 import { SagaIterator } from 'redux-saga';
 import { TruthTableColumn } from '../interfaces';
 import { truthTablesActions as actions } from 'store/propositions/truth-tables';
@@ -12,11 +11,9 @@ export function* exportTruthTableToXMLWatcher(): Generator {
   yield takeEvery(actions.exportXML, exportTruthTableToXMLSaga);
 }
 
-export function* exportTruthTableToXMLSaga(action: { payload: { input: string } }): SagaIterator {
+export function* exportTruthTableToXMLSaga(): SagaIterator {
   try {
-    const { input } = action.payload;
-    const expression: PropositionalExpression = yield call(converter.convertStringToExpression, input);
-    const formula: PropositionalFormula = yield call(converter.convertExpressionToFormula, expression);
+    const formula: PropositionalFormula = yield select(selectors.formula);
     const columns: TruthTableColumn[] = yield select(selectors.columns);
     const data: TableItem[] = yield select(selectors.data);
     yield call(converterXML.truthTableToXML, { columns, data, formula });

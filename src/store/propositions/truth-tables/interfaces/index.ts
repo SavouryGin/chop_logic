@@ -1,4 +1,4 @@
-import { LocalText, TableColumn, TableItem } from 'types';
+import { LocalText, PropositionalFormula, TableColumn, TableItem } from 'types';
 import { PropositionalOperator } from 'enums';
 
 export interface TruthTablesInitialState {
@@ -6,6 +6,7 @@ export interface TruthTablesInitialState {
   error: LocalText | null;
   columns: TableColumn[];
   data: TableItem[];
+  formula: PropositionalFormula | null;
 }
 
 export interface TruthTablesFlags {

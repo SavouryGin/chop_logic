@@ -1,4 +1,4 @@
-import { LocalText, TableColumn, TableItem } from 'types';
+import { LocalText, PropositionalFormula, TableColumn, TableItem } from 'types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TRUTH_TABLES_INITIAL_STATE } from './constants';
 import { TruthTablesFlag } from './interfaces';
@@ -28,7 +28,11 @@ export const truthTablesSlice = createSlice({
       state.data = action.payload;
     },
 
-    exportXML: (state, _action: PayloadAction<{ input: string }>) => {
+    setFormula: (state, action: PayloadAction<PropositionalFormula | null>) => {
+      state.formula = action.payload;
+    },
+
+    exportXML: (state, _action: PayloadAction) => {
       return state;
     },
 
