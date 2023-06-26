@@ -1,5 +1,5 @@
 import { all } from 'redux-saga/effects';
-import { exportTruthTableToXMLWatcher } from './convert-to-xml';
+import { exportTruthTableToXMLWatcher } from 'store/propositions/truth-tables/sagas/export-to-xml';
 import { generateTruthTableWatcher } from './generate-truth-table';
 
 function* truthTableSagas(): Generator {

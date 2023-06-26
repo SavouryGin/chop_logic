@@ -5,7 +5,7 @@ import TextInput from 'components/controls/text-input';
 import TruthTableFormButtons from 'pages/propositions/components/buttons/truth-table';
 import { FormValues } from 'types';
 import { InputID } from 'enums';
-import { truthTablesActions as actions } from 'store/propositions/truth-tables';
+import { ttActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, usePropositionalFormulaPreview } from 'hooks';
 
 const TruthTableForm = (): React.ReactElement => {

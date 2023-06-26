@@ -11,6 +11,7 @@ export interface TruthTablesInitialState {
 
 export interface TruthTablesFlags {
   isLoading: boolean;
+  isNameInputPopupVisible: boolean;
 }
 
 export type TruthSet = {

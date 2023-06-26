@@ -4,7 +4,7 @@ import truthTableGenerator from 'logic/propositions/truth-table-generator';
 import { PropositionalExpression, PropositionalFormula, TableItem } from 'types';
 import { SagaIterator } from 'redux-saga';
 import { TruthTableColumn } from '../interfaces';
-import { truthTablesActions as actions } from 'store/propositions/truth-tables';
+import { ttActions as actions } from 'store/propositions/truth-tables';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 export function* generateTruthTableWatcher(): Generator {

@@ -32,7 +32,7 @@ export const truthTablesSlice = createSlice({
       state.formula = action.payload;
     },
 
-    exportXML: (state, _action: PayloadAction) => {
+    exportToXML: (state, _action: PayloadAction<string | undefined>) => {
       return state;
     },
 
@@ -42,4 +42,4 @@ export const truthTablesSlice = createSlice({
   },
 });
 
-export const truthTablesActions = { ...truthTablesSlice.actions };
+export const ttActions = { ...truthTablesSlice.actions };

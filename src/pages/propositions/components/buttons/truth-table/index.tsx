@@ -2,7 +2,7 @@ import Button from 'components/controls/button';
 import React from 'react';
 import selectors from 'store/propositions/truth-tables/selectors';
 import { ButtonID, Icon } from 'enums';
-import { truthTablesActions as actions } from 'store/propositions/truth-tables';
+import { ttActions as actions } from 'store/propositions/truth-tables';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 const TruthTableFormButtons = (): React.ReactElement => {
