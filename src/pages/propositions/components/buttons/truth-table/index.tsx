@@ -13,7 +13,7 @@ const TruthTableFormButtons = (): React.ReactElement => {
   const dispatch = useAppDispatch();
 
   const handleExportXML = () => {
-    dispatch(actions.exportXML());
+    dispatch(actions.exportToXML());
   };
 
   return (

@@ -2,12 +2,17 @@ import Formula from 'components/controls/formula';
 import Label from 'components/controls/label';
 import React, { memo } from 'react';
 import formatClass from 'helpers/formatters/format-class-name';
-import { FormulaPreviewProps } from 'types';
+import { CommonProps, PropositionalExpression } from 'types';
 import { InputID } from 'enums';
+import { PropositionalError } from 'errors/propositional-error';
 import { inputTexts } from 'texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
+
+type FormulaPreviewProps = CommonProps & {
+  preview: PropositionalExpression | PropositionalError;
+};
 
 const FormulaPreview = ({ preview, className }: FormulaPreviewProps): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
@@ -23,7 +28,9 @@ const FormulaPreview = ({ preview, className }: FormulaPreviewProps): React.Reac
       {Array.isArray(preview) ? (
         <Formula id='formula-preview' content={preview} className='formula-preview__formula' />
       ) : (
-        <p className={errorClassNames}>{preview.displayedErrorMessage[language]}</p>
+        <p id='formula-preview' className={errorClassNames}>
+          {preview.displayedErrorMessage[language]}
+        </p>
       )}
     </div>
   );

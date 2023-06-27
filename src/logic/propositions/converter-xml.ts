@@ -94,7 +94,7 @@ const dpToXML = (tableData: DirectProofsTableItem[]): string =>
   `${XMLTag.Declaration}\n${XMLTag.DPOpen}${dpArrayToXML(tableData)}${XMLTag.DPClose}`;
 
 const truthTableColumnsToXML = (columns: TruthTableColumn[]): string => {
-  console.log(columns);
+  console.log('columns', columns);
 
   return `${XMLTag.TTColumnsOpen}${XMLTag.TTColumnsClose}`;
 };
