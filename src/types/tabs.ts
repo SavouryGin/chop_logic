@@ -1,3 +1,4 @@
+import React from 'react';
 import { LocalText } from './general';
 
 export type TabItem = {

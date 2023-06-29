@@ -14,7 +14,7 @@ const Tab = ({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement
     e.stopPropagation();
     onSelect(tabId);
     if (isSoundEnabled) {
-      soundPlayer.seatbelt.play();
+      void soundPlayer.seatbelt.play();
     }
   };
 

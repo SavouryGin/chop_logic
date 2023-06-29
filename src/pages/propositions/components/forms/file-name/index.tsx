@@ -6,10 +6,11 @@ import { FormValues } from 'types';
 import { InputID } from 'enums';
 import { dpActions } from 'store/propositions/direct-proofs';
 import { npActions } from 'store/propositions/natural-proofs';
+import { ttActions } from 'store/propositions/truth-tables';
 import { useAppDispatch } from 'hooks';
 import './styles.scss';
 
-const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElement => {
+const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' | 'truth' }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const initialName = mode === 'direct' ? 'MyDirectProof' : 'MyNaturalProof';
   const fileNameInitialValue = { fileName: initialName };
@@ -41,6 +42,11 @@ const FileNameForm = ({ mode }: { mode: 'natural' | 'direct' }): React.ReactElem
     if (mode === 'natural') {
       dispatch(npActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
       dispatch(npActions.exportToXML(formValue.fileName));
+    }
+
+    if (mode === 'truth') {
+      dispatch(ttActions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
+      dispatch(ttActions.exportToXML(formValue.fileName));
     }
   };
 

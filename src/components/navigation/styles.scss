@@ -4,15 +4,21 @@
 @import 'styles/mixins/text-styles.scss';
 @import 'styles/animations/slide-in-left.scss';
 @import 'styles/animations/slide-out-left.scss';
+@import 'styles/mixins/scrollbar-styles.scss';
 
 .navigation {
   @include slide-in-left();
+  @include scrollbar-styles(light);
   position: absolute;
-  left: 0;
-  top: $header-height;
+  left: $big-padding;
+  top: $header-height + $big-padding;
   background-color: $light-background-color;
   z-index: $sidebar-z-index;
   min-width: 18rem;
+  border-radius: $border-radius;
+  overflow: auto;
+  padding: $big-padding;
+  box-shadow: $light-box-shadow;
 
   &_closing {
     @include slide-out-left();
@@ -58,6 +64,8 @@
 
   &_dark {
     background-color: $dark-background-color;
+    box-shadow: $dark-box-shadow;
+    @include scrollbar-styles(dark);
     .navigation__nested-list {
       border: $dark-border;
     }

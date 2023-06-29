@@ -23,11 +23,7 @@ const validator = {
   },
 
   isIncorrectMainSymbol(symbol: PropositionalSymbol): boolean {
-    if (symbol.type === 'variable' || symbol.type === 'operator') {
-      return false;
-    }
-
-    return true;
+    return !(symbol.type === 'variable' || symbol.type === 'operator');
   },
 
   isOpenParenthesisSymbol(symbol: PropositionalSymbol | undefined): boolean {
@@ -35,11 +31,7 @@ const validator = {
       return false;
     }
 
-    if (symbol.type === 'parentheses' && symbol.input === LogicalSymbolRawInput.OpenParenthesis) {
-      return true;
-    }
-
-    return false;
+    return symbol.type === 'parentheses' && symbol.input === LogicalSymbolRawInput.OpenParenthesis;
   },
 
   isCloseParenthesisSymbol(symbol: PropositionalSymbol | undefined): boolean {
@@ -47,27 +39,15 @@ const validator = {
       return false;
     }
 
-    if (symbol.type === 'parentheses' && symbol.input === LogicalSymbolRawInput.CloseParenthesis) {
-      return true;
-    }
-
-    return false;
+    return symbol.type === 'parentheses' && symbol.input === LogicalSymbolRawInput.CloseParenthesis;
   },
 
   isBinaryOperator(operator: PropositionalOperator): boolean {
-    if (operator === PropositionalOperator.Var || operator === PropositionalOperator.Not) {
-      return false;
-    }
-
-    return true;
+    return !(operator === PropositionalOperator.Var || operator === PropositionalOperator.Not);
   },
 
   isNegationSymbol(symbol: PropositionalSymbol): boolean {
-    if (symbol.type === 'operator' && symbol.input === LogicalSymbolRawInput.Negation) {
-      return true;
-    }
-
-    return false;
+    return symbol.type === 'operator' && symbol.input === LogicalSymbolRawInput.Negation;
   },
 
   isBinarySymbol(symbol: PropositionalSymbol): boolean {
@@ -76,11 +56,8 @@ const validator = {
       symbol.input === LogicalSymbolRawInput.Disjunction ||
       symbol.input === LogicalSymbolRawInput.Implication ||
       symbol.input === LogicalSymbolRawInput.Equivalence;
-    if (symbol.type === 'operator' && isBinaryInput) {
-      return true;
-    }
 
-    return false;
+    return symbol.type === 'operator' && isBinaryInput;
   },
 
   checkNumberOfParenthesis(openIndexes: number[], closeIndexes: number[]): void {
@@ -96,11 +73,7 @@ const validator = {
     const leftSymbol = expression.find((symbol) => symbol.position === variable.position - 1);
     const rightSymbol = expression.find((symbol) => symbol.position === variable.position + 1);
 
-    if (this.isOpenParenthesisSymbol(leftSymbol) && this.isCloseParenthesisSymbol(rightSymbol)) {
-      return true;
-    }
-
-    return false;
+    return this.isOpenParenthesisSymbol(leftSymbol) && this.isCloseParenthesisSymbol(rightSymbol);
   },
 
   isNegationParenthesized(operator: PropositionalSymbol, expression: PropositionalExpression): boolean {
@@ -112,11 +85,7 @@ const validator = {
     const rightSymbol = searcher.findMatchingCloseParenthesis(expression, leftSymbol);
 
     if (this.isCloseParenthesisSymbol(rightSymbol) && rightSymbol) {
-      if (rightSymbol.position - leftSymbol.position > 5) {
-        return false;
-      } else {
-        return true;
-      }
+      return rightSymbol.position - leftSymbol.position <= 5;
     }
 
     return false;
@@ -143,11 +112,7 @@ const validator = {
     const leftOpenSecondParenthesis = expression.find((symbol) => symbol.position === leftOpenParenthesis.position - 1);
     const rightCloseSecondParenthesis = expression.find((symbol) => symbol.position === rightCloseParenthesis.position + 1);
 
-    if (this.isOpenParenthesisSymbol(leftOpenSecondParenthesis) && this.isCloseParenthesisSymbol(rightCloseSecondParenthesis)) {
-      return true;
-    }
-
-    return false;
+    return this.isOpenParenthesisSymbol(leftOpenSecondParenthesis) && this.isCloseParenthesisSymbol(rightCloseSecondParenthesis);
   },
 
   isIEApplicable(first: PropositionalFormula, second: PropositionalFormula): boolean {
@@ -216,11 +181,7 @@ const validator = {
     const secondConsequent = secondImplication.values[1];
     const areConsequencesDifferent = !this.areTwoFormulasEqual(firstConsequent, secondConsequent);
 
-    if (areConsequencesDifferent) {
-      return false;
-    }
-
-    return true;
+    return !areConsequencesDifferent;
   },
 
   isCEApplicable(formulas: PropositionalFormula[]): boolean {
@@ -270,11 +231,7 @@ const validator = {
     const formula = formulas[0];
     const subFormula = formula.values[0] as PropositionalFormula;
 
-    if (formula.operator === PropositionalOperator.Not && subFormula.operator === PropositionalOperator.Not) {
-      return true;
-    }
-
-    return false;
+    return formula.operator === PropositionalOperator.Not && subFormula.operator === PropositionalOperator.Not;
   },
 
   isEIApplicable(formulas: PropositionalFormula[]): boolean {
@@ -289,11 +246,7 @@ const validator = {
     const secondAntecedent = secondFormula.values[0] as PropositionalFormula;
     const secondConsequent = secondFormula.values[1] as PropositionalFormula;
 
-    if (this.areTwoFormulasEqual(firstAntecedent, secondConsequent) && this.areTwoFormulasEqual(firstConsequent, secondAntecedent)) {
-      return true;
-    }
-
-    return false;
+    return this.areTwoFormulasEqual(firstAntecedent, secondConsequent) && this.areTwoFormulasEqual(firstConsequent, secondAntecedent);
   },
 
   isEEApplicable(formulas: PropositionalFormula[]): boolean {
@@ -382,16 +335,12 @@ const validator = {
       return true;
     }
 
-    if (
+    return (
       selectedItems.length === 2 &&
       selectedItems[0].formulaBase === NPFormulaBase.Assumption &&
       lastItem?.id === selectedItems[1].id &&
       selectedItems[0].assumptionId === selectedItems[1].assumptionId
-    ) {
-      return true;
-    }
-
-    return false;
+    );
   },
 };
 

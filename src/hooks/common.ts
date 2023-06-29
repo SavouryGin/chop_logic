@@ -50,7 +50,7 @@ export const useEffectOnce = (effect: () => void | (() => void)) => {
         return;
       }
 
-      // otherwise this is not a dummy destroy, so call the destroy func
+      // otherwise this is not a dummy destroy, so call destroy func
       if (destroyFn.current) {
         destroyFn.current();
       }

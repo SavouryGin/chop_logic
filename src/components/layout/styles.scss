@@ -37,24 +37,12 @@
     padding: $big-padding $page-padding;
   }
 
-  &__navigation {
-    border-bottom-right-radius: $border-radius;
-    overflow: auto;
-    padding: $big-padding;
-  }
-
-  &__sidebar {
-    border-bottom-left-radius: $border-radius;
-    overflow: auto;
-    padding: $big-padding;
-  }
-
   // Defaults colors
   @include layout-colors(light);
+  @include scrollbar-styles(light);
+
   &__header,
-  &__main,
-  &__navigation,
-  &__sidebar {
+  &__main {
     box-shadow: $light-box-shadow;
     @include scrollbar-styles(light);
   }
@@ -63,45 +51,10 @@
   &_dark {
     @include layout-colors(dark);
   }
+
   &__header_dark,
-  &__main_dark,
-  &__navigation_dark,
-  &__sidebar_dark {
+  &__main_dark {
     box-shadow: $dark-box-shadow;
     @include scrollbar-styles(dark);
-  }
-
-  // Small screen styles
-  @media (max-width: $max-small-screen-width) {
-    grid-template-columns: 0.5fr 11fr 0.5fr;
-
-    &__navigation,
-    &__sidebar {
-      position: absolute;
-      top: $header-height + $block-gap;
-      z-index: $panel-z-index;
-      background-color: $light-background-color;
-      &_dark {
-        background-color: $dark-background-color;
-      }
-    }
-
-    &__navigation {
-      left: 0;
-    }
-
-    &__sidebar {
-      right: 0;
-    }
-  }
-
-  // Tablet screen styles
-  @media (max-width: $max-table-width) {
-    grid-template-columns: 0.2fr 11.6fr 0.2fr;
-  }
-
-  // Mobile screen styles
-  @media (max-width: $max-mobile-width) {
-    grid-template-columns: 0.1fr 11.8fr 0.1fr;
   }
 }

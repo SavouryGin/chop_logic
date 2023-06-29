@@ -38,7 +38,7 @@ const Header = ({ className }: CommonProps): React.ReactElement => {
 
     if (isWindowInFullscreen) {
       if (document.fullscreenElement) {
-        document.exitFullscreen();
+        void document.exitFullscreen();
       }
       dispatch(settingsActions.setFullScreenFlag(false));
     } else {

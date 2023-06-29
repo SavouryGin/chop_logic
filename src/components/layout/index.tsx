@@ -14,14 +14,13 @@ const Layout = (): React.ReactElement => {
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   // Class names
   const layoutClassNames = formatClass(['layout', { layout_dark: isDarkMode }]);
-  const navigationClassNames = formatClass(['layout__navigation', { layout__navigation_dark: isDarkMode }]);
   const headerClassNames = formatClass(['layout__header', { layout__header_dark: isDarkMode }]);
   const mainClassNames = formatClass(['layout__main', { layout__main_dark: isDarkMode }]);
   const footerClassNames = 'layout__footer';
 
   return (
     <div className={layoutClassNames} data-testid='layout'>
-      <Navigation className={navigationClassNames} isOpened={isNavigationOpened} />
+      <Navigation isOpened={isNavigationOpened} />
       <Header className={headerClassNames} />
       <main className={mainClassNames}>
         <Outlet />

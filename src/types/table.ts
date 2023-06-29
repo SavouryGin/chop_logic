@@ -1,3 +1,4 @@
+import React from 'react';
 import { CommonProps, LocalText } from './general';
 
 export type TableProps = CommonProps & {

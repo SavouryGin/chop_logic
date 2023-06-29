@@ -3,7 +3,7 @@ import { Icon, Page } from 'enums';
 import { RoutesMapItem } from 'types';
 import { paths } from './paths';
 
-const TruthTables = React.lazy(() => import('pages/truth-tables'));
+const TruthTables = React.lazy(() => import('pages/propositions/sub-pages/truth-tables'));
 const PropositionsDirect = React.lazy(() => import('pages/propositions/sub-pages/direct-proofs'));
 const PropositionsNatural = React.lazy(() => import('pages/propositions/sub-pages/natural-proofs'));
 // const Predicates = React.lazy(() => import('pages/predicates'));

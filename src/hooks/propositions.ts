@@ -124,7 +124,7 @@ export const useIsPremisePossible = (): boolean => {
     } else {
       const lastItemLevel = data[data.length - 1].level;
 
-      setIsEnabled(lastItemLevel === 0 ? true : false);
+      setIsEnabled(lastItemLevel === 0);
     }
   }, [data.length]);
 
