@@ -63,6 +63,6 @@ describe('Layout component:', () => {
     fireEvent.click(screen.getByTitle(buttonTexts[ButtonID.ColorTheme].title.en));
     expect(screen.getByTestId('layout')).toHaveClass('layout_dark');
     expect(screen.getByRole('banner')).toHaveClass('layout__header_dark');
-    expect(screen.queryByRole('navigation')).toHaveClass('layout__navigation_dark');
+    expect(screen.queryByRole('navigation')).toHaveClass('navigation navigation_dark navigation_closing');
   });
 });

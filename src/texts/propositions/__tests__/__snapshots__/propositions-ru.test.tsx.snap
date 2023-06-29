@@ -7385,8 +7385,7 @@ exports[`Propositions RU text components: NPHeuristicsRu should match the snapsh
       </span>
       . Затем нужно использовать правило 
       <abbr
-        title="Введение
- импликации"
+        title="Введение импликации"
       >
         ВИ
       </abbr>
@@ -8454,8 +8453,7 @@ exports[`Propositions RU text components: NPHeuristicsRu should match the snapsh
       </span>
        можно получить по правилу 
       <abbr
-        title="Удаление
- импликации"
+        title="Удаление импликации"
       >
         УИ
       </abbr>
