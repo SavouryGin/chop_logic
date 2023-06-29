@@ -12,6 +12,7 @@ exports[`Formula component: should match the snapshot 1`] = `
     </div>
     <pre
       class="formula"
+      role="math"
     >
       <span
         class="formula__parentheses"

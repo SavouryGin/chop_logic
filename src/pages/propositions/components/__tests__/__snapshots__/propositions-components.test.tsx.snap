@@ -80,6 +80,8 @@ exports[`Propositions Forms component: ContradictionRealizationForm matches the 
         </label>
         <pre
           class="formula formula-preview__formula"
+          id="formula-preview"
+          role="math"
         />
       </div>
       <div
@@ -356,6 +358,8 @@ exports[`Propositions Forms component: ImplicationCreationForm matches the snaps
         </label>
         <pre
           class="formula formula-preview__formula"
+          id="formula-preview"
+          role="math"
         />
       </div>
       <div
@@ -490,6 +494,8 @@ exports[`Propositions Forms component: ImplicationDistributionForm matches the s
         </label>
         <pre
           class="formula formula-preview__formula"
+          id="formula-preview"
+          role="math"
         />
       </div>
       <div
@@ -574,6 +580,8 @@ exports[`Propositions Forms component: PremiseForm matches the snapshot 1`] = `
         </label>
         <pre
           class="formula formula-preview__formula"
+          id="formula-preview"
+          role="math"
         />
       </div>
       <div

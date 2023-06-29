@@ -19,7 +19,7 @@ function Formula({ content, className, level, id }: FormulaProps): React.ReactEl
 
   const formula = useMemo(
     () => (
-      <pre id={id} className={classNames} role='textbox'>
+      <pre id={id} className={classNames} role='math'>
         {content.map((item, index) => getPreformattedSymbol(item, index))}
       </pre>
     ),
