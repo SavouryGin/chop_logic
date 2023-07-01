@@ -140,8 +140,10 @@ export const propositionsDPSlice = createSlice({
       state.tableData = [...state.tableData, newItem];
     },
 
-    eliminateImplication: (state, action: PayloadAction<DirectProofsTableItem[]>) => {
-      const items = action.payload;
+    eliminateImplication: (state, _action: PayloadAction) => {
+      const selectedIds = state.selectedIds;
+      const items = state.tableData.filter((item) => selectedIds.includes(item.id));
+
       if (items.length !== 2) {
         return state;
       }

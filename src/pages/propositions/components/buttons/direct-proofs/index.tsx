@@ -14,7 +14,6 @@ const DPEditorButtons = (): React.ReactElement => {
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useIsImplicationEliminationPossible(selectedIds);
   const isReplacerDisabled = tableDataLength === 0;
-  const selectedItems = useAppSelector(selectors.selectedTableItems);
 
   const deleteSteps = () => {
     dispatch(actions.deleteSteps({ isConfirmed: false }));
@@ -41,7 +40,7 @@ const DPEditorButtons = (): React.ReactElement => {
   };
 
   const performIE = () => {
-    dispatch(actions.eliminateImplication(selectedItems));
+    dispatch(actions.eliminateImplication());
   };
 
   const openReplacer = () => {

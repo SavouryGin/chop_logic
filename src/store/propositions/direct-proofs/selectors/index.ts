@@ -43,18 +43,13 @@ const isNameInputPopupVisible = createSelector(flags, (data: PropositionsDirectP
 
 const isToolbarOpened = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isToolbarOpened);
 
-const selectedFormulas = (state: RootState): PropositionalFormula[] => {
-  const selectedIds = state.propositionsDP.selectedIds;
-  const selectedItems = state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
-
-  return selectedItems.map((item) => item.formula);
-};
-
-const selectedTableItems = (state: RootState): DirectProofsTableItem[] => {
-  const selectedIds = state.propositionsDP.selectedIds;
-
-  return state.propositionsDP.tableData.filter((item) => selectedIds.includes(item.id));
-};
+const selectedFormulas = createSelector(
+  selectedIds,
+  tableData,
+  (selectedIds: string[], data: DirectProofsTableItem[]): PropositionalFormula[] => {
+    return data.filter((item) => selectedIds.includes(item.id)).map((item) => item.formula);
+  },
+);
 
 const isLoading = createSelector(flags, (data: PropositionsDirectProofsFlags): boolean => data.isLoading);
 
@@ -66,7 +61,6 @@ export const dpSelectors = {
   dependentItems,
   selectedIds,
   selectedFormulas,
-  selectedTableItems,
   tableDataLength,
   clipboardData,
   error,

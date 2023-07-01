@@ -54,7 +54,7 @@ describe('propositionsDPSlice tests:', () => {
       selectedIds: [mocks.dpTableDataIE[0].id, mocks.dpTableDataIE[0].id],
     };
 
-    expect(slice.reducer(testState, actions.eliminateImplication(testItems))).toEqual({
+    expect(slice.reducer(testState, actions.eliminateImplication())).toEqual({
       ...state,
       tableData: [...testItems, { ...mocks.dpTableDataIE[2], id: expect.any(String) }],
       selectedIds: [],
