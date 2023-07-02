@@ -24,13 +24,11 @@ const FormulaPreview = ({ preview, className }: FormulaPreviewProps): React.Reac
 
   return (
     <div className={classNames}>
-      <Label id='formula-preview' text={labelText} isDarkMode={isDarkMode} />
+      <Label text={labelText} isDarkMode={isDarkMode} />
       {Array.isArray(preview) ? (
-        <Formula id='formula-preview' content={preview} className='formula-preview__formula' />
+        <Formula content={preview} className='formula-preview__formula' />
       ) : (
-        <p id='formula-preview' className={errorClassNames}>
-          {preview.displayedErrorMessage[language]}
-        </p>
+        <p className={errorClassNames}>{preview.displayedErrorMessage[language]}</p>
       )}
     </div>
   );

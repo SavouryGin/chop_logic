@@ -15,13 +15,6 @@ export type CheckboxProps = CommonProps &
     setCheckboxValue?: boolean;
   };
 
-export type LabelProps = CommonProps & {
-  id: string;
-  text?: string;
-  isRequired?: boolean;
-  isDarkMode?: boolean;
-};
-
 export type SelectProps = CommonProps &
   InputHandlersProps & {
     name: string;
