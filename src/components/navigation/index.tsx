@@ -1,5 +1,5 @@
 import React, { memo, useRef } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { getNavigationLinksList } from './helpers';
 import { routesMap } from 'router/map';

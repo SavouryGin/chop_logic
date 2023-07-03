@@ -1,11 +1,11 @@
 import Button from 'components/controls/button';
 import Portal from 'components/portal';
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { ButtonID, Icon } from 'enums';
 import { CommonProps, LocalText } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import { uiElementTexts } from 'texts';
 import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';

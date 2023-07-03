@@ -1,8 +1,8 @@
 import React, { memo, useMemo } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps, PropositionalSymbol } from 'types';
 import { CommonSymbolHexCode } from 'enums';
-import { getPreformattedSymbol } from 'helpers/formatters/get-preformatted-symbol';
+import { getPreformattedSymbol } from 'utils/formatters/get-preformatted-symbol';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

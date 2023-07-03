@@ -1,6 +1,6 @@
 import Navigation from '../index';
 import React from 'react';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/test-utils/render-with-redux';
 import { Page } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { routesMap } from 'router/map';

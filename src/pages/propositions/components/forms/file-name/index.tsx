@@ -1,7 +1,7 @@
 import Form from 'components/controls/form';
 import React, { memo, useMemo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
-import regularExpressions from 'helpers/regular-expressions';
+import regularExpressions from 'utils/regular-expressions';
 import { FormValues } from 'types';
 import { InputID } from 'enums';
 import { dpActions } from 'store/propositions/direct-proofs';

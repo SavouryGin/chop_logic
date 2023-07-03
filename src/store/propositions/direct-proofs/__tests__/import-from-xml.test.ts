@@ -4,7 +4,7 @@ import tMocks from '__mocks__/data/propositions/table-items';
 import { FileAcceptType } from 'enums/file-accept-type';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { importDPFromXMLSaga, importDPFromXMLWatcher } from '../sagas/import-from-xml';
-import { readUserTextFile } from 'helpers/files/read-user-text-file';
+import { readUserTextFile } from 'utils/files/read-user-text-file';
 import { testSaga } from 'redux-saga-test-plan';
 
 describe('DP importDPFromXMLSaga tests', () => {

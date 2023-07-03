@@ -1,7 +1,7 @@
 import Formula from '../formula';
 import React from 'react';
 import propositionsFormulasItems from '__mocks__/data/propositions/formulas-items';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 

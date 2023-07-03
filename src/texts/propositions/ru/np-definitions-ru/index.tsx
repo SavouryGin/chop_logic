@@ -1,6 +1,6 @@
 import Latex from 'react-latex';
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import latex from 'texts/propositions/latex-expressions';
 import { CommonProps } from 'types';
 

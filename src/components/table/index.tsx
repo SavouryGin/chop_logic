@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import TableBody from './elements/table-body';
 import TableHead from './elements/table-head';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { TableProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';

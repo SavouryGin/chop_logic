@@ -1,6 +1,6 @@
 import converter from './converter';
 import errorsTexts from 'texts/propositions/elements';
-import regExes from 'helpers/regular-expressions';
+import regExes from 'utils/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { NPFormulaBase } from 'enums';

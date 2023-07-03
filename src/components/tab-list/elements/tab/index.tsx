@@ -1,8 +1,8 @@
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { TabProps } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import { useAppSelector } from 'hooks';
 
 const Tab = ({ title, onSelect, tabId, isActive }: TabProps): React.ReactElement => {

@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { ButtonID } from 'enums';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import { useAppDispatch, useAppSelector, useIsImplicationEliminationPossible } from 'hooks';
 
 const DPEditorButtons = (): React.ReactElement => {

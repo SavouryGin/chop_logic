@@ -6,7 +6,7 @@ import { SagaIterator } from 'redux-saga';
 import { TruthTableColumn } from '../interfaces';
 import { ttActions as actions } from 'store/propositions/truth-tables';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
-import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
+import { createAndSaveXMLFile } from 'utils/files/create-and-save-xml-file';
 
 export function* exportTruthTableToXMLWatcher(): Generator {
   yield takeEvery(actions.exportToXML, exportTruthTableToXMLSaga);

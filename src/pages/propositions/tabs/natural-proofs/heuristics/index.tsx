@@ -1,7 +1,7 @@
 import NPHeuristicsEn from 'texts/propositions/en/np-heuristics-en';
 import NPHeuristicsRu from 'texts/propositions/ru/np-heuristics-ru';
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

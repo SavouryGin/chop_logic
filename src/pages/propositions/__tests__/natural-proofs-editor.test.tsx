@@ -1,6 +1,6 @@
 import PropositionsNaturalProofs from 'pages/propositions/sub-pages/natural-proofs';
 import React from 'react';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/test-utils/render-with-redux';
 import texts from 'texts/propositions/elements';
 import userEvent from '@testing-library/user-event';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';

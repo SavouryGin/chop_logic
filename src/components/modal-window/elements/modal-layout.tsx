@@ -2,7 +2,7 @@ import Button from 'components/controls/button';
 import FocusLock from 'react-focus-lock';
 import React from 'react';
 import { ButtonID, Icon } from 'enums';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 
 type ModalLayoutProps = {
   windowClassName: string;

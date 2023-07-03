@@ -1,10 +1,10 @@
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { Icon } from 'enums';
 import { Link, NavLink } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 

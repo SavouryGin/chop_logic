@@ -1,7 +1,7 @@
 import NPRulesEn from 'texts/propositions/en/np-rules-en';
 import NPRulesRu from 'texts/propositions/ru/np-rules-ru';
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

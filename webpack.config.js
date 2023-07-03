@@ -23,7 +23,7 @@ const config = {
       styles: path.resolve(__dirname, './src/styles'),
       assets: path.resolve(__dirname, './src/assets'),
       store: path.resolve(__dirname, './src/store'),
-      helpers: path.resolve(__dirname, './src/helpers'),
+      utils: path.resolve(__dirname, './src/utils'),
       types: path.resolve(__dirname, './src/types'),
       hooks: path.resolve(__dirname, './src/hooks'),
       errors: path.resolve(__dirname, './src/errors'),

@@ -1,7 +1,7 @@
 import ErrorPopup from 'components/error-popup';
 import React from 'react';
 import propositionsElementsTexts from 'texts/propositions/elements';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/test-utils/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';

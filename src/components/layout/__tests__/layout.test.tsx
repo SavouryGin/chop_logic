@@ -1,6 +1,6 @@
 import Layout from '../index';
 import React from 'react';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/test-utils/render-with-redux';
 import { ButtonID } from 'enums';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';

@@ -1,6 +1,6 @@
 import FileInput from '../file-input';
 import React from 'react';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/test-utils/render-with-redux';
 import userEvent from '@testing-library/user-event';
 import { FileAcceptType } from 'enums/file-accept-type';
 import { FileInputProps } from 'types';

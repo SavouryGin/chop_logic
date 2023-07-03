@@ -1,10 +1,10 @@
 import ModalLayout from './elements/modal-layout';
 import Portal from 'components/portal';
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { Browser } from 'enums';
 import { ModalWindowProps } from 'types';
-import { detectBrowser } from 'helpers/checkers';
+import { detectBrowser } from 'utils/checkers';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';

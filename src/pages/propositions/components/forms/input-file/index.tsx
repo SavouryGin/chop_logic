@@ -8,7 +8,7 @@ import { dpActions } from 'store/propositions/direct-proofs';
 import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
 import { npActions } from 'store/propositions/natural-proofs';
 import { npSelectors } from 'store/propositions/natural-proofs/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 

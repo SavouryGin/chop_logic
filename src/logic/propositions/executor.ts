@@ -6,7 +6,7 @@ import { NPExecutorData, PropositionalFormula } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
-import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
+import { removeArrayItemByIndex } from 'utils/formatters/remove-array-item';
 
 const executor = {
   performIE(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula): PropositionalFormula {

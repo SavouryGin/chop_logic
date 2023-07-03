@@ -3,7 +3,7 @@ import validator from 'logic/propositions/validator';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression } from 'types';
 import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
-import { isLatinLetter } from 'helpers/checkers';
+import { isLatinLetter } from 'utils/checkers';
 import { npSelectors } from 'store/propositions/natural-proofs/selectors';
 import { useAppSelector } from './common';
 import { useEffect, useState } from 'react';

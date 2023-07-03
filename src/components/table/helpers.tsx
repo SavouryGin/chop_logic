@@ -2,7 +2,7 @@ import Formula from 'components/controls/formula';
 import React from 'react';
 import validator from 'logic/propositions/validator';
 import { Language, LocalText, PropositionalExpression, TableColumn, TableItem } from 'types';
-import { isLocalText } from 'helpers/checkers';
+import { isLocalText } from 'utils/checkers';
 
 export function getDataCellsValues(tableRow: TableItem, columns: TableColumn[], language: Language): (string | JSX.Element)[] {
   const stringValues = [];

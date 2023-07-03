@@ -4,7 +4,7 @@ import { LogicalSymbolRawInput, NPFormulaBase, PropositionalOperator } from 'enu
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { PropositionalError } from 'errors/propositional-error';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
-import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
+import { removeArrayItemByIndex } from 'utils/formatters/remove-array-item';
 
 const validator = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

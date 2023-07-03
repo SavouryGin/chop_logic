@@ -3,7 +3,7 @@ import React from 'react';
 import { ButtonID } from 'enums';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import {
   useAppDispatch,
   useAppSelector,

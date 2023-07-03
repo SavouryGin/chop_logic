@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectRowCheckbox from './select-row-checkbox';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { TableBodyProps } from 'types';
 import { getDataCellsValues } from '../helpers';
 import { settingsSelectors } from 'store/settings/selectors';

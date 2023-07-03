@@ -1,7 +1,7 @@
 import Formula from 'components/controls/formula';
 import Label from 'components/controls/label';
 import React, { memo } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps, PropositionalExpression } from 'types';
 import { InputID } from 'enums';
 import { PropositionalError } from 'errors/propositional-error';

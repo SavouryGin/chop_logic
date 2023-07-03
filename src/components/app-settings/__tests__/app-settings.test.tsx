@@ -1,6 +1,6 @@
 import AppSettings from '../index';
 import React from 'react';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/test-utils/render-with-redux';
 import { ButtonID, InputID } from 'enums';
 import { buttonTexts, inputTexts } from 'texts';
 import { combineReducers } from '@reduxjs/toolkit';

@@ -3,7 +3,7 @@ import propositionsElementsTexts from 'texts/propositions/elements';
 import { SagaIterator } from 'redux-saga';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { readUserTextFile } from 'helpers/files/read-user-text-file';
+import { readUserTextFile } from 'utils/files/read-user-text-file';
 
 export function* importNPFromXMLWatcher(): Generator {
   yield takeEvery(actions.importFromXML, importNPFromXMLSaga);
