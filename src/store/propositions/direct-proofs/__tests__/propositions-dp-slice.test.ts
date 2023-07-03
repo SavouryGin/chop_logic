@@ -51,7 +51,7 @@ describe('propositionsDPSlice tests:', () => {
     const testState = {
       ...state,
       tableData: testItems,
-      selectedIds: [mocks.dpTableDataIE[0].id, mocks.dpTableDataIE[0].id],
+      selectedIds: [mocks.dpTableDataIE[0].id, mocks.dpTableDataIE[1].id],
     };
 
     expect(slice.reducer(testState, actions.eliminateImplication())).toEqual({

@@ -8,7 +8,6 @@ exports[`FormulaPreview component: should render the error message 1`] = `
     <label
       class="label"
       data-testid="label-test-id"
-      for="formula-preview"
     >
       <span
         class="label__text"
@@ -18,7 +17,6 @@ exports[`FormulaPreview component: should render the error message 1`] = `
     </label>
     <p
       class="formula-preview__error"
-      id="formula-preview"
     >
       The entered expression cannot be converted into a propositional formula.
     </p>
@@ -34,7 +32,6 @@ exports[`FormulaPreview component: should render the formula preview 1`] = `
     <label
       class="label"
       data-testid="label-test-id"
-      for="formula-preview"
     >
       <span
         class="label__text"
@@ -44,7 +41,6 @@ exports[`FormulaPreview component: should render the formula preview 1`] = `
     </label>
     <pre
       class="formula formula-preview__formula"
-      id="formula-preview"
       role="math"
     >
       <span

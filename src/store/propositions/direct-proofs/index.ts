@@ -141,8 +141,7 @@ export const propositionsDPSlice = createSlice({
     },
 
     eliminateImplication: (state, _action: PayloadAction) => {
-      const selectedIds = state.selectedIds;
-      const items = state.tableData.filter((item) => selectedIds.includes(item.id));
+      const items = state.tableData.filter((item) => state.selectedIds.includes(item.id));
 
       if (items.length !== 2) {
         return state;
