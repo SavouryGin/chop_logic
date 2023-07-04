@@ -1,8 +1,8 @@
-import DPAxiomsRu from '../ru/dp-axioms-ru';
-import DPDefinitionsRu from '../ru/dp-definitions-ru';
-import NPDefinitionsRu from '../ru/np-definitions-ru';
-import NPHeuristicsRu from '../ru/np-heuristics-ru';
-import NPRulesRu from '../ru/np-rules-ru';
+import DPAxiomsRu from 'assets/texts/propositions/ru/dp-axioms-ru';
+import DPDefinitionsRu from 'assets/texts/propositions/ru/dp-definitions-ru';
+import NPDefinitionsRu from 'assets/texts/propositions/ru/np-definitions-ru';
+import NPHeuristicsRu from 'assets/texts/propositions/ru/np-heuristics-ru';
+import NPRulesRu from 'assets/texts/propositions/ru/np-rules-ru';
 import React from 'react';
 import { render } from '@testing-library/react';
 

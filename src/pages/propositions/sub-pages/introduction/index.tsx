@@ -1,6 +1,6 @@
 import React from 'react';
 import formatClass from 'utils/formatters/format-class-name';
-import texts from 'texts/propositions/elements';
+import texts from 'assets/texts/propositions/elements';
 import { Icon } from 'enums';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';

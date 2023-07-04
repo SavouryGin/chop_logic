@@ -1,8 +1,8 @@
 import constants, { preparedSymbols } from 'pages/propositions/constants';
-import errorsTexts from 'texts/propositions/elements';
+import errorsTexts from 'assets/texts/propositions/elements';
 import regularExpressions from 'utils/regular-expressions';
 import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
-import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalError } from 'utils/errors/propositional-error';
 import { PropositionalFormula, PropositionalSymbol } from 'types';
 
 const factory = {

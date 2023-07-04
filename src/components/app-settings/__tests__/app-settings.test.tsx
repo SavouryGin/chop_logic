@@ -2,7 +2,7 @@ import AppSettings from '../index';
 import React from 'react';
 import renderWithRedux from 'utils/test-utils/render-with-redux';
 import { ButtonID, InputID } from 'enums';
-import { buttonTexts, inputTexts } from 'texts';
+import { buttonTexts, inputTexts } from 'assets/texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { languageOptions } from 'settings';

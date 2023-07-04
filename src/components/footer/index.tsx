@@ -5,7 +5,7 @@ import { Icon } from 'enums';
 import { externalLinks } from 'settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'utils/sounds';
-import { uiElementTexts } from 'texts';
+import { uiElementTexts } from 'assets/texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 

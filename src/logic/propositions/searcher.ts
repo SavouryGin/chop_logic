@@ -1,6 +1,6 @@
-import errorsTexts from 'texts/propositions/elements';
+import errorsTexts from 'assets/texts/propositions/elements';
 import { LogicalSymbolRawInput } from 'enums';
-import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalError } from 'utils/errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const searcher = {

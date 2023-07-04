@@ -1,11 +1,11 @@
 import converter from './converter';
-import errorsTexts from 'texts/propositions/elements';
+import errorsTexts from 'assets/texts/propositions/elements';
 import regExes from 'utils/regular-expressions';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
-import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalError } from 'utils/errors/propositional-error';
 import { XMLTag } from 'enums/xml-tags';
 import { languageStringOptions } from 'settings';
 

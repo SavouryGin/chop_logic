@@ -2,7 +2,7 @@ import Label from '../label';
 import React, { useEffect, useState } from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { FileInputProps } from 'types';
-import { inputTexts } from 'texts';
+import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

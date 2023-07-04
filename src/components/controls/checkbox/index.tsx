@@ -4,7 +4,7 @@ import formatClass from 'utils/formatters/format-class-name';
 import { CheckboxProps } from 'types';
 import { FormContext } from 'components/controls/form';
 import { Icon } from 'enums';
-import { inputTexts } from 'texts';
+import { inputTexts } from 'assets/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'utils/sounds';
 import { useAppSelector } from 'hooks';

@@ -5,7 +5,7 @@ import { getNavigationLinksList } from './helpers';
 import { routesMap } from 'router/map';
 import { settingsActions } from 'store/settings';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'texts';
+import { uiElementTexts } from 'assets/texts';
 import { useAppDispatch, useAppSelector, useClickOutside, useMount } from 'hooks';
 import './styles.scss';
 

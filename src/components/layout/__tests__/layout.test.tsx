@@ -4,7 +4,7 @@ import renderWithRedux from 'utils/test-utils/render-with-redux';
 import { ButtonID } from 'enums';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
-import { buttonTexts } from 'texts';
+import { buttonTexts } from 'assets/texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';

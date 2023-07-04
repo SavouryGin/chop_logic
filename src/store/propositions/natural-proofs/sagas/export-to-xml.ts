@@ -1,5 +1,5 @@
 import converterXML from 'logic/propositions/converter-xml';
-import errorsTexts from 'texts/propositions/elements';
+import errorsTexts from 'assets/texts/propositions/elements';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { npActions as actions } from 'store/propositions/natural-proofs';

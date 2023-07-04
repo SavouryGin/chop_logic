@@ -1,7 +1,7 @@
 import Button from 'components/controls/button';
 import Formula from 'components/controls/formula';
 import React from 'react';
-import propositionsElementsTexts from 'texts/propositions/elements';
+import propositionsElementsTexts from 'assets/texts/propositions/elements';
 import { ButtonID } from 'enums';
 import { ConfirmDeleteProofStepsPopupProps, LocalText } from 'types';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';

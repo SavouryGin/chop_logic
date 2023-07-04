@@ -1,5 +1,5 @@
 import converter from 'logic/propositions/converter';
-import errorsTexts from 'texts/propositions/elements';
+import errorsTexts from 'assets/texts/propositions/elements';
 import truthTableGenerator from 'logic/propositions/truth-table-generator';
 import { PropositionalExpression, PropositionalFormula, TableItem } from 'types';
 import { SagaIterator } from 'redux-saga';

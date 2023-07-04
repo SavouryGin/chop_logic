@@ -3,7 +3,7 @@ import React from 'react';
 import { ButtonID } from 'enums';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { Provider } from 'react-redux';
-import { buttonTexts } from 'texts';
+import { buttonTexts } from 'assets/texts';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';

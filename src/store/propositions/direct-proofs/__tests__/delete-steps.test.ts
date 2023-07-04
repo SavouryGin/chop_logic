@@ -1,5 +1,5 @@
 import mocks from '__mocks__/data/propositions/table-items';
-import propositionsElementsTexts from 'texts/propositions/elements';
+import propositionsElementsTexts from 'assets/texts/propositions/elements';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { deleteDirectProofStepsSaga, deleteDirectProofStepsWatcher } from '../sagas/delete-steps';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';

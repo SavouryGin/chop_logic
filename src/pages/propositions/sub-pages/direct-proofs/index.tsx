@@ -3,7 +3,7 @@ import PropositionsToolbar from 'pages/propositions/toolbar';
 import React from 'react';
 import TabList from 'components/tab-list';
 import formatClass from 'utils/formatters/format-class-name';
-import texts from 'texts/propositions/elements';
+import texts from 'assets/texts/propositions/elements';
 import { ButtonID, Icon } from 'enums';
 import { dpActions } from 'store/propositions/direct-proofs';
 import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
