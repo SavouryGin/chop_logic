@@ -1,5 +1,5 @@
-import DPDefinitionsEn from 'assets/texts/propositions/en/dp-definitions-en';
-import DPDefinitionsRu from 'assets/texts/propositions/ru/dp-definitions-ru';
+import DPDefinitionsEn from 'utils/texts/propositions/en/dp-definitions-en';
+import DPDefinitionsRu from 'utils/texts/propositions/ru/dp-definitions-ru';
 import React from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';

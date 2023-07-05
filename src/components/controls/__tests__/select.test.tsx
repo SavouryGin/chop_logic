@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'components/controls/select';
-import renderWithRedux from 'utils/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import userEvent from '@testing-library/user-event';
 import { InputID } from 'enums';
 import { SelectEntity } from 'types';

@@ -5,7 +5,7 @@ import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps, PropositionalExpression } from 'types';
 import { InputID } from 'enums';
 import { PropositionalError } from 'utils/errors/propositional-error';
-import { inputTexts } from 'assets/texts';
+import { inputTexts } from 'utils/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

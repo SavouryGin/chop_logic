@@ -1,7 +1,7 @@
 import Latex from 'react-latex';
 import React from 'react';
 import formatClass from 'utils/formatters/format-class-name';
-import latex from 'assets/texts/propositions/latex-expressions';
+import latex from 'utils/texts/propositions/latex-expressions';
 import { CommonProps } from 'types';
 
 const NPRulesRu = (props: CommonProps): React.ReactElement => {

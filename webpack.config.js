@@ -28,8 +28,6 @@ const config = {
       hooks: path.resolve(__dirname, './src/hooks'),
       errors: path.resolve(__dirname, './src/errors'),
       logic: path.resolve(__dirname, './src/logic'),
-      texts: path.resolve(__dirname, './src/texts'),
-      settings: path.resolve(__dirname, './src/settings'),
       app: path.resolve(__dirname, './src/app'),
       router: path.resolve(__dirname, './src/router'),
       __mocks__: path.resolve(__dirname, './src/__mocks__'),

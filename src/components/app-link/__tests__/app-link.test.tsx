@@ -1,6 +1,6 @@
 import AppLink from '../index';
 import React from 'react';
-import renderWithRedux from 'utils/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import { Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';

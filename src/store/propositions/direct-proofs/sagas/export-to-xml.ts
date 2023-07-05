@@ -1,5 +1,5 @@
 import converterXML from 'logic/propositions/converter-xml';
-import propositionsTexts from 'assets/texts/propositions/elements';
+import propositionsTexts from 'utils/texts/propositions/elements';
 import { DirectProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';
 import { dpActions as actions } from 'store/propositions/direct-proofs';

@@ -15,7 +15,7 @@ import formatClass from 'utils/formatters/format-class-name';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'assets/texts/ui-elements';
+import { uiElementTexts } from 'utils/texts/ui-elements';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 

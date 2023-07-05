@@ -1,4 +1,4 @@
-import propositionsElementsTexts from 'assets/texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import searcher from './searcher';
 import validator from './validator';
 import { LogicalSymbolRawInput } from 'enums';

@@ -1,10 +1,10 @@
 import Checkbox from 'components/controls/checkbox';
 import React from 'react';
-import renderWithRedux from 'utils/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import userEvent from '@testing-library/user-event';
 import { InputID } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
-import { inputTexts } from 'assets/texts';
+import { inputTexts } from 'utils/texts';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 

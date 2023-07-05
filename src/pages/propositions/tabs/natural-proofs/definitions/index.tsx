@@ -1,5 +1,5 @@
-import NPDefinitionsEn from 'assets/texts/propositions/en/np-definitions-en';
-import NPDefinitionsRu from 'assets/texts/propositions/ru/np-definitions-ru';
+import NPDefinitionsEn from 'utils/texts/propositions/en/np-definitions-en';
+import NPDefinitionsRu from 'utils/texts/propositions/ru/np-definitions-ru';
 import React from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';

@@ -13,8 +13,6 @@ module.exports = {
     '^hooks(.*)$': '<rootDir>/src/hooks$1',
     '^errors(.*)$': '<rootDir>/src/errors$1',
     '^logic(.*)$': '<rootDir>/src/logic$1',
-    '^texts(.*)$': '<rootDir>/src/texts$1',
-    '^settings(.*)$': '<rootDir>/src/settings$1',
     '^router(.*)$': '<rootDir>/src/router$1',
     '^app(.*)$': '<rootDir>/src/app$1',
     '^__mocks__(.*)$': '<rootDir>/src/__mocks__$1',
@@ -22,7 +20,7 @@ module.exports = {
   },
   transform: {
     '^.+\\.tsx?$': 'babel-jest',
-    '\\.svg$': '<rootDir>/jest-svg-transformer.js',
+    '\\.svg$': '<rootDir>/src/utils/testing/jest-svg-transformer.js',
   },
-  setupFilesAfterEnv: ['<rootDir>/src/settings/setup-tests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/utils/testing/setup-tests.ts'],
 };

@@ -1,8 +1,8 @@
-import DPAxiomsEn from 'assets/texts/propositions/en/dp-axioms-en';
-import DPDefinitionsEn from 'assets/texts/propositions/en/dp-definitions-en';
-import NPDefinitionsEn from 'assets/texts/propositions/en/np-definitions-en';
-import NPHeuristicsEn from 'assets/texts/propositions/en/np-heuristics-en';
-import NPRulesEn from 'assets/texts/propositions/en/np-rules-en';
+import DPAxiomsEn from 'utils/texts/propositions/en/dp-axioms-en';
+import DPDefinitionsEn from 'utils/texts/propositions/en/dp-definitions-en';
+import NPDefinitionsEn from 'utils/texts/propositions/en/np-definitions-en';
+import NPHeuristicsEn from 'utils/texts/propositions/en/np-heuristics-en';
+import NPRulesEn from 'utils/texts/propositions/en/np-rules-en';
 import React from 'react';
 import { render } from '@testing-library/react';
 

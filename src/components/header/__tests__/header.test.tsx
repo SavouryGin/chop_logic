@@ -1,6 +1,6 @@
 import Header from '../index';
 import React from 'react';
-import renderWithRedux from 'utils/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import { ButtonID, Icon } from 'enums';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';

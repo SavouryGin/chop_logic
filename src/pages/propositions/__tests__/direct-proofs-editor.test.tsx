@@ -1,7 +1,7 @@
 import PropositionsDirectProofs from 'pages/propositions/sub-pages/direct-proofs';
 import React from 'react';
-import renderWithRedux from 'utils/test-utils/render-with-redux';
-import texts from 'assets/texts/propositions/elements';
+import renderWithRedux from 'utils/testing/render-with-redux';
+import texts from 'utils/texts/propositions/elements';
 import userEvent from '@testing-library/user-event';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';

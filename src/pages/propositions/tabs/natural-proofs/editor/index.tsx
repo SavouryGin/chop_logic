@@ -14,7 +14,7 @@ import formatClass from 'utils/formatters/format-class-name';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 

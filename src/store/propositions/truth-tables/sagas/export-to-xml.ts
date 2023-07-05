@@ -1,5 +1,5 @@
 import converterXML from 'logic/propositions/converter-xml';
-import errorsTexts from 'assets/texts/propositions/elements';
+import errorsTexts from 'utils/texts/propositions/elements';
 import selectors from '../selectors';
 import { PropositionalFormula, TableItem } from 'types';
 import { SagaIterator } from 'redux-saga';

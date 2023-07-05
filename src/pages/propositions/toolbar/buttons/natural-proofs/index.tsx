@@ -6,7 +6,7 @@ import { ButtonID, Icon } from 'enums';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 const PropositionsNPTools = (): React.ReactElement | null => {

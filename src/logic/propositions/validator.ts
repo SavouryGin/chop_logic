@@ -1,4 +1,4 @@
-import propositionsElementsTexts from 'assets/texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import searcher from './searcher';
 import { LogicalSymbolRawInput, NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';

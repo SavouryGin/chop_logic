@@ -1,6 +1,6 @@
 import Latex from 'react-latex';
 import React from 'react';
-import latex from 'assets/texts/propositions/latex-expressions';
+import latex from 'utils/texts/propositions/latex-expressions';
 
 const DPAxiomsRu = (): React.ReactElement => {
   return (

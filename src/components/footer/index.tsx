@@ -2,10 +2,10 @@ import React from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { Icon } from 'enums';
-import { externalLinks } from 'settings';
+import { externalLinks } from 'utils/settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'utils/sounds';
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 

@@ -6,7 +6,7 @@ import { ButtonID, Icon } from 'enums';
 import { CommonProps, LocalText } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'utils/sounds';
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppSelector, useMount } from 'hooks';
 import './styles.scss';
 

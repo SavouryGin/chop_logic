@@ -6,7 +6,7 @@ import NaturalProofsEditor from 'pages/propositions/tabs/natural-proofs/editor';
 import NaturalProofsPropositionDefinitions from 'pages/propositions/tabs/natural-proofs/definitions';
 import React from 'react';
 import RulesOfInference from 'pages/propositions/tabs/natural-proofs/rules';
-import texts from 'assets/texts/propositions/elements';
+import texts from 'utils/texts/propositions/elements';
 import { TabItem } from 'types';
 
 export const propositionsDirectProofsTabs: TabItem[] = [

@@ -1,7 +1,7 @@
 import PropositionsDPTools from '../toolbar/buttons/direct-proofs';
 import PropositionsNPTools from '../toolbar/buttons/natural-proofs';
 import React from 'react';
-import renderWithRedux from 'utils/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
 import { combineReducers } from '@reduxjs/toolkit';

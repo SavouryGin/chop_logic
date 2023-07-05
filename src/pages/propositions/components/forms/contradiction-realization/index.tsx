@@ -3,7 +3,7 @@ import FormulaPreview from 'components/controls/formula-preview';
 import React, { memo, useState } from 'react';
 import TextInput from 'components/controls/text-input';
 import constants from 'pages/propositions/constants';
-import propositionsTexts from 'assets/texts/propositions/elements';
+import propositionsTexts from 'utils/texts/propositions/elements';
 import { FormValues } from 'types';
 import { InputID } from 'enums';
 import { dpActions as actions } from 'store/propositions/direct-proofs';

@@ -1,5 +1,5 @@
 import parser from 'logic/propositions/parser-xml-to-js';
-import propositionsElementsTexts from 'assets/texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import tMocks from '__mocks__/data/propositions/table-items';
 import { FileAcceptType } from 'enums/file-accept-type';
 import { dpActions as actions } from 'store/propositions/direct-proofs';

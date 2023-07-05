@@ -11,7 +11,7 @@ import { paths } from 'router/paths';
 import { settingsActions } from 'store/settings';
 import { settingsSelectors } from 'store/settings/selectors';
 import { soundPlayer } from 'utils/sounds';
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector, useEffectOnce } from 'hooks';
 import './styles.scss';
 

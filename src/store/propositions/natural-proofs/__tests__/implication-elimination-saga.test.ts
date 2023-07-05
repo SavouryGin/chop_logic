@@ -1,5 +1,5 @@
 import mocks from '__mocks__/data/propositions/table-items';
-import propositionsElementsTexts from 'assets/texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { implicationEliminationSaga, implicationEliminationWatcher } from '../sagas/implication-elimination';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';

@@ -6,7 +6,7 @@ import { FormValues } from 'types';
 import { InputID } from 'enums';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'assets/texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector, usePropositionalFormulaPreview } from 'hooks';
 import './styles.scss';
 

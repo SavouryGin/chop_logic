@@ -1,5 +1,5 @@
 import converter from './converter';
-import errorsTexts from 'assets/texts/propositions/elements';
+import errorsTexts from 'utils/texts/propositions/elements';
 import factory from './factory';
 import validator from './validator';
 import { NPExecutorData, PropositionalFormula } from 'types';

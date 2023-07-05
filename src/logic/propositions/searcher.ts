@@ -1,4 +1,4 @@
-import errorsTexts from 'assets/texts/propositions/elements';
+import errorsTexts from 'utils/texts/propositions/elements';
 import { LogicalSymbolRawInput } from 'enums';
 import { PropositionalError } from 'utils/errors/propositional-error';
 import { PropositionalExpression, PropositionalSymbol } from 'types';

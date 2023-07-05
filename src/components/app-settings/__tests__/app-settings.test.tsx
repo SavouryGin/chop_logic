@@ -1,11 +1,11 @@
 import AppSettings from '../index';
 import React from 'react';
-import renderWithRedux from 'utils/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import { ButtonID, InputID } from 'enums';
-import { buttonTexts, inputTexts } from 'assets/texts';
+import { buttonTexts, inputTexts } from 'utils/texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
-import { languageOptions } from 'settings';
+import { languageOptions } from 'utils/settings';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
 describe('AppSettings tests:', () => {

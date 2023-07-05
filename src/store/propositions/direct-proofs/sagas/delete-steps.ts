@@ -1,4 +1,4 @@
-import propositionsElementsTexts from 'assets/texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { SagaIterator } from 'redux-saga';
 import { dpActions as actions } from 'store/propositions/direct-proofs';

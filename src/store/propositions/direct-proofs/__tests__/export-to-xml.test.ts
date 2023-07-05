@@ -1,4 +1,4 @@
-import propositionsElementsTexts from 'assets/texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import tMocks from '__mocks__/data/propositions/table-items';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { createAndSaveXMLFile } from 'utils/files/create-and-save-xml-file';
