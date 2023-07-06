@@ -1,5 +1,5 @@
 import { NPFormulaBase, PropositionalOperator } from 'enums';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import texts from 'utils/texts/propositions/elements';

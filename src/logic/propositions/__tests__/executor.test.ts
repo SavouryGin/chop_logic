@@ -1,7 +1,7 @@
 import executor from '../executor';
 import mocks from '__mocks__/data/propositions/formulas-items';
 import tMocks from '__mocks__/data/propositions/table-items';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 
 describe('Propositions executor tests:', () => {
   it('performIE() creates a correct modus ponens', () => {

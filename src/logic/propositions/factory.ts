@@ -2,7 +2,7 @@ import constants, { preparedSymbols } from 'pages/propositions/constants';
 import errorsTexts from 'utils/texts/propositions/elements';
 import regularExpressions from 'utils/regex';
 import { LogicalSymbolHexCode, LogicalSymbolRawInput, PropositionalOperator } from 'enums';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalFormula, PropositionalSymbol } from 'types';
 
 const factory = {

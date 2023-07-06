@@ -5,7 +5,7 @@ import validator from './validator';
 import { NPExecutorData, PropositionalFormula } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { removeArrayItemByIndex } from 'utils/formatters/remove-array-item';
 
 const executor = {

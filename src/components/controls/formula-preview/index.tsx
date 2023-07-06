@@ -4,7 +4,7 @@ import React, { memo } from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps, PropositionalExpression } from 'types';
 import { InputID } from 'enums';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { inputTexts } from 'utils/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';

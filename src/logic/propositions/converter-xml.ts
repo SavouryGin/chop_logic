@@ -1,8 +1,7 @@
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
-import { Language, LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol, TableItem } from 'types';
+import { Language, LocalText, PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
-import { TruthTableColumn } from 'store/propositions/truth-tables/interfaces';
 import { XMLTag } from 'enums/xml-tags';
 
 const idToXML = (id: string): string => `${XMLTag.IdOpen}${id}${XMLTag.IdClose}`;
@@ -93,41 +92,9 @@ const npToXML = (tableData: NaturalProofsTableItem[]): string =>
 const dpToXML = (tableData: DirectProofsTableItem[]): string =>
   `${XMLTag.Declaration}\n${XMLTag.DPOpen}${dpArrayToXML(tableData)}${XMLTag.DPClose}`;
 
-const truthTableColumnsToXML = (columns: TruthTableColumn[]): string => {
-  console.log('columns', columns);
-
-  return `${XMLTag.TTColumnsOpen}${XMLTag.TTColumnsClose}`;
-};
-
-const truthTableDataToXML = (data: TableItem[]): string => {
-  console.log(data);
-
-  return `${XMLTag.TTDataOpen}${XMLTag.TTDataClose}`;
-};
-
-const truthTableToXML = ({
-  columns,
-  data,
-  formula,
-}: {
-  columns: TruthTableColumn[];
-  data: TableItem[];
-  formula: PropositionalFormula;
-}): string => {
-  return `${XMLTag.TruthTableOpen}${formulaToXML(formula)}${truthTableColumnsToXML(columns)}${truthTableDataToXML(data)}${
-    XMLTag.TruthTableClose
-  }`;
-};
-
-// TODO: add utils
-export const depthToXML = (depth: number): string => `${XMLTag.DepthOpen}${depth}${XMLTag.DepthClose}`;
-
-export const fieldToXML = (field: string): string => `${XMLTag.FieldOpen}${field}${XMLTag.FieldClose}`;
-
 const converterXML = {
   npToXML,
   dpToXML,
-  truthTableToXML,
 };
 
 export default Object.freeze(converterXML);

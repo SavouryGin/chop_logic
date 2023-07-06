@@ -5,7 +5,7 @@ import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfac
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { XMLTag } from 'enums/xml-tags';
 import { languageStringOptions } from 'utils/settings';
 

@@ -2,7 +2,7 @@ import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import searcher from './searcher';
 import validator from './validator';
 import { LogicalSymbolRawInput } from 'enums';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 
 const parser = {

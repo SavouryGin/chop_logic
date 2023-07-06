@@ -3,7 +3,7 @@ import parenthesizer from './parenthesizer';
 import parser from './parser';
 import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import validator from './validator';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalOperator } from 'enums';
 import { preparedSymbols } from 'pages/propositions/constants';

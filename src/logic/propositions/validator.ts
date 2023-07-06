@@ -2,7 +2,7 @@ import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import searcher from './searcher';
 import { LogicalSymbolRawInput, NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalExpression, PropositionalFormula, PropositionalSymbol } from 'types';
 import { removeArrayItemByIndex } from 'utils/formatters/remove-array-item';
 

@@ -1,7 +1,7 @@
 import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import searcher from './searcher';
 import validator from './validator';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalExpression, PropositionalSymbol } from 'types';
 import { preparedSymbols } from 'pages/propositions/constants';
 

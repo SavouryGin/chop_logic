@@ -1,6 +1,6 @@
 import converter from 'logic/propositions/converter';
 import validator from 'logic/propositions/validator';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalExpression } from 'types';
 import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
 import { isLatinLetter } from 'utils/checkers';

@@ -1,6 +1,6 @@
 import converter from '../converter';
 import mocks from '__mocks__/data/propositions/formulas-items';
-import { PropositionalError } from 'utils/errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 
 describe('Propositions converter tests', () => {
   it('convertStringToExpression() method returns a correct propositional expression', () => {
