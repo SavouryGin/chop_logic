@@ -37,5 +37,6 @@
   "exclude": [
     "node_modules",
     "src/__mocks__/style-mock.js"
-  ]
+  ],
+  "outDir": "lib"
 }
