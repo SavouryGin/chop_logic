@@ -1,11 +1,11 @@
 import React, { memo, useRef } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { getNavigationLinksList } from './helpers';
 import { routesMap } from 'router/map';
 import { settingsActions } from 'store/settings';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector, useClickOutside, useMount } from 'hooks';
 import './styles.scss';
 

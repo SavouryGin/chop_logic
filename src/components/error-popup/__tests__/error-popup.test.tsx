@@ -1,11 +1,11 @@
 import ErrorPopup from 'components/error-popup';
 import React from 'react';
-import propositionsElementsTexts from 'texts/propositions/elements';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
-import { uiElementTexts } from 'texts';
+import { uiElementTexts } from 'utils/texts';
 
 describe('ErrorPopup component:', () => {
   const testProps = {

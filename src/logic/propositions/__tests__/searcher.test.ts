@@ -1,6 +1,6 @@
 import mocks from '__mocks__/data/propositions/formulas-items';
 import searcher from '../searcher';
-import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 
 describe('Propositions searcher tests', () => {
   it('findClosestParenthesisIndexes() returns the closest index', () => {

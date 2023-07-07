@@ -1,7 +1,7 @@
-import propositionsElementsTexts from 'texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import tMocks from '__mocks__/data/propositions/table-items';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
-import { createAndSaveXMLFile } from 'helpers/files/create-and-save-xml-file';
+import { createAndSaveXMLFile } from 'utils/files/create-and-save-xml-file';
 import { exportDPToXMLSaga, exportDPToXMLWatcher } from '../sagas/export-to-xml';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { testSaga } from 'redux-saga-test-plan';

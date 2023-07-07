@@ -11,11 +11,11 @@ import ModalWindow from 'components/modal-window';
 import PremiseForm from 'pages/propositions/components/forms/premise';
 import React from 'react';
 import ReplacerForm from 'pages/propositions/components/forms/replacer';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'texts/ui-elements';
+import { uiElementTexts } from 'utils/texts/ui-elements';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 

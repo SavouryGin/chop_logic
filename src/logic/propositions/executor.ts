@@ -1,12 +1,12 @@
 import converter from './converter';
-import errorsTexts from 'texts/propositions/elements';
+import errorsTexts from 'utils/texts/propositions/elements';
 import factory from './factory';
 import validator from './validator';
 import { NPExecutorData, PropositionalFormula } from 'types';
 import { NPFormulaBase, PropositionalOperator } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
-import { PropositionalError } from 'errors/propositional-error';
-import { removeArrayItemByIndex } from 'helpers/formatters/remove-array-item';
+import { PropositionalError } from 'utils/errors';
+import { removeArrayItemByIndex } from 'utils/formatters/remove-array-item';
 
 const executor = {
   performIE(firstFormula: PropositionalFormula, secondFormula: PropositionalFormula): PropositionalFormula {

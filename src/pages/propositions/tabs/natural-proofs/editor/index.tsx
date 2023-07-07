@@ -10,11 +10,11 @@ import PremiseForm from 'pages/propositions/components/forms/premise';
 import React, { memo } from 'react';
 import ReplacerForm from 'pages/propositions/components/forms/replacer';
 import ShortcutNPForm from 'pages/propositions/components/forms/shortcut';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { npActions as actions } from 'store/propositions/natural-proofs';
 import { npSelectors as selectors } from 'store/propositions/natural-proofs/selectors';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
 

@@ -1,7 +1,7 @@
 import mocks from '__mocks__/data/propositions/formulas-items';
 import tMocks from '__mocks__/data/propositions/table-items';
 import validator from '../validator';
-import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalOperator } from 'enums';
 
 describe('Propositions validator tests', () => {

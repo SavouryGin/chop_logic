@@ -8,7 +8,6 @@ exports[`FormulaPreview component: should render the error message 1`] = `
     <label
       class="label"
       data-testid="label-test-id"
-      for="formula-preview"
     >
       <span
         class="label__text"
@@ -33,7 +32,6 @@ exports[`FormulaPreview component: should render the formula preview 1`] = `
     <label
       class="label"
       data-testid="label-test-id"
-      for="formula-preview"
     >
       <span
         class="label__text"
@@ -43,6 +41,7 @@ exports[`FormulaPreview component: should render the formula preview 1`] = `
     </label>
     <pre
       class="formula formula-preview__formula"
+      role="math"
     >
       <span
         class="formula__parentheses"

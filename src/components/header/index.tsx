@@ -4,14 +4,14 @@ import Button from 'components/controls/button';
 import ChopLogicLogo from 'components/logo';
 import ModalWindow from 'components/modal-window';
 import React, { useCallback } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { ButtonID, Icon, Page } from 'enums';
 import { CommonProps } from 'types';
 import { paths } from 'router/paths';
 import { settingsActions } from 'store/settings';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
-import { uiElementTexts } from 'texts';
+import { soundPlayer } from 'utils/sounds';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector, useEffectOnce } from 'hooks';
 import './styles.scss';
 

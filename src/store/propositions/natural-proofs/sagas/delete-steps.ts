@@ -1,4 +1,4 @@
-import propositionsElementsTexts from 'texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
 import { SagaIterator } from 'redux-saga';
 import { npActions as actions } from 'store/propositions/natural-proofs';

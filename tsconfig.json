@@ -24,8 +24,6 @@
       "node_modules/@types"
     ],
     "types": [
-      "react/next",
-      "react-dom/next",
       "node",
       "jest",
       "@testing-library/jest-dom"
@@ -39,5 +37,6 @@
   "exclude": [
     "node_modules",
     "src/__mocks__/style-mock.js"
-  ]
+  ],
+  "outDir": "lib"
 }

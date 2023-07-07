@@ -1,4 +1,4 @@
-import errorsTexts from 'texts/propositions/elements';
+import errorsTexts from 'utils/texts/propositions/elements';
 import executor from 'logic/propositions/executor';
 import { NaturalProofsTableItem } from '../interfaces';
 import { SagaIterator } from 'redux-saga';

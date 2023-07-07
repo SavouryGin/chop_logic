@@ -2,7 +2,7 @@ import Footer from 'components/footer';
 import Header from 'components/header';
 import Navigation from 'components/navigation';
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { Outlet } from 'react-router-dom';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';

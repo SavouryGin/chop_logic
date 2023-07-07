@@ -1,9 +1,9 @@
 import factory from './factory';
 import parenthesizer from './parenthesizer';
 import parser from './parser';
-import propositionsElementsTexts from 'texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import validator from './validator';
-import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { PropositionalExpression, PropositionalFormula } from 'types';
 import { PropositionalOperator } from 'enums';
 import { preparedSymbols } from 'pages/propositions/constants';

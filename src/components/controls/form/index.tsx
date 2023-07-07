@@ -1,9 +1,9 @@
 import Button from 'components/controls/button';
 import React, { useEffect, useState } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { ButtonID, Icon } from 'enums';
 import { CommonProps, FormContextProps, FormInput } from 'types';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 
 export const FormContext = React.createContext({} as FormContextProps);
 

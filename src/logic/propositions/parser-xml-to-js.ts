@@ -1,13 +1,13 @@
 import converter from './converter';
-import errorsTexts from 'texts/propositions/elements';
-import regExes from 'helpers/regular-expressions';
+import errorsTexts from 'utils/texts/propositions/elements';
+import regExes from 'utils/regex';
 import { DirectProofsTableItem } from 'store/propositions/direct-proofs/interfaces';
 import { LocalText, PropositionalExpression, PropositionalSymbol, PropositionalSymbolType } from 'types';
 import { NPFormulaBase } from 'enums';
 import { NaturalProofsTableItem } from 'store/propositions/natural-proofs/interfaces';
-import { PropositionalError } from 'errors/propositional-error';
+import { PropositionalError } from 'utils/errors';
 import { XMLTag } from 'enums/xml-tags';
-import { languageStringOptions } from 'settings';
+import { languageStringOptions } from 'utils/settings';
 
 const removeDeclaration = (input: string): string => input.replace(regExes.xmlDeclaration, '');
 

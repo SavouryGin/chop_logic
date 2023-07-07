@@ -1,8 +1,8 @@
 import Label from '../label';
 import React, { useEffect, useState } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { FileInputProps } from 'types';
-import { inputTexts } from 'texts';
+import { inputTexts } from 'utils/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

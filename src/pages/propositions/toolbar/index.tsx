@@ -1,7 +1,7 @@
 import PropositionsDPTools from './buttons/direct-proofs';
 import PropositionsNPTools from './buttons/natural-proofs';
 import React, { useRef } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { dpActions } from 'store/propositions/direct-proofs';
 import { npActions } from 'store/propositions/natural-proofs';
 import { settingsSelectors } from 'store/settings/selectors';

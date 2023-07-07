@@ -1,11 +1,11 @@
 import React from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps } from 'types';
 import { Icon } from 'enums';
-import { externalLinks } from 'settings';
+import { externalLinks } from 'utils/settings';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
-import { uiElementTexts } from 'texts';
+import { soundPlayer } from 'utils/sounds';
+import { uiElementTexts } from 'utils/texts';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 

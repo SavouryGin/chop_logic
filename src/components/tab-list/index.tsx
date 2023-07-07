@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Tab from './elements/tab';
 import TabContent from './elements/tab-content';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { CommonProps, TabItem } from 'types';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';

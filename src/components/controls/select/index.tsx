@@ -1,11 +1,11 @@
 import Label from '../label';
 import React, { useContext, useState } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { FormContext } from 'components/controls/form';
 import { SelectProps } from 'types';
-import { inputTexts } from 'texts';
+import { inputTexts } from 'utils/texts';
 import { settingsSelectors } from 'store/settings/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
 

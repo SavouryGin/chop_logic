@@ -1,10 +1,10 @@
 import Layout from '../index';
 import React from 'react';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import { ButtonID } from 'enums';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
-import { buttonTexts } from 'texts';
+import { buttonTexts } from 'utils/texts';
 import { combineReducers } from '@reduxjs/toolkit';
 import { fireEvent, screen } from '@testing-library/react';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
@@ -63,6 +63,6 @@ describe('Layout component:', () => {
     fireEvent.click(screen.getByTitle(buttonTexts[ButtonID.ColorTheme].title.en));
     expect(screen.getByTestId('layout')).toHaveClass('layout_dark');
     expect(screen.getByRole('banner')).toHaveClass('layout__header_dark');
-    expect(screen.queryByRole('navigation')).toHaveClass('layout__navigation_dark');
+    expect(screen.queryByRole('navigation')).toHaveClass('navigation navigation_dark navigation_closing');
   });
 });

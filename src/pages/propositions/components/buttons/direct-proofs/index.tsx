@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { ButtonID } from 'enums';
 import { dpActions as actions } from 'store/propositions/direct-proofs';
 import { dpSelectors as selectors } from 'store/propositions/direct-proofs/selectors';
-import { soundPlayer } from 'helpers/sounds';
+import { soundPlayer } from 'utils/sounds';
 import { useAppDispatch, useAppSelector, useIsImplicationEliminationPossible } from 'hooks';
 
 const DPEditorButtons = (): React.ReactElement => {
@@ -14,7 +14,6 @@ const DPEditorButtons = (): React.ReactElement => {
   const isDeleteDisabled = selectedIds.length === 0;
   const isImplicationEliminationEnabled = useIsImplicationEliminationPossible(selectedIds);
   const isReplacerDisabled = tableDataLength === 0;
-  const selectedItems = useAppSelector(selectors.selectedTableItems);
 
   const deleteSteps = () => {
     dispatch(actions.deleteSteps({ isConfirmed: false }));
@@ -41,7 +40,7 @@ const DPEditorButtons = (): React.ReactElement => {
   };
 
   const performIE = () => {
-    dispatch(actions.eliminateImplication(selectedItems));
+    dispatch(actions.eliminateImplication());
   };
 
   const openReplacer = () => {

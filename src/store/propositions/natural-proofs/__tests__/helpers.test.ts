@@ -1,7 +1,7 @@
 import propositionsTableItems from '__mocks__/data/propositions/table-items';
 import { findDependentDPItemsToDelete, findDependentNPItemsToDelete } from 'logic/propositions/helpers';
 
-describe('Propositions store helpers tests', () => {
+describe('Propositions store utils tests', () => {
   it('findDependentDPItemsToDelete() test', () => {
     expect(findDependentDPItemsToDelete([propositionsTableItems.dpTableDataIE[0].id], propositionsTableItems.dpTableDataIE)).toEqual([
       propositionsTableItems.dpTableDataIE[2],

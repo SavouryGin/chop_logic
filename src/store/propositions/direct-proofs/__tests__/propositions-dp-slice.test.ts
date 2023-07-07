@@ -1,5 +1,5 @@
 import mocks from '__mocks__/data/propositions/table-items';
-import propositionsElementsTexts from 'texts/propositions/elements';
+import propositionsElementsTexts from 'utils/texts/propositions/elements';
 import { dpActions as actions, propositionsDPSlice as slice } from '..';
 import { DP_INITIAL_STATE as state } from '../initial-state';
 
@@ -51,10 +51,10 @@ describe('propositionsDPSlice tests:', () => {
     const testState = {
       ...state,
       tableData: testItems,
-      selectedIds: [mocks.dpTableDataIE[0].id, mocks.dpTableDataIE[0].id],
+      selectedIds: [mocks.dpTableDataIE[0].id, mocks.dpTableDataIE[1].id],
     };
 
-    expect(slice.reducer(testState, actions.eliminateImplication(testItems))).toEqual({
+    expect(slice.reducer(testState, actions.eliminateImplication())).toEqual({
       ...state,
       tableData: [...testItems, { ...mocks.dpTableDataIE[2], id: expect.any(String) }],
       selectedIds: [],

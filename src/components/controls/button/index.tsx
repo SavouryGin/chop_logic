@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { ButtonID, Icon } from 'enums';
 import { CommonProps } from 'types';
-import { buttonTexts } from 'texts';
+import { buttonTexts } from 'utils/texts';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';

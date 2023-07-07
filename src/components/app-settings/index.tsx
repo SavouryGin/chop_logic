@@ -1,7 +1,7 @@
 import AppSettingsInputs from './elements';
 import Form from 'components/controls/form';
 import React, { useState } from 'react';
-import formatClass from 'helpers/formatters/format-class-name';
+import formatClass from 'utils/formatters/format-class-name';
 import { AppSettingInitialValues, CommonProps, FormValues } from 'types';
 import { settingsSelectors as selectors } from 'store/settings/selectors';
 import { settingsActions } from 'store/settings';

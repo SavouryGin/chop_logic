@@ -7,7 +7,7 @@ import TruthTablesTable from 'pages/propositions/components/tables/truth-table';
 import truthTablesSelectors from 'store/propositions/truth-tables/selectors';
 import { ttActions as actions } from 'store/propositions/truth-tables';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'texts';
+import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import 'pages/propositions/sub-pages/truth-tables/styles.scss';
 

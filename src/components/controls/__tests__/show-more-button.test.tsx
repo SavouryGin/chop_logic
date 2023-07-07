@@ -1,6 +1,6 @@
 import React from 'react';
 import ShowMoreButton from '../show-more-button';
-import renderWithRedux from 'helpers/test-utils/render-with-redux';
+import renderWithRedux from 'utils/testing/render-with-redux';
 import userEvent from '@testing-library/user-event';
 import { combineReducers } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
