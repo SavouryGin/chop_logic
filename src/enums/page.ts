@@ -4,6 +4,7 @@ export enum Page {
   Propositions,
   PropositionsDirectProofs,
   PropositionsNaturalProofs,
+  PropositionsResolutionProofs,
   Predicates,
   TruthTables,
   Syllogisms,
