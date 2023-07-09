@@ -3,9 +3,9 @@ import React from 'react';
 import renderWithRedux from 'utils/testing/render-with-redux';
 import texts from 'utils/texts/propositions/elements';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
+import { DP_PROOFS_TABS } from 'pages/propositions/constants';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
-import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
@@ -35,11 +35,11 @@ describe('Direct Proofs page tests:', () => {
   });
 
   it('renders the correct number of tabs', () => {
-    expect(screen.getAllByRole('tab')).toHaveLength(propositionsDirectProofsTabs.length);
+    expect(screen.getAllByRole('tab')).toHaveLength(DP_PROOFS_TABS.length);
   });
 
   it('the tabs have correct titles', () => {
-    for (const item of propositionsDirectProofsTabs) {
+    for (const item of DP_PROOFS_TABS) {
       expect(screen.getByTestId(item.tabId)).toHaveTextContent(item.tabTitle.en);
     }
   });

@@ -5,9 +5,9 @@ import TabList from 'components/tab-list';
 import formatClass from 'utils/formatters/format-class-name';
 import texts from 'utils/texts/propositions/elements';
 import { ButtonID, Icon } from 'enums';
+import { NP_PROOFS_TABS } from 'pages/propositions/constants';
 import { npActions } from 'store/propositions/natural-proofs';
 import { npSelectors } from 'store/propositions/natural-proofs/selectors';
-import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
@@ -33,7 +33,7 @@ const PropositionsNaturalProofs = (): React.ReactElement => {
 
   return (
     <article className='propositions-natural-proofs'>
-      <TabList tabs={propositionsNaturalProofsTabs} className='propositions-natural-proofs__tabs' toolBar={toolBar} />
+      <TabList tabs={NP_PROOFS_TABS} className='propositions-natural-proofs__tabs' toolBar={toolBar} />
     </article>
   );
 };

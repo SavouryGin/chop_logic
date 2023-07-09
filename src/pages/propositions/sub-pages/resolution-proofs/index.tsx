@@ -3,6 +3,7 @@ import TabList from 'components/tab-list';
 import formatClass from 'utils/formatters/format-class-name';
 import texts from 'utils/texts/propositions/elements';
 import { Icon } from 'enums';
+import { RES_PROOFS_TABS } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
 import './styles.scss';
@@ -20,7 +21,7 @@ const PropositionsResolutionProofs = (): React.ReactElement => {
 
   return (
     <article className='propositions-resolution-proofs'>
-      <TabList tabs={[]} className='propositions-resolution-proofs__tabs' toolBar={toolBar} />
+      <TabList tabs={RES_PROOFS_TABS} className='propositions-resolution-proofs__tabs' toolBar={toolBar} />
     </article>
   );
 };

@@ -7,6 +7,7 @@ const propositionElementsTexts: TextContainer = {
   editor: { en: 'Editor', ru: 'Редактор' },
   axioms: { en: 'Axiom Schemes', ru: 'Схемы аксиом' },
   definitions: { en: 'Definitions', ru: 'Определения' },
+  converter: { en: 'Converter', ru: 'Конвертер' },
   heuristics: { en: 'Heuristics', ru: 'Эвристики' },
   rules: { en: 'Rules', ru: 'Правила' },
   page: { en: 'Propositions', ru: 'Высказывания' },

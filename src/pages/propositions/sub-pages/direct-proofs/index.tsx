@@ -5,9 +5,9 @@ import TabList from 'components/tab-list';
 import formatClass from 'utils/formatters/format-class-name';
 import texts from 'utils/texts/propositions/elements';
 import { ButtonID, Icon } from 'enums';
+import { DP_PROOFS_TABS } from 'pages/propositions/constants';
 import { dpActions } from 'store/propositions/direct-proofs';
 import { dpSelectors } from 'store/propositions/direct-proofs/selectors';
-import { propositionsDirectProofsTabs } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
@@ -33,7 +33,7 @@ const PropositionsDirectProofs = (): React.ReactElement => {
 
   return (
     <article className='propositions-direct-proofs'>
-      <TabList tabs={propositionsDirectProofsTabs} className='propositions-direct-proofs__tabs' toolBar={toolBar} />
+      <TabList tabs={DP_PROOFS_TABS} className='propositions-direct-proofs__tabs' toolBar={toolBar} />
     </article>
   );
 };
