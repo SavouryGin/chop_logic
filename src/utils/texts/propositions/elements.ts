@@ -3,6 +3,7 @@ import { TextContainer } from 'types';
 const propositionElementsTexts: TextContainer = {
   direct: { en: 'Direct Proofs', ru: 'Аксиоматические доказательства' },
   natural: { en: 'Natural Proofs', ru: 'Структурные доказательства' },
+  resolution: { en: 'Resolution Proofs', ru: 'Резолютивные доказательства' },
   editor: { en: 'Editor', ru: 'Редактор' },
   axioms: { en: 'Axiom Schemes', ru: 'Схемы аксиом' },
   definitions: { en: 'Definitions', ru: 'Определения' },

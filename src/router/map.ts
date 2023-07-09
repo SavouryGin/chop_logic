@@ -45,7 +45,7 @@ export const routesMap: RoutesMapItem[] = [
     url: paths[Page.PropositionsResolutionProofs],
     element: PropositionsResolution,
     title: { en: 'Resolution Proofs', ru: 'Резолютивные доказательства' },
-    icon: Icon.Files,
+    icon: Icon.Resolution,
     parentPageId: Page.Home,
   },
   {

@@ -14,7 +14,7 @@ const PropositionsResolutionProofs = (): React.ReactElement => {
     <>
       <h2
         className={formatClass(['propositions-resolution-proofs__title', Icon.Propositions])}
-      >{`${texts.page[language]} > ${texts.natural[language]}`}</h2>
+      >{`${texts.page[language]} > ${texts.resolution[language]}`}</h2>
     </>
   );
 
