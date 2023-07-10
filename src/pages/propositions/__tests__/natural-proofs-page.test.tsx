@@ -4,10 +4,10 @@ import renderWithRedux from 'utils/testing/render-with-redux';
 import texts from 'utils/texts/propositions/elements';
 import { DP_INITIAL_STATE } from 'store/propositions/direct-proofs/initial-state';
 import { NP_INITIAL_STATE } from 'store/propositions/natural-proofs/initial-state';
+import { NP_PROOFS_TABS } from 'pages/propositions/constants';
 import { combineReducers } from '@reduxjs/toolkit';
 import { propositionsDPSlice } from 'store/propositions/direct-proofs';
 import { propositionsNPSlice } from 'store/propositions/natural-proofs';
-import { propositionsNaturalProofsTabs } from 'pages/propositions/constants';
 import { screen } from '@testing-library/react';
 import { settingsInitialState, settingsSlice } from 'store/settings';
 
@@ -39,11 +39,11 @@ describe('Natural Proofs page tests:', () => {
   });
 
   it('renders the correct number of tabs', () => {
-    expect(screen.getAllByRole('tab')).toHaveLength(propositionsNaturalProofsTabs.length);
+    expect(screen.getAllByRole('tab')).toHaveLength(NP_PROOFS_TABS.length);
   });
 
   it('the tabs have correct titles', () => {
-    for (const item of propositionsNaturalProofsTabs) {
+    for (const item of NP_PROOFS_TABS) {
       expect(screen.getByTestId(item.tabId)).toHaveTextContent(item.tabTitle.en);
     }
   });

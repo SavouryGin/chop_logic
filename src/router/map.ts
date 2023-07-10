@@ -6,6 +6,7 @@ import { paths } from './paths';
 const TruthTables = React.lazy(() => import('pages/propositions/sub-pages/truth-tables'));
 const PropositionsDirect = React.lazy(() => import('pages/propositions/sub-pages/direct-proofs'));
 const PropositionsNatural = React.lazy(() => import('pages/propositions/sub-pages/natural-proofs'));
+const PropositionsResolution = React.lazy(() => import('pages/propositions/sub-pages/resolution-proofs'));
 // const Predicates = React.lazy(() => import('pages/predicates'));
 // const PropositionsIntroduction = React.lazy(() => import('pages/propositions/sub-pages/introduction'));
 // const Syllogisms = React.lazy(() => import('pages/syllogisms'));
@@ -36,6 +37,15 @@ export const routesMap: RoutesMapItem[] = [
     element: PropositionsNatural,
     title: { en: 'Natural Proofs', ru: 'Структурные доказательства' },
     icon: Icon.Files,
+    parentPageId: Page.Home,
+  },
+  {
+    id: Page.PropositionsResolutionProofs,
+    key: `page-${Page.PropositionsResolutionProofs}`,
+    url: paths[Page.PropositionsResolutionProofs],
+    element: PropositionsResolution,
+    title: { en: 'Resolution Proofs', ru: 'Резолютивные доказательства' },
+    icon: Icon.Resolution,
     parentPageId: Page.Home,
   },
   {

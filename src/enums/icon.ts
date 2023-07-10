@@ -20,6 +20,7 @@ export enum Icon {
   Github = 'chop-icon__github',
   Mail = 'chop-icon__mail4',
   Propositions = 'chop-icon__cube',
+  Resolution = 'chop-icon__libreoffice',
   Predicates = 'chop-icon__cubes',
   TruthTables = 'chop-icon__delicious',
   Syllogisms = 'chop-icon__dice',
