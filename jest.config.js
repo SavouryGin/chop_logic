@@ -20,7 +20,7 @@ module.exports = {
   },
   transform: {
     '^.+\\.tsx?$': 'babel-jest',
-    '\\.svg$': '<rootDir>/src/utils/testing/jest-svg-transformer.js',
+    '\\.svg$': '<rootDir>/jest-svg-transformer.js',
   },
   setupFilesAfterEnv: ['<rootDir>/src/utils/testing/setup-tests.ts'],
 };

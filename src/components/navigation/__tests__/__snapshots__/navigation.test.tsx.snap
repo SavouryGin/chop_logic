@@ -42,7 +42,20 @@ exports[`Navigation component: should match the snapshot 1`] = `
       <li>
         <span
           class="app-link"
-          data-testid="link-to_6"
+          data-testid="link-to_5"
+        >
+          <a
+            class="chop-icon__libreoffice"
+            href="/resolution-proofs"
+          >
+            Resolution Proofs
+          </a>
+        </span>
+      </li>
+      <li>
+        <span
+          class="app-link"
+          data-testid="link-to_7"
         >
           <a
             class="chop-icon__delicious"
