@@ -1,41 +1,28 @@
-import ErrorPopup from 'components/error-popup';
-import FileNameForm from 'pages/propositions/components/forms/file-name';
-import ModalWindow from 'components/modal-window';
 import React from 'react';
-import TruthTableForm from 'pages/propositions/components/forms/truth-table';
-import TruthTablesTable from 'pages/propositions/components/tables/truth-table';
-import truthTablesSelectors from 'store/propositions/truth-tables/selectors';
-import { ttActions as actions } from 'store/propositions/truth-tables';
+import TabList from 'components/tab-list';
+import formatClass from 'utils/formatters/format-class-name';
+import texts from 'utils/texts/propositions/elements';
+import { Icon } from 'enums';
+import { TRUTH_TABLES_TABS } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
-import { uiElementTexts } from 'utils/texts';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppSelector } from 'hooks';
 import 'pages/propositions/sub-pages/truth-tables/styles.scss';
 
 const TruthTables = (): React.ReactElement => {
-  const error = useAppSelector(truthTablesSelectors.error);
-  const dispatch = useAppDispatch();
   const language = useAppSelector(settingsSelectors.language);
 
-  const resetError = () => {
-    dispatch(actions.setError(null));
-  };
-
-  const closeFileNameForm = () => {
-    dispatch(actions.setUpFlag({ flag: 'isNameInputPopupVisible', value: false }));
-  };
+  const toolBar = (
+    <>
+      <h2
+        className={formatClass(['truth-tables__title', Icon.Propositions])}
+      >{`${texts.page[language]} > ${texts.truthTables[language]}`}</h2>
+    </>
+  );
 
   return (
-    <div className='truth-tables'>
-      <TruthTableForm />
-      <TruthTablesTable />
-      <ErrorPopup onClose={resetError} error={error} />
-      <ModalWindow
-        isOpened={false}
-        onClose={closeFileNameForm}
-        title={uiElementTexts.nameInput[language]}
-        content={<FileNameForm mode='natural' />}
-      />
-    </div>
+    <article className='truth-tables'>
+      <TabList tabs={TRUTH_TABLES_TABS} className='truth-tables__tabs' toolBar={toolBar} />
+    </article>
   );
 };
 

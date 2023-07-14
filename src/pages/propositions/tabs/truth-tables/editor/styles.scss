@@ -1,0 +1,23 @@
+@import 'styles/variables/colors';
+@import 'styles/variables/sizes';
+
+.truth-tables-editor {
+  display: flex;
+  flex-direction: column;
+  gap: $big-padding;
+
+  &_form {
+    display: flex;
+    gap: $big-padding;
+    flex-direction: column;
+
+    .form_buttons {
+      display: flex;
+      gap: $big-padding;
+
+      .button {
+        flex: 1 1 50%;
+      }
+    }
+  }
+}

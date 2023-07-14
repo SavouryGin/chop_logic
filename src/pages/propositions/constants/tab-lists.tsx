@@ -87,6 +87,6 @@ export const TRUTH_TABLES_TABS: TabItem[] = [
   {
     tabContent: <TruthTablesOperands />,
     tabTitle: texts.operands,
-    tabId: 'truth-tables-definitions',
+    tabId: 'truth-tables-operands',
   },
 ];
