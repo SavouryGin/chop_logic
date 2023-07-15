@@ -2,13 +2,14 @@
 @import 'styles/variables/sizes';
 
 .truth-tables-editor {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: $big-padding;
 
   &_form {
     display: flex;
-    gap: $big-padding;
+    gap: $default-padding;
     flex-direction: column;
 
     .form_buttons {

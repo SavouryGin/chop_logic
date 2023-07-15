@@ -17,7 +17,7 @@ const TruthTableForm = (): React.ReactElement => {
   const isFormInvalid = hasError || !formValue.input;
   const formContent = (
     <>
-      <TextInput name='input' inputId={InputID.Premise} className='truth-table-form__input' isRequired />
+      <TextInput name='input' inputId={InputID.Premise} isRequired />
       <FormulaPreview preview={preview} />
     </>
   );
@@ -40,7 +40,7 @@ const TruthTableForm = (): React.ReactElement => {
       inputs={formContent}
       passValues={takeValues}
       isSubmitDisabled={isFormInvalid}
-      className='truth-tables_form'
+      className='truth-tables-editor_form'
     />
   );
 };
