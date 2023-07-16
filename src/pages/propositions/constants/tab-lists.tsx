@@ -10,6 +10,7 @@ import ResolutionProofsEditor from 'pages/propositions/tabs/resolution-proofs/ed
 import RulesOfInference from 'pages/propositions/tabs/natural-proofs/rules';
 import TruthTablesDefinitions from 'pages/propositions/tabs/truth-tables/definitions';
 import TruthTablesEditor from 'pages/propositions/tabs/truth-tables/editor';
+import TruthTablesLaws from 'pages/propositions/tabs/truth-tables/laws';
 import TruthTablesOperands from 'pages/propositions/tabs/truth-tables/operands';
 import texts from 'utils/texts/propositions/elements';
 import { TabItem } from 'types';
@@ -88,5 +89,10 @@ export const TRUTH_TABLES_TABS: TabItem[] = [
     tabContent: <TruthTablesOperands />,
     tabTitle: texts.operands,
     tabId: 'truth-tables-operands',
+  },
+  {
+    tabContent: <TruthTablesLaws />,
+    tabTitle: texts.laws,
+    tabId: 'truth-tables-laws',
   },
 ];

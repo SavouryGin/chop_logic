@@ -13,6 +13,7 @@ const propositionElementsTexts: TextContainer = {
   page: { en: 'Propositions', ru: 'Высказывания' },
   truthTables: { en: 'Truth Tables', ru: 'Таблицы истинности' },
   operands: { en: 'Operand table', ru: 'Таблица операндов' },
+  laws: { en: 'Laws of Propositional Logic', ru: 'Законы логики высказываний' },
   fillerText: {
     en: 'Enter a premise or axiom to start the proof',
     ru: 'Введите посылку или аксиому, чтобы начать доказательство',
