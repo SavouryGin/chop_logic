@@ -41,7 +41,7 @@ const AppLink = ({ path, text, isNavigation, icon, onHover, ...rest }: AppLinkPr
   );
 
   return (
-    <span data-testid={rest.id || 'app-link'} className={classNames} onMouseOver={onLinkHover}>
+    <span data-testid={rest.id ?? 'app-link'} className={classNames} onMouseOver={onLinkHover}>
       {isNavigation ? navLink : link}
     </span>
   );

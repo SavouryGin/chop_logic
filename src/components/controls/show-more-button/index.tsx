@@ -25,7 +25,7 @@ const ShowMoreButton = ({ onClick, isOpened, ...rest }: ShowMoreButtonProps): Re
       onClick={onClick}
       type='button'
       id={rest.id}
-      data-testid={rest.id || 'show-more-button'}
+      data-testid={rest.id ?? 'show-more-button'}
       disabled={rest.isDisabled}
       className={buttonClass}
     ></button>

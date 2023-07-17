@@ -18,17 +18,17 @@ const FormulaPreview = ({ preview, className }: FormulaPreviewProps): React.Reac
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const language = useAppSelector(settingsSelectors.language);
 
-  const classNames = formatClass(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
-  const errorClassNames = formatClass(['formula-preview__error', { 'formula-preview__error_dark': isDarkMode }]);
+  const wrapperClass = formatClass(['formula-preview', className, { 'formula-preview_dark': isDarkMode }]);
+  const errorClass = formatClass(['formula-preview__error', { 'formula-preview__error_dark': isDarkMode }]);
   const labelText = inputTexts[InputID.Preview].label[language];
 
   return (
-    <div className={classNames}>
+    <div className={wrapperClass}>
       <Label text={labelText} isDarkMode={isDarkMode} />
       {Array.isArray(preview) ? (
         <Formula content={preview} className='formula-preview__formula' />
       ) : (
-        <p className={errorClassNames}>{preview.displayedErrorMessage[language]}</p>
+        <p className={errorClass}>{preview.displayedErrorMessage[language]}</p>
       )}
     </div>
   );
