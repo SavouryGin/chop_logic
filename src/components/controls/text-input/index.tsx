@@ -2,6 +2,7 @@ import Label from '../label';
 import React, { memo, useContext, useState } from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { FormContext } from 'components/controls/form';
+import { Icon } from 'enums';
 import { TextInputProps } from 'types';
 import { inputTexts } from 'utils/texts';
 import { settingsSelectors } from 'store/settings/selectors';
@@ -29,13 +30,15 @@ const TextInput = ({
   const language = useAppSelector(settingsSelectors.language);
   const formContext = useContext(FormContext);
   const { onChangeInput } = formContext;
-  const fieldClassNames = formatClass(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
-  const calculatedId = id || `text_input_id_${inputId}`;
-  const labelText = label || inputTexts[inputId].label[language];
-  const placeholderText = placeholder || inputTexts[inputId]?.placeholder?.[language];
-  const inputDefaultValue = defaultValue || inputTexts[inputId]?.defaultTextValue?.[language];
-  const [inputValue, setInputValue] = useState(inputDefaultValue || '');
-  const inputClassNames = formatClass([
+  const calculatedId = id ?? `text_input_id_${inputId}`;
+  const labelText = label ?? inputTexts[inputId].label[language];
+  const placeholderText = placeholder ?? inputTexts[inputId]?.placeholder?.[language];
+  const inputDefaultValue = defaultValue ?? inputTexts[inputId]?.defaultTextValue?.[language];
+  const [inputValue, setInputValue] = useState(inputDefaultValue ?? '');
+  const isClearButtonHidden = !inputValue?.length;
+  const fieldClass = formatClass(['text-input__field', { 'text-input__field_dark': isDarkMode }]);
+  const clearButtonClass = formatClass(['text-input__clear', Icon.Clear, { 'text-input__clear_hidden': isClearButtonHidden }]);
+  const wrapperClass = formatClass([
     className,
     'text-input',
     {
@@ -60,8 +63,12 @@ const TextInput = ({
     }
   };
 
+  const handleClear = () => {
+    setInputValue('');
+  };
+
   return (
-    <div className={inputClassNames}>
+    <div className={wrapperClass}>
       <Label text={labelText} id={calculatedId} isRequired={isRequired} isDarkMode={isDarkMode} />
       <input
         type='text'
@@ -69,12 +76,13 @@ const TextInput = ({
         value={inputValue}
         onChange={onInputChange}
         placeholder={placeholderText}
-        className={fieldClassNames}
+        className={fieldClass}
         disabled={isDisabled}
         readOnly={isReadOnly}
         autoComplete={isAutocomplete ? 'on' : 'off'}
         {...rest}
       />
+      <button type='reset' onClick={handleClear} className={clearButtonClass}></button>
     </div>
   );
 };

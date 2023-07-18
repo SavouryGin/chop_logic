@@ -43,4 +43,5 @@ export enum Icon {
   Paste = 'chop-icon__paste',
   Cut = 'chop-icon__scissors',
   Reset = 'chop-icon__trash',
+  Clear = 'chop-icon__cross',
 }
