@@ -22,9 +22,9 @@ const FileInput = ({
   const language = useAppSelector(settingsSelectors.language);
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const fieldClassNames = formatClass(['file-input__field', { 'file-input__field_dark': isDarkMode }]);
-  const calculatedId = id || `text_input_id_${inputId}`;
-  const labelText = label || inputTexts[inputId].label[language];
-  const placeholderText = placeholder || inputTexts[inputId]?.placeholder?.[language];
+  const calculatedId = id ?? `text_input_id_${inputId}`;
+  const labelText = label ?? inputTexts[inputId].label[language];
+  const placeholderText = placeholder ?? inputTexts[inputId]?.placeholder?.[language];
   const [userFile, setUserFile] = useState<File | null>(null);
   const inputClassNames = formatClass([
     className,

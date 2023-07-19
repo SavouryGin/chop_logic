@@ -29,8 +29,8 @@ function Select({
   const [selectedValue, setSelectedValue] = useState(defaultOption);
 
   const { onChangeInput } = formContext;
-  const calculatedId = id || `select_id_${inputId}`;
-  const labelText = label || inputTexts[inputId].label[language];
+  const calculatedId = id ?? `select_id_${inputId}`;
+  const labelText = label ?? inputTexts[inputId].label[language];
   const wrapperClassNames = formatClass(['select', className, { select_disabled: !!isDisabled, select_dark: isDarkMode }]);
   const selectClassNames = formatClass(['select__field', { select__field_dark: isDarkMode }]);
 

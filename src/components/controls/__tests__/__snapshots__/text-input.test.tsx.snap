@@ -24,6 +24,10 @@ exports[`Text input component: should match the snapshot 1`] = `
       type="text"
       value=""
     />
+    <button
+      class="text-input__clear chop-icon__cross text-input__clear_hidden"
+      type="reset"
+    />
   </div>
 </DocumentFragment>
 `;

@@ -40,6 +40,10 @@ exports[`Propositions Forms component: ContradictionRealizationForm matches the 
           type="text"
           value=""
         />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
+        />
       </div>
       <div
         class="implication-creation-form__input text-input"
@@ -62,6 +66,10 @@ exports[`Propositions Forms component: ContradictionRealizationForm matches the 
           name="secondVariable"
           type="text"
           value=""
+        />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
         />
       </div>
       <div
@@ -316,6 +324,10 @@ exports[`Propositions Forms component: ImplicationCreationForm matches the snaps
           type="text"
           value=""
         />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
+        />
       </div>
       <div
         class="implication-creation-form__input text-input"
@@ -338,6 +350,10 @@ exports[`Propositions Forms component: ImplicationCreationForm matches the snaps
           name="secondVariable"
           type="text"
           value=""
+        />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
         />
       </div>
       <div
@@ -427,6 +443,10 @@ exports[`Propositions Forms component: ImplicationDistributionForm matches the s
           type="text"
           value=""
         />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
+        />
       </div>
       <div
         class="implication-distribution-form__input text-input"
@@ -450,6 +470,10 @@ exports[`Propositions Forms component: ImplicationDistributionForm matches the s
           type="text"
           value=""
         />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
+        />
       </div>
       <div
         class="implication-distribution-form__input text-input"
@@ -472,6 +496,10 @@ exports[`Propositions Forms component: ImplicationDistributionForm matches the s
           name="thirdVariable"
           type="text"
           value=""
+        />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
         />
       </div>
       <div
@@ -557,6 +585,10 @@ exports[`Propositions Forms component: PremiseForm matches the snapshot 1`] = `
           type="text"
           value=""
         />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
+        />
       </div>
       <div
         class="formula-preview"
@@ -641,6 +673,10 @@ exports[`Propositions Forms component: ReplacerForm matches the snapshot 1`] = `
           type="text"
           value=""
         />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
+        />
       </div>
       <div
         class="replacer-form__input text-input"
@@ -667,6 +703,10 @@ exports[`Propositions Forms component: ReplacerForm matches the snapshot 1`] = `
           name="newVariable"
           type="text"
           value=""
+        />
+        <button
+          class="text-input__clear chop-icon__cross text-input__clear_hidden"
+          type="reset"
         />
       </div>
       <div

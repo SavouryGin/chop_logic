@@ -25,8 +25,8 @@ const Button = ({ onClick, icon, sound, view = 'normal', buttonId, isDisabled, .
   const isDarkMode = useAppSelector(settingsSelectors.isDarkMode);
   const isSoundEnabled = useAppSelector(settingsSelectors.isSoundsEnabled);
   const language = useAppSelector(settingsSelectors.language);
-  const buttonTitle = rest.title || buttonTexts[buttonId].title[language];
-  const buttonText = rest.text || buttonTexts[buttonId].innerText?.[language];
+  const buttonTitle = rest.title ?? buttonTexts[buttonId].title[language];
+  const buttonText = rest.text ?? buttonTexts[buttonId].innerText?.[language];
 
   const shadowClassNames = formatClass(['button__shadow', { button__shadow_dark: isDarkMode }]);
   const edgeClassNames = formatClass(['button__edge', { button__edge_dark: isDarkMode }]);

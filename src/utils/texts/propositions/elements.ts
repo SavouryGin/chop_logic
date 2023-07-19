@@ -11,6 +11,9 @@ const propositionElementsTexts: TextContainer = {
   heuristics: { en: 'Heuristics', ru: 'Эвристики' },
   rules: { en: 'Rules', ru: 'Правила' },
   page: { en: 'Propositions', ru: 'Высказывания' },
+  truthTables: { en: 'Truth Tables', ru: 'Таблицы истинности' },
+  operands: { en: 'Operand table', ru: 'Таблица операндов' },
+  laws: { en: 'Laws of Propositional Logic', ru: 'Законы логики высказываний' },
   fillerText: {
     en: 'Enter a premise or axiom to start the proof',
     ru: 'Введите посылку или аксиому, чтобы начать доказательство',

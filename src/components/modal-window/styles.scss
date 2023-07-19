@@ -66,6 +66,7 @@
     &__content {
       grid-area: modal-content;
       @include base-text-styles();
+      @include scrollbar-styles(light);
       overflow: auto;
       &_for-firefox {
         max-height: 38.75rem;
@@ -75,9 +76,6 @@
     // Defaults colors
     @include layout-colors(light);
     box-shadow: $light-box-shadow;
-    &__content {
-      @include scrollbar-styles(light);
-    }
 
     // Dark colors
     &_dark {
