@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   border-radius: $border-radius;
+  position: relative;
 
   // Default colors
   box-shadow: $light-button-shadow;
@@ -38,6 +39,28 @@
   }
 
   &__clear {
+    position: absolute;
+    right: 12px;
+    top: 22px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 0.25rem;
+    transition: filter 250ms;
+    width: fit-content;
+    height: fit-content;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &::before {
+      font-size: 0.8rem;
+      font-weight: lighter !important;
+    }
+
     &_hidden {
       display: none;
     }
