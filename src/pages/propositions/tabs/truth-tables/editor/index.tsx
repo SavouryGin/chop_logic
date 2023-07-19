@@ -10,7 +10,6 @@ import { settingsSelectors } from 'store/settings/selectors';
 import { uiElementTexts } from 'utils/texts';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import './styles.scss';
-import 'pages/propositions/sub-pages/truth-tables/styles.scss';
 
 const TruthTablesEditor = (): React.ReactElement => {
   const error = useAppSelector(truthTablesSelectors.error);

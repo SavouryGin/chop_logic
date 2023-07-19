@@ -6,7 +6,7 @@ import { Icon } from 'enums';
 import { TRUTH_TABLES_TABS } from 'pages/propositions/constants';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';
-import 'pages/propositions/sub-pages/truth-tables/styles.scss';
+import './styles.scss';
 
 const TruthTables = (): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.language);
