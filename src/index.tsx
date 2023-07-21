@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client';
 import 'styles/icons.scss';
 import 'styles/reset.scss';
 
-// KatTeX dependency
+// React LaTeX dependency
 import 'styles/latex/KaTeX-0.9.0.min.scss';
 
 // React 18 root API
