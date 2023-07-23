@@ -9,7 +9,7 @@ export function getDataCellsValues(tableRow: TableItem, columns: TableColumn[], 
   for (const column of columns) {
     let value;
 
-    if (!column.field || !tableRow[column.field]) {
+    if (!column?.field || tableRow[column.field] === null || tableRow[column.field] === undefined) {
       value = '';
     } else if (isLocalText(tableRow[column.field])) {
       value = (tableRow[column.field] as LocalText)[language];
