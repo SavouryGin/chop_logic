@@ -11,6 +11,7 @@ export type TableProps = CommonProps & {
 export type TableColumn = {
   field?: string;
   title?: LocalText;
+  headerComponent?: React.ReactElement;
 };
 
 export type TableItem = {

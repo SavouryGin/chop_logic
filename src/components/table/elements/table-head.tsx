@@ -19,10 +19,11 @@ const TableHead = ({
 
   const headerCells = columns.map((column, index) => {
     const title = column.title ? column.title[language] : '';
+    const hasHeaderComponent = !!column?.headerComponent;
 
     return (
       <th key={index} className='table__cell table__cell_heading'>
-        {title}
+        {hasHeaderComponent ? column.headerComponent : title}
       </th>
     );
   });
