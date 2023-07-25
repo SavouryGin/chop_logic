@@ -2,7 +2,7 @@ import React from 'react';
 import { TableColumn } from 'types';
 
 export const TRUTH_TABLES_OPERANDS_COLUMNS: TableColumn[] = [
-  { field: 'f0', title: { ru: 'f0', en: 'f0' }, headerComponent: <>Test</> },
+  { field: 'f0', title: { ru: 'f0', en: 'f0' }, headerComponent: <>f0</> },
   { field: 'f1', title: { ru: 'f1', en: 'f1' } },
   { field: 'f2', title: { ru: 'f2', en: 'f2' } },
   { field: 'f3', title: { ru: 'f3', en: 'f3' } },

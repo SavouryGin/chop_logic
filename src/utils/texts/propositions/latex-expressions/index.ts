@@ -47,6 +47,23 @@ const latexExpressions = {
   dashFtoNotG: `$$\\vdash F \\rightarrow \\neg G$$`,
   dashNotF: `$$\\vdash \\neg F$$`,
   dashNotNotF: `$$\\vdash \\neg \\neg F$$`,
+  // Boolean functions
+  constantFalse: `$$\\bot$$`,
+  and: `$$\\land$$`,
+  notImplication: `$$\\nrightarrow$$`,
+  constantP: `$$p$$`,
+  notBackImplication: `$$\\nleftarrow$$`,
+  constantQ: `$$q$$`,
+  nor: `$$\\oplus$$`,
+  or: `$$\\lor$$`,
+  pierce: `$$\\downarrow$$`,
+  equivalence: `$$\\leftrightarrow$$`,
+  notQ: `$$\\neg q$$`,
+  implication: `$$\\leftarrow$$`,
+  notP: `$$\\neg p$$`,
+  backImplication: `$$\\rightarrow$$`,
+  sheffer: `$$|$$`,
+  constantTrue: `$$\\top$$`,
 };
 
 export default Object.freeze(latexExpressions);
