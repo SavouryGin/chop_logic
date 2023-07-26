@@ -1,21 +1,23 @@
+import Latex from 'react-latex';
 import React from 'react';
+import latex from 'utils/texts/propositions/latex-expressions';
 import { TableColumn } from 'types';
 
 export const TRUTH_TABLES_OPERANDS_COLUMNS: TableColumn[] = [
-  { field: 'f0', title: { ru: 'f0', en: 'f0' }, headerComponent: <>f0</> },
-  { field: 'f1', title: { ru: 'f1', en: 'f1' } },
-  { field: 'f2', title: { ru: 'f2', en: 'f2' } },
-  { field: 'f3', title: { ru: 'f3', en: 'f3' } },
-  { field: 'f4', title: { ru: 'f4', en: 'f4' } },
-  { field: 'f5', title: { ru: 'f5', en: 'f5' } },
-  { field: 'f6', title: { ru: 'f6', en: 'f6' } },
-  { field: 'f7', title: { ru: 'f7', en: 'f7' } },
-  { field: 'f8', title: { ru: 'f8', en: 'f8' } },
-  { field: 'f9', title: { ru: 'f9', en: 'f9' } },
-  { field: 'f10', title: { ru: 'f10', en: 'f10' } },
-  { field: 'f11', title: { ru: 'f11', en: 'f11' } },
-  { field: 'f12', title: { ru: 'f12', en: 'f12' } },
-  { field: 'f13', title: { ru: 'f13', en: 'f13' } },
-  { field: 'f14', title: { ru: 'f14', en: 'f14' } },
-  { field: 'f15', title: { ru: 'f0', en: 'f15' } },
+  { field: 'f0', headerComponent: <Latex>{latex.constantFalse}</Latex> },
+  { field: 'f1', headerComponent: <Latex>{latex.and}</Latex> },
+  { field: 'f2', headerComponent: <Latex>{latex.notImplication}</Latex> },
+  { field: 'f3', headerComponent: <Latex>{latex.constantP}</Latex> },
+  { field: 'f4', headerComponent: <Latex>{latex.notBackImplication}</Latex> },
+  { field: 'f5', headerComponent: <Latex>{latex.constantQ}</Latex> },
+  { field: 'f6', headerComponent: <Latex>{latex.nor}</Latex> },
+  { field: 'f7', headerComponent: <Latex>{latex.or}</Latex> },
+  { field: 'f8', headerComponent: <Latex>{latex.pierce}</Latex> },
+  { field: 'f9', headerComponent: <Latex>{latex.equivalence}</Latex> },
+  { field: 'f10', headerComponent: <Latex>{latex.notQ}</Latex> },
+  { field: 'f11', headerComponent: <Latex>{latex.implication}</Latex> },
+  { field: 'f12', headerComponent: <Latex>{latex.notP}</Latex> },
+  { field: 'f13', headerComponent: <Latex>{latex.backImplication}</Latex> },
+  { field: 'f14', headerComponent: <Latex>{latex.sheffer}</Latex> },
+  { field: 'f15', headerComponent: <Latex>{latex.constantTrue}</Latex> },
 ];
