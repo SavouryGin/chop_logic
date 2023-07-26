@@ -19,5 +19,5 @@ export const TRUTH_TABLES_OPERANDS_COLUMNS: TableColumn[] = [
   { field: 'f12', headerComponent: <Latex>{latex.notP}</Latex> },
   { field: 'f13', headerComponent: <Latex>{latex.backImplication}</Latex> },
   { field: 'f14', headerComponent: <Latex>{latex.sheffer}</Latex> },
-  { field: 'f15', headerComponent: <Latex>{latex.constantTrue}</Latex> },
+  { field: 'f15', headerComponent: <Latex>{latex.constantFalse}</Latex> },
 ];
