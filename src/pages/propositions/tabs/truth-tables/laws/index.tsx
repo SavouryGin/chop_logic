@@ -1,14 +1,22 @@
+import PropositionLawsEn from 'utils/texts/propositions/en/laws';
+import PropositionLawsRu from 'utils/texts/propositions/ru/laws';
 import React from 'react';
-import Table from 'components/table';
-import { TRUTH_TABLES_LAWS_COLUMNS } from './columns';
-import { TRUTH_TABLES_LAWS_VALUES } from './values';
+import { settingsSelectors } from 'store/settings/selectors';
+import { useAppSelector } from 'hooks';
 
-const TruthTablesLaws = (): React.ReactElement => {
-  return (
-    <div className='truth-tables_laws'>
-      <Table columns={TRUTH_TABLES_LAWS_COLUMNS} data={TRUTH_TABLES_LAWS_VALUES} id='propositions-truth-table-laws' />
-    </div>
-  );
+const TruthTablesLaws = (): React.ReactElement | null => {
+  const language = useAppSelector(settingsSelectors.language);
+
+  switch (language) {
+    case 'ru': {
+      return <PropositionLawsRu />;
+    }
+    case 'en': {
+      return <PropositionLawsEn />;
+    }
+    default:
+      return null;
+  }
 };
 
 export default TruthTablesLaws;
