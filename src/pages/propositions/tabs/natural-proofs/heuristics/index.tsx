@@ -1,5 +1,5 @@
-import NPHeuristicsEn from 'utils/texts/propositions/en/np-heuristics-en';
-import NPHeuristicsRu from 'utils/texts/propositions/ru/np-heuristics-ru';
+import NPHeuristicsEn from 'utils/texts/propositions/en/np-heuristics';
+import NPHeuristicsRu from 'utils/texts/propositions/ru/np-heuristics';
 import React from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
