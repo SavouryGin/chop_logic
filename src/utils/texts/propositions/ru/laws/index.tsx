@@ -1,16 +1,19 @@
 import Latex from 'react-latex';
 import React from 'react';
-import latex from 'utils/texts/propositions/latex-expressions';
+import { PROPOSITIONAL_LAWS_LIST } from 'utils/texts/propositions/latex-expressions/laws-list';
 
 const PropositionLawsRu = (): React.ReactElement => {
   return (
     <section>
       <ol>
-        <li>
-          <strong>Закон тождества:</strong>
-          <br></br>
-          <Latex>{latex.IC}</Latex>
-        </li>
+        {PROPOSITIONAL_LAWS_LIST.map((item) => {
+          return (
+            <li key={item.id}>
+              <strong>{item.title.ru}</strong>
+              <Latex>{item.latexExpression}</Latex>
+            </li>
+          );
+        })}
       </ol>
     </section>
   );
