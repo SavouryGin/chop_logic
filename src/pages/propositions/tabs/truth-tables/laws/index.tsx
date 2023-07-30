@@ -14,6 +14,7 @@ const TruthTablesLaws = (): React.ReactElement => {
           return (
             <li key={item.id}>
               <strong>{item.title[language]}</strong>
+              <br></br>
               <Latex>{item.latexExpression}</Latex>
             </li>
           );
