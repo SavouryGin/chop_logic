@@ -8,7 +8,7 @@ const TruthTablesLaws = (): React.ReactElement => {
   const language = useAppSelector(settingsSelectors.language);
 
   return (
-    <section>
+    <section className='truth-tables_laws'>
       <ol>
         {PROPOSITIONAL_LAWS_LIST.map((item) => {
           return (
