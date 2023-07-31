@@ -15,7 +15,16 @@ const TruthTablesLaws = (): React.ReactElement => {
             <li key={item.id}>
               <strong>{item.title[language]}</strong>
               <br></br>
-              <Latex>{item.latexExpression}</Latex>
+              {item.latexExpressions.map((expression, key) => {
+                const expressionKey = `${item.id}_${key}`;
+
+                return (
+                  <>
+                    <Latex key={expressionKey}>{expression}</Latex>
+                    <br></br>
+                  </>
+                );
+              })}
             </li>
           );
         })}
