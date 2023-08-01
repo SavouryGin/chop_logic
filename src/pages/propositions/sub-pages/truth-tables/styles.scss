@@ -10,4 +10,12 @@
       width: 4rem;
     }
   }
+
+  &_laws {
+    margin: $big-margin 0;
+
+    li {
+      margin: $big-margin 0;
+    }
+  }
 }

@@ -1,5 +1,5 @@
-import DPAxiomsEn from 'utils/texts/propositions/en/dp-axioms-en';
-import DPAxiomsRu from 'utils/texts/propositions/ru/dp-axioms-ru';
+import DPAxiomsEn from 'utils/texts/propositions/en/dp-axioms';
+import DPAxiomsRu from 'utils/texts/propositions/ru/dp-axioms';
 import React from 'react';
 import { settingsSelectors } from 'store/settings/selectors';
 import { useAppSelector } from 'hooks';

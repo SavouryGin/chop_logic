@@ -1,5 +1,5 @@
-import NPRulesEn from 'utils/texts/propositions/en/np-rules-en';
-import NPRulesRu from 'utils/texts/propositions/ru/np-rules-ru';
+import NPRulesEn from 'utils/texts/propositions/en/np-rules';
+import NPRulesRu from 'utils/texts/propositions/ru/np-rules';
 import React from 'react';
 import formatClass from 'utils/formatters/format-class-name';
 import { settingsSelectors } from 'store/settings/selectors';
