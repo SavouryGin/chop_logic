@@ -1,10 +1,13 @@
 const latexExpressions = {
+  Dash: `$$\\vDash$$`,
   T: `$$\\mathfrak{T}$$`,
   R1Rn: `$\\{R_{1}, R_{2}, ..., R_{n}\\}$`,
   Ri: `$$R_{i}$$`,
   k: `$$k$$`,
   F: `$$F$$`,
   F1Fn: `$$F_{1}, F_{2}, ..., F_{n}$$`,
+  dashFtoP: `$$\\vDash F(p_{1}, p_{2}, ..., p_{n})$$`,
+  FtoP: `$$F(p_{1}, p_{2}, ..., p_{n})$$`,
   F1FnMinus1Fn: `$$\\{F_{1}, F_{2}, ..., F_{n-1}, F_{n}\\}$$`,
   F1FnMinus1: `$$\\{F_{1}, F_{2}, ..., F_{n-1}\\}$$`,
   FnToG: `$$F_{n} \\rightarrow G$$`,
