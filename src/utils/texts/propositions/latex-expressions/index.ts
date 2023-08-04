@@ -6,7 +6,7 @@ const latexExpressions = {
   k: `$$k$$`,
   F: `$$F$$`,
   F1Fn: `$$F_{1}, F_{2}, ..., F_{n}$$`,
-  dashFtoP: `$$\\vDash F(p_{1}, p_{2}, ..., p_{n})$$`,
+  DashFtoP: `$$\\vDash F(p_{1}, p_{2}, ..., p_{n})$$`,
   FtoP: `$$F(p_{1}, p_{2}, ..., p_{n})$$`,
   F1FnMinus1Fn: `$$\\{F_{1}, F_{2}, ..., F_{n-1}, F_{n}\\}$$`,
   F1FnMinus1: `$$\\{F_{1}, F_{2}, ..., F_{n-1}\\}$$`,
