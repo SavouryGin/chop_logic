@@ -29,11 +29,21 @@ const TTDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
     </div>
   );
 
+  const satisfiableFormulaDefinition = (
+    <div className={definitionClass}>
+      <dfn>Выполнимая формула логики высказываний</dfn> &#8212; это такая формула, которая принимает значение <strong>1</strong> (
+      <em>истина</em>) по крайней мере на одном наборе значений входящих в нее переменных. Иными словами, формула выполнима, если при
+      какой-либо её интерпретации можно получить истинное высказывание.
+    </div>
+  );
+
   return (
     <div className={wrapperClass}>
       {tautologyDefinition}
       <hr></hr>
       {contradictionDefinition}
+      <hr></hr>
+      {satisfiableFormulaDefinition}
     </div>
   );
 };
