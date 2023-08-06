@@ -9,6 +9,19 @@ const TTDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
   const definitionClass = formatClass([{ [`${className}_definition-block`]: !!className }]);
   // const centeredClass = formatClass([{ [`${className}__centered`]: !!className }]);
 
+  const ttDefinition = (
+    <div>
+      <dfn>Таблица истинности</dfn> &#8212; это один из способов задания логической функции. Любая формула логики высказывания &#8212; это
+      функция, которая каждому упорядоченному набору (кортежу) из нулей и единиц сопоставляет ровно одно значение из множества{' '}
+      <Latex>{latex.set01}</Latex>. Значение выбирается в соответствии с определениями логических связок. Длина набора значений зависит от
+      количества переменных в формуле. Если в формуле логики высказываний <Latex>{latex.F}</Latex> содержится только одна переменная, то ее
+      областью определения является множество, состоящее из двух однокомпонентных кортежей: <Latex>{latex.tuple01}</Latex>. Если же в{' '}
+      <Latex>{latex.F}</Latex> две переменные, то область ее определения равна второй декартовой степени множества:{' '}
+      <Latex>{latex.tuple0101}</Latex>. В общем случае, если в формуле <Latex>{latex.n}</Latex> различных переменных, то область определения
+      этой логической функции состоит из <Latex>{latex.nPow2}</Latex> различных наборов значений.
+    </div>
+  );
+
   const tautologyDefinition = (
     <div className={definitionClass}>
       <dfn>Тождественно-истинная формула логики высказываний (тавтология)</dfn> &#8212; это такая формула, которая принимает значение{' '}
@@ -39,6 +52,8 @@ const TTDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
 
   return (
     <div className={wrapperClass}>
+      {ttDefinition}
+      <hr></hr>
       {tautologyDefinition}
       <hr></hr>
       {contradictionDefinition}

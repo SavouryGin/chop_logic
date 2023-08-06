@@ -67,6 +67,11 @@ const latexExpressions = {
   backImplication: `$$\\rightarrow$$`,
   sheffer: `$$|$$`,
   constantTrue: `$$\\top$$`,
+  set01: `$$\\{0,1\\}$$`,
+  tuple01: `$$\\{\\left\\langle 0\\right\\rangle, \\left\\langle 1 \\right\\rangle \\}$$`,
+  tuple0101: `$$\\{0,1\\}^{2}=\\{\\left\\langle 0, 0\\right\\rangle,\\left\\langle 0, 1\\right\\rangle,\\left\\langle 1, 0\\right\\rangle,\\left\\langle 1, 1\\right\\rangle \\}$$`,
+  n: `$$n$$`,
+  nPow2: `$$2^{n}$$`,
 };
 
 export default Object.freeze(latexExpressions);
