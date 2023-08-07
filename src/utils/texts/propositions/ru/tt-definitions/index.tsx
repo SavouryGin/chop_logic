@@ -7,10 +7,9 @@ import { CommonProps } from 'types';
 const TTDefinitionsRu = ({ className }: CommonProps): React.ReactElement => {
   const wrapperClass = formatClass([className]);
   const definitionClass = formatClass([{ [`${className}_definition-block`]: !!className }]);
-  // const centeredClass = formatClass([{ [`${className}__centered`]: !!className }]);
 
   const ttDefinition = (
-    <div>
+    <div className={definitionClass}>
       <dfn>Таблица истинности</dfn> &#8212; это один из способов задания логической функции. Любая формула логики высказывания &#8212; это
       функция, которая каждому упорядоченному набору (кортежу) из нулей и единиц сопоставляет ровно одно значение из множества{' '}
       <Latex>{latex.set01}</Latex>. Значение выбирается в соответствии с определениями логических связок. Длина набора значений зависит от
