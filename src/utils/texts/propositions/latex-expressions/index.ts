@@ -1,10 +1,13 @@
 const latexExpressions = {
+  Dash: `$$\\vDash$$`,
   T: `$$\\mathfrak{T}$$`,
   R1Rn: `$\\{R_{1}, R_{2}, ..., R_{n}\\}$`,
   Ri: `$$R_{i}$$`,
   k: `$$k$$`,
   F: `$$F$$`,
   F1Fn: `$$F_{1}, F_{2}, ..., F_{n}$$`,
+  DashFtoP: `$$\\vDash F(p_{1}, p_{2}, ..., p_{n})$$`,
+  FtoP: `$$F(p_{1}, p_{2}, ..., p_{n})$$`,
   F1FnMinus1Fn: `$$\\{F_{1}, F_{2}, ..., F_{n-1}, F_{n}\\}$$`,
   F1FnMinus1: `$$\\{F_{1}, F_{2}, ..., F_{n-1}\\}$$`,
   FnToG: `$$F_{n} \\rightarrow G$$`,
@@ -64,6 +67,11 @@ const latexExpressions = {
   backImplication: `$$\\rightarrow$$`,
   sheffer: `$$|$$`,
   constantTrue: `$$\\top$$`,
+  set01: `$$\\{0,1\\}$$`,
+  tuple01: `$$\\{\\left\\langle 0\\right\\rangle, \\left\\langle 1 \\right\\rangle \\}$$`,
+  tuple0101: `$$\\{0,1\\}^{2}=\\{\\left\\langle 0, 0\\right\\rangle,\\left\\langle 0, 1\\right\\rangle,\\left\\langle 1, 0\\right\\rangle,\\left\\langle 1, 1\\right\\rangle \\}$$`,
+  n: `$$n$$`,
+  nPow2: `$$2^{n}$$`,
 };
 
 export default Object.freeze(latexExpressions);
